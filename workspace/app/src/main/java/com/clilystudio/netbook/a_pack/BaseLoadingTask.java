@@ -12,7 +12,7 @@ public abstract class BaseLoadingTask<Input, E> extends BaseAsyncTask<Input, Voi
     private Activity b;
     private String c;
     private boolean d = true;
-    private boolean e = true;
+    private boolean showProgress = true;
 
     public BaseLoadingTask(Activity activity) {
         this.b = activity;
@@ -24,9 +24,9 @@ public abstract class BaseLoadingTask<Input, E> extends BaseAsyncTask<Input, Voi
         this.c = activity.getString(resId);
     }
 
-    public BaseLoadingTask(Activity activity, int resId, boolean bl) {
+    public BaseLoadingTask(Activity activity, int resId, boolean showProgress) {
         this(activity, resId);
-        this.e = bl;
+        this.showProgress = showProgress;
     }
 
     public BaseLoadingTask(Activity activity, String string) {
@@ -73,7 +73,7 @@ public abstract class BaseLoadingTask<Input, E> extends BaseAsyncTask<Input, Voi
     @Override
     public void onPreExecute() {
         String string = this.c;
-        if (!this.b.isFinishing() && this.e) {
+        if (!this.b.isFinishing() && this.showProgress) {
             this.a = ProgressDialog.show(this.b, null, string, true, this.d, new DialogInterface.OnCancelListener() {
                 @Override
                 public void onCancel(DialogInterface dialog) {

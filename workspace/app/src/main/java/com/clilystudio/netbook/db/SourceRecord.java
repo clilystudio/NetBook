@@ -17,11 +17,11 @@ public class SourceRecord extends Model {
     @Column(name = "sourceId")
     private String sourceId;
 
-    public static void create(String string, String string2, String string3) {
+    public static void create(String bookId, String source, String sourceId) {
         SourceRecord sourceRecord = new SourceRecord();
-        sourceRecord.bookId = string;
-        sourceRecord.source = string2;
-        sourceRecord.sourceId = string3;
+        sourceRecord.bookId = bookId;
+        sourceRecord.source = source;
+        sourceRecord.sourceId = sourceId;
         sourceRecord.save();
     }
 

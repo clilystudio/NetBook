@@ -55,6 +55,7 @@ import com.clilystudio.netbook.reader.txt.U;
 import com.clilystudio.netbook.ui.BookInfoActivity;
 import com.clilystudio.netbook.ui.feed.FeedIntroActivity;
 import com.clilystudio.netbook.ui.feed.FeedListActivity;
+import com.clilystudio.netbook.util.BookSourceManager;
 import com.clilystudio.netbook.util.FeedIntroDialog;
 import com.clilystudio.netbook.util.InsideLinkIntent;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
@@ -105,7 +106,7 @@ public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollL
                 switch (bookShelf.getType()) {
                     case 0:
                         BookReadRecord bookReadRecord = bookShelf.getBookRecord();
-                        new com.clilystudio.netbook.util.m(HomeShelfFragment.this.getActivity()).a(bookReadRecord);
+                        new BookSourceManager(HomeShelfFragment.this.getActivity()).a(bookReadRecord);
                         if (bookReadRecord.isUnread()) {
                             bookReadRecord.setUnread(false);
                             bookReadRecord.save();

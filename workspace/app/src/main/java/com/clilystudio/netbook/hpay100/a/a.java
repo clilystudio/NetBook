@@ -1208,14 +1208,14 @@ public class a {
     /*
      * Enabled aggressive block sorting
      */
-    public static void a(TocSource tocSource, String string2) {
-        String string3 = tocSource.getSource();
-        String string4 = tocSource.getSourceId();
-        SourceRecord sourceRecord = SourceRecord.get(string2, string3);
+    public static void a(TocSource tocSource, String bookId) {
+        String source = tocSource.getSource();
+        String sourceId = tocSource.getSourceId();
+        SourceRecord sourceRecord = SourceRecord.get(bookId, source);
         if (sourceRecord == null) {
-            SourceRecord.create(string2, string3, string4);
+            SourceRecord.create(bookId, source, sourceId);
         } else if (sourceRecord.getSourceId() == null) {
-            sourceRecord.setSourceId(string4);
+            sourceRecord.setSourceId(sourceId);
             sourceRecord.save();
         }
     }

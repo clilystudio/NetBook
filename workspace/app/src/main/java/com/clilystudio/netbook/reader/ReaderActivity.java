@@ -345,8 +345,8 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
         return new IntentBuilder().put(context, ReaderActivity.class).put("BOOK_ID", string).put("BOOK_TITLE", string2).put("TOC_ID", string3).put("SOURCE_HOST", string4).putSerializable("IS_SHOW_TOC", bl).build();
     }
 
-    public static Intent a(Context context, String string, String string2, String string3, HashMap<String, String> hashMap, boolean bl2) {
-        return new IntentBuilder().put(context, ReaderActivity.class).put("BOOK_ID", string).put("BOOK_TITLE", string2).put("TOC_ID", string3).put("SOURCE_HOST", (String) null).putSerializable("IS_SHOW_TOC", false).putSerializable("CHAPTERS_KEY", hashMap).putSerializable("HAS_OTHER_SOURCES", bl2).build();
+    public static Intent a(Context context, String bookId, String bookTitle, String tocId, HashMap<String, String> chapterKeys, boolean hasOtherSource) {
+        return new IntentBuilder().put(context, ReaderActivity.class).put("BOOK_ID", bookId).put("BOOK_TITLE", bookTitle).put("TOC_ID", tocId).put("SOURCE_HOST", (String) null).putSerializable("IS_SHOW_TOC", false).putSerializable("CHAPTERS_KEY", chapterKeys).putSerializable("HAS_OTHER_SOURCES", hasOtherSource).build();
     }
 
     public static Intent a(Context context, String string, String string2, String string3, boolean bl2) {

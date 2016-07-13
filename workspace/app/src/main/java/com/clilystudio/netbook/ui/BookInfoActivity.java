@@ -29,7 +29,7 @@ import com.clilystudio.netbook.event.BookRemovedEvent;
 import com.clilystudio.netbook.reader.dl.a;
 import com.clilystudio.netbook.ui.user.AuthLoginActivity;
 import com.clilystudio.netbook.util.BookInfoUtil;
-import com.clilystudio.netbook.util.m;
+import com.clilystudio.netbook.util.BookSourceManager;
 import com.clilystudio.netbook.util.t;
 import com.clilystudio.netbook.widget.CoverView;
 import com.clilystudio.netbook.widget.TagsLayout;
@@ -464,9 +464,9 @@ public class BookInfoActivity extends BaseActivity implements View.OnClickListen
                 BookReadRecord bookReadRecord = BookReadRecord.get(this.mBookId);
                 if (bookReadRecord == null) {
                     this.a(true);
-                    new m(this).a(this.k);
+                    new BookSourceManager(this).a(this.k);
                 } else {
-                    new m(this).a(bookReadRecord);
+                    new BookSourceManager(this).a(bookReadRecord);
                 }
                 return;
             }

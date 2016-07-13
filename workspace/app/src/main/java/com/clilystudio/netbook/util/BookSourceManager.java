@@ -25,131 +25,107 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 
-public final class m {
-    private Activity a;
-    private String b;
-    private String c;
-    private BookReadRecord d;
-    private boolean e;
-    private String f;
+public final class BookSourceManager {
+    private Activity mActivity;
+    private String mBookId;
+    private String mBookTitle;
+    private BookReadRecord mBookReadRecord;
+    private boolean mHasOtherSource;
+    private String mTocId;
 
-    public m(Activity activity) {
-        this.a = activity;
+    public BookSourceManager(Activity activity) {
+        this.mActivity = activity;
         BusProvider.getInstance().register(this);
     }
 
-    static /* synthetic */ Activity a(m m2) {
-        return m2.a;
-    }
-
-    static /* synthetic */ void a(m m2, int n2) {
-        m2.a(n2);
-    }
-
-    /*
-     * Enabled aggressive block sorting
-     */
-    static /* synthetic */ void a(m m2, List list) {
+    static /* synthetic */ void a(BookSourceManager m2, List list) {
         TocSummary tocSummary;
         Iterator iterator = list.iterator();
         do {
             if (iterator.hasNext()) continue;
             return;
         } while (!"zhuishuvip".equals((tocSummary = (TocSummary) iterator.next()).getSource()));
-        if (m2.d != null) {
-            m2.d.setHave_cp(1);
-            m2.d.setTocId(tocSummary.get_id());
-            m2.d.setReadMode(9);
-            m2.d.save();
+        if (m2.mBookReadRecord != null) {
+            m2.mBookReadRecord.setHave_cp(1);
+            m2.mBookReadRecord.setTocId(tocSummary.get_id());
+            m2.mBookReadRecord.setReadMode(9);
+            m2.mBookReadRecord.save();
         } else {
             MyApplication.getInstance().setReadMode(9);
         }
-        m2.f = tocSummary.get_id();
+        m2.mTocId = tocSummary.get_id();
         boolean bl = true;
         if (bl) {
-            m2.a(m2.d.getReadMode());
+            m2.a(m2.mBookReadRecord.getReadMode());
         }
     }
 
-    static /* synthetic */ boolean a(m m2, boolean bl) {
-        m2.e = bl;
-        return bl;
-    }
-
-    static /* synthetic */ String b(m m2) {
-        return m2.b;
-    }
-
-    static /* synthetic */ void b(m m2, List<TocSummary> list) {
+    static /* synthetic */ void b(BookSourceManager m2, List<TocSummary> list) {
         for (TocSummary tocSummary : list) {
             if (!"zhuishuvip".equals(tocSummary.getSource())) continue;
             MyApplication.getInstance().setReadMode(9);
-            m2.f = tocSummary.get_id();
+            m2.mTocId = tocSummary.get_id();
             m2.a(9);
             break;
         }
     }
 
-    static /* synthetic */ BookReadRecord c(m m2) {
-        return m2.d;
-    }
-
-    private void a(int n2) {
-        MyApplication.getInstance().setReadMode(n2);
-        if (n2 == 5) {
-            this.a(ReaderActivity.a(this.a, this.b, this.c, "MIX_TOC_ID", (String)null, false));
+    private void a(int readMode) {
+        MyApplication.getInstance().setReadMode(readMode);
+        if (readMode == 5) {
+            this.a(ReaderActivity.a(this.mActivity, this.mBookId, this.mBookTitle, "MIX_TOC_ID", (String)null, false));
             return;
         }
-        if (n2 == 0 || n2 == 1 || n2 == 4 || n2 == 2) {
-            Intent intent = ReaderResActivity.a(this.a, this.b, this.c, n2);
+        if (readMode == 0 || readMode == 1 || readMode == 4 || readMode == 2) {
+            Intent intent = ReaderResActivity.a(this.mActivity, this.mBookId, this.mBookTitle, readMode);
             intent.putExtra("SELECT_LAST", false);
             this.a(intent);
             return;
         }
-        if (n2 == 10 && this.d != null) {
-            String string = this.d.getTocId();
-            this.a(ReaderActivity.a(this.a, this.b, this.c, string, (String)null, false));
+        if (readMode == 10 && this.mBookReadRecord != null) {
+            String string = this.mBookReadRecord.getTocId();
+            this.a(ReaderActivity.a(this.mActivity, this.mBookId, this.mBookTitle, string, (String)null, false));
             return;
         }
-        if (n2 == 9) {
-            if (this.d != null) {
-                this.f = this.d.getTocId();
+        if (readMode == 9) {
+            if (this.mBookReadRecord != null) {
+                this.mTocId = this.mBookReadRecord.getTocId();
             }
             if (am.getAccount() != null) {
-                HashMap<String, String> hashMap = com.clilystudio.netbook.hpay100.a.a.M(this.b);
+                HashMap<String, String> hashMap = com.clilystudio.netbook.hpay100.a.a.M(this.mBookId);
                 if (hashMap == null) {
                     hashMap = new HashMap<>();
                 }
-                this.a(ReaderActivity.a(this.a, this.b, this.c, this.f, hashMap, this.e));
+                this.a(ReaderActivity.a(this.mActivity, this.mBookId, this.mBookTitle, this.mTocId, hashMap, this.mHasOtherSource));
                 return;
             }
-            this.a(ReaderActivity.a(this.a, this.b, this.c, this.f, this.e));
+            this.a(ReaderActivity.a(this.mActivity, this.mBookId, this.mBookTitle, this.mTocId, this.mHasOtherSource));
             return;
         }
-        String string = com.clilystudio.netbook.hpay100.a.a.g(n2);
-        SourceRecord sourceRecord = SourceRecord.get(this.b, string);
+        String string = com.clilystudio.netbook.hpay100.a.a.g(readMode);
+        SourceRecord sourceRecord = SourceRecord.get(this.mBookId, string);
         if (sourceRecord == null || sourceRecord.getSourceId() == null) {
             this.a(true);
             return;
         }
         String string2 = sourceRecord.getSourceId();
-        String string3 = com.clilystudio.netbook.hpay100.a.a.a(this.b, n2, string2, null);
-        if (com.clilystudio.netbook.hpay100.a.a.a(this.a, string, false)) {
-            Intent intent = ReaderActivity.a(this.a, this.b, this.c, string3, string, false);
+        String string3 = com.clilystudio.netbook.hpay100.a.a.a(this.mBookId, readMode, string2, null);
+        if (com.clilystudio.netbook.hpay100.a.a.a(this.mActivity, string, false)) {
+            Intent intent = ReaderActivity.a(this.mActivity, this.mBookId, this.mBookTitle, string3, string, false);
             intent.putExtra("SOURCE_ID", string2);
             this.a(intent);
             return;
         }
-        this.a(ReaderWebActivity.a(this.a, this.b, this.c, string3, string2, n2));
+        this.a(ReaderWebActivity.a(this.mActivity, this.mBookId, this.mBookTitle, string3, string2, readMode));
     }
 
     private void a(Intent intent) {
         intent.putExtra("extra_force_online", false);
-        this.a.startActivity(intent);
+        this.mActivity.startActivity(intent);
     }
 
-    private void a(boolean bl) {
-        BaseLoadingTask<String, TocSourceRoot> n2 = new BaseLoadingTask<String, TocSourceRoot>(this.a, R.string.loading, bl) {
+    private void a(boolean showProgress) {
+        new BaseLoadingTask<String, TocSourceRoot>(this.mActivity, R.string.loading, showProgress) {
 
             @Override
             public TocSourceRoot a(String... var1) {
@@ -164,31 +140,29 @@ public final class m {
                         return;
                     }
                     TocSource[] arrtocSource = tocSourceRoot.getSources();
-                    int n3 = 5;
+                    int readMode = 5;
                     for (TocSource tocSource : arrtocSource) {
-                        com.clilystudio.netbook.hpay100.a.a.a(tocSource, m.b(m.this));
+                        com.clilystudio.netbook.hpay100.a.a.a(tocSource, BookSourceManager.this.mBookId);
                         if (!tocSource.isPriority()) continue;
                         String string = tocSource.getSource();
-                        n3 = "soso".equals(string) ? 6 : ("sogou".equals(string) ? 7 : ("leidian".equals(string) ? 8 : ("easou".equals(string) ? 3 : -1)));
+                        readMode = "soso".equals(string) ? 6 : ("sogou".equals(string) ? 7 : ("leidian".equals(string) ? 8 : ("easou".equals(string) ? 3 : -1)));
                     }
-                    if (m.c(m.this) != null) {
-                        m.c(m.this).setReadMode(n3);
-                        m.c(m.this).save();
+                    if (BookSourceManager.this.mBookReadRecord != null) {
+                        BookSourceManager.this.mBookReadRecord.setReadMode(readMode);
+                        BookSourceManager.this.mBookReadRecord.save();
                     } else {
-                        MyApplication.getInstance().setReadMode(n3);
+                        MyApplication.getInstance().setReadMode(readMode);
                     }
-                    m.a(m.this, n3);
+                    BookSourceManager.this.a(readMode);
                 } else {
-                    com.clilystudio.netbook.util.e.a(m.a(m.this), "获取资源站失败，请重试");
+                    com.clilystudio.netbook.util.e.a(BookSourceManager.this.mActivity, "获取资源站失败，请重试");
                 }
             }
-        };
-        String[] arrstring = new String[]{this.b};
-        n2.b(arrstring);
+        }.b(this.mBookId);
     }
 
     private void a(boolean bl, final boolean bl2) {
-        BaseLoadingTask<String, List<TocSummary>> o2 = new BaseLoadingTask<String, List<TocSummary>>(m.this.a, R.string.loading, bl) {
+        BaseLoadingTask<String, List<TocSummary>> o2 = new BaseLoadingTask<String, List<TocSummary>>(BookSourceManager.this.mActivity, R.string.loading, bl) {
             @Override
             public List<TocSummary> a(String... var1) {
                 ApiServiceProvider.getInstance();
@@ -198,20 +172,20 @@ public final class m {
             @Override
             public void a(List<TocSummary> list) {
                 if (list == null) {
-                    com.clilystudio.netbook.util.e.a(m.a(m.this), "获取资源站失败，请重试");
+                    com.clilystudio.netbook.util.e.a(BookSourceManager.this.mActivity, "获取资源站失败，请重试");
                     return;
                 }
                 if (list.size() > 1) {
-                    m.a(m.this, true);
+                    BookSourceManager.this.mHasOtherSource = true;
                 }
                 if (bl2) {
-                    m.a(m.this, list);
+                    BookSourceManager.a(BookSourceManager.this, list);
                     return;
                 }
-                m.b(m.this, list);
+                BookSourceManager.b(BookSourceManager.this, list);
             }
         };
-        String[] arrstring = new String[]{this.b};
+        String[] arrstring = new String[]{this.mBookId};
         o2.b(arrstring);
     }
 
@@ -221,9 +195,9 @@ public final class m {
      * Lifted jumps to return sites
      */
     public final void a(BookReadRecord p1) {
-        this.d = p1;
-        this.b = p1.getBookId();
-        this.c = p1.getTitle();
+        this.mBookReadRecord = p1;
+        this.mBookId = p1.getBookId();
+        this.mBookTitle = p1.getTitle();
         int var3_3 = p1.getReadMode();
         if (p1.have_cp == 1) {
             if (p1.getTocId() == null) {
@@ -232,12 +206,12 @@ public final class m {
             }
             this.a(var3_3);
         } else if (var3_3 == -1) {
-            int var5_5 = com.clilystudio.netbook.hpay100.a.a.c(this.a, "PREF_FIRST_LAUNCH_TIME", 0);
+            int var5_5 = com.clilystudio.netbook.hpay100.a.a.c(this.mActivity, "PREF_FIRST_LAUNCH_TIME", 0);
             boolean var7_6 = Calendar.getInstance().getTimeInMillis() - var5_5 >= 2592000000L;
             if (!var7_6) {
                 Account var8_7 = am.getAccount();
                 if (var8_7 == null || var8_7.getUser().getLv() < 5) {
-                    com.clilystudio.netbook.util.e.a(this.a, "正在获取来源");
+                    com.clilystudio.netbook.util.e.a(this.mActivity, "正在获取来源");
                     this.a(true);
                     return;
                 }
@@ -249,8 +223,8 @@ public final class m {
     }
 
     public final void a(BookInfo bookInfo) {
-        this.b = bookInfo.getId();
-        this.c = bookInfo.getTitle();
+        this.mBookId = bookInfo.getId();
+        this.mBookTitle = bookInfo.getTitle();
         if (bookInfo.isHasCp()) {
             this.a(false, false);
             return;
