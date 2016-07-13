@@ -222,4 +222,8 @@ public class AutoFlowView extends LinearLayout implements View.OnClickListener {
             }
         }
     }
+
+    public interface OnItemClickListener {
+        void a(String var1);
+    }
 }
