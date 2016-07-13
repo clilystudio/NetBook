@@ -113,7 +113,7 @@ public class am {
         if (activity == null) {
             return null;
         }
-        Account account = am.e();
+        Account account = am.getAccount();
         if (account != null) {
             return account;
         }
@@ -392,7 +392,7 @@ public class am {
      * Enabled force condition propagation
      * Lifted jumps to return sites
      */
-    public static Account e() {
+    public static Account getAccount() {
         MyApplication myApplication = MyApplication.getInstance();
         String string = myApplication.getProperty("user.id");
         String string2 = myApplication.getProperty("account.token");
@@ -493,7 +493,7 @@ public class am {
     }
 
     public static boolean g() {
-        return am.e() != null;
+        return am.getAccount() != null;
     }
 
     public static String h() {

@@ -258,7 +258,7 @@ public abstract class NotifFragment extends Fragment {
     @Override
     public void onActivityCreated(Bundle bundle) {
         super.onActivityCreated(bundle);
-        this.m = am.e();
+        this.m = am.getAccount();
         this.f = LayoutInflater.from(this.getActivity()).inflate(R.layout.loading_item, (ViewGroup)getActivity().getWindow().getDecorView(), false);
         this.e = this.d.getRefreshableView();
         if (com.clilystudio.netbook.hpay100.a.a.i()) {

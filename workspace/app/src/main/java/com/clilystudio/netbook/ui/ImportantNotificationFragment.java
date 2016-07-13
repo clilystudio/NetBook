@@ -11,7 +11,7 @@ import com.clilystudio.netbook.adapter.NotificationAdapter;
 import com.clilystudio.netbook.am;
 import com.clilystudio.netbook.event.BusProvider;
 import com.clilystudio.netbook.event.NotifEvent;
-import com.clilystudio.netbook.util.J;
+import com.clilystudio.netbook.util.UserNotificationManager;
 import com.squareup.otto.Subscribe;
 
 public class ImportantNotificationFragment extends NotifFragment {
@@ -57,14 +57,14 @@ public class ImportantNotificationFragment extends NotifFragment {
 
     @Subscribe
     public void onNotifEvent(NotifEvent w2) {
-        boolean bl = J.a(this.getActivity()).b() > 0;
+        boolean bl = UserNotificationManager.getInstance(this.getActivity()).getUnimportant() > 0;
         this.a(bl);
     }
 
     @Override
     public void onPause() {
         super.onPause();
-        J.a(this.getActivity()).c();
+        UserNotificationManager.getInstance(this.getActivity()).readImportantNotification();
         BusProvider.getInstance().unregister(this);
     }
 
@@ -72,7 +72,7 @@ public class ImportantNotificationFragment extends NotifFragment {
     public void onResume() {
         super.onResume();
         BusProvider.getInstance().register(this);
-        boolean bl = J.a(this.getActivity()).b() > 0;
+        boolean bl = UserNotificationManager.getInstance(this.getActivity()).getUnimportant() > 0;
         this.a(bl);
     }
 }

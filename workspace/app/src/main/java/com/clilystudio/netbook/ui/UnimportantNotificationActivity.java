@@ -3,7 +3,7 @@ package com.clilystudio.netbook.ui;
 import android.os.Bundle;
 
 import com.clilystudio.netbook.R;
-import com.clilystudio.netbook.util.J;
+import com.clilystudio.netbook.util.UserNotificationManager;
 
 public class UnimportantNotificationActivity extends BaseActivity {
     @Override
@@ -16,6 +16,6 @@ public class UnimportantNotificationActivity extends BaseActivity {
     @Override
     public void onPause() {
         super.onPause();
-        J.a(this).d();
+        UserNotificationManager.getInstance(this).readUnimportantNotification();
     }
 }

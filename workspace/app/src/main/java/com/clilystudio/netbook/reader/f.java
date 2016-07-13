@@ -21,7 +21,7 @@ import com.clilystudio.netbook.model.mixtoc.SgTocChapter;
 import com.clilystudio.netbook.model.mixtoc.SgTocRoot;
 import com.clilystudio.netbook.model.mixtoc.SsTocRoot;
 import com.clilystudio.netbook.model.mixtoc.SsTocRow;
-import com.clilystudio.netbook.util.BookInfo;
+import com.clilystudio.netbook.util.BookInfoUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -373,13 +373,13 @@ public final class f {
     public final ChapterRoot a(ChapterLink chapterLink, int n) {
         ChapterRoot chapterRoot;
         if (this.e == null) {
-            this.e = BookInfo.source;
+            this.e = BookInfoUtil.source;
         }
         if (this.f == null) {
-            this.f = BookInfo.sourceId;
+            this.f = BookInfoUtil.sourceId;
         }
         if (this.g == null) {
-            this.g = BookInfo.sougoMd;
+            this.g = BookInfoUtil.sougoMd;
         }
         switch (this.b) {
             default: {
@@ -420,14 +420,14 @@ public final class f {
         if (this.b == 7) return chapterRoot;
         if (this.b == 8) return chapterRoot;
         if (this.b == 3) return chapterRoot;
-        BookInfo.h = true;
+        BookInfoUtil.h = true;
         BookTopRoot.Favorite bookTopRoot$Favorite;
         BookTopRoot bookTopRoot = ApiServiceProvider.getApiService().u();
         if (bookTopRoot != null && (bookTopRoot$Favorite = bookTopRoot.getFavorite()) != null) {
             com.clilystudio.netbook.hpay100.a.a.b(MyApplication.getInstance(), bookTopRoot$Favorite.getBookID(), bookTopRoot$Favorite.getTocID(), bookTopRoot$Favorite.getChecksum());
         }
         chapterRoot = this.c(chapterLink.getLink());
-        BookInfo.h = false;
+        BookInfoUtil.h = false;
         return chapterRoot;
     }
 
@@ -469,14 +469,14 @@ public final class f {
     public final void a(String string, String string2) {
         this.f = string;
         this.g = string2;
-        BookInfo.sougoMd = string2;
+        BookInfoUtil.sougoMd = string2;
     }
 
     public final void a(String string, String string2, String string3) {
         this.d = string;
         this.e = string2;
         this.f = string3;
-        BookInfo.sourceId = string3;
+        BookInfoUtil.sourceId = string3;
     }
 
     public final void b(String string) {

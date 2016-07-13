@@ -85,7 +85,7 @@ public class ModifyUserInfoActivity extends BaseActivity implements View.OnClick
 
                     @Override
                     public ChangeGenderRoot a(String... var1) {
-                        Account account = am.e();
+                        Account account = am.getAccount();
                         if (account != null) {
                             return ApiServiceProvider.getApiService().v(account.getToken(), var1[0]);
                         }
@@ -243,7 +243,7 @@ public class ModifyUserInfoActivity extends BaseActivity implements View.OnClick
                                 @Override
                                 public ChangeNickNameRoot a(String... var1) {
                                     this.a = var1[0];
-                                    Account account = am.e();
+                                    Account account = am.getAccount();
                                     if (account != null) {
                                         return ApiServiceProvider.getApiService().u(account.getToken(), var1[0]);
                                     }
@@ -371,7 +371,7 @@ public class ModifyUserInfoActivity extends BaseActivity implements View.OnClick
                     }
                 }
             };
-            r2.execute(am.e().getToken());
+            r2.execute(am.getAccount().getToken());
         }
         this.mPortraitSection.setOnClickListener(this);
         this.mNameSection.setOnClickListener(this);

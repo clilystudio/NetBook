@@ -115,7 +115,7 @@ public final class m {
             if (this.d != null) {
                 this.f = this.d.getTocId();
             }
-            if (am.e() != null) {
+            if (am.getAccount() != null) {
                 HashMap<String, String> hashMap = com.clilystudio.netbook.hpay100.a.a.M(this.b);
                 if (hashMap == null) {
                     hashMap = new HashMap<>();
@@ -235,7 +235,7 @@ public final class m {
             int var5_5 = com.clilystudio.netbook.hpay100.a.a.c(this.a, "PREF_FIRST_LAUNCH_TIME", 0);
             boolean var7_6 = Calendar.getInstance().getTimeInMillis() - var5_5 >= 2592000000L;
             if (!var7_6) {
-                Account var8_7 = am.e();
+                Account var8_7 = am.getAccount();
                 if (var8_7 == null || var8_7.getUser().getLv() < 5) {
                     com.clilystudio.netbook.util.e.a(this.a, "正在获取来源");
                     this.a(true);

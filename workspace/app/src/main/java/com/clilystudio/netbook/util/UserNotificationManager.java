@@ -4,7 +4,6 @@ import android.content.Context;
 
 import com.clilystudio.netbook.a_pack.BaseAsyncTask;
 import com.clilystudio.netbook.am;
-
 import com.clilystudio.netbook.api.ApiServiceProvider;
 import com.clilystudio.netbook.db.AccountInfo;
 import com.clilystudio.netbook.event.BusProvider;
@@ -15,54 +14,36 @@ import com.clilystudio.netbook.model.Root;
 
 import java.util.Date;
 
-public class J {
-    private static J a;
-    private int b;
-    private int c;
-    private Context d;
+public class UserNotificationManager {
+    private static UserNotificationManager mInstance;
+    private int mImportant;
+    private int mUnimportant;
+    private Context mContext;
 
-    private J(Context context) {
-        this.d = context;
+    private UserNotificationManager(Context context) {
+        this.mContext = context;
     }
 
-    static /* synthetic */ int a(J j, int n) {
-        j.b = n;
-        return n;
-    }
-
-    static /* synthetic */ Context a(J j) {
-        return j.d;
-    }
-
-    /*
-     * Enabled aggressive block sorting
-     * Enabled unnecessary exception pruning
-     * Enabled aggressive exception aggregation
-     */
-    public static J a(Context context) {
-        synchronized (J.class) {
-            if (a != null) return a;
-            a = new J(context);
-            return a;
+    public static UserNotificationManager getInstance(Context context) {
+        synchronized (UserNotificationManager.class) {
+            if (mInstance == null) {
+                mInstance = new UserNotificationManager(context);
+            }
+            return mInstance;
         }
     }
 
-    static /* synthetic */ int b(J j, int n) {
-        j.c = n;
-        return n;
+    public final int getImportant() {
+        return this.mImportant;
     }
 
-    public final int a() {
-        return this.b;
+    public final int getUnimportant() {
+        return this.mUnimportant;
     }
 
-    public final void a(int n) {
-        this.b = 0;
-    }
-
-    public final void a(Account account) {
+    public final void getUserNotificationCount(Account account) {
         if (account != null) {
-            BaseAsyncTask<String, Void, NotifCountRoot> k = new BaseAsyncTask<String, Void, NotifCountRoot>(){
+            new BaseAsyncTask<String, Void, NotifCountRoot>() {
 
                 @Override
                 protected NotifCountRoot doInBackground(String... params) {
@@ -74,37 +55,27 @@ public class J {
                 protected void onPostExecute(NotifCountRoot notifCountRoot) {
                     super.onPostExecute(notifCountRoot);
                     if (notifCountRoot != null && notifCountRoot.isOk()) {
-                        J.a(J.this, notifCountRoot.getImportant());
-                        J.b(J.this, notifCountRoot.getUnimportant());
+                        UserNotificationManager.this.mImportant = notifCountRoot.getImportant();
+                        UserNotificationManager.this.mUnimportant = notifCountRoot.getUnimportant();
                         Date date = notifCountRoot.getLastReadImportantTime();
                         Date date2 = notifCountRoot.getLastReadUnimportantTime();
-                        if (am.h(J.a(J.this)).equals("0")) {
-                            am.a(J.a(J.this), date.getTime());
+                        if (am.h(UserNotificationManager.this.mContext).equals("0")) {
+                            am.a(UserNotificationManager.this.mContext, date.getTime());
                         }
-                        if (am.i(J.a(J.this)).equals("0")) {
-                            am.b(J.a(J.this), date2.getTime());
+                        if (am.i(UserNotificationManager.this.mContext).equals("0")) {
+                            am.b(UserNotificationManager.this.mContext, date2.getTime());
                         }
                         BusProvider.getInstance().post(new NotifEvent());
-                     }
+                    }
                 }
-            };
-            String[] arrstring = new String[]{account.getToken()};
-            k.b(arrstring);
+            }.b(account.getToken());
         }
     }
 
-    public final int b() {
-        return this.c;
-    }
-
-    public final void b(int n) {
-        this.c = 0;
-    }
-
-    public final void c() {
-        Account account = am.e();
+    public final void readImportantNotification() {
+        Account account = am.getAccount();
         if (account != null) {
-            BaseAsyncTask<String, Void, Root> l = new BaseAsyncTask<String, Void, Root>(){
+            new BaseAsyncTask<String, Void, Root>() {
 
                 @Override
                 protected Root doInBackground(String... params) {
@@ -116,21 +87,19 @@ public class J {
                 protected void onPostExecute(Root root) {
                     super.onPostExecute(root);
                     if (root != null && root.isOk()) {
-                        J.this.a(0);
+                        UserNotificationManager.this.mImportant = 0;
                         BusProvider.getInstance().post(new NotifEvent());
-                        am.j(J.a(J.this));
+                        am.j(UserNotificationManager.this.mContext);
                     }
                 }
-            };
-            String[] arrstring = new String[]{account.getToken()};
-            l.b(arrstring);
+            }.b(account.getToken());
         }
     }
 
-    public final void d() {
-        Account account = am.e();
+    public final void readUnimportantNotification() {
+        Account account = am.getAccount();
         if (account != null) {
-            BaseAsyncTask<String, Void, Root> m = new BaseAsyncTask<String, Void, Root>(){
+            new BaseAsyncTask<String, Void, Root>() {
 
                 @Override
                 protected Root doInBackground(String... params) {
@@ -143,9 +112,9 @@ public class J {
                     super.onPostExecute(root);
                     if (root != null && root.isOk()) {
                         AccountInfo accountInfo;
-                        J.this.b(0);
-                        am.b(J.a(J.this), System.currentTimeMillis());
-                        Account account = am.e();
+                        UserNotificationManager.this.mUnimportant = 0;
+                        am.b(UserNotificationManager.this.mContext, System.currentTimeMillis());
+                        Account account = am.getAccount();
                         if (account != null && (accountInfo = AccountInfo.getByToken(account.getToken())) != null) {
                             accountInfo.setPrevUnimpNotif(0);
                             accountInfo.save();
@@ -153,24 +122,18 @@ public class J {
                         BusProvider.getInstance().post(new NotifEvent());
                     }
                 }
-            };
-            String[] arrstring = new String[]{account.getToken()};
-            m.b(arrstring);
+            }.b(account.getToken());
         }
     }
 
-    /*
-     * Enabled aggressive block sorting
-     * Lifted jumps to return sites
-     */
-    public final int e() {
-        Account account = am.e();
+    public final int getNotificationCount() {
+        Account account = am.getAccount();
         if (account == null) {
             return 0;
         }
-        if (this.b != 0) return this.b;
-        if (this.c == 0) return this.b;
-        if (AccountInfo.getPreUnimpCount(account.getToken()) >= this.c) return 0;
+        if (this.mImportant != 0) return this.mImportant;
+        if (this.mUnimportant == 0) return this.mImportant;
+        if (AccountInfo.getPreUnimpCount(account.getToken()) >= this.mUnimportant) return 0;
         return -1;
     }
 }

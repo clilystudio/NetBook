@@ -28,7 +28,7 @@ import com.clilystudio.netbook.event.DownloadStatusEvent;
 import com.clilystudio.netbook.event.BookRemovedEvent;
 import com.clilystudio.netbook.reader.dl.a;
 import com.clilystudio.netbook.ui.user.AuthLoginActivity;
-import com.clilystudio.netbook.util.BookInfo;
+import com.clilystudio.netbook.util.BookInfoUtil;
 import com.clilystudio.netbook.util.m;
 import com.clilystudio.netbook.util.t;
 import com.clilystudio.netbook.widget.CoverView;
@@ -78,17 +78,17 @@ public class BookInfoActivity extends BaseActivity implements View.OnClickListen
     static /* synthetic */ void a(BookInfoActivity bookInfoActivity) {
         if (bookInfoActivity.k != null) {
             SourceRecord sourceRecord;
-            BookInfo.bookId = bookInfoActivity.mBookId;
-            BookInfo.title = bookInfoActivity.k.getTitle();
+            BookInfoUtil.bookId = bookInfoActivity.mBookId;
+            BookInfoUtil.title = bookInfoActivity.k.getTitle();
             BookReadRecord bookReadRecord = BookReadRecord.getOnShelf(bookInfoActivity.mBookId);
             if (bookReadRecord != null) {
-                BookInfo.source = bookReadRecord.getDownloadedSource();
-                BookInfo.tocId = bookReadRecord.getTocId();
-                BookInfo.readMode = bookReadRecord.getReadMode();
+                BookInfoUtil.source = bookReadRecord.getDownloadedSource();
+                BookInfoUtil.tocId = bookReadRecord.getTocId();
+                BookInfoUtil.readMode = bookReadRecord.getReadMode();
             }
-            if ((sourceRecord = SourceRecord.get(bookInfoActivity.mBookId, BookInfo.source)) != null) {
-                BookInfo.sourceId = sourceRecord.getSourceId();
-                BookInfo.sougoMd = sourceRecord.getSogouMd();
+            if ((sourceRecord = SourceRecord.get(bookInfoActivity.mBookId, BookInfoUtil.source)) != null) {
+                BookInfoUtil.sourceId = sourceRecord.getSourceId();
+                BookInfoUtil.sougoMd = sourceRecord.getSogouMd();
             }
             if (!bookInfoActivity.i) {
                 bookInfoActivity.h();

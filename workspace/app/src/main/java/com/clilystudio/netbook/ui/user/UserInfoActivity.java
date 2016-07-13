@@ -24,7 +24,7 @@ import com.clilystudio.netbook.ui.BaseActivity;
 import com.clilystudio.netbook.ui.CircularSmartImageView;
 import com.clilystudio.netbook.ui.SettingsActivity;
 import com.clilystudio.netbook.ui.BaseCallBack;
-import com.clilystudio.netbook.util.J;
+import com.clilystudio.netbook.util.UserNotificationManager;
 import com.squareup.otto.Subscribe;
 
 import java.util.Date;
@@ -81,7 +81,7 @@ public class UserInfoActivity extends BaseActivity {
     }
 
     static /* synthetic */ void b(UserInfo userInfo) {
-        Account account = am.e();
+        Account account = am.getAccount();
         if (account != null) {
             User user = account.getUser();
             user.setNickname(userInfo.getNickname());
@@ -115,7 +115,7 @@ public class UserInfoActivity extends BaseActivity {
                             UserInfoActivity.a(UserInfoActivity.this, userInfo);
                             MyApplication.getInstance().saveObject(userInfo, "savedObject_userinfo");
                             UserInfoActivity.a(UserInfoActivity.this, userInfo.getNicknameUpdated());
-                            UserInfoActivity.a(UserInfoActivity.this, J.a(UserInfoActivity.this).a());
+                            UserInfoActivity.a(UserInfoActivity.this, UserNotificationManager.getInstance(UserInfoActivity.this).getImportant());
                             UserInfoActivity.b(userInfo);
                         } else {
                             if ("TOKEN_INVALID".equals(userInfo.getCode())) {

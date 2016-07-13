@@ -50,7 +50,7 @@ import com.clilystudio.netbook.ui.SmartImageView;
 import com.clilystudio.netbook.ui.user.AuthLoginActivity;
 import com.clilystudio.netbook.ui.user.MyMessageActivity;
 import com.clilystudio.netbook.ui.user.UserInfoActivity;
-import com.clilystudio.netbook.util.J;
+import com.clilystudio.netbook.util.UserNotificationManager;
 import com.clilystudio.netbook.util.Z;
 import com.clilystudio.netbook.widget.TabWidgetV2;
 import com.squareup.otto.Subscribe;
@@ -87,7 +87,7 @@ public class HomeActivity extends HomeParentActivity implements ViewPager.OnPage
     private TextView m;
     private TextView n;
     private ImageView o;
-    private Account p;
+    private Account mAccount;
     private ImageView q;
     private ViewGroup s;
     private WebView t;
@@ -207,7 +207,7 @@ public class HomeActivity extends HomeParentActivity implements ViewPager.OnPage
     }
 
     private void a(Account account) {
-        J.a(this).a(account);
+        UserNotificationManager.getInstance(this).getUserNotificationCount(account);
     }
 
     /*
@@ -380,7 +380,7 @@ public class HomeActivity extends HomeParentActivity implements ViewPager.OnPage
 
     @Subscribe
     public void onAccountUpdated(AccountUpdatedEvent a2) {
-        Account account = am.e();
+        Account account = am.getAccount();
         if (account != null) {
             this.l.setImageUrl(account.getUser().getFullAvatar());
             this.m.setText(account.getUser().getNickname());
@@ -404,8 +404,8 @@ public class HomeActivity extends HomeParentActivity implements ViewPager.OnPage
 
     @Subscribe
     public void onBookShelfRefresh(BookShelfRefreshEvent bookShelfRefreshEvent) {
-        if (this.p != null) {
-            this.a(this.p);
+        if (this.mAccount != null) {
+            UserNotificationManager.getInstance(this).getUserNotificationCount(mAccount);
         }
     }
 
@@ -420,9 +420,9 @@ public class HomeActivity extends HomeParentActivity implements ViewPager.OnPage
                 return;
             }
             case R.id.home_menu_user: {
-                if (this.p != null) {
+                if (this.mAccount != null) {
                     this.m();
-                    this.startActivity(UserInfoActivity.a(this, this.p.getToken()));
+                    this.startActivity(UserInfoActivity.a(this, this.mAccount.getToken()));
                     return;
                 }
                 Intent intent = AuthLoginActivity.a(this);
@@ -431,11 +431,11 @@ public class HomeActivity extends HomeParentActivity implements ViewPager.OnPage
                 return;
             }
             case R.id.home_menu_msg: {
-                if (this.p != null) {
+                if (this.mAccount != null) {
                     this.m();
                     com.clilystudio.netbook.hpay100.a.a.b(this, "key_enter_msg_time", System.currentTimeMillis());
-                    AccountInfo accountInfo = AccountInfo.getOrCreate(this.p.getToken());
-                    accountInfo.setPrevUnimpNotif(J.a(this).b());
+                    AccountInfo accountInfo = AccountInfo.getOrCreate(this.mAccount.getToken());
+                    accountInfo.setPrevUnimpNotif(UserNotificationManager.getInstance(this).getUnimportant());
                     accountInfo.save();
                     BusProvider.getInstance().post(new NotifEvent());
                     this.startActivity(new Intent(this, MyMessageActivity.class));
@@ -445,9 +445,9 @@ public class HomeActivity extends HomeParentActivity implements ViewPager.OnPage
                 return;
             }
             case R.id.home_menu_sync: {
-                if (this.p != null) {
+                if (this.mAccount != null) {
                     this.m();
-                    new Z(this, this.p.getToken()).a(false);
+                    new Z(this, this.mAccount.getToken()).a(false);
                     return;
                 }
                 this.startActivityForResult(AuthLoginActivity.a(this), 100);
@@ -543,7 +543,7 @@ public class HomeActivity extends HomeParentActivity implements ViewPager.OnPage
             tabSpec.setIndicator(view);
             this.f.addTab(tabSpec);
         }
-        this.p = am.e();
+        this.mAccount = am.getAccount();
         this.k = this.getLayoutInflater().inflate(R.layout.home_popupwindow_layout, (ViewGroup) getWindow().getDecorView(), false);
         View view = this.k.findViewById(R.id.home_menu_user);
         View view3 = this.k.findViewById(R.id.home_menu_msg);
@@ -561,8 +561,8 @@ public class HomeActivity extends HomeParentActivity implements ViewPager.OnPage
         view7.setOnClickListener(this);
         this.l = (SmartImageView) view.findViewById(R.id.home_menu_user_avatar);
         this.m = (TextView) view.findViewById(R.id.home_menu_user_name);
-        if (this.p != null) {
-            this.a(this.p.getUser());
+        if (this.mAccount != null) {
+            this.a(this.mAccount.getUser());
         } else {
             this.k();
         }
@@ -604,7 +604,7 @@ public class HomeActivity extends HomeParentActivity implements ViewPager.OnPage
                 }.b();
             }
         }, 3000);
-        if (this.p != null) {
+        if (this.mAccount != null) {
             com.clilystudio.netbook.util.e.c("launch");
         }
         if (bundle != null) {
@@ -612,7 +612,7 @@ public class HomeActivity extends HomeParentActivity implements ViewPager.OnPage
         }
         this.findViewById(R.id.home_action_menu_more).setOnClickListener(this);
         this.findViewById(R.id.home_action_menu_search).setOnClickListener(this);
-        if (this != null && (account = am.e()) != null) {
+        if (this != null && (account = am.getAccount()) != null) {
             new Z(this, account.getToken()).a(true);
         }
         this.a(this.getIntent());
@@ -646,7 +646,7 @@ public class HomeActivity extends HomeParentActivity implements ViewPager.OnPage
         super.onDestroy();
         ShareSDK.stopSDK(this);
         BusProvider.getInstance().unregister(this);
-        this.p = null;
+        this.mAccount = null;
         if (this.t != null) {
             this.t.clearHistory();
             this.t.clearCache(true);
@@ -669,12 +669,12 @@ public class HomeActivity extends HomeParentActivity implements ViewPager.OnPage
 
     @Subscribe
     public void onLoginEvent(LoginEvent t2) {
-        this.p = t2.getAccount();
-        if (this.p != null) {
-            this.a(this.p.getUser());
+        this.mAccount = t2.getAccount();
+        if (this.mAccount != null) {
+            this.a(this.mAccount.getUser());
             boolean bl = t2.getSource() != AuthLoginActivity.Source.HOME;
-            new Z(this, this.p.getToken()).a(bl);
-            this.a(this.p);
+            new Z(this, this.mAccount.getToken()).a(bl);
+            UserNotificationManager.getInstance(this).getUserNotificationCount(mAccount);
         }
     }
 
@@ -689,7 +689,7 @@ public class HomeActivity extends HomeParentActivity implements ViewPager.OnPage
 
     @Subscribe
     public void onNotifEvent(NotifEvent w2) {
-        int n2 = J.a(this).e();
+        int n2 = UserNotificationManager.getInstance(this).getNotificationCount();
         View view = this.k.findViewById(R.id.msg_dot);
         TextView textView = (TextView) this.k.findViewById(R.id.msg_count);
         if (n2 > 0) {
@@ -764,12 +764,12 @@ public class HomeActivity extends HomeParentActivity implements ViewPager.OnPage
                 }
             }.b();
         }
-        if ((account = am.e()) != null) {
-            this.p = account;
+        if ((account = am.getAccount()) != null) {
+            this.mAccount = account;
             this.a(account.getUser());
             return;
         }
-        this.p = null;
+        this.mAccount = null;
         this.k();
     }
 

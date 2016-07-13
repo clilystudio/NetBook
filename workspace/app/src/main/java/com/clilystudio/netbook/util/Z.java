@@ -48,13 +48,13 @@ public final class Z {
         List<BookSyncRecord> list;
         Account account;
         List<BookSyncRecord> list2;
-        Account account2 = am.e();
+        Account account2 = am.getAccount();
         if (account2 != null) {
             String string = account2.getUser().getId();
             new Delete().from(BookReadRecord.class).where("account is not null AND account <> ?", string).execute();
             new Delete().from(BookReadRecord.class).where("account is null AND deleted = 1").execute();
         }
-        if ((account = am.e()) != null) {
+        if ((account = am.getAccount()) != null) {
             String string = account.getUser().getId();
             List<BookSyncRecord> list3 = BookSyncRecord.find(string, BookSyncRecord.getTypeId(BookSyncRecord.BookModifyType.SHELF_REMOVE));
             list2 = BookSyncRecord.find(string, BookSyncRecord.getTypeId(BookSyncRecord.BookModifyType.FEED_REMOVE));
@@ -135,7 +135,7 @@ public final class Z {
         for (int k = 0; k < list2.size(); ++k) {
             arrstring2[k] = list2.get(k).getBookId();
         }
-        Account account = am.e();
+        Account account = am.getAccount();
         if (account != null) {
             String string = account.getUser().getId();
             if (arrstring.length > 0) {

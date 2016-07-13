@@ -1,6 +1,6 @@
 package com.clilystudio.netbook.util;
 
-public final class BookInfo {
+public final class BookInfoUtil {
     public static String bookId;
     public static String title;
     public static String tocId;

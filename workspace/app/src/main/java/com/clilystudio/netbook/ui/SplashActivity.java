@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.view.View;
 
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.am;
@@ -67,7 +66,7 @@ public class SplashActivity extends Activity {
         String string;
         Calendar calendar;
         super.onResume();
-        if (!am.g() || (n = 10000 * (calendar = Calendar.getInstance()).get(Calendar.YEAR) + 100 * calendar.get(Calendar.MONTH) + calendar.get(Calendar.DATE)) <= com.clilystudio.netbook.hpay100.a.a.a(this, "KEY_OPEN_TIME", 0) || (string = am.e().getUser().getGender()) == null) {
+        if (!am.g() || (n = 10000 * (calendar = Calendar.getInstance()).get(Calendar.YEAR) + 100 * calendar.get(Calendar.MONTH) + calendar.get(Calendar.DATE)) <= com.clilystudio.netbook.hpay100.a.a.a(this, "KEY_OPEN_TIME", 0) || (string = am.getAccount().getUser().getGender()) == null) {
             return;
         }
         com.clilystudio.netbook.hpay100.a.a.b(this, "KEY_OPEN_TIME", n);

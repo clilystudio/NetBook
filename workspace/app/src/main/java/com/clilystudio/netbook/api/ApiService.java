@@ -1197,7 +1197,7 @@ public class ApiService {
     public final TweetsResult k(String string) {
         HttpRequest httpRequest;
         StringBuilder stringBuilder = new StringBuilder().append(f);
-        Object[] arrobject = new Object[]{am.e().getUser().getId()};
+        Object[] arrobject = new Object[]{am.getAccount().getUser().getId()};
         String string2 = stringBuilder.append(String.format(Locale.CHINA, "/user/%s/twitter", arrobject)).toString();
         if (string != null) {
             HashMap<String, String> hashMap = new HashMap<>();

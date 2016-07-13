@@ -99,7 +99,7 @@ public final class N {
                         @Override
                         public void run() {
                             ApiServiceProvider.getInstance();
-                            ApiServiceProvider.getApiService().e(am.e().getToken(), string, stringX);
+                            ApiServiceProvider.getApiService().e(am.getAccount().getToken(), string, stringX);
                         }
                     }.start();
                     return;

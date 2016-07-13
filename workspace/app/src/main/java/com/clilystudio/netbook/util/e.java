@@ -136,18 +136,18 @@ public class e {
     }
 
     public static String c(Context context) {
-        if (com.clilystudio.netbook.am.e() == null) {
+        if (com.clilystudio.netbook.am.getAccount() == null) {
             String string = ((WifiManager) context.getSystemService(Context.WIFI_SERVICE)).getConnectionInfo().getMacAddress();
             if (string == null) {
                 string = "";
             }
             com.integralblue.httpresponsecache.compat.libcore.io.Base64.encode(string.getBytes());
         }
-        return com.clilystudio.netbook.am.e().getUser().getId();
+        return com.clilystudio.netbook.am.getAccount().getUser().getId();
     }
 
     public static void c(final String string) {
-        final Account account = com.clilystudio.netbook.am.e();
+        final Account account = com.clilystudio.netbook.am.getAccount();
         if (account == null) {
             return;
         }

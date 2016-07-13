@@ -221,7 +221,7 @@ public class MyTopicFragment extends Fragment {
             }
         };
         d.setAdapter(this.h);
-        Account account = am.e();
+        Account account = am.getAccount();
         if (account == null) {
             this.f.setVisibility(View.GONE);
             this.g.setVisibility(View.VISIBLE);

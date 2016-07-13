@@ -57,7 +57,7 @@ import com.clilystudio.netbook.reader.ReaderActivity;
 import com.clilystudio.netbook.reader.ReaderTocDialog;
 import com.clilystudio.netbook.util.CipherUtil;
 import com.clilystudio.netbook.util.GenderIntroDialog;
-import com.clilystudio.netbook.util.BookInfo;
+import com.clilystudio.netbook.util.BookInfoUtil;
 import com.clilystudio.netbook.util.X;
 import com.clilystudio.netbook.util.t;
 import com.integralblue.httpresponsecache.compat.java.lang.ArrayIndexOutOfBoundsException;
@@ -133,10 +133,10 @@ public class a {
             return null;
         }
         String string2 = CipherUtil.b(cipherTocId, CipherUtil.b(cipherBookId, cipherCheckSum)).substring(0, 20);
-        if (!BookInfo.h) {
+        if (!BookInfoUtil.h) {
             return CipherUtil.getNewAdvert(string2, string, MyApplication.getInstance());
         }
-        BookInfo.h = false;
+        BookInfoUtil.h = false;
         long l = Y("http://www.taobao.com");
         if (l <= 7200) {
             l = Y("http://www.163.com");
@@ -1290,12 +1290,12 @@ public class a {
      */
     private static void a(String string2, BookSyncRecord.BookModifyType bookModifyType) {
         BookSyncRecord.updateOrCreate(o(), string2, BookSyncRecord.getTypeId(bookModifyType));
-        if (am.e() == null) return;
-        if (am.e().getUser() == null) {
+        if (am.getAccount() == null) return;
+        if (am.getAccount().getUser() == null) {
             return;
         }
-        String string3 = am.e().getToken();
-        String string4 = am.e().getUser().getId();
+        String string3 = am.getAccount().getToken();
+        String string4 = am.getAccount().getUser().getId();
         List<BookSyncRecord> list = BookSyncRecord.find(string4, BookSyncRecord.getTypeId(bookModifyType));
         if (list == null) return;
         if (list.size() == 0) return;
@@ -1361,12 +1361,12 @@ public class a {
         for (String string2 : arrstring) {
             BookSyncRecord.updateOrCreate(o(), string2, BookSyncRecord.getTypeId(bookSyncRecord$BookModifyType));
         }
-        if (am.e() == null) return;
-        if (am.e().getUser() == null) {
+        if (am.getAccount() == null) return;
+        if (am.getAccount().getUser() == null) {
             return;
         }
-        String string3 = am.e().getToken();
-        String string4 = am.e().getUser().getId();
+        String string3 = am.getAccount().getToken();
+        String string4 = am.getAccount().getUser().getId();
         List<BookSyncRecord> list = BookSyncRecord.find(string4, BookSyncRecord.getTypeId(bookSyncRecord$BookModifyType));
         if (list == null) return;
         if (list.size() == 0) return;
@@ -2353,8 +2353,8 @@ public class a {
     }
 
     private static String o() {
-        if (am.e() != null && am.e().getUser() != null) {
-            return am.e().getUser().getId();
+        if (am.getAccount() != null && am.getAccount().getUser() != null) {
+            return am.getAccount().getUser().getId();
         }
         return "";
     }

@@ -25,7 +25,7 @@ import com.clilystudio.netbook.model.ChapterLink;
 import com.clilystudio.netbook.model.ChapterSingleKey;
 import com.clilystudio.netbook.model.PurchaseChapterResult;
 import com.clilystudio.netbook.ui.user.AuthLoginActivity;
-import com.clilystudio.netbook.util.BookInfo;
+import com.clilystudio.netbook.util.BookInfoUtil;
 import com.clilystudio.netbook.widget.JustifyTextView;
 import com.squareup.otto.Subscribe;
 import java.text.SimpleDateFormat;
@@ -121,7 +121,7 @@ public final class o {
                 @Override
                 public ChapterSingleKey a(String... var1) {
                     ApiServiceProvider.getInstance();
-                    return ApiServiceProvider.getApiService().f(var1[0], am.e().getToken());
+                    return ApiServiceProvider.getApiService().f(var1[0], am.getAccount().getToken());
                 }
 
                 @Override
@@ -187,7 +187,7 @@ public final class o {
     }
 
     private static boolean of() {
-        return !(am.e() == null || !com.clilystudio.netbook.hpay100.a.a.a(MyApplication.getInstance(), "auto_buy_chapter" + BookInfo.bookId, false));
+        return !(am.getAccount() == null || !com.clilystudio.netbook.hpay100.a.a.a(MyApplication.getInstance(), "auto_buy_chapter" + BookInfoUtil.bookId, false));
     }
 
     private void a(boolean bl) {
@@ -239,13 +239,13 @@ public final class o {
         this.u = (Button) view3.findViewById(R.id.reader_page_pay_btn);
         if (com.clilystudio.netbook.hpay100.a.a.a(this.b, "user_account_balance", 0) > this.d.a().getCurrency() || this.t) {
             checkBox.setVisibility(View.VISIBLE);
-            checkBox.setChecked(com.clilystudio.netbook.hpay100.a.a.a(this.b, "auto_buy_chapter" + BookInfo.bookId, false));
+            checkBox.setChecked(com.clilystudio.netbook.hpay100.a.a.a(this.b, "auto_buy_chapter" + BookInfoUtil.bookId, false));
             this.u.setText("购买，继续阅读");
             this.u.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     a(o.this, false);
-                    com.clilystudio.netbook.hpay100.a.a.b(o.this.b, "auto_buy_chapter" + BookInfo.bookId, checkBox.isChecked());
+                    com.clilystudio.netbook.hpay100.a.a.b(o.this.b, "auto_buy_chapter" + BookInfoUtil.bookId, checkBox.isChecked());
                     BaseLoadingTask<String, PurchaseChapterResult> i2 = new BaseLoadingTask<String, PurchaseChapterResult>(o.this.b, "购买中...") {
 
                         @Override
@@ -260,7 +260,7 @@ public final class o {
                             com.clilystudio.netbook.reader.o.a(o.this, var1);
                         }
                     };
-                    String[] arrstring = new String[]{am.e().getToken(), o.this.d.a().getId()};
+                    String[] arrstring = new String[]{am.getAccount().getToken(), o.this.d.a().getId()};
                     i2.b(arrstring);
                 }
             });
@@ -466,11 +466,11 @@ public final class o {
         if (view == null) return;
         view.setVisibility(View.GONE);
         if (!this.e) return;
-        if (com.clilystudio.netbook.hpay100.a.a.a(this.b, "remove_ad_toast_showed" + BookInfo.bookId, false)) return;
+        if (com.clilystudio.netbook.hpay100.a.a.a(this.b, "remove_ad_toast_showed" + BookInfoUtil.bookId, false)) return;
         if (!this.q()) return;
         if (!this.a(view)) return;
         com.clilystudio.netbook.util.e.a(this.b, "已为您自动免除广告");
-        com.clilystudio.netbook.hpay100.a.a.b(this.b, "remove_ad_toast_showed" + BookInfo.bookId, true);
+        com.clilystudio.netbook.hpay100.a.a.b(this.b, "remove_ad_toast_showed" + BookInfoUtil.bookId, true);
     }
 
     private void s() {
@@ -564,7 +564,7 @@ public final class o {
                 }
             };
 
-            String[] arrstring = new String[]{am.e().getToken(), n2.a().getId()};
+            String[] arrstring = new String[]{am.getAccount().getToken(), n2.a().getId()};
             i2.b(arrstring);
         }
         if (n2.j() == 0) {
@@ -597,7 +597,7 @@ public final class o {
 
                                 }
                             };
-                            String[] arrstring = new String[]{am.e().getToken(), readerChapter.getId()};
+                            String[] arrstring = new String[]{am.getAccount().getToken(), readerChapter.getId()};
                             j.b(arrstring);
                         }
                     }
@@ -728,7 +728,7 @@ public final class o {
                     if (o.this.b instanceof ReaderActivity) {
                         arg = ((ReaderActivity) o.this.b).l();
                         ApiServiceProvider.getInstance();
-                        return ApiServiceProvider.getApiService().g(am.e().getToken(), arg);
+                        return ApiServiceProvider.getApiService().g(am.getAccount().getToken(), arg);
                     }
                     return null;
                 }

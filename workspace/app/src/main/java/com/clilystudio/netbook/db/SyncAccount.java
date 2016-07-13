@@ -22,7 +22,7 @@ public class SyncAccount extends Model {
         if (date == null) {
             return false;
         }
-        Account account = am.e();
+        Account account = am.getAccount();
         if (account == null) {
             return false;
         }
@@ -36,7 +36,7 @@ public class SyncAccount extends Model {
      */
     public static void save(Date date) {
         SyncAccount syncAccount;
-        Account account = am.e();
+        Account account = am.getAccount();
         if (account == null) {
             return;
         }

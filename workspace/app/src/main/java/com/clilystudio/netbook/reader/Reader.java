@@ -13,7 +13,7 @@ import com.clilystudio.netbook.model.Chapter;
 import com.clilystudio.netbook.model.ChapterLink;
 import com.clilystudio.netbook.model.ChapterRoot;
 import com.clilystudio.netbook.model.Toc;
-import com.clilystudio.netbook.util.BookInfo;
+import com.clilystudio.netbook.util.BookInfoUtil;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -283,9 +283,9 @@ public final class Reader {
 
     static /* synthetic */ ChapterRoot b(Reader reader, ChapterLink chapterLink, int n2) {
         if (reader.z != null) {
-            reader.z.b(BookInfo.tocId);
-            reader.z.a(BookInfo.bookId);
-            reader.z.a(BookInfo.readMode);
+            reader.z.b(BookInfoUtil.tocId);
+            reader.z.a(BookInfoUtil.bookId);
+            reader.z.a(BookInfoUtil.readMode);
             return reader.z.a(chapterLink, n2);
         }
         return null;

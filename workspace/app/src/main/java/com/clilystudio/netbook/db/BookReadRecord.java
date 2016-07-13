@@ -76,7 +76,7 @@ public class BookReadRecord extends Model {
      * Enabled aggressive block sorting
      */
     public static void addAccountInfo(BookReadRecord bookReadRecord) {
-        Account account = am.e();
+        Account account = am.getAccount();
         if (account != null) {
             bookReadRecord.setAccount(account.getUser().getId());
         } else {

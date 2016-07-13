@@ -71,7 +71,7 @@ public class SettingsActivity extends BaseActivity implements View.OnClickListen
         new Thread(new Runnable() {
             @Override
             public void run() {
-                ApiServiceProvider.getApiService().P(am.e().getToken());
+                ApiServiceProvider.getApiService().P(am.getAccount().getToken());
             }
         }).start();
         MyApplication.getInstance().removeProperties("account.token", "user.id", "user.name", "user.avatar", "user.lv", "user.gender");
