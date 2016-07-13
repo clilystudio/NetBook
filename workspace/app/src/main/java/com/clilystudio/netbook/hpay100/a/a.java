@@ -58,7 +58,7 @@ import com.clilystudio.netbook.reader.ReaderTocDialog;
 import com.clilystudio.netbook.util.CipherUtil;
 import com.clilystudio.netbook.util.GenderIntroDialog;
 import com.clilystudio.netbook.util.BookInfoUtil;
-import com.clilystudio.netbook.util.X;
+import com.clilystudio.netbook.util.BookSyncTask;
 import com.clilystudio.netbook.util.DateTimeUtil;
 import com.integralblue.httpresponsecache.compat.java.lang.ArrayIndexOutOfBoundsException;
 import com.umeng.onlineconfig.OnlineConfigAgent;
@@ -1303,7 +1303,7 @@ public class a {
         int n2 = 0;
         do {
             if (n2 >= list.size()) {
-                new X(string4, string3, bookModifyType, arrstring).b();
+                new BookSyncTask(string4, string3, bookModifyType, arrstring).b();
                 return;
             }
             arrstring[n2] = list.get(n2).getBookId();
@@ -1357,9 +1357,9 @@ public class a {
      * Enabled aggressive block sorting
      * Lifted jumps to return sites
      */
-    private static void a(String[] arrstring, BookSyncRecord.BookModifyType bookSyncRecord$BookModifyType) {
+    private static void a(String[] arrstring, BookSyncRecord.BookModifyType bookModifyType) {
         for (String string2 : arrstring) {
-            BookSyncRecord.updateOrCreate(o(), string2, BookSyncRecord.getTypeId(bookSyncRecord$BookModifyType));
+            BookSyncRecord.updateOrCreate(o(), string2, BookSyncRecord.getTypeId(bookModifyType));
         }
         if (am.getAccount() == null) return;
         if (am.getAccount().getUser() == null) {
@@ -1367,14 +1367,14 @@ public class a {
         }
         String string3 = am.getAccount().getToken();
         String string4 = am.getAccount().getUser().getId();
-        List<BookSyncRecord> list = BookSyncRecord.find(string4, BookSyncRecord.getTypeId(bookSyncRecord$BookModifyType));
+        List<BookSyncRecord> list = BookSyncRecord.find(string4, BookSyncRecord.getTypeId(bookModifyType));
         if (list == null) return;
         if (list.size() == 0) return;
         String[] arrstring2 = new String[list.size()];
         int n2 = 0;
         do {
             if (n2 >= list.size()) {
-                new X(string4, string3, bookSyncRecord$BookModifyType, arrstring2).b();
+                new BookSyncTask(string4, string3, bookModifyType, arrstring2).b();
                 return;
             }
             arrstring2[n2] = list.get(n2).getBookId();

@@ -139,10 +139,10 @@ public final class Z {
         if (account != null) {
             String string = account.getUser().getId();
             if (arrstring.length > 0) {
-                new X(string, account.getToken(), BookSyncRecord.BookModifyType.SHELF_ADD, arrstring).b();
+                new BookSyncTask(string, account.getToken(), BookSyncRecord.BookModifyType.SHELF_ADD, arrstring).b();
             }
             if (arrstring2.length > 0) {
-                new X(string, account.getToken(), BookSyncRecord.BookModifyType.FEED_ADD, arrstring2).b();
+                new BookSyncTask(string, account.getToken(), BookSyncRecord.BookModifyType.FEED_ADD, arrstring2).b();
             }
         }
     }

@@ -46,17 +46,17 @@ public class BookSyncRecord extends Model {
         return bookModifyType.ordinal() + 1;
     }
 
-    public static void updateOrCreate(String string, String string2, int n) {
-        List<BookSyncRecord> list = new Select().from(BookSyncRecord.class).where(" bookId = ? ", string2).execute();
+    public static void updateOrCreate(String userId, String bookId, int type) {
+        List<BookSyncRecord> list = new Select().from(BookSyncRecord.class).where(" bookId = ? ", bookId).execute();
         if (list != null && list.size() > 0) {
             for (BookSyncRecord bookSyncRecord : list) {
-                bookSyncRecord.setUserId(string);
-                bookSyncRecord.setType(n);
+                bookSyncRecord.setUserId(userId);
+                bookSyncRecord.setType(type);
                 bookSyncRecord.setUpdated(new Date());
                 bookSyncRecord.save();
             }
         } else {
-            BookSyncRecord.create(string, string2, n);
+            BookSyncRecord.create(userId, bookId, type);
         }
     }
 
@@ -88,8 +88,8 @@ public class BookSyncRecord extends Model {
         return this.userId;
     }
 
-    public void setUserId(String string) {
-        this.userId = string;
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
     public enum BookModifyType {
