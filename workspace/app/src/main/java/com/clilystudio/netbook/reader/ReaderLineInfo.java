@@ -41,7 +41,7 @@ public final class ReaderLineInfo {
         this.mCurrIndex = n2;
     }
 
-    public final void a(OnPageTransListener<ReaderLineInfo> e2) {
+    public final void a(Reader.OnPageTransListener<ReaderLineInfo> e2) {
         if (this.hasMore()) {
             if (this.isLast()) {
                 this.mReaderPageTransformer.b(this.mReaderChapter.getIndex() + 1, e2, false);
@@ -62,7 +62,7 @@ public final class ReaderLineInfo {
         return this.mLineStarts[this.mCurrIndex];
     }
 
-    public final void b(OnPageTransListener<ReaderLineInfo> e2) {
+    public final void b(Reader.OnPageTransListener<ReaderLineInfo> e2) {
         if (this.f()) {
             if (this.mCurrIndex > 0) {
                 e2.onPageTrans(new ReaderLineInfo(this.mReaderPageTransformer, this.mReaderChapter, this.mLineStarts, -1 + this.mCurrIndex));

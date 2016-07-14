@@ -789,4 +789,7 @@ public final class Reader {
         }
     }
 
+    public interface OnPageTransListener<E> {
+        void onPageTrans(E var1);
+    }
 }

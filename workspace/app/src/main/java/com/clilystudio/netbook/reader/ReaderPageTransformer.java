@@ -16,8 +16,8 @@ public final class ReaderPageTransformer {
         this.mReaderStyle = readerStyle;
     }
 
-    private void a(int n2, final int n31, final OnPageTransListener<ReaderLineInfo> e2, boolean bl, final int n4) {
-        this.mReader.a(n2, new OnPageTransListener<ReaderChapter>(){
+    private void a(int n2, final int n31, final Reader.OnPageTransListener<ReaderLineInfo> e2, boolean bl, final int n4) {
+        this.mReader.a(n2, new Reader.OnPageTransListener<ReaderChapter>(){
 
             @Override
             public void onPageTrans(ReaderChapter readerChapter) {
@@ -52,11 +52,11 @@ public final class ReaderPageTransformer {
         return this.mReader;
     }
 
-    public final void a(int n2, int n3, OnPageTransListener<ReaderLineInfo> e2, boolean bl) {
+    public final void a(int n2, int n3, Reader.OnPageTransListener<ReaderLineInfo> e2, boolean bl) {
         this.a(n2, n3, e2, bl, 1);
     }
 
-    public final void a(int n2, OnPageTransListener<ReaderLineInfo> e2, boolean bl) {
+    public final void a(int n2, Reader.OnPageTransListener<ReaderLineInfo> e2, boolean bl) {
         this.a(n2, -1, e2, bl, 2);
     }
 
@@ -64,11 +64,11 @@ public final class ReaderPageTransformer {
         this.mReader = reader;
     }
 
-    public final void a(OnPageTransListener<ReaderLineInfo> e2) {
+    public final void a(Reader.OnPageTransListener<ReaderLineInfo> e2) {
         this.a(this.mReader.k(), this.mReader.l(), e2, true, 0);
     }
 
-    public final void a(OnPageTransListener<ReaderLineInfo> e2, int n2) {
+    public final void a(Reader.OnPageTransListener<ReaderLineInfo> e2, int n2) {
         ReaderChapter readerChapter = new ReaderChapter();
         readerChapter.setStatus(n2);
         e2.onPageTrans(ReaderLineInfo.a(this, readerChapter, 0));
@@ -109,7 +109,7 @@ public final class ReaderPageTransformer {
         return arrn;
     }
 
-    public final void b(int n2, OnPageTransListener<ReaderLineInfo> e2, boolean bl) {
+    public final void b(int n2, Reader.OnPageTransListener<ReaderLineInfo> e2, boolean bl) {
         this.a(n2, 0, e2, bl, 1);
     }
 }
