@@ -283,20 +283,20 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
     /*
      * Enabled aggressive block sorting
      */
-    static /* synthetic */ void a(final ReaderActivity readerActivity, final n n2) {
+    static /* synthetic */ void a(final ReaderActivity readerActivity, final ReaderLineInfo n2) {
         if (!n2.f()) {
             readerActivity.b[0].a(n2, true);
             readerActivity.mMainView.setCurrentItem(0, false);
-            n2.a(new e<n>() {
+            n2.a(new e<ReaderLineInfo>() {
 
                 @Override
-                public void a(n var1) {
+                public void a(ReaderLineInfo var1) {
                     readerActivity.b[1].a(var1);
                     if (var1 != null) {
-                        var1.a(new e<n>() {
+                        var1.a(new e<ReaderLineInfo>() {
 
                             @Override
-                            public void a(n var11) {
+                            public void a(ReaderLineInfo var11) {
                                 readerActivity.b[2].a(var11);
                                 readerActivity.x();
                             }
@@ -304,17 +304,17 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
                     }
                 }
             });
-        } else if (!n2.e()) {
+        } else if (!n2.hasMore()) {
             readerActivity.b[2].a(n2, true);
             readerActivity.mMainView.setCurrentItem(2, false);
-            n2.b(new e<n>() {
+            n2.b(new e<ReaderLineInfo>() {
 
                 @Override
-                public void a(n var1) {
+                public void a(ReaderLineInfo var1) {
                     readerActivity.b[1].a(var1);
-                    n2.b(new e<n>() {
+                    n2.b(new e<ReaderLineInfo>() {
                         @Override
-                        public void a(n var11) {
+                        public void a(ReaderLineInfo var11) {
                             readerActivity.b[0].a(var11);
                             readerActivity.x();
                         }
@@ -324,15 +324,15 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
         } else {
             readerActivity.b[1].a(n2, true);
             readerActivity.mMainView.setCurrentItem(1, false);
-            n2.a(new e<n>() {
+            n2.a(new e<ReaderLineInfo>() {
 
                 @Override
-                public void a(n var1) {
+                public void a(ReaderLineInfo var1) {
                     readerActivity.b[2].a(var1);
-                    n2.b(new e<n>() {
+                    n2.b(new e<ReaderLineInfo>() {
 
                         @Override
-                        public void a(n var11) {
+                        public void a(ReaderLineInfo var11) {
                             readerActivity.b[0].a(var11);
                             readerActivity.x();
                         }
@@ -391,7 +391,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
         readerActivity.mReaderBodyTV.setTextColor(readerActivity.mReaderStyle.bodyColor);
     }
 
-    private n A() {
+    private ReaderLineInfo A() {
         ReaderPageManager o2 = this.b[this.mSelectedPageIndex];
         if (o2 != null) {
             return o2.j();
@@ -567,7 +567,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
         int n3 = 0;
         while (n3 < n2) {
             ReaderChapter readerChapter;
-            n n4 = arro[n3].j();
+            ReaderLineInfo n4 = arro[n3].j();
             if (n4 != null && (readerChapter = n4.a()) != null) {
                 readerChapter.setMaxIndex(this.mReader.g());
             }
@@ -598,7 +598,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
                 if (this.mIsDownloading) {
                     this.mDownloadProgressView.setVisibility(View.VISIBLE);
                 }
-                n n2 = this.A();
+                ReaderLineInfo n2 = this.A();
                 String string = null;
                 if (n2 != null) {
                     ReaderChapter readerChapter = n2.a();
@@ -690,7 +690,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
         if (this.o) {
             this.H();
         } else {
-            n n2 = this.A();
+            ReaderLineInfo n2 = this.A();
             if (n2 != null && n2.f()) {
                 this.mMainView.setCurrentItem(-1 + this.mSelectedPageIndex, false);
                 this.v();
@@ -722,12 +722,12 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
      * Enabled aggressive block sorting
      */
     private void N() {
-        n n2 = this.A();
+        ReaderLineInfo n2 = this.A();
         if (n2 == null) {
             return;
         }
         this.E();
-        if (!n2.e() && this.w()) {
+        if (!n2.hasMore() && this.w()) {
             ToastUtil.showShortToast(this, this.getString(R.string.auto_reader_end_notify));
             this.mReaderBodyTV.clearAnimation();
             this.I();
@@ -780,7 +780,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
         this.getWindow().setAttributes(layoutParams);
     }
 
-    private void a(n n2) {
+    private void a(ReaderLineInfo n2) {
         if (n2 == null) {
             return;
         }
@@ -789,11 +789,11 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
             slidingMenu.setSlidingEnabled(false);
             return;
         }
-        if (n2.e()) {
+        if (n2.hasMore()) {
             slidingMenu.setSlidingEnabled(false);
-            return;
+        } else {
+            slidingMenu.setSlidingEnabled(true);
         }
-        slidingMenu.setSlidingEnabled(true);
     }
 
     private void a(boolean bl) {
@@ -828,20 +828,20 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
     }
 
     private void b(int n2) {
-        this.j.a(new e<n>() {
+        this.j.a(new e<ReaderLineInfo>() {
 
             @Override
-            public void a(n var1) {
+            public void a(ReaderLineInfo var1) {
                 ReaderActivity.a(ReaderActivity.this, var1);
             }
         }, n2);
     }
 
     private void c(int n2) {
-        this.j.b(n2, new e<n>() {
+        this.j.b(n2, new e<ReaderLineInfo>() {
 
             @Override
-            public void a(n var1) {
+            public void a(ReaderLineInfo var1) {
                 ReaderActivity.a(ReaderActivity.this, var1);
                 if (ReaderActivity.this.M == 2 && var1 != null) {
                     Object[] arrobject = var1.d();
@@ -963,13 +963,13 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
      * Enabled aggressive block sorting
      */
     private void v() {
-        n n2 = this.A();
+        ReaderLineInfo n2 = this.A();
         if (n2 != null && !n2.p()) {
             if (n2.nf() != 1) {
                 int n3 = n2.l();
-                this.j.a(n3, new e<n>() {
+                this.j.a(n3, new e<ReaderLineInfo>() {
                     @Override
-                    public void a(n var1) {
+                    public void a(ReaderLineInfo var1) {
                         ReaderActivity.a(ReaderActivity.this, var1);
                     }
                 }, true);
@@ -980,11 +980,11 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
             final ReaderPageManager o2 = this.b[0];
             ReaderPageManager o3 = this.b[1];
             final ReaderPageManager o4 = this.b[2];
-            n n4 = o2.j();
-            n n5 = o3.j();
-            n n6 = o4.j();
+            ReaderLineInfo n4 = o2.j();
+            ReaderLineInfo n5 = o3.j();
+            ReaderLineInfo n6 = o4.j();
             if (this.mSelectedPageIndex == 2 && n6 != null) {
-                if (!n6.e() && !this.w()) {
+                if (!n6.hasMore() && !this.w()) {
                     final int n7 = this.mReader.f();
                     this.mLoadingView.a();
                     this.mReader.setaf(new Reader.af() {
@@ -1009,10 +1009,10 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
                     o3.a(n6, true);
                     this.mMainView.setCurrentItem(1, false);
                     o2.a(n5);
-                    n6.a(new e<n>() {
+                    n6.a(new e<ReaderLineInfo>() {
 
                         @Override
-                        public void a(n var1) {
+                        public void a(ReaderLineInfo var1) {
                             o4.a(var1);
                         }
                     });
@@ -1038,9 +1038,9 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
                     o3.a(n4, true);
                     this.mMainView.setCurrentItem(1, false);
                     o4.a(n5);
-                    n4.b(new e<n>() {
+                    n4.b(new e<ReaderLineInfo>() {
                         @Override
-                        public void a(n var1) {
+                        public void a(ReaderLineInfo var1) {
                             o2.a(var1);
                         }
                     });
@@ -1072,7 +1072,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
     }
 
     private void x() {
-        n n2 = this.A();
+        ReaderLineInfo n2 = this.A();
         if (n2 == null) {
             return;
         }
@@ -1086,10 +1086,10 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
         if (this.o) {
             this.H();
         } else {
-            n n2 = this.A();
+            ReaderLineInfo n2 = this.A();
             if (n2 != null) {
                 this.E();
-                if (!n2.e() && this.w()) {
+                if (!n2.hasMore() && this.w()) {
                     this.toggle();
                 } else if (!this.i.c()) {
                     this.mMainView.setCurrentItem(1 + this.mSelectedPageIndex, false);
@@ -1109,7 +1109,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
             this.H();
             return;
         }
-        n n2 = this.A();
+        ReaderLineInfo n2 = this.A();
         if (n2 == null) return;
         {
             if (!n2.f()) {
@@ -1174,10 +1174,10 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
     }
 
     public final void g() {
-        this.j.a(new e<n>() {
+        this.j.a(new e<ReaderLineInfo>() {
 
             @Override
-            public void a(n var1) {
+            public void a(ReaderLineInfo var1) {
                 ReaderActivity.a(ReaderActivity.this, var1);
             }
         });

@@ -16,13 +16,13 @@ public final class ReaderPageTransformer {
         this.mReaderStyle = readerStyle;
     }
 
-    private void a(int n2, final int n31, final e<n> e2, boolean bl, final int n4) {
+    private void a(int n2, final int n31, final e<ReaderLineInfo> e2, boolean bl, final int n4) {
         this.mReader.a(n2, new e<ReaderChapter>(){
 
             @Override
             public void a(ReaderChapter readerChapter) {
                 if (readerChapter.getStatus() != 1) {
-                    e2.a(n.a(ReaderPageTransformer.this, readerChapter, n4));
+                    e2.a(ReaderLineInfo.a(ReaderPageTransformer.this, readerChapter, n4));
                     return;
                 }
                 int[] lineStarts = ReaderPageTransformer.this.getLineStarts(readerChapter.getBody());
@@ -43,7 +43,7 @@ public final class ReaderPageTransformer {
                         } while (true);
                     }
                 }
-                e2.a(new n(ReaderPageTransformer.this, readerChapter, lineStarts, n3));
+                e2.a(new ReaderLineInfo(ReaderPageTransformer.this, readerChapter, lineStarts, n3));
             }
         }, false, bl);
     }
@@ -52,11 +52,11 @@ public final class ReaderPageTransformer {
         return this.mReader;
     }
 
-    public final void a(int n2, int n3, e<n> e2, boolean bl) {
+    public final void a(int n2, int n3, e<ReaderLineInfo> e2, boolean bl) {
         this.a(n2, n3, e2, bl, 1);
     }
 
-    public final void a(int n2, e<n> e2, boolean bl) {
+    public final void a(int n2, e<ReaderLineInfo> e2, boolean bl) {
         this.a(n2, -1, e2, bl, 2);
     }
 
@@ -64,14 +64,14 @@ public final class ReaderPageTransformer {
         this.mReader = reader;
     }
 
-    public final void a(e<n> e2) {
+    public final void a(e<ReaderLineInfo> e2) {
         this.a(this.mReader.k(), this.mReader.l(), e2, true, 0);
     }
 
-    public final void a(e<n> e2, int n2) {
+    public final void a(e<ReaderLineInfo> e2, int n2) {
         ReaderChapter readerChapter = new ReaderChapter();
         readerChapter.setStatus(n2);
-        e2.a(n.a(this, readerChapter, 0));
+        e2.a(ReaderLineInfo.a(this, readerChapter, 0));
     }
 
     public final int[] getLineStarts(String string) {
@@ -109,7 +109,7 @@ public final class ReaderPageTransformer {
         return arrn;
     }
 
-    public final void b(int n2, e<n> e2, boolean bl) {
+    public final void b(int n2, e<ReaderLineInfo> e2, boolean bl) {
         this.a(n2, 0, e2, bl, 1);
     }
 }

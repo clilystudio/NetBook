@@ -27,7 +27,7 @@ public final class ReaderPageManager {
     private static final SimpleDateFormat a = new SimpleDateFormat("HH:mm", Locale.CHINA);
     private final Activity mActivity;
     private final ReaderStyle mReaderStyle;
-    private n d;
+    private ReaderLineInfo d;
     private boolean e;
     private View mReaderPageView;
     private TextView mTitleTV;
@@ -193,7 +193,7 @@ public final class ReaderPageManager {
         boolean bl = false;
         if (!bl) {
             if (this.d == null) return false;
-            if (this.d.l() % 5 == 4 && this.d.h()) {
+            if (this.d.l() % 5 == 4 && this.d.isLast()) {
                 return true;
             }
         }
@@ -263,13 +263,13 @@ public final class ReaderPageManager {
         this.mOnReloadSourceListener = h2;
     }
 
-    public final void a(n n2) {
+    public final void a(ReaderLineInfo n2) {
         this.d = n2;
         this.e = false;
         this.n();
     }
 
-    public final void a(n n2, boolean bl) {
+    public final void a(ReaderLineInfo n2, boolean bl) {
         this.d = n2;
         this.e = bl;
         this.n();
@@ -309,7 +309,7 @@ public final class ReaderPageManager {
             this.mBodyTV.setText(this.d.c());
         }
         TextView textView = this.mPageNumberTV;
-        Object[] arrobject = new Object[]{1 + this.d.j(), this.d.k()};
+        Object[] arrobject = new Object[]{1 + this.d.getCurrIndex(), this.d.k()};
         textView.setText(String.format("%s/%s", arrobject));
     }
 
@@ -352,7 +352,7 @@ public final class ReaderPageManager {
         return this.mReaderPageView;
     }
 
-    public final n j() {
+    public final ReaderLineInfo j() {
         return this.d;
     }
 

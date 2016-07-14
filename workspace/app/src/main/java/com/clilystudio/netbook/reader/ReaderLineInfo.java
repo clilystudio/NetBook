@@ -7,24 +7,24 @@ import com.clilystudio.netbook.util.CipherUtil;
 
 import java.util.LinkedList;
 
-public final class n {
+public final class ReaderLineInfo {
     private final ReaderPageTransformer mReaderPageTransformer;
     private final ReaderChapter mReaderChapter;
     private int[] mLineStarts;
-    private int d;
-    private int e;
+    private int mCurrStart;
+    private int mCurrIndex;
     private int f;
 
-    public n(ReaderPageTransformer readerPageTransformer, ReaderChapter readerChapter, int[] lineStarts, int n2) {
+    public ReaderLineInfo(ReaderPageTransformer readerPageTransformer, ReaderChapter readerChapter, int[] lineStarts, int currIndex) {
         this.mReaderPageTransformer = readerPageTransformer;
         this.mReaderChapter = readerChapter;
         this.mLineStarts = lineStarts;
-        this.e = n2;
-        this.d = lineStarts[n2];
+        this.mCurrIndex = currIndex;
+        this.mCurrStart = lineStarts[currIndex];
     }
 
-    public static n a(ReaderPageTransformer readerPageTransformer, ReaderChapter readerChapter, int n2) {
-        n n3 = new n(readerPageTransformer, readerChapter, new int[]{0}, 0);
+    public static ReaderLineInfo a(ReaderPageTransformer readerPageTransformer, ReaderChapter readerChapter, int n2) {
+        ReaderLineInfo n3 = new ReaderLineInfo(readerPageTransformer, readerChapter, new int[]{0}, 0);
         n3.f = n2;
         return n3;
     }
@@ -38,34 +38,34 @@ public final class n {
     }
 
     public final void a(int n2) {
-        this.e = n2;
+        this.mCurrIndex = n2;
     }
 
-    public final void a(e<n> e2) {
-        if (this.e()) {
-            if (this.h()) {
-                this.mReaderPageTransformer.b(1 + this.mReaderChapter.getIndex(), e2, false);
-                return;
+    public final void a(e<ReaderLineInfo> e2) {
+        if (this.hasMore()) {
+            if (this.isLast()) {
+                this.mReaderPageTransformer.b(this.mReaderChapter.getIndex() + 1, e2, false);
+            } else {
+                e2.a(new ReaderLineInfo(this.mReaderPageTransformer, this.mReaderChapter, this.mLineStarts, 1 + this.mCurrIndex));
             }
-            e2.a(new n(this.mReaderPageTransformer, this.mReaderChapter, this.mLineStarts, 1 + this.e));
-            return;
+        } else {
+            e2.a(null);
         }
-        e2.a(null);
     }
 
     public final void a(String string) {
         this.mLineStarts = this.mReaderPageTransformer.getLineStarts(string);
-        this.d = this.mLineStarts[0];
+        this.mCurrStart = this.mLineStarts[0];
     }
 
     public final int b() {
-        return this.mLineStarts[this.e];
+        return this.mLineStarts[this.mCurrIndex];
     }
 
-    public final void b(e<n> e2) {
+    public final void b(e<ReaderLineInfo> e2) {
         if (this.f()) {
-            if (this.e > 0) {
-                e2.a(new n(this.mReaderPageTransformer, this.mReaderChapter, this.mLineStarts, -1 + this.e));
+            if (this.mCurrIndex > 0) {
+                e2.a(new ReaderLineInfo(this.mReaderPageTransformer, this.mReaderChapter, this.mLineStarts, -1 + this.mCurrIndex));
             } else {
                 this.mReaderPageTransformer.a(-1 + this.mReaderChapter.getIndex(), e2, false);
             }
@@ -79,15 +79,15 @@ public final class n {
         if (string == null) {
             return "";
         }
-        if (this.e > -1 + this.mLineStarts.length) {
-            this.e = -1 + this.mLineStarts.length;
+        if (this.mCurrIndex > -1 + this.mLineStarts.length) {
+            this.mCurrIndex = -1 + this.mLineStarts.length;
         }
-        this.d = this.mLineStarts[this.e];
+        this.mCurrStart = this.mLineStarts[this.mCurrIndex];
         try {
-            if (1 + this.e < this.mLineStarts.length) {
-                return string.substring(this.d, this.mLineStarts[1 + this.e]);
+            if (1 + this.mCurrIndex < this.mLineStarts.length) {
+                return string.substring(this.mCurrStart, this.mLineStarts[1 + this.mCurrIndex]);
             }
-            return string.substring(this.d);
+            return string.substring(this.mCurrStart);
         } catch (Exception var2_3) {
             var2_3.printStackTrace();
             return "";
@@ -99,19 +99,19 @@ public final class n {
         if (var1_1 == null) {
             return null;
         }
-        if (this.e > this.mLineStarts.length - 1) {
-            this.e = this.mLineStarts.length - 1;
+        if (this.mCurrIndex > this.mLineStarts.length - 1) {
+            this.mCurrIndex = this.mLineStarts.length - 1;
         }
-        this.d = this.mLineStarts[this.e];
+        this.mCurrStart = this.mLineStarts[this.mCurrIndex];
         Object[] var2_2 = new Object[2];
         String var5_7;
         String var6_4;
-        if (1 + this.e >= this.mLineStarts.length) {
-            var5_7 = var1_1.substring(this.d);
+        if (1 + this.mCurrIndex >= this.mLineStarts.length) {
+            var5_7 = var1_1.substring(this.mCurrStart);
             var6_4 = "";
         } else {
-            var5_7 = var1_1.substring(this.d, this.mLineStarts[1 + this.e]);
-            var6_4 = var1_1.substring(this.mLineStarts[1 + this.e]);
+            var5_7 = var1_1.substring(this.mCurrStart, this.mLineStarts[1 + this.mCurrIndex]);
+            var6_4 = var1_1.substring(this.mLineStarts[1 + this.mCurrIndex]);
             int var18_5 = var6_4.indexOf("\n");
             if (var18_5 != -1) {
                 var6_4 = var6_4.substring(0, var18_5);
@@ -129,21 +129,21 @@ public final class n {
         LinkedList<Integer>  var12_13 = new LinkedList<>();
         int var13_14 = 0;
         do {
-            int var14_15 = this.mLineStarts[var13_14 + this.e] - this.d;
+            int var14_15 = this.mLineStarts[var13_14 + this.mCurrIndex] - this.mCurrStart;
             var12_13.add(100  * (var8_9 + var14_15) / (var8_9 + var9_10));
             var13_14++;
-        } while (var13_14 + this.e != this.mLineStarts.length && this.mLineStarts[var13_14 + this.e] - this.d < var9_10);
+        } while (var13_14 + this.mCurrIndex != this.mLineStarts.length && this.mLineStarts[var13_14 + this.mCurrIndex] - this.mCurrStart < var9_10);
         var2_2[0] = var7_8;
         var2_2[1] = var12_13;
         return var2_2;
     }
 
-    public final boolean e() {
-        return !this.h() || this.mReaderChapter.hasNext();
+    public final boolean hasMore() {
+        return !this.isLast() || this.mReaderChapter.hasNext();
     }
 
     public final boolean f() {
-        return this.e > 0 || this.mReaderChapter.hasPrevious();
+        return this.mCurrIndex > 0 || this.mReaderChapter.hasPrevious();
     }
 
     public final void g() {
@@ -152,19 +152,19 @@ public final class n {
             return;
         }
         this.mLineStarts = this.mReaderPageTransformer.getLineStarts(string);
-        this.d = this.mLineStarts[0];
+        this.mCurrStart = this.mLineStarts[0];
     }
 
-    public final boolean h() {
-        return 1 + this.e >= this.mLineStarts.length;
+    public final boolean isLast() {
+        return this.mCurrIndex >= this.mLineStarts.length - 1;
     }
 
     public final String i() {
         return this.mReaderChapter.getTitle();
     }
 
-    public final int j() {
-        return this.e;
+    public final int getCurrIndex() {
+        return this.mCurrIndex;
     }
 
     public final int k() {
@@ -176,7 +176,7 @@ public final class n {
     }
 
     public final int m() {
-        return this.d;
+        return this.mCurrStart;
     }
 
     public final int nf() {

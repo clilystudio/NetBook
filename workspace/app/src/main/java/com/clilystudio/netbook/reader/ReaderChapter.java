@@ -62,7 +62,7 @@ public class ReaderChapter extends Chapter {
     /*
      * Enabled aggressive block sorting
      */
-    public String getBody(n n2) {
+    public String getBody(ReaderLineInfo n2) {
         if (this.getContent() != null && this.key != null) {
             if (this.clearContent == null) {
                 this.clearContent = CipherUtil.a(this.key, this.getContent());
