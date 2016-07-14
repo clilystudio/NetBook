@@ -813,9 +813,8 @@ public class ApiService {
         return ApiService.x();
     }
 
-    public final ChapterRoot c(String string, int n, String string2) {
-        Object[] arrobject = new Object[]{string, n, string2};
-        String string3 = String.format(Locale.CHINA, "http://m.leidian.com/index.php?c=ebook&a=chapterData&fmt=json&bid=%s&idx=%d&tk=%s", arrobject);
+    public final ChapterRoot c(String sourceId, int index, String leidianTK) {
+        String string3 = String.format(Locale.CHINA, "http://m.leidian.com/index.php?c=ebook&a=chapterData&fmt=json&bid=%s&idx=%d&tk=%s", sourceId, index, leidianTK);
         HttpRequest httpRequest = this.b(HttpRequest.get(string3), 8);
         boolean bl = httpRequest.ok();
         int n2 = httpRequest.code();

@@ -35,7 +35,7 @@ import java.util.List;
 public class BookDownloadService extends Service {
     private String a;
     private String b;
-    private int c;
+    private int mReadMode;
     private int d;
     private int e;
     private int f;
@@ -107,10 +107,6 @@ public class BookDownloadService extends Service {
         bookDownloadService.h();
     }
 
-    static /* synthetic */ int d(BookDownloadService bookDownloadService, int n) {
-        bookDownloadService.c = n;
-        return n;
-    }
 
     static /* synthetic */ String d(BookDownloadService bookDownloadService) {
         return bookDownloadService.a;
@@ -211,7 +207,7 @@ public class BookDownloadService extends Service {
             }
             BookDownloadService.a(bookDlRecord, 5);
             this.b = bookDlRecord.getTocId();
-            this.c = bookDlRecord.getMode();
+            this.mReadMode = bookDlRecord.getMode();
             this.d = bookDlRecord.getStart();
             this.e = bookDlRecord.getTotal();
             this.l = 0;
@@ -238,12 +234,12 @@ public class BookDownloadService extends Service {
         String string;
         String string2;
         this.k = new com.clilystudio.netbook.reader.f(bookReadRecord);
-        if (this.c == -1) {
+        if (this.mReadMode == -1) {
             getTocSourceRoot();
             return;
         }
-        if (com.clilystudio.netbook.hpay100.a.a.h(this.c)) {
-            string2 = com.clilystudio.netbook.hpay100.a.a.g(this.c);
+        if (com.clilystudio.netbook.hpay100.a.a.h(this.mReadMode)) {
+            string2 = com.clilystudio.netbook.hpay100.a.a.g(this.mReadMode);
             SourceRecord sourceRecord = SourceRecord.get(this.a, string2);
             if (sourceRecord == null || sourceRecord.getSourceId() == null) {
                 getTocSourceRoot();
@@ -254,7 +250,7 @@ public class BookDownloadService extends Service {
             string = null;
             string2 = null;
         }
-        this.b = com.clilystudio.netbook.hpay100.a.a.a(this.a, this.c, string, this.b);
+        this.b = com.clilystudio.netbook.hpay100.a.a.a(this.a, this.mReadMode, string, this.b);
         this.k.a(this.b, string2, string);
         new BaseAsyncTask<Void, Void, Toc>(){
             @Override
@@ -296,7 +292,7 @@ public class BookDownloadService extends Service {
                         com.clilystudio.netbook.hpay100.a.a.a(anArrtocSource, BookDownloadService.d(BookDownloadService.this));
                     }
                 }
-                BookDownloadService.d(BookDownloadService.this, 5);
+                BookDownloadService.this.mReadMode = 5;
                 BookReadRecord bookReadRecord = BookReadRecord.getOnShelf(BookDownloadService.d(BookDownloadService.this));
                 if (bookReadRecord != null) {
                     bookReadRecord.setReadMode(5);
@@ -310,11 +306,11 @@ public class BookDownloadService extends Service {
     }
 
     private void b() {
-        this.k = new com.clilystudio.netbook.reader.f(this.c);
-        boolean bl = com.clilystudio.netbook.hpay100.a.a.h(this.c);
+        this.k = new com.clilystudio.netbook.reader.f(this.mReadMode);
+        boolean bl = com.clilystudio.netbook.hpay100.a.a.h(this.mReadMode);
         String string = null;
         if (bl) {
-            String string2 = com.clilystudio.netbook.hpay100.a.a.g(this.c);
+            String string2 = com.clilystudio.netbook.hpay100.a.a.g(this.mReadMode);
             SourceRecord sourceRecord = SourceRecord.get(this.a, string2);
             string = null;
             if (sourceRecord != null) {
@@ -323,10 +319,10 @@ public class BookDownloadService extends Service {
                 this.k.a(string, string3);
             }
         }
-        this.b = com.clilystudio.netbook.hpay100.a.a.a(this.a, this.c, string, this.b);
-        this.k.b(BookInfoUtil.tocId);
-        this.k.a(BookInfoUtil.bookId);
-        this.k.a(BookInfoUtil.readMode);
+        this.b = com.clilystudio.netbook.hpay100.a.a.a(this.a, this.mReadMode, string, this.b);
+        this.k.setTocId(BookInfoUtil.tocId);
+        this.k.setBookId(BookInfoUtil.bookId);
+        this.k.setReadMode(BookInfoUtil.readMode);
         this.i.putExtra("SerDlStopFlag", 0);
         this.h = com.clilystudio.netbook.hpay100.a.a.j(this.a, this.b);
         if (com.clilystudio.netbook.hpay100.a.a.e() <= (long) (10 * this.e << 1)) {

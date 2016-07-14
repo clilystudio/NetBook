@@ -7,6 +7,7 @@ import com.clilystudio.netbook.api.ApiService;
 import com.clilystudio.netbook.api.ApiServiceProvider;
 import com.clilystudio.netbook.db.BookReadRecord;
 import com.clilystudio.netbook.db.SourceRecord;
+import com.clilystudio.netbook.model.BookInfo;
 import com.clilystudio.netbook.model.BookTopRoot;
 import com.clilystudio.netbook.model.ChapterLink;
 import com.clilystudio.netbook.model.ChapterRoot;
@@ -29,36 +30,35 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public final class f {
-    private int b;
-    private ApiServiceProvider a = ApiServiceProvider.getInstance();
-    private String c;
-    private String d;
-    private String e;
-    private String f;
-    private String g;
+    private int mReadMode;
+    private ApiServiceProvider mApiServiceProvider = ApiServiceProvider.getInstance();
+    private String mBookId;
+    private String mTocId;
+    private String mSource;
+    private String mSourceId;
+    private String mSougoMd;
 
-    public f(int n) {
-        this.b = n;
+    public f(int readMode) {
+        this.mReadMode = readMode;
     }
 
     public f(BookReadRecord bookReadRecord) {
-        this.b = bookReadRecord.getReadMode();
-        this.c = bookReadRecord.getBookId();
+        this.mReadMode = bookReadRecord.getReadMode();
+        this.mBookId = bookReadRecord.getBookId();
     }
 
-    public f(com.clilystudio.netbook.model.BookInfo bookInfo, int n) {
-        this.b = n;
-        this.c = bookInfo.getId();
+    public f(BookInfo bookInfo, int readMode) {
+        this.mReadMode = readMode;
+        this.mBookId = bookInfo.getId();
     }
 
     static /* synthetic */ String a(f f2) {
-        return f2.f;
+        return f2.mSourceId;
     }
 
-    private ChapterRoot a(int n, String string) {
+    private ChapterRoot a(int index, String leidianTK) {
         try {
-            ChapterRoot chapterRoot = ApiServiceProvider.getApiService().c(this.f, n, string);
-            return chapterRoot;
+            return ApiServiceProvider.getApiService().c(this.mSourceId, index, leidianTK);
         } catch (Exception var3_4) {
             var3_4.printStackTrace();
             return null;
@@ -70,7 +70,7 @@ public final class f {
      * Lifted jumps to return sites
      */
     private ChapterRoot a(int n, String string, String string2) {
-        String[] arrstring = com.clilystudio.netbook.hpay100.a.a.O(this.f);
+        String[] arrstring = com.clilystudio.netbook.hpay100.a.a.O(this.mSourceId);
         if (arrstring == null) return null;
         try {
             return ApiServiceProvider.getApiService().a(arrstring[0], arrstring[1], n, string, string2);
@@ -83,8 +83,8 @@ public final class f {
     private Toc a(ChapterLink[] arrchapterLink) {
         Toc toc = new Toc();
         toc.setChapters(arrchapterLink);
-        toc.setHost(this.e);
-        toc.set_id(this.d);
+        toc.setHost(this.mSource);
+        toc.set_id(this.mTocId);
         return toc;
     }
 
@@ -101,7 +101,7 @@ public final class f {
                 @Override
                 public void run() {
                     SsTocRow[] arrssTocRow;
-                    SsTocRoot ssTocRoot = ApiServiceProvider.getApiService().a(finalJ, n, f.this.f);
+                    SsTocRoot ssTocRoot = ApiServiceProvider.getApiService().a(finalJ, n, f.this.mSourceId);
                     if (ssTocRoot == null || ssTocRoot.getRows() == null) return;
                     arrssTocRow = ssTocRoot.getRows();
                     ChapterLink[] arrchapterLink = new ChapterLink[arrssTocRow.length];
@@ -144,7 +144,7 @@ public final class f {
     }
 
     private ChapterRoot b(int n) {
-        return ApiServiceProvider.getApiService().c(this.f, n);
+        return ApiServiceProvider.getApiService().c(this.mSourceId, n);
     }
 
     private ChapterRoot b(String string, String string2) {
@@ -158,13 +158,13 @@ public final class f {
     private Toc b() {
         try {
             MixTocRoot mixTocRoot;
-            MixTocRoot mixTocRoot2 = mixTocRoot = ApiServiceProvider.getApiService().f(this.c);
+            MixTocRoot mixTocRoot2 = mixTocRoot = ApiServiceProvider.getApiService().f(this.mBookId);
             Toc toc = null;
             if (mixTocRoot2 == null) return toc;
             Toc toc2 = mixTocRoot2.getMixToc();
             toc = null;
             if (toc2 == null) return toc;
-            mixTocRoot2.getMixToc().set_id(this.d);
+            mixTocRoot2.getMixToc().set_id(this.mTocId);
             return mixTocRoot2.getMixToc();
         } catch (Exception var1_5) {
             var1_5.printStackTrace();
@@ -188,7 +188,7 @@ public final class f {
 
     private Toc c() {
         try {
-            Toc toc = ApiServiceProvider.getApiService().e(this.d);
+            Toc toc = ApiServiceProvider.getApiService().e(this.mTocId);
             return toc;
         } catch (Exception var1_2) {
             var1_2.printStackTrace();
@@ -207,7 +207,7 @@ public final class f {
         int n2;
         try {
             int n3;
-            n2 = n3 = ApiServiceProvider.getApiService().w(this.f);
+            n2 = n3 = ApiServiceProvider.getApiService().w(this.mSourceId);
             if (n2 == 0) {
                 return null;
             }
@@ -239,7 +239,7 @@ public final class f {
         Toc toc;
         try {
             SgTocRoot sgTocRoot;
-            SgTocRoot sgTocRoot2 = sgTocRoot = ApiServiceProvider.getApiService().s(this.f);
+            SgTocRoot sgTocRoot2 = sgTocRoot = ApiServiceProvider.getApiService().s(this.mSourceId);
             toc = null;
             if (sgTocRoot2 == null) return toc;
             SgTocChapter[] arrsgTocChapter2 = sgTocRoot2.getChapter();
@@ -248,7 +248,7 @@ public final class f {
             SgTocBook sgTocBook = sgTocRoot2.getBook();
             toc = null;
             if (sgTocBook == null) return toc;
-            this.g = sgTocRoot2.getBook().getMd();
+            this.mSougoMd = sgTocRoot2.getBook().getMd();
             arrsgTocChapter = sgTocRoot2.getChapter();
         } catch (Exception var1_3) {
             var1_3.printStackTrace();
@@ -266,9 +266,9 @@ public final class f {
         toc = null;
         if (n <= 0) return toc;
         toc = this.a(arrchapterLink);
-        String string = this.c;
-        String string2 = this.f;
-        String string3 = this.g;
+        String string = this.mBookId;
+        String string2 = this.mSourceId;
+        String string3 = this.mSougoMd;
         if (string3 == null) return toc;
         SourceRecord sourceRecord = SourceRecord.get(string, "sogou");
         if (sourceRecord == null) {
@@ -294,7 +294,7 @@ public final class f {
         {
             try {
                 LdTocRoot ldTocRoot2;
-                ldTocRoot = ldTocRoot2 = ApiServiceProvider.getApiService().t(this.f);
+                ldTocRoot = ldTocRoot2 = ApiServiceProvider.getApiService().t(this.mSourceId);
                 if (ldTocRoot != null && ldTocRoot.getResult() != null) break block6;
                 return null;
             } catch (Exception var1_3) {
@@ -303,7 +303,7 @@ public final class f {
             }
         }
         try {
-            String string2 = ApiServiceProvider.getApiService().u(this.f);
+            String string2 = ApiServiceProvider.getApiService().u(this.mSourceId);
             Matcher matcher = Pattern.compile("tk:'([0-9a-f]+)'").matcher(string2);
             if (!matcher.find()) return null;
             String string3 = matcher.group(1);
@@ -338,7 +338,7 @@ public final class f {
         EsTocItem[] arresTocItem;
         try {
             EsTocRoot esTocRoot;
-            EsTocRoot esTocRoot2 = esTocRoot = ApiServiceProvider.getApiService().v(this.f);
+            EsTocRoot esTocRoot2 = esTocRoot = ApiServiceProvider.getApiService().v(this.mSourceId);
             toc = null;
             if (esTocRoot2 == null) return toc;
             EsTocItem[] arresTocItem2 = esTocRoot2.getItems();
@@ -370,18 +370,18 @@ public final class f {
      * Enabled aggressive exception aggregation
      * Lifted jumps to return sites
      */
-    public final ChapterRoot a(ChapterLink chapterLink, int n) {
+    public final ChapterRoot a(ChapterLink chapterLink, int index) {
         ChapterRoot chapterRoot;
-        if (this.e == null) {
-            this.e = BookInfoUtil.source;
+        if (this.mSource == null) {
+            this.mSource = BookInfoUtil.source;
         }
-        if (this.f == null) {
-            this.f = BookInfoUtil.sourceId;
+        if (this.mSourceId == null) {
+            this.mSourceId = BookInfoUtil.sourceId;
         }
-        if (this.g == null) {
-            this.g = BookInfoUtil.sougoMd;
+        if (this.mSougoMd == null) {
+            this.mSougoMd = BookInfoUtil.sougoMd;
         }
-        switch (this.b) {
+        switch (this.mReadMode) {
             default: {
                 chapterRoot = this.c(chapterLink.getLink());
                 break;
@@ -400,11 +400,11 @@ public final class f {
                 break;
             }
             case 7: {
-                chapterRoot = this.b(chapterLink.getLink(), this.g);
+                chapterRoot = this.b(chapterLink.getLink(), this.mSougoMd);
                 break;
             }
             case 8: {
-                chapterRoot = this.a(n, chapterLink.getLeidianTk());
+                chapterRoot = this.a(index, chapterLink.getLeidianTk());
                 break;
             }
             case 3: {
@@ -416,10 +416,10 @@ public final class f {
             if (chapterRoot.getChapter() == null) return chapterRoot;
             if (chapterRoot.getChapter().getBody() != null) return chapterRoot;
         }
-        if (this.b == 6) return chapterRoot;
-        if (this.b == 7) return chapterRoot;
-        if (this.b == 8) return chapterRoot;
-        if (this.b == 3) return chapterRoot;
+        if (this.mReadMode == 6) return chapterRoot;
+        if (this.mReadMode == 7) return chapterRoot;
+        if (this.mReadMode == 8) return chapterRoot;
+        if (this.mReadMode == 3) return chapterRoot;
         BookInfoUtil.h = true;
         BookTopRoot.Favorite bookTopRoot$Favorite;
         BookTopRoot bookTopRoot = ApiServiceProvider.getApiService().u();
@@ -432,7 +432,7 @@ public final class f {
     }
 
     public final Toc a() {
-        switch (this.b) {
+        switch (this.mReadMode) {
             default: {
                 return this.b();
             }
@@ -458,28 +458,28 @@ public final class f {
         return this.g();
     }
 
-    public final void a(int n) {
-        this.b = n;
+    public final void setReadMode(int readMode) {
+        this.mReadMode = readMode;
     }
 
-    public final void a(String string) {
-        this.c = string;
+    public final void setBookId(String bookId) {
+        this.mBookId = bookId;
     }
 
-    public final void a(String string, String string2) {
-        this.f = string;
-        this.g = string2;
-        BookInfoUtil.sougoMd = string2;
+    public final void a(String sourceId, String sougoMd) {
+        this.mSourceId = sourceId;
+        this.mSougoMd = sougoMd;
+        BookInfoUtil.sougoMd = sougoMd;
     }
 
-    public final void a(String string, String string2, String string3) {
-        this.d = string;
-        this.e = string2;
-        this.f = string3;
-        BookInfoUtil.sourceId = string3;
+    public final void a(String tocId, String source, String sourceId) {
+        this.mTocId = tocId;
+        this.mSource = source;
+        this.mSourceId = sourceId;
+        BookInfoUtil.sourceId = sourceId;
     }
 
-    public final void b(String string) {
-        this.d = string;
+    public final void setTocId(String tocId) {
+        this.mTocId = tocId;
     }
 }

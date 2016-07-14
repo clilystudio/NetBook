@@ -282,18 +282,14 @@ public final class Reader {
         }
     }
 
-    static /* synthetic */ ChapterRoot b(Reader reader, ChapterLink chapterLink, int n2) {
+    static /* synthetic */ ChapterRoot b(Reader reader, ChapterLink chapterLink, int index) {
         if (reader.z != null) {
-            reader.z.b(BookInfoUtil.tocId);
-            reader.z.a(BookInfoUtil.bookId);
-            reader.z.a(BookInfoUtil.readMode);
-            return reader.z.a(chapterLink, n2);
+            reader.z.setTocId(BookInfoUtil.tocId);
+            reader.z.setBookId(BookInfoUtil.bookId);
+            reader.z.setReadMode(BookInfoUtil.readMode);
+            return reader.z.a(chapterLink, index);
         }
         return null;
-    }
-
-    static /* synthetic */ ae b(Reader reader) {
-        return reader.r;
     }
 
     static /* synthetic */ void b(Reader reader, Toc toc) {
@@ -756,11 +752,11 @@ public final class Reader {
         this.af2 = af2;
     }
 
-    public final ae getListener(Reader paramReader, Type type) {
+    public final ae getListener(Reader reader, Type type) {
         if (type == Type.CHAPTER) {
-            return Reader.a(paramReader);
+            return reader.s;
         } else {
-            return Reader.b(paramReader);
+            return reader.r;
         }
     }
 
