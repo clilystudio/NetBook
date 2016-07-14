@@ -17,18 +17,17 @@ public class CipherUtil {
         "0123456789ABCDEF".toCharArray();
     }
 
-    public static String a(String string, String string2) {
+    public static String a(String key, String content) {
         try {
-            byte[] arrby = Base64.decode(string.getBytes(), 0);
+            byte[] arrby = Base64.decode(key.getBytes(), 0);
             SecretKeySpec secretKeySpec = new SecretKeySpec(arrby, 0, arrby.length, "AES");
-            byte[] arrby2 = Base64.decode(string2, 0);
+            byte[] arrby2 = Base64.decode(content, 0);
             byte[] arrby3 = a.a(arrby2, 0, 16);
             byte[] arrby4 = a.a(arrby2, 16, arrby2.length);
             IvParameterSpec ivParameterSpec = new IvParameterSpec(arrby3);
             Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
             cipher.init(2, secretKeySpec, ivParameterSpec);
-            String string3 = new String(cipher.doFinal(arrby4));
-            return string3;
+            return new String(cipher.doFinal(arrby4));
         } catch (Exception var2_10) {
             var2_10.printStackTrace();
             return null;

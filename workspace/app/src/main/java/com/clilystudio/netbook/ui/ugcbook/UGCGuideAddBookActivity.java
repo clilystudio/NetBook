@@ -149,7 +149,7 @@ public class UGCGuideAddBookActivity extends BaseActivity implements View.OnClic
         this.h.setVisibility(View.GONE);
         this.b = this.c.getText().toString().trim();
         this.f();
-        if (com.clilystudio.netbook.hpay100.a.a.t(this)) {
+        if (com.clilystudio.netbook.hpay100.a.a.isConnectedOrConnecting(this)) {
             this.a(0);
             if (bl) {
                 BaseAsyncTask<String, Void, List<BookSummary>> w2 = new BaseAsyncTask<String, Void, List<BookSummary>>() {

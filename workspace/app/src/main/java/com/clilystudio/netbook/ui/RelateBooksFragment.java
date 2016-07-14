@@ -13,6 +13,7 @@ import android.view.WindowManager;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.clilystudio.netbook.IntentBuilder;
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.model.BookSummary;
 import com.clilystudio.netbook.model.RelateBookRoot;
@@ -21,7 +22,7 @@ import com.clilystudio.netbook.widget.CoverView;
 
 import java.util.List;
 
-public class RelateBooksFragment extends Fragment implements RelateBookManager.cQ {
+public class RelateBooksFragment extends Fragment implements RelateBookManager.OnCompletedListener {
     LinearLayout mBookContainer;
     TextView mMore;
     LinearLayout mRelateBookRoot;
@@ -35,7 +36,7 @@ public class RelateBooksFragment extends Fragment implements RelateBookManager.c
     }
 
     @Override
-    public final void a(final RelateBookRoot relateBookRoot, String[] var2_2) {
+    public final void onCompleted(final RelateBookRoot relateBookRoot) {
         if (this.getActivity() == null) {
             return;
         }
@@ -54,8 +55,12 @@ public class RelateBooksFragment extends Fragment implements RelateBookManager.c
             this.mMore.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = RelateBookListActivity.a(RelateBooksFragment.this.getActivity(), relateBookRoot, "你可能感兴趣", false);
-                    RelateBooksFragment.this.startActivity(intent);
+                    Intent intent = new IntentBuilder().put(getActivity(), RelateBookListActivity.class)
+                            .putSerializable("RelateBookRoot", relateBookRoot)
+                            .put("book_list_title", "你可能感兴趣")
+                            .put("entrancePosition", 1)
+                            .build();
+                    startActivity(intent);
                 }
             });
             var3_4 = var3_4.subList(0, var7_13.b());
@@ -108,7 +113,7 @@ public class RelateBooksFragment extends Fragment implements RelateBookManager.c
         this.mBookContainer = (LinearLayout) this.getView().findViewById(R.id.books);
         this.mRelateBookRoot = (LinearLayout) this.getView().findViewById(R.id.relate_book_root);
         this.mMore = (TextView) this.getView().findViewById(R.id.more);
-        new RelateBookManager(this).a(this.getArguments().getString("book_id"));
+        new RelateBookManager(this).getRelateBook(this.getArguments().getString("book_id"));
     }
 
     public class ViewHolder {

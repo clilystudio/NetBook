@@ -100,16 +100,16 @@ public class BookReadRecord extends Model {
         BusProvider.getInstance().post(new BookAddedEvent(bookReadRecord.getBookId()));
     }
 
-    public static void create(BookInfo bookInfo, String string, int n, int n2, int n3) {
-        String string2 = bookInfo.getId();
-        BookReadRecord.trulyDelete(string2);
+    public static void create(BookInfo bookInfo, String tocId, int chapterIndex, int charIndex, int readMode) {
+        String bookId = bookInfo.getId();
+        BookReadRecord.trulyDelete(bookId);
         BookReadRecord bookReadRecord = BookReadRecord.createBookRecord(bookInfo);
-        bookReadRecord.toc_id = string;
-        bookReadRecord.readMode = n3;
+        bookReadRecord.toc_id = tocId;
+        bookReadRecord.readMode = readMode;
         BookReadRecord.addAccountInfo(bookReadRecord);
         bookReadRecord.save();
-        MixTocRecord.create(string2, string, n, n2);
-        BusProvider.getInstance().post(new BookAddedEvent(string2));
+        MixTocRecord.create(bookId, tocId, chapterIndex, charIndex);
+        BusProvider.getInstance().post(new BookAddedEvent(bookId));
     }
 
     public static void create(BookInfo bookInfo, String string, String string2, String string3, int n, int n2, int n3) {

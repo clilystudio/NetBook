@@ -38,10 +38,6 @@ public class ReaderTocDialog extends DialogFragment implements AdapterView.OnIte
         return readerTocDialog.a(n);
     }
 
-    public static ReaderTocDialog a() {
-        return new ReaderTocDialog();
-    }
-
     static /* synthetic */ boolean a(ReaderTocDialog readerTocDialog, ChapterLink chapterLink) {
         return readerTocDialog.a(chapterLink);
     }

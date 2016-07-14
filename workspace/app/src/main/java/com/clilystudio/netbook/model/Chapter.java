@@ -59,8 +59,8 @@ public class Chapter implements Serializable {
         return this.link;
     }
 
-    public void setLink(String string) {
-        this.link = string;
+    public void setLink(String link) {
+        this.link = link;
     }
 
     public boolean isVip() {

@@ -5,14 +5,13 @@ import com.clilystudio.netbook.api.ApiServiceProvider;
 import com.clilystudio.netbook.model.RelateBookRoot;
 
 public final class RelateBookManager {
-    private cQ a;
-    private String[] c = new String[20];
+    private OnCompletedListener mListener;
 
-    public RelateBookManager(cQ cQ2) {
-        this.a = cQ2;
+    public RelateBookManager(OnCompletedListener listener) {
+        this.mListener = listener;
     }
 
-    public final boolean a(String bookId) {
+    public final void getRelateBook(String bookId) {
         new BaseAsyncTask<String, Void, RelateBookRoot>() {
 
             @Override
@@ -25,14 +24,13 @@ public final class RelateBookManager {
             protected void onPostExecute(RelateBookRoot relateBookRoot) {
                 super.onPostExecute(relateBookRoot);
                 if (relateBookRoot != null && relateBookRoot.isOk()) {
-                    RelateBookManager.this.a.a(relateBookRoot, RelateBookManager.this.c);
+                    mListener.onCompleted(relateBookRoot);
                 }
             }
         }.b(bookId);
-        return false;
     }
 
-    public interface cQ {
-        void a(RelateBookRoot relateBookRoot, String[] var2);
+    public interface OnCompletedListener {
+        void onCompleted(RelateBookRoot relateBookRoot);
     }
 }

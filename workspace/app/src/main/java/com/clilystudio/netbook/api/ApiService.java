@@ -530,10 +530,8 @@ public class ApiService {
         return ApiService.a(this.a(HttpRequest.get(string5)), BookListRoot.class);
     }
 
-    public final ChapterRoot a(String string, String string2, int n, String string3, String string4) {
-        String string5 = am.e(string3);
-        Object[] arrobject = new Object[]{string, string2, n, string5};
-        String string6 = String.format(Locale.CHINA, "http://api.easou.com/api/bookapp/chapter.m?gid=%s&nid=%s&sort=%d&chapter_name=%s&cid=eef_", arrobject);
+    public final ChapterRoot a(String string, String string2, int sort, String chapterName, String chapterLink) {
+        String string6 = String.format(Locale.CHINA, "http://api.easou.com/api/bookapp/chapter.m?gid=%s&nid=%s&sort=%d&chapter_name=%s&cid=eef_", string, string2, sort, am.e(chapterName));
         HttpRequest httpRequest = this.b(HttpRequest.get(string6), 3);
         boolean bl = httpRequest.ok();
         int n2 = httpRequest.code();
@@ -546,7 +544,7 @@ public class ApiService {
             ChapterRoot chapterRoot = new ChapterRoot();
             String string7 = com.clilystudio.netbook.hpay100.a.a.z(esChapterRoot.getContent());
             Chapter chapter = new Chapter();
-            chapter.setLink(string4);
+            chapter.setLink(chapterLink);
             chapter.setBody(string7);
             chapterRoot.setChapter(chapter);
             return chapterRoot;
@@ -813,9 +811,8 @@ public class ApiService {
         return ApiService.x();
     }
 
-    public final ChapterRoot c(String string, int n, String string2) {
-        Object[] arrobject = new Object[]{string, n, string2};
-        String string3 = String.format(Locale.CHINA, "http://m.leidian.com/index.php?c=ebook&a=chapterData&fmt=json&bid=%s&idx=%d&tk=%s", arrobject);
+    public final ChapterRoot c(String sourceId, int index, String leidianTK) {
+        String string3 = String.format(Locale.CHINA, "http://m.leidian.com/index.php?c=ebook&a=chapterData&fmt=json&bid=%s&idx=%d&tk=%s", sourceId, index, leidianTK);
         HttpRequest httpRequest = this.b(HttpRequest.get(string3), 8);
         boolean bl = httpRequest.ok();
         int n2 = httpRequest.code();
@@ -1429,8 +1426,8 @@ public class ApiService {
         return ApiService.a(httpRequest, PurchaseVipResult.class);
     }
 
-    public final LdTocRoot t(String string) {
-        String string2 = String.format(Locale.CHINA, "http://m.leidian.com/ebook/detail/index.php?c=ebook&a=chapterlist&bid=%s&total=100000", string);
+    public final LdTocRoot t(String sourceId) {
+        String string2 = String.format(Locale.CHINA, "http://m.leidian.com/ebook/detail/index.php?c=ebook&a=chapterlist&bid=%s&total=100000", sourceId);
         return ApiService.a(this.a(HttpRequest.get(string2), 8), LdTocRoot.class);
     }
 

@@ -287,7 +287,7 @@ public class ReaderResourceFragment extends Fragment {
                 }
             }
             String string = this.a;
-            if (com.clilystudio.netbook.hpay100.a.a.d()) {
+            if (com.clilystudio.netbook.hpay100.a.a.isMounted()) {
                 for (String string2 : com.clilystudio.netbook.hpay100.a.a.D(string)) {
                     if (string2.contains("MIX_TOC_ID") || string2.contains("_")) continue;
                     for (String s : com.clilystudio.netbook.hpay100.a.a.j(string, string2)) {

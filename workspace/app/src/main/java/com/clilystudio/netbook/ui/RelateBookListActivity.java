@@ -1,28 +1,15 @@
 package com.clilystudio.netbook.ui;
 
-import android.content.Context;
-import android.content.Intent;
-
-import com.clilystudio.netbook.IntentBuilder;
 import com.clilystudio.netbook.model.BookRankDetail;
 import com.clilystudio.netbook.model.BookSummary;
 import com.clilystudio.netbook.model.RelateBookRoot;
 import com.clilystudio.netbook.reader.RelateBookManager;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RelateBookListActivity extends BookListActivity implements RelateBookManager.cQ {
-    private int c;
-
-    public static Intent a(Context context, RelateBookRoot relateBookRoot, String string, String string2) {
-        return new IntentBuilder().put(context, RelateBookListActivity.class).putSerializable("RelateBookRoot", (Serializable) null).put("book_list_title", string).put("bookId", string2).put("entrancePosition", 2).build();
-    }
-
-    public static Intent a(Context context, RelateBookRoot relateBookRoot, String string, boolean bl) {
-        return new IntentBuilder().put(context, RelateBookListActivity.class).putSerializable("RelateBookRoot", relateBookRoot).put("book_list_title", string).put("entrancePosition", 1).putSerializable("IS_BFD_RECOMMEND", bl).build();
-    }
+public class RelateBookListActivity extends BookListActivity implements RelateBookManager.OnCompletedListener {
+    private int mEntrancePosition;
 
     private void a(RelateBookRoot relateBookRoot) {
         this.e(1);
@@ -52,7 +39,7 @@ public class RelateBookListActivity extends BookListActivity implements RelateBo
         if (n < 0) return;
         if (n < this.a.getCount()) {
             BookRankDetail bookRankDetail = this.a.getItem(n);
-            if (this.c != n2) {
+            if (this.mEntrancePosition != n2) {
                 n2 = 2;
             }
             this.startActivity(BookInfoActivity.a(this, bookRankDetail.get_id(), n2));
@@ -60,41 +47,33 @@ public class RelateBookListActivity extends BookListActivity implements RelateBo
     }
 
     @Override
-    public final void a(RelateBookRoot relateBookRoot, String[] arrstring) {
+    public final void onCompleted(RelateBookRoot relateBookRoot) {
         if (relateBookRoot != null && relateBookRoot.isOk()) {
             List<BookSummary> list = relateBookRoot.getBooks();
             if (list != null && !list.isEmpty()) {
-                ArrayList<BookSummary> arrayList = new ArrayList<>(20);
-                for (String string : arrstring) {
-                    for (BookSummary bookSummary : list) {
-                        if (!bookSummary.getId().equals(string)) continue;
-                        arrayList.add(bookSummary);
-                    }
-                }
-                relateBookRoot.setBooks(arrayList);
                 this.a(relateBookRoot);
-                return;
+            } else {
+                this.e(3);
             }
-            this.e(3);
-            return;
+        } else {
+            this.e(2);
         }
-        this.e(2);
     }
 
     @Override
     protected final void b() {
-        this.c = this.getIntent().getIntExtra("entrancePosition", 1);
+        this.mEntrancePosition = this.getIntent().getIntExtra("entrancePosition", 1);
         RelateBookRoot relateBookRoot = (RelateBookRoot) this.getIntent().getSerializableExtra("RelateBookRoot");
         if (relateBookRoot != null) {
             this.a(relateBookRoot);
             return;
         }
-        String string = this.getIntent().getStringExtra("bookId");
-        if (string != null) {
+        String bookId = this.getIntent().getStringExtra("bookId");
+        if (bookId != null) {
             this.e(0);
-            new RelateBookManager(this).a(string);
-            return;
+            new RelateBookManager(this).getRelateBook(bookId);
+        } else {
+            this.e(2);
         }
-        this.e(2);
     }
 }

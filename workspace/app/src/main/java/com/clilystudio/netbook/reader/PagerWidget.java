@@ -121,11 +121,7 @@ public class PagerWidget extends ReaderViewPager {
                     }
                     return true;
                 case 1:
-                    if (this.e()) {
-                        if (this.getContext() instanceof ReaderActivity) {
-                            ((ReaderActivity) this.getContext()).k();
-                        }
-                    } else {
+                    if (!this.e()) {
                         float v2 = (Float) this.a("mInitialMotionX");
                         int v0 = (Integer) this.a("mActivePointerId");
                         int v3 = MotionEventCompat.findPointerIndex(var1_1, v0);

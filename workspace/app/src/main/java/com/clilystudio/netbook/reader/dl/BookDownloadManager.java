@@ -35,7 +35,7 @@ public class BookDownloadManager {
             ToastUtil.showShortToast(this.mActivity, "请重试");
             return;
         }
-        if (!com.clilystudio.netbook.hpay100.a.a.d()) {
+        if (!com.clilystudio.netbook.hpay100.a.a.isMounted()) {
             ToastUtil.showShortToast(this.mActivity, "无法缓存，请检查SD卡是否挂载");
             return;
         }

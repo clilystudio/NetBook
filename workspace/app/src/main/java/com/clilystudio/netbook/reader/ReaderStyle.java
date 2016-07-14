@@ -25,12 +25,12 @@ public final class ReaderStyle {
     private static final List<String> k = Arrays.asList("s", "m", "l", "xl", "xxl", "3xl");
     private final Activity m;
     private final Resources n;
-    public int a;
-    public int b;
-    public int c;
-    public int d;
+    public int textSize;
+    public int lineSpacing;
+    public int paddingHori;
+    public int paddingVert;
     public int e;
-    public int f;
+    public int width;
     public int g;
     public int h;
     public int i;
@@ -60,9 +60,9 @@ public final class ReaderStyle {
         this.y = this.t.getBoolean("convert_t", false);
         this.z = this.t.getInt("reader_background_mode", 1);
         int n = am.b(this.m).widthPixels;
-        this.c = this.n.getDimensionPixelSize(R.dimen.page_horizontal_padding);
-        this.d = this.n.getDimensionPixelSize(R.dimen.page_vertical_padding);
-        this.f = n - (this.c << 1);
+        this.paddingHori = this.n.getDimensionPixelSize(R.dimen.page_horizontal_padding);
+        this.paddingVert = this.n.getDimensionPixelSize(R.dimen.page_vertical_padding);
+        this.width = n - (this.paddingHori << 1);
         this.l = this.n.getDimensionPixelSize(R.dimen.page_small_text_height);
         this.a(com.clilystudio.netbook.hpay100.a.a.l(this.m, "reader_opt_full_screen"));
         this.k();
@@ -128,8 +128,8 @@ public final class ReaderStyle {
                 var1_1 = 1.9f;
                 break;
         }
-        this.a = Math.round(var1_1 * var2_2);
-        this.b = Math.round(0.4f * (float) this.a);
+        this.textSize = Math.round(var1_1 * var2_2);
+        this.lineSpacing = Math.round(0.4f * (float) this.textSize);
     }
 
     private void l() {
@@ -239,7 +239,7 @@ public final class ReaderStyle {
             n = com.clilystudio.netbook.hpay100.a.a.L(this.m);
         }
         int n2 = this.n.getDimensionPixelSize(R.dimen.page_body_margin);
-        int n3 = n - (this.d << 1) - (this.l << 1) - (n2 << 1);
+        int n3 = n - (this.paddingVert << 1) - (this.l << 1) - (n2 << 1);
         if (bl) {
             this.e = n3;
             return;

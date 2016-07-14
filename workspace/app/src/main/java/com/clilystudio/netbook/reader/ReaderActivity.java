@@ -28,11 +28,11 @@ import android.widget.PopupMenu;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
+import com.clilystudio.netbook.IntentBuilder;
 import com.clilystudio.netbook.MyApplication;
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.a_pack.BaseAsyncTask;
 import com.clilystudio.netbook.am;
-import com.clilystudio.netbook.IntentBuilder;
 import com.clilystudio.netbook.api.ApiServiceProvider;
 import com.clilystudio.netbook.db.BookReadRecord;
 import com.clilystudio.netbook.db.BookTopicEnterRecord;
@@ -40,10 +40,10 @@ import com.clilystudio.netbook.db.MixTocRecord;
 import com.clilystudio.netbook.db.TocReadRecord;
 import com.clilystudio.netbook.event.BookReadEvent;
 import com.clilystudio.netbook.event.BusProvider;
-import com.clilystudio.netbook.event.DownloadStatusEvent;
-import com.clilystudio.netbook.event.ThemeChangedEvent;
 import com.clilystudio.netbook.event.ConvertChangedEvent;
+import com.clilystudio.netbook.event.DownloadStatusEvent;
 import com.clilystudio.netbook.event.ModeChangedEvent;
+import com.clilystudio.netbook.event.ThemeChangedEvent;
 import com.clilystudio.netbook.model.ChapterKeysRoot;
 import com.clilystudio.netbook.model.ChapterLink;
 import com.clilystudio.netbook.model.TopicCount;
@@ -71,28 +71,27 @@ import uk.me.lewisdeane.ldialogs.BaseDialog;
 public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickListener,
         AutoReaderSetWidget.a,
         AutoReaderTextView.d_interface {
-    public static String a = "";
-    private int A;
-    private View B;
-    private TextView C;
-    private String D;
-    private boolean E;
-    private boolean F;
-    private boolean G;
-    private boolean H;
-    private boolean I = false;
-    private boolean J = false;
-    private boolean K = false;
-    private int L;
+    private int mDownloadStopFlag;
+    private View mDownloadProgressView;
+    private TextView mmDownloadProgressCurrentTV;
+    private String mDownloadLink;
+    private boolean mIsDownloading;
+    private boolean mIsFullScreen;
+    private boolean mIsPortrait;
+    private boolean mChangeOrientation;
+    private boolean mIsShowToc = false;
+    private boolean mTocDisable = false;
+    private boolean mModeDisable = false;
+    private int mReadMode;
     private int M = 0;
-    private boolean N;
-    private ThemeLoadingView O;
-    private int P;
-    private int Q;
-    private ReaderMenuFragment r_fragment = null;
-    private PopupWindow S;
-    private AutoReaderTextView T;
-    private View U;
+    private boolean mHasOtherSource;
+    private ThemeLoadingView mLoadingView;
+    private int mTocCount;
+    private int mNeedDownloadCount;
+    private ReaderMenuFragment mReaderMenuFragment = null;
+    private PopupWindow mPopWindow;
+    private AutoReaderTextView mReaderBodyTV;
+    private View mShadowView;
     private int W;
     private int X;
     private String[] Y;
@@ -100,34 +99,34 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
     private LinkedList<Integer> aa;
     private PowerManager.WakeLock ab = null;
     private Runnable ad;
-    private BroadcastReceiver ae;
+    private BroadcastReceiver mDownloadReceiver;
     private Handler af;
     private BroadcastReceiver ag;
     private BroadcastReceiver ah;
-    private o[] b = new o[3];
-    private String c;
-    private String d;
-    private String e;
-    private String f;
-    private Reader g;
-    private ReaderStyle h;
+    private ReaderPageManager[] b = new ReaderPageManager[3];
+    private String mBookId;
+    private String mBookTitle;
+    private String mTocId;
+    private String mSourceHost;
+    private Reader mReader;
+    private ReaderStyle mReaderStyle;
     private bH i;
-    private K j;
-    private ReaderTocDialog k;
+    private ReaderPageTransformer j;
+    private ReaderTocDialog mReaderTocDialog;
     private Handler l = new Handler();
-    private PagerWidget m;
-    private int n;
+    private PagerWidget mMainView;
+    private int mSelectedPageIndex;
     private boolean o = true;
     private boolean p = true;
     private View q;
     private ReaderActionBar r;
     private SettingWidget s;
     private AutoReaderSetWidget t;
-//    private boolean v = false;
+    //    private boolean v = false;
     private int w = -1;
     private LinkedList<String> x = new LinkedList<>();
-    private int y;
-    private int z;
+    private int mDownloadCurrentCount;
+    private int mDownloadChapterCount;
 
     public ReaderActivity() {
         this.ad = new Runnable() {
@@ -136,18 +135,18 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
                 getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
             }
         };
-        this.ae = new BroadcastReceiver() {
+        this.mDownloadReceiver = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
                 if ("com.clilystudio.netbook.dlReceiver".equals(intent.getAction())) {
                     String string = intent.getStringExtra("bookId");
-                    if (ReaderActivity.M(ReaderActivity.this).equals(string)) {
-                        ReaderActivity.g(ReaderActivity.this, true);
-                        ReaderActivity.l(ReaderActivity.this, intent.getIntExtra("SerDlCurrentCount", 0));
-                        ReaderActivity.k(ReaderActivity.this, intent.getIntExtra("SerDlChapterCount", 0));
-                        ReaderActivity.a(ReaderActivity.this, intent.getStringExtra("SerDlLink"));
-                        ReaderActivity.m(ReaderActivity.this, intent.getIntExtra("SerDlStopFlag", 0));
-                        ReaderActivity.aj(ReaderActivity.this).sendMessage(ReaderActivity.aj(ReaderActivity.this).obtainMessage());
+                    if (ReaderActivity.this.mBookId.equals(string)) {
+                        ReaderActivity.this.mIsDownloading = true;
+                        ReaderActivity.this.mDownloadCurrentCount =  intent.getIntExtra("SerDlCurrentCount", 0);
+                        ReaderActivity.this.mDownloadChapterCount = intent.getIntExtra("SerDlChapterCount", 0);
+                        ReaderActivity.this.mDownloadLink = intent.getStringExtra("SerDlLink");
+                        ReaderActivity.this.mDownloadStopFlag =  intent.getIntExtra("SerDlStopFlag", 0);
+                        ReaderActivity.this.af.sendMessage(ReaderActivity.this.af.obtainMessage());
                     }
                 }
             }
@@ -158,15 +157,15 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
             public void handleMessage(Message msg) {
                 super.handleMessage(msg);
                 String string = "";
-                if (ReaderActivity.ak(ReaderActivity.this) == 0 && ReaderActivity.al(ReaderActivity.this) < ReaderActivity.ai(ReaderActivity.this)) {
-                    string = "正在缓存: " + ReaderActivity.D(ReaderActivity.this) + " ( " + ReaderActivity.al(ReaderActivity.this) + "/" + ReaderActivity.ai(ReaderActivity.this) + " )...";
-                } else if (ReaderActivity.ak(ReaderActivity.this) == -1 || ReaderActivity.al(ReaderActivity.this) >= ReaderActivity.ai(ReaderActivity.this)) {
-                    string = "缓存完成: " + ReaderActivity.D(ReaderActivity.this);
-                } else if (ReaderActivity.ak(ReaderActivity.this) == -2) {
-                    string = "已停止: " + ReaderActivity.D(ReaderActivity.this) + " ( " + ReaderActivity.al(ReaderActivity.this) + "/" + ReaderActivity.ai(ReaderActivity.this) + " )";
+                if (ReaderActivity.this.mDownloadStopFlag == 0 && ReaderActivity.this.mDownloadCurrentCount < ReaderActivity.this.mDownloadChapterCount) {
+                    string = "正在缓存: " + ReaderActivity.this.mBookTitle + " ( " + ReaderActivity.this.mDownloadCurrentCount + "/" + ReaderActivity.this.mDownloadChapterCount + " )...";
+                } else if (ReaderActivity.this.mDownloadStopFlag == -1 || ReaderActivity.this.mDownloadCurrentCount >= ReaderActivity.this.mDownloadChapterCount) {
+                    string = "缓存完成: " + ReaderActivity.this.mBookTitle;
+                } else if (ReaderActivity.this.mDownloadStopFlag == -2) {
+                    string = "已停止: " + ReaderActivity.this.mBookTitle + " ( " + ReaderActivity.this.mDownloadCurrentCount + "/" + ReaderActivity.this.mDownloadChapterCount + " )";
                 }
-                ReaderActivity.am(ReaderActivity.this).setText(string);
-                ReaderActivity.this.x.add(ReaderActivity.an(ReaderActivity.this));
+                ReaderActivity.this.mmDownloadProgressCurrentTV.setText(string);
+                ReaderActivity.this.x.add(ReaderActivity.this.mDownloadLink);
 
             }
         };
@@ -176,10 +175,10 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
                 int n2 = intent.getIntExtra("level", 0);
                 int n3 = intent.getIntExtra("scale", 100);
                 int n4 = n2 * 100 / n3;
-                if (ReaderActivity.ap(ReaderActivity.this) != n4) {
-                    ReaderActivity.n(ReaderActivity.this, n4);
-                    o[] arro = ReaderActivity.i(ReaderActivity.this);
-                    for (com.clilystudio.netbook.reader.o anArro : arro) {
+                if (ReaderActivity.this.w != n4) {
+                    ReaderActivity.this.w =  n4;
+                    ReaderPageManager[] arro = ReaderActivity.this.b;
+                    for (ReaderPageManager anArro : arro) {
                         anArro.a(n4);
                     }
                 }
@@ -188,33 +187,20 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
         this.ah = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
-                o[] arro = ReaderActivity.i(ReaderActivity.this);
-                for (com.clilystudio.netbook.reader.o anArro : arro) {
+                ReaderPageManager[] arro = ReaderActivity.this.b;
+                for (ReaderPageManager anArro : arro) {
                     anArro.k();
                 }
             }
         };
     }
 
-    static /* synthetic */ ReaderActionBar A(ReaderActivity readerActivity) {
-        return readerActivity.r;
-    }
-
-    static /* synthetic */ void B(ReaderActivity readerActivity) {
-        readerActivity.G = !readerActivity.G;
-        readerActivity.r();
-        com.clilystudio.netbook.hpay100.a.a.b(readerActivity, "reader_orientation", readerActivity.G);
-    }
-
-    /*
-     * Enabled aggressive block sorting
-     */
     static /* synthetic */ void C(final ReaderActivity readerActivity) {
-        if (readerActivity.J || readerActivity.K) {
+        if (readerActivity.mTocDisable || readerActivity.mModeDisable) {
             ToastUtil.showShortToast(readerActivity, "缓存不可用");
             return;
         }
-        boolean bl = com.clilystudio.netbook.am.g(readerActivity.c) == 2;
+        boolean bl = com.clilystudio.netbook.am.g(readerActivity.mBookId) == 2;
         if (bl) {
             new BaseDialog.Builder(readerActivity).setTitle(R.string.tips).setMessage(R.string.chapter_dl_doing_msg).setPositiveButton(R.string.chapter_dl_goon, new DialogInterface.OnClickListener() {
 
@@ -227,7 +213,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     dialog.dismiss();
-                    BusProvider.getInstance().post(new DownloadStatusEvent(ReaderActivity.M(readerActivity), 3));
+                    BusProvider.getInstance().post(new DownloadStatusEvent(readerActivity.mBookId, 3));
                 }
             }).show();
         } else {
@@ -237,119 +223,32 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     int n3 = 1;
-                    int n4 = ReaderActivity.Y(readerActivity).k();
+                    int n4 = readerActivity.mReader.k();
                     if (which == 0) {
-                        ReaderActivity.k(readerActivity, 50);
+                        readerActivity.mDownloadChapterCount = 50;
                     } else if (which == n3) {
-                        ReaderActivity.k(readerActivity, ReaderActivity.Y(readerActivity).f() - n4);
+                        readerActivity.mDownloadChapterCount = readerActivity.mReader.f() - n4;
                     } else if (which == 2) {
-                        ReaderActivity.k(readerActivity, ReaderActivity.Y(readerActivity).f());
+                        readerActivity.mDownloadChapterCount =  readerActivity.mReader.f();
                         n4 = 0;
                     }
-                    if (BookReadRecord.getOnShelf(ReaderActivity.M(readerActivity)) == null) {
+                    if (BookReadRecord.getOnShelf(readerActivity.mBookId) == null) {
                         n3 = 0;
                     }
                     if (n3 == 0) {
                         ReaderActivity.ad(readerActivity);
                     }
-                    ReaderActivity.ah(readerActivity).setVisibility(View.VISIBLE);
+                    readerActivity.mDownloadProgressView.setVisibility(View.VISIBLE);
                     BookDownloadManager a2 = new BookDownloadManager(readerActivity);
-                    MyApplication.getInstance().getChapterCacheMap().put(ReaderActivity.M(readerActivity), ReaderActivity.Y(readerActivity).d());
-                    a2.startDownload(ReaderActivity.M(readerActivity), n4, ReaderActivity.ai(readerActivity));
+                    MyApplication.getInstance().getChapterCacheMap().put(readerActivity.mBookId, readerActivity.mReader.d());
+                    a2.startDownload(readerActivity.mBookId, n4, readerActivity.mDownloadChapterCount);
                 }
             }).create().show();
         }
     }
 
-    static /* synthetic */ String D(ReaderActivity readerActivity) {
-        return readerActivity.d;
-    }
-//
-//    static /* synthetic */ void E(ReaderActivity readerActivity) {
-//        if (readerActivity.ab == null) {
-//            readerActivity.ab = ((PowerManager) readerActivity.getSystemService(POWER_SERVICE)).newWakeLock(1, "lock_tag");
-//            if (readerActivity.ab != null) {
-//                readerActivity.ab.acquire();
-//            }
-//        }
-//
-//    }
-//
-//    static /* synthetic */ String[] H(ReaderActivity readerActivity) {
-//        return readerActivity.Y;
-//    }
-//
-//    static /* synthetic */ LinkedList I(ReaderActivity readerActivity) {
-//        return readerActivity.aa;
-//    }
-
-    static /* synthetic */ void L(ReaderActivity readerActivity) {
-        readerActivity.O();
-    }
-
-    static /* synthetic */ String M(ReaderActivity readerActivity) {
-        return readerActivity.c;
-    }
-
-    static /* synthetic */ void N(ReaderActivity readerActivity) {
-        readerActivity.O.a();
-    }
-
-    static /* synthetic */ boolean O(ReaderActivity readerActivity) {
-        return readerActivity.I;
-    }
-
-    static /* synthetic */ void P(ReaderActivity readerActivity) {
-        readerActivity.O.b();
-    }
-
-    static /* synthetic */ void Q(ReaderActivity readerActivity) {
-        readerActivity.B();
-    }
-
-    static /* synthetic */ void R(ReaderActivity readerActivity) {
-        readerActivity.u();
-    }
-
-    static /* synthetic */ void S(ReaderActivity readerActivity) {
-        readerActivity.v();
-    }
-
-    static /* synthetic */ bH T(ReaderActivity readerActivity) {
-        return readerActivity.i;
-    }
-
-    static /* synthetic */ void U(ReaderActivity readerActivity) {
-        readerActivity.y();
-    }
-
-    static /* synthetic */ void V(ReaderActivity readerActivity) {
-        readerActivity.z();
-    }
-
-    static /* synthetic */ void W(ReaderActivity readerActivity) {
-        readerActivity.F();
-    }
-
-    static /* synthetic */ void X(ReaderActivity readerActivity) {
-        readerActivity.x();
-    }
-
-    static /* synthetic */ Reader Y(ReaderActivity readerActivity) {
-        return readerActivity.g;
-    }
-
-    static /* synthetic */ void Z(ReaderActivity readerActivity) {
-        readerActivity.t();
-    }
-
-    static /* synthetic */ int a(ReaderActivity readerActivity, int n2) {
-        readerActivity.M = n2;
-        return n2;
-    }
-
-    public static Intent a(Context context, String string, String string2, String string3, String string4, boolean bl) {
-        return new IntentBuilder().put(context, ReaderActivity.class).put("BOOK_ID", string).put("BOOK_TITLE", string2).put("TOC_ID", string3).put("SOURCE_HOST", string4).putSerializable("IS_SHOW_TOC", bl).build();
+    public static Intent a(Context context, String bookId, String bookTitle, String tocId, String sourceHost, boolean isShowToc) {
+        return new IntentBuilder().put(context, ReaderActivity.class).put("BOOK_ID", bookId).put("BOOK_TITLE", bookTitle).put("TOC_ID", tocId).put("SOURCE_HOST", sourceHost).putSerializable("IS_SHOW_TOC", isShowToc).build();
     }
 
     public static Intent a(Context context, String bookId, String bookTitle, String tocId, HashMap<String, String> chapterKeys, boolean hasOtherSource) {
@@ -360,20 +259,6 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
         return new IntentBuilder().put(context, ReaderActivity.class).put("BOOK_ID", string).put("BOOK_TITLE", string2).put("TOC_ID", string3).put("SOURCE_HOST", (String) null).putSerializable("IS_SHOW_TOC", false).putSerializable("HAS_OTHER_SOURCES", bl2).build();
     }
 
-    static /* synthetic */ String a(ReaderActivity readerActivity, String string) {
-        readerActivity.D = string;
-        return string;
-    }
-
-    static /* synthetic */ LinkedList a(ReaderActivity readerActivity, LinkedList<Integer> linkedList) {
-        readerActivity.aa = linkedList;
-        return linkedList;
-    }
-
-    static /* synthetic */ void a(ReaderActivity readerActivity) {
-        readerActivity.G();
-    }
-
     static /* synthetic */ void a(final ReaderActivity readerActivity, View view) {
         PopupMenu popupMenu = new PopupMenu(readerActivity, view, 53);
         popupMenu.getMenuInflater().inflate(R.menu.reader_more_menu, popupMenu.getMenu());
@@ -382,10 +267,10 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
             public boolean onMenuItemClick(MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.menu_item_1:
-                        ReaderActivity.L(readerActivity);
+                        readerActivity.O();
                         break;
                     case R.id.menu_item_2:
-                        Intent var2_2 = BookInfoActivity.a(readerActivity, ReaderActivity.M(readerActivity));
+                        Intent var2_2 = BookInfoActivity.a(readerActivity, readerActivity.mBookId);
                         readerActivity.startActivity(var2_2);
                         break;
                 }
@@ -401,19 +286,19 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
     static /* synthetic */ void a(final ReaderActivity readerActivity, final n n2) {
         if (!n2.f()) {
             readerActivity.b[0].a(n2, true);
-            readerActivity.m.setCurrentItem(0, false);
+            readerActivity.mMainView.setCurrentItem(0, false);
             n2.a(new e<n>() {
 
                 @Override
                 public void a(n var1) {
-                    ReaderActivity.i(readerActivity)[1].a(var1);
+                    readerActivity.b[1].a(var1);
                     if (var1 != null) {
                         var1.a(new e<n>() {
 
                             @Override
                             public void a(n var11) {
-                                ReaderActivity.i(readerActivity)[2].a(var11);
-                                ReaderActivity.X(readerActivity);
+                                readerActivity.b[2].a(var11);
+                                readerActivity.x();
                             }
                         });
                     }
@@ -421,35 +306,35 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
             });
         } else if (!n2.e()) {
             readerActivity.b[2].a(n2, true);
-            readerActivity.m.setCurrentItem(2, false);
+            readerActivity.mMainView.setCurrentItem(2, false);
             n2.b(new e<n>() {
 
                 @Override
                 public void a(n var1) {
-                    ReaderActivity.i(readerActivity)[1].a(var1);
+                    readerActivity.b[1].a(var1);
                     n2.b(new e<n>() {
                         @Override
                         public void a(n var11) {
-                            ReaderActivity.i(readerActivity)[0].a(var11);
-                            ReaderActivity.X(readerActivity);
+                            readerActivity.b[0].a(var11);
+                            readerActivity.x();
                         }
                     });
                 }
             });
         } else {
             readerActivity.b[1].a(n2, true);
-            readerActivity.m.setCurrentItem(1, false);
+            readerActivity.mMainView.setCurrentItem(1, false);
             n2.a(new e<n>() {
 
                 @Override
                 public void a(n var1) {
-                    ReaderActivity.i(readerActivity)[2].a(var1);
+                    readerActivity.b[2].a(var1);
                     n2.b(new e<n>() {
 
                         @Override
                         public void a(n var11) {
-                            ReaderActivity.i(readerActivity)[0].a(var11);
-                            ReaderActivity.X(readerActivity);
+                            readerActivity.b[0].a(var11);
+                            readerActivity.x();
                         }
                     });
 
@@ -461,38 +346,16 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
         }
         readerActivity.a(n2);
     }
-//
-//    static /* synthetic */ boolean a(ReaderActivity readerActivity, boolean bl) {
-//        readerActivity.v = bl;
-//        return bl;
-//    }
-
-    static /* synthetic */ String[] a(ReaderActivity readerActivity, String[] arrstring) {
-        readerActivity.Y = arrstring;
-        return arrstring;
-    }
-
-    static /* synthetic */ int aa(ReaderActivity readerActivity) {
-        return readerActivity.L;
-    }
-
-    static /* synthetic */ ReaderTocDialog ab(ReaderActivity readerActivity) {
-        return readerActivity.k;
-    }
-
-    static /* synthetic */ boolean ac(ReaderActivity readerActivity) {
-        return readerActivity.H;
-    }
 
     static /* synthetic */ void ad(ReaderActivity readerActivity) {
         if (com.clilystudio.netbook.am.f()) {
             ToastUtil.showShortToast(readerActivity, readerActivity.getString(R.string.book_add_overflow));
             return;
         }
-        readerActivity.g.a();
-        com.clilystudio.netbook.hpay100.a.a.u(readerActivity.c);
+        readerActivity.mReader.a();
+        com.clilystudio.netbook.hpay100.a.a.u(readerActivity.mBookId);
         String string = readerActivity.getString(R.string.add_book_event);
-        Object[] arrobject = new Object[]{readerActivity.d};
+        Object[] arrobject = new Object[]{readerActivity.mBookTitle};
         ToastUtil.showShortToast(readerActivity, String.format(string, arrobject));
     }
 
@@ -503,307 +366,85 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
         }
     }
 
-    static /* synthetic */ View ah(ReaderActivity readerActivity) {
-        return readerActivity.B;
-    }
-
-    static /* synthetic */ int ai(ReaderActivity readerActivity) {
-        return readerActivity.z;
-    }
-
-    static /* synthetic */ Handler aj(ReaderActivity readerActivity) {
-        return readerActivity.af;
-    }
-
-    static /* synthetic */ int ak(ReaderActivity readerActivity) {
-        return readerActivity.A;
-    }
-
-    static /* synthetic */ int al(ReaderActivity readerActivity) {
-        return readerActivity.y;
-    }
-
-    static /* synthetic */ TextView am(ReaderActivity readerActivity) {
-        return readerActivity.C;
-    }
-
-    static /* synthetic */ String an(ReaderActivity readerActivity) {
-        return readerActivity.D;
-    }
-//
-//    static /* synthetic */ LinkedList ao(ReaderActivity readerActivity) {
-//        return readerActivity.x;
-//    }
-
-    static /* synthetic */ int ap(ReaderActivity readerActivity) {
-        return readerActivity.w;
-    }
-
-    static /* synthetic */ int b(ReaderActivity readerActivity, int n2) {
-        readerActivity.W = n2;
-        return n2;
-    }
-
     static /* synthetic */ void b(ReaderActivity readerActivity, View view) {
-        View view2 = readerActivity.getLayoutInflater().inflate(R.layout.reader_popupwindow_layout, (ViewGroup)readerActivity.getWindow().getDecorView(), false);
+        View view2 = readerActivity.getLayoutInflater().inflate(R.layout.reader_popupwindow_layout, (ViewGroup) readerActivity.getWindow().getDecorView(), false);
         view2.findViewById(R.id.menu_item_1).setOnClickListener(readerActivity);
         view2.findViewById(R.id.menu_item_2).setOnClickListener(readerActivity);
         view2.findViewById(R.id.menu_item_3).setOnClickListener(readerActivity);
-        readerActivity.S = new PopupWindow(view2, readerActivity.getResources().getDimensionPixelSize(R.dimen.reader_popup_width), -2);
-        readerActivity.S.setFocusable(true);
-        readerActivity.S.setOutsideTouchable(true);
-        readerActivity.S.setBackgroundDrawable(new ColorDrawable(0));
-        readerActivity.S.getContentView().setFocusableInTouchMode(true);
-        readerActivity.S.getContentView().setFocusable(true);
+        readerActivity.mPopWindow = new PopupWindow(view2, readerActivity.getResources().getDimensionPixelSize(R.dimen.reader_popup_width), -2);
+        readerActivity.mPopWindow.setFocusable(true);
+        readerActivity.mPopWindow.setOutsideTouchable(true);
+        readerActivity.mPopWindow.setBackgroundDrawable(new ColorDrawable(0));
+        readerActivity.mPopWindow.getContentView().setFocusableInTouchMode(true);
+        readerActivity.mPopWindow.getContentView().setFocusable(true);
         int[] arrn = new int[2];
         view.getLocationOnScreen(arrn);
-        readerActivity.S.showAtLocation(view, 0, arrn[0] - readerActivity.S.getWidth() + view.getWidth(), com.clilystudio.netbook.am.l(readerActivity) + com.clilystudio.netbook.am.k(readerActivity));
+        readerActivity.mPopWindow.showAtLocation(view, 0, arrn[0] - readerActivity.mPopWindow.getWidth() + view.getWidth(), com.clilystudio.netbook.am.l(readerActivity) + com.clilystudio.netbook.am.k(readerActivity));
     }
 
-    static /* synthetic */ boolean b(ReaderActivity readerActivity, boolean bl) {
-        readerActivity.H = bl;
-        return bl;
-    }
-
-    static /* synthetic */ int c(ReaderActivity readerActivity, int n2) {
-        readerActivity.X = n2;
-        return n2;
-    }
-
-    static /* synthetic */ void c(ReaderActivity readerActivity, boolean bl) {
-        readerActivity.a(bl);
-    }
-
-    static /* synthetic */ int d(ReaderActivity readerActivity) {
-        return readerActivity.Q;
-    }
-
-    static /* synthetic */ int d(ReaderActivity readerActivity, int n2) {
-        readerActivity.Z = n2;
-        return n2;
-    }
-
-    static /* synthetic */ boolean d(ReaderActivity readerActivity, boolean bl) {
-        readerActivity.J = bl;
-        return bl;
-    }
-
-    static /* synthetic */ ReaderMenuFragment e(ReaderActivity readerActivity) {
-        return readerActivity.r_fragment;
-    }
-
-    static /* synthetic */ boolean e(ReaderActivity readerActivity, boolean bl) {
-        readerActivity.I = bl;
-        return bl;
-    }
-
-    static /* synthetic */ void f(ReaderActivity readerActivity) {
-        readerActivity.H();
-    }
-
-    static /* synthetic */ void f(ReaderActivity readerActivity, int n2) {
-        readerActivity.b(n2);
-    }
-
-    static /* synthetic */ boolean f(ReaderActivity readerActivity, boolean bl) {
-        readerActivity.p = bl;
-        return bl;
-    }
-
-    static /* synthetic */ int g(ReaderActivity readerActivity) {
-        return readerActivity.M;
-    }
-
-    static /* synthetic */ int g(ReaderActivity readerActivity, int n2) {
-        readerActivity.n = n2;
-        return n2;
-    }
-
-    static /* synthetic */ boolean g(ReaderActivity readerActivity, boolean bl) {
-        readerActivity.E = bl;
-        return bl;
-    }
-
-    static /* synthetic */ PagerWidget h(ReaderActivity readerActivity) {
-        return readerActivity.m;
-    }
-
-    static /* synthetic */ void h(ReaderActivity readerActivity, int n2) {
-        readerActivity.c(n2);
-    }
-
-    static /* synthetic */ int i(ReaderActivity readerActivity, int n2) {
-        readerActivity.P = n2;
-        return n2;
-    }
-
-    static /* synthetic */ o[] i(ReaderActivity readerActivity) {
-        return readerActivity.b;
-    }
-
-    static /* synthetic */ int j(ReaderActivity readerActivity) {
-        return readerActivity.n;
-    }
-
-    static /* synthetic */ int j(ReaderActivity readerActivity, int n2) {
-        readerActivity.Q = n2;
-        return n2;
-    }
-
-    static /* synthetic */ int k(ReaderActivity readerActivity, int n2) {
-        readerActivity.z = n2;
-        return n2;
-    }
-
-    static /* synthetic */ AutoReaderTextView k(ReaderActivity readerActivity) {
-        return readerActivity.T;
-    }
-
-    static /* synthetic */ int l(ReaderActivity readerActivity, int n2) {
-        readerActivity.y = n2;
-        return n2;
-    }
-
-    static /* synthetic */ ReaderStyle l(ReaderActivity readerActivity) {
-        return readerActivity.h;
-    }
-
-    static /* synthetic */ int m(ReaderActivity readerActivity, int n2) {
-        readerActivity.A = n2;
-        return n2;
-    }
-
-    static /* synthetic */ n m(ReaderActivity readerActivity) {
-        return readerActivity.A();
-    }
-
-    static /* synthetic */ int n(ReaderActivity readerActivity, int n2) {
-        readerActivity.w = n2;
-        return n2;
-    }
-
-    static /* synthetic */ void n(ReaderActivity readerActivity) {
-        readerActivity.N();
-    }
-//
-//    static /* synthetic */ void p(ReaderActivity readerActivity) {
-//        if (readerActivity.b[readerActivity.n].f()) {
-//            readerActivity.o();
-//        } else {
-//            if (readerActivity.Y == null) {
-//                com.clilystudio.netbook.util.e.a(readerActivity, "获取章节内容失败,请退出后重试");
-//            } else if (readerActivity.Z <= readerActivity.Y.length - 1) {
-//                readerActivity.b[readerActivity.n].a(readerActivity.W, readerActivity.X);
-//            }
-//        }
-//    }
-
-    static /* synthetic */ void t(ReaderActivity readerActivity) {
-        readerActivity.T.setHeight(readerActivity.h.e);
-        readerActivity.T.setTextSize(0, readerActivity.h.a);
-        readerActivity.T.setLineSpacing(readerActivity.h.b, 1.0f);
-    }
-
-    /*
-     * Enabled aggressive block sorting
-     */
     static /* synthetic */ void u(ReaderActivity readerActivity) {
-        if (readerActivity.h.h == R.drawable.reader_background_brown_big_img) {
-            readerActivity.T.setBackgroundResource(R.drawable.reader_background_brown_auto_img);
+        if (readerActivity.mReaderStyle.h == R.drawable.reader_background_brown_big_img) {
+            readerActivity.mReaderBodyTV.setBackgroundResource(R.drawable.reader_background_brown_auto_img);
         } else {
-            readerActivity.T.setBackgroundResource(readerActivity.h.h);
+            readerActivity.mReaderBodyTV.setBackgroundResource(readerActivity.mReaderStyle.h);
         }
-        readerActivity.T.setTextColor(readerActivity.h.g);
-    }
-
-    static /* synthetic */ void v(ReaderActivity readerActivity) {
-        readerActivity.R();
-    }
-
-    static /* synthetic */ SettingWidget w(ReaderActivity readerActivity) {
-        return readerActivity.s;
-    }
-
-    static /* synthetic */ void x(ReaderActivity readerActivity) {
-        if (readerActivity.J || readerActivity.K) {
-            ToastUtil.showShortToast(readerActivity, "目录不可用");
-            return;
-        }
-        readerActivity.D();
-    }
-
-    static /* synthetic */ void y(final ReaderActivity readerActivity) {
-        BaseDialog.Builder h2 = new BaseDialog.Builder(readerActivity);
-        h2.setMessage("是否使用原网页阅读？");
-        h2.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
-
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss();
-                ReaderActivity.ag(readerActivity);
-            }
-        }).setNegativeButton(R.string.cancel, null).show();
+        readerActivity.mReaderBodyTV.setTextColor(readerActivity.mReaderStyle.g);
     }
 
     private n A() {
-        o o2 = this.b[this.n];
+        ReaderPageManager o2 = this.b[this.mSelectedPageIndex];
         if (o2 != null) {
             return o2.j();
         }
         return null;
     }
 
-    /*
-     * Unable to fully structure code
-     * Enabled aggressive block sorting
-     * Lifted jumps to return sites
-     */
     private void B() {
-        if (this.H) {
-            this.j.a(this.g);
+        if (this.mChangeOrientation) {
+            this.j.setReader(this.mReader);
         }
-        this.m.setOnPageChangeListener(new ReaderViewPager.cw() {
+        this.mMainView.setOnPageChangeListener(new ReaderViewPager.OnPageChangeListener() {
             @Override
-            public void a(int var1) {
-                ReaderActivity.g(ReaderActivity.this, var1);
+            public void a(int pageIndex) {
+                ReaderActivity.this.mSelectedPageIndex = pageIndex;
             }
 
             @Override
             public void b(int var1) {
                 if (var1 == 2) {
-                    ReaderActivity.f(ReaderActivity.this);
+                    ReaderActivity.this.H();
                 } else if (var1 == 0) {
-                    ReaderActivity.S(ReaderActivity.this);
+                    ReaderActivity.this.v();
                 }
             }
         });
-        this.m.setOnClickListener(new View.OnClickListener() {
+        this.mMainView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 switch ((int) v.getTag()) {
                     case 0:
-                        ReaderActivity.W(ReaderActivity.this);
+                        ReaderActivity.this.F();
                         break;
                     case 1:
-                        if (ReaderActivity.T(ReaderActivity.this).e()) {
-                            ReaderActivity.U(ReaderActivity.this);
+                        if (ReaderActivity.this.i.e()) {
+                            ReaderActivity.this.y();
                         } else {
-                            ReaderActivity.V(ReaderActivity.this);
+                            ReaderActivity.this.z();
                         }
                         break;
                     case 2:
-                        ReaderActivity.U(ReaderActivity.this);
+                        ReaderActivity.this.y();
                         break;
                 }
             }
         });
-        if (this.c.equals(MyApplication.getInstance().getBookId())) {
+        if (this.mBookId.equals(MyApplication.getInstance().getBookId())) {
             int i = -1;
-            BookReadRecord bookReadRecord = BookReadRecord.getOnShelf(this.c);
-            if (bookReadRecord != null && this.g != null) {
+            BookReadRecord bookReadRecord = BookReadRecord.getOnShelf(this.mBookId);
+            if (bookReadRecord != null && this.mReader != null) {
                 int tocIndex = bookReadRecord.getTocIndex();
                 String chapterTitle = bookReadRecord.getChapterTitle();
-                i = this.g.g();
+                i = this.mReader.g();
                 if (tocIndex <= i) {
                     i = tocIndex;
                 }
@@ -827,19 +468,19 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
                 }
             }
             if (i != -1) {
-                this.g.a(i, 0);
+                this.mReader.a(i, 0);
             }
             MyApplication.getInstance().setBookId(null);
         }
-        MyApplication.getInstance().setReader(this.g);
-        if (!this.q() && !com.clilystudio.netbook.hpay100.a.a.h(this.L)) {
-            if (!this.I || this.H) {
+        MyApplication.getInstance().setReader(this.mReader);
+        if (!this.q() && !com.clilystudio.netbook.hpay100.a.a.h(this.mReadMode)) {
+            if (!this.mIsShowToc || this.mChangeOrientation) {
                 this.g();
             } else {
                 this.D();
             }
         } else {
-            if ((!this.q() && TocReadRecord.get(this.e) == null) || MixTocRecord.get(this.e) == null) {
+            if ((!this.q() && TocReadRecord.get(this.mTocId) == null) || MixTocRecord.get(this.mTocId) == null) {
                 this.c(0);
             } else {
                 this.g();
@@ -848,34 +489,34 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
     }
 
     private void C() {
-        o.G aL2 = new o.G() {
+        ReaderPageManager.G aL2 = new ReaderPageManager.G() {
             @Override
             public void a(int var1) {
-                ReaderActivity.h(ReaderActivity.this, var1);
+                ReaderActivity.this.c(var1);
             }
         };
-        o.H aM2 = new o.H() {
+        ReaderPageManager.OnReloadSourceListener aM2 = new ReaderPageManager.OnReloadSourceListener() {
             @Override
-            public void a() {
-                ReaderActivity.Z(ReaderActivity.this);
+            public void onReload() {
+                ReaderActivity.this.t();
             }
         };
-        com.clilystudio.netbook.reader.o.F aN2 = new com.clilystudio.netbook.reader.o.F() {
+        ReaderPageManager.OnSourceChangeListener aN2 = new ReaderPageManager.OnSourceChangeListener() {
             @Override
-            public void a() {
-                if (ReaderActivity.aa(ReaderActivity.this) == 5 || ReaderActivity.aa(ReaderActivity.this) == 10) {
+            public void onChanged() {
+                if (ReaderActivity.this.mReadMode == 5 || ReaderActivity.this.mReadMode == 10) {
                     ReaderActivity.this.i();
                 } else {
-                    ReaderActivity.L(ReaderActivity.this);
+                    ReaderActivity.this.O();
                 }
             }
         };
         for (int k = 0; k < 3; ++k) {
-            o o2;
-            this.b[k] = o2 = new o(this, this.h);
+            ReaderPageManager o2;
+            this.b[k] = o2 = new ReaderPageManager(this, this.mReaderStyle);
             o2.a(aL2);
             o2.a(aM2);
-            o2.a(aN2);
+            o2.setSourceChangeListener(aN2);
         }
         this.registerReceiver(this.ag, new IntentFilter("android.intent.action.BATTERY_CHANGED"));
         this.registerReceiver(this.ah, new IntentFilter("android.intent.action.TIME_TICK"));
@@ -885,32 +526,32 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
         if (this.isFinishing()) {
             return;
         }
-        if (this.k == null) {
-            this.k = ReaderTocDialog.a();
-            this.k.a(this.g, this.x);
-            this.k.a(new DialogInterface.OnClickListener() {
+        if (this.mReaderTocDialog == null) {
+            this.mReaderTocDialog = new ReaderTocDialog();
+            this.mReaderTocDialog.a(this.mReader, this.x);
+            this.mReaderTocDialog.a(new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-                    ReaderActivity.h(ReaderActivity.this, which);
-                    ReaderActivity.ab(ReaderActivity.this).dismiss();
+                    ReaderActivity.this.c(which);
+                    ReaderActivity.this.mReaderTocDialog.dismiss();
                 }
             });
-            this.k.a(new DialogInterface.OnClickListener() {
+            this.mReaderTocDialog.a(new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-                    if (ReaderActivity.O(ReaderActivity.this) && !ReaderActivity.ac(ReaderActivity.this)) {
+                    if (ReaderActivity.this.mIsShowToc && !ReaderActivity.this.mChangeOrientation) {
                         ReaderActivity.this.finish();
                     }
                 }
             });
-            this.k.a(new DialogInterface.OnClickListener() {
+            this.mReaderTocDialog.a(new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-                    ReaderActivity.e(ReaderActivity.this, false);
+                    ReaderActivity.this.mIsShowToc = false;
                 }
             });
         }
-        com.clilystudio.netbook.hpay100.a.a.a(this, this.k);
+        com.clilystudio.netbook.hpay100.a.a.a(this, this.mReaderTocDialog);
     }
 
     /*
@@ -921,14 +562,14 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
         if (this.b == null) {
             return;
         }
-        o[] arro = this.b;
+        ReaderPageManager[] arro = this.b;
         int n2 = arro.length;
         int n3 = 0;
         while (n3 < n2) {
             ReaderChapter readerChapter;
             n n4 = arro[n3].j();
             if (n4 != null && (readerChapter = n4.a()) != null) {
-                readerChapter.setMaxIndex(this.g.g());
+                readerChapter.setMaxIndex(this.mReader.g());
             }
             ++n3;
         }
@@ -954,8 +595,8 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
                 this.r.setVisibility(View.VISIBLE);
                 this.getWindow().addFlags(2048);
                 this.getWindow().clearFlags(1024);
-                if (this.E) {
-                    this.B.setVisibility(View.VISIBLE);
+                if (this.mIsDownloading) {
+                    this.mDownloadProgressView.setVisibility(View.VISIBLE);
                 }
                 n n2 = this.A();
                 String string = null;
@@ -972,7 +613,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
                 }
             } else {
                 if (this.M == 1) {
-                    this.T.clearAnimation();
+                    this.mReaderBodyTV.clearAnimation();
                     this.t.a();
                 }
             }
@@ -990,12 +631,12 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
             this.s.setVisibility(View.GONE);
             this.t.b();
             if (this.M == 1) {
-                this.T.e();
+                this.mReaderBodyTV.e();
             }
-            this.B.setVisibility(View.GONE);
+            this.mDownloadProgressView.setVisibility(View.GONE);
             this.getWindow().addFlags(1024);
             this.getWindow().clearFlags(2048);
-            if (this.F) {
+            if (this.mIsFullScreen) {
                 this.getWindow().addFlags(512);
             } else {
                 this.getWindow().addFlags(2048);
@@ -1019,13 +660,13 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
     }
 
     private void I() {
-        this.T.setVisibility(View.GONE);
-        this.U.setVisibility(View.GONE);
+        this.mReaderBodyTV.setVisibility(View.GONE);
+        this.mShadowView.setVisibility(View.GONE);
     }
 
     private void J() {
-        this.F = com.clilystudio.netbook.hpay100.a.a.l(this, "reader_opt_full_screen");
-        this.r.a(this.F);
+        this.mIsFullScreen = com.clilystudio.netbook.hpay100.a.a.l(this, "reader_opt_full_screen");
+        this.r.a(this.mIsFullScreen);
         this.H();
     }
 
@@ -1041,9 +682,9 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
      * Enabled aggressive block sorting
      */
     private void L() {
-        this.T.clearAnimation();
+        this.mReaderBodyTV.clearAnimation();
         this.M = 0;
-        this.m.setReadMode(0);
+        this.mMainView.setReadMode(0);
         this.H();
         this.I();
         if (this.o) {
@@ -1051,7 +692,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
         } else {
             n n2 = this.A();
             if (n2 != null && n2.f()) {
-                this.m.setCurrentItem(-1 + this.n, false);
+                this.mMainView.setCurrentItem(-1 + this.mSelectedPageIndex, false);
                 this.v();
             }
         }
@@ -1061,20 +702,20 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
      * Enabled aggressive block sorting
      */
     private void M() {
-        if (this.b[this.n].f()) {
+        if (this.b[this.mSelectedPageIndex].f()) {
             this.L();
             return;
         }
-        if (!this.T.isShown()) {
-            this.T.setVisibility(View.VISIBLE);
-            if (this.h.h()) {
-                this.U.setBackgroundResource(R.drawable.auto_reader_bottom_shadow_night);
+        if (!this.mReaderBodyTV.isShown()) {
+            this.mReaderBodyTV.setVisibility(View.VISIBLE);
+            if (this.mReaderStyle.h()) {
+                this.mShadowView.setBackgroundResource(R.drawable.auto_reader_bottom_shadow_night);
             } else {
-                this.U.setBackgroundResource(R.drawable.auto_reader_bottom_shadow);
+                this.mShadowView.setBackgroundResource(R.drawable.auto_reader_bottom_shadow);
             }
-            this.U.setVisibility(View.VISIBLE);
+            this.mShadowView.setVisibility(View.VISIBLE);
         }
-        this.T.a();
+        this.mReaderBodyTV.a();
     }
 
     /*
@@ -1088,42 +729,42 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
         this.E();
         if (!n2.e() && this.w()) {
             ToastUtil.showShortToast(this, this.getString(R.string.auto_reader_end_notify));
-            this.T.clearAnimation();
+            this.mReaderBodyTV.clearAnimation();
             this.I();
             this.M = 0;
-            this.m.setReadMode(0);
+            this.mMainView.setReadMode(0);
             return;
         }
         if (this.M == 1) {
-            if (this.h.i()) {
-                this.T.setText(n2.a(this));
+            if (this.mReaderStyle.i()) {
+                this.mReaderBodyTV.setText(n2.a(this));
             } else {
-                this.T.setText(n2.c());
+                this.mReaderBodyTV.setText(n2.c());
             }
-            this.T.b();
+            this.mReaderBodyTV.b();
         }
-        this.m.setCurrentItem(1 + this.n, false);
+        this.mMainView.setCurrentItem(1 + this.mSelectedPageIndex, false);
         this.v();
     }
 
     private void O() {
         this.P();
-        this.startActivity(ModeListActivity.a(this, this.c, this.d, this.L));
+        this.startActivity(ModeListActivity.a(this, this.mBookId, this.mBookTitle, this.mReadMode));
         this.overridePendingTransition(R.anim.mode_list_enter_in, R.anim.mode_list_enter_out);
     }
 
     private void P() {
         BookReadRecord bookReadRecord;
-        if (this.g != null && (bookReadRecord = BookReadRecord.get(this.c)) != null) {
-            bookReadRecord.setTocIndex(this.g.k());
-            bookReadRecord.setChapterTitle(this.g.n());
+        if (this.mReader != null && (bookReadRecord = BookReadRecord.get(this.mBookId)) != null) {
+            bookReadRecord.setTocIndex(this.mReader.k());
+            bookReadRecord.setChapterTitle(this.mReader.n());
             bookReadRecord.save();
         }
     }
 
-    private void Q() {
-        if (com.clilystudio.netbook.hpay100.a.a.d()) {
-            for (String s1 : com.clilystudio.netbook.hpay100.a.a.j(this.c, this.e)) {
+    private void loadChapterList() {
+        if (com.clilystudio.netbook.hpay100.a.a.isMounted()) {
+            for (String s1 : com.clilystudio.netbook.hpay100.a.a.j(this.mBookId, this.mTocId)) {
                 String string = am.f(s1);
                 this.x.add(string);
             }
@@ -1135,12 +776,8 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
      */
     private void R() {
         WindowManager.LayoutParams layoutParams = this.getWindow().getAttributes();
-        layoutParams.screenBrightness = this.h.g() ? -1.0f : (float) this.h.f() / 255.0f;
+        layoutParams.screenBrightness = this.mReaderStyle.g() ? -1.0f : (float) this.mReaderStyle.f() / 255.0f;
         this.getWindow().setAttributes(layoutParams);
-    }
-
-    private String a(String string) {
-        return this.getIntent().getStringExtra(string);
     }
 
     private void a(n n2) {
@@ -1148,7 +785,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
             return;
         }
         SlidingMenu slidingMenu = this.getSlidingMenu();
-        if (this.J || this.K) {
+        if (this.mTocDisable || this.mModeDisable) {
             slidingMenu.setSlidingEnabled(false);
             return;
         }
@@ -1160,7 +797,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
     }
 
     private void a(boolean bl) {
-        if (this.b[this.n].f()) {
+        if (this.b[this.mSelectedPageIndex].f()) {
             this.o();
         } else {
             if (this.Y == null) {
@@ -1168,23 +805,23 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
             } else if (bl && !this.Y[0].startsWith("　　")) {
                 this.W = 0;
                 this.X = 1 + this.Y[0].length();
-                this.b[this.n].a(this.W, this.X);
+                this.b[this.mSelectedPageIndex].a(this.W, this.X);
             } else {
                 this.W = this.X;
                 if (this.Z <= -1 + this.Y.length) {
                     this.X = 1 + (this.W + this.Y[this.Z].length());
-                    this.b[this.n].a(this.W, this.X);
+                    this.b[this.mSelectedPageIndex].a(this.W, this.X);
                 }
             }
         }
     }
 
     private boolean a(ChapterNameParser ae2, String string, int n2) {
-        boolean bl = ae2.a(string, this.g.c(n2));
+        boolean bl = ae2.a(string, this.mReader.c(n2));
         boolean bl2 = false;
         if (bl) {
-            this.g.a(n2);
-            this.g.b(0);
+            this.mReader.a(n2);
+            this.mReader.b(0);
             bl2 = true;
         }
         return bl2;
@@ -1205,13 +842,13 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
 
             @Override
             public void a(n var1) {
-                 ReaderActivity.a(ReaderActivity.this, var1);
-                if (ReaderActivity.g(ReaderActivity.this) == 2 && var1 != null) {
+                ReaderActivity.a(ReaderActivity.this, var1);
+                if (ReaderActivity.this.M == 2 && var1 != null) {
                     Object[] arrobject = var1.d();
                     if (arrobject != null) {
-                        ReaderActivity.a(ReaderActivity.this, (String[]) arrobject[0]);
-                        ReaderActivity.a(ReaderActivity.this, (LinkedList<Integer>) arrobject[1]);
-                        ReaderActivity.c(ReaderActivity.this, false);
+                        ReaderActivity.this.Y = (String[]) arrobject[0];
+                        ReaderActivity.this.aa = (LinkedList<Integer>) arrobject[1];
+                        ReaderActivity.this.a(false);
                     }
                 }
             }
@@ -1220,7 +857,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
 
     private void o() {
         this.M = 0;
-        this.m.setReadMode(this.M);
+        this.mMainView.setReadMode(this.M);
         this.H();
         this.W = 0;
         this.X = 0;
@@ -1235,40 +872,32 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
     }
 
     private boolean q() {
-        return 5 == this.L;
-    }
-
-    private void r() {
-        if (this.G) {
-            this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-        } else {
-            this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-        }
+        return 5 == this.mReadMode;
     }
 
     private void s() {
-        this.g.a(new Reader.ae() {
+        this.mReader.a(new Reader.ae() {
             @Override
             public void a() {
-                ReaderActivity.N(ReaderActivity.this);
+                ReaderActivity.this.mLoadingView.a();
             }
 
             @Override
             public void b() {
-                if (ReaderActivity.O(ReaderActivity.this)) {
-                    ReaderActivity.P(ReaderActivity.this);
+                if (ReaderActivity.this.mIsShowToc) {
+                    ReaderActivity.this.mLoadingView.b();
                 }
             }
         });
-        this.g.b(new Reader.ae() {
+        this.mReader.b(new Reader.ae() {
             @Override
             public void a() {
-                ReaderActivity.N(ReaderActivity.this);
+                ReaderActivity.this.mLoadingView.a();
             }
 
             @Override
             public void b() {
-                ReaderActivity.P(ReaderActivity.this);
+                ReaderActivity.this.mLoadingView.b();
             }
         });
         this.t();
@@ -1276,28 +905,28 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
 
     private void t() {
         boolean bl = true;
-        if (!this.I) {
+        if (!this.mIsShowToc) {
             bl = !this.getIntent().getBooleanExtra("extra_force_online", false);
         }
-        this.g.a(new Reader.ad() {
+        this.mReader.a(new Reader.ad() {
             @Override
             public void a() {
-                ReaderActivity.d(ReaderActivity.this, false);
-                ReaderActivity.Q(ReaderActivity.this);
+                ReaderActivity.this.mTocDisable = false;
+                ReaderActivity.this.B();
             }
 
             @Override
             public void b() {
-                ReaderActivity.d(ReaderActivity.this, true);
-                ReaderActivity.P(ReaderActivity.this);
-                ReaderActivity.R(ReaderActivity.this);
-                ReaderActivity.f(ReaderActivity.this, -4);
+                ReaderActivity.this.mTocDisable = true;
+                ReaderActivity.this.mLoadingView.b();
+                ReaderActivity.this.u();
+                ReaderActivity.this.b(-4);
             }
         }, bl);
     }
 
     private void u() {
-        this.m.setAdapter(new PagerAdapter() {
+        this.mMainView.setAdapter(new PagerAdapter() {
             @Override
             public int getCount() {
                 return 1;
@@ -1305,7 +934,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
 
             @Override
             public Object instantiateItem(ViewGroup container, int position) {
-                o o2 = ReaderActivity.i(ReaderActivity.this)[position];
+                ReaderPageManager o2 = ReaderActivity.this.b[position];
                 container.addView(o2.i());
                 return o2.i();
             }
@@ -1320,11 +949,11 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
                 return view == object;
             }
         });
-        this.m.setOnClickListener(new View.OnClickListener() {
+        this.mMainView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if ((int) v.getTag() == 0) {
-                    ReaderActivity.W(ReaderActivity.this);
+                    ReaderActivity.this.F();
                 }
             }
         });
@@ -1348,24 +977,24 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
                 this.c(n2.l());
             }
         } else {
-            final o o2 = this.b[0];
-            o o3 = this.b[1];
-            final o o4 = this.b[2];
+            final ReaderPageManager o2 = this.b[0];
+            ReaderPageManager o3 = this.b[1];
+            final ReaderPageManager o4 = this.b[2];
             n n4 = o2.j();
             n n5 = o3.j();
             n n6 = o4.j();
-            if (this.n == 2 && n6 != null) {
+            if (this.mSelectedPageIndex == 2 && n6 != null) {
                 if (!n6.e() && !this.w()) {
-                    final int n7 = this.g.f();
-                    this.O.a();
-                    this.g.setaf(new Reader.af() {
+                    final int n7 = this.mReader.f();
+                    this.mLoadingView.a();
+                    this.mReader.setaf(new Reader.af() {
                         @Override
                         public void a() {
-                            ReaderActivity.P(ReaderActivity.this);
-                            ChapterLink[] arrchapterLink = ReaderActivity.Y(ReaderActivity.this).d();
+                            ReaderActivity.this.mLoadingView.b();
+                            ChapterLink[] arrchapterLink = ReaderActivity.this.mReader.d();
                             if (arrchapterLink == null) return;
                             if (n7 < arrchapterLink.length) {
-                                ReaderActivity.h(ReaderActivity.this, arrchapterLink.length);
+                                ReaderActivity.this.c(arrchapterLink.length);
                                 return;
                             }
                             ReaderActivity.this.toggle();
@@ -1373,12 +1002,12 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
 
                         @Override
                         public void b() {
-                            ReaderActivity.P(ReaderActivity.this);
+                            ReaderActivity.this.mLoadingView.b();
                         }
                     });
                 } else {
                     o3.a(n6, true);
-                    this.m.setCurrentItem(1, false);
+                    this.mMainView.setCurrentItem(1, false);
                     o2.a(n5);
                     n6.a(new e<n>() {
 
@@ -1393,7 +1022,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
                         this.M();
                     } else if (this.M == 2) {
                         if (this.aa.size() != 0) {
-                            this.b[this.n].a(0, 1 + n6.c().length());
+                            this.b[this.mSelectedPageIndex].a(0, 1 + n6.c().length());
                         } else {
                             Object[] arrobject = n6.d();
                             if (arrobject != null) {
@@ -1405,9 +1034,9 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
                     }
                 }
             } else {
-                if (this.n == 0 && n4 != null && n4.f()) {
+                if (this.mSelectedPageIndex == 0 && n4 != null && n4.f()) {
                     o3.a(n4, true);
-                    this.m.setCurrentItem(1, false);
+                    this.mMainView.setCurrentItem(1, false);
                     o4.a(n5);
                     n4.b(new e<n>() {
                         @Override
@@ -1417,12 +1046,12 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
                     });
                     this.x();
                     this.a(n2);
-                } else if (this.n == 1) {
+                } else if (this.mSelectedPageIndex == 1) {
                     if (this.M == 1) {
                         this.M();
                     } else if (this.M == 2) {
                         if (this.aa.size() != 0) {
-                            this.b[this.n].a(0, 1 + n5.c().length());
+                            this.b[this.mSelectedPageIndex].a(0, 1 + n5.c().length());
                         } else {
                             Object[] arrobject = n5.d();
                             if (arrobject != null) {
@@ -1438,7 +1067,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
     }
 
     private boolean w() {
-        BaseAsyncTask<String, Void, Boolean> ag2 = this.g.b();
+        BaseAsyncTask<String, Void, Boolean> ag2 = this.mReader.b();
         return ag2 == null || ag2.getStatus() == AsyncTask.Status.FINISHED;
     }
 
@@ -1447,7 +1076,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
         if (n2 == null) {
             return;
         }
-        this.g.a(n2.l(), n2.m());
+        this.mReader.a(n2.l(), n2.m());
     }
 
     /*
@@ -1463,9 +1092,9 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
                 if (!n2.e() && this.w()) {
                     this.toggle();
                 } else if (!this.i.c()) {
-                    this.m.setCurrentItem(1 + this.n, false);
+                    this.mMainView.setCurrentItem(1 + this.mSelectedPageIndex, false);
                     this.v();
-                } else if (!this.m.a(1 + this.n)) {
+                } else if (!this.mMainView.a(1 + this.mSelectedPageIndex)) {
                     this.v();
                 }
             }
@@ -1488,17 +1117,17 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
                 return;
             }
             if (this.i.c()) {
-                this.m.a(-1 + this.n);
+                this.mMainView.a(-1 + this.mSelectedPageIndex);
                 return;
             }
         }
-        this.m.setCurrentItem(-1 + this.n, false);
+        this.mMainView.setCurrentItem(-1 + this.mSelectedPageIndex, false);
         this.v();
     }
 
     public final void a() {
         this.t.c();
-        this.T.c();
+        this.mReaderBodyTV.c();
     }
 
     @Deprecated
@@ -1515,13 +1144,13 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
             textView.setText(String.valueOf(n2));
             return;
         }
-        this.Q = 0;
+        this.mNeedDownloadCount = 0;
         textView.setVisibility(View.GONE);
     }
 
     public final void b() {
         this.t.d();
-        this.T.d();
+        this.mReaderBodyTV.d();
     }
 
     public final void c() {
@@ -1535,13 +1164,13 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
     public final void e() {
         this.W = 0;
         this.X = 0;
-        for (com.clilystudio.netbook.reader.o anArro : this.b) {
+        for (ReaderPageManager anArro : this.b) {
             anArro.a(-1, -1);
         }
     }
 
     public final String f() {
-        return this.e;
+        return this.mTocId;
     }
 
     public final void g() {
@@ -1555,8 +1184,8 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
     }
 
     public final String h() {
-        if (this.g != null) {
-            return this.g.i();
+        if (this.mReader != null) {
+            return this.mReader.i();
         }
         return null;
     }
@@ -1566,28 +1195,22 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
      */
     public final void i() {
         this.P();
-        String string = this.g != null && this.g.i() != null ? this.g.i() : this.f;
-        BookInfoUtil.source = string;
-        this.startActivity(ReaderMixActivity.a(this, this.c, this.d, string));
+        String source = this.mReader != null && this.mReader.i() != null ? this.mReader.i() : this.mSourceHost;
+        BookInfoUtil.source = source;
+        this.startActivity(ReaderMixActivity.a(this, this.mBookId, this.mBookTitle, source));
         this.overridePendingTransition(R.anim.mode_list_enter_in, R.anim.mode_list_enter_out);
     }
 
     public final boolean j() {
-        return this.b.length > this.n && this.b[this.n].f();
-    }
-
-    public final void k() {
-        for (com.clilystudio.netbook.reader.o anArro : this.b) {
-            anArro.h();
-        }
+        return this.b.length > this.mSelectedPageIndex && this.b[this.mSelectedPageIndex].f();
     }
 
     public final String l() {
-        return this.c;
+        return this.mBookId;
     }
 
     public final boolean m() {
-        return this.N;
+        return this.mHasOtherSource;
     }
 
     @Override
@@ -1596,7 +1219,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
         this.i.a();
         if (this.j != null) {
             this.J();
-            this.h.a(this.F);
+            this.mReaderStyle.a(this.mIsFullScreen);
             this.g();
         }
     }
@@ -1606,7 +1229,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
      */
     @Override
     public void onBackPressed() {
-        if (this.g.m()) {
+        if (this.mReader.m()) {
             super.onBackPressed();
         } else {
             new BaseDialog.Builder(this).setTitle(R.string.reader_add_book_title).setMessage(R.string.add_book_hint)
@@ -1631,22 +1254,22 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
 
     @Override
     public void onClick(View view) {
-        if (this.S != null) {
-            this.S.dismiss();
+        if (this.mPopWindow != null) {
+            this.mPopWindow.dismiss();
         }
         switch (view.getId()) {
             case R.id.menu_item_1:
                 this.O();
                 break;
             case R.id.menu_item_2:
-                this.startActivity(BookInfoActivity.a(this, this.c));
+                this.startActivity(BookInfoActivity.a(this, this.mBookId));
                 break;
         }
     }
 
     @Subscribe
     public void onConvertChanged(ConvertChangedEvent j2) {
-        this.h.b();
+        this.mReaderStyle.b();
     }
 
     /*
@@ -1657,99 +1280,101 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
     @Override
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        this.getWindow().addFlags(256);
-        this.getWindow().addFlags(512);
-        this.G = com.clilystudio.netbook.hpay100.a.a.l(this, "reader_orientation");
-        this.r();
+        this.getWindow().addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN);
+        this.getWindow().addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
+        this.mIsPortrait = PreferenceManager.getDefaultSharedPreferences(this).getBoolean("reader_orientation", true);
+        if (this.mIsPortrait) {
+            this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        } else {
+            this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        }
         this.setContentView(R.layout.activity_reader);
         BusProvider.getInstance().register(this);
-        Intent intent = this.getIntent();
-        this.c = this.a("BOOK_ID");
-        this.d = this.a("BOOK_TITLE");
-        this.f = this.a("SOURCE_HOST");
-        this.I = intent.getBooleanExtra("IS_SHOW_TOC", false);
-        String string = this.a("TOC_ID");
-        if ("MIX_TOC_ID".equals(string)) {
-            string = "MIX_TOC_ID" + this.c;
+        Intent intent = getIntent();
+        this.mBookId = intent.getStringExtra("BOOK_ID");
+        this.mBookTitle = intent.getStringExtra("BOOK_TITLE");
+        this.mSourceHost = intent.getStringExtra("SOURCE_HOST");
+        this.mIsShowToc = intent.getBooleanExtra("IS_SHOW_TOC", false);
+        String tocId = intent.getStringExtra("TOC_ID");
+        if ("MIX_TOC_ID".equals(tocId)) {
+            tocId = "MIX_TOC_ID" + this.mBookId;
         }
-        this.e = string;
-        BookReadRecord bookReadRecord = BookReadRecord.get(this.c);
-        this.L = bookReadRecord != null ? bookReadRecord.getReadMode() : MyApplication.getInstance().getReadMode();
-        this.N = intent.getBooleanExtra("HAS_OTHER_SOURCES", true);
-        BookInfoUtil.bookId = this.c;
-        BookInfoUtil.title = this.d;
-        BookInfoUtil.source = this.f;
-        BookInfoUtil.tocId = this.e;
-        BookInfoUtil.readMode = this.L;
-        this.g = new Reader(this.c, this.e, this.d, this.L);
-        this.g.a(this.getIntent().getStringExtra("SOURCE_ID"));
-        this.g.a((Map<String, String>) this.getIntent().getSerializableExtra("CHAPTERS_KEY"));
+        this.mTocId = tocId;
+        BookReadRecord bookReadRecord = BookReadRecord.get(this.mBookId);
+        this.mReadMode = bookReadRecord != null ? bookReadRecord.getReadMode() : MyApplication.getInstance().getReadMode();
+        this.mHasOtherSource = intent.getBooleanExtra("HAS_OTHER_SOURCES", true);
+        BookInfoUtil.bookId = this.mBookId;
+        BookInfoUtil.title = this.mBookTitle;
+        BookInfoUtil.source = this.mSourceHost;
+        BookInfoUtil.tocId = this.mTocId;
+        BookInfoUtil.readMode = this.mReadMode;
+        this.mReader = new Reader(this.mBookId, this.mTocId, this.mBookTitle, this.mReadMode);
+        this.mReader.setSourceId(intent.getStringExtra("SOURCE_ID"));
+        this.mReader.setChaptersKey((Map<String, String>) intent.getSerializableExtra("CHAPTERS_KEY"));
         if (bundle != null) {
-            this.n = bundle.getInt("SaveSelectedPageIndex", 0);
-            this.H = bundle.getBoolean("SaveChangeOrientation");
-            this.J = bundle.getBoolean("SaveTocDisable");
-            this.K = bundle.getBoolean("SaveModeDisable");
+            this.mSelectedPageIndex = bundle.getInt("SaveSelectedPageIndex", 0);
+            this.mChangeOrientation = bundle.getBoolean("SaveChangeOrientation");
+            this.mTocDisable = bundle.getBoolean("SaveTocDisable");
+            this.mModeDisable = bundle.getBoolean("SaveModeDisable");
         }
-        this.Q();
+        loadChapterList();
         FragmentTransaction fragmentTransaction = this.getSupportFragmentManager().beginTransaction();
-        this.r_fragment = ReaderMenuFragment.a(this.c, this.d);
-        fragmentTransaction.replace(R.id.menu_frame, this.r_fragment);
-        try {
-            fragmentTransaction.commitAllowingStateLoss();
-        } catch (IllegalStateException var8_16) {
-            var8_16.printStackTrace();
-        }
+        this.mReaderMenuFragment = getReaderMenuFragment(this.mBookId, this.mBookTitle);
+        fragmentTransaction.replace(R.id.menu_frame, this.mReaderMenuFragment);
+        fragmentTransaction.commitAllowingStateLoss();
         SlidingMenu slidingMenu = this.getSlidingMenu();
-        slidingMenu.setMode(1);
+        slidingMenu.setMode(SlidingMenu.RIGHT);
         slidingMenu.setShadowWidthRes(R.dimen.shadow_width_app_recommend);
         slidingMenu.setShadowDrawable(R.drawable.shadowright);
         slidingMenu.setBehindOffsetRes(R.dimen.slidingmenu_offset_reader);
         slidingMenu.setFadeDegree(0.35f);
         slidingMenu.setBehindScrollScale(0.0f);
-        slidingMenu.setTouchModeAbove(1);
+        slidingMenu.setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
         slidingMenu.setSlidingEnabled(false);
         slidingMenu.setOnOpenedListener(new SlidingMenu.OnOpenedListener() {
             @Override
             public void onOpened() {
-                ReaderActivity.a(ReaderActivity.this);
-                ReaderActivity.this.a(ReaderActivity.this.Q);
+                ReaderActivity.this.G();
+                ReaderActivity.this.a(ReaderActivity.this.mNeedDownloadCount);
             }
         });
-        this.m = (PagerWidget) this.findViewById(R.id.main_view);
+        this.mMainView = (PagerWidget) this.findViewById(R.id.main_view);
         this.r = (ReaderActionBar) this.findViewById(R.id.bottom_action_bar);
         this.s = (SettingWidget) this.findViewById(R.id.setting_widget);
         this.t = (AutoReaderSetWidget) this.findViewById(R.id.auto_reader_setting);
-        this.B = this.findViewById(R.id.reader_download_pro);
-        this.C = (TextView) this.findViewById(R.id.reader_download_pro_current);
-        this.T = (AutoReaderTextView) this.findViewById(R.id.tv_auto_reader_body);
-        this.U = this.findViewById(R.id.view_auto_reader_shadow);
-        this.h = new ReaderStyle(this);
-        this.O = (ThemeLoadingView) this.findViewById(R.id.reader_content_loading);
-        this.O.setVisibility(View.GONE);
-        this.O.a(this.h.h());
+        this.mDownloadProgressView = this.findViewById(R.id.reader_download_pro);
+        this.mmDownloadProgressCurrentTV = (TextView) this.findViewById(R.id.reader_download_pro_current);
+        this.mReaderBodyTV = (AutoReaderTextView) this.findViewById(R.id.tv_auto_reader_body);
+        this.mShadowView = this.findViewById(R.id.view_auto_reader_shadow);
+        this.mReaderStyle = new ReaderStyle(this);
+        this.mLoadingView = (ThemeLoadingView) this.findViewById(R.id.reader_content_loading);
+        this.mLoadingView.setVisibility(View.GONE);
+        this.mLoadingView.a(this.mReaderStyle.h());
         this.i = new bH(this);
-        this.h.a(new ReaderStyle.cc() {
+        this.mReaderStyle.a(new ReaderStyle.cc() {
             @Override
             public void a() {
-                for (o o2 : ReaderActivity.i(ReaderActivity.this)) {
+                for (ReaderPageManager o2 : ReaderActivity.this.b) {
                     if (o2 != null) {
                         o2.a();
                     }
                 }
-                ReaderActivity.t(ReaderActivity.this);
+                ReaderActivity.this.mReaderBodyTV.setHeight(ReaderActivity.this.mReaderStyle.e);
+                ReaderActivity.this.mReaderBodyTV.setTextSize(0, ReaderActivity.this.mReaderStyle.textSize);
+                ReaderActivity.this.mReaderBodyTV.setLineSpacing(ReaderActivity.this.mReaderStyle.lineSpacing, 1.0f);
                 ReaderActivity.this.g();
             }
         });
-        this.h.a(new ReaderStyle.cb() {
+        this.mReaderStyle.a(new ReaderStyle.cb() {
             @Override
             public void a() {
                 ReaderActivity.this.g();
             }
         });
-        this.h.a(new ReaderStyle.ce() {
+        this.mReaderStyle.a(new ReaderStyle.ce() {
             @Override
             public void a() {
-                for (o o2 : ReaderActivity.i(ReaderActivity.this)) {
+                for (ReaderPageManager o2 : ReaderActivity.this.b) {
                     if (o2 != null) {
                         o2.b();
                     }
@@ -1757,16 +1382,16 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
                 ReaderActivity.u(ReaderActivity.this);
             }
         });
-        this.h.a(new ReaderStyle.ca() {
+        this.mReaderStyle.a(new ReaderStyle.ca() {
             @Override
             public void a() {
-                ReaderActivity.v(ReaderActivity.this);
+                ReaderActivity.this.R();
             }
         });
-        this.h.a(new ReaderStyle.cd() {
+        this.mReaderStyle.a(new ReaderStyle.cd() {
             @Override
             public void a() {
-                for (o o2 : ReaderActivity.i(ReaderActivity.this)) {
+                for (ReaderPageManager o2 : ReaderActivity.this.b) {
                     if (o2 == null) {
                         o2.c();
                     }
@@ -1775,49 +1400,62 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
             }
         });
         this.R();
-        this.T.setTextColor(this.h.g);
-        this.T.setHeight(this.h.e);
-        this.T.setTextSize(0, this.h.a);
-        this.T.setLineSpacing(this.h.b, 1.0f);
-        if (this.h.h == R.drawable.reader_background_brown_big_img) {
-            this.T.setBackgroundResource(R.drawable.reader_background_brown_auto_img);
+        this.mReaderBodyTV.setTextColor(this.mReaderStyle.g);
+        this.mReaderBodyTV.setHeight(this.mReaderStyle.e);
+        this.mReaderBodyTV.setTextSize(0, this.mReaderStyle.textSize);
+        this.mReaderBodyTV.setLineSpacing(this.mReaderStyle.lineSpacing, 1.0f);
+        if (this.mReaderStyle.h == R.drawable.reader_background_brown_big_img) {
+            this.mReaderBodyTV.setBackgroundResource(R.drawable.reader_background_brown_auto_img);
         } else {
-            this.T.setBackgroundResource(this.h.h);
+            this.mReaderBodyTV.setBackgroundResource(this.mReaderStyle.h);
         }
-        boolean bl2 = this.L == 5 || this.L == 10 || com.clilystudio.netbook.hpay100.a.a.h(this.L) || this.L == 9;
+        boolean bl2 = this.mReadMode == 5 || this.mReadMode == 10 || com.clilystudio.netbook.hpay100.a.a.h(this.mReadMode) || this.mReadMode == 9;
         View view = this.findViewById(R.id.reader_ab_read_mode);
         view.setVisibility(bl2 ? View.VISIBLE : View.GONE);
-        this.r.setReaderStyle(this.h);
-        this.r.b(this.G);
+        this.r.setReaderStyle(this.mReaderStyle);
+        this.r.b(this.mIsPortrait);
         this.r.setOnBtnClickListener(new ReaderActionBar.OnBtnClickListener() {
             @Override
             public void a(int n2) {
                 switch (n2) {
                     case R.id.read_opt_setting:
-                        SettingWidget settingWidget = ReaderActivity.w(ReaderActivity.this);
+                        SettingWidget settingWidget = ReaderActivity.this.s;
                         boolean bl = !ReaderActivity.this.j();
                         settingWidget.setReadOptionEnable(bl);
-                        ReaderActivity.w(ReaderActivity.this).a();
+                        ReaderActivity.this.s.a();
                         break;
                     case R.id.read_opt_toc:
-                        ReaderActivity.w(ReaderActivity.this).setVisibility(View.GONE);
-                        ReaderActivity.x(ReaderActivity.this);
+                        ReaderActivity.this.s.setVisibility(View.GONE);
+                        if (ReaderActivity.this.mTocDisable || ReaderActivity.this.mModeDisable) {
+                            ToastUtil.showShortToast(ReaderActivity.this, "目录不可用");
+                            return;
+                        }
+                        ReaderActivity.this.D();
                         break;
                     case R.id.reader_oper_back:
-                        ReaderActivity.w(ReaderActivity.this).setVisibility(View.GONE);
+                        ReaderActivity.this.s.setVisibility(View.GONE);
                         ReaderActivity.this.onBackPressed();
                         break;
                     case R.id.reader_ab_chapter_url_view:
-                        ReaderActivity.w(ReaderActivity.this).setVisibility(View.GONE);
-                        ReaderActivity.y(ReaderActivity.this);
+                        ReaderActivity.this.s.setVisibility(View.GONE);
+                        BaseDialog.Builder h2 = new BaseDialog.Builder(ReaderActivity.this);
+                        h2.setMessage("是否使用原网页阅读？");
+                        h2.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+                                ReaderActivity.ag(ReaderActivity.this);
+                            }
+                        }).setNegativeButton(R.string.cancel, null).show();
                         break;
                     case R.id.reader_ab_read_mode:
-                        ReaderActivity.w(ReaderActivity.this).setVisibility(View.GONE);
+                        ReaderActivity.this.s.setVisibility(View.GONE);
                         ReaderActivity.this.i();
                         break;
                     case R.id.reader_ab_more:
-                        ReaderActivity.w(ReaderActivity.this).setVisibility(View.GONE);
-                        View view = ReaderActivity.A(ReaderActivity.this).findViewById(R.id.reader_ab_more);
+                        ReaderActivity.this.s.setVisibility(View.GONE);
+                        View view = ReaderActivity.this.r.findViewById(R.id.reader_ab_more);
                         if (com.clilystudio.netbook.hpay100.a.a.i()) {
                             ReaderActivity.a(ReaderActivity.this, view);
                         } else {
@@ -1825,18 +1463,24 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
                         }
                         break;
                     case R.id.read_opt_orientation:
-                        ReaderActivity.w(ReaderActivity.this).setVisibility(View.GONE);
-                        ReaderActivity.b(ReaderActivity.this, true);
-                        ReaderActivity.B(ReaderActivity.this);
+                        ReaderActivity.this.s.setVisibility(View.GONE);
+                        ReaderActivity.this.mChangeOrientation = true;
+                        mIsPortrait = !mIsPortrait;
+                        if (mIsPortrait) {
+                            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+                        } else {
+                            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+                        }
+                        com.clilystudio.netbook.hpay100.a.a.b(ReaderActivity.this, "reader_orientation", mIsPortrait);
                         break;
                     case R.id.reader_download:
-                        ReaderActivity.w(ReaderActivity.this).setVisibility(View.GONE);
+                        ReaderActivity.this.s.setVisibility(View.GONE);
                         ReaderActivity.C(ReaderActivity.this);
                         break;
                 }
             }
         });
-        this.s.setReaderStyle(this.h, this.r);
+        this.s.setReaderStyle(this.mReaderStyle, this.r);
         this.s.a(new SettingWidget.db() {
             @Override
             public void a() {
@@ -1846,26 +1490,26 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
         this.s.a(new SettingWidget.dc() {
             @Override
             public void a() {
-                ReaderActivity.f(ReaderActivity.this);
-                ReaderActivity.a(ReaderActivity.this, 1);
-                ReaderActivity.h(ReaderActivity.this).setReadMode(ReaderActivity.g(ReaderActivity.this));
-                ReaderActivity.k(ReaderActivity.this).setTotalHeight(ReaderActivity.i(ReaderActivity.this)[ReaderActivity.j(ReaderActivity.this)].d());
-                if (ReaderActivity.l(ReaderActivity.this).i()) {
-                    ReaderActivity.k(ReaderActivity.this).setText(ReaderActivity.m(ReaderActivity.this).a(ReaderActivity.this));
+                ReaderActivity.this.H();
+                ReaderActivity.this.M = 1;
+                ReaderActivity.this.mMainView.setReadMode(ReaderActivity.this.M);
+                ReaderActivity.this.mReaderBodyTV.setTotalHeight(ReaderActivity.this.b[ReaderActivity.this.mSelectedPageIndex].d());
+                if (ReaderActivity.this.mReaderStyle.i()) {
+                    ReaderActivity.this.mReaderBodyTV.setText(ReaderActivity.this.A().a(ReaderActivity.this));
                 } else {
-                    ReaderActivity.k(ReaderActivity.this).setText(ReaderActivity.m(ReaderActivity.this).c());
+                    ReaderActivity.this.mReaderBodyTV.setText(ReaderActivity.this.A().c());
                 }
-                ReaderActivity.k(ReaderActivity.this).f();
-                ReaderActivity.n(ReaderActivity.this);
+                ReaderActivity.this.mReaderBodyTV.f();
+                ReaderActivity.this.N();
 
             }
         });
         this.t.setOptionClickListener(this);
-        this.T.setOnPageTurning(this);
-        this.m.setAutoReaderTextView(this.T);
-        this.j = new K(this.g, this.h);
+        this.mReaderBodyTV.setOnPageTurning(this);
+        this.mMainView.setAutoReaderTextView(this.mReaderBodyTV);
+        this.j = new ReaderPageTransformer(this.mReader, this.mReaderStyle);
         this.C();
-        this.m.setAdapter(new PagerAdapter() {
+        this.mMainView.setAdapter(new PagerAdapter() {
             @Override
             public int getCount() {
                 return 3;
@@ -1873,7 +1517,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
 
             @Override
             public Object instantiateItem(ViewGroup container, int position) {
-                o o2 = ReaderActivity.i(ReaderActivity.this)[position];
+                ReaderPageManager o2 = ReaderActivity.this.b[position];
                 container.addView(o2.i());
                 return o2.i();
             }
@@ -1898,11 +1542,11 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
             });
         }
         this.J();
-        if (this.H) {
-            this.I = false;
+        if (this.mChangeOrientation) {
+            this.mIsShowToc = false;
             Reader reader = MyApplication.getInstance().getReader();
             if (reader != null) {
-                this.g = reader;
+                this.mReader = reader;
                 this.B();
             } else {
                 this.s();
@@ -1922,23 +1566,23 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
             protected void onPostExecute(TopicCount topicCount) {
                 super.onPostExecute(topicCount);
                 if (topicCount != null && topicCount.isOk()) {
-                    ReaderActivity.i(ReaderActivity.this, topicCount.getCount());
-                    ReaderActivity.this.Q = ReaderActivity.this.P - BookTopicEnterRecord.get(ReaderActivity.this.c).getVisitCount();
-                    if (ReaderActivity.this.Q > 0) {
-                        ReaderActivity.A(ReaderActivity.this).f(true);
+                    ReaderActivity.this.mTocCount = topicCount.getCount();
+                    ReaderActivity.this.mNeedDownloadCount = ReaderActivity.this.mTocCount - BookTopicEnterRecord.get(ReaderActivity.this.mBookId).getVisitCount();
+                    if (ReaderActivity.this.mNeedDownloadCount > 0) {
+                        ReaderActivity.this.r.f(true);
                     } else {
-                        ReaderActivity.A(ReaderActivity.this).f(false);
+                        ReaderActivity.this.r.f(false);
                     }
                 }
             }
         };
-        bq2.b(this.c);
+        bq2.b(this.mBookId);
         if (com.clilystudio.netbook.am.getAccount() != null) {
             new BaseAsyncTask<Void, Void, ChapterKeysRoot>() {
                 @Override
                 protected ChapterKeysRoot doInBackground(Void... params) {
                     ApiServiceProvider.getInstance();
-                    return ApiServiceProvider.getApiService().g(am.getAccount().getToken(), ReaderActivity.M(ReaderActivity.this));
+                    return ApiServiceProvider.getApiService().g(am.getAccount().getToken(), ReaderActivity.this.mBookId);
                 }
 
                 @Override
@@ -1949,14 +1593,14 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
                         for (ChapterKeysRoot.ChapterKey chapterKey : chapterKeysRoot.getKeys()) {
                             hashMap.put(chapterKey.get_id(), chapterKey.getKey());
                         }
-                        com.clilystudio.netbook.hpay100.a.a.a(ReaderActivity.M(ReaderActivity.this), hashMap);
+                        com.clilystudio.netbook.hpay100.a.a.a(ReaderActivity.this.mBookId, hashMap);
                     } else {
-                        hashMap = com.clilystudio.netbook.hpay100.a.a.M(ReaderActivity.M(ReaderActivity.this));
+                        hashMap = com.clilystudio.netbook.hpay100.a.a.M(ReaderActivity.this.mBookId);
                         if (hashMap == null) {
                             hashMap = new HashMap<>();
                         }
                     }
-                    ReaderActivity.Y(ReaderActivity.this).a(hashMap);
+                    ReaderActivity.this.mReader.setChaptersKey(hashMap);
                 }
             }.b();
         }
@@ -1977,7 +1621,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
         }
         this.p();
         BusProvider.getInstance().unregister(this);
-        o[] arro = this.b;
+        ReaderPageManager[] arro = this.b;
         int n2 = arro.length;
         int n3 = 0;
         do {
@@ -1985,7 +1629,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
                 super.onDestroy();
                 return;
             }
-            o o2 = arro[n3];
+            ReaderPageManager o2 = arro[n3];
             BusProvider.getInstance().unregister(o2);
             ++n3;
         } while (true);
@@ -2036,7 +1680,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
             this.finish();
             return;
         }
-        this.K = true;
+        this.mModeDisable = true;
         this.u();
         this.b(-5);
     }
@@ -2051,19 +1695,19 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
         BookReadRecord bookReadRecord;
         int n2 = 1;
         super.onPause();
-        if (this.g != null) {
-            this.g.c();
+        if (this.mReader != null) {
+            this.mReader.c();
         }
         if (com.clilystudio.netbook.hpay100.a.a.a(this, "key_shelf_sort", n2) != n2) {
             n2 = 0;
         }
-        if (n2 != 0 && (bookReadRecord = BookReadRecord.get(this.c)) != null) {
+        if (n2 != 0 && (bookReadRecord = BookReadRecord.get(this.mBookId)) != null) {
             bookReadRecord.readTime = new Date();
             bookReadRecord.save();
             BusProvider.getInstance().post(new BookReadEvent());
         }
         try {
-            LocalBroadcastManager.getInstance(this).unregisterReceiver(this.ae);
+            LocalBroadcastManager.getInstance(this).unregisterReceiver(this.mDownloadReceiver);
         } catch (IllegalArgumentException var2_3) {
             var2_3.printStackTrace();
         }
@@ -2074,7 +1718,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
         super.onResume();
         this.getWindow().addFlags(128);
         this.K();
-        LocalBroadcastManager.getInstance(this).registerReceiver(this.ae, new IntentFilter("com.clilystudio.netbook.dlReceiver"));
+        LocalBroadcastManager.getInstance(this).registerReceiver(this.mDownloadReceiver, new IntentFilter("com.clilystudio.netbook.dlReceiver"));
         this.H();
 //        if (this.M == 2 || !"".equals(a)) {
 //            this.v = false;
@@ -2084,21 +1728,30 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
     @Override
     protected void onSaveInstanceState(Bundle bundle) {
         super.onSaveInstanceState(bundle);
-        bundle.putInt("SaveSelectedPageIndex", this.n);
-        bundle.putBoolean("SaveChangeOrientation", this.H);
-        bundle.putBoolean("SaveTocDisable", this.J);
-        bundle.putBoolean("SaveModeDisable", this.K);
+        bundle.putInt("SaveSelectedPageIndex", this.mSelectedPageIndex);
+        bundle.putBoolean("SaveChangeOrientation", this.mChangeOrientation);
+        bundle.putBoolean("SaveTocDisable", this.mTocDisable);
+        bundle.putBoolean("SaveModeDisable", this.mModeDisable);
     }
 
     @Subscribe
     public void onThemeChanged(ThemeChangedEvent c2) {
-        this.O.a(c2.isNightMode());
+        this.mLoadingView.a(c2.isNightMode());
     }
 
     @Override
     public void onUserInteraction() {
         super.onUserInteraction();
         this.K();
+    }
+
+    public static ReaderMenuFragment getReaderMenuFragment(String bookId, String bookTitle) {
+        ReaderMenuFragment readerMenuFragment = new ReaderMenuFragment();
+        Bundle bundle = new Bundle();
+        bundle.putString("BOOK_ID", bookId);
+        bundle.putString("BOOK_TITLE", bookTitle);
+        readerMenuFragment.setArguments(bundle);
+        return readerMenuFragment;
     }
 
     public final class bH {

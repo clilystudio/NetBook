@@ -219,7 +219,7 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
         com.clilystudio.netbook.hpay100.a.a.a(this.x, CachePathConst.SearchHistory, "search_history.txt");
         this.a(true);
         this.g();
-        if (com.clilystudio.netbook.hpay100.a.a.t(this)) {
+        if (com.clilystudio.netbook.hpay100.a.a.isConnectedOrConnecting(this)) {
             this.a(0);
             final BaseAsyncTask<String, Void, List<BookSummary>> bR2 = new BaseAsyncTask<String, Void, List<BookSummary>>() {
 

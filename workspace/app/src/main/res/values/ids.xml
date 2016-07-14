@@ -984,7 +984,6 @@
     <item name="reader_option_screen_off_time" type="id">false</item>
     <item name="reader_option_screen_off_time_value" type="id">false</item>
     <item name="reader_option_auto_buy" type="id">false</item>
-    <item name="reader_ad_view" type="id">false</item>
     <item name="reader_ad_cover" type="id">false</item>
     <item name="reader_ad_delete" type="id">false</item>
     <item name="reader_ad_title" type="id">false</item>

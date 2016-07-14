@@ -160,10 +160,6 @@ public class a {
         b(context, "start_night_theme", new Date().getTime());
     }
 
-    public static boolean B(String string) {
-        return string.replaceAll("/", "").equals(ReaderActivity.a.replaceAll("/", ""));
-    }
-
     public static void C(Context context) {
         long l2 = a(context, "start_night_theme", 0);
         long l3 = new Date().getTime();
@@ -313,7 +309,7 @@ public class a {
      * Lifted jumps to return sites
      */
     public static File J(String string) {
-        if (!d()) {
+        if (!isMounted()) {
             return null;
         }
         File file = new File(string);
@@ -1481,7 +1477,7 @@ public class a {
     }
 
     public static boolean a(String string2, String string3, String string4, Toc toc) {
-        if (!d()) {
+        if (!isMounted()) {
             return false;
         }
         String string5 = "/ZhuiShuShenQi/Chapter" + File.separator + string2 + File.separator + string3;
@@ -1684,7 +1680,7 @@ public class a {
 
     public static Serializable b(String var0, String var1_1, String var2_2) {
         try {
-            if (var2_2 != null && d()) {
+            if (var2_2 != null && isMounted()) {
                 String var4_4 = "/ZhuiShuShenQi/Chapter" + File.separator + var0 + File.separator + var1_1;
                 File var5_5 = new File(CachePathConst.RootPath, var4_4);
                 if (var5_5.exists()) {
@@ -1843,7 +1839,6 @@ public class a {
         ArrayList<String> arrayList = new ArrayList<>();
         File[] arrfile = file.listFiles();
         if (arrfile != null) {
-            int n2 = arrfile.length;
             for (File anArrfile : arrfile) {
                 arrayList.add(anArrfile.getName());
             }
@@ -1915,7 +1910,7 @@ public class a {
         editor.apply();
     }
 
-    public static boolean d() {
+    public static boolean isMounted() {
         return "mounted".equals(Environment.getExternalStorageState());
     }
 
@@ -1961,7 +1956,7 @@ public class a {
     }
 
     public static long e() {
-        if (d()) {
+        if (isMounted()) {
             try {
                 StatFs statFs = new StatFs(Environment.getExternalStorageDirectory().getPath());
                 long l2 = (long) statFs.getBlockSize() * (long) statFs.getAvailableBlocks() / 1024;
@@ -2244,9 +2239,9 @@ public class a {
         return 255 & n2 >> 8;
     }
 
-    public static ArrayList<String> j(String string2, String string3) {
-        String string4 = "/ZhuiShuShenQi/Chapter" + File.separator + string2 + File.separator + string3;
-        return c(new File(CachePathConst.RootPath, string4));
+    public static ArrayList<String> j(String bookId, String tocId) {
+        String name = "/ZhuiShuShenQi/Chapter" + File.separator + bookId + File.separator + tocId;
+        return c(new File(CachePathConst.RootPath, name));
     }
 
     public static boolean j() {
@@ -2443,7 +2438,7 @@ public class a {
         com.xiaomi.mipush.sdk.MiPushClient.unsubscribe(MyApplication.getInstance(), string3, null);
     }
 
-    public static boolean t(Context context) {
+    public static boolean isConnectedOrConnecting(Context context) {
         ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         if (connectivityManager == null) {
             return false;
