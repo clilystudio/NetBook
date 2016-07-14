@@ -14,7 +14,7 @@ import android.widget.TextView;
 import com.clilystudio.netbook.MyApplication;
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.a_pack.BaseAsyncTask;
-import com.clilystudio.netbook.am;
+import com.clilystudio.netbook.util.am;
 import com.clilystudio.netbook.api.ApiService;
 import com.clilystudio.netbook.IntentBuilder;
 import com.clilystudio.netbook.api.ApiServiceProvider;
@@ -231,7 +231,7 @@ public class ReaderMixActivity extends BaseLoadingActivity {
             public void onClick(View v) {
                 if (!"mix".equals(ReaderMixActivity.a(ReaderMixActivity.this))) {
                     MyApplication.getInstance().setBookId(ReaderMixActivity.b(ReaderMixActivity.this));
-                    com.clilystudio.netbook.am.c(ReaderMixActivity.b(ReaderMixActivity.this), 5);
+                    am.c(ReaderMixActivity.b(ReaderMixActivity.this), 5);
                     BusProvider.getInstance().post(new ModeChangedEvent(1));
                     ReaderMixActivity.a(ReaderMixActivity.this, "MIX_TOC_ID");
                 }

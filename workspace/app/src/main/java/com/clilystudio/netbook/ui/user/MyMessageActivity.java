@@ -3,7 +3,7 @@ package com.clilystudio.netbook.ui.user;
 import android.os.Bundle;
 
 import com.clilystudio.netbook.R;
-import com.clilystudio.netbook.am;
+import com.clilystudio.netbook.util.am;
 import com.clilystudio.netbook.ui.BaseActivity;
 
 public class MyMessageActivity extends BaseActivity {

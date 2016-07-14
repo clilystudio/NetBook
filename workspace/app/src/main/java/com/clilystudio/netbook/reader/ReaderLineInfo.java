@@ -2,7 +2,7 @@ package com.clilystudio.netbook.reader;
 
 import android.content.Context;
 
-import com.clilystudio.netbook.am;
+import com.clilystudio.netbook.util.am;
 import com.clilystudio.netbook.util.CipherUtil;
 
 import java.util.LinkedList;

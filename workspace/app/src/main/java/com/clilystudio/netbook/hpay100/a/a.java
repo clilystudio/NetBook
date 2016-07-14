@@ -43,7 +43,7 @@ import android.widget.RemoteViews;
 import com.clilystudio.netbook.CachePathConst;
 import com.clilystudio.netbook.MyApplication;
 import com.clilystudio.netbook.R;
-import com.clilystudio.netbook.am;
+import com.clilystudio.netbook.util.am;
 import com.clilystudio.netbook.db.BookReadRecord;
 import com.clilystudio.netbook.db.BookSyncRecord;
 import com.clilystudio.netbook.db.SourceRecord;
@@ -54,7 +54,6 @@ import com.clilystudio.netbook.model.Toc;
 import com.clilystudio.netbook.model.TocSource;
 import com.clilystudio.netbook.push.BookSubRecord;
 import com.clilystudio.netbook.push.BookUnSubRecord;
-import com.clilystudio.netbook.reader.ReaderActivity;
 import com.clilystudio.netbook.reader.ReaderTocDialog;
 import com.clilystudio.netbook.util.CipherUtil;
 import com.clilystudio.netbook.util.GenderIntroDialog;
@@ -1057,14 +1056,14 @@ public class a {
     }
 
     public static String getUserId(Context context) {
-        if (com.clilystudio.netbook.am.getAccount() == null) {
+        if (am.getAccount() == null) {
             String string = ((WifiManager) context.getSystemService(Context.WIFI_SERVICE)).getConnectionInfo().getMacAddress();
             if (string == null) {
                 string = "";
             }
             com.integralblue.httpresponsecache.compat.libcore.io.Base64.encode(string.getBytes());
         }
-        return com.clilystudio.netbook.am.getAccount().getUser().getId();
+        return am.getAccount().getUser().getId();
     }
 
     public static short a(byte[] arrby, int n2, ByteOrder byteOrder) {

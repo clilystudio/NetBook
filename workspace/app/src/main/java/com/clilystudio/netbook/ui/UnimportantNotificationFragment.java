@@ -1,7 +1,7 @@
 package com.clilystudio.netbook.ui;
 
 import com.clilystudio.netbook.adapter.NotificationAdapter;
-import com.clilystudio.netbook.am;
+import com.clilystudio.netbook.util.am;
 
 public class UnimportantNotificationFragment extends NotifFragment {
     @Override

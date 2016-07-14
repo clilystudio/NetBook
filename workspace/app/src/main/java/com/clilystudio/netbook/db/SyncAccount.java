@@ -1,6 +1,6 @@
 package com.clilystudio.netbook.db;
 
-import com.clilystudio.netbook.am;
+import com.clilystudio.netbook.util.am;
 
 import com.activeandroid.Model;
 import com.activeandroid.annotation.Column;

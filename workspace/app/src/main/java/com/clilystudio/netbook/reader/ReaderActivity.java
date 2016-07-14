@@ -32,7 +32,7 @@ import com.clilystudio.netbook.IntentBuilder;
 import com.clilystudio.netbook.MyApplication;
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.a_pack.BaseAsyncTask;
-import com.clilystudio.netbook.am;
+import com.clilystudio.netbook.util.am;
 import com.clilystudio.netbook.api.ApiServiceProvider;
 import com.clilystudio.netbook.db.BookReadRecord;
 import com.clilystudio.netbook.db.BookTopicEnterRecord;
@@ -200,7 +200,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
             ToastUtil.showShortToast(readerActivity, "缓存不可用");
             return;
         }
-        boolean bl = com.clilystudio.netbook.am.g(readerActivity.mBookId) == 2;
+        boolean bl = am.g(readerActivity.mBookId) == 2;
         if (bl) {
             new BaseDialog.Builder(readerActivity).setTitle(R.string.tips).setMessage(R.string.chapter_dl_doing_msg).setPositiveButton(R.string.chapter_dl_goon, new DialogInterface.OnClickListener() {
 
@@ -348,7 +348,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
     }
 
     static /* synthetic */ void ad(ReaderActivity readerActivity) {
-        if (com.clilystudio.netbook.am.f()) {
+        if (am.f()) {
             ToastUtil.showShortToast(readerActivity, readerActivity.getString(R.string.book_add_overflow));
             return;
         }
@@ -362,7 +362,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
     static /* synthetic */ void ag(ReaderActivity readerActivity) {
         CharSequence charSequence = readerActivity.r.b().getText();
         if (charSequence != null) {
-            com.clilystudio.netbook.am.a(readerActivity, charSequence.toString(), null);
+            am.a(readerActivity, charSequence.toString(), null);
         }
     }
 
@@ -379,7 +379,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
         readerActivity.mPopWindow.getContentView().setFocusable(true);
         int[] arrn = new int[2];
         view.getLocationOnScreen(arrn);
-        readerActivity.mPopWindow.showAtLocation(view, 0, arrn[0] - readerActivity.mPopWindow.getWidth() + view.getWidth(), com.clilystudio.netbook.am.l(readerActivity) + com.clilystudio.netbook.am.k(readerActivity));
+        readerActivity.mPopWindow.showAtLocation(view, 0, arrn[0] - readerActivity.mPopWindow.getWidth() + view.getWidth(), am.l(readerActivity) + am.k(readerActivity));
     }
 
     static /* synthetic */ void u(ReaderActivity readerActivity) {
@@ -1577,7 +1577,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
             }
         };
         bq2.b(this.mBookId);
-        if (com.clilystudio.netbook.am.getAccount() != null) {
+        if (am.getAccount() != null) {
             new BaseAsyncTask<Void, Void, ChapterKeysRoot>() {
                 @Override
                 protected ChapterKeysRoot doInBackground(Void... params) {

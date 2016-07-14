@@ -12,7 +12,7 @@ import android.view.Display;
 import android.view.WindowManager;
 
 import com.clilystudio.netbook.R;
-import com.clilystudio.netbook.am;
+import com.clilystudio.netbook.util.am;
 import com.clilystudio.netbook.event.BusProvider;
 import com.clilystudio.netbook.event.ThemeChangedEvent;
 

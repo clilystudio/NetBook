@@ -3,7 +3,6 @@ package com.clilystudio.netbook.util;
 import android.content.Context;
 
 import com.clilystudio.netbook.a_pack.BaseAsyncTask;
-import com.clilystudio.netbook.am;
 import com.clilystudio.netbook.api.ApiServiceProvider;
 import com.clilystudio.netbook.db.AccountInfo;
 import com.clilystudio.netbook.event.BusProvider;

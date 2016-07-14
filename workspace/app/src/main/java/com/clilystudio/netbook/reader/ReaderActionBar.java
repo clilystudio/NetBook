@@ -3,7 +3,7 @@ package com.clilystudio.netbook.reader;
 import android.content.Context;
 
 import com.clilystudio.netbook.R;
-import com.clilystudio.netbook.am;
+import com.clilystudio.netbook.util.am;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.ImageView;

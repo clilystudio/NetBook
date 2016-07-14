@@ -8,7 +8,7 @@ import android.widget.ListView;
 
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.adapter.NotificationAdapter;
-import com.clilystudio.netbook.am;
+import com.clilystudio.netbook.util.am;
 import com.clilystudio.netbook.event.BusProvider;
 import com.clilystudio.netbook.event.NotifEvent;
 import com.clilystudio.netbook.util.UserNotificationManager;

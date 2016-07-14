@@ -1,4 +1,4 @@
-package com.clilystudio.netbook;
+package com.clilystudio.netbook.util;
 
 import android.app.Activity;
 import android.app.ActivityManager;
@@ -32,13 +32,13 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 
+import com.clilystudio.netbook.MyApplication;
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.db.BookDlRecord;
 import com.clilystudio.netbook.db.BookReadRecord;
 import com.clilystudio.netbook.model.Account;
 import com.clilystudio.netbook.model.User;
 import com.clilystudio.netbook.ui.user.AuthLoginActivity;
-import com.clilystudio.netbook.util.CharacterUtil;
-import com.clilystudio.netbook.util.ToastUtil;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;

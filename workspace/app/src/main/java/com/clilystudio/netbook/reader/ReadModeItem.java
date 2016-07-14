@@ -14,6 +14,7 @@ import com.clilystudio.netbook.MyApplication;
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.event.BusProvider;
 import com.clilystudio.netbook.event.ModeChangedEvent;
+import com.clilystudio.netbook.util.am;
 
 
 public class ReadModeItem extends FrameLayout {
@@ -52,7 +53,7 @@ public class ReadModeItem extends FrameLayout {
             public void onClick(View v) {
                 if (n4 != n3) {
                     MyApplication.getInstance().setBookId(ReadModeItem.a(ReadModeItem.this));
-                    com.clilystudio.netbook.am.c(ReadModeItem.a(ReadModeItem.this), n3);
+                    am.c(ReadModeItem.a(ReadModeItem.this), n3);
                     ReadModeItem.a(ReadModeItem.this, n3);
                 }
                 ReadModeItem.b(ReadModeItem.this).finish();
