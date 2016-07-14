@@ -530,10 +530,8 @@ public class ApiService {
         return ApiService.a(this.a(HttpRequest.get(string5)), BookListRoot.class);
     }
 
-    public final ChapterRoot a(String string, String string2, int n, String string3, String string4) {
-        String string5 = am.e(string3);
-        Object[] arrobject = new Object[]{string, string2, n, string5};
-        String string6 = String.format(Locale.CHINA, "http://api.easou.com/api/bookapp/chapter.m?gid=%s&nid=%s&sort=%d&chapter_name=%s&cid=eef_", arrobject);
+    public final ChapterRoot a(String string, String string2, int sort, String chapterName, String chapterLink) {
+        String string6 = String.format(Locale.CHINA, "http://api.easou.com/api/bookapp/chapter.m?gid=%s&nid=%s&sort=%d&chapter_name=%s&cid=eef_", string, string2, sort, am.e(chapterName));
         HttpRequest httpRequest = this.b(HttpRequest.get(string6), 3);
         boolean bl = httpRequest.ok();
         int n2 = httpRequest.code();
@@ -546,7 +544,7 @@ public class ApiService {
             ChapterRoot chapterRoot = new ChapterRoot();
             String string7 = com.clilystudio.netbook.hpay100.a.a.z(esChapterRoot.getContent());
             Chapter chapter = new Chapter();
-            chapter.setLink(string4);
+            chapter.setLink(chapterLink);
             chapter.setBody(string7);
             chapterRoot.setChapter(chapter);
             return chapterRoot;

@@ -69,11 +69,11 @@ public final class f {
      * Enabled force condition propagation
      * Lifted jumps to return sites
      */
-    private ChapterRoot a(int n, String string, String string2) {
+    private ChapterRoot a(int sort, String chapterName, String chapterLink) {
         String[] arrstring = com.clilystudio.netbook.hpay100.a.a.O(this.mSourceId);
         if (arrstring == null) return null;
         try {
-            return ApiServiceProvider.getApiService().a(arrstring[0], arrstring[1], n, string, string2);
+            return ApiServiceProvider.getApiService().a(arrstring[0], arrstring[1], sort, chapterName, chapterLink);
         } catch (Exception var4_6) {
             var4_6.printStackTrace();
         }
@@ -157,8 +157,7 @@ public final class f {
      */
     private Toc b() {
         try {
-            MixTocRoot mixTocRoot;
-            MixTocRoot mixTocRoot2 = mixTocRoot = ApiServiceProvider.getApiService().f(this.mBookId);
+            MixTocRoot mixTocRoot2 = ApiServiceProvider.getApiService().f(this.mBookId);
             Toc toc = null;
             if (mixTocRoot2 == null) return toc;
             Toc toc2 = mixTocRoot2.getMixToc();
@@ -178,8 +177,7 @@ public final class f {
             if (com.clilystudio.netbook.hpay100.a.a.l()) {
                 return apiService.x(string);
             }
-            ChapterRoot chapterRoot = apiService.y(string);
-            return chapterRoot;
+            return apiService.y(string);
         } catch (Exception var2_4) {
             var2_4.printStackTrace();
             return null;
@@ -188,8 +186,7 @@ public final class f {
 
     private Toc c() {
         try {
-            Toc toc = ApiServiceProvider.getApiService().e(this.mTocId);
-            return toc;
+            return ApiServiceProvider.getApiService().e(this.mTocId);
         } catch (Exception var1_2) {
             var1_2.printStackTrace();
             return null;
