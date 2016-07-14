@@ -19,12 +19,12 @@ public class MixTocRecord extends Model {
     @Column(name = "tocId")
     private String tocId;
 
-    public static MixTocRecord create(String string, String string2, int n, int n2) {
+    public static MixTocRecord create(String bookId, String tocId, int chapterIndex, int charIndex) {
         MixTocRecord mixTocRecord = new MixTocRecord();
-        mixTocRecord.setBookId(string);
-        mixTocRecord.setTocId(string2);
-        mixTocRecord.setChapterIndex(n);
-        mixTocRecord.setCharIndex(n2);
+        mixTocRecord.setBookId(bookId);
+        mixTocRecord.setTocId(tocId);
+        mixTocRecord.setChapterIndex(chapterIndex);
+        mixTocRecord.setCharIndex(charIndex);
         mixTocRecord.save();
         return mixTocRecord;
     }

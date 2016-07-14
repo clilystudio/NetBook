@@ -401,7 +401,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
 
     private void B() {
         if (this.mChangeOrientation) {
-            this.j.a(this.mReader);
+            this.j.setReader(this.mReader);
         }
         this.mMainView.setOnPageChangeListener(new ReaderViewPager.OnPageChangeListener() {
             @Override

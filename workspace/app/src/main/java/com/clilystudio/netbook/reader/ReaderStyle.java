@@ -30,7 +30,7 @@ public final class ReaderStyle {
     public int c;
     public int d;
     public int e;
-    public int f;
+    public int width;
     public int g;
     public int h;
     public int i;
@@ -62,7 +62,7 @@ public final class ReaderStyle {
         int n = am.b(this.m).widthPixels;
         this.c = this.n.getDimensionPixelSize(R.dimen.page_horizontal_padding);
         this.d = this.n.getDimensionPixelSize(R.dimen.page_vertical_padding);
-        this.f = n - (this.c << 1);
+        this.width = n - (this.c << 1);
         this.l = this.n.getDimensionPixelSize(R.dimen.page_small_text_height);
         this.a(com.clilystudio.netbook.hpay100.a.a.l(this.m, "reader_opt_full_screen"));
         this.k();

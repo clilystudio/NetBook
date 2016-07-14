@@ -8,25 +8,21 @@ import android.text.TextPaint;
 import java.util.ArrayList;
 
 public final class K {
-    private Reader a;
-    private ReaderStyle b;
+    private Reader mReader;
+    private ReaderStyle mReaderStyle;
 
-    public K(Reader reader, ReaderStyle bZ2) {
-        this.a = reader;
-        this.b = bZ2;
-    }
-
-    static /* synthetic */ n a(K k, ReaderChapter readerChapter, int n2) {
-        return n.a(k, readerChapter, n2);
+    public K(Reader reader, ReaderStyle readerStyle) {
+        this.mReader = reader;
+        this.mReaderStyle = readerStyle;
     }
 
     private void a(int n2, final int n31, final e<n> e2, boolean bl, final int n4) {
-        this.a.a(n2, new e<ReaderChapter>(){
+        this.mReader.a(n2, new e<ReaderChapter>(){
 
             @Override
             public void a(ReaderChapter readerChapter) {
                 if (readerChapter.getStatus() != 1) {
-                    e2.a(K.a(K.this, readerChapter, n4));
+                    e2.a(n.a(K.this, readerChapter, n4));
                     return;
                 }
                 int[] arrn = K.this.a(readerChapter.getBody());
@@ -53,7 +49,7 @@ public final class K {
     }
 
     public final Reader a() {
-        return this.a;
+        return this.mReader;
     }
 
     public final void a(int n2, int n3, e<n> e2, boolean bl) {
@@ -64,12 +60,12 @@ public final class K {
         this.a(n2, -1, e2, bl, 2);
     }
 
-    public final void a(Reader reader) {
-        this.a = reader;
+    public final void setReader(Reader reader) {
+        this.mReader = reader;
     }
 
     public final void a(e<n> e2) {
-        this.a(this.a.k(), this.a.l(), e2, true, 0);
+        this.a(this.mReader.k(), this.mReader.l(), e2, true, 0);
     }
 
     public final void a(e<n> e2, int n2) {
@@ -82,20 +78,23 @@ public final class K {
         int n2;
         int n3 = 0;
         TextPaint textPaint = new TextPaint();
-        textPaint.setTextSize(this.b.textSize);
-        StaticLayout staticLayout = new StaticLayout(string, textPaint, this.b.f, Layout.Alignment.ALIGN_NORMAL, 1.0f, this.b.lineSpacing, false);
+        textPaint.setTextSize(this.mReaderStyle.textSize);
+        StaticLayout staticLayout = new StaticLayout(string, textPaint, this.mReaderStyle.width, Layout.Alignment.ALIGN_NORMAL, 1.0f, this.mReaderStyle.lineSpacing, false);
         staticLayout.draw(new Canvas());
         int n4 = staticLayout.getLineCount();
-        int n5 = this.b.e;
+        int n5 = this.mReaderStyle.e;
         ArrayList<Integer> arrayList = new ArrayList<>();
         int n6 = 0;
         do {
             int n7;
             int n8;
-            if (staticLayout.getLineBottom(n2 = staticLayout.getLineForVertical(staticLayout.getLineTop(n7 = staticLayout.getLineForVertical(n6)) + this.b.e)) - staticLayout.getLineTop(n7) > n5) {
-                --n2;
+            n7 = staticLayout.getLineForVertical(n6);
+            n2 = staticLayout.getLineForVertical(staticLayout.getLineTop(n7) + this.mReaderStyle.e);
+            if (staticLayout.getLineBottom(n2) - staticLayout.getLineTop(n7) > n5) {
+                n2--;
             }
-            if (string.substring(n8 = staticLayout.getLineStart(n7), staticLayout.getLineEnd(n2)).length() <= 0) continue;
+            n8 = staticLayout.getLineStart(n7);
+            if (string.substring(n8, staticLayout.getLineEnd(n2)).length() <= 0) continue;
             if (arrayList.isEmpty() || n8 != arrayList.get(-1 + arrayList.size())) {
                 arrayList.add(n8);
             }

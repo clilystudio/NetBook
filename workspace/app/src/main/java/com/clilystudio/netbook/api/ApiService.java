@@ -1426,8 +1426,8 @@ public class ApiService {
         return ApiService.a(httpRequest, PurchaseVipResult.class);
     }
 
-    public final LdTocRoot t(String string) {
-        String string2 = String.format(Locale.CHINA, "http://m.leidian.com/ebook/detail/index.php?c=ebook&a=chapterlist&bid=%s&total=100000", string);
+    public final LdTocRoot t(String sourceId) {
+        String string2 = String.format(Locale.CHINA, "http://m.leidian.com/ebook/detail/index.php?c=ebook&a=chapterlist&bid=%s&total=100000", sourceId);
         return ApiService.a(this.a(HttpRequest.get(string2), 8), LdTocRoot.class);
     }
 

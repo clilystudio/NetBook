@@ -31,7 +31,6 @@ import java.util.regex.Pattern;
 
 public final class f {
     private int mReadMode;
-    private ApiServiceProvider mApiServiceProvider = ApiServiceProvider.getInstance();
     private String mBookId;
     private String mTocId;
     private String mSource;
@@ -50,10 +49,6 @@ public final class f {
     public f(BookInfo bookInfo, int readMode) {
         this.mReadMode = readMode;
         this.mBookId = bookInfo.getId();
-    }
-
-    static /* synthetic */ String a(f f2) {
-        return f2.mSourceId;
     }
 
     private ChapterRoot a(int index, String leidianTK) {
@@ -203,8 +198,7 @@ public final class f {
         List<ChapterLink> list;
         int n2;
         try {
-            int n3;
-            n2 = n3 = ApiServiceProvider.getApiService().w(this.mSourceId);
+            n2 = ApiServiceProvider.getApiService().w(this.mSourceId);
             if (n2 == 0) {
                 return null;
             }
@@ -235,8 +229,7 @@ public final class f {
         SgTocChapter[] arrsgTocChapter;
         Toc toc;
         try {
-            SgTocRoot sgTocRoot;
-            SgTocRoot sgTocRoot2 = sgTocRoot = ApiServiceProvider.getApiService().s(this.mSourceId);
+            SgTocRoot sgTocRoot2 = ApiServiceProvider.getApiService().s(this.mSourceId);
             toc = null;
             if (sgTocRoot2 == null) return toc;
             SgTocChapter[] arrsgTocChapter2 = sgTocRoot2.getChapter();
@@ -290,8 +283,7 @@ public final class f {
         block6:
         {
             try {
-                LdTocRoot ldTocRoot2;
-                ldTocRoot = ldTocRoot2 = ApiServiceProvider.getApiService().t(this.mSourceId);
+                ldTocRoot = ApiServiceProvider.getApiService().t(this.mSourceId);
                 if (ldTocRoot != null && ldTocRoot.getResult() != null) break block6;
                 return null;
             } catch (Exception var1_3) {
@@ -303,9 +295,7 @@ public final class f {
             String string2 = ApiServiceProvider.getApiService().u(this.mSourceId);
             Matcher matcher = Pattern.compile("tk:'([0-9a-f]+)'").matcher(string2);
             if (!matcher.find()) return null;
-            String string3 = matcher.group(1);
-            String string4 = string3;
-            string = string4;
+            string = matcher.group(1);
             if (string == null) return null;
             arrldTocResult = ldTocRoot.getResult();
         } catch (Exception var3_9) {
@@ -334,8 +324,7 @@ public final class f {
         Toc toc;
         EsTocItem[] arresTocItem;
         try {
-            EsTocRoot esTocRoot;
-            EsTocRoot esTocRoot2 = esTocRoot = ApiServiceProvider.getApiService().v(this.mSourceId);
+            EsTocRoot esTocRoot2 = ApiServiceProvider.getApiService().v(this.mSourceId);
             toc = null;
             if (esTocRoot2 == null) return toc;
             EsTocItem[] arresTocItem2 = esTocRoot2.getItems();
@@ -384,16 +373,16 @@ public final class f {
                 break;
             }
             case 6: {
-                String string = chapterLink.getLink();
-                if (string == null) {
-                    string = null;
+                String link = chapterLink.getLink();
+                if (link == null) {
+                    link = null;
                 } else {
-                    String[] arrstring = string.split("_");
+                    String[] arrstring = link.split("_");
                     if (arrstring.length > 0) {
-                        string = arrstring[0];
+                        link = arrstring[0];
                     }
                 }
-                chapterRoot = this.b(com.clilystudio.netbook.hpay100.a.a.b(string, 0));
+                chapterRoot = this.b(com.clilystudio.netbook.hpay100.a.a.b(link, 0));
                 break;
             }
             case 7: {
