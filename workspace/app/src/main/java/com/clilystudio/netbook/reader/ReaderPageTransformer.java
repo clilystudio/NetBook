@@ -7,11 +7,11 @@ import android.text.TextPaint;
 
 import java.util.ArrayList;
 
-public final class K {
+public final class ReaderPageTransformer {
     private Reader mReader;
     private ReaderStyle mReaderStyle;
 
-    public K(Reader reader, ReaderStyle readerStyle) {
+    public ReaderPageTransformer(Reader reader, ReaderStyle readerStyle) {
         this.mReader = reader;
         this.mReaderStyle = readerStyle;
     }
@@ -22,10 +22,10 @@ public final class K {
             @Override
             public void a(ReaderChapter readerChapter) {
                 if (readerChapter.getStatus() != 1) {
-                    e2.a(n.a(K.this, readerChapter, n4));
+                    e2.a(n.a(ReaderPageTransformer.this, readerChapter, n4));
                     return;
                 }
-                int[] arrn = K.this.a(readerChapter.getBody());
+                int[] arrn = ReaderPageTransformer.this.a(readerChapter.getBody());
                 int n3 = 0;
                 if (n31 != 0) {
                     if (n31 == -1) {
@@ -43,7 +43,7 @@ public final class K {
                         } while (true);
                     }
                 }
-                e2.a(new n(K.this, readerChapter, arrn, n3));
+                e2.a(new n(ReaderPageTransformer.this, readerChapter, arrn, n3));
             }
         }, false, bl);
     }

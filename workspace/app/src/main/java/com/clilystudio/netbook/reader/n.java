@@ -8,14 +8,14 @@ import com.clilystudio.netbook.util.CipherUtil;
 import java.util.LinkedList;
 
 public final class n {
-    private final K a;
+    private final ReaderPageTransformer a;
     private final ReaderChapter mReaderChapter;
     private int[] c;
     private int d;
     private int e;
     private int f;
 
-    public n(K k, ReaderChapter readerChapter, int[] arrn, int n2) {
+    public n(ReaderPageTransformer k, ReaderChapter readerChapter, int[] arrn, int n2) {
         this.a = k;
         this.mReaderChapter = readerChapter;
         this.c = arrn;
@@ -23,7 +23,7 @@ public final class n {
         this.d = arrn[n2];
     }
 
-    public static n a(K k, ReaderChapter readerChapter, int n2) {
+    public static n a(ReaderPageTransformer k, ReaderChapter readerChapter, int n2) {
         n n3 = new n(k, readerChapter, new int[]{0}, 0);
         n3.f = n2;
         return n3;
@@ -191,7 +191,7 @@ public final class n {
         return this.mReaderChapter.getStatus() == 1;
     }
 
-    public final K q() {
+    public final ReaderPageTransformer q() {
         return this.a;
     }
 }

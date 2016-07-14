@@ -111,7 +111,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
     private Reader mReader;
     private ReaderStyle mReaderStyle;
     private bH i;
-    private K j;
+    private ReaderPageTransformer j;
     private ReaderTocDialog mReaderTocDialog;
     private Handler l = new Handler();
     private PagerWidget mMainView;
@@ -1507,7 +1507,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
         this.t.setOptionClickListener(this);
         this.mReaderBodyTV.setOnPageTurning(this);
         this.mMainView.setAutoReaderTextView(this.mReaderBodyTV);
-        this.j = new K(this.mReader, this.mReaderStyle);
+        this.j = new ReaderPageTransformer(this.mReader, this.mReaderStyle);
         this.C();
         this.mMainView.setAdapter(new PagerAdapter() {
             @Override

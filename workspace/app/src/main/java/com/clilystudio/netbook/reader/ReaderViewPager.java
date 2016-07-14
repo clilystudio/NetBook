@@ -122,7 +122,6 @@ public class ReaderViewPager extends ViewGroup {
     private int mOffscreenPageLimit = DEFAULT_OFFSCREEN_PAGES;
     private OnPageChangeListener mOnPageChangeListener;
     private int mPageMargin;
-    private K mPageTransformer;
     private boolean mPopulatePending;
     private Parcelable mRestoredAdapterState = null;
     private ClassLoader mRestoredClassLoader = null;
@@ -153,7 +152,7 @@ public class ReaderViewPager extends ViewGroup {
     }
 
     static /* synthetic */ void a(ReaderViewPager readerViewPager, int n) {
-        readerViewPager.b(n);
+        readerViewPager.setScrollState(n);
     }
 
     static /* synthetic */ int b(ReaderViewPager readerViewPager) {
@@ -265,17 +264,6 @@ public class ReaderViewPager extends ViewGroup {
                 n5 = n18;
             }
         }
-        if (this.mPageTransformer != null) {
-            this.getScrollX();
-            int n19 = this.getChildCount();
-            for (int i = 0; i < n19; ++i) {
-                View view = this.getChildAt(i);
-                if (!((ct) view.getLayoutParams()).a) {
-                    view.getLeft();
-                    this.e();
-                }
-            }
-        }
     }
 
     /*
@@ -322,11 +310,11 @@ public class ReaderViewPager extends ViewGroup {
                 if (n6 == 0 && n7 == 0) {
                     this.a(false);
                     this.b();
-                    this.b(0);
+                    this.setScrollState(0);
                 } else {
                     int n8;
                     this.b(true);
-                    this.b(2);
+                    this.setScrollState(2);
                     int n9 = this.e();
                     int n10 = n9 / 2;
                     float f = Math.min(1.0f, 1.0f * (float) Math.abs(n6) / (float) n9);
@@ -614,22 +602,13 @@ public class ReaderViewPager extends ViewGroup {
         return this.a(view);
     }
 
-    /*
-     * Enabled aggressive block sorting
-     * Lifted jumps to return sites
-     */
-    private void b(int n) {
-        if (this.mScrollState == n) {
-            return;
-        }
-        this.mScrollState = n;
-        if (this.mPageTransformer != null) {
-            for (int i = 0; i < this.getChildCount(); ++i) {
-                ViewCompat.setLayerType(this.getChildAt(i), n != 0 ? ViewCompat.LAYER_TYPE_HARDWARE : ViewCompat.LAYER_TYPE_NONE, null);
+    private void setScrollState(int scrollState) {
+        if (this.mScrollState != scrollState) {
+            this.mScrollState = scrollState;
+            if (this.mOnPageChangeListener != null) {
+                this.mOnPageChangeListener.b(scrollState);
             }
         }
-        if (this.mOnPageChangeListener == null) return;
-        this.mOnPageChangeListener.b(n);
     }
 
     private void b(boolean bl) {
@@ -1335,7 +1314,7 @@ public class ReaderViewPager extends ViewGroup {
                     }
                     if (var10_7 > (float) this.mTouchSlop && 0.5f * var10_7 > var12_9) {
                         this.mIsBeingDragged = true;
-                        this.b(1);
+                        this.setScrollState(1);
                         this.mLastMotionX = var9_6 > 0.0f ? this.mInitialMotionX + (float) this.mTouchSlop : this.mInitialMotionX - (float) this.mTouchSlop;
                         this.mLastMotionY = var11_8;
                         this.b(true);
@@ -1600,7 +1579,7 @@ public class ReaderViewPager extends ViewGroup {
                 this.mPopulatePending = false;
                 this.b();
                 this.mIsBeingDragged = true;
-                this.b(1);
+                this.setScrollState(1);
                 float var26_4 = var1_1.getX();
                 this.mInitialMotionX = var26_4;
                 this.mLastMotionX = var26_4;
@@ -1620,7 +1599,7 @@ public class ReaderViewPager extends ViewGroup {
                         this.mIsBeingDragged = true;
                         this.mLastMotionX = var21_7 - this.mInitialMotionX > 0.0f ? this.mInitialMotionX + (float) this.mTouchSlop : this.mInitialMotionX - (float) this.mTouchSlop;
                         this.mLastMotionY = var23_9;
-                        this.b(1);
+                        this.setScrollState(1);
                         this.b(true);
                     }
                 }
@@ -1781,44 +1760,6 @@ public class ReaderViewPager extends ViewGroup {
         boolean bl = drawable == null;
         this.setWillNotDraw(bl);
         this.invalidate();
-    }
-
-    public void setPageTransformer(boolean bl, K k) {
-        if (Build.VERSION.SDK_INT >= 11) {
-            boolean bl3 = k != null;
-            boolean bl4 = this.mPageTransformer != null;
-            boolean bl5 = bl3 != bl4;
-            this.mPageTransformer = k;
-            if (Build.VERSION.SDK_INT >= 7) {
-                if (this.mSetChildrenDrawingOrderEnabled == null) {
-                    try {
-                        Class[] arrclass = new Class[]{Boolean.TYPE};
-                        this.mSetChildrenDrawingOrderEnabled = ViewGroup.class.getDeclaredMethod("setChildrenDrawingOrderEnabled", arrclass);
-                    } catch (NoSuchMethodException var12_10) {
-                        Log.e(TAG, "Can't find setChildrenDrawingOrderEnabled", var12_10);
-                    }
-                }
-                try {
-                    Method method = this.mSetChildrenDrawingOrderEnabled;
-                    Object[] arrobject = new Object[]{bl3};
-                    method.invoke(this, arrobject);
-                } catch (Exception var7_11) {
-                    Log.e(TAG, "Error changing children drawing order", var7_11);
-                }
-            }
-            if (bl3) {
-                if (bl) {
-                    this.mDrawingOrder = DRAW_ORDER_REVERSE;
-                } else {
-                    this.mDrawingOrder = DRAW_ORDER_FORWARD;
-                }
-            } else {
-                this.mDrawingOrder = DRAW_ORDER_DEFAULT;
-            }
-            if (bl5) {
-                this.b();
-            }
-        }
     }
 
     @Override
