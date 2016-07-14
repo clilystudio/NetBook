@@ -2,6 +2,7 @@ package com.clilystudio.netbook.reader;
 
 import android.app.Activity;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -10,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.clilystudio.netbook.IntentBuilder;
 import com.clilystudio.netbook.MyApplication;
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.a_pack.BaseAsyncTask;
@@ -27,7 +29,7 @@ import java.util.List;
 import uk.me.lewisdeane.ldialogs.BaseDialog;
 
 public class ReaderMenuFragment extends Fragment {
-    private String e;
+    private String mBookId;
     private String f;
     private LoadingContainer g;
     private View.OnClickListener j;
@@ -38,7 +40,13 @@ public class ReaderMenuFragment extends Fragment {
             public void onClick(View v) {
                 switch (v.getId()) {
                     case R.id.slm_reader_relate_book:
-                        ReaderMenuFragment.i(ReaderMenuFragment.this);
+                        Intent intent = new IntentBuilder().put(getActivity(), RelateBookListActivity.class)
+                                .putSerializable("RelateBookRoot", null)
+                                .put("book_list_title", "你可能感兴趣")
+                                .put("bookId", mBookId)
+                                .put("entrancePosition", 2)
+                                .build();
+                        startActivity(intent);
                         break;
                     case R.id.slm_reader_more_source:
                         ReaderActivity readerActivity = (ReaderActivity) ReaderMenuFragment.this.getActivity();
@@ -61,10 +69,10 @@ public class ReaderMenuFragment extends Fragment {
 
     static /* synthetic */ void a(ReaderMenuFragment readerMenuFragment, Activity activity, TocSummary tocSummary) {
         activity.finish();
-        MyApplication.getInstance().setBookId(readerMenuFragment.e);
-        am.c(readerMenuFragment.e, 10);
+        MyApplication.getInstance().setBookId(readerMenuFragment.mBookId);
+        am.c(readerMenuFragment.mBookId, 10);
         BusProvider.getInstance().post(new ModeChangedEvent(1));
-        readerMenuFragment.startActivity(ReaderActivity.a(readerMenuFragment.getActivity(), readerMenuFragment.e, readerMenuFragment.f, tocSummary.get_id(), (String)null, true));
+        readerMenuFragment.startActivity(ReaderActivity.a(readerMenuFragment.getActivity(), readerMenuFragment.mBookId, readerMenuFragment.f, tocSummary.get_id(), (String)null, true));
     }
 
     /*
@@ -116,7 +124,7 @@ public class ReaderMenuFragment extends Fragment {
     }
 
     static /* synthetic */ String f(ReaderMenuFragment readerMenuFragment) {
-        return readerMenuFragment.e;
+        return readerMenuFragment.mBookId;
     }
 
     static /* synthetic */ String g(ReaderMenuFragment readerMenuFragment) {
@@ -130,10 +138,6 @@ public class ReaderMenuFragment extends Fragment {
         }
     }
 
-    static /* synthetic */ void i(ReaderMenuFragment readerMenuFragment) {
-        readerMenuFragment.startActivity(RelateBookListActivity.a(readerMenuFragment.getActivity(), null, "你可能感兴趣", readerMenuFragment.e));
-    }
-
     static /* synthetic */ LoadingContainer k(ReaderMenuFragment readerMenuFragment) {
         return readerMenuFragment.g;
     }
@@ -141,7 +145,7 @@ public class ReaderMenuFragment extends Fragment {
     @Override
     public void onActivityCreated(Bundle bundle) {
         super.onActivityCreated(bundle);
-        this.e = this.getArguments().getString("BOOK_ID");
+        this.mBookId = this.getArguments().getString("BOOK_ID");
         this.f = this.getArguments().getString("BOOK_TITLE");
         int n2 = am.k(this.getActivity());
         if (this.getView() != null && n2 != 0) {
@@ -173,7 +177,7 @@ public class ReaderMenuFragment extends Fragment {
                 }
             }
         };
-        String[] arrstring = new String[]{this.e};
+        String[] arrstring = new String[]{this.mBookId};
         bA2.b(arrstring);
         if (this.getView() != null) {
             this.getView().findViewById(R.id.slm_reader_layout_ad).setVisibility(View.GONE);

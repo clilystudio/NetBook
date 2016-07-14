@@ -13,15 +13,16 @@ import android.view.WindowManager;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.clilystudio.netbook.IntentBuilder;
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.model.BookSummary;
 import com.clilystudio.netbook.model.RelateBookRoot;
-import com.clilystudio.netbook.reader.cM;
+import com.clilystudio.netbook.reader.RelateBookManager;
 import com.clilystudio.netbook.widget.CoverView;
 
 import java.util.List;
 
-public class RelateBooksFragment extends Fragment implements cM.cQ {
+public class RelateBooksFragment extends Fragment implements RelateBookManager.OnCompletedListener {
     LinearLayout mBookContainer;
     TextView mMore;
     LinearLayout mRelateBookRoot;
@@ -35,15 +36,15 @@ public class RelateBooksFragment extends Fragment implements cM.cQ {
     }
 
     @Override
-    public final void a(final RelateBookRoot var1_1, String[] var2_2) {
+    public final void onCompleted(final RelateBookRoot relateBookRoot) {
         if (this.getActivity() == null) {
             return;
         }
-        if (var1_1 == null) return;
-        if (var1_1.getBooks() == null) return;
-        if (var1_1.getBooks().isEmpty()) return;
+        if (relateBookRoot == null) return;
+        if (relateBookRoot.getBooks() == null) return;
+        if (relateBookRoot.getBooks().isEmpty()) return;
         this.mRelateBookRoot.setVisibility(View.VISIBLE);
-        List<BookSummary> var3_4 = var1_1.getBooks();
+        List<BookSummary> var3_4 = relateBookRoot.getBooks();
         FragmentActivity var4_10 = this.getActivity();
         DisplayMetrics var5_11 = new DisplayMetrics();
         ((WindowManager) var4_10.getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay().getMetrics(var5_11);
@@ -54,8 +55,12 @@ public class RelateBooksFragment extends Fragment implements cM.cQ {
             this.mMore.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = RelateBookListActivity.a(RelateBooksFragment.this.getActivity(), var1_1, "你可能感兴趣", false);
-                    RelateBooksFragment.this.startActivity(intent);
+                    Intent intent = new IntentBuilder().put(getActivity(), RelateBookListActivity.class)
+                            .putSerializable("RelateBookRoot", relateBookRoot)
+                            .put("book_list_title", "你可能感兴趣")
+                            .put("entrancePosition", 1)
+                            .build();
+                    startActivity(intent);
                 }
             });
             var3_4 = var3_4.subList(0, var7_13.b());
@@ -108,7 +113,7 @@ public class RelateBooksFragment extends Fragment implements cM.cQ {
         this.mBookContainer = (LinearLayout) this.getView().findViewById(R.id.books);
         this.mRelateBookRoot = (LinearLayout) this.getView().findViewById(R.id.relate_book_root);
         this.mMore = (TextView) this.getView().findViewById(R.id.more);
-        new cM(this).a(this.getArguments().getString("book_id"));
+        new RelateBookManager(this).getRelateBook(this.getArguments().getString("book_id"));
     }
 
     public class ViewHolder {

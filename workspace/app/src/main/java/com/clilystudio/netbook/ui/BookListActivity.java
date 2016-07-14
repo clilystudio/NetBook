@@ -9,20 +9,20 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.IntentBuilder;
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.model.BookRankDetail;
 import com.clilystudio.netbook.util.BaseDownloadAdapter;
 import com.clilystudio.netbook.widget.CoverView;
 
 public abstract class BookListActivity extends BaseActivity {
     protected BaseDownloadAdapter<BookRankDetail> a;
-    private View b;
-    private View c;
-    private TextView e;
+    private View mLoadingPB;
+    private View mErrorIV;
+    private TextView mEmptyTV;
 
-    public static Intent a(Context context, String string, String string2) {
-        return new IntentBuilder().put(context, BookRankDetailActivity.class).put("book_list_id", string).put("book_list_title", string2).build();
+    public static Intent a(Context context, String bookListId, String bookListTitle) {
+        return new IntentBuilder().put(context, BookRankDetailActivity.class).put("book_list_id", bookListId).put("book_list_title", bookListTitle).build();
     }
 
     protected void a(int n) {
@@ -35,32 +35,27 @@ public abstract class BookListActivity extends BaseActivity {
 
     protected final void e(int n) {
         switch (n) {
-            default: {
-                return;
-            }
-            case 1: {
-                this.b.setVisibility(View.GONE);
-                this.c.setVisibility(View.GONE);
-                this.e.setVisibility(View.GONE);
-                return;
-            }
-            case 0: {
-                this.b.setVisibility(View.VISIBLE);
-                this.c.setVisibility(View.GONE);
-                this.e.setVisibility(View.GONE);
-                return;
-            }
-            case 2: {
-                this.b.setVisibility(View.GONE);
-                this.c.setVisibility(View.VISIBLE);
-                this.e.setVisibility(View.GONE);
-                return;
-            }
+            case 0:
+                this.mLoadingPB.setVisibility(View.VISIBLE);
+                this.mErrorIV.setVisibility(View.GONE);
+                this.mEmptyTV.setVisibility(View.GONE);
+                break;
+            case 1:
+                this.mLoadingPB.setVisibility(View.GONE);
+                this.mErrorIV.setVisibility(View.GONE);
+                this.mEmptyTV.setVisibility(View.GONE);
+                break;
+            case 2:
+                this.mLoadingPB.setVisibility(View.GONE);
+                this.mErrorIV.setVisibility(View.VISIBLE);
+                this.mEmptyTV.setVisibility(View.GONE);
+                break;
             case 3:
+                this.mLoadingPB.setVisibility(View.GONE);
+                this.mErrorIV.setVisibility(View.GONE);
+                this.mEmptyTV.setVisibility(View.VISIBLE);
+                break;
         }
-        this.b.setVisibility(View.GONE);
-        this.c.setVisibility(View.GONE);
-        this.e.setVisibility(View.VISIBLE);
     }
 
     @Override
@@ -68,16 +63,16 @@ public abstract class BookListActivity extends BaseActivity {
         super.onCreate(bundle);
         this.setContentView(R.layout.activity_list);
         this.b(this.getIntent().getStringExtra("book_list_title"));
-        this.b = this.findViewById(R.id.content_loading_pb);
-        this.e = (TextView) this.findViewById(R.id.content_empty_text);
-        this.c = this.findViewById(R.id.content_load_error);
-        this.c.setOnClickListener(new View.OnClickListener() {
+        this.mLoadingPB = this.findViewById(R.id.content_loading_pb);
+        this.mEmptyTV = (TextView) this.findViewById(R.id.content_empty_text);
+        this.mErrorIV = this.findViewById(R.id.content_load_error);
+        this.mErrorIV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 b();
             }
         });
-        this.a = new BaseDownloadAdapter<BookRankDetail>(this.getLayoutInflater(), R.layout.list_item_ori_book){
+        this.a = new BaseDownloadAdapter<BookRankDetail>(this.getLayoutInflater(), R.layout.list_item_ori_book) {
 
             @Override
             protected void a(int var1, BookRankDetail bookRankDetail) {
