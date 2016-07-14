@@ -8,23 +8,23 @@ import com.clilystudio.netbook.util.CipherUtil;
 import java.util.LinkedList;
 
 public final class n {
-    private final ReaderPageTransformer a;
+    private final ReaderPageTransformer mReaderPageTransformer;
     private final ReaderChapter mReaderChapter;
     private int[] c;
     private int d;
     private int e;
     private int f;
 
-    public n(ReaderPageTransformer k, ReaderChapter readerChapter, int[] arrn, int n2) {
-        this.a = k;
+    public n(ReaderPageTransformer readerPageTransformer, ReaderChapter readerChapter, int[] arrn, int n2) {
+        this.mReaderPageTransformer = readerPageTransformer;
         this.mReaderChapter = readerChapter;
         this.c = arrn;
         this.e = n2;
         this.d = arrn[n2];
     }
 
-    public static n a(ReaderPageTransformer k, ReaderChapter readerChapter, int n2) {
-        n n3 = new n(k, readerChapter, new int[]{0}, 0);
+    public static n a(ReaderPageTransformer readerPageTransformer, ReaderChapter readerChapter, int n2) {
+        n n3 = new n(readerPageTransformer, readerChapter, new int[]{0}, 0);
         n3.f = n2;
         return n3;
     }
@@ -44,17 +44,17 @@ public final class n {
     public final void a(e<n> e2) {
         if (this.e()) {
             if (this.h()) {
-                this.a.b(1 + this.mReaderChapter.getIndex(), e2, false);
+                this.mReaderPageTransformer.b(1 + this.mReaderChapter.getIndex(), e2, false);
                 return;
             }
-            e2.a(new n(this.a, this.mReaderChapter, this.c, 1 + this.e));
+            e2.a(new n(this.mReaderPageTransformer, this.mReaderChapter, this.c, 1 + this.e));
             return;
         }
         e2.a(null);
     }
 
     public final void a(String string) {
-        this.c = this.a.a(string);
+        this.c = this.mReaderPageTransformer.a(string);
         this.d = this.c[0];
     }
 
@@ -65,10 +65,10 @@ public final class n {
     public final void b(e<n> e2) {
         if (this.f()) {
             if (this.e > 0) {
-                e2.a(new n(this.a, this.mReaderChapter, this.c, -1 + this.e));
+                e2.a(new n(this.mReaderPageTransformer, this.mReaderChapter, this.c, -1 + this.e));
                 return;
             }
-            this.a.a(-1 + this.mReaderChapter.getIndex(), e2, false);
+            this.mReaderPageTransformer.a(-1 + this.mReaderChapter.getIndex(), e2, false);
             return;
         }
         e2.a(null);
@@ -151,7 +151,7 @@ public final class n {
         if (string == null) {
             return;
         }
-        this.c = this.a.a(string);
+        this.c = this.mReaderPageTransformer.a(string);
         this.d = this.c[0];
     }
 
@@ -192,6 +192,6 @@ public final class n {
     }
 
     public final ReaderPageTransformer q() {
-        return this.a;
+        return this.mReaderPageTransformer;
     }
 }
