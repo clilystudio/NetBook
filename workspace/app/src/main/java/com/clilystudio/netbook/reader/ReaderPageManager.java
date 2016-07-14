@@ -74,17 +74,17 @@ public final class ReaderPageManager {
 
     private void l() {
         this.mReaderPageView.setBackgroundResource(this.mReaderStyle.h);
-        this.mTitleTV.setTextColor(this.mReaderStyle.i);
-        this.mBodyTV.setTextColor(this.mReaderStyle.g);
-        this.mPageNumberTV.setTextColor(this.mReaderStyle.i);
+        this.mTitleTV.setTextColor(this.mReaderStyle.titleColor);
+        this.mBodyTV.setTextColor(this.mReaderStyle.bodyColor);
+        this.mPageNumberTV.setTextColor(this.mReaderStyle.titleColor);
         TextView textView = (TextView) this.mReaderPageView.findViewById(R.id.tv_battery);
-        textView.setTextColor(this.mReaderStyle.i);
-        textView.setBackgroundResource(this.mReaderStyle.j);
-        ((TextView) this.mReaderPageView.findViewById(R.id.tv_time)).setTextColor(this.mReaderStyle.i);
+        textView.setTextColor(this.mReaderStyle.titleColor);
+        textView.setBackgroundResource(this.mReaderStyle.batteryBackground);
+        ((TextView) this.mReaderPageView.findViewById(R.id.tv_time)).setTextColor(this.mReaderStyle.titleColor);
     }
 
     private void m() {
-        this.mBodyTV.setHeight(this.mReaderStyle.e);
+        this.mBodyTV.setHeight(this.mReaderStyle.bodyHeight);
         this.mBodyTV.setTextSize(0, this.mReaderStyle.textSize);
         this.mBodyTV.setLineSpacing(this.mReaderStyle.lineSpacing, 1.0f);
     }

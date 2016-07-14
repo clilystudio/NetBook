@@ -388,7 +388,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
         } else {
             readerActivity.mReaderBodyTV.setBackgroundResource(readerActivity.mReaderStyle.h);
         }
-        readerActivity.mReaderBodyTV.setTextColor(readerActivity.mReaderStyle.g);
+        readerActivity.mReaderBodyTV.setTextColor(readerActivity.mReaderStyle.bodyColor);
     }
 
     private n A() {
@@ -1359,7 +1359,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
                         o2.a();
                     }
                 }
-                ReaderActivity.this.mReaderBodyTV.setHeight(ReaderActivity.this.mReaderStyle.e);
+                ReaderActivity.this.mReaderBodyTV.setHeight(ReaderActivity.this.mReaderStyle.bodyHeight);
                 ReaderActivity.this.mReaderBodyTV.setTextSize(0, ReaderActivity.this.mReaderStyle.textSize);
                 ReaderActivity.this.mReaderBodyTV.setLineSpacing(ReaderActivity.this.mReaderStyle.lineSpacing, 1.0f);
                 ReaderActivity.this.g();
@@ -1400,8 +1400,8 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
             }
         });
         this.R();
-        this.mReaderBodyTV.setTextColor(this.mReaderStyle.g);
-        this.mReaderBodyTV.setHeight(this.mReaderStyle.e);
+        this.mReaderBodyTV.setTextColor(this.mReaderStyle.bodyColor);
+        this.mReaderBodyTV.setHeight(this.mReaderStyle.bodyHeight);
         this.mReaderBodyTV.setTextSize(0, this.mReaderStyle.textSize);
         this.mReaderBodyTV.setLineSpacing(this.mReaderStyle.lineSpacing, 1.0f);
         if (this.mReaderStyle.h == R.drawable.reader_background_brown_big_img) {

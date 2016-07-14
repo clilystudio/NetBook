@@ -82,14 +82,14 @@ public final class ReaderPageTransformer {
         StaticLayout staticLayout = new StaticLayout(string, textPaint, this.mReaderStyle.width, Layout.Alignment.ALIGN_NORMAL, 1.0f, this.mReaderStyle.lineSpacing, false);
         staticLayout.draw(new Canvas());
         int n4 = staticLayout.getLineCount();
-        int n5 = this.mReaderStyle.e;
+        int n5 = this.mReaderStyle.bodyHeight;
         ArrayList<Integer> arrayList = new ArrayList<>();
         int n6 = 0;
         do {
             int n7;
             int n8;
             n7 = staticLayout.getLineForVertical(n6);
-            n2 = staticLayout.getLineForVertical(staticLayout.getLineTop(n7) + this.mReaderStyle.e);
+            n2 = staticLayout.getLineForVertical(staticLayout.getLineTop(n7) + this.mReaderStyle.bodyHeight);
             if (staticLayout.getLineBottom(n2) - staticLayout.getLineTop(n7) > n5) {
                 n2--;
             }

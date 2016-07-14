@@ -29,12 +29,12 @@ public final class ReaderStyle {
     public int lineSpacing;
     public int paddingHori;
     public int paddingVert;
-    public int e;
+    public int bodyHeight;
     public int width;
-    public int g;
+    public int bodyColor;
     public int h;
-    public int i;
-    public int j;
+    public int titleColor;
+    public int batteryBackground;
     private int l;
     private List<ce> o = new ArrayList<>();
     private List<cc> p = new ArrayList<>();
@@ -78,29 +78,29 @@ public final class ReaderStyle {
      */
     private void c(int n) {
         if (this.x) {
-            this.g = this.n.getColor(R.color.reading_night_text_color);
+            this.bodyColor = this.n.getColor(R.color.reading_night_text_color);
             this.h = R.color.reading_night_background_color;
-            this.j = R.drawable.reader_battery_bg_night;
+            this.batteryBackground = R.drawable.reader_battery_bg_night;
         } else {
             switch (n) {
                 case 1:
-                    this.g = this.n.getColor(R.color.reader_mode_white_text_color);
+                    this.bodyColor = this.n.getColor(R.color.reader_mode_white_text_color);
                     this.h = R.color.reader_background_white_color;
-                    this.j = R.drawable.reader_battery_bg_normal;
+                    this.batteryBackground = R.drawable.reader_battery_bg_normal;
                     break;
                 case 2:
-                    this.g = this.n.getColor(R.color.reader_mode_brown_text_color);
+                    this.bodyColor = this.n.getColor(R.color.reader_mode_brown_text_color);
                     this.h = R.drawable.reader_background_brown_big_img;
-                    this.j = R.drawable.reader_battery_bg_brown;
+                    this.batteryBackground = R.drawable.reader_battery_bg_brown;
                     break;
                 case 3:
-                    this.g = this.n.getColor(R.color.reader_mode_green_text_color);
+                    this.bodyColor = this.n.getColor(R.color.reader_mode_green_text_color);
                     this.h = R.color.reader_background_white_green;
-                    this.j = R.drawable.reader_battery_bg_green;
+                    this.batteryBackground = R.drawable.reader_battery_bg_green;
                     break;
             }
         }
-        this.i = Color.argb(153, Color.red(this.g), Color.green(this.g), Color.blue(this.g));
+        this.titleColor = Color.argb(153, Color.red(this.bodyColor), Color.green(this.bodyColor), Color.blue(this.bodyColor));
     }
 
     /*
@@ -241,10 +241,10 @@ public final class ReaderStyle {
         int n2 = this.n.getDimensionPixelSize(R.dimen.page_body_margin);
         int n3 = n - (this.paddingVert << 1) - (this.l << 1) - (n2 << 1);
         if (bl) {
-            this.e = n3;
+            this.bodyHeight = n3;
             return;
         }
-        this.e = n3 - am.k(this.m);
+        this.bodyHeight = n3 - am.k(this.m);
     }
 
     /*
