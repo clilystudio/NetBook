@@ -2438,7 +2438,7 @@ public class a {
         com.xiaomi.mipush.sdk.MiPushClient.unsubscribe(MyApplication.getInstance(), string3, null);
     }
 
-    public static boolean t(Context context) {
+    public static boolean isConnectedOrConnecting(Context context) {
         ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         if (connectivityManager == null) {
             return false;

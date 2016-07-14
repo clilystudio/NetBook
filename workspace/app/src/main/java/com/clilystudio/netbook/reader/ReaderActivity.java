@@ -103,7 +103,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
     private Handler af;
     private BroadcastReceiver ag;
     private BroadcastReceiver ah;
-    private o[] b = new o[3];
+    private ReaderPageManager[] b = new ReaderPageManager[3];
     private String mBookId;
     private String mBookTitle;
     private String mTocId;
@@ -177,8 +177,8 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
                 int n4 = n2 * 100 / n3;
                 if (ReaderActivity.this.w != n4) {
                     ReaderActivity.this.w =  n4;
-                    o[] arro = ReaderActivity.this.b;
-                    for (com.clilystudio.netbook.reader.o anArro : arro) {
+                    ReaderPageManager[] arro = ReaderActivity.this.b;
+                    for (ReaderPageManager anArro : arro) {
                         anArro.a(n4);
                     }
                 }
@@ -187,8 +187,8 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
         this.ah = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
-                o[] arro = ReaderActivity.this.b;
-                for (com.clilystudio.netbook.reader.o anArro : arro) {
+                ReaderPageManager[] arro = ReaderActivity.this.b;
+                for (ReaderPageManager anArro : arro) {
                     anArro.k();
                 }
             }
@@ -392,7 +392,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
     }
 
     private n A() {
-        o o2 = this.b[this.mSelectedPageIndex];
+        ReaderPageManager o2 = this.b[this.mSelectedPageIndex];
         if (o2 != null) {
             return o2.j();
         }
@@ -489,21 +489,21 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
     }
 
     private void C() {
-        o.G aL2 = new o.G() {
+        ReaderPageManager.G aL2 = new ReaderPageManager.G() {
             @Override
             public void a(int var1) {
                 ReaderActivity.this.c(var1);
             }
         };
-        o.H aM2 = new o.H() {
+        ReaderPageManager.OnReloadSourceListener aM2 = new ReaderPageManager.OnReloadSourceListener() {
             @Override
-            public void a() {
+            public void onReload() {
                 ReaderActivity.this.t();
             }
         };
-        com.clilystudio.netbook.reader.o.F aN2 = new com.clilystudio.netbook.reader.o.F() {
+        ReaderPageManager.OnSourceChangeListener aN2 = new ReaderPageManager.OnSourceChangeListener() {
             @Override
-            public void a() {
+            public void onChanged() {
                 if (ReaderActivity.this.mReadMode == 5 || ReaderActivity.this.mReadMode == 10) {
                     ReaderActivity.this.i();
                 } else {
@@ -512,11 +512,11 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
             }
         };
         for (int k = 0; k < 3; ++k) {
-            o o2;
-            this.b[k] = o2 = new o(this, this.mReaderStyle);
+            ReaderPageManager o2;
+            this.b[k] = o2 = new ReaderPageManager(this, this.mReaderStyle);
             o2.a(aL2);
             o2.a(aM2);
-            o2.a(aN2);
+            o2.setSourceChangeListener(aN2);
         }
         this.registerReceiver(this.ag, new IntentFilter("android.intent.action.BATTERY_CHANGED"));
         this.registerReceiver(this.ah, new IntentFilter("android.intent.action.TIME_TICK"));
@@ -562,7 +562,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
         if (this.b == null) {
             return;
         }
-        o[] arro = this.b;
+        ReaderPageManager[] arro = this.b;
         int n2 = arro.length;
         int n3 = 0;
         while (n3 < n2) {
@@ -934,7 +934,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
 
             @Override
             public Object instantiateItem(ViewGroup container, int position) {
-                o o2 = ReaderActivity.this.b[position];
+                ReaderPageManager o2 = ReaderActivity.this.b[position];
                 container.addView(o2.i());
                 return o2.i();
             }
@@ -977,9 +977,9 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
                 this.c(n2.l());
             }
         } else {
-            final o o2 = this.b[0];
-            o o3 = this.b[1];
-            final o o4 = this.b[2];
+            final ReaderPageManager o2 = this.b[0];
+            ReaderPageManager o3 = this.b[1];
+            final ReaderPageManager o4 = this.b[2];
             n n4 = o2.j();
             n n5 = o3.j();
             n n6 = o4.j();
@@ -1164,7 +1164,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
     public final void e() {
         this.W = 0;
         this.X = 0;
-        for (com.clilystudio.netbook.reader.o anArro : this.b) {
+        for (ReaderPageManager anArro : this.b) {
             anArro.a(-1, -1);
         }
     }
@@ -1195,20 +1195,14 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
      */
     public final void i() {
         this.P();
-        String string = this.mReader != null && this.mReader.i() != null ? this.mReader.i() : this.mSourceHost;
-        BookInfoUtil.source = string;
-        this.startActivity(ReaderMixActivity.a(this, this.mBookId, this.mBookTitle, string));
+        String source = this.mReader != null && this.mReader.i() != null ? this.mReader.i() : this.mSourceHost;
+        BookInfoUtil.source = source;
+        this.startActivity(ReaderMixActivity.a(this, this.mBookId, this.mBookTitle, source));
         this.overridePendingTransition(R.anim.mode_list_enter_in, R.anim.mode_list_enter_out);
     }
 
     public final boolean j() {
         return this.b.length > this.mSelectedPageIndex && this.b[this.mSelectedPageIndex].f();
-    }
-
-    public final void k() {
-        for (com.clilystudio.netbook.reader.o anArro : this.b) {
-            anArro.h();
-        }
     }
 
     public final String l() {
@@ -1360,7 +1354,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
         this.mReaderStyle.a(new ReaderStyle.cc() {
             @Override
             public void a() {
-                for (o o2 : ReaderActivity.this.b) {
+                for (ReaderPageManager o2 : ReaderActivity.this.b) {
                     if (o2 != null) {
                         o2.a();
                     }
@@ -1380,7 +1374,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
         this.mReaderStyle.a(new ReaderStyle.ce() {
             @Override
             public void a() {
-                for (o o2 : ReaderActivity.this.b) {
+                for (ReaderPageManager o2 : ReaderActivity.this.b) {
                     if (o2 != null) {
                         o2.b();
                     }
@@ -1397,7 +1391,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
         this.mReaderStyle.a(new ReaderStyle.cd() {
             @Override
             public void a() {
-                for (o o2 : ReaderActivity.this.b) {
+                for (ReaderPageManager o2 : ReaderActivity.this.b) {
                     if (o2 == null) {
                         o2.c();
                     }
@@ -1523,7 +1517,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
 
             @Override
             public Object instantiateItem(ViewGroup container, int position) {
-                o o2 = ReaderActivity.this.b[position];
+                ReaderPageManager o2 = ReaderActivity.this.b[position];
                 container.addView(o2.i());
                 return o2.i();
             }
@@ -1627,7 +1621,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
         }
         this.p();
         BusProvider.getInstance().unregister(this);
-        o[] arro = this.b;
+        ReaderPageManager[] arro = this.b;
         int n2 = arro.length;
         int n3 = 0;
         do {
@@ -1635,7 +1629,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
                 super.onDestroy();
                 return;
             }
-            o o2 = arro[n3];
+            ReaderPageManager o2 = arro[n3];
             BusProvider.getInstance().unregister(o2);
             ++n3;
         } while (true);

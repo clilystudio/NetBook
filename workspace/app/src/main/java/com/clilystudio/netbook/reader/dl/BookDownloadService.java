@@ -382,7 +382,7 @@ public class BookDownloadService extends Service {
                     if (BookDownloadService.j(BookDownloadService.this) == 1 && n2 > 1) {
                         BookDownloadService.k(BookDownloadService.this);
                         ToastUtil.showToast(BookDownloadService.this.getApplicationContext(), "流量下自动暂停缓存，连接 Wi-Fi 继续或手动开始缓存");
-                    } else if (com.clilystudio.netbook.hpay100.a.a.t(BookDownloadService.this)) {
+                    } else if (com.clilystudio.netbook.hpay100.a.a.isConnectedOrConnecting(BookDownloadService.this)) {
                         BookDownloadService.e(BookDownloadService.this);
                         BookDownloadService.b(BookDownloadService.this, false);
                     } else {

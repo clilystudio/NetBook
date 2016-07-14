@@ -27,8 +27,8 @@ public final class ReaderStyle {
     private final Resources n;
     public int textSize;
     public int lineSpacing;
-    public int c;
-    public int d;
+    public int paddingHori;
+    public int paddingVert;
     public int e;
     public int width;
     public int g;
@@ -60,9 +60,9 @@ public final class ReaderStyle {
         this.y = this.t.getBoolean("convert_t", false);
         this.z = this.t.getInt("reader_background_mode", 1);
         int n = am.b(this.m).widthPixels;
-        this.c = this.n.getDimensionPixelSize(R.dimen.page_horizontal_padding);
-        this.d = this.n.getDimensionPixelSize(R.dimen.page_vertical_padding);
-        this.width = n - (this.c << 1);
+        this.paddingHori = this.n.getDimensionPixelSize(R.dimen.page_horizontal_padding);
+        this.paddingVert = this.n.getDimensionPixelSize(R.dimen.page_vertical_padding);
+        this.width = n - (this.paddingHori << 1);
         this.l = this.n.getDimensionPixelSize(R.dimen.page_small_text_height);
         this.a(com.clilystudio.netbook.hpay100.a.a.l(this.m, "reader_opt_full_screen"));
         this.k();
@@ -239,7 +239,7 @@ public final class ReaderStyle {
             n = com.clilystudio.netbook.hpay100.a.a.L(this.m);
         }
         int n2 = this.n.getDimensionPixelSize(R.dimen.page_body_margin);
-        int n3 = n - (this.d << 1) - (this.l << 1) - (n2 << 1);
+        int n3 = n - (this.paddingVert << 1) - (this.l << 1) - (n2 << 1);
         if (bl) {
             this.e = n3;
             return;

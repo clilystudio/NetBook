@@ -41,8 +41,8 @@ public class ReaderMixActivity extends BaseLoadingActivity {
     private View j;
     private TocSummary k;
 
-    public static Intent a(Context context, String string, String string2, String string3) {
-        return new IntentBuilder().put(context, ReaderMixActivity.class).put("BOOK_ID", string).put("BOOK_TITLE", string2).put("SOURCE", string3).build();
+    public static Intent a(Context context, String bookId, String bookTitle, String source) {
+        return new IntentBuilder().put(context, ReaderMixActivity.class).put("BOOK_ID", bookId).put("BOOK_TITLE", bookTitle).put("SOURCE", source).build();
     }
 
     static /* synthetic */ ChineseAllPromRoot a(ReaderMixActivity readerMixActivity, ChineseAllPromRoot chineseAllPromRoot) {

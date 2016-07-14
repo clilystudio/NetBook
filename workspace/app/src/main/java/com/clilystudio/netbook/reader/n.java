@@ -9,7 +9,7 @@ import java.util.LinkedList;
 
 public final class n {
     private final K a;
-    private final ReaderChapter b;
+    private final ReaderChapter mReaderChapter;
     private int[] c;
     private int d;
     private int e;
@@ -17,7 +17,7 @@ public final class n {
 
     public n(K k, ReaderChapter readerChapter, int[] arrn, int n2) {
         this.a = k;
-        this.b = readerChapter;
+        this.mReaderChapter = readerChapter;
         this.c = arrn;
         this.e = n2;
         this.d = arrn[n2];
@@ -30,7 +30,7 @@ public final class n {
     }
 
     public final ReaderChapter a() {
-        return this.b;
+        return this.mReaderChapter;
     }
 
     public final String a(Context context) {
@@ -44,10 +44,10 @@ public final class n {
     public final void a(e<n> e2) {
         if (this.e()) {
             if (this.h()) {
-                this.a.b(1 + this.b.getIndex(), e2, false);
+                this.a.b(1 + this.mReaderChapter.getIndex(), e2, false);
                 return;
             }
-            e2.a(new n(this.a, this.b, this.c, 1 + this.e));
+            e2.a(new n(this.a, this.mReaderChapter, this.c, 1 + this.e));
             return;
         }
         e2.a(null);
@@ -65,17 +65,17 @@ public final class n {
     public final void b(e<n> e2) {
         if (this.f()) {
             if (this.e > 0) {
-                e2.a(new n(this.a, this.b, this.c, -1 + this.e));
+                e2.a(new n(this.a, this.mReaderChapter, this.c, -1 + this.e));
                 return;
             }
-            this.a.a(-1 + this.b.getIndex(), e2, false);
+            this.a.a(-1 + this.mReaderChapter.getIndex(), e2, false);
             return;
         }
         e2.a(null);
     }
 
     public final String c() {
-        String string = this.b.getBody(this);
+        String string = this.mReaderChapter.getBody(this);
         if (string == null) {
             return "";
         }
@@ -95,7 +95,7 @@ public final class n {
     }
 
     public final Object[] d() {
-        String var1_1 = this.b.getBody(this);
+        String var1_1 = this.mReaderChapter.getBody(this);
         if (var1_1 == null) {
             return null;
         }
@@ -139,15 +139,15 @@ public final class n {
     }
 
     public final boolean e() {
-        return !this.h() || this.b.hasNext();
+        return !this.h() || this.mReaderChapter.hasNext();
     }
 
     public final boolean f() {
-        return this.e > 0 || this.b.hasPrevious();
+        return this.e > 0 || this.mReaderChapter.hasPrevious();
     }
 
     public final void g() {
-        String string = CipherUtil.a(this.b.getKey(), this.b.getContent());
+        String string = CipherUtil.a(this.mReaderChapter.getKey(), this.mReaderChapter.getContent());
         if (string == null) {
             return;
         }
@@ -160,7 +160,7 @@ public final class n {
     }
 
     public final String i() {
-        return this.b.getTitle();
+        return this.mReaderChapter.getTitle();
     }
 
     public final int j() {
@@ -172,7 +172,7 @@ public final class n {
     }
 
     public final int l() {
-        return this.b.getIndex();
+        return this.mReaderChapter.getIndex();
     }
 
     public final int m() {
@@ -184,11 +184,11 @@ public final class n {
     }
 
     public final int o() {
-        return this.b.getStatus();
+        return this.mReaderChapter.getStatus();
     }
 
     public final boolean p() {
-        return this.b.getStatus() == 1;
+        return this.mReaderChapter.getStatus() == 1;
     }
 
     public final K q() {

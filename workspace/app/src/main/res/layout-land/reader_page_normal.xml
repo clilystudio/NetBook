@@ -94,11 +94,4 @@
             android:layout_marginTop="13.0dip"
             android:text="@string/retry"/>
     </LinearLayout>
-
-    <include
-        layout="@layout/reader_page_ad"
-        android:layout_width="fill_parent"
-        android:layout_height="@dimen/dp_60"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="@dimen/dp_30"/>
 </RelativeLayout>
