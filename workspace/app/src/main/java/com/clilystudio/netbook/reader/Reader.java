@@ -135,7 +135,7 @@ public final class Reader {
                                 }
                             } else {
                                 if (Reader.this.A) {
-                                    ChapterRoot chapterRoot = com.clilystudio.netbook.hpay100.a.a.a(Reader.this.v, var2_2, nx);
+                                    ChapterRoot chapterRoot = com.clilystudio.netbook.util.a.a(Reader.this.v, var2_2, nx);
                                     assert chapterRoot != null;
                                     Chapter chapter = chapterRoot.getChapter();
                                     String body = chapter.getBody();
@@ -162,7 +162,7 @@ public final class Reader {
                                             String var10_10 = Reader.this.e().get(var5_4.getId());
                                             if (var10_10 != null) {
                                                 var5_4.setKey(var10_10);
-                                                com.clilystudio.netbook.hpay100.a.a.a(Reader.q(Reader.this), Reader.this.mTocId, am.e(var5_4.getLink()), var5_4);
+                                                com.clilystudio.netbook.util.a.a(Reader.q(Reader.this), Reader.this.mTocId, am.e(var5_4.getLink()), var5_4);
                                             }
                                         }
                                     }
@@ -269,7 +269,7 @@ public final class Reader {
         reader.i = new HashMap<>((int) ((double) arrchapterLink.length / 0.7));
         for (ChapterLink chapterLink : arrchapterLink) {
             String string = chapterLink.getId();
-            if (com.clilystudio.netbook.hpay100.a.a.Q(string) && chapterLink.getLink() != null) {
+            if (com.clilystudio.netbook.util.a.Q(string) && chapterLink.getLink() != null) {
                 String[] arrstring = chapterLink.getLink().split("/");
                 string = arrstring[-1 + arrstring.length];
             }
@@ -288,7 +288,7 @@ public final class Reader {
     }
 
     static /* synthetic */ void b(Reader reader, Toc toc) {
-        com.clilystudio.netbook.hpay100.a.a.a(reader.mBookId, reader.mTocId, "toc", toc);
+        com.clilystudio.netbook.util.a.a(reader.mBookId, reader.mTocId, "toc", toc);
     }
 
     static /* synthetic */ ArrayList c(Reader reader) {
@@ -308,7 +308,7 @@ public final class Reader {
     }
 
     static /* synthetic */ Toc k(Reader reader) {
-        return (Toc) com.clilystudio.netbook.hpay100.a.a.b(reader.mBookId, reader.mTocId, "toc");
+        return (Toc) com.clilystudio.netbook.util.a.b(reader.mBookId, reader.mTocId, "toc");
     }
 
     static /* synthetic */ Toc l(Reader reader) {
@@ -504,7 +504,7 @@ public final class Reader {
             n2 = -1 + arrchapterLink.length;
         }
         ChapterLink chapterLink = arrchapterLink[n2];
-        if (this.mBookId != null && this.mTocId != null && chapterLink != null && chapterLink.getLink() != null && (chapter = (Chapter) com.clilystudio.netbook.hpay100.a.a.b(this.mBookId, this.mTocId, am.e(chapterLink.getLink()))) != null) {
+        if (this.mBookId != null && this.mTocId != null && chapterLink != null && chapterLink.getLink() != null && (chapter = (Chapter) com.clilystudio.netbook.util.a.b(this.mBookId, this.mTocId, am.e(chapterLink.getLink()))) != null) {
             ReaderChapter readerChapter4 = this.a(chapterLink, n2);
             readerChapter4.setBody(chapter.getBody());
             readerChapter4.setCpContent(chapter.getContent());

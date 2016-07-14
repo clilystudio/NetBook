@@ -96,8 +96,8 @@ public class ReaderWebActivity extends BaseReadActivity {
     }
 
     static /* synthetic */ void b(ReaderWebActivity readerWebActivity) {
-        com.clilystudio.netbook.hpay100.a.a.b(readerWebActivity, readerWebActivity.f, true);
-        com.clilystudio.netbook.hpay100.a.a.b(readerWebActivity, readerWebActivity.f + "source_web_alert", false);
+        com.clilystudio.netbook.util.a.b(readerWebActivity, readerWebActivity.f, true);
+        com.clilystudio.netbook.util.a.b(readerWebActivity, readerWebActivity.f + "source_web_alert", false);
         if (SourceRecord.get(readerWebActivity.c, readerWebActivity.f) == null) {
             SourceRecord.create(readerWebActivity.c, readerWebActivity.f, null);
         }
@@ -111,7 +111,7 @@ public class ReaderWebActivity extends BaseReadActivity {
     }
 
     static /* synthetic */ void c(final ReaderWebActivity readerWebActivity) {
-        if (com.clilystudio.netbook.hpay100.a.a.g()) {
+        if (com.clilystudio.netbook.util.a.g()) {
             final AlertDialog alertDialog = new AlertDialog.Builder(readerWebActivity).create();
             View view = LayoutInflater.from(readerWebActivity).inflate(R.layout.dialog_reader_web_opt2, (ViewGroup)readerWebActivity.getWindow().getDecorView(), false);
             Button button = (Button) view.findViewById(R.id.reader_web_opt2_btn1);
@@ -186,10 +186,10 @@ public class ReaderWebActivity extends BaseReadActivity {
         this.d = this.getIntent().getStringExtra("BOOK_TITLE");
         this.e = this.getIntent().getStringExtra("SOURCE_ID");
         this.b = var1_1 != null ? var1_1.getInt("savedCurrentMode", 5) : this.getIntent().getIntExtra("BOOK_MODE", 5);
-        this.f = com.clilystudio.netbook.hpay100.a.a.g(this.b);
+        this.f = com.clilystudio.netbook.util.a.g(this.b);
         this.g = (ReaderWebActionBar) this.findViewById(R.id.reader_web_action_bar);
         this.g.setTitle(this.d);
-        this.g.setChapterLink(com.clilystudio.netbook.hpay100.a.a.P(this.f));
+        this.g.setChapterLink(com.clilystudio.netbook.util.a.P(this.f));
         this.g.setOnBtnClickListener(new ReaderWebActionBar.OnBtnClickListener() {
             @Override
             public void a(int n) {
@@ -316,7 +316,7 @@ public class ReaderWebActivity extends BaseReadActivity {
                 break;
             }
         }
-        if (com.clilystudio.netbook.hpay100.a.a.l(this, this.f + "source_web_alert")) {
+        if (com.clilystudio.netbook.util.a.l(this, this.f + "source_web_alert")) {
             String var10_7 = this.getString(R.string.reader_web_opt_msg);
             final View var11_8 = LayoutInflater.from(this).inflate(R.layout.dialog_reader_web_opt, (ViewGroup)getWindow().getDecorView(), false);
             DialogInterface.OnClickListener var12_9 = new DialogInterface.OnClickListener() {
@@ -330,8 +330,8 @@ public class ReaderWebActivity extends BaseReadActivity {
                     }
                 }
             };
-            if (com.clilystudio.netbook.hpay100.a.a.g()) {
-                ((TextView) var11_8.findViewById(R.id.reader_web_opt_url)).setText(com.clilystudio.netbook.hpay100.a.a.P(this.f));
+            if (com.clilystudio.netbook.util.a.g()) {
+                ((TextView) var11_8.findViewById(R.id.reader_web_opt_url)).setText(com.clilystudio.netbook.util.a.P(this.f));
                 new BaseDialog.Builder(this).setView(var11_8).setCancelable(false)
                         .setPositiveButton("好的", var12_9).show();
             } else {

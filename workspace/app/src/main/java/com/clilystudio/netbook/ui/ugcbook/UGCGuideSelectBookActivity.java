@@ -151,7 +151,7 @@ public class UGCGuideSelectBookActivity extends BaseActivity {
                         arrayList2.add(string);
                     }
                 }
-                String[] arrstring = com.clilystudio.netbook.hpay100.a.a.a(arrayList2, String.class);
+                String[] arrstring = com.clilystudio.netbook.util.a.a(arrayList2, String.class);
                 BusProvider.getInstance().post(new AddShelfBooksEvent(arrstring));
                 finish();
             }

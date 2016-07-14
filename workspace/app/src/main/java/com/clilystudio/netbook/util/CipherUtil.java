@@ -3,8 +3,6 @@ package com.clilystudio.netbook.util;
 import android.content.Context;
 import android.util.Base64;
 
-import com.clilystudio.netbook.hpay100.a.a;
-
 import java.security.Key;
 
 import javax.crypto.Cipher;

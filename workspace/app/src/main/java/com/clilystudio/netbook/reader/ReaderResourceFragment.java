@@ -287,10 +287,10 @@ public class ReaderResourceFragment extends Fragment {
                 }
             }
             String string = this.a;
-            if (com.clilystudio.netbook.hpay100.a.a.isMounted()) {
-                for (String string2 : com.clilystudio.netbook.hpay100.a.a.D(string)) {
+            if (com.clilystudio.netbook.util.a.isMounted()) {
+                for (String string2 : com.clilystudio.netbook.util.a.D(string)) {
                     if (string2.contains("MIX_TOC_ID") || string2.contains("_")) continue;
-                    for (String s : com.clilystudio.netbook.hpay100.a.a.j(string, string2)) {
+                    for (String s : com.clilystudio.netbook.util.a.j(string, string2)) {
                         if ("toc".equals(s)) continue;
                         bl = true;
                         break block11;
@@ -301,8 +301,8 @@ public class ReaderResourceFragment extends Fragment {
         }
         if (bl) {
             this.h.setVisibility(View.VISIBLE);
-            int n2 = com.clilystudio.netbook.hpay100.a.a.a(this.getActivity(), 55.0f);
-            int n3 = com.clilystudio.netbook.hpay100.a.a.a(this.getActivity(), 40.0f);
+            int n2 = com.clilystudio.netbook.util.a.a(this.getActivity(), 55.0f);
+            int n3 = com.clilystudio.netbook.util.a.a(this.getActivity(), 40.0f);
             if (this.g.getVisibility() == View.VISIBLE) {
                 LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(-1, n2);
                 layoutParams.setMargins(0, 0, 0, 0);

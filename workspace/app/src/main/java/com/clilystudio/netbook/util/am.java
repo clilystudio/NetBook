@@ -177,7 +177,7 @@ public class am {
     }
 
     public static void a(Context context, long l2) {
-        com.clilystudio.netbook.hpay100.a.a.e(context, "pref_new_imp_notif_time", String.valueOf(l2));
+        a.e(context, "pref_new_imp_notif_time", String.valueOf(l2));
     }
 
     public static void a(Context context, View view) {
@@ -192,7 +192,7 @@ public class am {
 
     public static void a(EditText editText, String string) {
         String string2 = MyApplication.getInstance().getProperty(string);
-        if (!com.clilystudio.netbook.hpay100.a.a.Q(string2)) {
+        if (!a.Q(string2)) {
             editText.setText(string2);
             editText.requestFocus();
             editText.setSelection(string2.length());
@@ -321,7 +321,7 @@ public class am {
     }
 
     public static void b(Context context, long l2) {
-        com.clilystudio.netbook.hpay100.a.a.e(context, "pref_new_unimp_notif_time", String.valueOf(l2));
+        a.e(context, "pref_new_unimp_notif_time", String.valueOf(l2));
     }
 
     /*
@@ -402,7 +402,7 @@ public class am {
         user.setId(string);
         user.setNickname(myApplication.getProperty("user.name"));
         user.setAvatar(myApplication.getProperty("user.avatar"));
-        user.setLv(com.clilystudio.netbook.hpay100.a.a.b(myApplication.getProperty("user.lv"), 0));
+        user.setLv(a.b(myApplication.getProperty("user.lv"), 0));
         user.setGender(myApplication.getProperty("user.gender"));
         account.setOk(true);
         account.setToken(string2);
@@ -505,7 +505,7 @@ public class am {
         String string = sharedPreferences.getString("pref_new_imp_notif_time", null);
         if (string == null) {
             string = "0";
-            com.clilystudio.netbook.hpay100.a.a.e(context, "pref_new_imp_notif_time", string);
+            a.e(context, "pref_new_imp_notif_time", string);
         }
         return string;
     }
@@ -520,7 +520,7 @@ public class am {
         String string = sharedPreferences.getString("pref_new_unimp_notif_time", null);
         if (string == null) {
             string = "0";
-            com.clilystudio.netbook.hpay100.a.a.e(context, "pref_new_unimp_notif_time", string);
+            a.e(context, "pref_new_unimp_notif_time", string);
         }
         return string;
     }
@@ -568,7 +568,7 @@ public class am {
     }
 
     public static boolean m(Context context) {
-        return com.clilystudio.netbook.hpay100.a.a.a(context, "save_bandwidth", false);
+        return a.a(context, "save_bandwidth", false);
     }
 
     public static String n(Context context) {
@@ -580,14 +580,14 @@ public class am {
     }
 
     public static boolean o(Context context) {
-        long l2 = com.clilystudio.netbook.hpay100.a.a.c(context, "PREF_FIRST_LAUNCH_TIME", 0);
+        long l2 = a.c(context, "PREF_FIRST_LAUNCH_TIME", 0);
         return Calendar.getInstance().getTimeInMillis() - l2 >= 259200000;
     }
 
     public static boolean p(Context context) {
-        boolean bl = com.clilystudio.netbook.hpay100.a.a.a(context, "is_first_launch_app", true);
+        boolean bl = a.a(context, "is_first_launch_app", true);
         if (bl) {
-            com.clilystudio.netbook.hpay100.a.a.b(context, "is_first_launch_app", false);
+            a.b(context, "is_first_launch_app", false);
         }
         return bl;
     }

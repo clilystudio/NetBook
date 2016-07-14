@@ -39,7 +39,7 @@ public class TabWidgetV2 extends TabWidget {
         this.g = (-n2 - n) / 2;
         this.h = (float) ((n - (this.e << 1)) / this.a) / this.b;
         int n3 = this.getResources().getDimensionPixelSize(R.dimen.tab_height);
-        this.d = com.clilystudio.netbook.hpay100.a.a.a(context, "customer_night_theme", false) ? am.a(R.drawable.bg_dark_tab_widget_v3, n2, n3, this.getContext()) : am.a(R.drawable.bg_tab_widget_v3, n2, n3, this.getContext());
+        this.d = com.clilystudio.netbook.util.a.a(context, "customer_night_theme", false) ? am.a(R.drawable.bg_dark_tab_widget_v3, n2, n3, this.getContext()) : am.a(R.drawable.bg_tab_widget_v3, n2, n3, this.getContext());
         this.f = this.getResources().getDimensionPixelSize(R.dimen.tab_host_text);
     }
 

@@ -38,7 +38,7 @@ public final class U {
         try {
             for (int var5_4 = 0; var5_4 < 2; ++var5_4) {
                 String var6_5 = U.a[var5_4];
-                BufferedReader var7_6 = com.clilystudio.netbook.hpay100.a.a.G(host);
+                BufferedReader var7_6 = com.clilystudio.netbook.util.a.G(host);
                 List<ChapterLink> var8_7 = new ArrayList<>();
                 Pattern var9_8 = Pattern.compile(var6_5);
                 int var10_9 = 0;
@@ -100,7 +100,7 @@ public final class U {
         try {
             String name = getFileName(string);
             if (name != null) {
-                ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(new File(com.clilystudio.netbook.hpay100.a.a.J(CachePathConst.TextToc), name)));
+                ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(new File(com.clilystudio.netbook.util.a.J(CachePathConst.TextToc), name)));
                 objectOutputStream.writeObject(new LocalTxtToc(new File(string).length(), list));
                 objectOutputStream.flush();
                 objectOutputStream.close();
@@ -123,7 +123,7 @@ public final class U {
 
     private static List<ChapterLink> c(String string) {
         String string2;
-        BufferedReader bufferedReader = com.clilystudio.netbook.hpay100.a.a.G(string);
+        BufferedReader bufferedReader = com.clilystudio.netbook.util.a.G(string);
         ArrayList<ChapterLink> arrayList = new ArrayList<>();
         int n = 1;
         int n2 = 0;
@@ -170,7 +170,7 @@ public final class U {
         File file;
         String name = U.getFileName(host);
         if (name != null) {
-            file = new File(com.clilystudio.netbook.hpay100.a.a.J(CachePathConst.TextToc), name);
+            file = new File(com.clilystudio.netbook.util.a.J(CachePathConst.TextToc), name);
             if (!file.exists()) return null;
             try {
                 ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream(file));

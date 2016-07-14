@@ -12,6 +12,7 @@ import android.view.Display;
 import android.view.WindowManager;
 
 import com.clilystudio.netbook.R;
+import com.clilystudio.netbook.util.a;
 import com.clilystudio.netbook.util.am;
 import com.clilystudio.netbook.event.BusProvider;
 import com.clilystudio.netbook.event.ThemeChangedEvent;
@@ -64,7 +65,7 @@ public final class ReaderStyle {
         this.paddingVert = this.n.getDimensionPixelSize(R.dimen.page_vertical_padding);
         this.width = n - (this.paddingHori << 1);
         this.l = this.n.getDimensionPixelSize(R.dimen.page_small_text_height);
-        this.a(com.clilystudio.netbook.hpay100.a.a.l(this.m, "reader_opt_full_screen"));
+        this.a(a.l(this.m, "reader_opt_full_screen"));
         this.k();
         this.c(this.z);
     }
@@ -161,12 +162,12 @@ public final class ReaderStyle {
      * Enabled aggressive block sorting
      */
     private void p() {
-        com.clilystudio.netbook.hpay100.a.a.b(this.m, "customer_night_theme", this.x);
-        com.clilystudio.netbook.hpay100.a.a.b(this.m, "night_mode", this.x);
+        a.b(this.m, "customer_night_theme", this.x);
+        a.b(this.m, "night_mode", this.x);
         if (this.x) {
-            com.clilystudio.netbook.hpay100.a.a.B(this.m);
+            a.B(this.m);
         } else {
-            com.clilystudio.netbook.hpay100.a.a.C(this.m);
+            a.C(this.m);
         }
         Intent intent = new Intent();
         intent.setAction("broadcastOnThemeChanged");
@@ -236,7 +237,7 @@ public final class ReaderStyle {
             display.getRealSize(point);
             n = point.y;
         } else {
-            n = com.clilystudio.netbook.hpay100.a.a.L(this.m);
+            n = a.L(this.m);
         }
         int n2 = this.n.getDimensionPixelSize(R.dimen.page_body_margin);
         int n3 = n - (this.paddingVert << 1) - (this.l << 1) - (n2 << 1);

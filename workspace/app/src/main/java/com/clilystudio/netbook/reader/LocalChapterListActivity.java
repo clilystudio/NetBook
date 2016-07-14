@@ -49,7 +49,7 @@ public class LocalChapterListActivity extends BaseActivity {
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();
                 String string2 = LocalChapterListActivity.c(localChapterListActivity);
-                com.clilystudio.netbook.hpay100.a.a.E(CachePathConst.Chapter + File.separator + string2 + File.separator + string);
+                com.clilystudio.netbook.util.a.E(CachePathConst.Chapter + File.separator + string2 + File.separator + string);
                 LocalChapterListActivity.e(localChapterListActivity);
             }
         }).setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
@@ -93,14 +93,14 @@ public class LocalChapterListActivity extends BaseActivity {
      * Enabled aggressive block sorting
      */
     static /* synthetic */ ArrayList i(LocalChapterListActivity localChapterListActivity) {
-        ArrayList<String> arrayList = com.clilystudio.netbook.hpay100.a.a.D(localChapterListActivity.g);
+        ArrayList<String> arrayList = com.clilystudio.netbook.util.a.D(localChapterListActivity.g);
         ArrayList<TocDownloadSummary> arrayList2 = new ArrayList<>();
         for (String string : arrayList) {
             if (string.contains("MIX_TOC_ID") || string.contains("_")) continue;
-            Toc toc = (Toc) com.clilystudio.netbook.hpay100.a.a.b(localChapterListActivity.g, string, "toc");
+            Toc toc = (Toc) com.clilystudio.netbook.util.a.b(localChapterListActivity.g, string, "toc");
             String string2 = localChapterListActivity.g;
             String string3 = "/ZhuiShuShenQi/Chapter" + File.separator + string2 + File.separator + string;
-            int n2 = com.clilystudio.netbook.hpay100.a.a.b(new File(CachePathConst.RootPath, string3));
+            int n2 = com.clilystudio.netbook.util.a.b(new File(CachePathConst.RootPath, string3));
             if (toc != null) {
                 --n2;
             }
@@ -208,7 +208,7 @@ public class LocalChapterListActivity extends BaseActivity {
                 return true;
             }
         });
-        if (!com.clilystudio.netbook.hpay100.a.a.isMounted()) {
+        if (!com.clilystudio.netbook.util.a.isMounted()) {
             this.a.setVisibility(View.VISIBLE);
             String text = "无法获取预读章节，请检查SD卡";
             this.a.setText(text);

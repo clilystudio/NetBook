@@ -32,6 +32,7 @@ import com.clilystudio.netbook.IntentBuilder;
 import com.clilystudio.netbook.MyApplication;
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.a_pack.BaseAsyncTask;
+import com.clilystudio.netbook.util.a;
 import com.clilystudio.netbook.util.am;
 import com.clilystudio.netbook.api.ApiServiceProvider;
 import com.clilystudio.netbook.db.BookReadRecord;
@@ -353,7 +354,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
             return;
         }
         readerActivity.mReader.a();
-        com.clilystudio.netbook.hpay100.a.a.u(readerActivity.mBookId);
+        a.u(readerActivity.mBookId);
         String string = readerActivity.getString(R.string.add_book_event);
         Object[] arrobject = new Object[]{readerActivity.mBookTitle};
         ToastUtil.showShortToast(readerActivity, String.format(string, arrobject));
@@ -473,7 +474,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
             MyApplication.getInstance().setBookId(null);
         }
         MyApplication.getInstance().setReader(this.mReader);
-        if (!this.q() && !com.clilystudio.netbook.hpay100.a.a.h(this.mReadMode)) {
+        if (!this.q() && !a.h(this.mReadMode)) {
             if (!this.mIsShowToc || this.mChangeOrientation) {
                 this.g();
             } else {
@@ -551,7 +552,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
                 }
             });
         }
-        com.clilystudio.netbook.hpay100.a.a.a(this, this.mReaderTocDialog);
+        a.a(this, this.mReaderTocDialog);
     }
 
     /*
@@ -608,7 +609,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
                     }
                 }
                 this.r.setChapterLink(string);
-                if (com.clilystudio.netbook.hpay100.a.a.h() && !this.p) {
+                if (a.h() && !this.p) {
                     this.q.setSystemUiVisibility(0);
                 }
             } else {
@@ -642,18 +643,18 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
                 this.getWindow().addFlags(2048);
                 this.getWindow().clearFlags(1024);
                 this.getWindow().clearFlags(512);
-                if (com.clilystudio.netbook.hpay100.a.a.h() && this.p) {
+                if (a.h() && this.p) {
                     this.q.setSystemUiVisibility(0);
                 }
             }
-            com.clilystudio.netbook.hpay100.a.a.a(this.q);
+            a.a(this.q);
         }
         if (this.i.f()) {
-            if (com.clilystudio.netbook.hpay100.a.a.h() && this.p) {
+            if (a.h() && this.p) {
                 this.q.setSystemUiVisibility(2055);
             }
         } else {
-            if (com.clilystudio.netbook.hpay100.a.a.h() && this.p) {
+            if (a.h() && this.p) {
                 this.q.setSystemUiVisibility(1);
             }
         }
@@ -665,7 +666,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
     }
 
     private void J() {
-        this.mIsFullScreen = com.clilystudio.netbook.hpay100.a.a.l(this, "reader_opt_full_screen");
+        this.mIsFullScreen = a.l(this, "reader_opt_full_screen");
         this.r.a(this.mIsFullScreen);
         this.H();
     }
@@ -763,8 +764,8 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
     }
 
     private void loadChapterList() {
-        if (com.clilystudio.netbook.hpay100.a.a.isMounted()) {
-            for (String s1 : com.clilystudio.netbook.hpay100.a.a.j(this.mBookId, this.mTocId)) {
+        if (a.isMounted()) {
+            for (String s1 : a.j(this.mBookId, this.mTocId)) {
                 String string = am.f(s1);
                 this.x.add(string);
             }
@@ -1409,7 +1410,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
         } else {
             this.mReaderBodyTV.setBackgroundResource(this.mReaderStyle.h);
         }
-        boolean bl2 = this.mReadMode == 5 || this.mReadMode == 10 || com.clilystudio.netbook.hpay100.a.a.h(this.mReadMode) || this.mReadMode == 9;
+        boolean bl2 = this.mReadMode == 5 || this.mReadMode == 10 || a.h(this.mReadMode) || this.mReadMode == 9;
         View view = this.findViewById(R.id.reader_ab_read_mode);
         view.setVisibility(bl2 ? View.VISIBLE : View.GONE);
         this.r.setReaderStyle(this.mReaderStyle);
@@ -1456,7 +1457,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
                     case R.id.reader_ab_more:
                         ReaderActivity.this.s.setVisibility(View.GONE);
                         View view = ReaderActivity.this.r.findViewById(R.id.reader_ab_more);
-                        if (com.clilystudio.netbook.hpay100.a.a.i()) {
+                        if (a.i()) {
                             ReaderActivity.a(ReaderActivity.this, view);
                         } else {
                             ReaderActivity.b(ReaderActivity.this, view);
@@ -1471,7 +1472,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
                         } else {
                             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
                         }
-                        com.clilystudio.netbook.hpay100.a.a.b(ReaderActivity.this, "reader_orientation", mIsPortrait);
+                        a.b(ReaderActivity.this, "reader_orientation", mIsPortrait);
                         break;
                     case R.id.reader_download:
                         ReaderActivity.this.s.setVisibility(View.GONE);
@@ -1533,7 +1534,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
             }
         });
         this.q = this.getWindow().getDecorView();
-        if (com.clilystudio.netbook.hpay100.a.a.h()) {
+        if (a.h()) {
             this.q.setOnSystemUiVisibilityChangeListener(new View.OnSystemUiVisibilityChangeListener() {
                 @Override
                 public void onSystemUiVisibilityChange(int visibility) {
@@ -1593,9 +1594,9 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
                         for (ChapterKeysRoot.ChapterKey chapterKey : chapterKeysRoot.getKeys()) {
                             hashMap.put(chapterKey.get_id(), chapterKey.getKey());
                         }
-                        com.clilystudio.netbook.hpay100.a.a.a(ReaderActivity.this.mBookId, hashMap);
+                        com.clilystudio.netbook.util.a.a(ReaderActivity.this.mBookId, hashMap);
                     } else {
-                        hashMap = com.clilystudio.netbook.hpay100.a.a.M(ReaderActivity.this.mBookId);
+                        hashMap = com.clilystudio.netbook.util.a.M(ReaderActivity.this.mBookId);
                         if (hashMap == null) {
                             hashMap = new HashMap<>();
                         }
@@ -1698,7 +1699,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
         if (this.mReader != null) {
             this.mReader.c();
         }
-        if (com.clilystudio.netbook.hpay100.a.a.a(this, "key_shelf_sort", n2) != n2) {
+        if (a.a(this, "key_shelf_sort", n2) != n2) {
             n2 = 0;
         }
         if (n2 != 0 && (bookReadRecord = BookReadRecord.get(this.mBookId)) != null) {
@@ -1871,7 +1872,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
 
         private String c(String string) {
             StringBuffer stringBuffer = new StringBuffer();
-            Matcher matcher = Pattern.compile("[" + com.clilystudio.netbook.hpay100.a.a.a(this.f.keySet(), "|") + "|" + com.clilystudio.netbook.hpay100.a.a.a(this.g.keySet(), "|") + "]+").matcher(string);
+            Matcher matcher = Pattern.compile("[" + com.clilystudio.netbook.util.a.a(this.f.keySet(), "|") + "|" + com.clilystudio.netbook.util.a.a(this.g.keySet(), "|") + "]+").matcher(string);
             while (matcher.find()) {
                 matcher.appendReplacement(stringBuffer, String.valueOf(this.d(matcher.group())));
             }

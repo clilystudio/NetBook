@@ -114,7 +114,7 @@ public final class ReaderPageManager {
                 this.p();
                 this.mErrorTextTV.setVisibility(View.VISIBLE);
                 this.t();
-                if (com.clilystudio.netbook.hpay100.a.a.isConnectedOrConnecting(this.mActivity)) {
+                if (com.clilystudio.netbook.util.a.isConnectedOrConnecting(this.mActivity)) {
                     this.mErrorTitleTV.setText("连接超时，再试试？");
                     this.mErrorHintTV.setText("请刷新重试或切换来源");
                     this.setErrorImage(R.drawable.ic_reader_connection_error_network_normal);
@@ -155,7 +155,7 @@ public final class ReaderPageManager {
                 this.mErrorTextTV.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        if (com.clilystudio.netbook.hpay100.a.a.isConnectedOrConnecting(ReaderPageManager.this.mActivity)) {
+                        if (com.clilystudio.netbook.util.a.isConnectedOrConnecting(ReaderPageManager.this.mActivity)) {
                             ReaderPageManager.this.mPageErrorView.setVisibility(View.GONE);
                             if (ReaderPageManager.this.mOnReloadSourceListener != null) {
                                 ReaderPageManager.this.mOnReloadSourceListener.onReload();
@@ -212,7 +212,7 @@ public final class ReaderPageManager {
         this.mErrorTextTV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (com.clilystudio.netbook.hpay100.a.a.isConnectedOrConnecting(ReaderPageManager.this.mActivity)) {
+                if (com.clilystudio.netbook.util.a.isConnectedOrConnecting(ReaderPageManager.this.mActivity)) {
                     ReaderPageManager.this.mPageErrorView.setVisibility(View.GONE);
                     if (ReaderPageManager.this.q != null) {
                         ReaderPageManager.this.q.a(ReaderPageManager.this.d.l());
@@ -385,9 +385,9 @@ public final class ReaderPageManager {
                             for (ChapterKeysRoot.ChapterKey chapterKeysRoot$ChapterKey : chapterKeysRoot.getKeys()) {
                                 hashMap.put(chapterKeysRoot$ChapterKey.get_id(), chapterKeysRoot$ChapterKey.getKey());
                             }
-                            com.clilystudio.netbook.hpay100.a.a.a(arg, hashMap);
+                            com.clilystudio.netbook.util.a.a(arg, hashMap);
                         } else {
-                            hashMap = com.clilystudio.netbook.hpay100.a.a.M(arg);
+                            hashMap = com.clilystudio.netbook.util.a.M(arg);
                             if (hashMap == null) {
                                 hashMap = new HashMap<>();
                             }

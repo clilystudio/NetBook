@@ -44,7 +44,7 @@ public class ReadModeItem extends FrameLayout {
             this.mFlagSelect.setVisibility(View.VISIBLE);
             this.mFlagSelect.setText("\u5f53\u524d\u9009\u62e9");
         }
-        if (com.clilystudio.netbook.hpay100.a.a.f(n3)) {
+        if (com.clilystudio.netbook.util.a.f(n3)) {
             this.mFlagWeb.setVisibility(View.VISIBLE);
         }
         this.mChapter.setVisibility(View.GONE);

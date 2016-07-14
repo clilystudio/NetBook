@@ -35,7 +35,7 @@ public class FeedListActivity extends BaseActivity {
     }
 
     private void a(int n) {
-        final int n2 = com.clilystudio.netbook.hpay100.a.a.d(n);
+        final int n2 = com.clilystudio.netbook.util.a.d(n);
         int[] arrn = new int[]{R.id.feed_chapter_10, R.id.feed_chapter_20, R.id.feed_chapter_50, R.id.feed_chapter_100, R.id.feed_chapter_200};
         View view = this.getLayoutInflater().inflate(R.layout.feed_chapter_count_dialog, (ViewGroup)getWindow().getDecorView(), false);
         BaseDialog.Builder h2 = new BaseDialog.Builder(this);
@@ -49,7 +49,7 @@ public class FeedListActivity extends BaseActivity {
                 public void onClick(View v) {
                     alertDialog.dismiss();
                     if (finalJ != n2) {
-                        int n = com.clilystudio.netbook.hpay100.a.a.e(finalJ);
+                        int n = com.clilystudio.netbook.util.a.e(finalJ);
                         BusProvider.getInstance().post(new FeedSettingChangedEvent());
                     }
                 }
@@ -60,7 +60,7 @@ public class FeedListActivity extends BaseActivity {
 
     private void b() {
         List<BookReadRecord> list = BookReadRecord.getAllFeedingOrderByCount();
-        this.b = com.clilystudio.netbook.hpay100.a.a.a(this, "feed_chapter_count", 50);
+        this.b = com.clilystudio.netbook.util.a.a(this, "feed_chapter_count", 50);
         this.a.a(list);
     }
 
@@ -161,7 +161,7 @@ public class FeedListActivity extends BaseActivity {
             }
             case R.id.action_menu_feed_setting:
         }
-        this.a(com.clilystudio.netbook.hpay100.a.a.a(this, "feed_chapter_count", 50));
+        this.a(com.clilystudio.netbook.util.a.a(this, "feed_chapter_count", 50));
         return true;
     }
 }

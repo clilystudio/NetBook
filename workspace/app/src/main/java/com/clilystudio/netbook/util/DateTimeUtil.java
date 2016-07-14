@@ -14,7 +14,7 @@ public final class DateTimeUtil {
     private static final SimpleDateFormat mLongFormatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ", Locale.CHINA);
 
     public static int getTodayValue() {
-        return com.clilystudio.netbook.hpay100.a.a.b(mShortFormatter.format(new Date()), 0);
+        return a.b(mShortFormatter.format(new Date()), 0);
     }
 
     public static String formatTime(long timeMillis) {

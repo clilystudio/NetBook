@@ -54,7 +54,7 @@ public class ReaderOptionActivity extends BaseActivity {
                     if (ReaderOptionActivity.b(readerOptionActivity) != finalI) {
                         ReaderOptionActivity.a(readerOptionActivity, finalI);
                         ReaderOptionActivity.d(readerOptionActivity).setText(ReaderOptionActivity.c(readerOptionActivity)[finalI]);
-                        com.clilystudio.netbook.hpay100.a.a.b(readerOptionActivity, "reader_screen_off_time", ReaderOptionActivity.e(readerOptionActivity)[finalI]);
+                        com.clilystudio.netbook.util.a.b(readerOptionActivity, "reader_screen_off_time", ReaderOptionActivity.e(readerOptionActivity)[finalI]);
                     }
 
                 }
@@ -97,7 +97,7 @@ public class ReaderOptionActivity extends BaseActivity {
         super.onCreate(var1_1);
         this.setContentView(R.layout.reader_option);
         this.b(R.string.reader_option_title);
-        if (com.clilystudio.netbook.hpay100.a.a.l(this, "reader_orientation")) {
+        if (com.clilystudio.netbook.util.a.l(this, "reader_orientation")) {
             this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         } else {
             this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
@@ -111,11 +111,11 @@ public class ReaderOptionActivity extends BaseActivity {
         this.b = (TextView) this.findViewById(R.id.reader_option_screen_off_time_value);
         this.c = this.getResources().getStringArray(R.array.reader_screen_off_time_tags);
         this.e = this.getResources().getIntArray(R.array.reader_screen_off_time_values);
-        boolean var8_8 = com.clilystudio.netbook.hpay100.a.a.l(this, "volume_keys_flip");
-        boolean var9_9 = com.clilystudio.netbook.hpay100.a.a.a(this, "click_flip_animation", false);
-        boolean var10_10 = com.clilystudio.netbook.hpay100.a.a.l(this, "reader_opt_full_screen");
-        boolean var11_11 = com.clilystudio.netbook.hpay100.a.a.a(this, "convert_t", false);
-        boolean var12_12 = com.clilystudio.netbook.hpay100.a.a.a(this, "auto_buy_chapter" + BookInfoUtil.bookId, false);
+        boolean var8_8 = com.clilystudio.netbook.util.a.l(this, "volume_keys_flip");
+        boolean var9_9 = com.clilystudio.netbook.util.a.a(this, "click_flip_animation", false);
+        boolean var10_10 = com.clilystudio.netbook.util.a.l(this, "reader_opt_full_screen");
+        boolean var11_11 = com.clilystudio.netbook.util.a.a(this, "convert_t", false);
+        boolean var12_12 = com.clilystudio.netbook.util.a.a(this, "auto_buy_chapter" + BookInfoUtil.bookId, false);
         assert var2_2 != null;
         var2_2.setChecked(var8_8);
         assert var3_3 != null;
@@ -126,7 +126,7 @@ public class ReaderOptionActivity extends BaseActivity {
         var5_5.setChecked(var11_11);
         assert var6_6 != null;
         var6_6.setChecked(var12_12);
-        int var13_13 = com.clilystudio.netbook.hpay100.a.a.a(this, "reader_screen_off_time", 120000);
+        int var13_13 = com.clilystudio.netbook.util.a.a(this, "reader_screen_off_time", 120000);
         for (int var14_14 = 0; var14_14 < this.c.length; var14_14++) {
             if (var13_13 == this.e[var14_14]) {
                 this.a = var14_14;
@@ -170,7 +170,7 @@ public class ReaderOptionActivity extends BaseActivity {
                     }
                 });
                 SettingItem var15_15 = (SettingItem) this.findViewById(R.id.immersive_container);
-                boolean hasPermanentMenuKey = "xiaomi".equals(Build.BRAND.toLowerCase()) || !(com.clilystudio.netbook.hpay100.a.a.i() && !ViewConfiguration.get(this).hasPermanentMenuKey());
+                boolean hasPermanentMenuKey = "xiaomi".equals(Build.BRAND.toLowerCase()) || !(com.clilystudio.netbook.util.a.i() && !ViewConfiguration.get(this).hasPermanentMenuKey());
                 if (hasPermanentMenuKey) {
                     assert var15_15 != null;
                     var15_15.setVisibility(View.GONE);
@@ -179,11 +179,11 @@ public class ReaderOptionActivity extends BaseActivity {
                     viewById.setVisibility(View.GONE);
                 } else {
                     assert var15_15 != null;
-                    var15_15.setChecked(com.clilystudio.netbook.hpay100.a.a.a(this, "key_enable_imersive_mode", false));
+                    var15_15.setChecked(com.clilystudio.netbook.util.a.a(this, "key_enable_imersive_mode", false));
                     var15_15.setCheckListener(new CompoundButton.OnCheckedChangeListener() {
                         @Override
                         public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                            com.clilystudio.netbook.hpay100.a.a.b(ReaderOptionActivity.this, "key_enable_imersive_mode", isChecked);
+                            com.clilystudio.netbook.util.a.b(ReaderOptionActivity.this, "key_enable_imersive_mode", isChecked);
                         }
                     });
                 }

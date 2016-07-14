@@ -17,7 +17,7 @@ import com.clilystudio.netbook.a_pack.BaseAsyncTask;
 import com.clilystudio.netbook.adapter.NotificationAdapter;
 import com.clilystudio.netbook.util.am;
 import com.clilystudio.netbook.api.ApiServiceProvider;
-import com.clilystudio.netbook.hpay100.a.a;
+import com.clilystudio.netbook.util.a;
 import com.clilystudio.netbook.model.Account;
 import com.clilystudio.netbook.model.NotificationItem;
 import com.clilystudio.netbook.model.NotificationRoot;
@@ -262,7 +262,7 @@ public abstract class NotifFragment extends Fragment {
         this.m = am.getAccount();
         this.f = LayoutInflater.from(this.getActivity()).inflate(R.layout.loading_item, (ViewGroup)getActivity().getWindow().getDecorView(), false);
         this.e = this.d.getRefreshableView();
-        if (com.clilystudio.netbook.hpay100.a.a.i()) {
+        if (a.i()) {
             this.e.setFooterDividersEnabled(false);
         }
         this.e.addFooterView(this.f);

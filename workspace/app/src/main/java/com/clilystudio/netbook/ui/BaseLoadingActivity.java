@@ -52,7 +52,7 @@ public abstract class BaseLoadingActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        if (com.clilystudio.netbook.hpay100.a.a.k()) {
+        if (com.clilystudio.netbook.util.a.k()) {
             this.getWindow().setUiOptions(1);
         }
         this.setContentView(R.layout.activity_loading_base);

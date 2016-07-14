@@ -105,7 +105,7 @@ public class SettingWidget extends LinearLayout {
             view.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    com.clilystudio.netbook.hpay100.a.a.D(SettingWidget.this.getContext());
+                    com.clilystudio.netbook.util.a.D(SettingWidget.this.getContext());
                     dc2.a();
                 }
             });

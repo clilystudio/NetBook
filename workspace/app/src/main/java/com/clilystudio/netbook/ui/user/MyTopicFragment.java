@@ -146,7 +146,7 @@ public class MyTopicFragment extends Fragment {
         this.c.setMode(PullToRefreshBase.Mode.PULL_FROM_START);
         this.e = layoutInflater2.inflate(R.layout.loading_item, (ViewGroup)getActivity().getWindow().getDecorView(), false);
         ListView d = this.c.getRefreshableView();
-        if (com.clilystudio.netbook.hpay100.a.a.i()) {
+        if (com.clilystudio.netbook.util.a.i()) {
             d.setFooterDividersEnabled(false);
         }
         d.addFooterView(this.e);

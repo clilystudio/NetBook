@@ -45,11 +45,11 @@ public class UGCGuideAddCollectionActivity extends BaseActivity {
         }
         String string = uGCGuideAddCollectionActivity.a.getText().toString();
         String string2 = uGCGuideAddCollectionActivity.b.getText().toString();
-        if (com.clilystudio.netbook.hpay100.a.a.Q(string)) {
+        if (com.clilystudio.netbook.util.a.Q(string)) {
             ToastUtil.showShortToast(uGCGuideAddCollectionActivity, "请输入书单名");
             return;
         }
-        if (com.clilystudio.netbook.hpay100.a.a.Q(string2)) {
+        if (com.clilystudio.netbook.util.a.Q(string2)) {
             ToastUtil.showShortToast(uGCGuideAddCollectionActivity, "请输入书单主题介绍");
             return;
         }
@@ -82,8 +82,8 @@ public class UGCGuideAddCollectionActivity extends BaseActivity {
         {
             String string = this.a.getText().toString();
             String string2 = this.b.getText().toString();
-            if (com.clilystudio.netbook.hpay100.a.a.Q(string)) {
-                boolean bl2 = com.clilystudio.netbook.hpay100.a.a.Q(string2);
+            if (com.clilystudio.netbook.util.a.Q(string)) {
+                boolean bl2 = com.clilystudio.netbook.util.a.Q(string2);
                 bl = false;
                 if (bl2) break block4;
             }

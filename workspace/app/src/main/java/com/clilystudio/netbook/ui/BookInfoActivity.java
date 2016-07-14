@@ -130,7 +130,7 @@ public class BookInfoActivity extends BaseActivity implements View.OnClickListen
 
     static /* synthetic */ void c(BookInfoActivity bookInfoActivity, boolean bl) {
         if (bl) {
-            com.clilystudio.netbook.hpay100.a.a.b(bookInfoActivity, "add_update_notify_login", false);
+            com.clilystudio.netbook.util.a.b(bookInfoActivity, "add_update_notify_login", false);
         }
     }
 
@@ -173,7 +173,7 @@ public class BookInfoActivity extends BaseActivity implements View.OnClickListen
         int n2 = bookInfoActivity.k.getWordCount();
         if (n2 > 0) {
             textView2.setVisibility(View.VISIBLE);
-            Object[] arrobject = new Object[]{com.clilystudio.netbook.hpay100.a.a.i(n2)};
+            Object[] arrobject = new Object[]{com.clilystudio.netbook.util.a.i(n2)};
             textView2.setText(String.format("  |  %s\u5b57", arrobject));
         } else {
             textView2.setVisibility(View.GONE);
@@ -291,7 +291,7 @@ public class BookInfoActivity extends BaseActivity implements View.OnClickListen
         View view = this.findViewById(R.id.book_info_tags_root);
         view.setVisibility(View.VISIBLE);
         int n2 = arrstring.length;
-        int n3 = com.clilystudio.netbook.hpay100.a.a.a(this, 16.0f);
+        int n3 = com.clilystudio.netbook.util.a.a(this, 16.0f);
         TagsLayout tagsLayout = (TagsLayout) view.findViewById(R.id.tags_layout);
         for (String anArrstring : arrstring) {
             TextView textView = (TextView) layoutInflater.inflate(R.layout.book_info_tags_item, tagsLayout, false).findViewById(R.id.tag_text);
@@ -360,7 +360,7 @@ public class BookInfoActivity extends BaseActivity implements View.OnClickListen
         String string;
         if (this.i) {
             BookReadRecord.deleteAndSync(this.mBookId);
-            com.clilystudio.netbook.hpay100.a.a.v(this.mBookId);
+            com.clilystudio.netbook.util.a.v(this.mBookId);
             String string2 = this.getString(R.string.remove_book_event);
             Object[] arrobject = new Object[]{this.k.getTitle()};
             string = String.format(string2, arrobject);
@@ -369,11 +369,11 @@ public class BookInfoActivity extends BaseActivity implements View.OnClickListen
                 string = this.getString(R.string.book_add_overflow);
             } else {
                 BookReadRecord.create(this.k);
-                com.clilystudio.netbook.hpay100.a.a.u(this.mBookId);
+                com.clilystudio.netbook.util.a.u(this.mBookId);
                 String string3 = this.getString(R.string.add_book_event);
                 Object[] arrobject = new Object[]{this.k.getTitle()};
                 String string4 = String.format(string3, arrobject);
-                if (com.clilystudio.netbook.hpay100.a.a.a(this, "add_update_notify_login", true) && !am.g()) {
+                if (com.clilystudio.netbook.util.a.a(this, "add_update_notify_login", true) && !am.g()) {
                     View view = this.getLayoutInflater().inflate(R.layout.remove_shelf_confirm, (ViewGroup)getWindow().getDecorView(), false);
                     final CheckBox checkBox = (CheckBox) view.findViewById(R.id.remove_shelf_cache);
                     checkBox.setText(this.getString(R.string.add_update_not_notify));

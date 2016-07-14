@@ -42,7 +42,7 @@ public class CircularSmartImageView extends CornerImageView {
 
     @Override
     public void setImageURI(Uri uri) {
-        this.setImageBitmap(com.clilystudio.netbook.hpay100.a.a.a(BitmapFactory.decodeFile(uri.getPath())));
+        this.setImageBitmap(com.clilystudio.netbook.util.a.a(BitmapFactory.decodeFile(uri.getPath())));
     }
 
     @Override

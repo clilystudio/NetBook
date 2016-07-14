@@ -1,4 +1,4 @@
-package com.clilystudio.netbook.hpay100.a;
+package com.clilystudio.netbook.util;
 
 import android.app.Activity;
 import android.content.ActivityNotFoundException;

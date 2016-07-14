@@ -70,7 +70,7 @@ public class UserInfoActivity extends BaseActivity {
     static /* synthetic */ void a(UserInfoActivity userInfoActivity, UserInfo userInfo) {
         int n = userInfo.getLv();
         int n2 = userInfo.getExp();
-        int n3 = com.clilystudio.netbook.hpay100.a.a.getLevelExp(n);
+        int n3 = com.clilystudio.netbook.util.a.getLevelExp(n);
         String string = userInfo.getScaleAvatar(2);
         userInfoActivity.mPortrait.setImageUrl(string, R.drawable.avatar_default);
         userInfoActivity.mName.setText(userInfo.getNickname());

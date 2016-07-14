@@ -149,7 +149,7 @@ public class UGCGuideAddBookActivity extends BaseActivity implements View.OnClic
         this.h.setVisibility(View.GONE);
         this.b = this.c.getText().toString().trim();
         this.f();
-        if (com.clilystudio.netbook.hpay100.a.a.isConnectedOrConnecting(this)) {
+        if (com.clilystudio.netbook.util.a.isConnectedOrConnecting(this)) {
             this.a(0);
             if (bl) {
                 BaseAsyncTask<String, Void, List<BookSummary>> w2 = new BaseAsyncTask<String, Void, List<BookSummary>>() {
@@ -405,14 +405,14 @@ public class UGCGuideAddBookActivity extends BaseActivity implements View.OnClic
 
             @Override
             public void afterTextChanged(Editable editable) {
-                boolean bl = !com.clilystudio.netbook.hpay100.a.a.Q(editable.toString());
+                boolean bl = !com.clilystudio.netbook.util.a.Q(editable.toString());
                 UGCGuideAddBookActivity.c(UGCGuideAddBookActivity.this, bl);
             }
         });
         this.c.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
-                boolean bl2 = !com.clilystudio.netbook.hpay100.a.a.Q(UGCGuideAddBookActivity.a(UGCGuideAddBookActivity.this).getText().toString());
+                boolean bl2 = !com.clilystudio.netbook.util.a.Q(UGCGuideAddBookActivity.a(UGCGuideAddBookActivity.this).getText().toString());
                 UGCGuideAddBookActivity.c(UGCGuideAddBookActivity.this, bl2);
             }
         });

@@ -204,7 +204,7 @@ public class ModifyUserInfoActivity extends BaseActivity implements View.OnClick
                     h2.setPositiveButton("知道了", null).show();
                 }
                 if (!bl) return;
-                boolean bl2 = !com.clilystudio.netbook.hpay100.a.a.a(this, "EXTRA_CHANGE_AVATAR", false);
+                boolean bl2 = !com.clilystudio.netbook.util.a.a(this, "EXTRA_CHANGE_AVATAR", false);
                 if (bl2) {
                     BaseDialog.Builder h3 = new BaseDialog.Builder(this);
                     h3.setTitle("提醒");
@@ -212,13 +212,13 @@ public class ModifyUserInfoActivity extends BaseActivity implements View.OnClick
                     h3.setPositiveButton("知道了", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            com.clilystudio.netbook.hpay100.a.a.b(ModifyUserInfoActivity.this);
-                            com.clilystudio.netbook.hpay100.a.a.b(ModifyUserInfoActivity.this, "EXTRA_CHANGE_AVATAR", true);
+                            com.clilystudio.netbook.util.a.b(ModifyUserInfoActivity.this);
+                            com.clilystudio.netbook.util.a.b(ModifyUserInfoActivity.this, "EXTRA_CHANGE_AVATAR", true);
                         }
                     }).show();
                     return;
                 }
-                com.clilystudio.netbook.hpay100.a.a.b(this);
+                com.clilystudio.netbook.util.a.b(this);
                 return;
             }
             case R.id.name_section: {

@@ -187,7 +187,7 @@ public class MyFavTopicFragment extends Fragment {
         this.c.setMode(PullToRefreshBase.Mode.PULL_FROM_START);
         this.e = LayoutInflater.from(this.getActivity()).inflate(R.layout.loading_item, (ViewGroup)getActivity().getWindow().getDecorView(), false);
         this.d = this.c.getRefreshableView();
-        if (com.clilystudio.netbook.hpay100.a.a.i()) {
+        if (com.clilystudio.netbook.util.a.i()) {
             this.d.setFooterDividersEnabled(false);
         }
         this.d.addFooterView(this.e);

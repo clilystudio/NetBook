@@ -81,7 +81,7 @@ public final class BookShelfSyncManager {
         do {
             if (n2 >= n) {
                 BookShelfSyncManager.b();
-                com.clilystudio.netbook.hpay100.a.a.a(z.b);
+                a.a(z.b);
                 return;
             }
             RemoteBookShelf.Book remoteBookShelf$Book2 = arrremoteBookShelf$Book2[n2];

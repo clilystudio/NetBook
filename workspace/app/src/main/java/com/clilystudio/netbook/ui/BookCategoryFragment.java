@@ -148,12 +148,12 @@ public class BookCategoryFragment extends Fragment {
         this.g = ((BookCategoryListActivity) this.getActivity()).g();
         this.a = (PullToRefreshListView) view.findViewById(R.id.ptr_list);
         this.b = this.a.getRefreshableView();
-        com.clilystudio.netbook.hpay100.a.a.a(this.getActivity(), this.b);
+        com.clilystudio.netbook.util.a.a(this.getActivity(), this.b);
         this.e = view.findViewById(R.id.pb_loading);
         this.f = (TextView) view.findViewById(R.id.empty_text);
         final LayoutInflater layoutInflater2 = LayoutInflater.from(this.getActivity());
         this.c = layoutInflater2.inflate(R.layout.loading_item, (ViewGroup)getActivity().getWindow().getDecorView(), false);
-        if (com.clilystudio.netbook.hpay100.a.a.i()) {
+        if (com.clilystudio.netbook.util.a.i()) {
             this.b.setFooterDividersEnabled(false);
         }
         this.b.addFooterView(this.c);

@@ -194,7 +194,7 @@ public class BookCategoryListActivity extends BaseTabActivity implements ViewPag
         });
         this.f = popupWindow;
         String[] arrstring = new String[]{};
-        CategoryLevelRoot categoryLevelRoot = com.clilystudio.netbook.hpay100.a.a.k(CachePathConst.CategoryLevel, "category_level.txt");
+        CategoryLevelRoot categoryLevelRoot = com.clilystudio.netbook.util.a.k(CachePathConst.CategoryLevel, "category_level.txt");
         String[] arrstring2 = categoryLevelRoot != null ? this.a(categoryLevelRoot) : arrstring;
         final String[] arrstring3 = new String[1 + arrstring2.length];
         arrstring3[0] = this.c;

@@ -190,7 +190,7 @@ public abstract class AbsUGCListFragment extends Fragment implements AdapterView
         this.a = (PullToRefreshListView) view.findViewById(R.id.ptr_list);
         this.b = this.a.getRefreshableView();
         this.b.setOnItemClickListener(this);
-        com.clilystudio.netbook.hpay100.a.a.a(this.getActivity(), this.b);
+        com.clilystudio.netbook.util.a.a(this.getActivity(), this.b);
         View view2 = layoutInflater.inflate(R.layout.my_ugc_header_label, this.b, false);
         this.k = (TextView) view2.findViewById(R.id.content);
         this.k.setVisibility(View.GONE);
@@ -198,7 +198,7 @@ public abstract class AbsUGCListFragment extends Fragment implements AdapterView
         this.d = view.findViewById(R.id.pb_loading);
         this.j = (TextView) view.findViewById(R.id.empty_text);
         this.e = LayoutInflater.from(this.getActivity()).inflate(R.layout.loading_item, (ViewGroup) getActivity().getWindow().getDecorView(), false);
-        if (com.clilystudio.netbook.hpay100.a.a.i()) {
+        if (com.clilystudio.netbook.util.a.i()) {
             this.b.setFooterDividersEnabled(false);
         }
         this.b.addFooterView(this.e);

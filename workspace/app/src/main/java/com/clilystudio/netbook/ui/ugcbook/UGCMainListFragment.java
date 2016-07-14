@@ -218,13 +218,13 @@ public class UGCMainListFragment extends Fragment implements AdapterView.OnItemC
         View view = layoutInflater.inflate(R.layout.fragment_ugc_main, viewGroup, false);
         this.a = (PullToRefreshListView) view.findViewById(R.id.ptr_list);
         this.b = this.a.getRefreshableView();
-        com.clilystudio.netbook.hpay100.a.a.a(this.getActivity(), this.b);
+        com.clilystudio.netbook.util.a.a(this.getActivity(), this.b);
         this.b.setOnItemClickListener(this);
         this.e = view.findViewById(R.id.pb_loading);
         this.f = (TextView) view.findViewById(R.id.empty_text);
         LayoutInflater layoutInflater2 = LayoutInflater.from(this.getActivity());
         this.c = layoutInflater2.inflate(R.layout.loading_item, (ViewGroup)getActivity().getWindow().getDecorView(), false);
-        if (com.clilystudio.netbook.hpay100.a.a.i()) {
+        if (com.clilystudio.netbook.util.a.i()) {
             this.b.setFooterDividersEnabled(false);
         }
         this.b.addFooterView(this.c);

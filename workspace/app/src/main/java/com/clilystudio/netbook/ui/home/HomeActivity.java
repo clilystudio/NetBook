@@ -161,7 +161,7 @@ public class HomeActivity extends HomeParentActivity implements ViewPager.OnPage
         if (n >= 0 && n < this.h.getCount()) {
             this.g.setCurrentItem(n, true);
             if (n == -1 + this.h.getCount()) {
-                boolean bl = com.clilystudio.netbook.hpay100.a.a.r(this, "switch_17kflow");
+                boolean bl = com.clilystudio.netbook.util.a.r(this, "switch_17kflow");
                 float f2 = this.j();
                 double d2 = Math.random();
                 if (bl && (double) f2 > d2 && !this.u) {
@@ -264,7 +264,7 @@ public class HomeActivity extends HomeParentActivity implements ViewPager.OnPage
     private void l() {
         try {
             if (this.j == null || !this.j.isShowing()) {
-                this.j = new PopupWindow(this.getLayoutInflater().inflate(R.layout.home_menu_bg_popup, (ViewGroup) getWindow().getDecorView(), false), -1, com.clilystudio.netbook.hpay100.a.a.L(this));
+                this.j = new PopupWindow(this.getLayoutInflater().inflate(R.layout.home_menu_bg_popup, (ViewGroup) getWindow().getDecorView(), false), -1, com.clilystudio.netbook.util.a.L(this));
                 this.j.setAnimationStyle(R.style.home_menu_bg_anim);
                 this.j.showAtLocation(this.getActionBar().getCustomView(), 0, 0, 0);
             }
@@ -288,7 +288,7 @@ public class HomeActivity extends HomeParentActivity implements ViewPager.OnPage
                 });
             }
             this.i.setAnimationStyle(R.style.home_menu_anim);
-            this.i.showAtLocation(view, 53, com.clilystudio.netbook.hpay100.a.a.a(this, 5.0f), am.l(this) + am.k(this));
+            this.i.showAtLocation(view, 53, com.clilystudio.netbook.util.a.a(this, 5.0f), am.l(this) + am.k(this));
             this.i.setOnDismissListener(new PopupWindow.OnDismissListener() {
                 @Override
                 public void onDismiss() {
@@ -434,7 +434,7 @@ public class HomeActivity extends HomeParentActivity implements ViewPager.OnPage
             case R.id.home_menu_msg: {
                 if (this.mAccount != null) {
                     this.m();
-                    com.clilystudio.netbook.hpay100.a.a.b(this, "key_enter_msg_time", System.currentTimeMillis());
+                    com.clilystudio.netbook.util.a.b(this, "key_enter_msg_time", System.currentTimeMillis());
                     AccountInfo accountInfo = AccountInfo.getOrCreate(this.mAccount.getToken());
                     accountInfo.setPrevUnimpNotif(UserNotificationManager.getInstance(this).getUnimportant());
                     accountInfo.save();
@@ -456,18 +456,18 @@ public class HomeActivity extends HomeParentActivity implements ViewPager.OnPage
             }
             case R.id.home_menu_theme: {
                 Intent intent = new Intent(this, HomeTransparentActivity.class);
-                if (com.clilystudio.netbook.hpay100.a.a.a(this, "customer_night_theme", false)) {
+                if (com.clilystudio.netbook.util.a.a(this, "customer_night_theme", false)) {
                     this.n.setText(R.string.custom_theme_night);
                     this.o.setImageResource(R.drawable.theme_night);
-                    com.clilystudio.netbook.hpay100.a.a.b(this, "customer_night_theme", false);
-                    com.clilystudio.netbook.hpay100.a.a.b(this, "night_mode", false);
-                    com.clilystudio.netbook.hpay100.a.a.C(this);
+                    com.clilystudio.netbook.util.a.b(this, "customer_night_theme", false);
+                    com.clilystudio.netbook.util.a.b(this, "night_mode", false);
+                    com.clilystudio.netbook.util.a.C(this);
                     intent.putExtra("onThemeChange", 0);
                 } else {
                     this.n.setText(R.string.custom_theme_day);
                     this.o.setImageResource(R.drawable.theme_day);
-                    com.clilystudio.netbook.hpay100.a.a.b(this, "customer_night_theme", true);
-                    com.clilystudio.netbook.hpay100.a.a.b(this, "night_mode", true);
+                    com.clilystudio.netbook.util.a.b(this, "customer_night_theme", true);
+                    com.clilystudio.netbook.util.a.b(this, "night_mode", true);
                     intent.putExtra("onThemeChange", 1);
                 }
                 this.startActivity(intent);
@@ -510,7 +510,7 @@ public class HomeActivity extends HomeParentActivity implements ViewPager.OnPage
         ImageView r = (ImageView) a2.getCustomView().findViewById(R.id.home_action_menu_game);
         this.q.setOnClickListener(this);
         imageView.setOnClickListener(this);
-        this.c = com.clilystudio.netbook.hpay100.a.a.x(this);
+        this.c = com.clilystudio.netbook.util.a.x(this);
         if (!this.c) {
             r.setVisibility(View.GONE);
         }
@@ -533,7 +533,7 @@ public class HomeActivity extends HomeParentActivity implements ViewPager.OnPage
             View view;
             TabHost.TabSpec tabSpec = this.f.newTabSpec("tab" + i2);
             tabSpec.setContent(this);
-            if (i2 == 1 && com.clilystudio.netbook.hpay100.a.a.a(this, "FRIST_RUN_POST", true) && com.clilystudio.netbook.hpay100.a.a.r(this, "switch_news")) {
+            if (i2 == 1 && com.clilystudio.netbook.util.a.a(this, "FRIST_RUN_POST", true) && com.clilystudio.netbook.util.a.r(this, "switch_news")) {
                 View view2 = layoutInflater.inflate(R.layout.home_tabhost_notify_item, (ViewGroup) getWindow().getDecorView(), false);
                 this.s = (ViewGroup) view2;
                 view = view2;
@@ -569,19 +569,19 @@ public class HomeActivity extends HomeParentActivity implements ViewPager.OnPage
         }
         this.n = (TextView) this.k.findViewById(R.id.text_theme);
         this.o = (ImageView) this.k.findViewById(R.id.icon_theme);
-        if (com.clilystudio.netbook.hpay100.a.a.a(this, "customer_night_theme", false)) {
+        if (com.clilystudio.netbook.util.a.a(this, "customer_night_theme", false)) {
             this.n.setText(R.string.custom_theme_day);
             this.o.setImageResource(R.drawable.theme_day);
         } else {
             this.n.setText(R.string.custom_theme_night);
             this.o.setImageResource(R.drawable.theme_night);
         }
-        if (!com.clilystudio.netbook.hpay100.a.a.a(this, "bookPushRecords", false)) {
+        if (!com.clilystudio.netbook.util.a.a(this, "bookPushRecords", false)) {
             List<BookReadRecord> list = BookReadRecord.getAll();
             if (list != null && !list.isEmpty()) {
                 HomeActivity.a(list);
             }
-            com.clilystudio.netbook.hpay100.a.a.b(this, "bookPushRecords", true);
+            com.clilystudio.netbook.util.a.b(this, "bookPushRecords", true);
         }
         this.h();
         this.i();
@@ -662,7 +662,7 @@ public class HomeActivity extends HomeParentActivity implements ViewPager.OnPage
             this.t.destroy();
         }
         this.u = false;
-        com.clilystudio.netbook.hpay100.a.a.b(this, "search_hot_words_date", 0);
+        com.clilystudio.netbook.util.a.b(this, "search_hot_words_date", 0);
     }
 
     @Override
@@ -752,7 +752,7 @@ public class HomeActivity extends HomeParentActivity implements ViewPager.OnPage
         Account account;
         super.onResume();
         DnsManager.setUseDns("1".equals(OnlineConfigAgent.getInstance().getConfigParams(this, "use_http_dns")));
-        if (com.clilystudio.netbook.hpay100.a.a.l()) {
+        if (com.clilystudio.netbook.util.a.l()) {
             new BaseAsyncTask<Void, Void, BookTopRoot>() {
 
                 @Override
@@ -766,7 +766,7 @@ public class HomeActivity extends HomeParentActivity implements ViewPager.OnPage
                     super.onPostExecute(bookTopRoot);
                     BookTopRoot.Favorite favorite;
                     if (bookTopRoot != null && (favorite = bookTopRoot.getFavorite()) != null) {
-                        com.clilystudio.netbook.hpay100.a.a.b(HomeActivity.this, favorite.getBookID(), favorite.getTocID(), favorite.getChecksum());
+                        com.clilystudio.netbook.util.a.b(HomeActivity.this, favorite.getBookID(), favorite.getTocID(), favorite.getChecksum());
                     }
                 }
             }.b();

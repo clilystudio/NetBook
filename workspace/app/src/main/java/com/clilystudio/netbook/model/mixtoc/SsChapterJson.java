@@ -1,6 +1,6 @@
 package com.clilystudio.netbook.model.mixtoc;
 
-import com.clilystudio.netbook.hpay100.a.a;
+import com.clilystudio.netbook.util.a;
 import com.clilystudio.netbook.model.Chapter;
 import com.clilystudio.netbook.model.ChapterRoot;
 

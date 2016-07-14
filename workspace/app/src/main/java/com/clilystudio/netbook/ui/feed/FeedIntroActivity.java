@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.clilystudio.netbook.R;
-import com.clilystudio.netbook.hpay100.a.a;
+import com.clilystudio.netbook.util.a;
 import com.clilystudio.netbook.ui.BaseActivity;
 
 public class FeedIntroActivity extends BaseActivity {

@@ -88,7 +88,7 @@ public class BookRankListActivity extends BaseActivity {
     public void onBookRankClickEvent(BookRankClickEvent x2) {
         BookRankSummary bookRankSummary = x2.getBookRankSummary();
         String string = x2.isMale() ? "male" : "female";
-        Intent intent = !bookRankSummary.isCollapse() && com.clilystudio.netbook.hpay100.a.a.r(this, "rank_revision_switch") ? BookRankMainActivity.a(this, bookRankSummary.getIds(), bookRankSummary.getTitle(), string) : BookRankDetailActivity.a(this, bookRankSummary.get_id(), bookRankSummary.getTitle());
+        Intent intent = !bookRankSummary.isCollapse() && com.clilystudio.netbook.util.a.r(this, "rank_revision_switch") ? BookRankMainActivity.a(this, bookRankSummary.getIds(), bookRankSummary.getTitle(), string) : BookRankDetailActivity.a(this, bookRankSummary.get_id(), bookRankSummary.getTitle());
         this.startActivity(intent);
     }
 

@@ -275,7 +275,7 @@ public class UGCDetailActivity extends BaseActivity implements View.OnClickListe
         super.onCreate(bundle);
         this.setContentView(R.layout.activity_ugcbook_detail);
         BusProvider.getInstance().register(this);
-        if (com.clilystudio.netbook.hpay100.a.a.a(this.getIntent())) {
+        if (com.clilystudio.netbook.util.a.a(this.getIntent())) {
             List<String> list = this.getIntent().getData().getPathSegments();
             this.o = list.get(-1 + list.size());
         } else {

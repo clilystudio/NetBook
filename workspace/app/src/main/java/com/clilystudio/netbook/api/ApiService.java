@@ -178,7 +178,7 @@ public class ApiService {
 
     public static String a(String string, int n, String string2) {
         String string3 = am.e(string2);
-        String[] arrstring = com.clilystudio.netbook.hpay100.a.a.O(string);
+        String[] arrstring = com.clilystudio.netbook.util.a.O(string);
         if (arrstring != null) {
             Object[] arrobject = new Object[]{arrstring[0], arrstring[1], n, string3};
             return String.format(Locale.CHINA, "http://book.easou.com/ta/show.m?gid=%s&nid=%s&st=%d&cu=%s", arrobject);
@@ -542,7 +542,7 @@ public class ApiService {
         if (esChapterRoot == null) return null;
         if (esChapterRoot.getContent() != null) {
             ChapterRoot chapterRoot = new ChapterRoot();
-            String string7 = com.clilystudio.netbook.hpay100.a.a.z(esChapterRoot.getContent());
+            String string7 = com.clilystudio.netbook.util.a.z(esChapterRoot.getContent());
             Chapter chapter = new Chapter();
             chapter.setLink(chapterLink);
             chapter.setBody(string7);
@@ -828,7 +828,7 @@ public class ApiService {
             if (string4 != null) {
                 string5 = string4.replaceAll("<p>", "").replaceAll("</p>", "\n");
             }
-            String string6 = com.clilystudio.netbook.hpay100.a.a.z(string5);
+            String string6 = com.clilystudio.netbook.util.a.z(string5);
             Chapter chapter = new Chapter();
             chapter.setLink(ldChapterRoot.getSrc());
             chapter.setBody(string6);
@@ -1348,7 +1348,7 @@ public class ApiService {
         if (sgChapterRoot == null || sgChapterRoot.getContent() == null || sgChapterRoot.getContent().length <= 0) return null;
         {
             ChapterRoot chapterRoot = new ChapterRoot();
-            String string4 = com.clilystudio.netbook.hpay100.a.a.z(sgChapterRoot.getContent()[0].getBlock());
+            String string4 = com.clilystudio.netbook.util.a.z(sgChapterRoot.getContent()[0].getBlock());
             Chapter chapter = new Chapter();
             chapter.setLink(string);
             if (string4 != null && string4.contains("</")) {
@@ -1395,13 +1395,13 @@ public class ApiService {
     }
 
     public final NotificationRoot r(String string, String string2) {
-        String string3 = com.clilystudio.netbook.hpay100.a.a.Q(string2) ? String.format(Locale.CHINA, "/user/notification/important?token=%s", string) : String.format(Locale.CHINA, "/user/notification/important?token=%s&startTime=%s", string, string2);
+        String string3 = com.clilystudio.netbook.util.a.Q(string2) ? String.format(Locale.CHINA, "/user/notification/important?token=%s", string) : String.format(Locale.CHINA, "/user/notification/important?token=%s&startTime=%s", string, string2);
         String string4 = f + string3;
         return ApiService.a(this.a(HttpRequest.get(string4)), NotificationRoot.class);
     }
 
     public final NotificationRoot s(String string, String string2) {
-        String string3 = com.clilystudio.netbook.hpay100.a.a.Q(string2) ? String.format(Locale.CHINA, "/user/notification/unimportant?token=%s", string) : String.format(Locale.CHINA, "/user/notification/unimportant?token=%s&startTime=%s", string, string2);
+        String string3 = com.clilystudio.netbook.util.a.Q(string2) ? String.format(Locale.CHINA, "/user/notification/unimportant?token=%s", string) : String.format(Locale.CHINA, "/user/notification/unimportant?token=%s&startTime=%s", string, string2);
         String string4 = f + string3;
         return ApiService.a(this.a(HttpRequest.get(string4)), NotificationRoot.class);
     }
@@ -1462,7 +1462,7 @@ public class ApiService {
     }
 
     public final EsTocRoot v(String string) {
-        String[] arrstring = com.clilystudio.netbook.hpay100.a.a.O(string);
+        String[] arrstring = com.clilystudio.netbook.util.a.O(string);
         if (arrstring == null) {
             return null;
         }
@@ -1487,7 +1487,7 @@ public class ApiService {
     public final ChapterRoot x(String string) {
         String string2 = String.format(Locale.CHINA, "/chapter/%s", am.e(string));
         String string3 = h + string2;
-        String string4 = string3 + "?" + com.clilystudio.netbook.hpay100.a.a.A(string2);
+        String string4 = string3 + "?" + com.clilystudio.netbook.util.a.A(string2);
         HttpRequest httpRequest = HttpRequest.get(string4);
         if (DnsManager.isUseDns()) {
             httpRequest = DnsManager.a2(httpRequest);

@@ -52,7 +52,7 @@ public class SettingsActivity extends BaseActivity implements View.OnClickListen
     static /* synthetic */ void a(SettingsActivity settingsActivity, int n, String string) {
         if (settingsActivity.a != n) {
             settingsActivity.a = n;
-            com.clilystudio.netbook.hpay100.a.a.b(settingsActivity, "key_shelf_sort", settingsActivity.a);
+            com.clilystudio.netbook.util.a.b(settingsActivity, "key_shelf_sort", settingsActivity.a);
             ((TextView) settingsActivity.findViewById(R.id.settings_shelf_sort_value)).setText(string);
             BusProvider.getInstance().post(new BookReadEvent());
         }
@@ -75,9 +75,9 @@ public class SettingsActivity extends BaseActivity implements View.OnClickListen
             }
         }).start();
         MyApplication.getInstance().removeProperties("account.token", "user.id", "user.name", "user.avatar", "user.lv", "user.gender");
-        com.clilystudio.netbook.hpay100.a.a.e(settingsActivity, "pref_new_unimp_notif_time", "0");
-        com.clilystudio.netbook.hpay100.a.a.e(settingsActivity, "pref_new_imp_notif_time", "0");
-        com.clilystudio.netbook.hpay100.a.a.b(settingsActivity, "remove_ad_duration", 0);
+        com.clilystudio.netbook.util.a.e(settingsActivity, "pref_new_unimp_notif_time", "0");
+        com.clilystudio.netbook.util.a.e(settingsActivity, "pref_new_imp_notif_time", "0");
+        com.clilystudio.netbook.util.a.b(settingsActivity, "remove_ad_duration", 0);
         settingsActivity.finish();
         BusProvider.getInstance().post(new LogoutEvent());
     }
@@ -137,8 +137,8 @@ public class SettingsActivity extends BaseActivity implements View.OnClickListen
         String string = am.c(this, "COMMIT_ID");
         String string2 = string != null && string.length() > 8 ? string.substring(0, 8) : null;
         textView.setText(stringBuilder.append(string2).append(")").toString());
-        final boolean bl = com.clilystudio.netbook.hpay100.a.a.l(this, "update_notice_key");
-        boolean bl2 = com.clilystudio.netbook.hpay100.a.a.a(this, "save_bandwidth", false);
+        final boolean bl = com.clilystudio.netbook.util.a.l(this, "update_notice_key");
+        boolean bl2 = com.clilystudio.netbook.util.a.a(this, "save_bandwidth", false);
         final SwitchCompat switchCompat = (SwitchCompat) this.findViewById(R.id.cb_notice_update);
         final SwitchCompat switchCompat2 = (SwitchCompat) this.findViewById(R.id.cb_save_bandwidth);
         switchCompat.setChecked(bl);
@@ -148,7 +148,7 @@ public class SettingsActivity extends BaseActivity implements View.OnClickListen
         switchCompat.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                com.clilystudio.netbook.hpay100.a.a.b(SettingsActivity.this, "update_notice_key", isChecked);
+                com.clilystudio.netbook.util.a.b(SettingsActivity.this, "update_notice_key", isChecked);
                 SettingsActivity.a(SettingsActivity.this, isChecked);
                 SettingsActivity.a(switchCompat, isChecked);
             }
@@ -156,11 +156,11 @@ public class SettingsActivity extends BaseActivity implements View.OnClickListen
         switchCompat2.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                com.clilystudio.netbook.hpay100.a.a.b(SettingsActivity.this, "save_bandwidth", isChecked);
+                com.clilystudio.netbook.util.a.b(SettingsActivity.this, "save_bandwidth", isChecked);
                 SettingsActivity.a(switchCompat2, isChecked);
             }
         });
-        this.a = com.clilystudio.netbook.hpay100.a.a.a(this, "key_shelf_sort", 1);
+        this.a = com.clilystudio.netbook.util.a.a(this, "key_shelf_sort", 1);
         String string3 = this.getResources().getStringArray(R.array.settings_shelf_sort)[this.a];
         ((TextView) this.findViewById(R.id.settings_shelf_sort_value)).setText(string3);
     }

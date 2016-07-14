@@ -12,7 +12,7 @@ public class BaseReadActivity extends FragmentActivity {
     @Override
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        if (com.clilystudio.netbook.hpay100.a.a.a(this, "customer_night_theme", false)) {
+        if (com.clilystudio.netbook.util.a.a(this, "customer_night_theme", false)) {
             this.setTheme(R.style.BaseTheme_Dark);
             return;
         }

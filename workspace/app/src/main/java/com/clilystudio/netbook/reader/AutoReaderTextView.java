@@ -12,6 +12,7 @@ import android.view.animation.LinearInterpolator;
 import android.view.animation.Transformation;
 import android.widget.RelativeLayout;
 
+import com.clilystudio.netbook.util.a;
 import com.clilystudio.netbook.widget.JustifyTextView;
 
 
@@ -125,7 +126,7 @@ public class AutoReaderTextView extends JustifyTextView {
     }
 
     public final void f() {
-        this.e = com.clilystudio.netbook.hpay100.a.a.a(this.d, "auto_reader_speed", 5);
+        this.e = a.a(this.d, "auto_reader_speed", 5);
         this.j = (RelativeLayout.LayoutParams) this.getLayoutParams();
     }
 
