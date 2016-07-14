@@ -93,7 +93,7 @@ public final class ReaderPageManager {
         if (this.d == null) {
             return;
         }
-        switch (this.d.o()) {
+        switch (this.d.getStatus()) {
             default: {
                 return;
             }
@@ -338,7 +338,7 @@ public final class ReaderPageManager {
                 return false;
             }
             String string = this.d.a().getKey();
-            if (string == null && (string = this.d.q().a().e().get(this.d.a().getId())) != null) {
+            if (string == null && (string = this.d.getReaderPageTransformer().a().e().get(this.d.a().getId())) != null) {
                 this.d.a().setKey(string);
             }
             return string == null;

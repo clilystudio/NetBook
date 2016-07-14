@@ -25,17 +25,17 @@ public final class ReaderPageTransformer {
                     e2.a(n.a(ReaderPageTransformer.this, readerChapter, n4));
                     return;
                 }
-                int[] arrn = ReaderPageTransformer.this.a(readerChapter.getBody());
+                int[] lineStarts = ReaderPageTransformer.this.getLineStarts(readerChapter.getBody());
                 int n3 = 0;
                 if (n31 != 0) {
                     if (n31 == -1) {
-                        n3 = -1 + arrn.length;
+                        n3 = lineStarts.length - 1;
                     } else {
-                        int n4 = -1 + arrn.length;
+                        int n4 = lineStarts.length - 1;
                         do {
                             n3 = 0;
                             if (n4 == 0) break;
-                            if (n31 >= arrn[n4]) {
+                            if (n31 >= lineStarts[n4]) {
                                 n3 = n4;
                                 break;
                             }
@@ -43,7 +43,7 @@ public final class ReaderPageTransformer {
                         } while (true);
                     }
                 }
-                e2.a(new n(ReaderPageTransformer.this, readerChapter, arrn, n3));
+                e2.a(new n(ReaderPageTransformer.this, readerChapter, lineStarts, n3));
             }
         }, false, bl);
     }
@@ -74,7 +74,7 @@ public final class ReaderPageTransformer {
         e2.a(n.a(this, readerChapter, 0));
     }
 
-    public final int[] a(String string) {
+    public final int[] getLineStarts(String string) {
         int n2;
         int n3 = 0;
         TextPaint textPaint = new TextPaint();
