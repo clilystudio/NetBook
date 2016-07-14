@@ -66,13 +66,13 @@ public final class Reader {
     @NonNull
     private Y getYClass() {
         return new Y() {
-            private Map<Integer, ArrayList<e<ReaderChapter>>> map = new HashMap<>();
+            private Map<Integer, ArrayList<OnPageTransListener<ReaderChapter>>> map = new HashMap<>();
             private Map<Integer, Integer> map1 = new HashMap<>();
 
             @Override
-            public void a(final int var1, e<ReaderChapter> var2, boolean var3) {
+            public void a(final int var1, OnPageTransListener<ReaderChapter> var2, boolean var3) {
                 synchronized (this) {
-                    ArrayList<e<ReaderChapter>> arrayList = this.map.get(var1);
+                    ArrayList<OnPageTransListener<ReaderChapter>> arrayList = this.map.get(var1);
                     if (arrayList == null) {
                         arrayList = new ArrayList<>();
                         this.map.put(var1, arrayList);
@@ -90,13 +90,13 @@ public final class Reader {
                     Reader.e(Reader.this).execute(new Runnable() {
 
                         public final void af(final ReaderChapter readerChapter) {
-                            final List<e<ReaderChapter>> list = map.remove(var1);
+                            final List<OnPageTransListener<ReaderChapter>> list = map.remove(var1);
                             if (list != null) {
                                 Reader.d(Reader.this).post(new Runnable() {
                                     @Override
                                     public void run() {
-                                        for (e<ReaderChapter> aList : list) {
-                                            aList.a(readerChapter);
+                                        for (OnPageTransListener<ReaderChapter> aList : list) {
+                                            aList.onPageTrans(readerChapter);
                                         }
                                     }
                                 });
@@ -392,9 +392,9 @@ public final class Reader {
         if (list.size() == 0) {
             return;
         }
-        this.a(list.get(0), new e<ReaderChapter>() {
+        this.a(list.get(0), new OnPageTransListener<ReaderChapter>() {
             @Override
-            public void a(ReaderChapter var1) {
+            public void onPageTrans(ReaderChapter var1) {
                 if (list.size() > 1) {
                     Reader.a(Reader.this, list.subList(1, list.size()));
                 }
@@ -473,20 +473,20 @@ public final class Reader {
     /*
      * Enabled aggressive block sorting
      */
-    public final void a(int n2, e<ReaderChapter> e2, boolean bl, boolean bl2) {
+    public final void a(int n2, OnPageTransListener<ReaderChapter> e2, boolean bl, boolean bl2) {
         int n3;
         int n4;
         Chapter chapter;
         ReaderChapter readerChapter = Q.a(this.mBookId, this.mTocHost, n2);
         if (readerChapter != null && (n4 = readerChapter.getStatus()) != -1 && n4 != -3 && n4 != -2) {
-            e2.a(readerChapter);
+            e2.onPageTrans(readerChapter);
             this.p();
             this.a.put(n2, readerChapter);
             return;
         }
         ReaderChapter readerChapter2 = this.a.get(n2);
         if (readerChapter2 != null && ((n3 = readerChapter2.getStatus()) != -1 && n3 != -3 && n3 != -2 || bl)) {
-            e2.a(readerChapter2);
+            e2.onPageTrans(readerChapter2);
             this.p();
             return;
         }
@@ -494,7 +494,7 @@ public final class Reader {
         if (arrchapterLink == null || arrchapterLink.length == 0) {
             ReaderChapter readerChapter3 = new ReaderChapter();
             readerChapter3.setStatus(-4);
-            e2.a(readerChapter3);
+            e2.onPageTrans(readerChapter3);
             this.p();
             return;
         }
@@ -509,12 +509,12 @@ public final class Reader {
             readerChapter4.setBody(chapter.getBody());
             readerChapter4.setCpContent(chapter.getContent());
             readerChapter4.setId(chapter.getId());
-            e2.a(readerChapter4);
+            e2.onPageTrans(readerChapter4);
             this.p();
             return;
         }
         if (!bl2 && !bl) {
-            e2.a(this.a(chapterLink, n2));
+            e2.onPageTrans(this.a(chapterLink, n2));
             this.p();
             return;
         }
@@ -744,7 +744,7 @@ public final class Reader {
     }
 
     interface Y {
-        void a(int var1, e<ReaderChapter> var2, boolean var3);
+        void a(int var1, OnPageTransListener<ReaderChapter> var2, boolean var3);
     }
 
     public interface ad {

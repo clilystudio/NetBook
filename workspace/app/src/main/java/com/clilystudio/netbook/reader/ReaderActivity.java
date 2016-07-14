@@ -287,16 +287,16 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
         if (!n2.f()) {
             readerActivity.b[0].a(n2, true);
             readerActivity.mMainView.setCurrentItem(0, false);
-            n2.a(new e<ReaderLineInfo>() {
+            n2.a(new OnPageTransListener<ReaderLineInfo>() {
 
                 @Override
-                public void a(ReaderLineInfo var1) {
+                public void onPageTrans(ReaderLineInfo var1) {
                     readerActivity.b[1].a(var1);
                     if (var1 != null) {
-                        var1.a(new e<ReaderLineInfo>() {
+                        var1.a(new OnPageTransListener<ReaderLineInfo>() {
 
                             @Override
-                            public void a(ReaderLineInfo var11) {
+                            public void onPageTrans(ReaderLineInfo var11) {
                                 readerActivity.b[2].a(var11);
                                 readerActivity.x();
                             }
@@ -307,14 +307,14 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
         } else if (!n2.hasMore()) {
             readerActivity.b[2].a(n2, true);
             readerActivity.mMainView.setCurrentItem(2, false);
-            n2.b(new e<ReaderLineInfo>() {
+            n2.b(new OnPageTransListener<ReaderLineInfo>() {
 
                 @Override
-                public void a(ReaderLineInfo var1) {
+                public void onPageTrans(ReaderLineInfo var1) {
                     readerActivity.b[1].a(var1);
-                    n2.b(new e<ReaderLineInfo>() {
+                    n2.b(new OnPageTransListener<ReaderLineInfo>() {
                         @Override
-                        public void a(ReaderLineInfo var11) {
+                        public void onPageTrans(ReaderLineInfo var11) {
                             readerActivity.b[0].a(var11);
                             readerActivity.x();
                         }
@@ -324,15 +324,15 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
         } else {
             readerActivity.b[1].a(n2, true);
             readerActivity.mMainView.setCurrentItem(1, false);
-            n2.a(new e<ReaderLineInfo>() {
+            n2.a(new OnPageTransListener<ReaderLineInfo>() {
 
                 @Override
-                public void a(ReaderLineInfo var1) {
+                public void onPageTrans(ReaderLineInfo var1) {
                     readerActivity.b[2].a(var1);
-                    n2.b(new e<ReaderLineInfo>() {
+                    n2.b(new OnPageTransListener<ReaderLineInfo>() {
 
                         @Override
-                        public void a(ReaderLineInfo var11) {
+                        public void onPageTrans(ReaderLineInfo var11) {
                             readerActivity.b[0].a(var11);
                             readerActivity.x();
                         }
@@ -828,20 +828,20 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
     }
 
     private void b(int n2) {
-        this.j.a(new e<ReaderLineInfo>() {
+        this.j.a(new OnPageTransListener<ReaderLineInfo>() {
 
             @Override
-            public void a(ReaderLineInfo var1) {
+            public void onPageTrans(ReaderLineInfo var1) {
                 ReaderActivity.a(ReaderActivity.this, var1);
             }
         }, n2);
     }
 
     private void c(int n2) {
-        this.j.b(n2, new e<ReaderLineInfo>() {
+        this.j.b(n2, new OnPageTransListener<ReaderLineInfo>() {
 
             @Override
-            public void a(ReaderLineInfo var1) {
+            public void onPageTrans(ReaderLineInfo var1) {
                 ReaderActivity.a(ReaderActivity.this, var1);
                 if (ReaderActivity.this.M == 2 && var1 != null) {
                     Object[] arrobject = var1.d();
@@ -967,9 +967,9 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
         if (n2 != null && !n2.p()) {
             if (n2.nf() != 1) {
                 int n3 = n2.l();
-                this.j.a(n3, new e<ReaderLineInfo>() {
+                this.j.a(n3, new OnPageTransListener<ReaderLineInfo>() {
                     @Override
-                    public void a(ReaderLineInfo var1) {
+                    public void onPageTrans(ReaderLineInfo var1) {
                         ReaderActivity.a(ReaderActivity.this, var1);
                     }
                 }, true);
@@ -1009,10 +1009,10 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
                     o3.a(n6, true);
                     this.mMainView.setCurrentItem(1, false);
                     o2.a(n5);
-                    n6.a(new e<ReaderLineInfo>() {
+                    n6.a(new OnPageTransListener<ReaderLineInfo>() {
 
                         @Override
-                        public void a(ReaderLineInfo var1) {
+                        public void onPageTrans(ReaderLineInfo var1) {
                             o4.a(var1);
                         }
                     });
@@ -1038,9 +1038,9 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
                     o3.a(n4, true);
                     this.mMainView.setCurrentItem(1, false);
                     o4.a(n5);
-                    n4.b(new e<ReaderLineInfo>() {
+                    n4.b(new OnPageTransListener<ReaderLineInfo>() {
                         @Override
-                        public void a(ReaderLineInfo var1) {
+                        public void onPageTrans(ReaderLineInfo var1) {
                             o2.a(var1);
                         }
                     });
@@ -1174,10 +1174,10 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
     }
 
     public final void g() {
-        this.j.a(new e<ReaderLineInfo>() {
+        this.j.a(new OnPageTransListener<ReaderLineInfo>() {
 
             @Override
-            public void a(ReaderLineInfo var1) {
+            public void onPageTrans(ReaderLineInfo var1) {
                 ReaderActivity.a(ReaderActivity.this, var1);
             }
         });
