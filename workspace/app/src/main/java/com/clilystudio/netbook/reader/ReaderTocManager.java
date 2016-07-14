@@ -29,7 +29,7 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public final class f {
+public final class ReaderTocManager {
     private int mReadMode;
     private String mBookId;
     private String mTocId;
@@ -37,16 +37,16 @@ public final class f {
     private String mSourceId;
     private String mSougoMd;
 
-    public f(int readMode) {
+    public ReaderTocManager(int readMode) {
         this.mReadMode = readMode;
     }
 
-    public f(BookReadRecord bookReadRecord) {
+    public ReaderTocManager(BookReadRecord bookReadRecord) {
         this.mReadMode = bookReadRecord.getReadMode();
         this.mBookId = bookReadRecord.getBookId();
     }
 
-    public f(BookInfo bookInfo, int readMode) {
+    public ReaderTocManager(BookInfo bookInfo, int readMode) {
         this.mReadMode = readMode;
         this.mBookId = bookInfo.getId();
     }
@@ -96,7 +96,7 @@ public final class f {
                 @Override
                 public void run() {
                     SsTocRow[] arrssTocRow;
-                    SsTocRoot ssTocRoot = ApiServiceProvider.getApiService().a(finalJ, n, f.this.mSourceId);
+                    SsTocRoot ssTocRoot = ApiServiceProvider.getApiService().a(finalJ, n, ReaderTocManager.this.mSourceId);
                     if (ssTocRoot == null || ssTocRoot.getRows() == null) return;
                     arrssTocRow = ssTocRoot.getRows();
                     ChapterLink[] arrchapterLink = new ChapterLink[arrssTocRow.length];

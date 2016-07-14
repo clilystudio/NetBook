@@ -54,7 +54,7 @@ public final class Reader {
     private Toc u;
     private String v;
     private String mTocHost;
-    private f z;
+    private ReaderTocManager z;
 
     public Reader(String string) {
         this.C = getYClass();
@@ -141,7 +141,7 @@ public final class Reader {
                                     String body = chapter.getBody();
                                     var5_4.setBody(body);
                                 } else {
-                                    ChapterRoot var6_7 = Reader.b(Reader.this, var3_3, nx);
+                                    ChapterRoot var6_7 = Reader.getChapterRoot(Reader.this, var3_3, nx);
                                     if (var6_7 == null || var6_7.getChapter() == null) {
                                         var5_4.setStatus(-1);
                                     } else if (var6_7.getChapter().getBody() == null) {
@@ -231,7 +231,7 @@ public final class Reader {
         return ag2;
     }
 
-    static /* synthetic */ f a(Reader reader, f f2) {
+    static /* synthetic */ ReaderTocManager a(Reader reader, ReaderTocManager f2) {
         reader.z = f2;
         return f2;
     }
@@ -239,15 +239,15 @@ public final class Reader {
     /*
      * Enabled aggressive block sorting
      */
-    static /* synthetic */ f a(Reader reader, String tocId, String tocHost, String sourcdId) {
-        f f2;
+    static /* synthetic */ ReaderTocManager a(Reader reader, String tocId, String tocHost, String sourcdId) {
+        ReaderTocManager f2;
         if (reader.mBookReadRecord != null) {
-            f2 = new f(reader.mBookReadRecord);
+            f2 = new ReaderTocManager(reader.mBookReadRecord);
         } else {
             com.clilystudio.netbook.model.BookInfo bookInfo = MyApplication.getInstance().getBookInfo();
             f2 = null;
             if (bookInfo != null) {
-                f2 = new f(bookInfo, reader.mReadMode);
+                f2 = new ReaderTocManager(bookInfo, reader.mReadMode);
             }
         }
         if (f2 != null) {
@@ -277,7 +277,7 @@ public final class Reader {
         }
     }
 
-    static /* synthetic */ ChapterRoot b(Reader reader, ChapterLink chapterLink, int index) {
+    static /* synthetic */ ChapterRoot getChapterRoot(Reader reader, ChapterLink chapterLink, int index) {
         if (reader.z != null) {
             reader.z.setTocId(BookInfoUtil.tocId);
             reader.z.setBookId(BookInfoUtil.bookId);
@@ -315,7 +315,7 @@ public final class Reader {
         return reader.u;
     }
 
-    static /* synthetic */ Toc m(Reader reader) {
+    static /* synthetic */ Toc getToc(Reader reader) {
         if (reader.z != null) {
             return reader.z.a();
         }
@@ -535,7 +535,7 @@ public final class Reader {
                     Reader.a(Reader.this, Reader.k(Reader.this));
                     boolean bl2 = Reader.l(Reader.this) == null || bla;
                     if (bl2) {
-                        Reader.a(Reader.this, Reader.m(Reader.this));
+                        Reader.this.u = Reader.getToc(Reader.this);
                         bl = false;
                     } else {
                         bl = true;
@@ -550,7 +550,7 @@ public final class Reader {
                         Reader.a(Reader.this, new BaseAsyncTask<String, Void, Boolean>() {
                             @Override
                             protected Boolean doInBackground(String... params) {
-                                Reader.a(Reader.this, Reader.m(Reader.this));
+                                Reader.a(Reader.this, Reader.getToc(Reader.this));
                                 if (Reader.l(Reader.this) != null) {
                                     Reader.b(Reader.this, Reader.l(Reader.this));
                                 }

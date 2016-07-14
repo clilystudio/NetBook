@@ -25,6 +25,7 @@ import com.clilystudio.netbook.model.ChapterRoot;
 import com.clilystudio.netbook.model.Toc;
 import com.clilystudio.netbook.model.TocSource;
 import com.clilystudio.netbook.model.TocSourceRoot;
+import com.clilystudio.netbook.reader.ReaderTocManager;
 import com.clilystudio.netbook.util.BookInfoUtil;
 import com.clilystudio.netbook.util.ToastUtil;
 import com.squareup.otto.Subscribe;
@@ -43,7 +44,7 @@ public class BookDownloadService extends Service {
     private ArrayList<String> h;
     private Intent i = null;
     private boolean j = false;
-    private com.clilystudio.netbook.reader.f k;
+    private ReaderTocManager k;
     private int l;
     private String m = null;
     private int n;
@@ -121,7 +122,7 @@ public class BookDownloadService extends Service {
         bookDownloadService.c();
     }
 
-    static /* synthetic */ com.clilystudio.netbook.reader.f f(BookDownloadService bookDownloadService) {
+    static /* synthetic */ ReaderTocManager f(BookDownloadService bookDownloadService) {
         return bookDownloadService.k;
     }
 
@@ -233,7 +234,7 @@ public class BookDownloadService extends Service {
     private void a(BookReadRecord bookReadRecord) {
         String string;
         String string2;
-        this.k = new com.clilystudio.netbook.reader.f(bookReadRecord);
+        this.k = new ReaderTocManager(bookReadRecord);
         if (this.mReadMode == -1) {
             getTocSourceRoot();
             return;
@@ -306,7 +307,7 @@ public class BookDownloadService extends Service {
     }
 
     private void b() {
-        this.k = new com.clilystudio.netbook.reader.f(this.mReadMode);
+        this.k = new ReaderTocManager(this.mReadMode);
         boolean bl = com.clilystudio.netbook.hpay100.a.a.h(this.mReadMode);
         String string = null;
         if (bl) {
