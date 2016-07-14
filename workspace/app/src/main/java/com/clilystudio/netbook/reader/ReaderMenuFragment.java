@@ -58,15 +58,6 @@ public class ReaderMenuFragment extends Fragment {
         };
     }
 
-    public static ReaderMenuFragment a(String string, String string2) {
-        ReaderMenuFragment readerMenuFragment = new ReaderMenuFragment();
-        Bundle bundle = new Bundle();
-        bundle.putString("BOOK_ID", string);
-        bundle.putString("BOOK_TITLE", string2);
-        readerMenuFragment.setArguments(bundle);
-        return readerMenuFragment;
-    }
-
     static /* synthetic */ void a(ReaderMenuFragment readerMenuFragment, Activity activity, TocSummary tocSummary) {
         activity.finish();
         MyApplication.getInstance().setBookId(readerMenuFragment.mBookId);

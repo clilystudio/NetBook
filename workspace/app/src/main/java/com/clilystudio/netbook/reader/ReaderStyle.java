@@ -25,8 +25,8 @@ public final class ReaderStyle {
     private static final List<String> k = Arrays.asList("s", "m", "l", "xl", "xxl", "3xl");
     private final Activity m;
     private final Resources n;
-    public int a;
-    public int b;
+    public int textSize;
+    public int lineSpacing;
     public int c;
     public int d;
     public int e;
@@ -128,8 +128,8 @@ public final class ReaderStyle {
                 var1_1 = 1.9f;
                 break;
         }
-        this.a = Math.round(var1_1 * var2_2);
-        this.b = Math.round(0.4f * (float) this.a);
+        this.textSize = Math.round(var1_1 * var2_2);
+        this.lineSpacing = Math.round(0.4f * (float) this.textSize);
     }
 
     private void l() {

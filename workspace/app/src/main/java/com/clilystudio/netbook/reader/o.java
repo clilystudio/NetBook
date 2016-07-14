@@ -334,8 +334,8 @@ public final class o {
 
     private void m() {
         this.h.setHeight(this.c.e);
-        this.h.setTextSize(0, this.c.a);
-        this.h.setLineSpacing(this.c.b, 1.0f);
+        this.h.setTextSize(0, this.c.textSize);
+        this.h.setLineSpacing(this.c.lineSpacing, 1.0f);
     }
 
     private void n() {
@@ -750,7 +750,7 @@ public final class o {
                                 hashMap = new HashMap<>();
                             }
                         }
-                        MyApplication.getInstance().getReader().a(hashMap);
+                        MyApplication.getInstance().getReader().setChaptersKey(hashMap);
                         return;
                     }
                     ToastUtil.showShortToast(o.this.b, "获取个人信息失败，请检查网路后重试");

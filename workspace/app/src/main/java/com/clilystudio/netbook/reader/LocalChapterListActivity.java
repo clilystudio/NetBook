@@ -208,7 +208,7 @@ public class LocalChapterListActivity extends BaseActivity {
                 return true;
             }
         });
-        if (!com.clilystudio.netbook.hpay100.a.a.d()) {
+        if (!com.clilystudio.netbook.hpay100.a.a.isMounted()) {
             this.a.setVisibility(View.VISIBLE);
             String text = "无法获取预读章节，请检查SD卡";
             this.a.setText(text);

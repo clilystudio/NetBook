@@ -120,7 +120,7 @@ public class ReaderViewPager extends ViewGroup {
     private int mMinimumVelocity;
     private DataSetObserver mObserver;
     private int mOffscreenPageLimit = DEFAULT_OFFSCREEN_PAGES;
-    private cw mOnPageChangeListener;
+    private OnPageChangeListener mOnPageChangeListener;
     private int mPageMargin;
     private K mPageTransformer;
     private boolean mPopulatePending;
@@ -1757,7 +1757,7 @@ public class ReaderViewPager extends ViewGroup {
         }
     }
 
-    public void setOnPageChangeListener(cw cw2) {
+    public void setOnPageChangeListener(OnPageChangeListener cw2) {
         this.mOnPageChangeListener = cw2;
     }
 
@@ -1896,7 +1896,7 @@ public class ReaderViewPager extends ViewGroup {
         }
     }
 
-    public interface cw {
+    public interface OnPageChangeListener {
         void a(int var1);
 
         void b(int var1);

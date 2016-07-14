@@ -82,8 +82,8 @@ public final class K {
         int n2;
         int n3 = 0;
         TextPaint textPaint = new TextPaint();
-        textPaint.setTextSize(this.b.a);
-        StaticLayout staticLayout = new StaticLayout(string, textPaint, this.b.f, Layout.Alignment.ALIGN_NORMAL, 1.0f, this.b.b, false);
+        textPaint.setTextSize(this.b.textSize);
+        StaticLayout staticLayout = new StaticLayout(string, textPaint, this.b.f, Layout.Alignment.ALIGN_NORMAL, 1.0f, this.b.lineSpacing, false);
         staticLayout.draw(new Canvas());
         int n4 = staticLayout.getLineCount();
         int n5 = this.b.e;
