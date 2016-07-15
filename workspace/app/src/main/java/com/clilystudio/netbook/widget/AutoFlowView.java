@@ -61,7 +61,7 @@ public class AutoFlowView extends LinearLayout implements View.OnClickListener {
         d = TempUtil.getDipSize(this.getContext(), 12.0f);
         e = TempUtil.getDipSize(this.getContext(), 16.0f);
         f = TempUtil.getDipSize(this.getContext(), 4.0f);
-        if (TempUtil.a(this.getContext(), "customer_night_theme", false)) {
+        if (TempUtil.getBoolPref(this.getContext(), "customer_night_theme", false)) {
             this.l = new int[]{R.drawable.bg_book_info_tag0_dark, R.drawable.bg_book_info_tag1_dark, R.drawable.bg_book_info_tag2_dark, R.drawable.bg_book_info_tag3_dark, R.drawable.bg_book_info_tag4_dark, R.drawable.bg_book_info_tag5_dark, R.drawable.bg_book_info_tag6_dark};
             return;
         }
@@ -125,7 +125,7 @@ public class AutoFlowView extends LinearLayout implements View.OnClickListener {
                 word.show = 1 + word.show;
             }
         }
-        TempUtil.a(this.j, CachePathConst.SearchHistory, "search_hotword.txt");
+        TempUtil.saveObject(this.j, CachePathConst.SearchHistory, "search_hotword.txt");
     }
 
     @Override

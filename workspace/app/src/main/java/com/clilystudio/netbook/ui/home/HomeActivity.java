@@ -453,7 +453,7 @@ public class HomeActivity extends HomeParentActivity implements ViewPager.OnPage
             }
             case R.id.home_menu_theme: {
                 Intent intent = new Intent(this, HomeTransparentActivity.class);
-                if (TempUtil.a(this, "customer_night_theme", false)) {
+                if (TempUtil.getBoolPref(this, "customer_night_theme", false)) {
                     this.n.setText(R.string.custom_theme_night);
                     this.o.setImageResource(R.drawable.theme_night);
                     TempUtil.b(this, "customer_night_theme", false);
@@ -525,7 +525,7 @@ public class HomeActivity extends HomeParentActivity implements ViewPager.OnPage
             View view;
             TabHost.TabSpec tabSpec = this.f.newTabSpec("tab" + i2);
             tabSpec.setContent(this);
-            if (i2 == 1 && TempUtil.a(this, "FRIST_RUN_POST", true) && TempUtil.r(this, "switch_news")) {
+            if (i2 == 1 && TempUtil.getBoolPref(this, "FRIST_RUN_POST", true) && TempUtil.r(this, "switch_news")) {
                 View view2 = layoutInflater.inflate(R.layout.home_tabhost_notify_item, (ViewGroup) getWindow().getDecorView(), false);
                 this.s = (ViewGroup) view2;
                 view = view2;
@@ -561,14 +561,14 @@ public class HomeActivity extends HomeParentActivity implements ViewPager.OnPage
         }
         this.n = (TextView) this.k.findViewById(R.id.text_theme);
         this.o = (ImageView) this.k.findViewById(R.id.icon_theme);
-        if (TempUtil.a(this, "customer_night_theme", false)) {
+        if (TempUtil.getBoolPref(this, "customer_night_theme", false)) {
             this.n.setText(R.string.custom_theme_day);
             this.o.setImageResource(R.drawable.theme_day);
         } else {
             this.n.setText(R.string.custom_theme_night);
             this.o.setImageResource(R.drawable.theme_night);
         }
-        if (!TempUtil.a(this, "bookPushRecords", false)) {
+        if (!TempUtil.getBoolPref(this, "bookPushRecords", false)) {
             List<BookReadRecord> list = BookReadRecord.getAll();
             if (list != null && !list.isEmpty()) {
                 HomeActivity.a(list);

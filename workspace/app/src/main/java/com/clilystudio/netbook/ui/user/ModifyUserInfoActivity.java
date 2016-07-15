@@ -205,7 +205,7 @@ public class ModifyUserInfoActivity extends BaseActivity implements View.OnClick
                     h2.setPositiveButton("知道了", null).show();
                 }
                 if (!bl) return;
-                boolean bl2 = !TempUtil.a(this, "EXTRA_CHANGE_AVATAR", false);
+                boolean bl2 = !TempUtil.getBoolPref(this, "EXTRA_CHANGE_AVATAR", false);
                 if (bl2) {
                     BaseDialog.Builder h3 = new BaseDialog.Builder(this);
                     h3.setTitle("提醒");

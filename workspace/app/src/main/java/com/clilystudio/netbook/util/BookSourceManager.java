@@ -110,7 +110,7 @@ public final class BookSourceManager {
         }
         String string2 = sourceRecord.getSourceId();
         String string3 = TempUtil.getMixTocId(this.mBookId, readMode, string2, null);
-        if (TempUtil.a(this.mActivity, string, false)) {
+        if (TempUtil.getBoolPref(this.mActivity, string, false)) {
             Intent intent = ReaderActivity.a(this.mActivity, this.mBookId, this.mBookTitle, string3, string, false);
             intent.putExtra("SOURCE_ID", string2);
             this.a(intent);

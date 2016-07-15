@@ -20,6 +20,7 @@ import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.a_pack.BaseAsyncTask;
 import com.clilystudio.netbook.api.ApiServiceProvider;
 import com.clilystudio.netbook.db.BookReadRecord;
+import com.clilystudio.netbook.db.BookSyncRecord;
 import com.clilystudio.netbook.db.SourceRecord;
 import com.clilystudio.netbook.event.BookAddedEvent;
 import com.clilystudio.netbook.event.BookRemovedEvent;
@@ -361,17 +362,17 @@ public class BookInfoActivity extends BaseActivity implements View.OnClickListen
         String string;
         if (this.i) {
             BookReadRecord.deleteAndSync(this.mBookId);
-            TempUtil.v(this.mBookId);
+            TempUtil.syncBookShelf(this.mBookId, BookSyncRecord.BookModifyType.SHELF_REMOVE);
             String string2 = this.getString(R.string.remove_book_event);
             Object[] arrobject = new Object[]{this.k.getTitle()};
             string = String.format(string2, arrobject);
         } else {
             BookReadRecord.create(this.k);
-            TempUtil.u(this.mBookId);
+            TempUtil.syncBookShelf(this.mBookId, BookSyncRecord.BookModifyType.SHELF_ADD);
             String string3 = this.getString(R.string.add_book_event);
             Object[] arrobject = new Object[]{this.k.getTitle()};
             String string4 = String.format(string3, arrobject);
-            if (TempUtil.a(this, "add_update_notify_login", true) && !CommonUtil.isLogined()) {
+            if (TempUtil.getBoolPref(this, "add_update_notify_login", true) && !CommonUtil.isLogined()) {
                 View view = this.getLayoutInflater().inflate(R.layout.remove_shelf_confirm, (ViewGroup) getWindow().getDecorView(), false);
                 final CheckBox checkBox = (CheckBox) view.findViewById(R.id.remove_shelf_cache);
                 checkBox.setText(this.getString(R.string.add_update_not_notify));

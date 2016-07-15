@@ -245,6 +245,6 @@ public class CommonUtil {
 
     public static boolean isFirstLaunch(Context context) {
         TempUtil.b(context, "is_first_launch_app", false);
-        return TempUtil.a(context, "is_first_launch_app", true);
+        return TempUtil.getBoolPref(context, "is_first_launch_app", true);
     }
 }

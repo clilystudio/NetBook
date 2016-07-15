@@ -113,10 +113,10 @@ public class ReaderOptionActivity extends BaseActivity {
         this.c = this.getResources().getStringArray(R.array.reader_screen_off_time_tags);
         this.e = this.getResources().getIntArray(R.array.reader_screen_off_time_values);
         boolean var8_8 = TempUtil.l(this, "volume_keys_flip");
-        boolean var9_9 = TempUtil.a(this, "click_flip_animation", false);
+        boolean var9_9 = TempUtil.getBoolPref(this, "click_flip_animation", false);
         boolean var10_10 = TempUtil.l(this, "reader_opt_full_screen");
-        boolean var11_11 = TempUtil.a(this, "convert_t", false);
-        boolean var12_12 = TempUtil.a(this, "auto_buy_chapter" + BookInfoUtil.bookId, false);
+        boolean var11_11 = TempUtil.getBoolPref(this, "convert_t", false);
+        boolean var12_12 = TempUtil.getBoolPref(this, "auto_buy_chapter" + BookInfoUtil.bookId, false);
         assert var2_2 != null;
         var2_2.setChecked(var8_8);
         assert var3_3 != null;
@@ -180,7 +180,7 @@ public class ReaderOptionActivity extends BaseActivity {
                     viewById.setVisibility(View.GONE);
                 } else {
                     assert var15_15 != null;
-                    var15_15.setChecked(TempUtil.a(this, "key_enable_imersive_mode", false));
+                    var15_15.setChecked(TempUtil.getBoolPref(this, "key_enable_imersive_mode", false));
                     var15_15.setCheckListener(new CompoundButton.OnCheckedChangeListener() {
                         @Override
                         public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {

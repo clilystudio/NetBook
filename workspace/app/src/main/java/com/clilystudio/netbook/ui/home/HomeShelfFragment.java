@@ -27,6 +27,7 @@ import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.a_pack.BaseLoadingTask;
 import com.clilystudio.netbook.a_pack.BaseAsyncTask;
 import com.clilystudio.netbook.adapter.HomeShelfAdapter;
+import com.clilystudio.netbook.db.BookSyncRecord;
 import com.clilystudio.netbook.util.CommonUtil;
 import com.clilystudio.netbook.api.ApiServiceProvider;
 import com.clilystudio.netbook.db.BookFile;
@@ -265,7 +266,7 @@ public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollL
                 if (bl) {
                     homeShelfFragment.b(string);
                 }
-                TempUtil.v(bookShelf.getBookRecord().getBookId());
+                TempUtil.syncBookShelf(bookShelf.getBookRecord().getBookId(), BookSyncRecord.BookModifyType.SHELF_REMOVE);
             } else if (bookShelf.getTxt() != null) {
                 homeShelfFragment.a(bookShelf.getTxt());
             }
@@ -420,7 +421,7 @@ public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollL
             bookReadRecord.setLastActionTime(new Date().getTime());
             bookReadRecord.save();
             homeShelfFragment.a(bookReadRecord);
-            if (TempUtil.a(homeShelfFragment.getActivity(), "feed_intro_dialog", true)) {
+            if (TempUtil.getBoolPref(homeShelfFragment.getActivity(), "feed_intro_dialog", true)) {
                 FragmentActivity fragmentActivity = homeShelfFragment.getActivity();
                 if (fragmentActivity != null) {
                     FragmentManager fragmentManager = fragmentActivity.getSupportFragmentManager();
@@ -593,7 +594,7 @@ public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollL
         TempUtil.t(bookReadRecord.getBookId());
         BookReadRecord.addAccountInfo(bookReadRecord);
         this.k();
-        TempUtil.w(bookReadRecord.getBookId());
+        TempUtil.syncBookShelf(bookReadRecord.getBookId(), BookSyncRecord.BookModifyType.FEED_ADD);
     }
 
     private void a(BookShelf bookShelf, boolean bl) {
@@ -612,12 +613,12 @@ public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollL
         }
     }
 
-    private void a(String string) {
+    private void a(String bookId) {
         this.k();
-        TempUtil.t(string);
+        TempUtil.t(bookId);
+        TempUtil.syncBookShelf(bookId, BookSyncRecord.BookModifyType.SHELF_REMOVE);
         BusProvider.getInstance().post(new BookShelfRefreshEvent());
-        TempUtil.v(string);
-    }
+     }
 
     private void a(List<BookShelf> bookShelfs, List<BookReadRecord> bookReadRecords) {
         BookFeed bookFeed = new BookFeed();
@@ -796,7 +797,7 @@ public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollL
         for (int v21 = 0; v21 < v1.size(); v21++) {
             v3[v21] = v1.get(v21).getBookId();
         }
-        TempUtil.a(v3);
+        TempUtil.syncBookShelf(v3, BookSyncRecord.BookModifyType.SHELF_ADD);
         String[] v22 = new String[v8.size()];
         for (int v11 = 0; v11 < v8.size(); v11++) {
             v22[v11] = v8.get(v11).getBookId();
@@ -968,7 +969,7 @@ public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollL
     public void onFeedRemoved(FeedRemovedEvent n2) {
         this.k();
         TempUtil.r(n2.getBookId());
-        TempUtil.x(n2.getBookId());
+        TempUtil.syncBookShelf(n2.getBookId(), BookSyncRecord.BookModifyType.FEED_REMOVE);
     }
 
     @Subscribe
@@ -995,9 +996,9 @@ public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollL
                     BookGenderRecommend.RecommendBook[] recommendBooks = bookGenderRecommend.getBooks();
                     n = recommendBooks.length;
                     while (n2 < n) {
-                        BookGenderRecommend.RecommendBook bookGenderRecommend$RecommendBook = recommendBooks[n2];
-                        BookReadRecord.create(bookGenderRecommend$RecommendBook);
-                        TempUtil.u(bookGenderRecommend$RecommendBook.get_id());
+                        BookGenderRecommend.RecommendBook recommendBook = recommendBooks[n2];
+                        BookReadRecord.create(recommendBook);
+                        TempUtil.syncBookShelf(recommendBook.get_id(), BookSyncRecord.BookModifyType.SHELF_ADD);
                         ++n2;
                     }
                     return bookGenderRecommend;

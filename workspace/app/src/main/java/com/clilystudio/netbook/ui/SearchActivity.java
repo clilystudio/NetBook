@@ -134,7 +134,7 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
     static /* synthetic */ void d(SearchActivity searchActivity) {
         searchActivity.x.clear();
         searchActivity.w.notifyDataSetChanged();
-        TempUtil.a(searchActivity.x, CachePathConst.SearchHistory, "search_history.txt");
+        TempUtil.saveObject(searchActivity.x, CachePathConst.SearchHistory, "search_history.txt");
         searchActivity.a(false);
     }
 
@@ -217,7 +217,7 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
         }
         this.x.add(0, string2);
         this.w.notifyDataSetChanged();
-        TempUtil.a(this.x, CachePathConst.SearchHistory, "search_history.txt");
+        TempUtil.saveObject(this.x, CachePathConst.SearchHistory, "search_history.txt");
         this.a(true);
         this.g();
         if (TempUtil.isConnectedOrConnecting(this)) {
@@ -533,7 +533,7 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
                         word.content = string;
                         arrayList.add(word);
                     }
-                    TempUtil.a(arrayList, CachePathConst.SearchHistory, "search_hotword.txt");
+                    TempUtil.saveObject(arrayList, CachePathConst.SearchHistory, "search_hotword.txt");
                     SearchActivity.g(SearchActivity.this).setVisibility(View.VISIBLE);
                     SearchActivity.e(SearchActivity.this).setWords(hotKeywordResult.getHotWords());
                     SearchActivity.e(SearchActivity.this).setOnItemClickListener(new AutoFlowView.OnItemClickListener() {

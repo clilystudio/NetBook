@@ -387,7 +387,7 @@ public final class ReaderPageManager {
                             for (ChapterKeysRoot.ChapterKey chapterKeysRoot$ChapterKey : chapterKeysRoot.getKeys()) {
                                 hashMap.put(chapterKeysRoot$ChapterKey.get_id(), chapterKeysRoot$ChapterKey.getKey());
                             }
-                            TempUtil.a(arg, hashMap);
+                            TempUtil.saveObject(hashMap, CachePathConst.ChapterKey, arg);
                         } else {
                             hashMap = TempUtil.k(CachePathConst.ChapterKey, arg);
                             if (hashMap == null) {

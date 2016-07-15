@@ -276,7 +276,7 @@ public class UGCDetailActivity extends BaseActivity implements View.OnClickListe
         super.onCreate(bundle);
         this.setContentView(R.layout.activity_ugcbook_detail);
         BusProvider.getInstance().register(this);
-        if (TempUtil.a(this.getIntent())) {
+        if (this.getIntent().getData() != null) {
             List<String> list = this.getIntent().getData().getPathSegments();
             this.o = list.get(-1 + list.size());
         } else {

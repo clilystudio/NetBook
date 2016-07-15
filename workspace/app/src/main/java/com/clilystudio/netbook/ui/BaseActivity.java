@@ -286,7 +286,7 @@ public class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        if (TempUtil.a(this, "customer_night_theme", false)) {
+        if (TempUtil.getBoolPref(this, "customer_night_theme", false)) {
             this.setTheme(R.style.BaseTheme_Dark);
         } else {
             this.setTheme(R.style.BaseTheme);

@@ -37,7 +37,7 @@ public class BookCategoryActivity extends BaseActivity {
     }
 
     static /* synthetic */ void a(CategoryLevelRoot categoryLevelRoot) {
-        TempUtil.a(categoryLevelRoot, CachePathConst.CategoryLevel, "category_level.txt");
+        TempUtil.saveObject(categoryLevelRoot, CachePathConst.CategoryLevel, "category_level.txt");
     }
 
     static /* synthetic */ void a(BookCategoryActivity bookCategoryActivity, CategoryRoot categoryRoot) {

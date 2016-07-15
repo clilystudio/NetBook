@@ -37,6 +37,7 @@ import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.a_pack.BaseAsyncTask;
 import com.clilystudio.netbook.api.ApiServiceProvider;
 import com.clilystudio.netbook.db.BookReadRecord;
+import com.clilystudio.netbook.db.BookSyncRecord;
 import com.clilystudio.netbook.db.BookTopicEnterRecord;
 import com.clilystudio.netbook.db.MixTocRecord;
 import com.clilystudio.netbook.db.TocReadRecord;
@@ -353,7 +354,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
 
     static /* synthetic */ void ad(ReaderActivity readerActivity) {
         readerActivity.mReader.a();
-        TempUtil.u(readerActivity.mBookId);
+        TempUtil.syncBookShelf(readerActivity.mBookId, BookSyncRecord.BookModifyType.SHELF_ADD);
         String string = readerActivity.getString(R.string.add_book_event);
         Object[] arrobject = new Object[]{readerActivity.mBookTitle};
         ToastUtil.showShortToast(readerActivity, String.format(string, arrobject));
@@ -1603,7 +1604,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
                         for (ChapterKeysRoot.ChapterKey chapterKey : chapterKeysRoot.getKeys()) {
                             hashMap.put(chapterKey.get_id(), chapterKey.getKey());
                         }
-                        TempUtil.a(ReaderActivity.this.mBookId, hashMap);
+                        TempUtil.saveObject(hashMap, CachePathConst.ChapterKey, ReaderActivity.this.mBookId);
                     } else {
                         hashMap = TempUtil.k(CachePathConst.ChapterKey, ReaderActivity.this.mBookId);
                         if (hashMap == null) {

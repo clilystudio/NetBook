@@ -28,7 +28,7 @@ public class SettingCheckBox extends SwitchCompat {
     @Override
     protected void onFinishInflate() {
         super.onFinishInflate();
-        this.setChecked(TempUtil.a(this.getContext(), this.a, this.b));
+        this.setChecked(TempUtil.getBoolPref(this.getContext(), this.a, this.b));
         this.setOnCheckedChangeListener(new OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {

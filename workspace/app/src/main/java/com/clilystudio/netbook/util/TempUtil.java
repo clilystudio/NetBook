@@ -17,17 +17,12 @@ import android.graphics.PorterDuffXfermode;
 import android.graphics.Rect;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.net.Uri;
 import android.net.wifi.WifiManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.StatFs;
 import android.preference.PreferenceManager;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -50,10 +45,7 @@ import com.clilystudio.netbook.model.Toc;
 import com.clilystudio.netbook.model.TocSource;
 import com.clilystudio.netbook.push.BookSubRecord;
 import com.clilystudio.netbook.push.BookUnSubRecord;
-import com.clilystudio.netbook.reader.ReaderTocDialog;
-import com.integralblue.httpresponsecache.compat.java.lang.ArrayIndexOutOfBoundsException;
 import com.umeng.onlineconfig.OnlineConfigAgent;
-import com.xiaomi.mipush.sdk.MiPushClient;
 
 import org.json.JSONObject;
 import org.mozilla.universalchardet.UniversalDetector;
@@ -71,19 +63,13 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Array;
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
-import java.net.Socket;
 import java.net.URLDecoder;
-import java.nio.ByteOrder;
 import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
@@ -376,7 +362,7 @@ public class TempUtil {
     public static void addHeaderView(Context context, ListView listView) {
         View view = new View(context);
         view.setLayoutParams(new AbsListView.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, context.getResources().getDimensionPixelSize(R.dimen.tab_overlap)));
-        if (a(context, "customer_night_theme", false)) {
+        if (getBoolPref(context, "customer_night_theme", false)) {
             view.setBackgroundResource(R.drawable.bg_dark_list_item);
         } else {
             view.setBackgroundResource(R.drawable.bg_list_item);
@@ -397,184 +383,74 @@ public class TempUtil {
         }
     }
 
-    public static <T> void a(T t, String string2, String string3) {
+    public static void saveObject(Object object, String path, String name) {
+        ObjectOutputStream oos = null;
         try {
-            File file = new File(makeDir(string2), string3);
+            File file = new File(makeDir(path), name);
             if (!file.exists()) {
-                file.createNewFile();
-            }
-            ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(file));
-            objectOutputStream.writeObject(t);
-            objectOutputStream.flush();
-            objectOutputStream.close();
-            return;
-        } catch (IOException var4_5) {
-            var4_5.printStackTrace();
-            return;
-        }
-    }
-
-    /*
-     * Enabled aggressive block sorting
-     * Lifted jumps to return sites
-     */
-    private static void a(String string2, BookSyncRecord.BookModifyType bookModifyType) {
-        BookSyncRecord.updateOrCreate(o(), string2, BookSyncRecord.getTypeId(bookModifyType));
-        if (CommonUtil.getAccount() == null) return;
-        if (CommonUtil.getAccount().getUser() == null) {
-            return;
-        }
-        String string3 = CommonUtil.getAccount().getToken();
-        String string4 = CommonUtil.getAccount().getUser().getId();
-        List<BookSyncRecord> list = BookSyncRecord.find(string4, BookSyncRecord.getTypeId(bookModifyType));
-        if (list == null) return;
-        if (list.size() == 0) return;
-        String[] arrstring = new String[list.size()];
-        int n2 = 0;
-        do {
-            if (n2 >= list.size()) {
-                new BookSyncTask(string4, string3, bookModifyType, arrstring).b();
-                return;
-            }
-            arrstring[n2] = list.get(n2).getBookId();
-            ++n2;
-        } while (true);
-    }
-
-    public static void a(String string2, Map<String, String> map) {
-        a(map, CachePathConst.ChapterKey, string2);
-    }
-
-    /*
-     * Enabled force condition propagation
-     * Lifted jumps to return sites
-     */
-    public static void a(Socket socket) {
-        if (socket == null) return;
-        try {
-            socket.close();
-        } catch (Exception var1_1) {
-            var1_1.printStackTrace();
-        }
-    }
-
-    /*
-     * Enabled aggressive block sorting
-     * Enabled unnecessary exception pruning
-     * Enabled aggressive exception aggregation
-     */
-    public static void a(Closeable... arrcloseable) {
-        int n2 = arrcloseable.length;
-        int n3 = 0;
-        while (n3 < n2) {
-            Closeable closeable = arrcloseable[n3];
-            if (closeable != null) {
-                try {
-                    closeable.close();
-                } catch (IOException var4_4) {
-                    var4_4.printStackTrace();
+                if (!file.createNewFile()) {
+                    return;
                 }
             }
-            ++n3;
+            oos = new ObjectOutputStream(new FileOutputStream(file));
+            oos.writeObject(object);
+            oos.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (oos != null) {
+                try {
+                    oos.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
         }
     }
 
-    public static void a(String[] arrstring) {
-        a(arrstring, BookSyncRecord.BookModifyType.SHELF_ADD);
-    }
-
-    /*
-     * Enabled aggressive block sorting
-     * Lifted jumps to return sites
-     */
-    private static void a(String[] arrstring, BookSyncRecord.BookModifyType bookModifyType) {
-        for (String string2 : arrstring) {
-            BookSyncRecord.updateOrCreate(o(), string2, BookSyncRecord.getTypeId(bookModifyType));
-        }
-        if (CommonUtil.getAccount() == null) return;
-        if (CommonUtil.getAccount().getUser() == null) {
+    public static void syncBookShelf(String bookId, BookSyncRecord.BookModifyType bookModifyType) {
+        BookSyncRecord.updateOrCreate(getUserId(), bookId, BookSyncRecord.getTypeId(bookModifyType));
+        if (CommonUtil.getAccount() == null || CommonUtil.getAccount().getUser() == null) {
             return;
         }
-        String string3 = CommonUtil.getAccount().getToken();
-        String string4 = CommonUtil.getAccount().getUser().getId();
-        List<BookSyncRecord> list = BookSyncRecord.find(string4, BookSyncRecord.getTypeId(bookModifyType));
-        if (list == null) return;
-        if (list.size() == 0) return;
-        String[] arrstring2 = new String[list.size()];
-        int n2 = 0;
-        do {
-            if (n2 >= list.size()) {
-                new BookSyncTask(string4, string3, bookModifyType, arrstring2).b();
-                return;
-            }
-            arrstring2[n2] = list.get(n2).getBookId();
-            ++n2;
-        } while (true);
-    }
-
-    public static boolean a(byte by, int n2) {
-        return (by & 1 << n2) != 0;
-    }
-
-    /*
-     * Enabled aggressive block sorting
-     * Enabled unnecessary exception pruning
-     * Enabled aggressive exception aggregation
-     */
-    public static boolean a(Context context, File file) {
-        if (context == null || !file.exists()) {
-            return false;
+        String token = CommonUtil.getAccount().getToken();
+        String userId = CommonUtil.getAccount().getUser().getId();
+        List<BookSyncRecord> bookSyncRecordList = BookSyncRecord.find(userId, BookSyncRecord.getTypeId(bookModifyType));
+        if (bookSyncRecordList == null || bookSyncRecordList.size() == 0) {
+            return;
         }
-        Intent intent = new Intent("android.intent.action.VIEW");
-        intent.setDataAndType(Uri.parse("file://" + file.toString()), "application/vnd.android.package-archive");
-        intent.setFlags(268435456);
-        try {
-            context.startActivity(intent);
-            return true;
-        } catch (ActivityNotFoundException var5_3) {
-            var5_3.printStackTrace();
-            return false;
+        String[] bookIds = new String[bookSyncRecordList.size()];
+        for (int i = 0; i < bookSyncRecordList.size(); i++) {
+            bookIds[i] = bookSyncRecordList.get(i).getBookId();
         }
+        new BookSyncTask(userId, token, bookModifyType, bookIds).b();
     }
 
-    public static boolean a(Context context, String string2, boolean bl) {
+    public static void syncBookShelf(String[] noFeedBookIds, BookSyncRecord.BookModifyType bookModifyType) {
+        for (String bookId : noFeedBookIds) {
+            BookSyncRecord.updateOrCreate(getUserId(), bookId, BookSyncRecord.getTypeId(bookModifyType));
+        }
+        if (CommonUtil.getAccount() == null || CommonUtil.getAccount().getUser() == null) {
+            return;
+        }
+        String token = CommonUtil.getAccount().getToken();
+        String userId = CommonUtil.getAccount().getUser().getId();
+        List<BookSyncRecord> bookSyncRecordList = BookSyncRecord.find(userId, BookSyncRecord.getTypeId(bookModifyType));
+        if (bookSyncRecordList == null || bookSyncRecordList.size() == 0) {
+            return;
+        }
+        String[] bookIds = new String[bookSyncRecordList.size()];
+        for (int i = 0; i < bookSyncRecordList.size(); i++) {
+            bookIds[i] = bookSyncRecordList.get(i).getBookId();
+        }
+        new BookSyncTask(userId, token, bookModifyType, bookIds).b();
+    }
+
+    public static boolean getBoolPref(Context context, String key, boolean defValue) {
         if (context == null) {
-            return bl;
+            return defValue;
         }
-        return PreferenceManager.getDefaultSharedPreferences(context).getBoolean(string2, bl);
-    }
-
-    public static boolean a(Intent intent) {
-        return intent.getData() != null;
-    }
-
-    public static boolean a(Class<?> class_) {
-        return class_.isPrimitive() || class_.equals(String.class) || class_.equals(Integer.class) || class_.equals(Long.class) || class_.equals(Double.class) || class_.equals(Float.class) || class_.equals(Boolean.class) || class_.equals(Short.class) || class_.equals(Character.class) || class_.equals(Byte.class) || class_.equals(Void.class);
-    }
-
-    public static boolean a(Object object, Object object2) {
-        return object == object2 || object != null && object.equals(object2);
-    }
-
-    public static boolean a(String p0, SQLiteDatabase p1) {
-        if (TextUtils.isEmpty(p0) || !p0.matches("[0-9a-zA-Z]+_[0-9a-zA-Z]+")) {
-            return false;
-        }
-        Cursor v1 = p1.query("table_schema", null, null, null, null, null, null);
-        if (!v1.moveToFirst()) {
-            v1.close();
-            return false;
-        }
-        do {
-            if (p0.equalsIgnoreCase(v1.getString(v1.getColumnIndexOrThrow("name"))) && v1.getInt(v1.getColumnIndexOrThrow("type")) == 1) {
-                v1.close();
-                return true;
-            }
-        } while (v1.moveToNext());
-        if (v1 != null) {
-            v1.close();
-        }
-        return true;
+        return PreferenceManager.getDefaultSharedPreferences(context).getBoolean(key, defValue);
     }
 
     public static boolean a(String string2, String string3, String string4, Chapter chapter) {
@@ -893,7 +769,7 @@ public class TempUtil {
     }
 
     public static void b(String[] arrstring) {
-        a(arrstring, BookSyncRecord.BookModifyType.FEED_ADD);
+        syncBookShelf(arrstring, BookSyncRecord.BookModifyType.FEED_ADD);
     }
 
     public static int c(Context context, String key, int defValue) {
@@ -1406,7 +1282,7 @@ public class TempUtil {
     }
 
     public static boolean l(Context context, String string2) {
-        return a(context, string2, true);
+        return getBoolPref(context, string2, true);
     }
 
     /*
@@ -1445,7 +1321,7 @@ public class TempUtil {
         return stringBuilder.toString();
     }
 
-    private static String o() {
+    private static String getUserId() {
         if (CommonUtil.getAccount() != null && CommonUtil.getAccount().getUser() != null) {
             return CommonUtil.getAccount().getUser().getId();
         }
@@ -1549,10 +1425,6 @@ public class TempUtil {
         }
     }
 
-    public static void u(String string2) {
-        a(string2, BookSyncRecord.BookModifyType.SHELF_ADD);
-    }
-
     public static float v(Context context, String string2) {
         String string3 = OnlineConfigAgent.getInstance().getConfigParams(context, string2);
         try {
@@ -1570,14 +1442,6 @@ public class TempUtil {
         }
     }
 
-    public static void v(String string2) {
-        a(string2, BookSyncRecord.BookModifyType.SHELF_REMOVE);
-    }
-
-    public static void w(String string2) {
-        a(string2, BookSyncRecord.BookModifyType.FEED_ADD);
-    }
-
     public static boolean w(Context context) {
         return true;
     }
@@ -1591,10 +1455,6 @@ public class TempUtil {
             return true;
         }
         return Math.random() < (double) f2;
-    }
-
-    public static void x(String string2) {
-        a(string2, BookSyncRecord.BookModifyType.FEED_REMOVE);
     }
 
     public static boolean x(Context context, String string2) {
