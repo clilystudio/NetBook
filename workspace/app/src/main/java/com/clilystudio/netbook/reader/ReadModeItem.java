@@ -53,7 +53,7 @@ public class ReadModeItem extends FrameLayout {
             public void onClick(View v) {
                 if (n4 != n3) {
                     MyApplication.getInstance().setBookId(ReadModeItem.a(ReadModeItem.this));
-                    CommonUtil.c(ReadModeItem.a(ReadModeItem.this), n3);
+                    CommonUtil.setReadMode(ReadModeItem.a(ReadModeItem.this), n3);
                     ReadModeItem.a(ReadModeItem.this, n3);
                 }
                 ReadModeItem.b(ReadModeItem.this).finish();

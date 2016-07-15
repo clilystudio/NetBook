@@ -197,7 +197,7 @@ public class UGCMainActivity extends BaseTabActivity implements ViewPager.OnPage
         view.findViewById(R.id.create_ugc).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (CommonUtil.a(UGCMainActivity.this) != null) {
+                if (CommonUtil.checkLogin(UGCMainActivity.this) != null) {
                     Intent intent = new Intent(UGCMainActivity.this, UGCGuideAddCollectionActivity.class);
                     UGCMainActivity.this.startActivity(intent);
                     UGCMainActivity.h(UGCMainActivity.this);
@@ -207,7 +207,7 @@ public class UGCMainActivity extends BaseTabActivity implements ViewPager.OnPage
         view.findViewById(R.id.my_ugc).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (CommonUtil.a(UGCMainActivity.this) != null) {
+                if (CommonUtil.checkLogin(UGCMainActivity.this) != null) {
                     Intent intent = new Intent(UGCMainActivity.this, UserUGCActivity.class);
                     UGCMainActivity.this.startActivity(intent);
                     UGCMainActivity.h(UGCMainActivity.this);
@@ -399,12 +399,12 @@ public class UGCMainActivity extends BaseTabActivity implements ViewPager.OnPage
                 an an2 = (an) holder;
                 an2.j = string = this.c.getString(R.string.ugc_all);
                 if (UGCMainActivity.j(ak.this.c).equals(string)) {
-                    an2.i.setTextColor(CommonUtil.a(ak.this.c, R.attr.backgroundNormal));
-                    an2.i.setBackgroundResource(CommonUtil.b(ak.this.c, R.attr.redRoundBg));
+                    an2.i.setTextColor(CommonUtil.getAttrColor(ak.this.c, R.attr.backgroundNormal));
+                    an2.i.setBackgroundResource(CommonUtil.getAttrResource(ak.this.c, R.attr.redRoundBg));
                     return;
                 }
-                an2.i.setTextColor(CommonUtil.a(ak.this.c, 16842808));
-                an2.i.setBackgroundResource(CommonUtil.b(ak.this.c, R.attr.backgroundSelector));
+                an2.i.setTextColor(CommonUtil.getAttrColor(ak.this.c, android.R.attr.textColorSecondary));
+                an2.i.setBackgroundResource(CommonUtil.getAttrResource(ak.this.c, R.attr.backgroundSelector));
                 return;
             }
             final al al2 = (al) holder;

@@ -303,7 +303,7 @@ public final class ReaderPageManager {
         }
         this.mPageErrorView.setVisibility(View.GONE);
         this.mTitleTV.setText(this.d.i());
-        if (this.mReaderStyle.i()) {
+        if (this.mReaderStyle.needCovert()) {
             this.mBodyTV.setText(this.d.a(this.mActivity));
         } else {
             this.mBodyTV.setText(this.d.c());

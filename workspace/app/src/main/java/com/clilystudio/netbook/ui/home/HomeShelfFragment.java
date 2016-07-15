@@ -478,7 +478,7 @@ public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollL
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!shelfMsg.login || CommonUtil.a(homeShelfFragment.getActivity()) != null) {
+                if (!shelfMsg.login || CommonUtil.checkLogin(homeShelfFragment.getActivity()) != null) {
                     homeShelfFragment.startActivity(new InsideLinkIntent(homeShelfFragment.getActivity(), insideLink));
                 }
             }
@@ -705,8 +705,8 @@ public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollL
                 }.b();
                 return;
             }
-            if (CommonUtil.p(this.getActivity())) {
-                if (!CommonUtil.g() && !this.A) {
+            if (CommonUtil.isFirstLaunch(this.getActivity())) {
+                if (!CommonUtil.isLogined() && !this.A) {
                     com.clilystudio.netbook.util.a.a(this.getActivity());
                     return;
                 }
@@ -1040,7 +1040,7 @@ public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollL
 
     @Subscribe
     public void onShelfUpdated(ShelfUpdatedEvent a2) {
-        if (a2.getBookCounts() == 0 && this.z && CommonUtil.p(this.getActivity())) {
+        if (a2.getBookCounts() == 0 && this.z && CommonUtil.isFirstLaunch(this.getActivity())) {
             if (!this.A) {
                 com.clilystudio.netbook.util.a.a(this.getActivity());
             }

@@ -272,7 +272,7 @@ public class HomeShelfAdapter extends BaseBookAdapter<BookShelf> {
                     }
                 }
                 final String var24_14 = var20_7.getBookId();
-                if (!CommonUtil.h(var24_14)) {
+                if (!CommonUtil.isDownloading(var24_14)) {
                     if (var23_10) {
                         var19_6.coverLoadingLayer.f();
                         return var2_2;

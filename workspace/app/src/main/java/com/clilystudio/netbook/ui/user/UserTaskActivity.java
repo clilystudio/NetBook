@@ -83,23 +83,6 @@ public class UserTaskActivity extends BaseActivity {
             if (userInfo$UserTodayTask != null && userInfo$UserTodayTask.isShare_book()) {
                 this.mExpShareBook.setTextColor(this.getResources().getColor(R.color.primary_green));
             }
-            if ("xiaomi".equals(CommonUtil.n(this).toLowerCase())) {
-                this.mVoteView.setVisibility(View.GONE);
-            } else {
-                this.a(userInfo.getThis_week_tasks().isRate());
-            }
         }
-        this.mVoteView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent("android.intent.action.VIEW");
-                intent.setData(Uri.parse("market://details?id=" + UserTaskActivity.this.getPackageName()));
-                try {
-                    UserTaskActivity.this.startActivityForResult(intent, 2);
-                } catch (ActivityNotFoundException var4_3) {
-                    ToastUtil.showShortToast(UserTaskActivity.this,"打开应用市场失败");
-                }
-            }
-        });
     }
 }

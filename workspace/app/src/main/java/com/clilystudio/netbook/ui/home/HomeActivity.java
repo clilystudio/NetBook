@@ -76,7 +76,6 @@ public class HomeActivity extends HomeParentActivity implements ViewPager.OnPage
     private static final String a = HomeActivity.class.getSimpleName();
     private static HomeActivity w;
     private long b = 0;
-    private boolean c = true;
     private List<Fragment> e = new ArrayList<>();
     private TabHost f;
     private ViewPager g;
@@ -288,7 +287,7 @@ public class HomeActivity extends HomeParentActivity implements ViewPager.OnPage
                 });
             }
             this.i.setAnimationStyle(R.style.home_menu_anim);
-            this.i.showAtLocation(view, 53, com.clilystudio.netbook.util.a.a(this, 5.0f), CommonUtil.l(this) + CommonUtil.k(this));
+            this.i.showAtLocation(view, 53, com.clilystudio.netbook.util.a.a(this, 5.0f), CommonUtil.getActionBarHeight(this) + CommonUtil.getStatusBarHeight(this));
             this.i.setOnDismissListener(new PopupWindow.OnDismissListener() {
                 @Override
                 public void onDismiss() {
@@ -369,7 +368,6 @@ public class HomeActivity extends HomeParentActivity implements ViewPager.OnPage
         HomeFindFragment homeFindFragment = (HomeFindFragment) this.getSupportFragmentManager().findFragmentByTag(string);
         if (homeFindFragment == null) {
             Bundle bundle = new Bundle();
-            bundle.putBoolean("game_center_show", this.c);
             homeFindFragment = HomeFindFragment.a(bundle);
         }
         return homeFindFragment;
@@ -507,13 +505,8 @@ public class HomeActivity extends HomeParentActivity implements ViewPager.OnPage
         a2.setDisplayShowCustomEnabled(true);
         this.q = (ImageView) a2.getCustomView().findViewById(R.id.home_action_menu_more);
         ImageView imageView = (ImageView) a2.getCustomView().findViewById(R.id.home_action_menu_search);
-        ImageView r = (ImageView) a2.getCustomView().findViewById(R.id.home_action_menu_game);
         this.q.setOnClickListener(this);
         imageView.setOnClickListener(this);
-        this.c = com.clilystudio.netbook.util.a.x(this);
-        if (!this.c) {
-            r.setVisibility(View.GONE);
-        }
         BusProvider.getInstance().register(this);
         this.f = (TabHost) this.findViewById(R.id.host);
         TabWidgetV2 tabWidgetV2 = (TabWidgetV2) this.findViewById(android.R.id.content);
@@ -623,29 +616,6 @@ public class HomeActivity extends HomeParentActivity implements ViewPager.OnPage
             new BookShelfSyncManager(this, account.getToken()).a(true);
         }
         this.a(this.getIntent());
-        new BaseAsyncTask<String, Void, ResultServer>() {
-
-            @Override
-            protected ResultServer doInBackground(String... params) {
-                if ("000000000000000".equals(CommonUtil.t(HomeActivity.this))) {
-                    return null;
-                }
-                boolean bl = false;
-                if (bl) {
-                    return null;
-                }
-                RecommendInfo recommendInfo = RecommendInfo.getInfoFromJson(HomeActivity.g(HomeActivity.this));
-                String string = "";
-                String string2 = "";
-                if (recommendInfo != null) {
-                    string = recommendInfo.getRecommended();
-                    string2 = recommendInfo.getOp();
-                }
-                String string3 = CommonUtil.t(HomeActivity.this);
-                HomeActivity.h(HomeActivity.this);
-                return ApiServiceProvider.getApiService().p(string3, string, string2);
-            }
-        }.b();
     }
 
     @Override

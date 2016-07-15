@@ -193,7 +193,7 @@ public class MyApplication extends Application {
         return this.mChapterCacheMap;
     }
 
-    public final List<String> getBookCacheList() {
+    public final List<String> getBookDownloadList() {
         if (this.mBookCacheList == null) {
             this.mBookCacheList = new ArrayList<>();
         }

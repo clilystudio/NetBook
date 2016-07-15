@@ -83,7 +83,7 @@ public class BookCategoryActivity extends BaseActivity {
         TableRow tableRow = null;
         TableRow.LayoutParams layoutParams = new TableRow.LayoutParams(-1, -2);
         LinearLayout.LayoutParams layoutParams2 = new LinearLayout.LayoutParams(-1, -2);
-        int n4 = CommonUtil.b(this, R.attr.audiobookCategoryItemSelector);
+        int n4 = CommonUtil.getAttrResource(this, R.attr.audiobookCategoryItemSelector);
         int n5 = 0;
         while (n5 < arrcategoryRoot$Category.length) {
             int n6;

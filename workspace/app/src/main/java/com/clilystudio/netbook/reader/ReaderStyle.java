@@ -47,7 +47,7 @@ public final class ReaderStyle {
     private boolean v;
     private int w;
     private boolean x;
-    private boolean y;
+    private boolean mNeedConvert;
     private int z;
 
     public ReaderStyle(Activity activity) {
@@ -58,9 +58,9 @@ public final class ReaderStyle {
         this.v = this.t.getBoolean("is_use_system_brightness", true);
         this.w = this.t.getInt("brightness", 50);
         this.x = this.t.getBoolean("night_mode", false);
-        this.y = this.t.getBoolean("convert_t", false);
+        this.mNeedConvert = this.t.getBoolean("convert_t", false);
         this.z = this.t.getInt("reader_background_mode", 1);
-        int n = CommonUtil.b(this.m).widthPixels;
+        int n = CommonUtil.getDisplayMetrics(this.m).widthPixels;
         this.paddingHori = this.n.getDimensionPixelSize(R.dimen.page_horizontal_padding);
         this.paddingVert = this.n.getDimensionPixelSize(R.dimen.page_vertical_padding);
         this.width = n - (this.paddingHori << 1);
@@ -245,19 +245,19 @@ public final class ReaderStyle {
             this.bodyHeight = n3;
             return;
         }
-        this.bodyHeight = n3 - CommonUtil.k(this.m);
+        this.bodyHeight = n3 - CommonUtil.getStatusBarHeight(this.m);
     }
 
     /*
      * Enabled aggressive block sorting
      */
     public final void b() {
-        this.y = !this.y;
+        this.mNeedConvert = !this.mNeedConvert;
         Iterator<cb> iterator = this.s.iterator();
         do {
             if (!iterator.hasNext()) {
                 SharedPreferences.Editor editor = this.t.edit();
-                editor.putBoolean("convert_t", this.y);
+                editor.putBoolean("convert_t", this.mNeedConvert);
                 editor.apply();
                 return;
             }
@@ -311,8 +311,8 @@ public final class ReaderStyle {
         return this.x;
     }
 
-    public final boolean i() {
-        return this.y;
+    public final boolean needCovert() {
+        return this.mNeedConvert;
     }
 
     public final int j() {

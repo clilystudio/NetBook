@@ -191,7 +191,7 @@ public abstract class NotifFragment extends Fragment {
         }
         if (this.h != null) {
             this.h.setVisibility(View.VISIBLE);
-            this.h.setText("\u8bf7\u767b\u5f55\u540e\u67e5\u770b");
+            this.h.setText("请登录后查看");
         }
         this.i.setVisibility(View.GONE);
         if (bl && this.k != null && this.j != null) {

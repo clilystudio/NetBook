@@ -58,12 +58,12 @@ public class UserNotificationManager {
                         UserNotificationManager.this.mUnimportant = notifCountRoot.getUnimportant();
                         Date date = notifCountRoot.getLastReadImportantTime();
                         Date date2 = notifCountRoot.getLastReadUnimportantTime();
-                        if (CommonUtil.h(UserNotificationManager.this.mContext).equals("0")) {
-                            CommonUtil.a(UserNotificationManager.this.mContext, date.getTime());
+                        if (CommonUtil.getImportNofityTime(UserNotificationManager.this.mContext).equals("0")) {
+                            com.clilystudio.netbook.util.a.e(UserNotificationManager.this.mContext, "pref_new_imp_notif_time", String.valueOf(date.getTime()));
                         }
-                        if (CommonUtil.i(UserNotificationManager.this.mContext).equals("0")) {
-                            CommonUtil.b(UserNotificationManager.this.mContext, date2.getTime());
-                        }
+                        if (CommonUtil.getUnimportNofityTime(UserNotificationManager.this.mContext).equals("0")) {
+                            com.clilystudio.netbook.util.a.e(UserNotificationManager.this.mContext, "pref_new_unimp_notif_time", String.valueOf(date2.getTime()));
+                       }
                         BusProvider.getInstance().post(new NotifEvent());
                     }
                 }
@@ -88,7 +88,7 @@ public class UserNotificationManager {
                     if (root != null && root.isOk()) {
                         UserNotificationManager.this.mImportant = 0;
                         BusProvider.getInstance().post(new NotifEvent());
-                        CommonUtil.j(UserNotificationManager.this.mContext);
+                        com.clilystudio.netbook.util.a.e(UserNotificationManager.this.mContext, "pref_new_imp_notif_time", String.valueOf(System.currentTimeMillis()));
                     }
                 }
             }.b(account.getToken());
@@ -112,7 +112,7 @@ public class UserNotificationManager {
                     if (root != null && root.isOk()) {
                         AccountInfo accountInfo;
                         UserNotificationManager.this.mUnimportant = 0;
-                        CommonUtil.b(UserNotificationManager.this.mContext, System.currentTimeMillis());
+                        com.clilystudio.netbook.util.a.e(UserNotificationManager.this.mContext, "pref_new_unimp_notif_time", String.valueOf(System.currentTimeMillis()));
                         Account account = CommonUtil.getAccount();
                         if (account != null && (accountInfo = AccountInfo.getByToken(account.getToken())) != null) {
                             accountInfo.setPrevUnimpNotif(0);

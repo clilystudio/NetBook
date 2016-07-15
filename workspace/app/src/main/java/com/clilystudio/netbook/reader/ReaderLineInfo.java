@@ -34,7 +34,7 @@ public final class ReaderLineInfo {
     }
 
     public final String a(Context context) {
-        return CommonUtil.b(context, this.c());
+        return CommonUtil.convertToSimple(context, this.c());
     }
 
     public final void a(int n2) {

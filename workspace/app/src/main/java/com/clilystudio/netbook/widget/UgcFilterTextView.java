@@ -31,12 +31,12 @@ public class UgcFilterTextView extends RelativeLayout {
     @Override
     public void setSelected(boolean bl) {
         if (bl) {
-            this.a.setTextColor(CommonUtil.a(this.getContext(), R.attr.backgroundNormal));
-            this.setBackgroundResource(CommonUtil.b(this.getContext(), R.attr.redRoundBg));
+            this.a.setTextColor(CommonUtil.getAttrColor(this.getContext(), R.attr.backgroundNormal));
+            this.setBackgroundResource(CommonUtil.getAttrResource(this.getContext(), R.attr.redRoundBg));
             return;
         }
-        this.a.setTextColor(CommonUtil.a(this.getContext(), 16842808));
-        this.setBackgroundResource(CommonUtil.b(this.getContext(), R.attr.backgroundSelector));
+        this.a.setTextColor(CommonUtil.getAttrColor(this.getContext(), android.R.attr.textColorSecondary));
+        this.setBackgroundResource(CommonUtil.getAttrResource(this.getContext(), R.attr.backgroundSelector));
     }
 
     public void setText(String string) {

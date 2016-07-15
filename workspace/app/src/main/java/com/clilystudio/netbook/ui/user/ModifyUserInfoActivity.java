@@ -104,7 +104,7 @@ public class ModifyUserInfoActivity extends BaseActivity implements View.OnClick
                             String string = ModifyUserInfoActivity.a(modifyUserInfoActivity).getGender().equals("male") ? "female" : "male";
                             userInfo.setGender(string);
                             MyApplication.getInstance().saveObject(userInfo, "savedObject_userinfo");
-                            Account account = CommonUtil.a(modifyUserInfoActivity);
+                            Account account = CommonUtil.checkLogin(modifyUserInfoActivity);
                             if (account != null) {
                                 ModifyUserInfoActivity.a(modifyUserInfoActivity).setGender(string);
                                 account.setUser(ModifyUserInfoActivity.a(modifyUserInfoActivity));
@@ -157,7 +157,7 @@ public class ModifyUserInfoActivity extends BaseActivity implements View.OnClick
 
                         @Override
                         public Root a(String... var1) {
-                            return ApiServiceProvider.getApiService().a(CommonUtil.a(ModifyUserInfoActivity.this).getToken(), output);
+                            return ApiServiceProvider.getApiService().a(CommonUtil.checkLogin(ModifyUserInfoActivity.this).getToken(), output);
 
                         }
 
@@ -330,7 +330,7 @@ public class ModifyUserInfoActivity extends BaseActivity implements View.OnClick
         this.mPortraitSection = (LinearLayout) findViewById(R.id.portrait_section);
         this.mNameSection = (LinearLayout) findViewById(R.id.name_section);
         this.mGenderSection = (LinearLayout) findViewById(R.id.gender_section);
-        this.a = CommonUtil.a(this).getUser();
+        this.a = CommonUtil.checkLogin(this).getUser();
         this.mPortrait.setImageUrl(this.a.getFullAvatar());
         this.mNameView.setText(this.a.getNickname());
         TextView textView = this.mGenderView;

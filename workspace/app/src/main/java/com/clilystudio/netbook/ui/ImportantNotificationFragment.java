@@ -50,7 +50,7 @@ public class ImportantNotificationFragment extends NotifFragment {
 
             @Override
             protected String a() {
-                return CommonUtil.h(this.b());
+                return CommonUtil.getImportNofityTime(this.b());
             }
         };
     }

@@ -62,7 +62,7 @@ public class BookDownloadManager {
         int mode = bookReadRecord.getReadMode();
         BusProvider.getInstance().post(new DownloadStatusEvent(string, 1));
         ToastUtil.showShortToast(this.mActivity,  "已加入缓存队列");
-        MyApplication.getInstance().getBookCacheList().add(string);
+        MyApplication.getInstance().getBookDownloadList().add(string);
         start = Math.max(0,start);
         BookDlRecord bookDlRecord = BookDlRecord.get(string);
         if (bookDlRecord == null) {

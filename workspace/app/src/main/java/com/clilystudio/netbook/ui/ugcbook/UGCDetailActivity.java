@@ -127,7 +127,7 @@ public class UGCDetailActivity extends BaseActivity implements View.OnClickListe
     }
 
     static /* synthetic */ void c(final UGCDetailActivity uGCDetailActivity) {
-        Account account = CommonUtil.a(uGCDetailActivity);
+        Account account = CommonUtil.checkLogin(uGCDetailActivity);
         if (account != null) {
             BaseAsyncTask<String, Void, ResultStatus> q2 = new BaseAsyncTask<String, Void, ResultStatus>() {
 
@@ -211,7 +211,7 @@ public class UGCDetailActivity extends BaseActivity implements View.OnClickListe
             @Override
             protected UGCBookDetailRoot doInBackground(String... params) {
                 if (!UGCDetailActivity.k(UGCDetailActivity.this)) return ApiServiceProvider.getApiService().U(params[0]);
-                Account account = CommonUtil.a(UGCDetailActivity.this);
+                Account account = CommonUtil.checkLogin(UGCDetailActivity.this);
                 if (account == null) return null;
                 return ApiServiceProvider.getApiService().C(account.getToken(), params[0]);
             }

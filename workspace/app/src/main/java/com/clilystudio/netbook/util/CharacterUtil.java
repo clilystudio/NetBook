@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Map;
 
 public final class CharacterUtil {
-    private static CharacterUtil a;
+    private static CharacterUtil mInstance;
     private Map<Character, Character> b;
 
     private CharacterUtil(Context context) {
@@ -27,11 +27,11 @@ public final class CharacterUtil {
         }
     }
 
-    public static CharacterUtil a(Context context) {
-        if (a == null) {
-            a = new CharacterUtil(context);
+    public static CharacterUtil getInstance(Context context) {
+        if (mInstance == null) {
+            mInstance = new CharacterUtil(context);
         }
-        return a;
+        return mInstance;
     }
 
     private static List<Character> a(Context context, String string, String charsetName) {
@@ -60,7 +60,7 @@ public final class CharacterUtil {
         }
     }
 
-    public final Character a(char c) {
+    public final Character getSimpleChar(char c) {
         if (this.b.get(c) == null) {
             return c;
         }

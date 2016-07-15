@@ -374,7 +374,7 @@ public class BookCategoryListActivity extends BaseTabActivity implements ViewPag
                 ax2.b.setVisibility(View.VISIBLE);
                 return view2;
             }
-            ax2.a.setTextColor(CommonUtil.a(this.c, 16842904));
+            ax2.a.setTextColor(CommonUtil.getAttrColor(this.c, android.R.attr.textColor));
             ax2.b.setVisibility(View.GONE);
             return view2;
         }

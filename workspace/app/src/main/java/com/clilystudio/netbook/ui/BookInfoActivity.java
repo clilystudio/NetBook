@@ -14,22 +14,22 @@ import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.clilystudio.netbook.IntentBuilder;
 import com.clilystudio.netbook.MyApplication;
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.a_pack.BaseAsyncTask;
-import com.clilystudio.netbook.util.CommonUtil;
-import com.clilystudio.netbook.IntentBuilder;
 import com.clilystudio.netbook.api.ApiServiceProvider;
 import com.clilystudio.netbook.db.BookReadRecord;
 import com.clilystudio.netbook.db.SourceRecord;
 import com.clilystudio.netbook.event.BookAddedEvent;
+import com.clilystudio.netbook.event.BookRemovedEvent;
 import com.clilystudio.netbook.event.BusProvider;
 import com.clilystudio.netbook.event.DownloadStatusEvent;
-import com.clilystudio.netbook.event.BookRemovedEvent;
 import com.clilystudio.netbook.reader.dl.BookDownloadManager;
 import com.clilystudio.netbook.ui.user.AuthLoginActivity;
 import com.clilystudio.netbook.util.BookInfoUtil;
 import com.clilystudio.netbook.util.BookSourceManager;
+import com.clilystudio.netbook.util.CommonUtil;
 import com.clilystudio.netbook.util.DateTimeUtil;
 import com.clilystudio.netbook.util.ToastUtil;
 import com.clilystudio.netbook.widget.CoverView;
@@ -365,37 +365,33 @@ public class BookInfoActivity extends BaseActivity implements View.OnClickListen
             Object[] arrobject = new Object[]{this.k.getTitle()};
             string = String.format(string2, arrobject);
         } else {
-            if (CommonUtil.f()) {
-                string = this.getString(R.string.book_add_overflow);
-            } else {
-                BookReadRecord.create(this.k);
-                com.clilystudio.netbook.util.a.u(this.mBookId);
-                String string3 = this.getString(R.string.add_book_event);
-                Object[] arrobject = new Object[]{this.k.getTitle()};
-                String string4 = String.format(string3, arrobject);
-                if (com.clilystudio.netbook.util.a.a(this, "add_update_notify_login", true) && !CommonUtil.g()) {
-                    View view = this.getLayoutInflater().inflate(R.layout.remove_shelf_confirm, (ViewGroup)getWindow().getDecorView(), false);
-                    final CheckBox checkBox = (CheckBox) view.findViewById(R.id.remove_shelf_cache);
-                    checkBox.setText(this.getString(R.string.add_update_not_notify));
-                    checkBox.setChecked(false);
-                    ((TextView) view.findViewById(R.id.remove_shelf_text)).setText(this.getString(R.string.add_update_notify));
-                    new BaseDialog.Builder(this).setView(view).setPositiveButton("快速登录", new DialogInterface.OnClickListener() {
+            BookReadRecord.create(this.k);
+            com.clilystudio.netbook.util.a.u(this.mBookId);
+            String string3 = this.getString(R.string.add_book_event);
+            Object[] arrobject = new Object[]{this.k.getTitle()};
+            String string4 = String.format(string3, arrobject);
+            if (com.clilystudio.netbook.util.a.a(this, "add_update_notify_login", true) && !CommonUtil.isLogined()) {
+                View view = this.getLayoutInflater().inflate(R.layout.remove_shelf_confirm, (ViewGroup) getWindow().getDecorView(), false);
+                final CheckBox checkBox = (CheckBox) view.findViewById(R.id.remove_shelf_cache);
+                checkBox.setText(this.getString(R.string.add_update_not_notify));
+                checkBox.setChecked(false);
+                ((TextView) view.findViewById(R.id.remove_shelf_text)).setText(this.getString(R.string.add_update_notify));
+                new BaseDialog.Builder(this).setView(view).setPositiveButton("快速登录", new DialogInterface.OnClickListener() {
 
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            BookInfoActivity.c(BookInfoActivity.this, checkBox.isChecked());
-                            BookInfoActivity.this.startActivity(AuthLoginActivity.a(BookInfoActivity.this));
-                        }
-                    }).setNegativeButton("不想同步", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        BookInfoActivity.c(BookInfoActivity.this, checkBox.isChecked());
+                        BookInfoActivity.this.startActivity(AuthLoginActivity.a(BookInfoActivity.this));
+                    }
+                }).setNegativeButton("不想同步", new DialogInterface.OnClickListener() {
 
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            BookInfoActivity.c(BookInfoActivity.this, checkBox.isChecked());
-                        }
-                    }).create().show();
-                }
-                string = string4;
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        BookInfoActivity.c(BookInfoActivity.this, checkBox.isChecked());
+                    }
+                }).create().show();
             }
+            string = string4;
         }
         ToastUtil.showShortToast(this, string);
     }
@@ -499,7 +495,7 @@ public class BookInfoActivity extends BaseActivity implements View.OnClickListen
             }
         };
         this.c();
-        View view = LayoutInflater.from(this).inflate(R.layout.ab_custom_two_text_view, (ViewGroup)getWindow().getDecorView(),false);
+        View view = LayoutInflater.from(this).inflate(R.layout.ab_custom_two_text_view, (ViewGroup) getWindow().getDecorView(), false);
         ((TextView) view.findViewById(R.id.title)).setText(R.string.book_info_title);
         view.findViewById(R.id.back).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -559,6 +555,6 @@ public class BookInfoActivity extends BaseActivity implements View.OnClickListen
         super.onResume();
         this.k();
         this.a(false);
-        this.a(CommonUtil.g(this.mBookId));
+        this.a(CommonUtil.getDownloadStatus(this.mBookId));
     }
 }

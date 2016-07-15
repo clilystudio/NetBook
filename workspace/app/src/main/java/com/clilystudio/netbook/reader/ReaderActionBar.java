@@ -60,7 +60,7 @@ public class ReaderActionBar extends RelativeLayout {
     public final void a(boolean bl) {
         RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(-1, -1);
         if (bl) {
-            layoutParams.setMargins(0, CommonUtil.k(this.getContext()), 0, 0);
+            layoutParams.setMargins(0, CommonUtil.getStatusBarHeight(this.getContext()), 0, 0);
         } else {
             layoutParams.setMargins(0, 0, 0, 0);
         }
@@ -105,7 +105,7 @@ public class ReaderActionBar extends RelativeLayout {
     protected void onFinishInflate() {
         super.onFinishInflate();
         RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(-1, -1);
-        layoutParams.setMargins(0, CommonUtil.k(this.getContext()), 0, 0);
+        layoutParams.setMargins(0, CommonUtil.getStatusBarHeight(this.getContext()), 0, 0);
         this.setLayoutParams(layoutParams);
         View.OnClickListener ah2 = new View.OnClickListener() {
            @Override

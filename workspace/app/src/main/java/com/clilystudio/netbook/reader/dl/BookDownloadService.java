@@ -344,14 +344,14 @@ public class BookDownloadService extends Service {
         if (n < this.g.length && this.f <= this.e) {
             ChapterLink chapterLink = this.g[n];
             boolean bl = chapterLink.getUnreadble();
-            String string = CommonUtil.e(chapterLink.getLink());
+            String string = CommonUtil.encodeUrl(chapterLink.getLink());
             while (bl || this.h.contains(string)) {
                 this.f = 1 + this.f;
                 n = this.d + this.f;
                 if (n < this.g.length) {
                     chapterLink = this.g[n];
                     bl = chapterLink.getUnreadble();
-                    string = CommonUtil.e(chapterLink.getLink());
+                    string = CommonUtil.encodeUrl(chapterLink.getLink());
                     continue;
                 }
                 this.e();
@@ -398,7 +398,7 @@ public class BookDownloadService extends Service {
                         if (BookDownloadService.m(BookDownloadService.this) == null) {
                             BookDownloadService.a(BookDownloadService.this, BookInfoUtil.tocId);
                         }
-                        com.clilystudio.netbook.util.a.a(BookDownloadService.d(BookDownloadService.this), BookDownloadService.m(BookDownloadService.this), CommonUtil.e(string), chapter);
+                        com.clilystudio.netbook.util.a.a(BookDownloadService.d(BookDownloadService.this), BookDownloadService.m(BookDownloadService.this), CommonUtil.encodeUrl(string), chapter);
                     }
                     BookDownloadService.c(BookDownloadService.this);
                     if (BookDownloadService.n(BookDownloadService.this) == 0 || BookDownloadService.g(BookDownloadService.this) == BookDownloadService.h(BookDownloadService.this)) {
@@ -440,7 +440,7 @@ public class BookDownloadService extends Service {
 
     private void f() {
         MyApplication.getInstance().getChapterCacheMap().remove(this.a);
-        MyApplication.getInstance().getBookCacheList().remove(this.a);
+        MyApplication.getInstance().getBookDownloadList().remove(this.a);
         BookDlRecord.delete(this.a);
     }
 

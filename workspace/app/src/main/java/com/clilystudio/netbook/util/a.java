@@ -220,27 +220,6 @@ public class a {
         return file.delete();
     }
 
-    /*
-     * Enabled force condition propagation
-     * Lifted jumps to return sites
-     */
-    public static boolean F(Context context) {
-        if (!r(context, "show_new_ads")) return false;
-        String string = CommonUtil.n(context);
-        String string2 = OnlineConfigAgent.getInstance().getConfigParams(context, "show_new_ads_disabled_channel");
-        if (string2 == null || string2.length() <= 0) return true;
-        String[] arrstring = string2.split(",");
-        int n2 = arrstring.length;
-        int n3 = 0;
-        while (n3 < n2) {
-            if (arrstring[n3].equals(string)) {
-                return false;
-            }
-            ++n3;
-        }
-        return true;
-    }
-
     public static boolean F(String string) {
         File file = new File(string);
         boolean bl = file.isFile();
@@ -1536,17 +1515,6 @@ public class a {
         return arrby;
     }
 
-    public static byte[] a(String string2, int n2, String string3) {
-        StringBuilder stringBuffer = new StringBuilder();
-        if (string2 != null) {
-            stringBuffer.append(string2);
-        }
-        stringBuffer.append(n2);
-        stringBuffer.append(string3);
-        stringBuffer.append("mMcShCsTr");
-        return CommonUtil.a(stringBuffer.toString().substring(1, 9).getBytes()).getBytes();
-    }
-
     public static byte[] a(byte[] arrby, int n2, int n3) {
         int n4 = arrby.length;
         int n5 = n3 - n2;
@@ -1688,7 +1656,7 @@ public class a {
         StringBuilder stringBuilder;
         block5:
         {
-            if (!CommonUtil.a(string2)) break block5;
+            if (!CommonUtil.isBlank(string2)) break block5;
             return null;
         }
         try {
@@ -2493,20 +2461,6 @@ public class a {
 
     public static void x(String string2) {
         a(string2, BookSyncRecord.BookModifyType.FEED_REMOVE);
-    }
-
-    public static boolean x(Context context) {
-        String string2 = CommonUtil.n(context);
-        String string3 = OnlineConfigAgent.getInstance().getConfigParams(context, "game_center_disabled_at_channel");
-        if (string3 != null && string3.length() > 0) {
-            String[] arrstring = string3.split(",");
-            int n2 = arrstring.length;
-            for (String anArrstring : arrstring) {
-                if (!anArrstring.equals(string2)) continue;
-                return false;
-            }
-        }
-        return true;
     }
 
     public static boolean x(Context context, String string2) {

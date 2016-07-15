@@ -201,7 +201,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
             ToastUtil.showShortToast(readerActivity, "缓存不可用");
             return;
         }
-        boolean bl = CommonUtil.g(readerActivity.mBookId) == 2;
+        boolean bl = CommonUtil.getDownloadStatus(readerActivity.mBookId) == 2;
         if (bl) {
             new BaseDialog.Builder(readerActivity).setTitle(R.string.tips).setMessage(R.string.chapter_dl_doing_msg).setPositiveButton(R.string.chapter_dl_goon, new DialogInterface.OnClickListener() {
 
@@ -349,10 +349,6 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
     }
 
     static /* synthetic */ void ad(ReaderActivity readerActivity) {
-        if (CommonUtil.f()) {
-            ToastUtil.showShortToast(readerActivity, readerActivity.getString(R.string.book_add_overflow));
-            return;
-        }
         readerActivity.mReader.a();
         a.u(readerActivity.mBookId);
         String string = readerActivity.getString(R.string.add_book_event);
@@ -363,7 +359,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
     static /* synthetic */ void ag(ReaderActivity readerActivity) {
         CharSequence charSequence = readerActivity.r.b().getText();
         if (charSequence != null) {
-            CommonUtil.a(readerActivity, charSequence.toString(), null);
+            CommonUtil.viewChapterLink(readerActivity, charSequence.toString(), null);
         }
     }
 
@@ -380,7 +376,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
         readerActivity.mPopWindow.getContentView().setFocusable(true);
         int[] arrn = new int[2];
         view.getLocationOnScreen(arrn);
-        readerActivity.mPopWindow.showAtLocation(view, 0, arrn[0] - readerActivity.mPopWindow.getWidth() + view.getWidth(), CommonUtil.l(readerActivity) + CommonUtil.k(readerActivity));
+        readerActivity.mPopWindow.showAtLocation(view, 0, arrn[0] - readerActivity.mPopWindow.getWidth() + view.getWidth(), CommonUtil.getActionBarHeight(readerActivity) + CommonUtil.getStatusBarHeight(readerActivity));
     }
 
     static /* synthetic */ void u(ReaderActivity readerActivity) {
@@ -737,7 +733,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
             return;
         }
         if (this.M == 1) {
-            if (this.mReaderStyle.i()) {
+            if (this.mReaderStyle.needCovert()) {
                 this.mReaderBodyTV.setText(n2.a(this));
             } else {
                 this.mReaderBodyTV.setText(n2.c());
@@ -766,7 +762,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
     private void loadChapterList() {
         if (a.isMounted()) {
             for (String s1 : a.j(this.mBookId, this.mTocId)) {
-                String string = CommonUtil.f(s1);
+                String string = CommonUtil.decodeUrl(s1);
                 this.x.add(string);
             }
         }
@@ -1495,7 +1491,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
                 ReaderActivity.this.M = 1;
                 ReaderActivity.this.mMainView.setReadMode(ReaderActivity.this.M);
                 ReaderActivity.this.mReaderBodyTV.setTotalHeight(ReaderActivity.this.b[ReaderActivity.this.mSelectedPageIndex].d());
-                if (ReaderActivity.this.mReaderStyle.i()) {
+                if (ReaderActivity.this.mReaderStyle.needCovert()) {
                     ReaderActivity.this.mReaderBodyTV.setText(ReaderActivity.this.A().a(ReaderActivity.this));
                 } else {
                     ReaderActivity.this.mReaderBodyTV.setText(ReaderActivity.this.A().c());

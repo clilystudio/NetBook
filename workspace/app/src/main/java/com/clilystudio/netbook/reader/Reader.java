@@ -163,7 +163,7 @@ public final class Reader {
                                             String var10_10 = Reader.this.e().get(var5_4.getId());
                                             if (var10_10 != null) {
                                                 var5_4.setKey(var10_10);
-                                                com.clilystudio.netbook.util.a.a(Reader.q(Reader.this), Reader.this.mTocId, CommonUtil.e(var5_4.getLink()), var5_4);
+                                                com.clilystudio.netbook.util.a.a(Reader.q(Reader.this), Reader.this.mTocId, CommonUtil.encodeUrl(var5_4.getLink()), var5_4);
                                             }
                                         }
                                     }
@@ -505,7 +505,7 @@ public final class Reader {
             n2 = -1 + arrchapterLink.length;
         }
         ChapterLink chapterLink = arrchapterLink[n2];
-        if (this.mBookId != null && this.mTocId != null && chapterLink != null && chapterLink.getLink() != null && (chapter = (Chapter) com.clilystudio.netbook.util.a.b(this.mBookId, this.mTocId, CommonUtil.e(chapterLink.getLink()))) != null) {
+        if (this.mBookId != null && this.mTocId != null && chapterLink != null && chapterLink.getLink() != null && (chapter = (Chapter) com.clilystudio.netbook.util.a.b(this.mBookId, this.mTocId, CommonUtil.encodeUrl(chapterLink.getLink()))) != null) {
             ReaderChapter readerChapter4 = this.a(chapterLink, n2);
             readerChapter4.setBody(chapter.getBody());
             readerChapter4.setCpContent(chapter.getContent());

@@ -37,7 +37,7 @@ public class UGCGuideAddCollectionActivity extends BaseActivity {
      * Lifted jumps to return sites
      */
     static /* synthetic */ void a(UGCGuideAddCollectionActivity uGCGuideAddCollectionActivity) {
-        Account account = CommonUtil.a(uGCGuideAddCollectionActivity);
+        Account account = CommonUtil.checkLogin(uGCGuideAddCollectionActivity);
         if (account == null) return;
         if (account.getUser() != null && account.getUser().getLv() < 2) {
             ToastUtil.showShortToast(uGCGuideAddCollectionActivity, "等级不够");
@@ -121,7 +121,7 @@ public class UGCGuideAddCollectionActivity extends BaseActivity {
 
                         @Override
                         public ResultStatus a(Void... var1) {
-                            Account account = CommonUtil.a(UGCGuideAddCollectionActivity.this);
+                            Account account = CommonUtil.checkLogin(UGCGuideAddCollectionActivity.this);
                             if (account == null) return null;
                             if (UGCGuideAddCollectionActivity.this.c == null)
                                 return ApiServiceProvider.getApiService().b(MyApplication.getInstance().getUGCNewCollection(), account.getToken());

@@ -15,7 +15,7 @@ public class UnimportantNotificationFragment extends NotifFragment {
 
             @Override
             protected String a() {
-                return CommonUtil.i(this.b());
+                return CommonUtil.getUnimportNofityTime(this.b());
             }
         };
     }

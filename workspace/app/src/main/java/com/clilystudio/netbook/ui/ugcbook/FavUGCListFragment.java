@@ -64,7 +64,7 @@ public class FavUGCListFragment extends AbsUGCListFragment implements AdapterVie
         h2.setPositiveButton("删除", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                Account account = CommonUtil.a(FavUGCListFragment.this.getActivity());
+                Account account = CommonUtil.checkLogin(FavUGCListFragment.this.getActivity());
                 if (account != null) {
                     FavUGCListFragment.a(FavUGCListFragment.this).setRefreshing();
                     BaseAsyncTask<String, Void, ResultStatus> h2 = new BaseAsyncTask<String, Void, ResultStatus>() {
