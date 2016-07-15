@@ -349,18 +349,6 @@ public class a {
         }
     }
 
-    public static Class<?> a(Type type) {
-        Type type2 = type;
-        do {
-            if (type2 instanceof Class) {
-                return (Class) type2;
-            }
-            if (!(type2 instanceof ParameterizedType)) break;
-            type2 = ((ParameterizedType) type2).getRawType();
-        } while (true);
-        throw new IllegalArgumentException("TODO");
-    }
-
     public static String formatFileSize(long fileSize) {
         if (fileSize < 1000) {
             return "" + fileSize + " B";
@@ -369,75 +357,6 @@ public class a {
         String string2 = "" + "kMGTPE".charAt(n2 - 1);
         Object[] arrobject = new Object[]{(double) fileSize / Math.pow(1000.0, n2), string2};
         return String.format(Locale.CHINA, "%.1f %sB", arrobject);
-    }
-
-    public static String a(Context context, String string2, String string3, String string4) {
-        return context.getSharedPreferences(string2, 0).getString(string3, string4);
-    }
-
-    /*
-     * Unable to fully structure code
-     * Enabled aggressive block sorting
-     * Enabled unnecessary exception pruning
-     * Enabled aggressive exception aggregation
-     * Lifted jumps to return sites
-     */
-    private static String a(com.clilystudio.netbook.model.BookInfo var0) {
-        JSONObject var1_1 = new JSONObject();
-        try {
-            var1_1.put("bk_name", var0.getTitle());
-            String[] var4_2 = var0.getTags();
-            if (var4_2 != null) {
-                String var9_3 = "";
-                for (int var10_4 = 0; var10_4 < var4_2.length; var10_4++) {
-                    var9_3 = var9_3 + var4_2[var10_4];
-                    if (var10_4 != var4_2.length - 1) {
-                        var9_3 = var9_3 + "|";
-                    }
-                }
-                var1_1.put("bk_tag", var9_3);
-            }
-            var1_1.put("bk_author", var0.getAuthor());
-            var1_1.put("bk_updateTime", var0.getUpdated());
-            var1_1.put("bk_process", var0.getIsSerial() ? "serialize" : "end");
-        } catch (JSONException e1) {
-            e1.printStackTrace();
-        }
-        return var1_1.toString();
-    }
-
-    /*
-     * Enabled aggressive block sorting
-     */
-
-    public static String a(Iterable<?> iterable, String string2) {
-        Iterator iterator;
-        if (iterable == null || (iterator = iterable.iterator()) == null) {
-            return null;
-        }
-        if (!iterator.hasNext()) {
-            return "";
-        }
-        Object obj = iterator.next();
-        if (!iterator.hasNext()) {
-            if (obj == null) {
-                return "";
-            }
-            return obj.toString();
-        }
-        StringBuilder stringBuilder = new StringBuilder(256);
-        if (obj != null) {
-            stringBuilder.append(obj);
-        }
-        while (iterator.hasNext()) {
-            Object obj2;
-            if (string2 != null) {
-                stringBuilder.append(string2);
-            }
-            if ((obj2 = iterator.next()) == null) continue;
-            stringBuilder.append(obj2);
-        }
-        return stringBuilder.toString();
     }
 
     /*
