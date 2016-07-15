@@ -219,7 +219,7 @@ public class UGCMainListFragment extends Fragment implements AdapterView.OnItemC
         View view = layoutInflater.inflate(R.layout.fragment_ugc_main, viewGroup, false);
         this.a = (PullToRefreshListView) view.findViewById(R.id.ptr_list);
         this.b = this.a.getRefreshableView();
-        TempUtil.a(this.getActivity(), this.b);
+        TempUtil.addHeaderView(this.getActivity(), this.b);
         this.b.setOnItemClickListener(this);
         this.e = view.findViewById(R.id.pb_loading);
         this.f = (TextView) view.findViewById(R.id.empty_text);

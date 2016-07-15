@@ -58,6 +58,7 @@ import com.clilystudio.netbook.ui.feed.FeedIntroActivity;
 import com.clilystudio.netbook.ui.feed.FeedListActivity;
 import com.clilystudio.netbook.util.BookSourceManager;
 import com.clilystudio.netbook.util.FeedIntroDialog;
+import com.clilystudio.netbook.util.GenderIntroDialog;
 import com.clilystudio.netbook.util.InsideLinkIntent;
 import com.clilystudio.netbook.util.TempUtil;
 import com.clilystudio.netbook.util.ToastUtil;
@@ -708,7 +709,7 @@ public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollL
             }
             if (CommonUtil.isFirstLaunch(this.getActivity())) {
                 if (!CommonUtil.isLogined() && !this.A) {
-                    TempUtil.a(this.getActivity());
+                    showGenderIntroDialog(this.getActivity());
                     return;
                 }
                 this.z = true;
@@ -717,6 +718,21 @@ public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollL
             return;
         }
         ToastUtil.showShortToast(this.getActivity(), "载入书架失败，请重试");
+    }
+
+    public static void showGenderIntroDialog(FragmentActivity fragmentActivity) {
+        if (fragmentActivity == null) {
+            return;
+        }
+        FragmentManager fragmentManager = fragmentActivity.getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        Fragment fragment = fragmentManager.findFragmentByTag("dialog_gender_intro");
+        if (fragment != null) {
+            fragmentTransaction.remove(fragment);
+        }
+        GenderIntroDialog genderIntroDialog = new GenderIntroDialog();
+        genderIntroDialog.setCancelable(false);
+        genderIntroDialog.show(fragmentTransaction, "dialog_gender_intro");
     }
 
     private List<BookShelf> j() {
@@ -916,7 +932,7 @@ public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollL
         }
         View view = LayoutInflater.from(this.getActivity()).inflate(R.layout.ptr_list_footer_empty_view, (ViewGroup) getActivity().getWindow().getDecorView(), false);
         this.e.addFooterView(view);
-        TempUtil.a(this.getActivity(), this.e);
+        TempUtil.addHeaderView(this.getActivity(), this.e);
         this.g = LayoutInflater.from(this.getActivity()).inflate(R.layout.bookshelf_header_msg, this.e, false);
         this.g.setVisibility(View.GONE);
         this.j = new HomeShelfAdapter(this.getActivity());
@@ -1043,7 +1059,7 @@ public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollL
     public void onShelfUpdated(ShelfUpdatedEvent a2) {
         if (a2.getBookCounts() == 0 && this.z && CommonUtil.isFirstLaunch(this.getActivity())) {
             if (!this.A) {
-                TempUtil.a(this.getActivity());
+                showGenderIntroDialog(this.getActivity());
             }
             return;
         }

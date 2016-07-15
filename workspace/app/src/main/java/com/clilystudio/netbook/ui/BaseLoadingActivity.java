@@ -53,9 +53,6 @@ public abstract class BaseLoadingActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        if (TempUtil.k()) {
-            this.getWindow().setUiOptions(1);
-        }
         this.setContentView(R.layout.activity_loading_base);
         this.a = (ViewGroup) this.findViewById(R.id.content);
         this.b = this.findViewById(R.id.common_list_pb);

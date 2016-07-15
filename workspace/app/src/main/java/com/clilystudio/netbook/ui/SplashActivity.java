@@ -35,7 +35,6 @@ public class SplashActivity extends Activity {
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
         this.setContentView(R.layout.splash);
-        TempUtil.a(this.getWindow().getDecorView());
         this.mHandler.postDelayed(new Runnable() {
             @Override
             public void run() {

@@ -149,7 +149,7 @@ public class BookCategoryFragment extends Fragment {
         this.g = ((BookCategoryListActivity) this.getActivity()).g();
         this.a = (PullToRefreshListView) view.findViewById(R.id.ptr_list);
         this.b = this.a.getRefreshableView();
-        TempUtil.a(this.getActivity(), this.b);
+        TempUtil.addHeaderView(this.getActivity(), this.b);
         this.e = view.findViewById(R.id.pb_loading);
         this.f = (TextView) view.findViewById(R.id.empty_text);
         final LayoutInflater layoutInflater2 = LayoutInflater.from(this.getActivity());

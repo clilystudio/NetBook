@@ -15,6 +15,8 @@ import android.os.Handler;
 import android.os.Message;
 import android.os.PowerManager;
 import android.preference.PreferenceManager;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v4.view.PagerAdapter;
@@ -33,8 +35,6 @@ import com.clilystudio.netbook.IntentBuilder;
 import com.clilystudio.netbook.MyApplication;
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.a_pack.BaseAsyncTask;
-import com.clilystudio.netbook.util.TempUtil;
-import com.clilystudio.netbook.util.CommonUtil;
 import com.clilystudio.netbook.api.ApiServiceProvider;
 import com.clilystudio.netbook.db.BookReadRecord;
 import com.clilystudio.netbook.db.BookTopicEnterRecord;
@@ -53,6 +53,8 @@ import com.clilystudio.netbook.reader.dl.BookDownloadManager;
 import com.clilystudio.netbook.ui.BaseReadSlmActivity;
 import com.clilystudio.netbook.ui.BookInfoActivity;
 import com.clilystudio.netbook.util.BookInfoUtil;
+import com.clilystudio.netbook.util.CommonUtil;
+import com.clilystudio.netbook.util.TempUtil;
 import com.clilystudio.netbook.util.ToastUtil;
 import com.clilystudio.netbook.widget.ThemeLoadingView;
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
@@ -144,10 +146,10 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
                     String string = intent.getStringExtra("bookId");
                     if (ReaderActivity.this.mBookId.equals(string)) {
                         ReaderActivity.this.mIsDownloading = true;
-                        ReaderActivity.this.mDownloadCurrentCount =  intent.getIntExtra("SerDlCurrentCount", 0);
+                        ReaderActivity.this.mDownloadCurrentCount = intent.getIntExtra("SerDlCurrentCount", 0);
                         ReaderActivity.this.mDownloadChapterCount = intent.getIntExtra("SerDlChapterCount", 0);
                         ReaderActivity.this.mDownloadLink = intent.getStringExtra("SerDlLink");
-                        ReaderActivity.this.mDownloadStopFlag =  intent.getIntExtra("SerDlStopFlag", 0);
+                        ReaderActivity.this.mDownloadStopFlag = intent.getIntExtra("SerDlStopFlag", 0);
                         ReaderActivity.this.af.sendMessage(ReaderActivity.this.af.obtainMessage());
                     }
                 }
@@ -178,7 +180,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
                 int n3 = intent.getIntExtra("scale", 100);
                 int n4 = n2 * 100 / n3;
                 if (ReaderActivity.this.w != n4) {
-                    ReaderActivity.this.w =  n4;
+                    ReaderActivity.this.w = n4;
                     ReaderPageManager[] arro = ReaderActivity.this.b;
                     for (ReaderPageManager anArro : arro) {
                         anArro.a(n4);
@@ -231,7 +233,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
                     } else if (which == n3) {
                         readerActivity.mDownloadChapterCount = readerActivity.mReader.f() - n4;
                     } else if (which == 2) {
-                        readerActivity.mDownloadChapterCount =  readerActivity.mReader.f();
+                        readerActivity.mDownloadChapterCount = readerActivity.mReader.f();
                         n4 = 0;
                     }
                     if (BookReadRecord.getOnShelf(readerActivity.mBookId) == null) {
@@ -549,7 +551,18 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
                 }
             });
         }
-        TempUtil.a(this, this.mReaderTocDialog);
+        addReaderTocDialog();
+    }
+
+    public void addReaderTocDialog() {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        Fragment fragment = fragmentManager.findFragmentByTag("ReaderTocDialog");
+        if (fragment != null) {
+            fragmentTransaction.remove(fragment);
+        }
+        fragmentTransaction.add(mReaderTocDialog, "ReaderTocDialog");
+        fragmentTransaction.commitAllowingStateLoss();
     }
 
     /*
@@ -644,7 +657,6 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
                     this.q.setSystemUiVisibility(0);
                 }
             }
-            TempUtil.a(this.q);
         }
         if (this.i.f()) {
             if (TempUtil.h() && this.p) {

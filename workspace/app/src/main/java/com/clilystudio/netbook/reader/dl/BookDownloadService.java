@@ -35,8 +35,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BookDownloadService extends Service {
-    private String a;
-    private String b;
+    private String mBookId;
+    private String mTocId;
     private int mReadMode;
     private int d;
     private int e;
@@ -50,11 +50,6 @@ public class BookDownloadService extends Service {
     private String m = null;
     private int n;
     private boolean o;
-
-    static /* synthetic */ String a(BookDownloadService bookDownloadService, String string) {
-        bookDownloadService.b = string;
-        return string;
-    }
 
     private static void a(BookDlRecord bookDlRecord, int n) {
         if (bookDlRecord != null) {
@@ -111,7 +106,7 @@ public class BookDownloadService extends Service {
 
 
     static /* synthetic */ String d(BookDownloadService bookDownloadService) {
-        return bookDownloadService.a;
+        return bookDownloadService.mBookId;
     }
 
     static /* synthetic */ int e(BookDownloadService bookDownloadService, int n) {
@@ -128,7 +123,7 @@ public class BookDownloadService extends Service {
     }
 
     static /* synthetic */ void f(BookDownloadService bookDownloadService, int n) {
-        BookDlRecord bookDlRecord = BookDlRecord.get(bookDownloadService.a);
+        BookDlRecord bookDlRecord = BookDlRecord.get(bookDownloadService.mBookId);
         if (bookDlRecord != null) {
             bookDlRecord.setTotal(n);
             bookDlRecord.save();
@@ -162,19 +157,19 @@ public class BookDownloadService extends Service {
 
     static /* synthetic */ void l(BookDownloadService bookDownloadService) {
         BookReadRecord bookReadRecord;
-        if (bookDownloadService.a != null && !bookDownloadService.a.equals(bookDownloadService.m) && (bookReadRecord = BookReadRecord.get(bookDownloadService.a)) != null) {
+        if (bookDownloadService.mBookId != null && !bookDownloadService.mBookId.equals(bookDownloadService.m) && (bookReadRecord = BookReadRecord.get(bookDownloadService.mBookId)) != null) {
             String string = TempUtil.g(bookReadRecord.getReadMode());
             String string2 = bookReadRecord.getDownloadedSource();
             if (string2 == null || !string2.contains(string)) {
                 bookReadRecord.setDownloadedSource(string2 + string);
                 bookReadRecord.save();
             }
-            bookDownloadService.m = bookDownloadService.a;
+            bookDownloadService.m = bookDownloadService.mBookId;
         }
     }
 
     static /* synthetic */ String m(BookDownloadService bookDownloadService) {
-        return bookDownloadService.b;
+        return bookDownloadService.mTocId;
     }
 
     static /* synthetic */ int n(BookDownloadService bookDownloadService) {
@@ -201,20 +196,20 @@ public class BookDownloadService extends Service {
         List<BookDlRecord> list = BookDlRecord.getAllPending();
         if (list.size() > 0) {
             BookDlRecord bookDlRecord = list.get(0);
-            this.a = bookDlRecord.getBookId();
-            BookReadRecord bookReadRecord = BookReadRecord.getOnShelf(this.a);
+            this.mBookId = bookDlRecord.getBookId();
+            BookReadRecord bookReadRecord = BookReadRecord.getOnShelf(this.mBookId);
             if (bookReadRecord == null) {
                 this.g();
                 return;
             }
             BookDownloadService.a(bookDlRecord, 5);
-            this.b = bookDlRecord.getTocId();
+            this.mTocId = bookDlRecord.getTocId();
             this.mReadMode = bookDlRecord.getMode();
             this.d = bookDlRecord.getStart();
             this.e = bookDlRecord.getTotal();
             this.l = 0;
             this.f = 0;
-            this.g = MyApplication.getInstance().getChapterCacheMap().get(this.a);
+            this.g = MyApplication.getInstance().getChapterCacheMap().get(this.mBookId);
             if (this.g != null && this.e > 0) {
                 this.b();
                 return;
@@ -226,14 +221,14 @@ public class BookDownloadService extends Service {
     }
 
     private void a(int n) {
-        BookDownloadService.a(BookDlRecord.get(this.a), n);
+        BookDownloadService.a(BookDlRecord.get(this.mBookId), n);
     }
 
     /*
      * Enabled aggressive block sorting
      */
     private void a(BookReadRecord bookReadRecord) {
-        String string;
+        String sourceId;
         String string2;
         this.k = new ReaderTocManager(bookReadRecord);
         if (this.mReadMode == -1) {
@@ -242,18 +237,18 @@ public class BookDownloadService extends Service {
         }
         if (TempUtil.h(this.mReadMode)) {
             string2 = TempUtil.g(this.mReadMode);
-            SourceRecord sourceRecord = SourceRecord.get(this.a, string2);
+            SourceRecord sourceRecord = SourceRecord.get(this.mBookId, string2);
             if (sourceRecord == null || sourceRecord.getSourceId() == null) {
                 getTocSourceRoot();
                 return;
             }
-            string = sourceRecord.getSourceId();
+            sourceId = sourceRecord.getSourceId();
         } else {
-            string = null;
+            sourceId = null;
             string2 = null;
         }
-        this.b = TempUtil.a(this.a, this.mReadMode, string, this.b);
-        this.k.a(this.b, string2, string);
+        this.mTocId = TempUtil.getMixTocId(this.mBookId, this.mReadMode, sourceId, this.mTocId);
+        this.k.a(this.mTocId, string2, sourceId);
         new BaseAsyncTask<Void, Void, Toc>(){
             @Override
             protected Toc doInBackground(Void... params) {
@@ -291,7 +286,7 @@ public class BookDownloadService extends Service {
                 if (tocSourceRoot != null && tocSourceRoot.getSources() != null) {
                     TocSource[] arrtocSource = tocSourceRoot.getSources();
                     for (TocSource anArrtocSource : arrtocSource) {
-                        TempUtil.a(anArrtocSource, BookDownloadService.d(BookDownloadService.this));
+                        TempUtil.saveSourceRecord(anArrtocSource, BookDownloadService.d(BookDownloadService.this));
                     }
                 }
                 BookDownloadService.this.mReadMode = 5;
@@ -304,7 +299,7 @@ public class BookDownloadService extends Service {
                 }
                 BookDownloadService.o(BookDownloadService.this);
             }
-        }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, this.a);
+        }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, this.mBookId);
     }
 
     private void b() {
@@ -313,7 +308,7 @@ public class BookDownloadService extends Service {
         String string = null;
         if (bl) {
             String string2 = TempUtil.g(this.mReadMode);
-            SourceRecord sourceRecord = SourceRecord.get(this.a, string2);
+            SourceRecord sourceRecord = SourceRecord.get(this.mBookId, string2);
             string = null;
             if (sourceRecord != null) {
                 string = sourceRecord.getSourceId();
@@ -321,19 +316,19 @@ public class BookDownloadService extends Service {
                 this.k.a(string, string3);
             }
         }
-        this.b = TempUtil.a(this.a, this.mReadMode, string, this.b);
+        this.mTocId = TempUtil.getMixTocId(this.mBookId, this.mReadMode, string, this.mTocId);
         this.k.setTocId(BookInfoUtil.tocId);
         this.k.setBookId(BookInfoUtil.bookId);
         this.k.setReadMode(BookInfoUtil.readMode);
         this.i.putExtra("SerDlStopFlag", 0);
-        this.h = TempUtil.j(this.a, this.b);
+        this.h = TempUtil.j(this.mBookId, this.mTocId);
         if (TempUtil.e() <= (long) (10 * this.e << 1)) {
             ToastUtil.showToast(this, "SD卡剩余容量不足，请减少缓存数目或增加存储");
             this.stopSelf();
             return;
         }
         this.a(2);
-        BusProvider.getInstance().post(new DownloadStatusEvent(this.a, 2));
+        BusProvider.getInstance().post(new DownloadStatusEvent(this.mBookId, 2));
         this.c();
     }
 
@@ -397,7 +392,7 @@ public class BookDownloadService extends Service {
                         BookDownloadService.b(BookDownloadService.this).putExtra("SerDlLink", string);
                         BookDownloadService.l(BookDownloadService.this);
                         if (BookDownloadService.m(BookDownloadService.this) == null) {
-                            BookDownloadService.a(BookDownloadService.this, BookInfoUtil.tocId);
+                            BookDownloadService.this.mTocId = BookInfoUtil.tocId;
                         }
                         TempUtil.a(BookDownloadService.d(BookDownloadService.this), BookDownloadService.m(BookDownloadService.this), CommonUtil.encodeUrl(string), chapter);
                     }
@@ -434,15 +429,15 @@ public class BookDownloadService extends Service {
     private void e() {
         this.i.putExtra("SerDlStopFlag", -1);
         this.h();
-        BusProvider.getInstance().post(new DownloadStatusEvent(this.a, 4));
+        BusProvider.getInstance().post(new DownloadStatusEvent(this.mBookId, 4));
         this.f();
         this.a();
     }
 
     private void f() {
-        MyApplication.getInstance().getChapterCacheMap().remove(this.a);
-        MyApplication.getInstance().getBookDownloadList().remove(this.a);
-        BookDlRecord.delete(this.a);
+        MyApplication.getInstance().getChapterCacheMap().remove(this.mBookId);
+        MyApplication.getInstance().getBookDownloadList().remove(this.mBookId);
+        BookDlRecord.delete(this.mBookId);
     }
 
     private void g() {

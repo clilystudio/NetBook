@@ -10,7 +10,6 @@ import android.content.res.TypedArray;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.PorterDuff;
@@ -24,7 +23,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.StatFs;
-import android.os.SystemClock;
 import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -34,10 +32,10 @@ import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.AbsListView;
 import android.widget.ListView;
-import android.widget.RemoteViews;
 
 import com.clilystudio.netbook.CachePathConst;
 import com.clilystudio.netbook.MyApplication;
@@ -57,7 +55,6 @@ import com.integralblue.httpresponsecache.compat.java.lang.ArrayIndexOutOfBounds
 import com.umeng.onlineconfig.OnlineConfigAgent;
 import com.xiaomi.mipush.sdk.MiPushClient;
 
-import org.json.JSONException;
 import org.json.JSONObject;
 import org.mozilla.universalchardet.UniversalDetector;
 
@@ -68,7 +65,6 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -77,17 +73,12 @@ import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Array;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
-import java.lang.reflect.ParameterizedType;
-import java.lang.reflect.Type;
 import java.net.Socket;
-import java.net.URI;
-import java.net.URL;
 import java.net.URLDecoder;
 import java.nio.ByteOrder;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.text.DecimalFormat;
-import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
@@ -359,46 +350,16 @@ public class TempUtil {
         return String.format(Locale.CHINA, "%.1f %sB", arrobject);
     }
 
-    /*
-     * Enabled force condition propagation
-     * Lifted jumps to return sites
-     */
-    public static String a(String string2, int n2, String string3, String string4) {
-        if (n2 == 5) {
-            return "MIX_TOC_ID" + string2;
+    public static String getMixTocId(String bookId, int readMode, String sourceId, String tocId) {
+        if (readMode == 5) {
+            return "MIX_TOC_ID" + bookId;
         }
-        if (n2 == 0) return string4;
-        if (!h(n2)) return null;
-        if (n2 != 3) return string3 + "_" + string2;
-        String[] arrstring = splitSourceId(string3);
-        if (arrstring == null) return string3 + "_" + string2;
-        string3 = arrstring[0];
-        return string3 + "_" + string2;
-    }
-
-    public static String a(byte[] arrby) {
-        try {
-            MessageDigest messageDigest = MessageDigest.getInstance("MD5");
-            messageDigest.update(arrby);
-            byte[] arrby2 = messageDigest.digest();
-            StringBuilder stringBuffer = new StringBuilder(arrby2.length << 1);
-            for (byte anArrby2 : arrby2) {
-                stringBuffer.append(Character.forDigit((240 & anArrby2) >> 4, 16));
-                stringBuffer.append(Character.forDigit(15 & anArrby2, 16));
-            }
-            return stringBuffer.toString();
-        } catch (NoSuchAlgorithmException var1_6) {
-            return "";
-        }
-    }
-
-    public static Map<String, String> a(Context context, int n2, String string2) {
-        HashMap<String, String> hashMap = new HashMap<>();
-        hashMap.put("uid", getUserId(context));
-        hashMap.put("iid", string2);
-        hashMap.put("iids", n());
-        hashMap.put("num", "20");
-        return hashMap;
+        if (readMode == 0) return tocId;
+        if (!h(readMode)) return null;
+        if (readMode != 3) return sourceId + "_" + bookId;
+        String[] arrstring = splitSourceId(sourceId);
+        if (arrstring == null) return sourceId + "_" + bookId;
+        return arrstring[0] + "_" + bookId;
     }
 
     public static String getUserId(Context context) {
@@ -412,66 +373,9 @@ public class TempUtil {
         return CommonUtil.getAccount().getUser().getId();
     }
 
-    public static short a(byte[] arrby, int n2, ByteOrder byteOrder) {
-        if (byteOrder == ByteOrder.BIG_ENDIAN) {
-            return (short) (arrby[0] << 8 | 255 & arrby[1]);
-        }
-        return (short) (arrby[1] << 8 | 255 & arrby[0]);
-    }
-
-    public static void a(int n2, int n3, int n4) {
-        if ((n3 | n4) < 0 || n3 > n2 || n2 - n3 < n4) {
-            throw new ArrayIndexOutOfBoundsException(n2, n3, n4);
-        }
-    }
-
-    /*
-     * Enabled aggressive block sorting
-     */
-    public static void a(Activity activity) {
-        List<String> allAlias = MiPushClient.getAllAlias(activity);
-        String[] arrstring = allAlias.toArray(new String[allAlias.size()]);
-        ArrayList<String> arrayList = new ArrayList<>();
-        if (arrstring != null) {
-            for (String string2 : arrstring) {
-                String string3 = string2 != null && string2.length() > 5 ? string2.substring(5) : "";
-                arrayList.add(string3);
-            }
-        }
-        ArrayList<String> arrayList2 = new ArrayList<>();
-        HashSet<String> hashSet = new HashSet<>();
-        List<BookReadRecord> list = BookReadRecord.getAll();
-        if (list != null) {
-            for (BookReadRecord aList : list) {
-                arrayList2.add(aList.getBookId());
-            }
-            hashSet.addAll(arrayList);
-            hashSet.retainAll(arrayList2);
-            for (String string4 : arrayList) {
-                if (hashSet.contains(string4)) continue;
-                t(string4);
-            }
-            for (String string5 : arrayList2) {
-                if (hashSet.contains(string5)) continue;
-                r(string5);
-            }
-        }
-    }
-
-    /*
-     * Enabled aggressive block sorting
-     */
-    public static void a(Context context, int n2, int n3) {
-        // share book
-    }
-
-    /*
-     * Enabled aggressive block sorting
-     */
-    public static void a(Context context, ListView listView) {
-        int n2 = context.getResources().getDimensionPixelSize(R.dimen.tab_overlap);
+    public static void addHeaderView(Context context, ListView listView) {
         View view = new View(context);
-        view.setLayoutParams(new AbsListView.LayoutParams(-2, n2));
+        view.setLayoutParams(new AbsListView.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, context.getResources().getDimensionPixelSize(R.dimen.tab_overlap)));
         if (a(context, "customer_night_theme", false)) {
             view.setBackgroundResource(R.drawable.bg_dark_list_item);
         } else {
@@ -481,88 +385,7 @@ public class TempUtil {
         listView.addHeaderView(view);
     }
 
-    public static void a(Context context, String string2, Map<String, String> map) {
-        SharedPreferences.Editor editor = context.getSharedPreferences(string2, 0).edit();
-        if (editor != null) {
-            editor.clear();
-            for (String string3 : map.keySet()) {
-                editor.putString(string3, map.get(string3));
-            }
-            editor.apply();
-        }
-    }
-
-    public static void a(FragmentActivity fragmentActivity) {
-        if (fragmentActivity == null) {
-            return;
-        }
-        FragmentManager fragmentManager = fragmentActivity.getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        Fragment fragment = fragmentManager.findFragmentByTag("dialog_gender_intro");
-        if (fragment != null) {
-            fragmentTransaction.remove(fragment);
-        }
-        GenderIntroDialog dialogUtil$GenderIntroDialog = new GenderIntroDialog();
-        dialogUtil$GenderIntroDialog.setCancelable(false);
-        dialogUtil$GenderIntroDialog.show(fragmentTransaction, "dialog_gender_intro");
-    }
-
-    public static void a(FragmentActivity fragmentActivity, ReaderTocDialog readerTocDialog) {
-        FragmentManager fragmentManager = fragmentActivity.getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        Fragment fragment = fragmentManager.findFragmentByTag("ReaderTocDialog");
-        if (fragment != null) {
-            fragmentTransaction.remove(fragment);
-        }
-        try {
-            fragmentTransaction.add(readerTocDialog, "ReaderTocDialog");
-            fragmentTransaction.commitAllowingStateLoss();
-        } catch (IllegalStateException var5_5) {
-            var5_5.printStackTrace();
-        }
-    }
-
-    /*
-     * Enabled aggressive block sorting
-     * Enabled unnecessary exception pruning
-     * Enabled aggressive exception aggregation
-     */
-    public static void a(View view) {
-        Method method;
-        Object[] arrobject;
-        Field field;
-        if (view == null || !k()) {
-            return;
-        }
-        try {
-            Class[] arrclass = new Class[]{Integer.TYPE};
-            method = View.class.getMethod("setSystemUiVisibility", arrclass);
-            field = View.class.getField("SYSTEM_UI_FLAG_HIDE_NAVIGATION");
-            arrobject = new Object[1];
-        } catch (Exception var1_5) {
-            var1_5.printStackTrace();
-            return;
-        }
-        try {
-            arrobject[0] = field.get(null);
-            method.invoke(view, arrobject);
-        } catch (Exception var6_6) {
-            var6_6.printStackTrace();
-        }
-    }
-
-    public static void a(View view, Runnable runnable) {
-        if (Build.VERSION.SDK_INT >= 16) {
-            view.postOnAnimation(runnable);
-            return;
-        }
-        view.postDelayed(runnable, 16);
-    }
-
-    /*
-     * Enabled aggressive block sorting
-     */
-    public static void a(TocSource tocSource, String bookId) {
+    public static void saveSourceRecord(TocSource tocSource, String bookId) {
         String source = tocSource.getSource();
         String sourceId = tocSource.getSourceId();
         SourceRecord sourceRecord = SourceRecord.get(bookId, source);
@@ -572,53 +395,6 @@ public class TempUtil {
             sourceRecord.setSourceId(sourceId);
             sourceRecord.save();
         }
-    }
-
-    /*
-     * Enabled force condition propagation
-     * Lifted jumps to return sites
-     */
-    public static void a(Closeable closeable) {
-        if (closeable == null) return;
-        try {
-            closeable.close();
-            return;
-        } catch (IOException var1_1) {
-            return;
-        }
-    }
-
-    /*
-     * Enabled aggressive block sorting
-     */
-    public static void a(File file) {
-        if (!file.exists()) {
-            return;
-        }
-        if (file.isFile()) {
-            file.delete();
-            return;
-        }
-        String[] arrstring = file.list();
-        if (arrstring == null || arrstring.length <= 0) {
-            file.delete();
-            return;
-        }
-        int n2 = arrstring.length;
-        int n3 = 0;
-        do {
-            if (n3 >= n2) {
-                file.delete();
-                return;
-            }
-            File file2 = new File(file, arrstring[n3]);
-            if (file2.isDirectory()) {
-                a(file2);
-            } else {
-                file2.delete();
-            }
-            ++n3;
-        } while (true);
     }
 
     public static <T> void a(T t, String string2, String string3) {
@@ -1599,15 +1375,6 @@ public class TempUtil {
             return null;
         }
         return (T) object;
-    }
-
-    public static boolean k() {
-        try {
-            boolean bl = (Boolean) Class.forName("android.os.Build").getMethod("hasSmartBar", new Class[0]).invoke(null);
-            return bl;
-        } catch (Exception var0_1) {
-            return Build.DEVICE.equals("mx2");
-        }
     }
 
     public static boolean k(Context context) {

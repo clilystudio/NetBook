@@ -17,9 +17,11 @@ import com.clilystudio.netbook.event.BusProvider;
 import com.clilystudio.netbook.model.Account;
 import com.clilystudio.netbook.model.BookShelfSyncTime;
 import com.clilystudio.netbook.model.RemoteBookShelf;
+import com.xiaomi.mipush.sdk.MiPushClient;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
 
 public final class BookShelfSyncManager {
@@ -81,7 +83,7 @@ public final class BookShelfSyncManager {
         do {
             if (n2 >= n) {
                 BookShelfSyncManager.b();
-                TempUtil.a(z.b);
+                syncBookShelf(z.b);
                 return;
             }
             RemoteBookShelf.Book remoteBookShelf$Book2 = arrremoteBookShelf$Book2[n2];
@@ -91,6 +93,36 @@ public final class BookShelfSyncManager {
             }
             ++n2;
         } while (true);
+    }
+
+    private static void syncBookShelf(Activity activity) {
+        List<String> allAlias = MiPushClient.getAllAlias(activity);
+        String[] arrstring = allAlias.toArray(new String[allAlias.size()]);
+        ArrayList<String> arrayList = new ArrayList<>();
+        if (arrstring != null) {
+            for (String string2 : arrstring) {
+                String string3 = string2 != null && string2.length() > 5 ? string2.substring(5) : "";
+                arrayList.add(string3);
+            }
+        }
+        ArrayList<String> arrayList2 = new ArrayList<>();
+        HashSet<String> hashSet = new HashSet<>();
+        List<BookReadRecord> list = BookReadRecord.getAll();
+        if (list != null) {
+            for (BookReadRecord aList : list) {
+                arrayList2.add(aList.getBookId());
+            }
+            hashSet.addAll(arrayList);
+            hashSet.retainAll(arrayList2);
+            for (String string4 : arrayList) {
+                if (hashSet.contains(string4)) continue;
+                TempUtil.t(string4);
+            }
+            for (String string5 : arrayList2) {
+                if (hashSet.contains(string5)) continue;
+                TempUtil.r(string5);
+            }
+        }
     }
 
     private static boolean a(String string, RemoteBookShelf.Book[] arrremoteBookShelf$Book) {

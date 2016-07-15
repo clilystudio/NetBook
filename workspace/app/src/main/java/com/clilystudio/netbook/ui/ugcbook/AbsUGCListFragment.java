@@ -191,7 +191,7 @@ public abstract class AbsUGCListFragment extends Fragment implements AdapterView
         this.a = (PullToRefreshListView) view.findViewById(R.id.ptr_list);
         this.b = this.a.getRefreshableView();
         this.b.setOnItemClickListener(this);
-        TempUtil.a(this.getActivity(), this.b);
+        TempUtil.addHeaderView(this.getActivity(), this.b);
         View view2 = layoutInflater.inflate(R.layout.my_ugc_header_label, this.b, false);
         this.k = (TextView) view2.findViewById(R.id.content);
         this.k.setVisibility(View.GONE);

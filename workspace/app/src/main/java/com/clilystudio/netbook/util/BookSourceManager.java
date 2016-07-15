@@ -109,7 +109,7 @@ public final class BookSourceManager {
             return;
         }
         String string2 = sourceRecord.getSourceId();
-        String string3 = TempUtil.a(this.mBookId, readMode, string2, null);
+        String string3 = TempUtil.getMixTocId(this.mBookId, readMode, string2, null);
         if (TempUtil.a(this.mActivity, string, false)) {
             Intent intent = ReaderActivity.a(this.mActivity, this.mBookId, this.mBookTitle, string3, string, false);
             intent.putExtra("SOURCE_ID", string2);
@@ -142,7 +142,7 @@ public final class BookSourceManager {
                     TocSource[] arrtocSource = tocSourceRoot.getSources();
                     int readMode = 5;
                     for (TocSource tocSource : arrtocSource) {
-                        TempUtil.a(tocSource, BookSourceManager.this.mBookId);
+                        TempUtil.saveSourceRecord(tocSource, BookSourceManager.this.mBookId);
                         if (!tocSource.isPriority()) continue;
                         String string = tocSource.getSource();
                         readMode = "soso".equals(string) ? 6 : ("sogou".equals(string) ? 7 : ("leidian".equals(string) ? 8 : ("easou".equals(string) ? 3 : -1)));
