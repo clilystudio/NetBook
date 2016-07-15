@@ -14,7 +14,7 @@ import android.widget.TextView;
 import com.clilystudio.netbook.MyApplication;
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.a_pack.BaseAsyncTask;
-import com.clilystudio.netbook.util.am;
+import com.clilystudio.netbook.util.CommonUtil;
 import com.clilystudio.netbook.api.ApiService;
 import com.clilystudio.netbook.IntentBuilder;
 import com.clilystudio.netbook.api.ApiServiceProvider;
@@ -87,7 +87,7 @@ public class ReaderMixActivity extends BaseLoadingActivity {
             public void onClick(View v) {
                 if (!string.equals(ReaderMixActivity.a(readerMixActivity))) {
                     MyApplication.getInstance().setBookId(ReaderMixActivity.b(readerMixActivity));
-                    am.c(ReaderMixActivity.b(readerMixActivity), 9);
+                    CommonUtil.c(ReaderMixActivity.b(readerMixActivity), 9);
                     BusProvider.getInstance().post(new ModeChangedEvent(1));
                     ReaderMixActivity.a(readerMixActivity, ReaderMixActivity.f(readerMixActivity).get_id());
                 }
@@ -231,7 +231,7 @@ public class ReaderMixActivity extends BaseLoadingActivity {
             public void onClick(View v) {
                 if (!"mix".equals(ReaderMixActivity.a(ReaderMixActivity.this))) {
                     MyApplication.getInstance().setBookId(ReaderMixActivity.b(ReaderMixActivity.this));
-                    am.c(ReaderMixActivity.b(ReaderMixActivity.this), 5);
+                    CommonUtil.c(ReaderMixActivity.b(ReaderMixActivity.this), 5);
                     BusProvider.getInstance().post(new ModeChangedEvent(1));
                     ReaderMixActivity.a(ReaderMixActivity.this, "MIX_TOC_ID");
                 }
@@ -249,9 +249,9 @@ public class ReaderMixActivity extends BaseLoadingActivity {
                 if (!tocSummary.getHost().equals(ReaderMixActivity.a(ReaderMixActivity.this))) {
                     MyApplication.getInstance().setBookId(ReaderMixActivity.b(ReaderMixActivity.this));
                     if ("vip.zhuishushenqi.com".equals(ReaderMixActivity.a(ReaderMixActivity.this))) {
-                        am.c(ReaderMixActivity.b(ReaderMixActivity.this), 9);
+                        CommonUtil.c(ReaderMixActivity.b(ReaderMixActivity.this), 9);
                     } else {
-                        am.c(ReaderMixActivity.b(ReaderMixActivity.this), 10);
+                        CommonUtil.c(ReaderMixActivity.b(ReaderMixActivity.this), 10);
                     }
                     BusProvider.getInstance().post(new ModeChangedEvent(1));
                     ReaderMixActivity.a(ReaderMixActivity.this, tocSummary.get_id());

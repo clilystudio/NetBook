@@ -13,7 +13,7 @@ import android.widget.TextView;
 
 import com.clilystudio.netbook.MyApplication;
 import com.clilystudio.netbook.R;
-import com.clilystudio.netbook.util.am;
+import com.clilystudio.netbook.util.CommonUtil;
 import com.clilystudio.netbook.api.ApiServiceProvider;
 import com.clilystudio.netbook.event.BookReadEvent;
 import com.clilystudio.netbook.event.BusProvider;
@@ -71,7 +71,7 @@ public class SettingsActivity extends BaseActivity implements View.OnClickListen
         new Thread(new Runnable() {
             @Override
             public void run() {
-                ApiServiceProvider.getApiService().P(am.getAccount().getToken());
+                ApiServiceProvider.getApiService().P(CommonUtil.getAccount().getToken());
             }
         }).start();
         MyApplication.getInstance().removeProperties("account.token", "user.id", "user.name", "user.avatar", "user.lv", "user.gender");
@@ -133,8 +133,8 @@ public class SettingsActivity extends BaseActivity implements View.OnClickListen
         this.findViewById(R.id.tv_feedback).setOnClickListener(this);
         this.findViewById(R.id.settings_market_assessment).setOnClickListener(this);
         TextView textView = (TextView) this.findViewById(R.id.settings_version_name);
-        StringBuilder stringBuilder = new StringBuilder().append(am.g(this)).append("(");
-        String string = am.c(this, "COMMIT_ID");
+        StringBuilder stringBuilder = new StringBuilder().append(CommonUtil.g(this)).append("(");
+        String string = CommonUtil.c(this, "COMMIT_ID");
         String string2 = string != null && string.length() > 8 ? string.substring(0, 8) : null;
         textView.setText(stringBuilder.append(string2).append(")").toString());
         final boolean bl = com.clilystudio.netbook.util.a.l(this, "update_notice_key");

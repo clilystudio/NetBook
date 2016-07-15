@@ -14,7 +14,7 @@ import android.widget.TextView;
 
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.a_pack.BaseAsyncTask;
-import com.clilystudio.netbook.util.am;
+import com.clilystudio.netbook.util.CommonUtil;
 import com.clilystudio.netbook.model.Account;
 import com.clilystudio.netbook.model.UGCBookListRoot;
 import com.clilystudio.netbook.util.BaseDownloadAdapter;
@@ -59,7 +59,7 @@ public abstract class AbsUGCListFragment extends Fragment implements AdapterView
                         @Override
                         protected UGCBookListRoot doInBackground(String... params) {
                             if (this.isCancelled()) return null;
-                            Account account = am.a(AbsUGCListFragment.this.getActivity());
+                            Account account = CommonUtil.a(AbsUGCListFragment.this.getActivity());
                             if (account == null) return null;
                             return AbsUGCListFragment.this.a(account, AbsUGCListFragment.this.c.getCount());
                         }
@@ -130,7 +130,7 @@ public abstract class AbsUGCListFragment extends Fragment implements AdapterView
 
             @Override
             protected UGCBookListRoot doInBackground(String... params) {
-                Account account = am.a(AbsUGCListFragment.this.getActivity());
+                Account account = CommonUtil.a(AbsUGCListFragment.this.getActivity());
                 if (account == null) return null;
                 return AbsUGCListFragment.this.a(account, 0);
             }
@@ -217,7 +217,7 @@ public abstract class AbsUGCListFragment extends Fragment implements AdapterView
 
                             @Override
                             protected UGCBookListRoot doInBackground(String... params) {
-                                Account account = am.a(AbsUGCListFragment.this.getActivity());
+                                Account account = CommonUtil.a(AbsUGCListFragment.this.getActivity());
                                 if (account == null) return null;
                                 return AbsUGCListFragment.this.a(account, 0);
                             }

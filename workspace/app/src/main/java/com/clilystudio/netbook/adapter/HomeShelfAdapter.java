@@ -11,7 +11,7 @@ import android.widget.CompoundButton;
 import android.widget.TextView;
 
 import com.clilystudio.netbook.R;
-import com.clilystudio.netbook.util.am;
+import com.clilystudio.netbook.util.CommonUtil;
 import com.clilystudio.netbook.db.BookDlRecord;
 import com.clilystudio.netbook.db.BookFile;
 import com.clilystudio.netbook.db.BookReadRecord;
@@ -272,7 +272,7 @@ public class HomeShelfAdapter extends BaseBookAdapter<BookShelf> {
                     }
                 }
                 final String var24_14 = var20_7.getBookId();
-                if (!am.h(var24_14)) {
+                if (!CommonUtil.h(var24_14)) {
                     if (var23_10) {
                         var19_6.coverLoadingLayer.f();
                         return var2_2;

@@ -7,7 +7,7 @@ import android.os.Handler;
 
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.util.a;
-import com.clilystudio.netbook.util.am;
+import com.clilystudio.netbook.util.CommonUtil;
 import com.clilystudio.netbook.ui.home.HomeActivity;
 
 import java.util.Calendar;
@@ -22,7 +22,7 @@ public class SplashActivity extends Activity {
         if (this.e) {
             return;
         }
-        if (!am.g()) {
+        if (!CommonUtil.g()) {
             intent = new Intent(this, IntroActivity.class);
         } else {
             intent = new Intent(this, HomeActivity.class);
@@ -67,7 +67,7 @@ public class SplashActivity extends Activity {
         String string;
         Calendar calendar;
         super.onResume();
-        if (!am.g() || (n = 10000 * (calendar = Calendar.getInstance()).get(Calendar.YEAR) + 100 * calendar.get(Calendar.MONTH) + calendar.get(Calendar.DATE)) <= a.a(this, "KEY_OPEN_TIME", 0) || (string = am.getAccount().getUser().getGender()) == null) {
+        if (!CommonUtil.g() || (n = 10000 * (calendar = Calendar.getInstance()).get(Calendar.YEAR) + 100 * calendar.get(Calendar.MONTH) + calendar.get(Calendar.DATE)) <= a.a(this, "KEY_OPEN_TIME", 0) || (string = CommonUtil.getAccount().getUser().getGender()) == null) {
             return;
         }
         a.b(this, "KEY_OPEN_TIME", n);

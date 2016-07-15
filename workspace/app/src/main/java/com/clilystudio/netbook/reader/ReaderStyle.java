@@ -13,7 +13,7 @@ import android.view.WindowManager;
 
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.util.a;
-import com.clilystudio.netbook.util.am;
+import com.clilystudio.netbook.util.CommonUtil;
 import com.clilystudio.netbook.event.BusProvider;
 import com.clilystudio.netbook.event.ThemeChangedEvent;
 
@@ -60,7 +60,7 @@ public final class ReaderStyle {
         this.x = this.t.getBoolean("night_mode", false);
         this.y = this.t.getBoolean("convert_t", false);
         this.z = this.t.getInt("reader_background_mode", 1);
-        int n = am.b(this.m).widthPixels;
+        int n = CommonUtil.b(this.m).widthPixels;
         this.paddingHori = this.n.getDimensionPixelSize(R.dimen.page_horizontal_padding);
         this.paddingVert = this.n.getDimensionPixelSize(R.dimen.page_vertical_padding);
         this.width = n - (this.paddingHori << 1);
@@ -245,7 +245,7 @@ public final class ReaderStyle {
             this.bodyHeight = n3;
             return;
         }
-        this.bodyHeight = n3 - am.k(this.m);
+        this.bodyHeight = n3 - CommonUtil.k(this.m);
     }
 
     /*

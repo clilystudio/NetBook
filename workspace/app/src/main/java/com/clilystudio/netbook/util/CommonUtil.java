@@ -58,7 +58,7 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.zip.GZIPOutputStream;
 
-public class am {
+public class CommonUtil {
 
     private static String B(Context context) {
         try {
@@ -113,7 +113,7 @@ public class am {
         if (activity == null) {
             return null;
         }
-        Account account = am.getAccount();
+        Account account = CommonUtil.getAccount();
         if (account != null) {
             return account;
         }
@@ -276,7 +276,7 @@ public class am {
         StringBuilder stringBuilder;
         block5:
         {
-            if (!am.a(string)) break block5;
+            if (!CommonUtil.a(string)) break block5;
             return null;
         }
         try {
@@ -359,10 +359,10 @@ public class am {
     }
 
     public static Map<String, String> c(Context context) {
-        synchronized (am.class) {
+        synchronized (CommonUtil.class) {
             HashMap<String, String> hashMap = new HashMap<>();
             hashMap.put("AA1", context.getPackageName());
-            hashMap.put("AA2", am.B(context));
+            hashMap.put("AA2", CommonUtil.B(context));
             hashMap.put("AA3", "security-sdk-token");
             hashMap.put("AA4", "3.0.2.20150525");
             return hashMap;
@@ -448,7 +448,7 @@ public class am {
     }
 
     public static int f(Context context) {
-        PackageInfo packageInfo = am.C(context);
+        PackageInfo packageInfo = CommonUtil.C(context);
         int n = 0;
         if (packageInfo != null) {
             n = packageInfo.versionCode;
@@ -477,7 +477,7 @@ public class am {
      */
     public static int g(String string) {
         BookDlRecord bookDlRecord;
-        if (!am.h(string) || (bookDlRecord = BookDlRecord.get(string)) == null) {
+        if (!CommonUtil.h(string) || (bookDlRecord = BookDlRecord.get(string)) == null) {
             return 0;
         }
         return bookDlRecord.getStatus();
@@ -485,7 +485,7 @@ public class am {
 
     public static String g(Context context) {
         String string = "";
-        PackageInfo packageInfo = am.C(context);
+        PackageInfo packageInfo = CommonUtil.C(context);
         if (packageInfo != null) {
             string = packageInfo.versionName;
         }
@@ -493,7 +493,7 @@ public class am {
     }
 
     public static boolean g() {
-        return am.getAccount() != null;
+        return CommonUtil.getAccount() != null;
     }
 
     public static String h() {
@@ -535,7 +535,7 @@ public class am {
     }
 
     public static void j(Context context) {
-        am.a(context, System.currentTimeMillis());
+        CommonUtil.a(context, System.currentTimeMillis());
     }
 
     public static int k(Context context) {
@@ -572,7 +572,7 @@ public class am {
     }
 
     public static String n(Context context) {
-        String string = am.c(context, "UMENG_CHANNEL");
+        String string = CommonUtil.c(context, "UMENG_CHANNEL");
         if (string != null) {
             return string;
         }

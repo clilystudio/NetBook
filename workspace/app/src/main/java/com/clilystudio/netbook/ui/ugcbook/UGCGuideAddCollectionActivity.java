@@ -9,7 +9,7 @@ import android.widget.TextView;
 import com.clilystudio.netbook.MyApplication;
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.a_pack.BaseLoadingTask;
-import com.clilystudio.netbook.util.am;
+import com.clilystudio.netbook.util.CommonUtil;
 import com.clilystudio.netbook.api.ApiServiceProvider;
 import com.clilystudio.netbook.event.UgcDraftEvent;
 import com.clilystudio.netbook.event.UpdateUgcListEvent;
@@ -37,7 +37,7 @@ public class UGCGuideAddCollectionActivity extends BaseActivity {
      * Lifted jumps to return sites
      */
     static /* synthetic */ void a(UGCGuideAddCollectionActivity uGCGuideAddCollectionActivity) {
-        Account account = am.a(uGCGuideAddCollectionActivity);
+        Account account = CommonUtil.a(uGCGuideAddCollectionActivity);
         if (account == null) return;
         if (account.getUser() != null && account.getUser().getLv() < 2) {
             ToastUtil.showShortToast(uGCGuideAddCollectionActivity, "等级不够");
@@ -121,7 +121,7 @@ public class UGCGuideAddCollectionActivity extends BaseActivity {
 
                         @Override
                         public ResultStatus a(Void... var1) {
-                            Account account = am.a(UGCGuideAddCollectionActivity.this);
+                            Account account = CommonUtil.a(UGCGuideAddCollectionActivity.this);
                             if (account == null) return null;
                             if (UGCGuideAddCollectionActivity.this.c == null)
                                 return ApiServiceProvider.getApiService().b(MyApplication.getInstance().getUGCNewCollection(), account.getToken());

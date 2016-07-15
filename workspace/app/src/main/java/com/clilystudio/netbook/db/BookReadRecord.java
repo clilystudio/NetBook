@@ -1,6 +1,6 @@
 package com.clilystudio.netbook.db;
 
-import com.clilystudio.netbook.util.am;
+import com.clilystudio.netbook.util.CommonUtil;
 
 import com.activeandroid.Model;
 import com.activeandroid.annotation.Column;
@@ -76,7 +76,7 @@ public class BookReadRecord extends Model {
      * Enabled aggressive block sorting
      */
     public static void addAccountInfo(BookReadRecord bookReadRecord) {
-        Account account = am.getAccount();
+        Account account = CommonUtil.getAccount();
         if (account != null) {
             bookReadRecord.setAccount(account.getUser().getId());
         } else {

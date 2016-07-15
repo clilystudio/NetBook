@@ -7,7 +7,7 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 
 import com.clilystudio.netbook.R;
-import com.clilystudio.netbook.util.am;
+import com.clilystudio.netbook.util.CommonUtil;
 import android.util.AttributeSet;
 import android.widget.TabWidget;
 
@@ -33,13 +33,13 @@ public class TabWidgetV2 extends TabWidget {
             throw new RuntimeException("Item count can't be zero");
         }
         typedArray.recycle();
-        int n = am.b((Activity) context).widthPixels;
+        int n = CommonUtil.b((Activity) context).widthPixels;
         int n2 = (int) (2.1 * (double) n);
         this.b = (float) n / (float) this.a;
         this.g = (-n2 - n) / 2;
         this.h = (float) ((n - (this.e << 1)) / this.a) / this.b;
         int n3 = this.getResources().getDimensionPixelSize(R.dimen.tab_height);
-        this.d = com.clilystudio.netbook.util.a.a(context, "customer_night_theme", false) ? am.a(R.drawable.bg_dark_tab_widget_v3, n2, n3, this.getContext()) : am.a(R.drawable.bg_tab_widget_v3, n2, n3, this.getContext());
+        this.d = com.clilystudio.netbook.util.a.a(context, "customer_night_theme", false) ? CommonUtil.a(R.drawable.bg_dark_tab_widget_v3, n2, n3, this.getContext()) : CommonUtil.a(R.drawable.bg_tab_widget_v3, n2, n3, this.getContext());
         this.f = this.getResources().getDimensionPixelSize(R.dimen.tab_host_text);
     }
 
@@ -66,7 +66,7 @@ public class TabWidgetV2 extends TabWidget {
 
     public void setItemCount(Context context, int n) {
         this.a = n;
-        int n2 = am.b((Activity) context).widthPixels;
+        int n2 = CommonUtil.b((Activity) context).widthPixels;
         this.b = (float) n2 / (float) this.a;
         this.h = (float) ((n2 - (this.e << 1)) / this.a) / this.b;
     }

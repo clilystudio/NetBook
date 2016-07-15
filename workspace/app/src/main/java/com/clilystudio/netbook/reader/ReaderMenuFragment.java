@@ -15,7 +15,7 @@ import com.clilystudio.netbook.IntentBuilder;
 import com.clilystudio.netbook.MyApplication;
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.a_pack.BaseAsyncTask;
-import com.clilystudio.netbook.util.am;
+import com.clilystudio.netbook.util.CommonUtil;
 import com.clilystudio.netbook.api.ApiServiceProvider;
 import com.clilystudio.netbook.event.BusProvider;
 import com.clilystudio.netbook.event.ModeChangedEvent;
@@ -61,7 +61,7 @@ public class ReaderMenuFragment extends Fragment {
     static /* synthetic */ void a(ReaderMenuFragment readerMenuFragment, Activity activity, TocSummary tocSummary) {
         activity.finish();
         MyApplication.getInstance().setBookId(readerMenuFragment.mBookId);
-        am.c(readerMenuFragment.mBookId, 10);
+        CommonUtil.c(readerMenuFragment.mBookId, 10);
         BusProvider.getInstance().post(new ModeChangedEvent(1));
         readerMenuFragment.startActivity(ReaderActivity.a(readerMenuFragment.getActivity(), readerMenuFragment.mBookId, readerMenuFragment.f, tocSummary.get_id(), (String)null, true));
     }
@@ -138,7 +138,7 @@ public class ReaderMenuFragment extends Fragment {
         super.onActivityCreated(bundle);
         this.mBookId = this.getArguments().getString("BOOK_ID");
         this.f = this.getArguments().getString("BOOK_TITLE");
-        int n2 = am.k(this.getActivity());
+        int n2 = CommonUtil.k(this.getActivity());
         if (this.getView() != null && n2 != 0) {
             this.getView().findViewById(R.id.slm_frame).setPadding(0, n2, 1, 0);
         }
@@ -178,7 +178,7 @@ public class ReaderMenuFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater layoutInflater, ViewGroup viewGroup, Bundle bundle) {
         View view = layoutInflater.inflate(R.layout.fragment_reader_menu, viewGroup, false);
-        view.findViewById(R.id.rl_ad_container).setPadding(0, am.k(this.getActivity()), 0, 0);
+        view.findViewById(R.id.rl_ad_container).setPadding(0, CommonUtil.k(this.getActivity()), 0, 0);
         view.findViewById(R.id.slm_reader_all_post).setOnClickListener(this.j);
         this.g = (LoadingContainer) view.findViewById(R.id.loading_container);
         view.findViewById(R.id.slm_reader_relate_book).setOnClickListener(this.j);

@@ -18,7 +18,7 @@ import android.widget.TextView;
 import com.clilystudio.netbook.MyApplication;
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.a_pack.BaseLoadingTask;
-import com.clilystudio.netbook.util.am;
+import com.clilystudio.netbook.util.CommonUtil;
 import com.clilystudio.netbook.api.ApiServiceProvider;
 import com.clilystudio.netbook.event.AddShelfBooksEvent;
 import com.clilystudio.netbook.event.UgcDraftEvent;
@@ -237,7 +237,7 @@ public class UGCGuideEditBooksActivity extends BaseActivity implements View.OnCl
                     new BaseLoadingTask<Void, ResultStatus>(UGCGuideEditBooksActivity.this, "正在保存到草稿箱...") {
                         @Override
                         public ResultStatus a(Void... var1) {
-                            Account account = am.a(UGCGuideEditBooksActivity.this);
+                            Account account = CommonUtil.a(UGCGuideEditBooksActivity.this);
                             if (account == null) return null;
                             if (UGCGuideEditBooksActivity.this.f == null)
                                 return ApiServiceProvider.getApiService().b(MyApplication.getInstance().getUGCNewCollection(), account.getToken());
@@ -376,7 +376,7 @@ public class UGCGuideEditBooksActivity extends BaseActivity implements View.OnCl
             new BaseLoadingTask<Void, ResultStatus>(UGCGuideEditBooksActivity.this, R.string.loading) {
                 @Override
                 public ResultStatus a(Void... var1) {
-                    Account account = am.a(UGCGuideEditBooksActivity.this);
+                    Account account = CommonUtil.a(UGCGuideEditBooksActivity.this);
                     if (account == null) return null;
                     if (UGCGuideEditBooksActivity.d(UGCGuideEditBooksActivity.this)) {
                         return ApiServiceProvider.getApiService().c(MyApplication.getInstance().getUGCNewCollection(), account.getToken(), UGCGuideEditBooksActivity.this.f);

@@ -9,7 +9,7 @@ import android.widget.TextView;
 import com.clilystudio.netbook.MyApplication;
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.a_pack.BaseLoadingTask;
-import com.clilystudio.netbook.util.am;
+import com.clilystudio.netbook.util.CommonUtil;
 import com.clilystudio.netbook.api.ApiServiceProvider;
 import com.clilystudio.netbook.event.BusProvider;
 import com.clilystudio.netbook.event.LoginEvent;
@@ -371,7 +371,7 @@ public final class ReaderPageManager {
                     if (ReaderPageManager.this.mActivity instanceof ReaderActivity) {
                         arg = ((ReaderActivity) ReaderPageManager.this.mActivity).l();
                         ApiServiceProvider.getInstance();
-                        return ApiServiceProvider.getApiService().g(am.getAccount().getToken(), arg);
+                        return ApiServiceProvider.getApiService().g(CommonUtil.getAccount().getToken(), arg);
                     }
                     return null;
                 }

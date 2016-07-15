@@ -7,7 +7,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.clilystudio.netbook.R;
-import com.clilystudio.netbook.util.am;
+import com.clilystudio.netbook.util.CommonUtil;
 
 public class UgcFilterTextView extends RelativeLayout {
     private TextView a;
@@ -31,12 +31,12 @@ public class UgcFilterTextView extends RelativeLayout {
     @Override
     public void setSelected(boolean bl) {
         if (bl) {
-            this.a.setTextColor(am.a(this.getContext(), R.attr.backgroundNormal));
-            this.setBackgroundResource(am.b(this.getContext(), R.attr.redRoundBg));
+            this.a.setTextColor(CommonUtil.a(this.getContext(), R.attr.backgroundNormal));
+            this.setBackgroundResource(CommonUtil.b(this.getContext(), R.attr.redRoundBg));
             return;
         }
-        this.a.setTextColor(am.a(this.getContext(), 16842808));
-        this.setBackgroundResource(am.b(this.getContext(), R.attr.backgroundSelector));
+        this.a.setTextColor(CommonUtil.a(this.getContext(), 16842808));
+        this.setBackgroundResource(CommonUtil.b(this.getContext(), R.attr.backgroundSelector));
     }
 
     public void setText(String string) {

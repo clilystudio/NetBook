@@ -1,6 +1,6 @@
 package com.clilystudio.netbook.db;
 
-import com.clilystudio.netbook.util.am;
+import com.clilystudio.netbook.util.CommonUtil;
 
 import com.activeandroid.Model;
 import com.activeandroid.annotation.Column;
@@ -22,7 +22,7 @@ public class SyncAccount extends Model {
         if (date == null) {
             return false;
         }
-        Account account = am.getAccount();
+        Account account = CommonUtil.getAccount();
         if (account == null) {
             return false;
         }
@@ -36,7 +36,7 @@ public class SyncAccount extends Model {
      */
     public static void save(Date date) {
         SyncAccount syncAccount;
-        Account account = am.getAccount();
+        Account account = CommonUtil.getAccount();
         if (account == null) {
             return;
         }

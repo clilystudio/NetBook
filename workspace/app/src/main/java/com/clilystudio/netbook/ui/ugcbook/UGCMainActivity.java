@@ -22,7 +22,7 @@ import android.widget.TextView;
 
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.a_pack.BaseAsyncTask;
-import com.clilystudio.netbook.util.am;
+import com.clilystudio.netbook.util.CommonUtil;
 import com.clilystudio.netbook.api.ApiServiceProvider;
 import com.clilystudio.netbook.model.UgcFilterRoot;
 import com.clilystudio.netbook.ui.ActionBarClickListener;
@@ -197,7 +197,7 @@ public class UGCMainActivity extends BaseTabActivity implements ViewPager.OnPage
         view.findViewById(R.id.create_ugc).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (am.a(UGCMainActivity.this) != null) {
+                if (CommonUtil.a(UGCMainActivity.this) != null) {
                     Intent intent = new Intent(UGCMainActivity.this, UGCGuideAddCollectionActivity.class);
                     UGCMainActivity.this.startActivity(intent);
                     UGCMainActivity.h(UGCMainActivity.this);
@@ -207,7 +207,7 @@ public class UGCMainActivity extends BaseTabActivity implements ViewPager.OnPage
         view.findViewById(R.id.my_ugc).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (am.a(UGCMainActivity.this) != null) {
+                if (CommonUtil.a(UGCMainActivity.this) != null) {
                     Intent intent = new Intent(UGCMainActivity.this, UserUGCActivity.class);
                     UGCMainActivity.this.startActivity(intent);
                     UGCMainActivity.h(UGCMainActivity.this);
@@ -399,12 +399,12 @@ public class UGCMainActivity extends BaseTabActivity implements ViewPager.OnPage
                 an an2 = (an) holder;
                 an2.j = string = this.c.getString(R.string.ugc_all);
                 if (UGCMainActivity.j(ak.this.c).equals(string)) {
-                    an2.i.setTextColor(am.a(ak.this.c, R.attr.backgroundNormal));
-                    an2.i.setBackgroundResource(am.b(ak.this.c, R.attr.redRoundBg));
+                    an2.i.setTextColor(CommonUtil.a(ak.this.c, R.attr.backgroundNormal));
+                    an2.i.setBackgroundResource(CommonUtil.b(ak.this.c, R.attr.redRoundBg));
                     return;
                 }
-                an2.i.setTextColor(am.a(ak.this.c, 16842808));
-                an2.i.setBackgroundResource(am.b(ak.this.c, R.attr.backgroundSelector));
+                an2.i.setTextColor(CommonUtil.a(ak.this.c, 16842808));
+                an2.i.setBackgroundResource(CommonUtil.b(ak.this.c, R.attr.backgroundSelector));
                 return;
             }
             final al al2 = (al) holder;

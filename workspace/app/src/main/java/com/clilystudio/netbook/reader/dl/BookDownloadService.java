@@ -11,7 +11,7 @@ import android.support.v4.content.LocalBroadcastManager;
 
 import com.clilystudio.netbook.MyApplication;
 import com.clilystudio.netbook.a_pack.BaseAsyncTask;
-import com.clilystudio.netbook.util.am;
+import com.clilystudio.netbook.util.CommonUtil;
 import com.clilystudio.netbook.api.ApiServiceProvider;
 import com.clilystudio.netbook.db.BookDlRecord;
 import com.clilystudio.netbook.db.BookReadRecord;
@@ -344,14 +344,14 @@ public class BookDownloadService extends Service {
         if (n < this.g.length && this.f <= this.e) {
             ChapterLink chapterLink = this.g[n];
             boolean bl = chapterLink.getUnreadble();
-            String string = am.e(chapterLink.getLink());
+            String string = CommonUtil.e(chapterLink.getLink());
             while (bl || this.h.contains(string)) {
                 this.f = 1 + this.f;
                 n = this.d + this.f;
                 if (n < this.g.length) {
                     chapterLink = this.g[n];
                     bl = chapterLink.getUnreadble();
-                    string = am.e(chapterLink.getLink());
+                    string = CommonUtil.e(chapterLink.getLink());
                     continue;
                 }
                 this.e();
@@ -398,7 +398,7 @@ public class BookDownloadService extends Service {
                         if (BookDownloadService.m(BookDownloadService.this) == null) {
                             BookDownloadService.a(BookDownloadService.this, BookInfoUtil.tocId);
                         }
-                        com.clilystudio.netbook.util.a.a(BookDownloadService.d(BookDownloadService.this), BookDownloadService.m(BookDownloadService.this), am.e(string), chapter);
+                        com.clilystudio.netbook.util.a.a(BookDownloadService.d(BookDownloadService.this), BookDownloadService.m(BookDownloadService.this), CommonUtil.e(string), chapter);
                     }
                     BookDownloadService.c(BookDownloadService.this);
                     if (BookDownloadService.n(BookDownloadService.this) == 0 || BookDownloadService.g(BookDownloadService.this) == BookDownloadService.h(BookDownloadService.this)) {

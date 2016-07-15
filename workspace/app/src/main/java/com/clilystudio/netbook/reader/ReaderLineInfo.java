@@ -2,7 +2,7 @@ package com.clilystudio.netbook.reader;
 
 import android.content.Context;
 
-import com.clilystudio.netbook.util.am;
+import com.clilystudio.netbook.util.CommonUtil;
 import com.clilystudio.netbook.util.CipherUtil;
 
 import java.util.LinkedList;
@@ -34,7 +34,7 @@ public final class ReaderLineInfo {
     }
 
     public final String a(Context context) {
-        return am.b(context, this.c());
+        return CommonUtil.b(context, this.c());
     }
 
     public final void a(int n2) {

@@ -90,7 +90,7 @@ public final class BookSourceManager {
             if (this.mBookReadRecord != null) {
                 this.mTocId = this.mBookReadRecord.getTocId();
             }
-            if (am.getAccount() != null) {
+            if (CommonUtil.getAccount() != null) {
                 HashMap<String, String> hashMap = a.M(this.mBookId);
                 if (hashMap == null) {
                     hashMap = new HashMap<>();
@@ -208,7 +208,7 @@ public final class BookSourceManager {
             int var5_5 = a.c(this.mActivity, "PREF_FIRST_LAUNCH_TIME", 0);
             boolean var7_6 = Calendar.getInstance().getTimeInMillis() - var5_5 >= 2592000000L;
             if (!var7_6) {
-                Account var8_7 = am.getAccount();
+                Account var8_7 = CommonUtil.getAccount();
                 if (var8_7 == null || var8_7.getUser().getLv() < 5) {
                     ToastUtil.showShortToast(this.mActivity, "正在获取来源");
                     this.a(true);

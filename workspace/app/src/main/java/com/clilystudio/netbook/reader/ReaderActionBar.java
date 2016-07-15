@@ -3,7 +3,7 @@ package com.clilystudio.netbook.reader;
 import android.content.Context;
 
 import com.clilystudio.netbook.R;
-import com.clilystudio.netbook.util.am;
+import com.clilystudio.netbook.util.CommonUtil;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.ImageView;
@@ -60,7 +60,7 @@ public class ReaderActionBar extends RelativeLayout {
     public final void a(boolean bl) {
         RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(-1, -1);
         if (bl) {
-            layoutParams.setMargins(0, am.k(this.getContext()), 0, 0);
+            layoutParams.setMargins(0, CommonUtil.k(this.getContext()), 0, 0);
         } else {
             layoutParams.setMargins(0, 0, 0, 0);
         }
@@ -105,7 +105,7 @@ public class ReaderActionBar extends RelativeLayout {
     protected void onFinishInflate() {
         super.onFinishInflate();
         RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(-1, -1);
-        layoutParams.setMargins(0, am.k(this.getContext()), 0, 0);
+        layoutParams.setMargins(0, CommonUtil.k(this.getContext()), 0, 0);
         this.setLayoutParams(layoutParams);
         View.OnClickListener ah2 = new View.OnClickListener() {
            @Override

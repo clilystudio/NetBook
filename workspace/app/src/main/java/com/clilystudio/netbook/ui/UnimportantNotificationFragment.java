@@ -1,7 +1,7 @@
 package com.clilystudio.netbook.ui;
 
 import com.clilystudio.netbook.adapter.NotificationAdapter;
-import com.clilystudio.netbook.util.am;
+import com.clilystudio.netbook.util.CommonUtil;
 
 public class UnimportantNotificationFragment extends NotifFragment {
     @Override
@@ -15,7 +15,7 @@ public class UnimportantNotificationFragment extends NotifFragment {
 
             @Override
             protected String a() {
-                return am.i(this.b());
+                return CommonUtil.i(this.b());
             }
         };
     }

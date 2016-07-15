@@ -33,7 +33,7 @@ import com.clilystudio.netbook.MyApplication;
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.a_pack.BaseAsyncTask;
 import com.clilystudio.netbook.util.a;
-import com.clilystudio.netbook.util.am;
+import com.clilystudio.netbook.util.CommonUtil;
 import com.clilystudio.netbook.api.ApiServiceProvider;
 import com.clilystudio.netbook.db.BookReadRecord;
 import com.clilystudio.netbook.db.BookTopicEnterRecord;
@@ -201,7 +201,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
             ToastUtil.showShortToast(readerActivity, "缓存不可用");
             return;
         }
-        boolean bl = am.g(readerActivity.mBookId) == 2;
+        boolean bl = CommonUtil.g(readerActivity.mBookId) == 2;
         if (bl) {
             new BaseDialog.Builder(readerActivity).setTitle(R.string.tips).setMessage(R.string.chapter_dl_doing_msg).setPositiveButton(R.string.chapter_dl_goon, new DialogInterface.OnClickListener() {
 
@@ -349,7 +349,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
     }
 
     static /* synthetic */ void ad(ReaderActivity readerActivity) {
-        if (am.f()) {
+        if (CommonUtil.f()) {
             ToastUtil.showShortToast(readerActivity, readerActivity.getString(R.string.book_add_overflow));
             return;
         }
@@ -363,7 +363,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
     static /* synthetic */ void ag(ReaderActivity readerActivity) {
         CharSequence charSequence = readerActivity.r.b().getText();
         if (charSequence != null) {
-            am.a(readerActivity, charSequence.toString(), null);
+            CommonUtil.a(readerActivity, charSequence.toString(), null);
         }
     }
 
@@ -380,7 +380,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
         readerActivity.mPopWindow.getContentView().setFocusable(true);
         int[] arrn = new int[2];
         view.getLocationOnScreen(arrn);
-        readerActivity.mPopWindow.showAtLocation(view, 0, arrn[0] - readerActivity.mPopWindow.getWidth() + view.getWidth(), am.l(readerActivity) + am.k(readerActivity));
+        readerActivity.mPopWindow.showAtLocation(view, 0, arrn[0] - readerActivity.mPopWindow.getWidth() + view.getWidth(), CommonUtil.l(readerActivity) + CommonUtil.k(readerActivity));
     }
 
     static /* synthetic */ void u(ReaderActivity readerActivity) {
@@ -766,7 +766,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
     private void loadChapterList() {
         if (a.isMounted()) {
             for (String s1 : a.j(this.mBookId, this.mTocId)) {
-                String string = am.f(s1);
+                String string = CommonUtil.f(s1);
                 this.x.add(string);
             }
         }
@@ -1578,12 +1578,12 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
             }
         };
         bq2.b(this.mBookId);
-        if (am.getAccount() != null) {
+        if (CommonUtil.getAccount() != null) {
             new BaseAsyncTask<Void, Void, ChapterKeysRoot>() {
                 @Override
                 protected ChapterKeysRoot doInBackground(Void... params) {
                     ApiServiceProvider.getInstance();
-                    return ApiServiceProvider.getApiService().g(am.getAccount().getToken(), ReaderActivity.this.mBookId);
+                    return ApiServiceProvider.getApiService().g(CommonUtil.getAccount().getToken(), ReaderActivity.this.mBookId);
                 }
 
                 @Override

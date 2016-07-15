@@ -17,7 +17,7 @@ import android.widget.TextView;
 import com.clilystudio.netbook.MyApplication;
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.a_pack.BaseAsyncTask;
-import com.clilystudio.netbook.util.am;
+import com.clilystudio.netbook.util.CommonUtil;
 import com.clilystudio.netbook.IntentBuilder;
 import com.clilystudio.netbook.api.ApiServiceProvider;
 import com.clilystudio.netbook.db.BookReadRecord;
@@ -365,7 +365,7 @@ public class BookInfoActivity extends BaseActivity implements View.OnClickListen
             Object[] arrobject = new Object[]{this.k.getTitle()};
             string = String.format(string2, arrobject);
         } else {
-            if (am.f()) {
+            if (CommonUtil.f()) {
                 string = this.getString(R.string.book_add_overflow);
             } else {
                 BookReadRecord.create(this.k);
@@ -373,7 +373,7 @@ public class BookInfoActivity extends BaseActivity implements View.OnClickListen
                 String string3 = this.getString(R.string.add_book_event);
                 Object[] arrobject = new Object[]{this.k.getTitle()};
                 String string4 = String.format(string3, arrobject);
-                if (com.clilystudio.netbook.util.a.a(this, "add_update_notify_login", true) && !am.g()) {
+                if (com.clilystudio.netbook.util.a.a(this, "add_update_notify_login", true) && !CommonUtil.g()) {
                     View view = this.getLayoutInflater().inflate(R.layout.remove_shelf_confirm, (ViewGroup)getWindow().getDecorView(), false);
                     final CheckBox checkBox = (CheckBox) view.findViewById(R.id.remove_shelf_cache);
                     checkBox.setText(this.getString(R.string.add_update_not_notify));
@@ -559,6 +559,6 @@ public class BookInfoActivity extends BaseActivity implements View.OnClickListen
         super.onResume();
         this.k();
         this.a(false);
-        this.a(am.g(this.mBookId));
+        this.a(CommonUtil.g(this.mBookId));
     }
 }

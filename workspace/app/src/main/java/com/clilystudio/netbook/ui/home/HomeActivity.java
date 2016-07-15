@@ -25,7 +25,7 @@ import android.widget.Toast;
 
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.a_pack.BaseAsyncTask;
-import com.clilystudio.netbook.util.am;
+import com.clilystudio.netbook.util.CommonUtil;
 import com.clilystudio.netbook.api.ApiServiceProvider;
 import com.clilystudio.netbook.api.DnsManager;
 import com.clilystudio.netbook.db.AccountInfo;
@@ -288,7 +288,7 @@ public class HomeActivity extends HomeParentActivity implements ViewPager.OnPage
                 });
             }
             this.i.setAnimationStyle(R.style.home_menu_anim);
-            this.i.showAtLocation(view, 53, com.clilystudio.netbook.util.a.a(this, 5.0f), am.l(this) + am.k(this));
+            this.i.showAtLocation(view, 53, com.clilystudio.netbook.util.a.a(this, 5.0f), CommonUtil.l(this) + CommonUtil.k(this));
             this.i.setOnDismissListener(new PopupWindow.OnDismissListener() {
                 @Override
                 public void onDismiss() {
@@ -381,7 +381,7 @@ public class HomeActivity extends HomeParentActivity implements ViewPager.OnPage
 
     @Subscribe
     public void onAccountUpdated(AccountUpdatedEvent a2) {
-        Account account = am.getAccount();
+        Account account = CommonUtil.getAccount();
         if (account != null) {
             this.l.setImageUrl(account.getUser().getFullAvatar());
             this.m.setText(account.getUser().getNickname());
@@ -544,7 +544,7 @@ public class HomeActivity extends HomeParentActivity implements ViewPager.OnPage
             tabSpec.setIndicator(view);
             this.f.addTab(tabSpec);
         }
-        this.mAccount = am.getAccount();
+        this.mAccount = CommonUtil.getAccount();
         this.k = this.getLayoutInflater().inflate(R.layout.home_popupwindow_layout, (ViewGroup) getWindow().getDecorView(), false);
         View view = this.k.findViewById(R.id.home_menu_user);
         View view3 = this.k.findViewById(R.id.home_menu_msg);
@@ -619,7 +619,7 @@ public class HomeActivity extends HomeParentActivity implements ViewPager.OnPage
         }
         this.findViewById(R.id.home_action_menu_more).setOnClickListener(this);
         this.findViewById(R.id.home_action_menu_search).setOnClickListener(this);
-        if (this != null && (account = am.getAccount()) != null) {
+        if (this != null && (account = CommonUtil.getAccount()) != null) {
             new BookShelfSyncManager(this, account.getToken()).a(true);
         }
         this.a(this.getIntent());
@@ -627,7 +627,7 @@ public class HomeActivity extends HomeParentActivity implements ViewPager.OnPage
 
             @Override
             protected ResultServer doInBackground(String... params) {
-                if ("000000000000000".equals(am.t(HomeActivity.this))) {
+                if ("000000000000000".equals(CommonUtil.t(HomeActivity.this))) {
                     return null;
                 }
                 boolean bl = false;
@@ -641,7 +641,7 @@ public class HomeActivity extends HomeParentActivity implements ViewPager.OnPage
                     string = recommendInfo.getRecommended();
                     string2 = recommendInfo.getOp();
                 }
-                String string3 = am.t(HomeActivity.this);
+                String string3 = CommonUtil.t(HomeActivity.this);
                 HomeActivity.h(HomeActivity.this);
                 return ApiServiceProvider.getApiService().p(string3, string, string2);
             }
@@ -771,7 +771,7 @@ public class HomeActivity extends HomeParentActivity implements ViewPager.OnPage
                 }
             }.b();
         }
-        if ((account = am.getAccount()) != null) {
+        if ((account = CommonUtil.getAccount()) != null) {
             this.mAccount = account;
             this.a(account.getUser());
             return;

@@ -23,7 +23,7 @@ import android.widget.TextView;
 
 import com.clilystudio.netbook.CachePathConst;
 import com.clilystudio.netbook.R;
-import com.clilystudio.netbook.util.am;
+import com.clilystudio.netbook.util.CommonUtil;
 import com.clilystudio.netbook.IntentBuilder;
 import com.clilystudio.netbook.model.CategoryLevelRoot;
 import com.clilystudio.netbook.ui.home.ZssqFragmentPagerAdapter;
@@ -374,7 +374,7 @@ public class BookCategoryListActivity extends BaseTabActivity implements ViewPag
                 ax2.b.setVisibility(View.VISIBLE);
                 return view2;
             }
-            ax2.a.setTextColor(am.a(this.c, 16842904));
+            ax2.a.setTextColor(CommonUtil.a(this.c, 16842904));
             ax2.b.setVisibility(View.GONE);
             return view2;
         }

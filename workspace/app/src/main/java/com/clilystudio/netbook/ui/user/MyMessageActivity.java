@@ -3,7 +3,7 @@ package com.clilystudio.netbook.ui.user;
 import android.os.Bundle;
 
 import com.clilystudio.netbook.R;
-import com.clilystudio.netbook.util.am;
+import com.clilystudio.netbook.util.CommonUtil;
 import com.clilystudio.netbook.ui.BaseActivity;
 
 public class MyMessageActivity extends BaseActivity {
@@ -17,6 +17,6 @@ public class MyMessageActivity extends BaseActivity {
     @Override
     public void onPause() {
         super.onPause();
-        am.j(this);
+        CommonUtil.j(this);
     }
 }

@@ -14,7 +14,7 @@ import android.widget.TextView;
 
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.a_pack.BaseAsyncTask;
-import com.clilystudio.netbook.util.am;
+import com.clilystudio.netbook.util.CommonUtil;
 import com.clilystudio.netbook.api.ApiServiceProvider;
 import com.clilystudio.netbook.model.Account;
 import com.clilystudio.netbook.model.Topic;
@@ -223,7 +223,7 @@ public class MyTopicFragment extends Fragment {
             }
         };
         d.setAdapter(this.h);
-        Account account = am.getAccount();
+        Account account = CommonUtil.getAccount();
         if (account == null) {
             this.f.setVisibility(View.GONE);
             this.g.setVisibility(View.VISIBLE);

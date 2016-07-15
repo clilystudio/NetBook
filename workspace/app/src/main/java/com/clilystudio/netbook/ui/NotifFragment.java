@@ -15,7 +15,7 @@ import android.widget.TextView;
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.a_pack.BaseAsyncTask;
 import com.clilystudio.netbook.adapter.NotificationAdapter;
-import com.clilystudio.netbook.util.am;
+import com.clilystudio.netbook.util.CommonUtil;
 import com.clilystudio.netbook.api.ApiServiceProvider;
 import com.clilystudio.netbook.util.a;
 import com.clilystudio.netbook.model.Account;
@@ -259,7 +259,7 @@ public abstract class NotifFragment extends Fragment {
     @Override
     public void onActivityCreated(Bundle bundle) {
         super.onActivityCreated(bundle);
-        this.m = am.getAccount();
+        this.m = CommonUtil.getAccount();
         this.f = LayoutInflater.from(this.getActivity()).inflate(R.layout.loading_item, (ViewGroup)getActivity().getWindow().getDecorView(), false);
         this.e = this.d.getRefreshableView();
         if (a.i()) {

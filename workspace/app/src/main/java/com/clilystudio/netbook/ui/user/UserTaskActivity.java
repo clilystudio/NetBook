@@ -10,7 +10,7 @@ import android.widget.TextView;
 import com.clilystudio.netbook.MyApplication;
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.a_pack.BaseAsyncTask;
-import com.clilystudio.netbook.util.am;
+import com.clilystudio.netbook.util.CommonUtil;
 import com.clilystudio.netbook.api.ApiServiceProvider;
 import com.clilystudio.netbook.model.ResultStatus;
 import com.clilystudio.netbook.model.UserInfo;
@@ -43,7 +43,7 @@ public class UserTaskActivity extends BaseActivity {
 
                 @Override
                 protected ResultStatus doInBackground(String... params) {
-                    return ApiServiceProvider.getApiService().W(am.getAccount().getToken());
+                    return ApiServiceProvider.getApiService().W(CommonUtil.getAccount().getToken());
                 }
 
                 @Override
@@ -83,7 +83,7 @@ public class UserTaskActivity extends BaseActivity {
             if (userInfo$UserTodayTask != null && userInfo$UserTodayTask.isShare_book()) {
                 this.mExpShareBook.setTextColor(this.getResources().getColor(R.color.primary_green));
             }
-            if ("xiaomi".equals(am.n(this).toLowerCase())) {
+            if ("xiaomi".equals(CommonUtil.n(this).toLowerCase())) {
                 this.mVoteView.setVisibility(View.GONE);
             } else {
                 this.a(userInfo.getThis_week_tasks().isRate());

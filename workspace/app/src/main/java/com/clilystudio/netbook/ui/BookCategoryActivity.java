@@ -12,7 +12,7 @@ import android.widget.TextView;
 import com.clilystudio.netbook.CachePathConst;
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.a_pack.BaseAsyncTask;
-import com.clilystudio.netbook.util.am;
+import com.clilystudio.netbook.util.CommonUtil;
 import com.clilystudio.netbook.IntentBuilder;
 import com.clilystudio.netbook.api.ApiServiceProvider;
 import com.clilystudio.netbook.model.CategoryLevelRoot;
@@ -83,7 +83,7 @@ public class BookCategoryActivity extends BaseActivity {
         TableRow tableRow = null;
         TableRow.LayoutParams layoutParams = new TableRow.LayoutParams(-1, -2);
         LinearLayout.LayoutParams layoutParams2 = new LinearLayout.LayoutParams(-1, -2);
-        int n4 = am.b(this, R.attr.audiobookCategoryItemSelector);
+        int n4 = CommonUtil.b(this, R.attr.audiobookCategoryItemSelector);
         int n5 = 0;
         while (n5 < arrcategoryRoot$Category.length) {
             int n6;

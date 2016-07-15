@@ -6,7 +6,7 @@ import android.text.TextUtils;
 import android.util.Log;
 
 import com.clilystudio.netbook.MyApplication;
-import com.clilystudio.netbook.util.am;
+import com.clilystudio.netbook.util.CommonUtil;
 import com.clilystudio.netbook.model.Account;
 import com.clilystudio.netbook.model.AutoCompleteRoot;
 import com.clilystudio.netbook.model.BookAdd;
@@ -177,7 +177,7 @@ public class ApiService {
     }
 
     public static String a(String string, int n, String string2) {
-        String string3 = am.e(string2);
+        String string3 = CommonUtil.e(string2);
         String[] arrstring = com.clilystudio.netbook.util.a.O(string);
         if (arrstring != null) {
             Object[] arrobject = new Object[]{arrstring[0], arrstring[1], n, string3};
@@ -222,7 +222,7 @@ public class ApiService {
     }
 
     public static String b(String string, int n, String string2) {
-        String string3 = am.e(am.e(string2));
+        String string3 = CommonUtil.e(CommonUtil.e(string2));
         return String.format(Locale.CHINA, "http://book.soso.com/#!/detail/%s/%d/%s", string, n, string3);
     }
 
@@ -309,7 +309,7 @@ public class ApiService {
         String string = "1".equals(OnlineConfigAgent.getInstance().getConfigParams(MyApplication.getInstance(), "ua-toggle")) ? f2.getXUserAgent() : "";
         httpRequest.header(string);
         httpRequest.header("X-User-Agent", this.c.getXUserAgent());
-        httpRequest.header("X-Device-Id", am.h());
+        httpRequest.header("X-Device-Id", CommonUtil.h());
         return httpRequest;
     }
 
@@ -467,7 +467,7 @@ public class ApiService {
     }
 
     public final AutoCompleteRoot N(String string) {
-        String string2 = am.e(string);
+        String string2 = CommonUtil.e(string);
         String string3 = f + String.format(Locale.CHINA, "/book/auto-complete?query=%s", string2);
         return ApiService.a(this.a(HttpRequest.get(string3)), AutoCompleteRoot.class);
     }
@@ -526,12 +526,12 @@ public class ApiService {
     }
 
     public final BookListRoot a(String string, String string2, String string3, String string4, int n, int n2) {
-        String string5 = f + String.format(Locale.CHINA, "/book/by-categories?gender=%s&type=%s&major=%s&minor=%s&start=%d&limit=%d", string, string2, am.e(string3), am.e(string4), n, n2);
+        String string5 = f + String.format(Locale.CHINA, "/book/by-categories?gender=%s&type=%s&major=%s&minor=%s&start=%d&limit=%d", string, string2, CommonUtil.e(string3), CommonUtil.e(string4), n, n2);
         return ApiService.a(this.a(HttpRequest.get(string5)), BookListRoot.class);
     }
 
     public final ChapterRoot a(String string, String string2, int sort, String chapterName, String chapterLink) {
-        String string6 = String.format(Locale.CHINA, "http://api.easou.com/api/bookapp/chapter.m?gid=%s&nid=%s&sort=%d&chapter_name=%s&cid=eef_", string, string2, sort, am.e(chapterName));
+        String string6 = String.format(Locale.CHINA, "http://api.easou.com/api/bookapp/chapter.m?gid=%s&nid=%s&sort=%d&chapter_name=%s&cid=eef_", string, string2, sort, CommonUtil.e(chapterName));
         HttpRequest httpRequest = this.b(HttpRequest.get(string6), 3);
         boolean bl = httpRequest.ok();
         int n2 = httpRequest.code();
@@ -796,7 +796,7 @@ public class ApiService {
     }
 
     public final BookTagRoot c(String string, int n, int n2) {
-        String string2 = f + String.format(Locale.CHINA, "/book/by-tags?tags=%s&start=%d&limit=%d", am.e(string), n, n2);
+        String string2 = f + String.format(Locale.CHINA, "/book/by-tags?tags=%s&start=%d&limit=%d", CommonUtil.e(string), n, n2);
         return ApiService.a(this.a(HttpRequest.get(string2)), BookTagRoot.class);
     }
 
@@ -1194,7 +1194,7 @@ public class ApiService {
     public final TweetsResult k(String string) {
         HttpRequest httpRequest;
         StringBuilder stringBuilder = new StringBuilder().append(f);
-        Object[] arrobject = new Object[]{am.getAccount().getUser().getId()};
+        Object[] arrobject = new Object[]{CommonUtil.getAccount().getUser().getId()};
         String string2 = stringBuilder.append(String.format(Locale.CHINA, "/user/%s/twitter", arrobject)).toString();
         if (string != null) {
             HashMap<String, String> hashMap = new HashMap<>();
@@ -1295,7 +1295,7 @@ public class ApiService {
 
     public final List<BookSummary> n(String string) {
          ArrayList<BookSummary> arrayList = new ArrayList<>();
-        String string2 = am.e(string);
+        String string2 = CommonUtil.e(string);
         String string3 = f + String.format(Locale.CHINA, "/book/fuzzy-search?query=%s", string2);
         SearchResultRoot searchResultRoot = ApiService.a(this.a(HttpRequest.get(string3)), SearchResultRoot.class);
         if (searchResultRoot == null) return arrayList;
@@ -1313,7 +1313,7 @@ public class ApiService {
     }
 
     public final SearchResultRoot o(String string) {
-        String string2 = am.e(string);
+        String string2 = CommonUtil.e(string);
         String string3 = f + "/book/accurate-search?author=" + string2;
         return ApiService.a(this.a(HttpRequest.get(string3)), SearchResultRoot.class);
     }
@@ -1337,7 +1337,7 @@ public class ApiService {
     }
 
     public final ChapterRoot p(String string, String string2) {
-        String string3 = String.format(Locale.CHINA, "http://novel.mse.sogou.com/http_interface/getContData.php?md=%s&url=%s", string2, am.e(string));
+        String string3 = String.format(Locale.CHINA, "http://novel.mse.sogou.com/http_interface/getContData.php?md=%s&url=%s", string2, CommonUtil.e(string));
         HttpRequest httpRequest = this.b(HttpRequest.get(string3), 7);
         boolean bl = httpRequest.ok();
         int n = httpRequest.code();
@@ -1373,7 +1373,7 @@ public class ApiService {
     }
 
     public final SearchResultRoot p(String string) {
-        String string2 = am.e(string);
+        String string2 = CommonUtil.e(string);
         String string3 = f + String.format(Locale.CHINA, "/book/fuzzy-search?query=%s", string2) + "&onlyTitle=true";
         return ApiService.a(this.a(HttpRequest.get(string3)), SearchResultRoot.class);
     }
@@ -1384,7 +1384,7 @@ public class ApiService {
     }
 
     public final SearchPromRoot q(String string) {
-        String string2 = am.e(string);
+        String string2 = CommonUtil.e(string);
         String string3 = f + String.format(Locale.CHINA, "/book/search/%s/chinese-all-promo", string2);
         return ApiService.a(this.a(HttpRequest.get(string3)), SearchPromRoot.class);
     }
@@ -1485,7 +1485,7 @@ public class ApiService {
     }
 
     public final ChapterRoot x(String string) {
-        String string2 = String.format(Locale.CHINA, "/chapter/%s", am.e(string));
+        String string2 = String.format(Locale.CHINA, "/chapter/%s", CommonUtil.e(string));
         String string3 = h + string2;
         String string4 = string3 + "?" + com.clilystudio.netbook.util.a.A(string2);
         HttpRequest httpRequest = HttpRequest.get(string4);
@@ -1517,7 +1517,7 @@ public class ApiService {
     }
 
     public final ChapterRoot y(String string) {
-        String string2 = am.e(string);
+        String string2 = CommonUtil.e(string);
         String string3 = g + String.format(Locale.CHINA, "/chapter/%s", string2);
         HttpRequest httpRequest = HttpRequest.get(string3);
         if (DnsManager.isUseDns()) {

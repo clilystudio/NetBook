@@ -58,11 +58,11 @@ public class UserNotificationManager {
                         UserNotificationManager.this.mUnimportant = notifCountRoot.getUnimportant();
                         Date date = notifCountRoot.getLastReadImportantTime();
                         Date date2 = notifCountRoot.getLastReadUnimportantTime();
-                        if (am.h(UserNotificationManager.this.mContext).equals("0")) {
-                            am.a(UserNotificationManager.this.mContext, date.getTime());
+                        if (CommonUtil.h(UserNotificationManager.this.mContext).equals("0")) {
+                            CommonUtil.a(UserNotificationManager.this.mContext, date.getTime());
                         }
-                        if (am.i(UserNotificationManager.this.mContext).equals("0")) {
-                            am.b(UserNotificationManager.this.mContext, date2.getTime());
+                        if (CommonUtil.i(UserNotificationManager.this.mContext).equals("0")) {
+                            CommonUtil.b(UserNotificationManager.this.mContext, date2.getTime());
                         }
                         BusProvider.getInstance().post(new NotifEvent());
                     }
@@ -72,7 +72,7 @@ public class UserNotificationManager {
     }
 
     public final void readImportantNotification() {
-        Account account = am.getAccount();
+        Account account = CommonUtil.getAccount();
         if (account != null) {
             new BaseAsyncTask<String, Void, Root>() {
 
@@ -88,7 +88,7 @@ public class UserNotificationManager {
                     if (root != null && root.isOk()) {
                         UserNotificationManager.this.mImportant = 0;
                         BusProvider.getInstance().post(new NotifEvent());
-                        am.j(UserNotificationManager.this.mContext);
+                        CommonUtil.j(UserNotificationManager.this.mContext);
                     }
                 }
             }.b(account.getToken());
@@ -96,7 +96,7 @@ public class UserNotificationManager {
     }
 
     public final void readUnimportantNotification() {
-        Account account = am.getAccount();
+        Account account = CommonUtil.getAccount();
         if (account != null) {
             new BaseAsyncTask<String, Void, Root>() {
 
@@ -112,8 +112,8 @@ public class UserNotificationManager {
                     if (root != null && root.isOk()) {
                         AccountInfo accountInfo;
                         UserNotificationManager.this.mUnimportant = 0;
-                        am.b(UserNotificationManager.this.mContext, System.currentTimeMillis());
-                        Account account = am.getAccount();
+                        CommonUtil.b(UserNotificationManager.this.mContext, System.currentTimeMillis());
+                        Account account = CommonUtil.getAccount();
                         if (account != null && (accountInfo = AccountInfo.getByToken(account.getToken())) != null) {
                             accountInfo.setPrevUnimpNotif(0);
                             accountInfo.save();
@@ -126,7 +126,7 @@ public class UserNotificationManager {
     }
 
     public final int getNotificationCount() {
-        Account account = am.getAccount();
+        Account account = CommonUtil.getAccount();
         if (account == null) {
             return 0;
         }

@@ -43,7 +43,6 @@ import android.widget.RemoteViews;
 import com.clilystudio.netbook.CachePathConst;
 import com.clilystudio.netbook.MyApplication;
 import com.clilystudio.netbook.R;
-import com.clilystudio.netbook.util.am;
 import com.clilystudio.netbook.db.BookReadRecord;
 import com.clilystudio.netbook.db.BookSyncRecord;
 import com.clilystudio.netbook.db.SourceRecord;
@@ -55,12 +54,6 @@ import com.clilystudio.netbook.model.TocSource;
 import com.clilystudio.netbook.push.BookSubRecord;
 import com.clilystudio.netbook.push.BookUnSubRecord;
 import com.clilystudio.netbook.reader.ReaderTocDialog;
-import com.clilystudio.netbook.util.CipherUtil;
-import com.clilystudio.netbook.util.GenderIntroDialog;
-import com.clilystudio.netbook.util.BookInfoUtil;
-import com.clilystudio.netbook.util.BookSyncTask;
-import com.clilystudio.netbook.util.DateTimeUtil;
-import com.clilystudio.netbook.util.ToastUtil;
 import com.integralblue.httpresponsecache.compat.java.lang.ArrayIndexOutOfBoundsException;
 import com.umeng.onlineconfig.OnlineConfigAgent;
 import com.xiaomi.mipush.sdk.MiPushClient;
@@ -233,7 +226,7 @@ public class a {
      */
     public static boolean F(Context context) {
         if (!r(context, "show_new_ads")) return false;
-        String string = am.n(context);
+        String string = CommonUtil.n(context);
         String string2 = OnlineConfigAgent.getInstance().getConfigParams(context, "show_new_ads_disabled_channel");
         if (string2 == null || string2.length() <= 0) return true;
         String[] arrstring = string2.split(",");
@@ -1047,14 +1040,14 @@ public class a {
     }
 
     public static String getUserId(Context context) {
-        if (am.getAccount() == null) {
+        if (CommonUtil.getAccount() == null) {
             String string = ((WifiManager) context.getSystemService(Context.WIFI_SERVICE)).getConnectionInfo().getMacAddress();
             if (string == null) {
                 string = "";
             }
             com.integralblue.httpresponsecache.compat.libcore.io.Base64.encode(string.getBytes());
         }
-        return am.getAccount().getUser().getId();
+        return CommonUtil.getAccount().getUser().getId();
     }
 
     public static short a(byte[] arrby, int n2, ByteOrder byteOrder) {
@@ -1289,12 +1282,12 @@ public class a {
      */
     private static void a(String string2, BookSyncRecord.BookModifyType bookModifyType) {
         BookSyncRecord.updateOrCreate(o(), string2, BookSyncRecord.getTypeId(bookModifyType));
-        if (am.getAccount() == null) return;
-        if (am.getAccount().getUser() == null) {
+        if (CommonUtil.getAccount() == null) return;
+        if (CommonUtil.getAccount().getUser() == null) {
             return;
         }
-        String string3 = am.getAccount().getToken();
-        String string4 = am.getAccount().getUser().getId();
+        String string3 = CommonUtil.getAccount().getToken();
+        String string4 = CommonUtil.getAccount().getUser().getId();
         List<BookSyncRecord> list = BookSyncRecord.find(string4, BookSyncRecord.getTypeId(bookModifyType));
         if (list == null) return;
         if (list.size() == 0) return;
@@ -1360,12 +1353,12 @@ public class a {
         for (String string2 : arrstring) {
             BookSyncRecord.updateOrCreate(o(), string2, BookSyncRecord.getTypeId(bookModifyType));
         }
-        if (am.getAccount() == null) return;
-        if (am.getAccount().getUser() == null) {
+        if (CommonUtil.getAccount() == null) return;
+        if (CommonUtil.getAccount().getUser() == null) {
             return;
         }
-        String string3 = am.getAccount().getToken();
-        String string4 = am.getAccount().getUser().getId();
+        String string3 = CommonUtil.getAccount().getToken();
+        String string4 = CommonUtil.getAccount().getUser().getId();
         List<BookSyncRecord> list = BookSyncRecord.find(string4, BookSyncRecord.getTypeId(bookModifyType));
         if (list == null) return;
         if (list.size() == 0) return;
@@ -1551,7 +1544,7 @@ public class a {
         stringBuffer.append(n2);
         stringBuffer.append(string3);
         stringBuffer.append("mMcShCsTr");
-        return am.a(stringBuffer.toString().substring(1, 9).getBytes()).getBytes();
+        return CommonUtil.a(stringBuffer.toString().substring(1, 9).getBytes()).getBytes();
     }
 
     public static byte[] a(byte[] arrby, int n2, int n3) {
@@ -1695,7 +1688,7 @@ public class a {
         StringBuilder stringBuilder;
         block5:
         {
-            if (!am.a(string2)) break block5;
+            if (!CommonUtil.a(string2)) break block5;
             return null;
         }
         try {
@@ -2351,8 +2344,8 @@ public class a {
     }
 
     private static String o() {
-        if (am.getAccount() != null && am.getAccount().getUser() != null) {
-            return am.getAccount().getUser().getId();
+        if (CommonUtil.getAccount() != null && CommonUtil.getAccount().getUser() != null) {
+            return CommonUtil.getAccount().getUser().getId();
         }
         return "";
     }
@@ -2503,7 +2496,7 @@ public class a {
     }
 
     public static boolean x(Context context) {
-        String string2 = am.n(context);
+        String string2 = CommonUtil.n(context);
         String string3 = OnlineConfigAgent.getInstance().getConfigParams(context, "game_center_disabled_at_channel");
         if (string3 != null && string3.length() > 0) {
             String[] arrstring = string3.split(",");

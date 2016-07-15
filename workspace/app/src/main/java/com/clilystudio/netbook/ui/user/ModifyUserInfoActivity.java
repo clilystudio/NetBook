@@ -16,7 +16,7 @@ import com.clilystudio.netbook.MyApplication;
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.a_pack.BaseAsyncTask;
 import com.clilystudio.netbook.a_pack.BaseLoadingTask;
-import com.clilystudio.netbook.util.am;
+import com.clilystudio.netbook.util.CommonUtil;
 import com.clilystudio.netbook.IntentBuilder;
 import com.clilystudio.netbook.api.ApiServiceProvider;
 import com.clilystudio.netbook.event.UserInfoChangedEvent;
@@ -86,7 +86,7 @@ public class ModifyUserInfoActivity extends BaseActivity implements View.OnClick
 
                     @Override
                     public ChangeGenderRoot a(String... var1) {
-                        Account account = am.getAccount();
+                        Account account = CommonUtil.getAccount();
                         if (account != null) {
                             return ApiServiceProvider.getApiService().v(account.getToken(), var1[0]);
                         }
@@ -104,7 +104,7 @@ public class ModifyUserInfoActivity extends BaseActivity implements View.OnClick
                             String string = ModifyUserInfoActivity.a(modifyUserInfoActivity).getGender().equals("male") ? "female" : "male";
                             userInfo.setGender(string);
                             MyApplication.getInstance().saveObject(userInfo, "savedObject_userinfo");
-                            Account account = am.a(modifyUserInfoActivity);
+                            Account account = CommonUtil.a(modifyUserInfoActivity);
                             if (account != null) {
                                 ModifyUserInfoActivity.a(modifyUserInfoActivity).setGender(string);
                                 account.setUser(ModifyUserInfoActivity.a(modifyUserInfoActivity));
@@ -157,7 +157,7 @@ public class ModifyUserInfoActivity extends BaseActivity implements View.OnClick
 
                         @Override
                         public Root a(String... var1) {
-                            return ApiServiceProvider.getApiService().a(am.a(ModifyUserInfoActivity.this).getToken(), output);
+                            return ApiServiceProvider.getApiService().a(CommonUtil.a(ModifyUserInfoActivity.this).getToken(), output);
 
                         }
 
@@ -244,7 +244,7 @@ public class ModifyUserInfoActivity extends BaseActivity implements View.OnClick
                                 @Override
                                 public ChangeNickNameRoot a(String... var1) {
                                     this.a = var1[0];
-                                    Account account = am.getAccount();
+                                    Account account = CommonUtil.getAccount();
                                     if (account != null) {
                                         return ApiServiceProvider.getApiService().u(account.getToken(), var1[0]);
                                     }
@@ -330,7 +330,7 @@ public class ModifyUserInfoActivity extends BaseActivity implements View.OnClick
         this.mPortraitSection = (LinearLayout) findViewById(R.id.portrait_section);
         this.mNameSection = (LinearLayout) findViewById(R.id.name_section);
         this.mGenderSection = (LinearLayout) findViewById(R.id.gender_section);
-        this.a = am.a(this).getUser();
+        this.a = CommonUtil.a(this).getUser();
         this.mPortrait.setImageUrl(this.a.getFullAvatar());
         this.mNameView.setText(this.a.getNickname());
         TextView textView = this.mGenderView;
@@ -372,7 +372,7 @@ public class ModifyUserInfoActivity extends BaseActivity implements View.OnClick
                     }
                 }
             };
-            r2.execute(am.getAccount().getToken());
+            r2.execute(CommonUtil.getAccount().getToken());
         }
         this.mPortraitSection.setOnClickListener(this);
         this.mNameSection.setOnClickListener(this);
