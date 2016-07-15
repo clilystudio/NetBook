@@ -12,7 +12,7 @@ import com.clilystudio.netbook.event.DownloadProgressEvent;
 import com.clilystudio.netbook.event.DownloadStatusEvent;
 import com.clilystudio.netbook.event.BusProvider;
 import com.clilystudio.netbook.util.ToastUtil;
-import com.clilystudio.netbook.util.a;
+import com.clilystudio.netbook.util.TempUtil;
 
 import uk.me.lewisdeane.ldialogs.BaseDialog;
 
@@ -36,15 +36,15 @@ public class BookDownloadManager {
             ToastUtil.showShortToast(this.mActivity, "请重试");
             return;
         }
-        if (!a.isMounted()) {
+        if (!TempUtil.isMounted()) {
             ToastUtil.showShortToast(this.mActivity, "无法缓存，请检查SD卡是否挂载");
             return;
         }
-        if (a.f(bookReadRecord.getReadMode())) {
+        if (TempUtil.f(bookReadRecord.getReadMode())) {
             ToastUtil.showLongToast(this.mActivity, "暂不支持当前模式缓存");
             return;
         }
-        if (1 == a.r(this.mActivity)) {
+        if (1 == TempUtil.r(this.mActivity)) {
             this.startDownloadService(bookReadRecord, start, total);
             return;
         }

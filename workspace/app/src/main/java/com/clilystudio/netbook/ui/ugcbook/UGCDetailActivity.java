@@ -32,6 +32,7 @@ import com.clilystudio.netbook.ui.SmartImageView;
 import com.clilystudio.netbook.ui.BaseCallBack;
 import com.clilystudio.netbook.util.BaseDownloadAdapter;
 import com.clilystudio.netbook.util.DateTimeUtil;
+import com.clilystudio.netbook.util.TempUtil;
 import com.clilystudio.netbook.util.ToastUtil;
 import com.clilystudio.netbook.widget.CoverView;
 import com.squareup.otto.Subscribe;
@@ -275,7 +276,7 @@ public class UGCDetailActivity extends BaseActivity implements View.OnClickListe
         super.onCreate(bundle);
         this.setContentView(R.layout.activity_ugcbook_detail);
         BusProvider.getInstance().register(this);
-        if (com.clilystudio.netbook.util.a.a(this.getIntent())) {
+        if (TempUtil.a(this.getIntent())) {
             List<String> list = this.getIntent().getData().getPathSegments();
             this.o = list.get(-1 + list.size());
         } else {

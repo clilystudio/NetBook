@@ -19,6 +19,7 @@ import com.clilystudio.netbook.event.FeedSettingChangedEvent;
 import com.clilystudio.netbook.event.FeedRemovedEvent;
 import com.clilystudio.netbook.ui.BaseActivity;
 import com.clilystudio.netbook.util.BaseDownloadAdapter;
+import com.clilystudio.netbook.util.TempUtil;
 import com.clilystudio.netbook.widget.CoverView;
 import com.squareup.otto.Subscribe;
 
@@ -35,7 +36,7 @@ public class FeedListActivity extends BaseActivity {
     }
 
     private void a(int n) {
-        final int n2 = com.clilystudio.netbook.util.a.d(n);
+        final int n2 = TempUtil.d(n);
         int[] arrn = new int[]{R.id.feed_chapter_10, R.id.feed_chapter_20, R.id.feed_chapter_50, R.id.feed_chapter_100, R.id.feed_chapter_200};
         View view = this.getLayoutInflater().inflate(R.layout.feed_chapter_count_dialog, (ViewGroup)getWindow().getDecorView(), false);
         BaseDialog.Builder h2 = new BaseDialog.Builder(this);
@@ -49,7 +50,7 @@ public class FeedListActivity extends BaseActivity {
                 public void onClick(View v) {
                     alertDialog.dismiss();
                     if (finalJ != n2) {
-                        int n = com.clilystudio.netbook.util.a.e(finalJ);
+                        int n = TempUtil.e(finalJ);
                         BusProvider.getInstance().post(new FeedSettingChangedEvent());
                     }
                 }
@@ -60,7 +61,7 @@ public class FeedListActivity extends BaseActivity {
 
     private void b() {
         List<BookReadRecord> list = BookReadRecord.getAllFeedingOrderByCount();
-        this.b = com.clilystudio.netbook.util.a.getIntPref(this, "feed_chapter_count", 50);
+        this.b = TempUtil.getIntPref(this, "feed_chapter_count", 50);
         this.a.a(list);
     }
 
@@ -161,7 +162,7 @@ public class FeedListActivity extends BaseActivity {
             }
             case R.id.action_menu_feed_setting:
         }
-        this.a(com.clilystudio.netbook.util.a.getIntPref(this, "feed_chapter_count", 50));
+        this.a(TempUtil.getIntPref(this, "feed_chapter_count", 50));
         return true;
     }
 }

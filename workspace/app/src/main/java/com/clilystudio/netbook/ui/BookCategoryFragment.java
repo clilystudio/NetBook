@@ -19,6 +19,7 @@ import com.clilystudio.netbook.api.ApiServiceProvider;
 import com.clilystudio.netbook.model.BookListRoot;
 import com.clilystudio.netbook.model.CategoryBook;
 import com.clilystudio.netbook.util.BaseDownloadAdapter;
+import com.clilystudio.netbook.util.TempUtil;
 import com.clilystudio.netbook.widget.CoverView;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
@@ -148,12 +149,12 @@ public class BookCategoryFragment extends Fragment {
         this.g = ((BookCategoryListActivity) this.getActivity()).g();
         this.a = (PullToRefreshListView) view.findViewById(R.id.ptr_list);
         this.b = this.a.getRefreshableView();
-        com.clilystudio.netbook.util.a.a(this.getActivity(), this.b);
+        TempUtil.a(this.getActivity(), this.b);
         this.e = view.findViewById(R.id.pb_loading);
         this.f = (TextView) view.findViewById(R.id.empty_text);
         final LayoutInflater layoutInflater2 = LayoutInflater.from(this.getActivity());
         this.c = layoutInflater2.inflate(R.layout.loading_item, (ViewGroup)getActivity().getWindow().getDecorView(), false);
-        if (com.clilystudio.netbook.util.a.i()) {
+        if (TempUtil.i()) {
             this.b.setFooterDividersEnabled(false);
         }
         this.b.addFooterView(this.c);

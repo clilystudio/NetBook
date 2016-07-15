@@ -17,7 +17,7 @@ import com.clilystudio.netbook.a_pack.BaseAsyncTask;
 import com.clilystudio.netbook.adapter.NotificationAdapter;
 import com.clilystudio.netbook.util.CommonUtil;
 import com.clilystudio.netbook.api.ApiServiceProvider;
-import com.clilystudio.netbook.util.a;
+import com.clilystudio.netbook.util.TempUtil;
 import com.clilystudio.netbook.model.Account;
 import com.clilystudio.netbook.model.NotificationItem;
 import com.clilystudio.netbook.model.NotificationRoot;
@@ -262,7 +262,7 @@ public abstract class NotifFragment extends Fragment {
         this.m = CommonUtil.getAccount();
         this.f = LayoutInflater.from(this.getActivity()).inflate(R.layout.loading_item, (ViewGroup)getActivity().getWindow().getDecorView(), false);
         this.e = this.d.getRefreshableView();
-        if (a.i()) {
+        if (TempUtil.i()) {
             this.e.setFooterDividersEnabled(false);
         }
         this.e.addFooterView(this.f);
@@ -331,7 +331,7 @@ public abstract class NotifFragment extends Fragment {
     }
 
     @Subscribe
-    public void onNewMsgClickEvent(a a2) {
+    public void onNewMsgClickEvent(TempUtil a2) {
         if (this.d != null && this.l > 0) {
             this.d.setRefreshing();
         }

@@ -11,6 +11,7 @@ import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.event.BusProvider;
 import com.clilystudio.netbook.event.FeedSettingChangedEvent;
 import com.clilystudio.netbook.ui.BaseActivity;
+import com.clilystudio.netbook.util.TempUtil;
 
 import uk.me.lewisdeane.ldialogs.BaseDialog;
 
@@ -23,7 +24,7 @@ public class FeedSettingActivity extends BaseActivity {
     }
 
     static /* synthetic */ void a(final FeedSettingActivity feedSettingActivity, int n) {
-        final int n2 = com.clilystudio.netbook.util.a.d(n);
+        final int n2 = TempUtil.d(n);
         int[] arrn = new int[]{R.id.feed_chapter_10, R.id.feed_chapter_20, R.id.feed_chapter_50, R.id.feed_chapter_100, R.id.feed_chapter_200};
         View view = feedSettingActivity.getLayoutInflater().inflate(R.layout.feed_chapter_count_dialog, (ViewGroup)feedSettingActivity.getWindow().getDecorView(), false);
         BaseDialog.Builder h2 = new BaseDialog.Builder(feedSettingActivity);
@@ -46,12 +47,12 @@ public class FeedSettingActivity extends BaseActivity {
     }
 
     static /* synthetic */ void b(FeedSettingActivity feedSettingActivity, int n) {
-        feedSettingActivity.b = com.clilystudio.netbook.util.a.e(n);
+        feedSettingActivity.b = TempUtil.e(n);
         TextView textView = feedSettingActivity.a;
         String string = feedSettingActivity.getString(R.string.book_feed_setting_limit);
         Object[] arrobject = new Object[]{feedSettingActivity.b};
         textView.setText(String.format(string, arrobject));
-        com.clilystudio.netbook.util.a.b(feedSettingActivity, "feed_chapter_count", feedSettingActivity.b);
+        TempUtil.b(feedSettingActivity, "feed_chapter_count", feedSettingActivity.b);
         BusProvider.getInstance().post(new FeedSettingChangedEvent());
     }
 
@@ -63,7 +64,7 @@ public class FeedSettingActivity extends BaseActivity {
         super.onCreate(bundle);
         this.setContentView(R.layout.activity_feed_settings);
         this.b(R.string.feed_setting);
-        this.b = bundle != null ? bundle.getInt("savedCurrentCount", 50) : com.clilystudio.netbook.util.a.getIntPref(this, "feed_chapter_count", 50);
+        this.b = bundle != null ? bundle.getInt("savedCurrentCount", 50) : TempUtil.getIntPref(this, "feed_chapter_count", 50);
         View view = this.findViewById(R.id.book_feed_set_chapter);
         TextView textView = this.a = (TextView) this.findViewById(R.id.book_feed_set_chapter_count);
         String string = this.getString(R.string.book_feed_setting_limit);

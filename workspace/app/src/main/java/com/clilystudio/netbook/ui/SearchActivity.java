@@ -32,6 +32,7 @@ import com.clilystudio.netbook.model.HotKeywordResult;
 import com.clilystudio.netbook.model.SearchPromRoot;
 import com.clilystudio.netbook.model.SearchResultRoot;
 import com.clilystudio.netbook.util.BaseDownloadAdapter;
+import com.clilystudio.netbook.util.TempUtil;
 import com.clilystudio.netbook.util.ToastUtil;
 import com.clilystudio.netbook.widget.AutoFlowView;
 import com.clilystudio.netbook.widget.CoverView;
@@ -133,7 +134,7 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
     static /* synthetic */ void d(SearchActivity searchActivity) {
         searchActivity.x.clear();
         searchActivity.w.notifyDataSetChanged();
-        com.clilystudio.netbook.util.a.a(searchActivity.x, CachePathConst.SearchHistory, "search_history.txt");
+        TempUtil.a(searchActivity.x, CachePathConst.SearchHistory, "search_history.txt");
         searchActivity.a(false);
     }
 
@@ -216,10 +217,10 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
         }
         this.x.add(0, string2);
         this.w.notifyDataSetChanged();
-        com.clilystudio.netbook.util.a.a(this.x, CachePathConst.SearchHistory, "search_history.txt");
+        TempUtil.a(this.x, CachePathConst.SearchHistory, "search_history.txt");
         this.a(true);
         this.g();
-        if (com.clilystudio.netbook.util.a.isConnectedOrConnecting(this)) {
+        if (TempUtil.isConnectedOrConnecting(this)) {
             this.a(0);
             final BaseAsyncTask<String, Void, List<BookSummary>> bR2 = new BaseAsyncTask<String, Void, List<BookSummary>>() {
 
@@ -448,14 +449,14 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
 
             @Override
             public void afterTextChanged(Editable s) {
-                boolean bl = !com.clilystudio.netbook.util.a.isBlank(s.toString());
+                boolean bl = !TempUtil.isBlank(s.toString());
                 SearchActivity.a(SearchActivity.this, bl);
             }
         });
         this.e.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
-                boolean bl2 = !com.clilystudio.netbook.util.a.isBlank(SearchActivity.this.e.getText().toString());
+                boolean bl2 = !TempUtil.isBlank(SearchActivity.this.e.getText().toString());
                 SearchActivity.a(SearchActivity.this, bl2);
             }
         });
@@ -474,7 +475,7 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
                 SearchActivity.d(SearchActivity.this);
             }
         });
-        this.x = com.clilystudio.netbook.util.a.k(CachePathConst.SearchHistory, "search_history.txt");
+        this.x = TempUtil.k(CachePathConst.SearchHistory, "search_history.txt");
         if (this.x == null) {
             this.x = new ArrayList<>();
         }
@@ -496,8 +497,8 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
         this.q = (RelativeLayout) this.findViewById(R.id.ll_hot_keyword_continer);
         this.r = (AutoFlowView) this.findViewById(R.id.afv_hots);
         this.s = (TextView) this.findViewById(R.id.btn_change);
-        if (com.clilystudio.netbook.util.a.k(CachePathConst.SearchHistory, "search_hotword.txt") != null && com.clilystudio.netbook.util.a.getIntPref(this, "search_hot_words_date", 0) != 0) {
-            List<AutoFlowView.Word> list = com.clilystudio.netbook.util.a.k(CachePathConst.SearchHistory, "search_hotword.txt");
+        if (TempUtil.k(CachePathConst.SearchHistory, "search_hotword.txt") != null && TempUtil.getIntPref(this, "search_hot_words_date", 0) != 0) {
+            List<AutoFlowView.Word> list = TempUtil.k(CachePathConst.SearchHistory, "search_hotword.txt");
             this.q.setVisibility(View.VISIBLE);
             this.r.setWords(list);
             this.r.setOnItemClickListener(new AutoFlowView.OnItemClickListener() {
@@ -514,7 +515,7 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
             });
             return;
         }
-        com.clilystudio.netbook.util.a.b(this, "search_hot_words_date", 1);
+        TempUtil.b(this, "search_hot_words_date", 1);
         new BaseAsyncTask<String, Void, HotKeywordResult>() {
 
             @Override
@@ -532,7 +533,7 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
                         word.content = string;
                         arrayList.add(word);
                     }
-                    com.clilystudio.netbook.util.a.a(arrayList, CachePathConst.SearchHistory, "search_hotword.txt");
+                    TempUtil.a(arrayList, CachePathConst.SearchHistory, "search_hotword.txt");
                     SearchActivity.g(SearchActivity.this).setVisibility(View.VISIBLE);
                     SearchActivity.e(SearchActivity.this).setWords(hotKeywordResult.getHotWords());
                     SearchActivity.e(SearchActivity.this).setOnItemClickListener(new AutoFlowView.OnItemClickListener() {

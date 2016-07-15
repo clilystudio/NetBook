@@ -9,6 +9,7 @@ import android.net.Uri;
 import android.util.AttributeSet;
 
 import com.clilystudio.netbook.R;
+import com.clilystudio.netbook.util.TempUtil;
 import com.nostra13.universalimageloader.core.assist.LoadedFrom;
 import com.nostra13.universalimageloader.core.display.BitmapDisplayer;
 import com.nostra13.universalimageloader.core.imageaware.ImageAware;
@@ -42,7 +43,7 @@ public class CircularSmartImageView extends CornerImageView {
 
     @Override
     public void setImageURI(Uri uri) {
-        this.setImageBitmap(com.clilystudio.netbook.util.a.getCircleBitmap(BitmapFactory.decodeFile(uri.getPath())));
+        this.setImageBitmap(TempUtil.getCircleBitmap(BitmapFactory.decodeFile(uri.getPath())));
     }
 
     @Override

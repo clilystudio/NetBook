@@ -15,6 +15,7 @@ import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.event.BusProvider;
 import com.clilystudio.netbook.event.ModeChangedEvent;
 import com.clilystudio.netbook.util.CommonUtil;
+import com.clilystudio.netbook.util.TempUtil;
 
 
 public class ReadModeItem extends FrameLayout {
@@ -44,7 +45,7 @@ public class ReadModeItem extends FrameLayout {
             this.mFlagSelect.setVisibility(View.VISIBLE);
             this.mFlagSelect.setText("\u5f53\u524d\u9009\u62e9");
         }
-        if (com.clilystudio.netbook.util.a.f(n3)) {
+        if (TempUtil.f(n3)) {
             this.mFlagWeb.setVisibility(View.VISIBLE);
         }
         this.mChapter.setVisibility(View.GONE);

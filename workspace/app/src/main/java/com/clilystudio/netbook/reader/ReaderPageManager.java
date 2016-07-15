@@ -16,6 +16,7 @@ import com.clilystudio.netbook.event.BusProvider;
 import com.clilystudio.netbook.event.LoginEvent;
 import com.clilystudio.netbook.model.ChapterKeysRoot;
 import com.clilystudio.netbook.model.ChapterLink;
+import com.clilystudio.netbook.util.TempUtil;
 import com.clilystudio.netbook.util.ToastUtil;
 import com.clilystudio.netbook.widget.JustifyTextView;
 import com.squareup.otto.Subscribe;
@@ -115,7 +116,7 @@ public final class ReaderPageManager {
                 this.p();
                 this.mErrorTextTV.setVisibility(View.VISIBLE);
                 this.t();
-                if (com.clilystudio.netbook.util.a.isConnectedOrConnecting(this.mActivity)) {
+                if (TempUtil.isConnectedOrConnecting(this.mActivity)) {
                     this.mErrorTitleTV.setText("连接超时，再试试？");
                     this.mErrorHintTV.setText("请刷新重试或切换来源");
                     this.setErrorImage(R.drawable.ic_reader_connection_error_network_normal);
@@ -156,7 +157,7 @@ public final class ReaderPageManager {
                 this.mErrorTextTV.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        if (com.clilystudio.netbook.util.a.isConnectedOrConnecting(ReaderPageManager.this.mActivity)) {
+                        if (TempUtil.isConnectedOrConnecting(ReaderPageManager.this.mActivity)) {
                             ReaderPageManager.this.mPageErrorView.setVisibility(View.GONE);
                             if (ReaderPageManager.this.mOnReloadSourceListener != null) {
                                 ReaderPageManager.this.mOnReloadSourceListener.onReload();
@@ -213,7 +214,7 @@ public final class ReaderPageManager {
         this.mErrorTextTV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (com.clilystudio.netbook.util.a.isConnectedOrConnecting(ReaderPageManager.this.mActivity)) {
+                if (TempUtil.isConnectedOrConnecting(ReaderPageManager.this.mActivity)) {
                     ReaderPageManager.this.mPageErrorView.setVisibility(View.GONE);
                     if (ReaderPageManager.this.q != null) {
                         ReaderPageManager.this.q.a(ReaderPageManager.this.d.l());
@@ -386,9 +387,9 @@ public final class ReaderPageManager {
                             for (ChapterKeysRoot.ChapterKey chapterKeysRoot$ChapterKey : chapterKeysRoot.getKeys()) {
                                 hashMap.put(chapterKeysRoot$ChapterKey.get_id(), chapterKeysRoot$ChapterKey.getKey());
                             }
-                            com.clilystudio.netbook.util.a.a(arg, hashMap);
+                            TempUtil.a(arg, hashMap);
                         } else {
-                            hashMap = com.clilystudio.netbook.util.a.k(CachePathConst.ChapterKey, arg);
+                            hashMap = TempUtil.k(CachePathConst.ChapterKey, arg);
                             if (hashMap == null) {
                                 hashMap = new HashMap<>();
                             }

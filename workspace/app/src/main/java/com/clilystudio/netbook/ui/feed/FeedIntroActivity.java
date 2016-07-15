@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.clilystudio.netbook.R;
-import com.clilystudio.netbook.util.a;
+import com.clilystudio.netbook.util.TempUtil;
 import com.clilystudio.netbook.ui.BaseActivity;
 
 public class FeedIntroActivity extends BaseActivity {
@@ -27,6 +27,6 @@ public class FeedIntroActivity extends BaseActivity {
     @Override
     public void onPause() {
         super.onPause();
-        a.b(this, "feed_intro", false);
+        TempUtil.b(this, "feed_intro", false);
     }
 }

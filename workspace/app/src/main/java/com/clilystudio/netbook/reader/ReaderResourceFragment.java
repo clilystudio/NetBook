@@ -22,6 +22,7 @@ import com.clilystudio.netbook.event.BusProvider;
 import com.clilystudio.netbook.model.TocSummary;
 import com.clilystudio.netbook.util.BaseDownloadAdapter;
 import com.clilystudio.netbook.util.DateTimeUtil;
+import com.clilystudio.netbook.util.TempUtil;
 
 import java.util.Date;
 import java.util.List;
@@ -287,10 +288,10 @@ public class ReaderResourceFragment extends Fragment {
                 }
             }
             String string = this.a;
-            if (com.clilystudio.netbook.util.a.isMounted()) {
-                for (String string2 : com.clilystudio.netbook.util.a.D(string)) {
+            if (TempUtil.isMounted()) {
+                for (String string2 : TempUtil.D(string)) {
                     if (string2.contains("MIX_TOC_ID") || string2.contains("_")) continue;
-                    for (String s : com.clilystudio.netbook.util.a.j(string, string2)) {
+                    for (String s : TempUtil.j(string, string2)) {
                         if ("toc".equals(s)) continue;
                         bl = true;
                         break block11;
@@ -301,8 +302,8 @@ public class ReaderResourceFragment extends Fragment {
         }
         if (bl) {
             this.h.setVisibility(View.VISIBLE);
-            int n2 = com.clilystudio.netbook.util.a.getDipSize(this.getActivity(), 55.0f);
-            int n3 = com.clilystudio.netbook.util.a.getDipSize(this.getActivity(), 40.0f);
+            int n2 = TempUtil.getDipSize(this.getActivity(), 55.0f);
+            int n3 = TempUtil.getDipSize(this.getActivity(), 40.0f);
             if (this.g.getVisibility() == View.VISIBLE) {
                 LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(-1, n2);
                 layoutParams.setMargins(0, 0, 0, 0);

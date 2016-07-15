@@ -17,6 +17,7 @@ import com.clilystudio.netbook.IntentBuilder;
 import com.clilystudio.netbook.api.ApiServiceProvider;
 import com.clilystudio.netbook.model.CategoryLevelRoot;
 import com.clilystudio.netbook.model.CategoryRoot;
+import com.clilystudio.netbook.util.TempUtil;
 
 public class BookCategoryActivity extends BaseActivity {
     private View a;
@@ -36,7 +37,7 @@ public class BookCategoryActivity extends BaseActivity {
     }
 
     static /* synthetic */ void a(CategoryLevelRoot categoryLevelRoot) {
-        com.clilystudio.netbook.util.a.a(categoryLevelRoot, CachePathConst.CategoryLevel, "category_level.txt");
+        TempUtil.a(categoryLevelRoot, CachePathConst.CategoryLevel, "category_level.txt");
     }
 
     static /* synthetic */ void a(BookCategoryActivity bookCategoryActivity, CategoryRoot categoryRoot) {
@@ -46,7 +47,7 @@ public class BookCategoryActivity extends BaseActivity {
             return;
         }
         int n = bookCategoryActivity.getResources().getDisplayMetrics().widthPixels / 3;
-        int n2 = com.clilystudio.netbook.util.a.getDipSize(bookCategoryActivity, 56.0f);
+        int n2 = TempUtil.getDipSize(bookCategoryActivity, 56.0f);
         bookCategoryActivity.a(n, n2, arrcategoryRoot$Category, true);
         bookCategoryActivity.a(n, n2, arrcategoryRoot$Category2, false);
     }

@@ -92,7 +92,7 @@ public final class BookSourceManager {
                 this.mTocId = this.mBookReadRecord.getTocId();
             }
             if (CommonUtil.getAccount() != null) {
-                HashMap<String, String> hashMap = a.k(CachePathConst.ChapterKey, this.mBookId);
+                HashMap<String, String> hashMap = TempUtil.k(CachePathConst.ChapterKey, this.mBookId);
                 if (hashMap == null) {
                     hashMap = new HashMap<>();
                 }
@@ -102,15 +102,15 @@ public final class BookSourceManager {
             this.a(ReaderActivity.a(this.mActivity, this.mBookId, this.mBookTitle, this.mTocId, this.mHasOtherSource));
             return;
         }
-        String string = a.g(readMode);
+        String string = TempUtil.g(readMode);
         SourceRecord sourceRecord = SourceRecord.get(this.mBookId, string);
         if (sourceRecord == null || sourceRecord.getSourceId() == null) {
             this.a(true);
             return;
         }
         String string2 = sourceRecord.getSourceId();
-        String string3 = a.a(this.mBookId, readMode, string2, null);
-        if (a.a(this.mActivity, string, false)) {
+        String string3 = TempUtil.a(this.mBookId, readMode, string2, null);
+        if (TempUtil.a(this.mActivity, string, false)) {
             Intent intent = ReaderActivity.a(this.mActivity, this.mBookId, this.mBookTitle, string3, string, false);
             intent.putExtra("SOURCE_ID", string2);
             this.a(intent);
@@ -142,7 +142,7 @@ public final class BookSourceManager {
                     TocSource[] arrtocSource = tocSourceRoot.getSources();
                     int readMode = 5;
                     for (TocSource tocSource : arrtocSource) {
-                        com.clilystudio.netbook.util.a.a(tocSource, BookSourceManager.this.mBookId);
+                        TempUtil.a(tocSource, BookSourceManager.this.mBookId);
                         if (!tocSource.isPriority()) continue;
                         String string = tocSource.getSource();
                         readMode = "soso".equals(string) ? 6 : ("sogou".equals(string) ? 7 : ("leidian".equals(string) ? 8 : ("easou".equals(string) ? 3 : -1)));
@@ -206,7 +206,7 @@ public final class BookSourceManager {
             }
             this.a(var3_3);
         } else if (var3_3 == -1) {
-            int var5_5 = a.c(this.mActivity, "PREF_FIRST_LAUNCH_TIME", 0);
+            int var5_5 = TempUtil.c(this.mActivity, "PREF_FIRST_LAUNCH_TIME", 0);
             boolean var7_6 = Calendar.getInstance().getTimeInMillis() - var5_5 >= 2592000000L;
             if (!var7_6) {
                 Account var8_7 = CommonUtil.getAccount();

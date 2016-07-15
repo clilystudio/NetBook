@@ -16,6 +16,7 @@ import android.widget.TextView;
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.adapter.BaseBookAdapter;
 import com.clilystudio.netbook.model.ChapterLink;
+import com.clilystudio.netbook.util.TempUtil;
 
 import java.util.LinkedList;
 
@@ -128,7 +129,7 @@ public class ReaderTocDialog extends DialogFragment implements AdapterView.OnIte
                 textView.setText(text);
                 if (n2 == ReaderTocDialog.b(ReaderTocDialog.this).k()) {
                     imageView.setImageLevel(1);
-                    textView.setTextColor(com.clilystudio.netbook.util.a.b(ReaderTocDialog.this.getActivity(), R.attr.dialog_text_color_highlight, ReaderTocDialog.a(ReaderTocDialog.this)));
+                    textView.setTextColor(TempUtil.b(ReaderTocDialog.this.getActivity(), R.attr.dialog_text_color_highlight, ReaderTocDialog.a(ReaderTocDialog.this)));
                 } else {
                     String string = chapterLink.getLink();
                     if (ReaderTocDialog.c(ReaderTocDialog.this) != null && ReaderTocDialog.c(ReaderTocDialog.this).contains(string)) {
@@ -136,7 +137,7 @@ public class ReaderTocDialog extends DialogFragment implements AdapterView.OnIte
                     } else {
                         imageView.setImageLevel(0);
                     }
-                    textView.setTextColor(com.clilystudio.netbook.util.a.b(ReaderTocDialog.this.getActivity(), R.attr.dialog_text_color, ReaderTocDialog.a(ReaderTocDialog.this)));
+                    textView.setTextColor(TempUtil.b(ReaderTocDialog.this.getActivity(), R.attr.dialog_text_color, ReaderTocDialog.a(ReaderTocDialog.this)));
                 }
                 if (!ReaderTocDialog.a(ReaderTocDialog.this, chapterLink)) {
                     view2.findViewById(R.id.iv_readable).setVisibility(View.VISIBLE);
@@ -148,7 +149,7 @@ public class ReaderTocDialog extends DialogFragment implements AdapterView.OnIte
         };
         this.b.setOnItemClickListener(this);
         this.b.setAdapter(this.a);
-        if (com.clilystudio.netbook.util.a.i()) {
+        if (TempUtil.i()) {
             this.b.setFastScrollAlwaysVisible(true);
         }
         return view;

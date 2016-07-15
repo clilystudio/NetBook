@@ -5,7 +5,7 @@ import com.activeandroid.annotation.Column;
 import com.activeandroid.annotation.Table;
 import com.activeandroid.query.Delete;
 import com.activeandroid.query.Select;
-import com.clilystudio.netbook.util.a;
+import com.clilystudio.netbook.util.TempUtil;
 
 import java.util.List;
 
@@ -38,6 +38,6 @@ public class BookUnSubRecord extends Model {
     }
 
     public static BookUnSubRecord getBookId(String string) {
-        return BookUnSubRecord.get(a.s(string));
+        return BookUnSubRecord.get(TempUtil.s(string));
     }
 }

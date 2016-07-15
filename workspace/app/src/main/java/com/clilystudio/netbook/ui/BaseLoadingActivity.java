@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.clilystudio.netbook.R;
+import com.clilystudio.netbook.util.TempUtil;
 
 public abstract class BaseLoadingActivity extends BaseActivity {
     private ViewGroup a;
@@ -52,7 +53,7 @@ public abstract class BaseLoadingActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        if (com.clilystudio.netbook.util.a.k()) {
+        if (TempUtil.k()) {
             this.getWindow().setUiOptions(1);
         }
         this.setContentView(R.layout.activity_loading_base);

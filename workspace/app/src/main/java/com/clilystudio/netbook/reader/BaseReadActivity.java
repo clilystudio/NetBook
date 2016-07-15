@@ -5,6 +5,7 @@ import android.support.v4.app.FragmentActivity;
 
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.api.ApiServiceProvider;
+import com.clilystudio.netbook.util.TempUtil;
 
 public class BaseReadActivity extends FragmentActivity {
     protected ApiServiceProvider a = ApiServiceProvider.getInstance();
@@ -12,7 +13,7 @@ public class BaseReadActivity extends FragmentActivity {
     @Override
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        if (com.clilystudio.netbook.util.a.a(this, "customer_night_theme", false)) {
+        if (TempUtil.a(this, "customer_night_theme", false)) {
             this.setTheme(R.style.BaseTheme_Dark);
             return;
         }

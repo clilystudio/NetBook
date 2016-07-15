@@ -14,6 +14,7 @@ import com.clilystudio.netbook.event.BusProvider;
 import com.clilystudio.netbook.event.BookRankClickEvent;
 import com.clilystudio.netbook.model.BookRankRoot;
 import com.clilystudio.netbook.model.BookRankSummary;
+import com.clilystudio.netbook.util.TempUtil;
 import com.clilystudio.netbook.util.ToastUtil;
 import com.squareup.otto.Subscribe;
 
@@ -88,7 +89,7 @@ public class BookRankListActivity extends BaseActivity {
     public void onBookRankClickEvent(BookRankClickEvent x2) {
         BookRankSummary bookRankSummary = x2.getBookRankSummary();
         String string = x2.isMale() ? "male" : "female";
-        Intent intent = !bookRankSummary.isCollapse() && com.clilystudio.netbook.util.a.r(this, "rank_revision_switch") ? BookRankMainActivity.a(this, bookRankSummary.getIds(), bookRankSummary.getTitle(), string) : BookRankDetailActivity.a(this, bookRankSummary.get_id(), bookRankSummary.getTitle());
+        Intent intent = !bookRankSummary.isCollapse() && TempUtil.r(this, "rank_revision_switch") ? BookRankMainActivity.a(this, bookRankSummary.getIds(), bookRankSummary.getTitle(), string) : BookRankDetailActivity.a(this, bookRankSummary.get_id(), bookRankSummary.getTitle());
         this.startActivity(intent);
     }
 

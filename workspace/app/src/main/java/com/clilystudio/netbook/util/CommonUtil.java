@@ -143,7 +143,7 @@ public class CommonUtil {
         user.setId(userId);
         user.setNickname(myApplication.getProperty("user.name"));
         user.setAvatar(myApplication.getProperty("user.avatar"));
-        user.setLv(a.b(myApplication.getProperty("user.lv"), 0));
+        user.setLv(TempUtil.b(myApplication.getProperty("user.lv"), 0));
         user.setGender(myApplication.getProperty("user.gender"));
         account.setOk(true);
         account.setToken(token);
@@ -203,7 +203,7 @@ public class CommonUtil {
         String string = sharedPreferences.getString("pref_new_imp_notif_time", null);
         if (string == null) {
             string = "0";
-            a.e(context, "pref_new_imp_notif_time", string);
+            TempUtil.e(context, "pref_new_imp_notif_time", string);
         }
         return string;
     }
@@ -218,7 +218,7 @@ public class CommonUtil {
         String string = sharedPreferences.getString("pref_new_unimp_notif_time", null);
         if (string == null) {
             string = "0";
-            a.e(context, "pref_new_unimp_notif_time", string);
+            TempUtil.e(context, "pref_new_unimp_notif_time", string);
         }
         return string;
     }
@@ -244,7 +244,7 @@ public class CommonUtil {
     }
 
     public static boolean isFirstLaunch(Context context) {
-        a.b(context, "is_first_launch_app", false);
-        return a.a(context, "is_first_launch_app", true);
+        TempUtil.b(context, "is_first_launch_app", false);
+        return TempUtil.a(context, "is_first_launch_app", true);
     }
 }

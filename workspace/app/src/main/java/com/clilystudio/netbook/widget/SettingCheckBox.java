@@ -7,6 +7,7 @@ import android.util.AttributeSet;
 import android.widget.CompoundButton;
 
 import com.clilystudio.netbook.R;
+import com.clilystudio.netbook.util.TempUtil;
 
 public class SettingCheckBox extends SwitchCompat {
     private final String a;
@@ -27,11 +28,11 @@ public class SettingCheckBox extends SwitchCompat {
     @Override
     protected void onFinishInflate() {
         super.onFinishInflate();
-        this.setChecked(com.clilystudio.netbook.util.a.a(this.getContext(), this.a, this.b));
+        this.setChecked(TempUtil.a(this.getContext(), this.a, this.b));
         this.setOnCheckedChangeListener(new OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                com.clilystudio.netbook.util.a.b(getContext(), SettingCheckBox.a(SettingCheckBox.this), isChecked);
+                TempUtil.b(getContext(), SettingCheckBox.a(SettingCheckBox.this), isChecked);
                 if (isChecked) {
                     buttonView.setContentDescription("已开启");
                 } else {

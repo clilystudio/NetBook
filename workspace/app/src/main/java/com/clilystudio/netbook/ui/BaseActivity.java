@@ -17,6 +17,7 @@ import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.api.ApiServiceProvider;
 import com.clilystudio.netbook.ui.home.HomeActivity;
 import com.clilystudio.netbook.ui.user.AuthLoginActivity;
+import com.clilystudio.netbook.util.TempUtil;
 import com.clilystudio.netbook.util.ToastUtil;
 
 public class BaseActivity extends AppCompatActivity {
@@ -285,7 +286,7 @@ public class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        if (com.clilystudio.netbook.util.a.a(this, "customer_night_theme", false)) {
+        if (TempUtil.a(this, "customer_night_theme", false)) {
             this.setTheme(R.style.BaseTheme_Dark);
         } else {
             this.setTheme(R.style.BaseTheme);

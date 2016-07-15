@@ -100,7 +100,7 @@ import java.util.Map;
 
 import okio.ByteString;
 
-public class a {
+public class TempUtil {
     public static int a;
     private static float c;
     private static String cipherBookId;

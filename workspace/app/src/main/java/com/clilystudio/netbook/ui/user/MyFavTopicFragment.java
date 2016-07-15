@@ -27,6 +27,7 @@ import com.clilystudio.netbook.model.Topic;
 import com.clilystudio.netbook.model.TopicPost;
 import com.clilystudio.netbook.util.BaseDownloadAdapter;
 import com.clilystudio.netbook.util.DateTimeUtil;
+import com.clilystudio.netbook.util.TempUtil;
 import com.clilystudio.netbook.util.ToastUtil;
 import com.clilystudio.netbook.widget.CoverView;
 import com.clilystudio.netbook.widget.LabelPtrListView;
@@ -187,7 +188,7 @@ public class MyFavTopicFragment extends Fragment {
         this.c.setMode(PullToRefreshBase.Mode.PULL_FROM_START);
         this.e = LayoutInflater.from(this.getActivity()).inflate(R.layout.loading_item, (ViewGroup)getActivity().getWindow().getDecorView(), false);
         this.d = this.c.getRefreshableView();
-        if (com.clilystudio.netbook.util.a.i()) {
+        if (TempUtil.i()) {
             this.d.setFooterDividersEnabled(false);
         }
         this.d.addFooterView(this.e);

@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.os.Handler;
 
 import com.clilystudio.netbook.R;
-import com.clilystudio.netbook.util.a;
+import com.clilystudio.netbook.util.TempUtil;
 import com.clilystudio.netbook.util.CommonUtil;
 import com.clilystudio.netbook.ui.home.HomeActivity;
 
@@ -35,7 +35,7 @@ public class SplashActivity extends Activity {
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
         this.setContentView(R.layout.splash);
-        a.a(this.getWindow().getDecorView());
+        TempUtil.a(this.getWindow().getDecorView());
         this.mHandler.postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -67,9 +67,9 @@ public class SplashActivity extends Activity {
         String string;
         Calendar calendar;
         super.onResume();
-        if (!CommonUtil.isLogined() || (n = 10000 * (calendar = Calendar.getInstance()).get(Calendar.YEAR) + 100 * calendar.get(Calendar.MONTH) + calendar.get(Calendar.DATE)) <= a.getIntPref(this, "KEY_OPEN_TIME", 0) || (string = CommonUtil.getAccount().getUser().getGender()) == null) {
+        if (!CommonUtil.isLogined() || (n = 10000 * (calendar = Calendar.getInstance()).get(Calendar.YEAR) + 100 * calendar.get(Calendar.MONTH) + calendar.get(Calendar.DATE)) <= TempUtil.getIntPref(this, "KEY_OPEN_TIME", 0) || (string = CommonUtil.getAccount().getUser().getGender()) == null) {
             return;
         }
-        a.b(this, "KEY_OPEN_TIME", n);
+        TempUtil.b(this, "KEY_OPEN_TIME", n);
     }
 }

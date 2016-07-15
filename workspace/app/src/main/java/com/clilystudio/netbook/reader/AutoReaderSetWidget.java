@@ -10,6 +10,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.clilystudio.netbook.R;
+import com.clilystudio.netbook.util.TempUtil;
 
 public class AutoReaderSetWidget extends LinearLayout implements View.OnClickListener {
     private Context a;
@@ -43,7 +44,7 @@ public class AutoReaderSetWidget extends LinearLayout implements View.OnClickLis
         if (this.b < 10) {
             this.b = 1 + this.b;
             this.e();
-            com.clilystudio.netbook.util.a.b(this.a, "auto_reader_speed", this.b);
+            TempUtil.b(this.a, "auto_reader_speed", this.b);
         }
     }
 
@@ -51,7 +52,7 @@ public class AutoReaderSetWidget extends LinearLayout implements View.OnClickLis
         if (this.b > 1) {
             this.b = -1 + this.b;
             this.e();
-            com.clilystudio.netbook.util.a.b(this.a, "auto_reader_speed", this.b);
+            TempUtil.b(this.a, "auto_reader_speed", this.b);
         }
     }
 
@@ -65,7 +66,7 @@ public class AutoReaderSetWidget extends LinearLayout implements View.OnClickLis
                 this.h.a();
                  break;
             case R.id.btn_auto_reader_stop:
-                com.clilystudio.netbook.util.a.b(this.getContext(), "start_auto_read_time", 0);
+                TempUtil.b(this.getContext(), "start_auto_read_time", 0);
                 this.h.c();
                 break;
         }
@@ -78,7 +79,7 @@ public class AutoReaderSetWidget extends LinearLayout implements View.OnClickLis
 
     public void setOptionClickListener(a a2) {
         this.h = a2;
-        this.b = com.clilystudio.netbook.util.a.getIntPref(this.a, "auto_reader_speed", 5);
+        this.b = TempUtil.getIntPref(this.a, "auto_reader_speed", 5);
         this.d = (TextView) this.findViewById(R.id.txt_auto_turn_speed);
         this.e();
         Button e = (Button) this.findViewById(R.id.btn_auto_reader_dec);

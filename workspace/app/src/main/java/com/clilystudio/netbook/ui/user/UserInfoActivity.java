@@ -24,6 +24,7 @@ import com.clilystudio.netbook.ui.BaseActivity;
 import com.clilystudio.netbook.ui.CircularSmartImageView;
 import com.clilystudio.netbook.ui.SettingsActivity;
 import com.clilystudio.netbook.ui.BaseCallBack;
+import com.clilystudio.netbook.util.TempUtil;
 import com.clilystudio.netbook.util.ToastUtil;
 import com.clilystudio.netbook.util.UserNotificationManager;
 import com.squareup.otto.Subscribe;
@@ -70,7 +71,7 @@ public class UserInfoActivity extends BaseActivity {
     static /* synthetic */ void a(UserInfoActivity userInfoActivity, UserInfo userInfo) {
         int n = userInfo.getLv();
         int n2 = userInfo.getExp();
-        int n3 = com.clilystudio.netbook.util.a.getLevelExp(n);
+        int n3 = TempUtil.getLevelExp(n);
         String string = userInfo.getScaleAvatar(2);
         userInfoActivity.mPortrait.setImageUrl(string, R.drawable.avatar_default);
         userInfoActivity.mName.setText(userInfo.getNickname());

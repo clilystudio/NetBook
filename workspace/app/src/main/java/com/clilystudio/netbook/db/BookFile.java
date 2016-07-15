@@ -3,7 +3,7 @@ package com.clilystudio.netbook.db;
 import com.activeandroid.Model;
 import com.activeandroid.annotation.Column;
 import com.activeandroid.annotation.Table;
-import com.clilystudio.netbook.util.a;
+import com.clilystudio.netbook.util.TempUtil;
 
 import java.io.File;
 import java.util.Date;
@@ -32,7 +32,7 @@ public class BookFile extends Model {
 
     public BookFile(File file) {
         this.name = file.getName();
-        this.size = a.formatFileSize(file.length());
+        this.size = TempUtil.formatFileSize(file.length());
         this.filePath = file.getPath();
     }
 

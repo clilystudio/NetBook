@@ -31,6 +31,7 @@ import com.clilystudio.netbook.util.BookInfoUtil;
 import com.clilystudio.netbook.util.BookSourceManager;
 import com.clilystudio.netbook.util.CommonUtil;
 import com.clilystudio.netbook.util.DateTimeUtil;
+import com.clilystudio.netbook.util.TempUtil;
 import com.clilystudio.netbook.util.ToastUtil;
 import com.clilystudio.netbook.widget.CoverView;
 import com.clilystudio.netbook.widget.TagsLayout;
@@ -130,7 +131,7 @@ public class BookInfoActivity extends BaseActivity implements View.OnClickListen
 
     static /* synthetic */ void c(BookInfoActivity bookInfoActivity, boolean bl) {
         if (bl) {
-            com.clilystudio.netbook.util.a.b(bookInfoActivity, "add_update_notify_login", false);
+            TempUtil.b(bookInfoActivity, "add_update_notify_login", false);
         }
     }
 
@@ -173,7 +174,7 @@ public class BookInfoActivity extends BaseActivity implements View.OnClickListen
         int n2 = bookInfoActivity.k.getWordCount();
         if (n2 > 0) {
             textView2.setVisibility(View.VISIBLE);
-            Object[] arrobject = new Object[]{com.clilystudio.netbook.util.a.i(n2)};
+            Object[] arrobject = new Object[]{TempUtil.i(n2)};
             textView2.setText(String.format("  |  %s\u5b57", arrobject));
         } else {
             textView2.setVisibility(View.GONE);
@@ -291,7 +292,7 @@ public class BookInfoActivity extends BaseActivity implements View.OnClickListen
         View view = this.findViewById(R.id.book_info_tags_root);
         view.setVisibility(View.VISIBLE);
         int n2 = arrstring.length;
-        int n3 = com.clilystudio.netbook.util.a.getDipSize(this, 16.0f);
+        int n3 = TempUtil.getDipSize(this, 16.0f);
         TagsLayout tagsLayout = (TagsLayout) view.findViewById(R.id.tags_layout);
         for (String anArrstring : arrstring) {
             TextView textView = (TextView) layoutInflater.inflate(R.layout.book_info_tags_item, tagsLayout, false).findViewById(R.id.tag_text);
@@ -360,17 +361,17 @@ public class BookInfoActivity extends BaseActivity implements View.OnClickListen
         String string;
         if (this.i) {
             BookReadRecord.deleteAndSync(this.mBookId);
-            com.clilystudio.netbook.util.a.v(this.mBookId);
+            TempUtil.v(this.mBookId);
             String string2 = this.getString(R.string.remove_book_event);
             Object[] arrobject = new Object[]{this.k.getTitle()};
             string = String.format(string2, arrobject);
         } else {
             BookReadRecord.create(this.k);
-            com.clilystudio.netbook.util.a.u(this.mBookId);
+            TempUtil.u(this.mBookId);
             String string3 = this.getString(R.string.add_book_event);
             Object[] arrobject = new Object[]{this.k.getTitle()};
             String string4 = String.format(string3, arrobject);
-            if (com.clilystudio.netbook.util.a.a(this, "add_update_notify_login", true) && !CommonUtil.isLogined()) {
+            if (TempUtil.a(this, "add_update_notify_login", true) && !CommonUtil.isLogined()) {
                 View view = this.getLayoutInflater().inflate(R.layout.remove_shelf_confirm, (ViewGroup) getWindow().getDecorView(), false);
                 final CheckBox checkBox = (CheckBox) view.findViewById(R.id.remove_shelf_cache);
                 checkBox.setText(this.getString(R.string.add_update_not_notify));
