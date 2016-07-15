@@ -133,10 +133,7 @@ public class SettingsActivity extends BaseActivity implements View.OnClickListen
         this.findViewById(R.id.tv_feedback).setOnClickListener(this);
         this.findViewById(R.id.settings_market_assessment).setOnClickListener(this);
         TextView textView = (TextView) this.findViewById(R.id.settings_version_name);
-        StringBuilder stringBuilder = new StringBuilder().append(CommonUtil.getVersionName(this)).append("(");
-        String string = CommonUtil.getMetaData(this, "COMMIT_ID");
-        String string2 = string != null && string.length() > 8 ? string.substring(0, 8) : null;
-        textView.setText(stringBuilder.append(string2).append(")").toString());
+        textView.setText(CommonUtil.getVersionName(this));
         final boolean bl = com.clilystudio.netbook.util.a.l(this, "update_notice_key");
         boolean bl2 = com.clilystudio.netbook.util.a.a(this, "save_bandwidth", false);
         final SwitchCompat switchCompat = (SwitchCompat) this.findViewById(R.id.cb_notice_update);

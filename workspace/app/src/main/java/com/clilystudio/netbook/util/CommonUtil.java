@@ -5,7 +5,6 @@ import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
@@ -120,18 +119,6 @@ public class CommonUtil {
             chars[n] = characterUtil.getSimpleChar(traditional.charAt(n));
         }
         return new String(chars);
-    }
-
-    public static <T> T getMetaData(Context context, String key) {
-        try {
-            ApplicationInfo applicationInfo = context.getPackageManager().getApplicationInfo(context.getPackageName(), PackageManager.GET_META_DATA);
-            if (applicationInfo.metaData != null) {
-                return (T) applicationInfo.metaData.get(key);
-            }
-        } catch (PackageManager.NameNotFoundException e) {
-            e.printStackTrace();
-        }
-        return null;
     }
 
     public static void setReadMode(String bookId, int readMode) {
