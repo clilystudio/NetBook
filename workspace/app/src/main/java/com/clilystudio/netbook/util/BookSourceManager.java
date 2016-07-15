@@ -3,6 +3,7 @@ package com.clilystudio.netbook.util;
 import android.app.Activity;
 import android.content.Intent;
 
+import com.clilystudio.netbook.CachePathConst;
 import com.clilystudio.netbook.MyApplication;
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.a_pack.BaseLoadingTask;
@@ -91,7 +92,7 @@ public final class BookSourceManager {
                 this.mTocId = this.mBookReadRecord.getTocId();
             }
             if (CommonUtil.getAccount() != null) {
-                HashMap<String, String> hashMap = a.M(this.mBookId);
+                HashMap<String, String> hashMap = a.k(CachePathConst.ChapterKey, this.mBookId);
                 if (hashMap == null) {
                     hashMap = new HashMap<>();
                 }

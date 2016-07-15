@@ -67,7 +67,7 @@ public class SplashActivity extends Activity {
         String string;
         Calendar calendar;
         super.onResume();
-        if (!CommonUtil.isLogined() || (n = 10000 * (calendar = Calendar.getInstance()).get(Calendar.YEAR) + 100 * calendar.get(Calendar.MONTH) + calendar.get(Calendar.DATE)) <= a.a(this, "KEY_OPEN_TIME", 0) || (string = CommonUtil.getAccount().getUser().getGender()) == null) {
+        if (!CommonUtil.isLogined() || (n = 10000 * (calendar = Calendar.getInstance()).get(Calendar.YEAR) + 100 * calendar.get(Calendar.MONTH) + calendar.get(Calendar.DATE)) <= a.getIntPref(this, "KEY_OPEN_TIME", 0) || (string = CommonUtil.getAccount().getUser().getGender()) == null) {
             return;
         }
         a.b(this, "KEY_OPEN_TIME", n);

@@ -74,7 +74,7 @@ public class UGCMainActivity extends BaseTabActivity implements ViewPager.OnPage
     static /* synthetic */ void b(UGCMainActivity uGCMainActivity) {
         if (uGCMainActivity.g != null && !uGCMainActivity.g.isShowing()) {
             if (uGCMainActivity.f == null || !uGCMainActivity.f.isShowing()) {
-                uGCMainActivity.f = new PopupWindow(uGCMainActivity.getLayoutInflater().inflate(R.layout.home_menu_bg_popup, (ViewGroup)uGCMainActivity.getWindow().getDecorView(), false), -1, com.clilystudio.netbook.util.a.L(uGCMainActivity));
+                uGCMainActivity.f = new PopupWindow(uGCMainActivity.getLayoutInflater().inflate(R.layout.home_menu_bg_popup, (ViewGroup)uGCMainActivity.getWindow().getDecorView(), false), -1, com.clilystudio.netbook.util.a.getWindowHeight(uGCMainActivity));
                 uGCMainActivity.f.setAnimationStyle(R.style.home_menu_bg_anim);
                 uGCMainActivity.f.showAtLocation(uGCMainActivity.getActionBar().getCustomView(), 0, 0, 0);
             }

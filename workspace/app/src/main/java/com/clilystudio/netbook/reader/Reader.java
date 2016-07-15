@@ -136,7 +136,7 @@ public final class Reader {
                                 }
                             } else {
                                 if (Reader.this.A) {
-                                    ChapterRoot chapterRoot = com.clilystudio.netbook.util.a.a(Reader.this.v, var2_2, nx);
+                                    ChapterRoot chapterRoot = com.clilystudio.netbook.util.a.getChapterRoot(Reader.this.v, var2_2, nx);
                                     assert chapterRoot != null;
                                     Chapter chapter = chapterRoot.getChapter();
                                     String body = chapter.getBody();
@@ -270,7 +270,7 @@ public final class Reader {
         reader.i = new HashMap<>((int) ((double) arrchapterLink.length / 0.7));
         for (ChapterLink chapterLink : arrchapterLink) {
             String string = chapterLink.getId();
-            if (com.clilystudio.netbook.util.a.Q(string) && chapterLink.getLink() != null) {
+            if (com.clilystudio.netbook.util.a.isBlank(string) && chapterLink.getLink() != null) {
                 String[] arrstring = chapterLink.getLink().split("/");
                 string = arrstring[-1 + arrstring.length];
             }

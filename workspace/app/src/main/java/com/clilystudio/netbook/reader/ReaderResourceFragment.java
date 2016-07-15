@@ -301,8 +301,8 @@ public class ReaderResourceFragment extends Fragment {
         }
         if (bl) {
             this.h.setVisibility(View.VISIBLE);
-            int n2 = com.clilystudio.netbook.util.a.a(this.getActivity(), 55.0f);
-            int n3 = com.clilystudio.netbook.util.a.a(this.getActivity(), 40.0f);
+            int n2 = com.clilystudio.netbook.util.a.getDipSize(this.getActivity(), 55.0f);
+            int n3 = com.clilystudio.netbook.util.a.getDipSize(this.getActivity(), 40.0f);
             if (this.g.getVisibility() == View.VISIBLE) {
                 LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(-1, n2);
                 layoutParams.setMargins(0, 0, 0, 0);

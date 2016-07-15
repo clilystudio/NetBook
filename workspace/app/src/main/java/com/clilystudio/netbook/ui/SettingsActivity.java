@@ -160,7 +160,7 @@ public class SettingsActivity extends BaseActivity implements View.OnClickListen
                 SettingsActivity.a(switchCompat2, isChecked);
             }
         });
-        this.a = com.clilystudio.netbook.util.a.a(this, "key_shelf_sort", 1);
+        this.a = com.clilystudio.netbook.util.a.getIntPref(this, "key_shelf_sort", 1);
         String string3 = this.getResources().getStringArray(R.array.settings_shelf_sort)[this.a];
         ((TextView) this.findViewById(R.id.settings_shelf_sort_value)).setText(string3);
     }

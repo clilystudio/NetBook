@@ -63,7 +63,7 @@ public class FeedSettingActivity extends BaseActivity {
         super.onCreate(bundle);
         this.setContentView(R.layout.activity_feed_settings);
         this.b(R.string.feed_setting);
-        this.b = bundle != null ? bundle.getInt("savedCurrentCount", 50) : com.clilystudio.netbook.util.a.a(this, "feed_chapter_count", 50);
+        this.b = bundle != null ? bundle.getInt("savedCurrentCount", 50) : com.clilystudio.netbook.util.a.getIntPref(this, "feed_chapter_count", 50);
         View view = this.findViewById(R.id.book_feed_set_chapter);
         TextView textView = this.a = (TextView) this.findViewById(R.id.book_feed_set_chapter_count);
         String string = this.getString(R.string.book_feed_setting_limit);

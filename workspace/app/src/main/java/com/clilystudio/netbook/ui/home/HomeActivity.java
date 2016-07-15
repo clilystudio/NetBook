@@ -38,8 +38,6 @@ import com.clilystudio.netbook.event.NotifEvent;
 import com.clilystudio.netbook.model.Account;
 import com.clilystudio.netbook.model.BookTopRoot;
 import com.clilystudio.netbook.model.IKanshuUrlResult;
-import com.clilystudio.netbook.model.RecommendInfo;
-import com.clilystudio.netbook.model.ResultServer;
 import com.clilystudio.netbook.model.User;
 import com.clilystudio.netbook.model.UshaqiOnlineConfig;
 import com.clilystudio.netbook.push.BookSubRecord;
@@ -263,7 +261,7 @@ public class HomeActivity extends HomeParentActivity implements ViewPager.OnPage
     private void l() {
         try {
             if (this.j == null || !this.j.isShowing()) {
-                this.j = new PopupWindow(this.getLayoutInflater().inflate(R.layout.home_menu_bg_popup, (ViewGroup) getWindow().getDecorView(), false), -1, com.clilystudio.netbook.util.a.L(this));
+                this.j = new PopupWindow(this.getLayoutInflater().inflate(R.layout.home_menu_bg_popup, (ViewGroup) getWindow().getDecorView(), false), -1, com.clilystudio.netbook.util.a.getWindowHeight(this));
                 this.j.setAnimationStyle(R.style.home_menu_bg_anim);
                 this.j.showAtLocation(this.getActionBar().getCustomView(), 0, 0, 0);
             }
@@ -287,7 +285,7 @@ public class HomeActivity extends HomeParentActivity implements ViewPager.OnPage
                 });
             }
             this.i.setAnimationStyle(R.style.home_menu_anim);
-            this.i.showAtLocation(view, 53, com.clilystudio.netbook.util.a.a(this, 5.0f), CommonUtil.getActionBarHeight(this) + CommonUtil.getStatusBarHeight(this));
+            this.i.showAtLocation(view, 53, com.clilystudio.netbook.util.a.getDipSize(this, 5.0f), CommonUtil.getActionBarHeight(this) + CommonUtil.getStatusBarHeight(this));
             this.i.setOnDismissListener(new PopupWindow.OnDismissListener() {
                 @Override
                 public void onDismiss() {
@@ -459,7 +457,7 @@ public class HomeActivity extends HomeParentActivity implements ViewPager.OnPage
                     this.o.setImageResource(R.drawable.theme_night);
                     com.clilystudio.netbook.util.a.b(this, "customer_night_theme", false);
                     com.clilystudio.netbook.util.a.b(this, "night_mode", false);
-                    com.clilystudio.netbook.util.a.C(this);
+                    com.clilystudio.netbook.util.a.b(this, "start_night_theme", 0);
                     intent.putExtra("onThemeChange", 0);
                 } else {
                     this.n.setText(R.string.custom_theme_day);

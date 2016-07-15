@@ -46,7 +46,7 @@ public class BookCategoryActivity extends BaseActivity {
             return;
         }
         int n = bookCategoryActivity.getResources().getDisplayMetrics().widthPixels / 3;
-        int n2 = com.clilystudio.netbook.util.a.a(bookCategoryActivity, 56.0f);
+        int n2 = com.clilystudio.netbook.util.a.getDipSize(bookCategoryActivity, 56.0f);
         bookCategoryActivity.a(n, n2, arrcategoryRoot$Category, true);
         bookCategoryActivity.a(n, n2, arrcategoryRoot$Category2, false);
     }

@@ -6,6 +6,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.clilystudio.netbook.CachePathConst;
 import com.clilystudio.netbook.MyApplication;
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.a_pack.BaseLoadingTask;
@@ -387,7 +388,7 @@ public final class ReaderPageManager {
                             }
                             com.clilystudio.netbook.util.a.a(arg, hashMap);
                         } else {
-                            hashMap = com.clilystudio.netbook.util.a.M(arg);
+                            hashMap = com.clilystudio.netbook.util.a.k(CachePathConst.ChapterKey, arg);
                             if (hashMap == null) {
                                 hashMap = new HashMap<>();
                             }

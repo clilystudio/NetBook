@@ -291,7 +291,7 @@ public class BookInfoActivity extends BaseActivity implements View.OnClickListen
         View view = this.findViewById(R.id.book_info_tags_root);
         view.setVisibility(View.VISIBLE);
         int n2 = arrstring.length;
-        int n3 = com.clilystudio.netbook.util.a.a(this, 16.0f);
+        int n3 = com.clilystudio.netbook.util.a.getDipSize(this, 16.0f);
         TagsLayout tagsLayout = (TagsLayout) view.findViewById(R.id.tags_layout);
         for (String anArrstring : arrstring) {
             TextView textView = (TextView) layoutInflater.inflate(R.layout.book_info_tags_item, tagsLayout, false).findViewById(R.id.tag_text);

@@ -448,14 +448,14 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
 
             @Override
             public void afterTextChanged(Editable s) {
-                boolean bl = !com.clilystudio.netbook.util.a.Q(s.toString());
+                boolean bl = !com.clilystudio.netbook.util.a.isBlank(s.toString());
                 SearchActivity.a(SearchActivity.this, bl);
             }
         });
         this.e.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
-                boolean bl2 = !com.clilystudio.netbook.util.a.Q(SearchActivity.this.e.getText().toString());
+                boolean bl2 = !com.clilystudio.netbook.util.a.isBlank(SearchActivity.this.e.getText().toString());
                 SearchActivity.a(SearchActivity.this, bl2);
             }
         });
@@ -496,7 +496,7 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
         this.q = (RelativeLayout) this.findViewById(R.id.ll_hot_keyword_continer);
         this.r = (AutoFlowView) this.findViewById(R.id.afv_hots);
         this.s = (TextView) this.findViewById(R.id.btn_change);
-        if (com.clilystudio.netbook.util.a.k(CachePathConst.SearchHistory, "search_hotword.txt") != null && com.clilystudio.netbook.util.a.a(this, "search_hot_words_date", 0) != 0) {
+        if (com.clilystudio.netbook.util.a.k(CachePathConst.SearchHistory, "search_hotword.txt") != null && com.clilystudio.netbook.util.a.getIntPref(this, "search_hot_words_date", 0) != 0) {
             List<AutoFlowView.Word> list = com.clilystudio.netbook.util.a.k(CachePathConst.SearchHistory, "search_hotword.txt");
             this.q.setVisibility(View.VISIBLE);
             this.r.setWords(list);

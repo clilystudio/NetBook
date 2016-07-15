@@ -178,7 +178,7 @@ public class ApiService {
 
     public static String a(String string, int n, String string2) {
         String string3 = CommonUtil.encodeUrl(string2);
-        String[] arrstring = com.clilystudio.netbook.util.a.O(string);
+        String[] arrstring = com.clilystudio.netbook.util.a.splitSourceId(string);
         if (arrstring != null) {
             Object[] arrobject = new Object[]{arrstring[0], arrstring[1], n, string3};
             return String.format(Locale.CHINA, "http://book.easou.com/ta/show.m?gid=%s&nid=%s&st=%d&cu=%s", arrobject);
@@ -1395,13 +1395,13 @@ public class ApiService {
     }
 
     public final NotificationRoot r(String string, String string2) {
-        String string3 = com.clilystudio.netbook.util.a.Q(string2) ? String.format(Locale.CHINA, "/user/notification/important?token=%s", string) : String.format(Locale.CHINA, "/user/notification/important?token=%s&startTime=%s", string, string2);
+        String string3 = com.clilystudio.netbook.util.a.isBlank(string2) ? String.format(Locale.CHINA, "/user/notification/important?token=%s", string) : String.format(Locale.CHINA, "/user/notification/important?token=%s&startTime=%s", string, string2);
         String string4 = f + string3;
         return ApiService.a(this.a(HttpRequest.get(string4)), NotificationRoot.class);
     }
 
     public final NotificationRoot s(String string, String string2) {
-        String string3 = com.clilystudio.netbook.util.a.Q(string2) ? String.format(Locale.CHINA, "/user/notification/unimportant?token=%s", string) : String.format(Locale.CHINA, "/user/notification/unimportant?token=%s&startTime=%s", string, string2);
+        String string3 = com.clilystudio.netbook.util.a.isBlank(string2) ? String.format(Locale.CHINA, "/user/notification/unimportant?token=%s", string) : String.format(Locale.CHINA, "/user/notification/unimportant?token=%s&startTime=%s", string, string2);
         String string4 = f + string3;
         return ApiService.a(this.a(HttpRequest.get(string4)), NotificationRoot.class);
     }
@@ -1462,7 +1462,7 @@ public class ApiService {
     }
 
     public final EsTocRoot v(String string) {
-        String[] arrstring = com.clilystudio.netbook.util.a.O(string);
+        String[] arrstring = com.clilystudio.netbook.util.a.splitSourceId(string);
         if (arrstring == null) {
             return null;
         }

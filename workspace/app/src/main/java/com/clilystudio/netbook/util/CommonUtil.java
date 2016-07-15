@@ -18,7 +18,6 @@ import android.graphics.drawable.NinePatchDrawable;
 import android.net.Uri;
 import android.preference.PreferenceManager;
 import android.provider.Settings;
-import android.telephony.TelephonyManager;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
 
@@ -32,7 +31,6 @@ import com.clilystudio.netbook.ui.user.AuthLoginActivity;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
-import java.util.Calendar;
 import java.util.List;
 
 public class CommonUtil {
@@ -95,17 +93,12 @@ public class CommonUtil {
         }
     }
 
-    public static boolean isBlank(String string) {
-        if (string == null) {
-            return true;
-        }
-        int length = string.length();
-        if (length == 0) {
-            return true;
-        }
-        for (int i = 0; i < length; i++) {
-            if (!Character.isWhitespace(string.charAt(i))) {
-                return false;
+    public static boolean isWhitespace(String string) {
+        if (string != null && string.length() > 0) {
+            for (int i = 0; i < string.length(); i++) {
+                if (!Character.isWhitespace(string.charAt(i))) {
+                    return false;
+                }
             }
         }
         return true;

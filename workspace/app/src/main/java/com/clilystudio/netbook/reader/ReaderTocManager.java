@@ -66,7 +66,7 @@ public final class ReaderTocManager {
      * Lifted jumps to return sites
      */
     private ChapterRoot a(int sort, String chapterName, String chapterLink) {
-        String[] arrstring = a.O(this.mSourceId);
+        String[] arrstring = a.splitSourceId(this.mSourceId);
         if (arrstring == null) return null;
         try {
             return ApiServiceProvider.getApiService().a(arrstring[0], arrstring[1], sort, chapterName, chapterLink);

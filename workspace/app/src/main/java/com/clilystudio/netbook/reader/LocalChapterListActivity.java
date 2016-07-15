@@ -49,7 +49,7 @@ public class LocalChapterListActivity extends BaseActivity {
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();
                 String string2 = LocalChapterListActivity.c(localChapterListActivity);
-                com.clilystudio.netbook.util.a.E(CachePathConst.Chapter + File.separator + string2 + File.separator + string);
+                com.clilystudio.netbook.util.a.deleteDir(CachePathConst.Chapter + File.separator + string2 + File.separator + string);
                 LocalChapterListActivity.e(localChapterListActivity);
             }
         }).setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {

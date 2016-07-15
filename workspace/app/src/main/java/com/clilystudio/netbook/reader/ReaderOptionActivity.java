@@ -126,7 +126,7 @@ public class ReaderOptionActivity extends BaseActivity {
         var5_5.setChecked(var11_11);
         assert var6_6 != null;
         var6_6.setChecked(var12_12);
-        int var13_13 = com.clilystudio.netbook.util.a.a(this, "reader_screen_off_time", 120000);
+        int var13_13 = com.clilystudio.netbook.util.a.getIntPref(this, "reader_screen_off_time", 120000);
         for (int var14_14 = 0; var14_14 < this.c.length; var14_14++) {
             if (var13_13 == this.e[var14_14]) {
                 this.a = var14_14;

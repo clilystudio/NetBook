@@ -22,11 +22,11 @@ public class CustomSearchActivity extends BaseActivity {
     static /* synthetic */ void a(final CustomSearchActivity customSearchActivity) {
         String string = customSearchActivity.a.getText().toString();
         String string2 = customSearchActivity.b.getText().toString();
-        if (com.clilystudio.netbook.util.a.Q(string)) {
+        if (com.clilystudio.netbook.util.a.isBlank(string)) {
             ToastUtil.showShortToast(customSearchActivity, "书名不能为空");
             return;
         }
-        if (com.clilystudio.netbook.util.a.Q(string2)) {
+        if (com.clilystudio.netbook.util.a.isBlank(string2)) {
             ToastUtil.showShortToast(customSearchActivity, "作者不能为空");
             return;
         }

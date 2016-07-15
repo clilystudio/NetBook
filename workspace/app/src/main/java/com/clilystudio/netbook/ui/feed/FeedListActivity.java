@@ -60,7 +60,7 @@ public class FeedListActivity extends BaseActivity {
 
     private void b() {
         List<BookReadRecord> list = BookReadRecord.getAllFeedingOrderByCount();
-        this.b = com.clilystudio.netbook.util.a.a(this, "feed_chapter_count", 50);
+        this.b = com.clilystudio.netbook.util.a.getIntPref(this, "feed_chapter_count", 50);
         this.a.a(list);
     }
 
@@ -161,7 +161,7 @@ public class FeedListActivity extends BaseActivity {
             }
             case R.id.action_menu_feed_setting:
         }
-        this.a(com.clilystudio.netbook.util.a.a(this, "feed_chapter_count", 50));
+        this.a(com.clilystudio.netbook.util.a.getIntPref(this, "feed_chapter_count", 50));
         return true;
     }
 }

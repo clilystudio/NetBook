@@ -30,7 +30,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v4.view.ViewPager;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -80,11 +79,9 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
-import java.net.HttpURLConnection;
 import java.net.Socket;
 import java.net.URI;
 import java.net.URL;
-import java.net.URLConnection;
 import java.net.URLDecoder;
 import java.nio.ByteOrder;
 import java.security.MessageDigest;
@@ -109,15 +106,8 @@ public class a {
     private static String cipherBookId;
     private static String cipherTocId;
     private static String cipherCheckSum;
-    private final ViewPager b;
 
-    public a(ViewPager viewPager) {
-        this.b = viewPager;
-    }
-
-    /*
-     * Enabled aggressive block sorting
-     */
+    // TODO rename
     public static String A(String string) {
         if (cipherBookId == null || cipherTocId == null || cipherCheckSum == null) {
             return null;
@@ -131,124 +121,61 @@ public class a {
             return CipherUtil.getNewAdvert(string2, string, MyApplication.getInstance());
         }
         BookInfoUtil.h = false;
-        long l = Y("http://www.taobao.com");
-        if (l <= 7200) {
-            l = Y("http://www.163.com");
-        }
-        if (l <= 7200) {
-            l = Y("http://www.baidu.com/");
-        }
-        if (l <= 7200) {
-            l = 7200 + new Date().getTime() / 1000;
-        }
+        long l = 7200 + new Date().getTime() / 1000;
         return CipherUtil.getNewAdvertWork(string2, l, string, MyApplication.getInstance());
     }
 
-    public static boolean A(Context context) {
-        return "1".equals(OnlineConfigAgent.getInstance().getConfigParams(context, "shelf_ad_third_enable"));
-    }
-
-    public static void B(Context context) {
-        b(context, "start_night_theme", new Date().getTime());
-    }
-
-    public static void C(Context context) {
-        long l2 = a(context, "start_night_theme", 0);
-        long l3 = new Date().getTime();
-        b(context, "start_night_theme", 0);
-    }
-
-    public static byte[] C(String p0) {
-        MessageDigest v0 = null;
-        try {
-            v0 = MessageDigest.getInstance("MD5");
-            byte[] v1 = p0.getBytes("UTF-8");
-            v1 = v0.digest(v1);
-
-            StringBuilder v2 = new StringBuilder(v1.length * 2);
-            for (byte v4 : v1) {
-                if ((v4 & 0xff) < 0x10) {
-                    v2.append("0");
-                }
-                v2.append(Integer.toHexString(v4 & 0xff));
-            }
-            return v2.toString().getBytes();
-        } catch (NoSuchAlgorithmException | UnsupportedEncodingException e1) {
-            e1.printStackTrace();
-            return p0.getBytes();
-        }
-    }
-
+    // TODO rename
     public static ArrayList<String> D(String string) {
         String string2 = "/ZhuiShuShenQi/Chapter" + File.separator + string;
         return c(new File(CachePathConst.RootPath, string2));
     }
 
-    public static void D(Context context) {
-        b(context, "start_auto_read_time", new Date().getTime());
-    }
-
-    public static void E(Context context) {
-        long l2 = a(context, "start_auto_read_time", 0);
-        long l3 = new Date().getTime();
-        b(context, "start_auto_read_time", 0);
-    }
-
-    public static boolean E(String string) {
-        File file;
-        if (!string.endsWith(File.separator)) {
-            string = string + File.separator;
+    public static boolean deleteDir(String path) {
+        if (!path.endsWith(File.separator)) {
+            path = path + File.separator;
         }
-        if (!(file = new File(string)).exists() || !file.isDirectory()) {
-            return false;
-        }
-        boolean bl = true;
-        File[] arrfile = file.listFiles();
-        if (arrfile == null) {
-            return false;
-        }
-        int n2 = arrfile.length;
-        int n3 = 0;
-        do {
-            File file2;
-            if (n3 >= n2 || ((file2 = arrfile[n3]).isFile() ? !(bl = F(file2.getAbsolutePath())) : !(bl = E(file2.getAbsolutePath())))) {
-                if (bl) break;
-                return false;
+        File file = new File(path);
+        if (file.exists() && file.isDirectory()) {
+            File[] arrfile = file.listFiles();
+            if (arrfile != null) {
+                for (File file2 : arrfile) {
+                    if (file2.isFile()) {
+                        if (!deleteFile(file2.getAbsolutePath())) {
+                            return false;
+                        }
+                    } else {
+                        if (!deleteDir(file2.getAbsolutePath())) {
+                            return false;
+                        }
+                    }
+                }
             }
-            ++n3;
-        } while (true);
-        return file.delete();
-    }
-
-    public static boolean F(String string) {
-        File file = new File(string);
-        boolean bl = file.isFile();
-        boolean bl2 = false;
-        if (bl) {
-            boolean bl3 = file.exists();
-            bl2 = false;
-            if (bl3) {
-                bl2 = file.delete();
-            }
+            return file.delete();
         }
-        return bl2;
+        return false;
     }
 
-    public static BufferedReader G(String string) {
+    public static boolean deleteFile(String path) {
+        File file = new File(path);
+        return file.isFile() && file.exists() && file.delete();
+    }
+
+    public static BufferedReader getBufferedReader(String path) {
         try {
-            return new BufferedReader(new InputStreamReader(new FileInputStream(new File(string)), H(string)));
-        } catch (UnsupportedEncodingException | FileNotFoundException e1) {
-            e1.printStackTrace();
+            return new BufferedReader(new InputStreamReader(new FileInputStream(new File(path)), detectCharset(path)));
+        } catch (UnsupportedEncodingException | FileNotFoundException e) {
+            e.printStackTrace();
         }
         return null;
     }
 
-    public static String H(String string) {
+    private static String detectCharset(String path) {
         int n2;
         byte[] arrby = new byte[4096];
         FileInputStream fileInputStream = null;
         try {
-            fileInputStream = new FileInputStream(string);
+            fileInputStream = new FileInputStream(path);
             UniversalDetector universalDetector = new UniversalDetector(null);
             while ((n2 = fileInputStream.read(arrby)) > 0 && !universalDetector.isDone()) {
                 universalDetector.handleData(arrby, 0, n2);
@@ -266,79 +193,25 @@ public class a {
         return "utf-8";
     }
 
-    /*
-     * Enabled force condition propagation
-     * Lifted jumps to return sites
-     */
-    public static File J(String string) {
+    public static File makeDir(String path) {
         if (!isMounted()) {
             return null;
         }
-        File file = new File(string);
+        File file = new File(path);
         if (file.exists()) return file;
         file.mkdirs();
         return file;
     }
 
-    public static void J(Context context) {
-        b(context, "tts_start_time", new Date().getTime());
-    }
-
-    public static String K(String string) {
-        if (Q(string)) {
-            return "";
-        }
-        return string.substring(1 + string.lastIndexOf(File.separator));
-    }
-
-    public static int L(Context context) {
+    public static int getWindowHeight(Context context) {
         DisplayMetrics displayMetrics = new DisplayMetrics();
         ((WindowManager) context.getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay().getMetrics(displayMetrics);
         return displayMetrics.heightPixels;
     }
 
-    public static Bitmap L(String string) {
-        try {
-            HttpURLConnection httpURLConnection = (HttpURLConnection) new URL(string).openConnection();
-            httpURLConnection.setDoInput(true);
-            httpURLConnection.connect();
-            return BitmapFactory.decodeStream(httpURLConnection.getInputStream());
-        } catch (Exception var1_3) {
-            var1_3.printStackTrace();
-            return null;
-        }
-    }
-
-    public static SharedPreferences M(Context context) {
-        return context.getSharedPreferences("umeng_general_config", 0);
-    }
-
-    public static HashMap<String, String> M(String string) {
-        return (HashMap<String, String>) k(CachePathConst.ChapterKey, string);
-    }
-
-    private static File O(Context context) {
-        File file = new File(new File(new File(new File(Environment.getExternalStorageDirectory(), "Android"), "data"), context.getPackageName()), "cache");
-        if (file.exists()) return file;
-        if (!file.mkdirs()) {
-            com.nostra13.universalimageloader.utils.L.e("Unable to create external cache directory");
-            return null;
-        }
-        try {
-            new File(file, ".nomedia").createNewFile();
-            return file;
-        } catch (IOException var2_2) {
-            com.nostra13.universalimageloader.utils.L.e("Can't create \".nomedia\" file in application external cache directory");
-            return file;
-        }
-    }
-
-    /*
-     * Enabled aggressive block sorting
-     */
-    public static String[] O(String string) {
+    public static String[] splitSourceId(String sourceId) {
         String[] arrstring;
-        if (string == null || (arrstring = string.split(":")).length < 2) {
+        if (sourceId == null || (arrstring = sourceId.split(":")).length < 2) {
             return null;
         }
         return arrstring;
@@ -348,103 +221,57 @@ public class a {
         return PreferenceManager.getDefaultSharedPreferences(context).edit();
     }
 
-    /*
-     * Enabled force condition propagation
-     * Lifted jumps to return sites
-     */
-    public static String P(String string) {
-        if ("soso".equals(string)) {
+    public static String getWebOptUrl(String modeName) {
+        if ("soso".equals(modeName)) {
             return "http://book.soso.com/ajax?m=show_bookdetail&resourceid=...";
         }
-        if ("sogou".equals(string)) {
+        if ("sogou".equals(modeName)) {
             return "http://novel.mse.sogou.com/content.php/&page=1&md=...";
         }
-        if ("leidian".equals(string)) {
+        if ("leidian".equals(modeName)) {
             return "http://m.leidian.com/index.php?c=ebook&a=chapterData&bid=...";
         }
-        boolean bl = "easou".equals(string);
-        String string2 = null;
-        if (!bl) return string2;
-        return "http://book.easou.com/ta/show.m?&gst=0&gid=11955147&nid=...";
+        if ("easou".equals(modeName)) {
+            return "http://book.easou.com/ta/show.m?&gst=0&gid=11955147&nid=...";
+        }
+        return null;
     }
 
-    /*
-     * Enabled force condition propagation
-     * Lifted jumps to return sites
-     */
-    public static boolean Q(String string) {
-        if (string == null) return true;
-        if (string.length() == 0) {
-            return true;
-        }
-        int n2 = 0;
-        while (n2 < string.length()) {
-            char c2 = string.charAt(n2);
-            if (c2 != ' ' && c2 != '\t' && c2 != '\r') {
-                boolean bl = false;
-                if (c2 != '\n') return bl;
+    public static boolean isBlank(String string) {
+        if (string != null && string.length() > 0) {
+            for (int i = 0; i < string.length(); i++) {
+                char c = string.charAt(i);
+                if (c != ' ' && c != '\t' && c != '\r' && c != '\n') {
+                    return false;
+                }
             }
-            ++n2;
         }
         return true;
     }
 
-    public static long R(String string) {
+    private static String detectImageType(String path) {
+        FileInputStream fis = null;
         try {
-            long l2 = Long.parseLong(string);
-            return l2;
-        } catch (Exception var1_2) {
-            var1_2.printStackTrace();
-            return 0;
+            fis = new FileInputStream(path);
+            byte[] bytes = new byte[8];
+            int read = fis.read(bytes);
+            if (read == 8) {
+                return getImageType(bytes);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (fis != null) {
+                try {
+                    fis.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
         }
+        return null;
     }
 
-    public static String T(String string) {
-        if (!TextUtils.isEmpty(string)) {
-            return String.valueOf(string.substring(0, 1).toUpperCase(Locale.US)) + string.substring(1);
-        }
-        if (string == null) {
-            return null;
-        }
-        return "";
-    }
-
-    /*
-     * Enabled aggressive block sorting
-     */
-    public static boolean U(String string) {
-        return "boolean".equals(string) || "java.lang.Boolean".equals(string) || "float".equals(string) || "java.lang.Float".equals(string) || "double".equals(string) || "java.lang.Double".equals(string) || "int".equals(string) || "java.lang.Integer".equals(string) || "long".equals(string) || "java.lang.Long".equals(string) || "short".equals(string) || "java.lang.Short".equals(string) || "char".equals(string) || "java.lang.Character".equals(string) || "java.lang.String".equals(string) || "java.util.Date".equals(string);
-    }
-
-    private static String W(String string) {
-        try {
-            FileInputStream fileInputStream = new FileInputStream(string);
-            byte[] arrby = new byte[8];
-            fileInputStream.read(arrby);
-            fileInputStream.close();
-            return g(arrby);
-        } catch (Exception var2_4) {
-            return null;
-        }
-    }
-
-    private static long Y(String string) {
-        try {
-            URLConnection uRLConnection = new URL(string).openConnection();
-            uRLConnection.connect();
-            return 7200 + uRLConnection.getDate() / 1000;
-        } catch (IOException var2_2) {
-            return 0;
-        }
-    }
-
-    private static boolean Z(String string) {
-        return string == null || "".equals(string);
-    }
-
-    /*
-     * Enabled aggressive block sorting
-     */
     private static int a(int n2, int n3) {
         if (n3 < 2) return -1;
         if (n3 > 36) {
@@ -455,86 +282,21 @@ public class a {
         return -1;
     }
 
-    public static int a(Context context, float f2) {
+    public static int getDipSize(Context context, float pixSize) {
         if (context == null) {
             return 0;
         }
-        return (int) (0.5f + f2 * context.getResources().getDisplayMetrics().density);
+        return (int) (0.5f + pixSize * context.getResources().getDisplayMetrics().density);
     }
 
-    public static int a(Context context, int n2) {
-        if (c <= 0.0f) {
-            c = context.getResources().getDisplayMetrics().density;
-        }
-        return (int) (0.5f + (float) n2 * c);
-    }
-
-    public static int a(Context context, String string, int n2) {
+    public static int getIntPref(Context context, String key, int defValue) {
         if (context == null) {
-            return n2;
+            return defValue;
         }
-        return PreferenceManager.getDefaultSharedPreferences(context).getInt(string, n2);
+        return PreferenceManager.getDefaultSharedPreferences(context).getInt(key, defValue);
     }
 
-    public static int a(Context context, String string, String string2) {
-        return context.getApplicationContext().getResources().getIdentifier(string2, string, context.getApplicationContext().getPackageName());
-    }
-
-    public static int a(String string, int n2) {
-        if (n2 != -1) {
-            return n2;
-        }
-        if ("http".equalsIgnoreCase(string)) {
-            return 80;
-        }
-        if ("https".equalsIgnoreCase(string)) {
-            return 443;
-        }
-        return -1;
-    }
-
-    public static int a(URI uRI) {
-        return a(uRI.getScheme(), uRI.getPort());
-    }
-
-    public static int a(URL uRL) {
-        return a(uRL.getProtocol(), uRL.getPort());
-    }
-
-    public static long a(Context context, String string, long l2) {
-        if (context == null) {
-            return 0;
-        }
-        return PreferenceManager.getDefaultSharedPreferences(context).getLong(string, 0);
-    }
-
-    private static long a(String string, int n2, int n3, boolean bl) throws Throwable {
-        long l2 = Long.MIN_VALUE / (long) n3;
-        long l3 = 0;
-        long l4 = string.length();
-        while ((long) n2 < l4) {
-            int n4 = n2 + 1;
-            int n5 = a((int) string.charAt(n2), n3);
-            if (n5 == -1) {
-                throw new Throwable("Invalid long: \"" + string + "\"");
-            }
-            if (l2 > l3) {
-                throw new Throwable("Invalid long: \"" + string + "\"");
-            }
-            long l5 = l3 * (long) n3 - (long) n5;
-            if (l5 > l3) {
-                throw new Throwable("Invalid long: \"" + string + "\"");
-            }
-            l3 = l5;
-            n2 = n4;
-        }
-        if (!bl && (l3 = -l3) < 0) {
-            throw new Throwable("Invalid long: \"" + string + "\"");
-        }
-        return l3;
-    }
-
-    public static Bitmap a(Bitmap bitmap) {
+    public static Bitmap getCircleBitmap(Bitmap bitmap) {
         Bitmap bitmap2 = Bitmap.createBitmap(bitmap.getWidth(), bitmap.getHeight(), Bitmap.Config.ARGB_8888);
         Canvas canvas = new Canvas(bitmap2);
         Paint paint = new Paint();
@@ -548,311 +310,13 @@ public class a {
         return bitmap2;
     }
 
-    public static Bitmap a(Bitmap bitmap, int n2, int n3) {
-        int n4 = bitmap.getWidth();
-        int n5 = bitmap.getHeight();
-        Bitmap bitmap2 = Bitmap.createBitmap((int) (0.5f + (float) n4 / 8.0f), (int) (0.5f + (float) n5 / 8.0f), Bitmap.Config.ARGB_8888);
-        Canvas canvas = new Canvas(bitmap2);
-        canvas.scale(0.125f, 0.125f);
-        Paint paint = new Paint();
-        paint.setFlags(2);
-        canvas.drawBitmap(bitmap, 0.0f, 0.0f, paint);
-        a(bitmap2, 3, true);
-        return bitmap2;
-    }
-
-    /*
-     * Enabled aggressive block sorting
-     */
-    private static Bitmap a(Bitmap bitmap, int n2, boolean bl) {
-        if (n2 <= 0) {
-            return null;
-        }
-        int n3 = bitmap.getWidth();
-        int n4 = bitmap.getHeight();
-        int[] arrn = new int[n3 * n4];
-        bitmap.getPixels(arrn, 0, n3, 0, 0, n3, n4);
-        int n5 = n3 - 1;
-        int n6 = n4 - 1;
-        int n7 = n3 * n4;
-        int n8 = 1 + (n2 + n2);
-        int[] arrn2 = new int[n7];
-        int[] arrn3 = new int[n7];
-        int[] arrn4 = new int[n7];
-        int[] arrn5 = new int[Math.max(n3, n4)];
-        int n9 = n8 + 1 >> 1;
-        int n10 = n9 * n9;
-        int[] arrn6 = new int[n10 * 256];
-        for (int k = 0; k < n10 * 256; ++k) {
-            arrn6[k] = k / n10;
-        }
-        int[] arrn7 = new int[]{n8, 3};
-        int[][] arrn8 = (int[][]) Array.newInstance(Integer.TYPE, arrn7);
-        int n11 = n2 + 1;
-        int n12 = 0;
-        int n13 = 0;
-        int n14 = 0;
-        do {
-            if (n14 >= n4) break;
-            int n15 = 0;
-            int n16 = -n2;
-            int n17 = 0;
-            int n18 = 0;
-            int n19 = 0;
-            int n20 = 0;
-            int n21 = 0;
-            int n22 = 0;
-            int n23 = 0;
-            int n24 = 0;
-            for (int i2 = n16; i2 <= n2; ++i2) {
-                int n25 = arrn[n13 + Math.min(n5, Math.max(i2, 0))];
-                int[] arrn9 = arrn8[i2 + n2];
-                arrn9[0] = 255 & n25 >> 16;
-                arrn9[1] = 255 & n25 >> 8;
-                arrn9[2] = n25 & 255;
-                int n26 = n11 - Math.abs(i2);
-                n23 += n26 * arrn9[0];
-                n22 += n26 * arrn9[1];
-                n21 += n26 * arrn9[2];
-                if (i2 > 0) {
-                    n17 += arrn9[0];
-                    n24 += arrn9[1];
-                    n15 += arrn9[2];
-                    continue;
-                }
-                n20 += arrn9[0];
-                n19 += arrn9[1];
-                n18 += arrn9[2];
-            }
-            int n27 = n23;
-            int n28 = n22;
-            int n29 = n21;
-            int n30 = n2;
-            for (int i3 = 0; i3 < n3; ++n13, ++i3) {
-                arrn2[n13] = arrn6[n27];
-                arrn3[n13] = arrn6[n28];
-                arrn4[n13] = arrn6[n29];
-                int n31 = n27 - n20;
-                int n32 = n28 - n19;
-                int n33 = n29 - n18;
-                int[] arrn10 = arrn8[(n8 + (n30 - n2)) % n8];
-                int n34 = n20 - arrn10[0];
-                int n35 = n19 - arrn10[1];
-                int n36 = n18 - arrn10[2];
-                if (n14 == 0) {
-                    arrn5[i3] = Math.min(1 + (i3 + n2), n5);
-                }
-                int n37 = arrn[n12 + arrn5[i3]];
-                arrn10[0] = 255 & n37 >> 16;
-                arrn10[1] = 255 & n37 >> 8;
-                arrn10[2] = n37 & 255;
-                int n38 = n17 + arrn10[0];
-                int n39 = n24 + arrn10[1];
-                int n40 = n15 + arrn10[2];
-                n27 = n31 + n38;
-                n28 = n32 + n39;
-                n29 = n33 + n40;
-                n30 = (n30 + 1) % n8;
-                int[] arrn11 = arrn8[n30 % n8];
-                n20 = n34 + arrn11[0];
-                n19 = n35 + arrn11[1];
-                n18 = n36 + arrn11[2];
-                n17 = n38 - arrn11[0];
-                n24 = n39 - arrn11[1];
-                n15 = n40 - arrn11[2];
-            }
-            int n41 = n12 + n3;
-            int n42 = n14 + 1;
-            n12 = n41;
-            n14 = n42;
-        } while (true);
-        int n43 = 0;
-        do {
-            if (n43 >= n3) {
-                bitmap.setPixels(arrn, 0, n3, 0, 0, n3, n4);
-                return bitmap;
-            }
-            int n44 = 0;
-            int n45 = n3 * (-n2);
-            int n46 = -n2;
-            int n47 = 0;
-            int n48 = 0;
-            int n49 = 0;
-            int n50 = 0;
-            int n51 = 0;
-            int n52 = 0;
-            int n53 = 0;
-            int n54 = n45;
-            int n55 = 0;
-            for (int i4 = n46; i4 <= n2; ++i4) {
-                int n56 = n43 + Math.max(0, n54);
-                int[] arrn12 = arrn8[i4 + n2];
-                arrn12[0] = arrn2[n56];
-                arrn12[1] = arrn3[n56];
-                arrn12[2] = arrn4[n56];
-                int n57 = n11 - Math.abs(i4);
-                int n58 = n53 + n57 * arrn2[n56];
-                int n59 = n52 + n57 * arrn3[n56];
-                int n60 = n51 + n57 * arrn4[n56];
-                if (i4 > 0) {
-                    n47 += arrn12[0];
-                    n55 += arrn12[1];
-                    n44 += arrn12[2];
-                } else {
-                    n50 += arrn12[0];
-                    n49 += arrn12[1];
-                    n48 += arrn12[2];
-                }
-                if (i4 < n6) {
-                    n54 += n3;
-                }
-                n51 = n60;
-                n52 = n59;
-                n53 = n58;
-            }
-            int n61 = n52;
-            int n62 = n53;
-            int n63 = n51;
-            int n64 = n2;
-            int n65 = n44;
-            int n66 = n55;
-            int n67 = n47;
-            int n68 = n48;
-            int n69 = n49;
-            int n70 = n50;
-            int n71 = n43;
-            for (int i5 = 0; i5 < n4; n71 += n3, ++i5) {
-                arrn[n71] = -16777216 & arrn[n71] | arrn6[n62] << 16 | arrn6[n61] << 8 | arrn6[n63];
-                int n72 = n62 - n70;
-                int n73 = n61 - n69;
-                int n74 = n63 - n68;
-                int[] arrn13 = arrn8[(n8 + (n64 - n2)) % n8];
-                int n75 = n70 - arrn13[0];
-                int n76 = n69 - arrn13[1];
-                int n77 = n68 - arrn13[2];
-                if (n43 == 0) {
-                    arrn5[i5] = n3 * Math.min(i5 + n11, n6);
-                }
-                int n78 = n43 + arrn5[i5];
-                arrn13[0] = arrn2[n78];
-                arrn13[1] = arrn3[n78];
-                arrn13[2] = arrn4[n78];
-                int n79 = n67 + arrn13[0];
-                int n80 = n66 + arrn13[1];
-                int n81 = n65 + arrn13[2];
-                n62 = n72 + n79;
-                n61 = n73 + n80;
-                n63 = n74 + n81;
-                n64 = (n64 + 1) % n8;
-                int[] arrn14 = arrn8[n64];
-                n70 = n75 + arrn14[0];
-                n69 = n76 + arrn14[1];
-                n68 = n77 + arrn14[2];
-                n67 = n79 - arrn14[0];
-                n66 = n80 - arrn14[1];
-                n65 = n81 - arrn14[2];
-            }
-            ++n43;
-        } while (true);
-    }
-
-    public static Bitmap a(View view, int n2, int n3) {
-        Bitmap bitmap = Bitmap.createBitmap(n2, n3, Bitmap.Config.ARGB_8888);
-        view.draw(new Canvas(bitmap));
-        return bitmap;
-    }
-
-    public static Bitmap a(InputStream inputStream, int n2) {
-        BitmapFactory.Options options = new BitmapFactory.Options();
-        options.inPreferredConfig = Bitmap.Config.RGB_565;
-        options.inPurgeable = true;
-        options.inInputShareable = true;
-        options.inSampleSize = n2;
-        return BitmapFactory.decodeStream(inputStream, null, options);
-    }
-
-    /*
-     * Enabled aggressive block sorting
-     */
-    private static RemoteViews a(Context context, CharSequence charSequence, CharSequence charSequence2, CharSequence charSequence3, int n2, Bitmap bitmap, CharSequence charSequence4, boolean bl, long l2, int n3, boolean bl2) {
-        boolean bl3;
-        RemoteViews remoteViews = new RemoteViews(context.getPackageName(), n3);
-        if (bitmap != null && Build.VERSION.SDK_INT >= 16) {
-            remoteViews.setImageViewBitmap(R.id.icon, bitmap);
-        } else {
-            remoteViews.setViewVisibility(R.id.icon, 8);
-        }
-        if (charSequence != null) {
-            remoteViews.setTextViewText(R.id.title, charSequence);
-        }
-        boolean bl4 = false;
-        if (charSequence2 != null) {
-            remoteViews.setTextViewText(R.id.text, charSequence2);
-            bl4 = true;
-        }
-        if (charSequence3 != null) {
-            remoteViews.setTextViewText(R.id.info, charSequence3);
-            remoteViews.setViewVisibility(R.id.info, 0);
-            bl3 = true;
-        } else if (n2 > 0) {
-            if (n2 > context.getResources().getInteger(R.integer.status_bar_notification_info_maxnum)) {
-                remoteViews.setTextViewText(R.id.info, context.getResources().getString(R.string.status_bar_notification_info_overflow));
-            } else {
-                NumberFormat numberFormat = NumberFormat.getIntegerInstance();
-                remoteViews.setTextViewText(R.id.info, numberFormat.format(n2));
-            }
-            remoteViews.setViewVisibility(R.id.info, 0);
-            bl3 = true;
-        } else {
-            remoteViews.setViewVisibility(R.id.info, 8);
-            bl3 = bl4;
-        }
-        boolean bl5 = false;
-        if (charSequence4 != null) {
-            int n4 = Build.VERSION.SDK_INT;
-            bl5 = false;
-            if (n4 >= 16) {
-                remoteViews.setTextViewText(R.id.text, charSequence4);
-                if (charSequence2 != null) {
-                    remoteViews.setTextViewText(R.id.text2, charSequence2);
-                    remoteViews.setViewVisibility(R.id.text2, 0);
-                    bl5 = true;
-                } else {
-                    remoteViews.setViewVisibility(R.id.text2, 8);
-                    bl5 = false;
-                }
-                if (bl5 && Build.VERSION.SDK_INT >= 16) {
-                    if (bl2) {
-                        float f2 = context.getResources().getDimensionPixelSize(R.dimen.notification_subtext_size);
-                        remoteViews.setTextViewTextSize(R.id.text, 0, f2);
-                    }
-                    remoteViews.setViewPadding(R.id.line1, 0, 0, 0, 0);
-                }
-            }
-        }
-        if (l2 != 0) {
-            if (bl) {
-                remoteViews.setViewVisibility(R.id.chronometer, 0);
-                remoteViews.setLong(R.id.chronometer, "setBase", l2 + (SystemClock.elapsedRealtime() - System.currentTimeMillis()));
-                remoteViews.setBoolean(R.id.chronometer, "setStarted", true);
-            } else {
-                remoteViews.setViewVisibility(R.id.time, 0);
-                remoteViews.setLong(R.id.time, "setTime", l2);
-            }
-        }
-        int n5 = R.id.line3;
-        int n6 = bl3 ? 0 : 8;
-        remoteViews.setViewVisibility(n5, n6);
-        return remoteViews;
-    }
-
-    public static ChapterRoot a(String p0, ChapterLink[] p1, int p2) {
+    public static ChapterRoot getChapterRoot(String p0, ChapterLink[] p1, int p2) {
         BufferedReader v2 = null;
         try {
             ChapterLink v5 = p1[p2];
             ChapterRoot v0 = new ChapterRoot();
             Chapter v6 = new Chapter();
-            v2 = G(p0);
+            v2 = getBufferedReader(p0);
             int v4 = v5.getTxtLineOffset();
             for (int v3 = 0; v3 < v4; v3++) {
                 v2.readLine();
@@ -904,7 +368,7 @@ public class a {
         int n2 = (int) (Math.log(fileSize) / Math.log(1000.0));
         String string2 = "" + "kMGTPE".charAt(n2 - 1);
         Object[] arrobject = new Object[]{(double) fileSize / Math.pow(1000.0, n2), string2};
-        return String.format(Locale.CHINA,"%.1f %sB", arrobject);
+        return String.format(Locale.CHINA, "%.1f %sB", arrobject);
     }
 
     public static String a(Context context, String string2, String string3, String string4) {
@@ -987,7 +451,7 @@ public class a {
         if (n2 == 0) return string4;
         if (!h(n2)) return null;
         if (n2 != 3) return string3 + "_" + string2;
-        String[] arrstring = O(string3);
+        String[] arrstring = splitSourceId(string3);
         if (arrstring == null) return string3 + "_" + string2;
         string3 = arrstring[0];
         return string3 + "_" + string2;
@@ -1240,7 +704,7 @@ public class a {
 
     public static <T> void a(T t, String string2, String string3) {
         try {
-            File file = new File(J(string2), string3);
+            File file = new File(makeDir(string2), string3);
             if (!file.exists()) {
                 file.createNewFile();
             }
@@ -1294,7 +758,7 @@ public class a {
         if (socket == null) return;
         try {
             socket.close();
-         } catch (Exception var1_1) {
+        } catch (Exception var1_1) {
             var1_1.printStackTrace();
         }
     }
@@ -1477,29 +941,17 @@ public class a {
         return true;
     }
 
-    /*
-     * Enabled force condition propagation
-     * Lifted jumps to return sites
-     */
-    private static boolean a(byte[] arrby, byte[] arrby2) {
-        if (arrby == arrby2) {
+    private static boolean isEqualBytes(byte[] source, byte[] dest) {
+        if (source == dest) {
             return true;
         }
-        boolean bl = false;
-        if (arrby == null) return bl;
-        bl = false;
-        if (arrby2 == null) return bl;
-        int n2 = arrby.length;
-        int n3 = arrby2.length;
-        bl = false;
-        if (n2 < n3) return bl;
-        int n4 = 0;
-        while (n4 < arrby2.length) {
-            byte by = arrby[n4];
-            byte by2 = arrby2[n4];
-            bl = false;
-            if (by != by2) return bl;
-            ++n4;
+        if (source == null || dest == null || source.length < dest.length) {
+            return false;
+        }
+        for (int i = 0; i < dest.length; i++) {
+            if (source[i] != dest[i]) {
+                return false;
+            }
         }
         return true;
     }
@@ -1621,7 +1073,7 @@ public class a {
     }
 
     public static Bitmap.CompressFormat b(byte[] arrby) {
-        String string2 = g(arrby);
+        String string2 = getImageType(arrby);
         Bitmap.CompressFormat compressFormat = Bitmap.CompressFormat.JPEG;
         if (string2 != null && (string2.endsWith("png") || string2.endsWith("gif"))) {
             compressFormat = Bitmap.CompressFormat.PNG;
@@ -1656,7 +1108,7 @@ public class a {
         StringBuilder stringBuilder;
         block5:
         {
-            if (!CommonUtil.isBlank(string2)) break block5;
+            if (!CommonUtil.isWhitespace(string2)) break block5;
             return null;
         }
         try {
@@ -1673,7 +1125,7 @@ public class a {
         } catch (Exception var2_7) {
             return null;
         }
-     }
+    }
 
     public static void b(Activity activity) {
         Intent intent = new Intent("android.intent.action.GET_CONTENT").setType("image/*");
@@ -1963,15 +1415,15 @@ public class a {
         if (string3.endsWith("jpg") || string3.endsWith("jpeg") || string3.endsWith("bmp") || string3.endsWith("tif")) {
             return Bitmap.CompressFormat.JPEG;
         }
-        String string4 = W(string2);
+        String string4 = detectImageType(string2);
         if (string4.endsWith("png") || string4.endsWith("gif")) {
             return Bitmap.CompressFormat.PNG;
         }
         return Bitmap.CompressFormat.JPEG;
     }
 
-    public static String g(int n2) {
-        switch (n2) {
+    public static String g(int mode) {
+        switch (mode) {
             default: {
                 return "mix";
             }
@@ -2007,24 +1459,20 @@ public class a {
         return "zhuishuvip";
     }
 
-    private static String g(byte[] arrby) {
-        byte[] arrby2 = new byte[]{-1, -40, -1, -32};
-        byte[] arrby3 = new byte[]{-1, -40, -1, -31};
-        if (a(arrby, arrby2) || a(arrby, arrby3)) {
+    private static String getImageType(byte[] bytes) {
+        if (isEqualBytes(bytes, new byte[]{-1, -40, -1, -32}) || isEqualBytes(bytes, new byte[]{-1, -40, -1, -31})) {
             return "jpg";
         }
-        if (a(arrby, new byte[]{-119, 80, 78, 71})) {
+        if (isEqualBytes(bytes, new byte[]{-119, 80, 78, 71})) {
             return "png";
         }
-        if (a(arrby, "GIF".getBytes())) {
+        if (isEqualBytes(bytes, "GIF".getBytes())) {
             return "gif";
         }
-        if (a(arrby, "BM".getBytes())) {
+        if (isEqualBytes(bytes, "BM".getBytes())) {
             return "bmp";
         }
-        byte[] arrby4 = new byte[]{73, 73, 42};
-        byte[] arrby5 = new byte[]{77, 77, 42};
-        if (a(arrby, arrby4) || a(arrby, arrby5)) {
+        if (isEqualBytes(bytes, new byte[]{73, 73, 42}) || isEqualBytes(bytes, new byte[]{77, 77, 42})) {
             return "tif";
         }
         return null;
@@ -2176,7 +1624,7 @@ public class a {
         } catch (Exception var4_6) {
             var4_6.printStackTrace();
         }
-         return jSONObject;
+        return jSONObject;
     }
 
     public static boolean i() {
@@ -2218,7 +1666,7 @@ public class a {
         File file;
         block4:
         {
-            file = new File(J(string2), string3);
+            file = new File(makeDir(string2), string3);
             if (file.exists()) break block4;
             return null;
         }
@@ -2357,7 +1805,7 @@ public class a {
         int n2 = networkInfo.getType();
         if (n2 == 0) {
             String string2 = networkInfo.getExtraInfo();
-            if (Q(string2)) return 0;
+            if (isBlank(string2)) return 0;
             if (!string2.toLowerCase().equals("cmnet")) return 2;
             return 3;
         }
@@ -2410,7 +1858,7 @@ public class a {
 
     public static void u(Context context) {
         int n2 = DateTimeUtil.getTodayValue();
-        if (n2 != a(context, "key_all_post_open_by_day", 0)) {
+        if (n2 != getIntPref(context, "key_all_post_open_by_day", 0)) {
             b(context, "key_all_post_open_by_day", n2);
         }
     }
@@ -2431,7 +1879,7 @@ public class a {
 
     public static void v(Context context) {
         int n2 = DateTimeUtil.getTodayValue();
-        if (n2 != a(context, "key_audiobook_listen_count", 0)) {
+        if (n2 != getIntPref(context, "key_audiobook_listen_count", 0)) {
             b(context, "key_audiobook_listen_count", n2);
         }
     }

@@ -28,6 +28,7 @@ import android.widget.PopupMenu;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
+import com.clilystudio.netbook.CachePathConst;
 import com.clilystudio.netbook.IntentBuilder;
 import com.clilystudio.netbook.MyApplication;
 import com.clilystudio.netbook.R;
@@ -1592,7 +1593,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
                         }
                         com.clilystudio.netbook.util.a.a(ReaderActivity.this.mBookId, hashMap);
                     } else {
-                        hashMap = com.clilystudio.netbook.util.a.M(ReaderActivity.this.mBookId);
+                        hashMap = com.clilystudio.netbook.util.a.k(CachePathConst.ChapterKey, ReaderActivity.this.mBookId);
                         if (hashMap == null) {
                             hashMap = new HashMap<>();
                         }
@@ -1695,7 +1696,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
         if (this.mReader != null) {
             this.mReader.c();
         }
-        if (a.a(this, "key_shelf_sort", n2) != n2) {
+        if (a.getIntPref(this, "key_shelf_sort", n2) != n2) {
             n2 = 0;
         }
         if (n2 != 0 && (bookReadRecord = BookReadRecord.get(this.mBookId)) != null) {

@@ -36,7 +36,7 @@ import com.squareup.otto.Subscribe;
 import uk.me.lewisdeane.ldialogs.BaseDialog;
 
 public class ReaderWebActivity extends BaseReadActivity {
-    private int b;
+    private int mBookMode;
     private String c;
     private String d;
     private String e;
@@ -70,7 +70,7 @@ public class ReaderWebActivity extends BaseReadActivity {
         String string2 = readerWebActivity.e;
         ReaderWebPageFragment readerWebPageFragment = (ReaderWebPageFragment) readerWebActivity.getSupportFragmentManager().findFragmentByTag(ReaderWebPageFragment.class.getName());
         if (readerWebPageFragment == null) {
-            readerWebPageFragment = ReaderWebPageFragment.a(readerWebActivity.b, string2, n, string);
+            readerWebPageFragment = ReaderWebPageFragment.a(readerWebActivity.mBookMode, string2, n, string);
         }
         fragmentTransaction.replace(R.id.content_frame, readerWebPageFragment);
         try {
@@ -85,7 +85,7 @@ public class ReaderWebActivity extends BaseReadActivity {
         String string5 = readerWebActivity.e;
         ReaderWebPageFragment readerWebPageFragment = (ReaderWebPageFragment) readerWebActivity.getSupportFragmentManager().findFragmentByTag(ReaderWebPageFragment.class.getName());
         if (readerWebPageFragment == null) {
-            readerWebPageFragment = ReaderWebPageFragment.a(readerWebActivity.b, string, string5, string2, string3, string4);
+            readerWebPageFragment = ReaderWebPageFragment.a(readerWebActivity.mBookMode, string, string5, string2, string3, string4);
         }
         fragmentTransaction.replace(R.id.content_frame, readerWebPageFragment);
         try {
@@ -162,7 +162,7 @@ public class ReaderWebActivity extends BaseReadActivity {
         String string = this.e;
         ReaderWebPageFragment readerWebPageFragment = (ReaderWebPageFragment) this.getSupportFragmentManager().findFragmentByTag(ReaderWebPageFragment.class.getName());
         if (readerWebPageFragment == null) {
-            readerWebPageFragment = ReaderWebPageFragment.a(this.b, string, n);
+            readerWebPageFragment = ReaderWebPageFragment.a(this.mBookMode, string, n);
         }
         fragmentTransaction.replace(R.id.content_frame, readerWebPageFragment);
         try {
@@ -173,7 +173,7 @@ public class ReaderWebActivity extends BaseReadActivity {
     }
 
     public final void a() {
-        this.startActivity(ModeListActivity.a(this, this.c, this.d, this.b));
+        this.startActivity(ModeListActivity.a(this, this.c, this.d, this.mBookMode));
         this.overridePendingTransition(R.anim.mode_list_enter_in, R.anim.mode_list_enter_out);
     }
 
@@ -185,11 +185,11 @@ public class ReaderWebActivity extends BaseReadActivity {
         this.c = this.getIntent().getStringExtra("BOOK_ID");
         this.d = this.getIntent().getStringExtra("BOOK_TITLE");
         this.e = this.getIntent().getStringExtra("SOURCE_ID");
-        this.b = var1_1 != null ? var1_1.getInt("savedCurrentMode", 5) : this.getIntent().getIntExtra("BOOK_MODE", 5);
-        this.f = com.clilystudio.netbook.util.a.g(this.b);
+        this.mBookMode = var1_1 != null ? var1_1.getInt("savedCurrentMode", 5) : this.getIntent().getIntExtra("BOOK_MODE", 5);
+        this.f = com.clilystudio.netbook.util.a.g(this.mBookMode);
         this.g = (ReaderWebActionBar) this.findViewById(R.id.reader_web_action_bar);
         this.g.setTitle(this.d);
-        this.g.setChapterLink(com.clilystudio.netbook.util.a.P(this.f));
+        this.g.setChapterLink(com.clilystudio.netbook.util.a.getWebOptUrl(this.f));
         this.g.setOnBtnClickListener(new ReaderWebActionBar.OnBtnClickListener() {
             @Override
             public void a(int n) {
@@ -210,15 +210,15 @@ public class ReaderWebActivity extends BaseReadActivity {
                 }
             }
         });
-        SourceWebReadRecord var2_2 = SourceWebReadRecord.get(this.c, this.b);
+        SourceWebReadRecord var2_2 = SourceWebReadRecord.get(this.c, this.mBookMode);
         final int[] var3_3 = {var2_2 != null ? var2_2.getChapterIndex() : 0};
         final String[] var17_14 = {null};
-        switch (this.b) {
+        switch (this.mBookMode) {
             default: {
                 FragmentTransaction var27_4 = this.getSupportFragmentManager().beginTransaction();
                 ReaderWebPageFragment var29_6 = (ReaderWebPageFragment) this.getSupportFragmentManager().findFragmentByTag(ReaderWebPageFragment.class.getName());
                 if (var29_6 == null) {
-                    var29_6 = ReaderWebPageFragment.a(this.b, this.e);
+                    var29_6 = ReaderWebPageFragment.a(this.mBookMode, this.e);
                 }
                 var27_4.replace(R.id.content_frame, var29_6).commit();
                 break;
@@ -331,7 +331,7 @@ public class ReaderWebActivity extends BaseReadActivity {
                 }
             };
             if (com.clilystudio.netbook.util.a.g()) {
-                ((TextView) var11_8.findViewById(R.id.reader_web_opt_url)).setText(com.clilystudio.netbook.util.a.P(this.f));
+                ((TextView) var11_8.findViewById(R.id.reader_web_opt_url)).setText(com.clilystudio.netbook.util.a.getWebOptUrl(this.f));
                 new BaseDialog.Builder(this).setView(var11_8).setCancelable(false)
                         .setPositiveButton("好的", var12_9).show();
             } else {
@@ -388,6 +388,6 @@ public class ReaderWebActivity extends BaseReadActivity {
     @Override
     protected void onSaveInstanceState(Bundle bundle) {
         super.onSaveInstanceState(bundle);
-        bundle.putInt("savedCurrentMode", this.b);
+        bundle.putInt("savedCurrentMode", this.mBookMode);
     }
 }

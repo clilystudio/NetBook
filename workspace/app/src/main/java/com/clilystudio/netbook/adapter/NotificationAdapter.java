@@ -35,7 +35,11 @@ public abstract class NotificationAdapter extends BaseBookAdapter<NotificationIt
         this.h = new w(this);
         this.i = new w[]{this.e, this.f, this.g, this.h};
         this.b = layoutInflater.getContext();
-        this.a = com.clilystudio.netbook.util.a.R(this.a());
+        try {
+            this.a = Long.parseLong(this.a());
+        } catch (NumberFormatException ex) {
+            ex.printStackTrace();
+        }
     }
 
     private View a(ViewGroup viewGroup, View view, String string) {

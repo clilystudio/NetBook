@@ -27,7 +27,7 @@ public class CornerImageView extends SmartImageView {
 
     public CornerImageView(Context context) {
         super(context);
-        this.b = com.clilystudio.netbook.util.a.a(this.getContext(), 2.0f);
+        this.b = com.clilystudio.netbook.util.a.getDipSize(this.getContext(), 2.0f);
     }
 
     public CornerImageView(Context context, AttributeSet attributeSet) {
@@ -49,7 +49,7 @@ public class CornerImageView extends SmartImageView {
 
     @Override
     public void setImageURI(Uri uri) {
-        this.setImageBitmap(com.clilystudio.netbook.util.a.a(BitmapFactory.decodeFile(uri.getPath())));
+        this.setImageBitmap(com.clilystudio.netbook.util.a.getCircleBitmap(BitmapFactory.decodeFile(uri.getPath())));
     }
 
     @Override

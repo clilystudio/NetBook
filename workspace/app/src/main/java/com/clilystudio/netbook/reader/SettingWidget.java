@@ -13,6 +13,8 @@ import android.widget.SeekBar;
 
 import com.clilystudio.netbook.R;
 
+import java.util.Date;
+
 public class SettingWidget extends LinearLayout {
     private ReaderStyle a;
     private ReaderActionBar b;
@@ -105,7 +107,7 @@ public class SettingWidget extends LinearLayout {
             view.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    com.clilystudio.netbook.util.a.D(SettingWidget.this.getContext());
+                    com.clilystudio.netbook.util.a.b(SettingWidget.this.getContext(), "start_auto_read_time", new Date().getTime());
                     dc2.a();
                 }
             });

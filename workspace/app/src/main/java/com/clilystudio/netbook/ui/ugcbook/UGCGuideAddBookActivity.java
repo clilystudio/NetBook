@@ -405,14 +405,14 @@ public class UGCGuideAddBookActivity extends BaseActivity implements View.OnClic
 
             @Override
             public void afterTextChanged(Editable editable) {
-                boolean bl = !com.clilystudio.netbook.util.a.Q(editable.toString());
+                boolean bl = !com.clilystudio.netbook.util.a.isBlank(editable.toString());
                 UGCGuideAddBookActivity.c(UGCGuideAddBookActivity.this, bl);
             }
         });
         this.c.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
-                boolean bl2 = !com.clilystudio.netbook.util.a.Q(UGCGuideAddBookActivity.a(UGCGuideAddBookActivity.this).getText().toString());
+                boolean bl2 = !com.clilystudio.netbook.util.a.isBlank(UGCGuideAddBookActivity.a(UGCGuideAddBookActivity.this).getText().toString());
                 UGCGuideAddBookActivity.c(UGCGuideAddBookActivity.this, bl2);
             }
         });

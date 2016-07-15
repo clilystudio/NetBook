@@ -38,7 +38,7 @@ public final class TocManager {
         try {
             for (int var5_4 = 0; var5_4 < 2; ++var5_4) {
                 String var6_5 = TocManager.a[var5_4];
-                BufferedReader var7_6 = com.clilystudio.netbook.util.a.G(host);
+                BufferedReader var7_6 = com.clilystudio.netbook.util.a.getBufferedReader(host);
                 List<ChapterLink> var8_7 = new ArrayList<>();
                 Pattern var9_8 = Pattern.compile(var6_5);
                 int var10_9 = 0;
@@ -100,7 +100,7 @@ public final class TocManager {
         try {
             String name = getFileName(filePath);
             if (name != null) {
-                ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(new File(com.clilystudio.netbook.util.a.J(CachePathConst.TextToc), name)));
+                ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(new File(com.clilystudio.netbook.util.a.makeDir(CachePathConst.TextToc), name)));
                 objectOutputStream.writeObject(new LocalTxtToc(new File(filePath).length(), list));
                 objectOutputStream.flush();
                 objectOutputStream.close();
@@ -121,9 +121,9 @@ public final class TocManager {
         }
     }
 
-    private static List<ChapterLink> loadChapterLinkList(String string) {
+    private static List<ChapterLink> loadChapterLinkList(String host) {
         String string2;
-        BufferedReader bufferedReader = com.clilystudio.netbook.util.a.G(string);
+        BufferedReader bufferedReader = com.clilystudio.netbook.util.a.getBufferedReader(host);
         ArrayList<ChapterLink> arrayList = new ArrayList<>();
         int n = 1;
         int n2 = 0;
@@ -153,7 +153,7 @@ public final class TocManager {
             if (arrayList.size() > 0) {
                 ChapterLink chapterLink = arrayList.get(-1 + arrayList.size());
                 chapterLink.setTxtCharLength(n2 - chapterLink.getTxtCharOffset());
-                TocManager.saveToc(arrayList, string);
+                TocManager.saveToc(arrayList, host);
             }
             bufferedReader.close();
             return arrayList;
@@ -170,7 +170,7 @@ public final class TocManager {
         File file;
         String name = TocManager.getFileName(host);
         if (name != null) {
-            file = new File(com.clilystudio.netbook.util.a.J(CachePathConst.TextToc), name);
+            file = new File(com.clilystudio.netbook.util.a.makeDir(CachePathConst.TextToc), name);
             if (!file.exists()) return null;
             try {
                 ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream(file));

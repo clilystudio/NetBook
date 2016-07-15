@@ -126,7 +126,7 @@ public class AutoReaderTextView extends JustifyTextView {
     }
 
     public final void f() {
-        this.e = a.a(this.d, "auto_reader_speed", 5);
+        this.e = a.getIntPref(this.d, "auto_reader_speed", 5);
         this.j = (RelativeLayout.LayoutParams) this.getLayoutParams();
     }
 

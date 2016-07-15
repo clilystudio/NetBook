@@ -19,6 +19,7 @@ import com.clilystudio.netbook.event.ThemeChangedEvent;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
@@ -165,9 +166,9 @@ public final class ReaderStyle {
         a.b(this.m, "customer_night_theme", this.x);
         a.b(this.m, "night_mode", this.x);
         if (this.x) {
-            a.B(this.m);
+            a.b(this.m, "start_night_theme", new Date().getTime());
         } else {
-            a.C(this.m);
+            a.b(this.m, "start_night_theme", 0);
         }
         Intent intent = new Intent();
         intent.setAction("broadcastOnThemeChanged");
@@ -237,7 +238,7 @@ public final class ReaderStyle {
             display.getRealSize(point);
             n = point.y;
         } else {
-            n = a.L(this.m);
+            n = a.getWindowHeight(this.m);
         }
         int n2 = this.n.getDimensionPixelSize(R.dimen.page_body_margin);
         int n3 = n - (this.paddingVert << 1) - (this.l << 1) - (n2 << 1);
