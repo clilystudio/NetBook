@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 
 import com.clilystudio.netbook.MyApplication;
 import com.clilystudio.netbook.a_pack.BaseAsyncTask;
+import com.clilystudio.netbook.reader.txt.TocManager;
 import com.clilystudio.netbook.util.am;
 import com.clilystudio.netbook.db.BookReadRecord;
 import com.clilystudio.netbook.db.MixTocRecord;
@@ -528,7 +529,7 @@ public final class Reader {
                 boolean bl;
                 Reader.a(Reader.this, 0, Reader.Type.TOC);
                 if (Reader.this.A) {
-                    Reader.a(Reader.this, com.clilystudio.netbook.reader.txt.U.getToc(Reader.this.v));
+                    Reader.a(Reader.this, TocManager.getToc(Reader.this.v));
                     bl = false;
                 } else {
                     Reader.a(Reader.this, Reader.a(Reader.this, Reader.this.mTocId, Reader.this.mTocHost, Reader.this.mSourceId));

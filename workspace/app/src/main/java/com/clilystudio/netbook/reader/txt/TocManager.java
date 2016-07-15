@@ -19,7 +19,7 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public final class U {
+public final class TocManager {
     private static final String[] a = new String[]{"\b*(第.+章)", "(\\d{3})\\s"};
 
     /*
@@ -30,14 +30,14 @@ public final class U {
     public static Toc getToc(String host) {
         Toc var1_1 = new Toc();
         var1_1.setHost(host);
-        List<ChapterLink> var3_2 = U.d(host);
+        List<ChapterLink> var3_2 = TocManager.d(host);
         if (var3_2 != null && var3_2.size() != 0) {
             var1_1.setChapters(var3_2.toArray(new ChapterLink[var3_2.size()]));
             return var1_1;
         }
         try {
             for (int var5_4 = 0; var5_4 < 2; ++var5_4) {
-                String var6_5 = U.a[var5_4];
+                String var6_5 = TocManager.a[var5_4];
                 BufferedReader var7_6 = com.clilystudio.netbook.util.a.G(host);
                 List<ChapterLink> var8_7 = new ArrayList<>();
                 Pattern var9_8 = Pattern.compile(var6_5);
@@ -71,7 +71,7 @@ public final class U {
                     if (var8_7.size() > 0) {
                         ChapterLink var19_17 = var8_7.get(-1 + var8_7.size());
                         var19_17.setTxtCharLength(var11_10 - var19_17.getTxtCharOffset());
-                        U.a(var8_7, host);
+                        TocManager.saveToc(var8_7, host);
                     }
                     var7_6.close();
                     var3_2 = var8_7;
@@ -80,7 +80,7 @@ public final class U {
                 }
             }
             if (var3_2.size() == 0) {
-                var3_2 = U.c(host);
+                var3_2 = TocManager.loadChapterLinkList(host);
                 if (var3_2 != null && var3_2.size() > 0) {
                     var1_1.setRealChapter(false);
                 }
@@ -96,12 +96,12 @@ public final class U {
         }
     }
 
-    private static void a(List<ChapterLink> list, String string) {
+    private static void saveToc(List<ChapterLink> list, String filePath) {
         try {
-            String name = getFileName(string);
+            String name = getFileName(filePath);
             if (name != null) {
                 ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(new File(com.clilystudio.netbook.util.a.J(CachePathConst.TextToc), name)));
-                objectOutputStream.writeObject(new LocalTxtToc(new File(string).length(), list));
+                objectOutputStream.writeObject(new LocalTxtToc(new File(filePath).length(), list));
                 objectOutputStream.flush();
                 objectOutputStream.close();
             }
@@ -121,7 +121,7 @@ public final class U {
         }
     }
 
-    private static List<ChapterLink> c(String string) {
+    private static List<ChapterLink> loadChapterLinkList(String string) {
         String string2;
         BufferedReader bufferedReader = com.clilystudio.netbook.util.a.G(string);
         ArrayList<ChapterLink> arrayList = new ArrayList<>();
@@ -153,7 +153,7 @@ public final class U {
             if (arrayList.size() > 0) {
                 ChapterLink chapterLink = arrayList.get(-1 + arrayList.size());
                 chapterLink.setTxtCharLength(n2 - chapterLink.getTxtCharOffset());
-                U.a(arrayList, string);
+                TocManager.saveToc(arrayList, string);
             }
             bufferedReader.close();
             return arrayList;
@@ -168,7 +168,7 @@ public final class U {
      */
     private static List<ChapterLink> d(String host) {
         File file;
-        String name = U.getFileName(host);
+        String name = TocManager.getFileName(host);
         if (name != null) {
             file = new File(com.clilystudio.netbook.util.a.J(CachePathConst.TextToc), name);
             if (!file.exists()) return null;

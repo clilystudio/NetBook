@@ -52,7 +52,7 @@ import com.clilystudio.netbook.model.ShelfMsg;
 import com.clilystudio.netbook.model.ShelfMsgRoot;
 import com.clilystudio.netbook.model.TxtFileObject;
 import com.clilystudio.netbook.reader.dl.BookDownloadManager;
-import com.clilystudio.netbook.reader.txt.U;
+import com.clilystudio.netbook.reader.txt.TocManager;
 import com.clilystudio.netbook.ui.BookInfoActivity;
 import com.clilystudio.netbook.ui.feed.FeedIntroActivity;
 import com.clilystudio.netbook.ui.feed.FeedListActivity;
@@ -581,7 +581,7 @@ public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollL
         new Thread() {
             @Override
             public void run() {
-                String string = U.getFileName(bookFile.getFilePath());
+                String string = TocManager.getFileName(bookFile.getFilePath());
                 com.clilystudio.netbook.util.a.F(CachePathConst.TextToc + string);
             }
         }.start();

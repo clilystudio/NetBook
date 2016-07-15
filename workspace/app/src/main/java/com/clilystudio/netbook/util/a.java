@@ -271,15 +271,6 @@ public class a {
         return null;
     }
 
-    public static float H(Context context) {
-        String string = OnlineConfigAgent.getInstance().getConfigParams(context, "rate_bfd_recommend");
-        try {
-            return Float.parseFloat(string);
-        } catch (Exception var2_3) {
-            return 0.0f;
-        }
-    }
-
     public static String H(String string) {
         int n2;
         byte[] arrby = new byte[4096];
