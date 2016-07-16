@@ -254,7 +254,7 @@ public class BookDownloadService extends Service {
             protected void onPostExecute(Toc toc) {
                  super.onPostExecute(toc);
                 if (toc != null && toc.getChapters() != null) {
-                    TempUtil.a(BookDownloadService.this.mBookId, toc.get_id(), "toc", toc);
+                    TempUtil.saveToc(BookDownloadService.this.mBookId, toc.get_id(), toc);
                     BookDownloadService.a(BookDownloadService.this, toc.getChapters());
                     BookDownloadService.e(BookDownloadService.this, BookDownloadService.p(BookDownloadService.this).length);
                     BookDownloadService.f(BookDownloadService.this, BookDownloadService.h(BookDownloadService.this));

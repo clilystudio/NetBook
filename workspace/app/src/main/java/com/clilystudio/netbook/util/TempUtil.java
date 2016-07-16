@@ -451,11 +451,11 @@ public class TempUtil {
         return PreferenceManager.getDefaultSharedPreferences(context).getBoolean(key, defValue);
     }
 
-    public static boolean saveChapter(String string2, String tocId, String link, Chapter chapter) {
+    public static boolean saveChapter(String bookId, String tocId, String link, Chapter chapter) {
         if (link == null) {
             return false;
         }
-        String name = "/ZhuiShuShenQi/Chapter" + File.separator + string2 + File.separator + tocId;
+        String name = "/ZhuiShuShenQi/Chapter" + File.separator + bookId + File.separator + tocId;
         File file = new File(CachePathConst.RootPath, name);
         try {
             if (!file.exists()) {
@@ -471,17 +471,17 @@ public class TempUtil {
         }
     }
 
-    public static boolean a(String string2, String string3, String string4, Toc toc) {
+    public static boolean saveToc(String bookId, String tocId, Toc toc) {
         if (!isMounted()) {
             return false;
         }
-        String string5 = "/ZhuiShuShenQi/Chapter" + File.separator + string2 + File.separator + string3;
-        File file = new File(CachePathConst.RootPath, string5);
+        String name = "/ZhuiShuShenQi/Chapter" + File.separator + bookId + File.separator + tocId;
+        File file = new File(CachePathConst.RootPath, name);
         try {
             if (!file.exists()) {
                 file.mkdirs();
             }
-            ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(new File(file, string4)));
+            ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(new File(file, "toc")));
             objectOutputStream.writeObject(toc);
             objectOutputStream.close();
             return true;
@@ -491,10 +491,6 @@ public class TempUtil {
         }
     }
 
-    /*
-     * Enabled force condition propagation
-     * Lifted jumps to return sites
-     */
     public static boolean a(Collection<String> collection, String string2) {
         if (collection == null) {
             return false;

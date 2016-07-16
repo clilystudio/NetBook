@@ -290,7 +290,7 @@ public final class Reader {
     }
 
     static /* synthetic */ void b(Reader reader, Toc toc) {
-        TempUtil.a(reader.mBookId, reader.mTocId, "toc", toc);
+        TempUtil.saveToc(reader.mBookId, reader.mTocId, toc);
     }
 
     static /* synthetic */ ArrayList c(Reader reader) {
