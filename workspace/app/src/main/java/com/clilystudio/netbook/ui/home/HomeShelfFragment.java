@@ -432,7 +432,7 @@ public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollL
                     }
                     new FeedIntroDialog().show(fragmentTransaction, "dialog_feed_intro");
                 }
-                TempUtil.b(homeShelfFragment.getActivity(), "feed_intro_dialog", false);
+                TempUtil.putBoolPref(homeShelfFragment.getActivity(), "feed_intro_dialog", false);
             }
         }
     }
@@ -802,8 +802,8 @@ public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollL
         for (int v11 = 0; v11 < v8.size(); v11++) {
             v22[v11] = v8.get(v11).getBookId();
         }
-        TempUtil.b(v22);
-        TempUtil.b(getActivity(), "unsync_bookrecord_first", 1);
+        TempUtil.syncBookShelf(v22, BookSyncRecord.BookModifyType.FEED_ADD);
+        TempUtil.putIntPref(getActivity(), "unsync_bookrecord_first", 1);
         return v6;
     }
 

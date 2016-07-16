@@ -2,6 +2,7 @@ package com.clilystudio.netbook.reader;
 
 import android.annotation.TargetApi;
 import android.content.DialogInterface;
+import android.content.res.TypedArray;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.view.ContextThemeWrapper;
@@ -129,7 +130,7 @@ public class ReaderTocDialog extends DialogFragment implements AdapterView.OnIte
                 textView.setText(text);
                 if (n2 == ReaderTocDialog.b(ReaderTocDialog.this).k()) {
                     imageView.setImageLevel(1);
-                    textView.setTextColor(TempUtil.b(ReaderTocDialog.this.getActivity(), R.attr.dialog_text_color_highlight, ReaderTocDialog.a(ReaderTocDialog.this)));
+                    textView.setTextColor(getAttrColor(R.attr.dialog_text_color_highlight));
                 } else {
                     String string = chapterLink.getLink();
                     if (ReaderTocDialog.c(ReaderTocDialog.this) != null && ReaderTocDialog.c(ReaderTocDialog.this).contains(string)) {
@@ -137,7 +138,7 @@ public class ReaderTocDialog extends DialogFragment implements AdapterView.OnIte
                     } else {
                         imageView.setImageLevel(0);
                     }
-                    textView.setTextColor(TempUtil.b(ReaderTocDialog.this.getActivity(), R.attr.dialog_text_color, ReaderTocDialog.a(ReaderTocDialog.this)));
+                    textView.setTextColor(getAttrColor(R.attr.dialog_text_color));
                 }
                 if (!ReaderTocDialog.a(ReaderTocDialog.this, chapterLink)) {
                     view2.findViewById(R.id.iv_readable).setVisibility(View.VISIBLE);
@@ -153,6 +154,13 @@ public class ReaderTocDialog extends DialogFragment implements AdapterView.OnIte
             this.b.setFastScrollAlwaysVisible(true);
         }
         return view;
+    }
+
+    private int getAttrColor(int attr) {
+        TypedArray typedArray = ReaderTocDialog.this.getActivity().obtainStyledAttributes(ReaderTocDialog.this.i, new int[]{attr});
+        int color = typedArray.getColor(0, 0);
+        typedArray.recycle();
+        return color;
     }
 
     @Override

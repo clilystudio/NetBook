@@ -32,7 +32,7 @@ public class SettingCheckBox extends SwitchCompat {
         this.setOnCheckedChangeListener(new OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                TempUtil.b(getContext(), SettingCheckBox.a(SettingCheckBox.this), isChecked);
+                TempUtil.putBoolPref(getContext(), SettingCheckBox.a(SettingCheckBox.this), isChecked);
                 if (isChecked) {
                     buttonView.setContentDescription("已开启");
                 } else {

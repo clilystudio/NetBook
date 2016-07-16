@@ -132,7 +132,7 @@ public class BookInfoActivity extends BaseActivity implements View.OnClickListen
 
     static /* synthetic */ void c(BookInfoActivity bookInfoActivity, boolean bl) {
         if (bl) {
-            TempUtil.b(bookInfoActivity, "add_update_notify_login", false);
+            TempUtil.putBoolPref(bookInfoActivity, "add_update_notify_login", false);
         }
     }
 

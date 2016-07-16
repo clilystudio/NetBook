@@ -1,12 +1,8 @@
 package com.clilystudio.netbook.util;
 
-import android.app.Activity;
-import android.content.ActivityNotFoundException;
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
-import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Paint;
@@ -60,9 +56,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.io.UnsupportedEncodingException;
-import java.lang.reflect.Array;
 import java.net.URLDecoder;
-import java.security.MessageDigest;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -513,156 +507,52 @@ public class TempUtil {
         return dst;
     }
 
-    public static int b(Context context, int n2, int n3) {
-        TypedArray typedArray = context.obtainStyledAttributes(n3, new int[]{n2});
-        int n4 = typedArray.getColor(0, 0);
-        typedArray.recycle();
-        return n4;
-    }
-
-    /*
-     * Enabled aggressive block sorting
-     * Lifted jumps to return sites
-     */
-    public static int b(Context context, String string2, String string3) {
-        int n2 = 0;
-        if (context == null) return n2;
-        boolean bl = TextUtils.isEmpty(string2);
-        n2 = 0;
-        if (bl) return n2;
-        boolean bl2 = TextUtils.isEmpty(string3);
-        n2 = 0;
-        if (bl2) {
-            return n2;
-        }
-        String string4 = context.getPackageName();
-        boolean bl3 = TextUtils.isEmpty(string4);
-        n2 = 0;
-        if (bl3) return n2;
-        n2 = context.getResources().getIdentifier(string3, string2, string4);
-        if (n2 <= 0) {
-            n2 = context.getResources().getIdentifier(string3.toLowerCase(), string2, string4);
-        }
-        if (n2 > 0) return n2;
-        System.err.println("failed to parse " + string2 + " resource \"" + string3 + "\"");
-        return n2;
-    }
-
-    public static int b(File file) {
-        File[] arrfile = file.listFiles();
-        int n2 = 0;
-        if (arrfile != null) {
-            int n3 = arrfile.length;
-            int n4 = arrfile.length;
-            n2 = n3;
-            for (File file2 : arrfile) {
-                if (!file2.isDirectory()) continue;
-                n2 = -1 + (n2 + b(file2));
-            }
-        }
-        return n2;
-    }
-
-    public static int b(String string2, int n2) {
+    public static int parseInt(String string2) {
         try {
-            int n3 = Integer.parseInt(string2);
-            return n3;
-        } catch (Exception var2_3) {
-            var2_3.printStackTrace();
+            return Integer.parseInt(string2);
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
             return 0;
         }
     }
 
-    private static int b(String string2, int n2, String string3) {
-        while (n2 < string2.length() && string3.indexOf(string2.charAt(n2)) == -1) {
-            ++n2;
-        }
-        return n2;
-    }
-
-    public static Bitmap.CompressFormat b(byte[] arrby) {
-        String string2 = getImageType(arrby);
-        Bitmap.CompressFormat compressFormat = Bitmap.CompressFormat.JPEG;
-        if (string2 != null && (string2.endsWith("png") || string2.endsWith("gif"))) {
-            compressFormat = Bitmap.CompressFormat.PNG;
-        }
-        return compressFormat;
-    }
-
-    public static Serializable b(String var0, String var1_1, String var2_2) {
+    public static Serializable loadObject(String bookId, String tocId, String name) {
+        ObjectInputStream ois = null;
         try {
-            if (var2_2 != null && isMounted()) {
-                String var4_4 = "/ZhuiShuShenQi/Chapter" + File.separator + var0 + File.separator + var1_1;
-                File var5_5 = new File(CachePathConst.RootPath, var4_4);
-                if (var5_5.exists()) {
-                    File var14_6 = new File(var5_5, var2_2);
-                    if (var14_6.exists()) {
-                        FileInputStream var7_7 = new FileInputStream(var14_6);
-                        ObjectInputStream var11_8 = new ObjectInputStream(var7_7);
-                        Serializable var15_9 = (Serializable) var11_8.readObject();
-                        var11_8.close();
-                        var7_7.close();
-                        return var15_9;
+            if (name != null && isMounted()) {
+                File dir = new File(CachePathConst.RootPath, "/ZhuiShuShenQi/Chapter" + File.separator + bookId + File.separator + tocId);
+                if (dir.exists()) {
+                    File file = new File(dir, name);
+                    if (file.exists()) {
+                        ois = new ObjectInputStream(new FileInputStream(file));
+                        return (Serializable) ois.readObject();
                     }
                 }
             }
-        } catch (Exception e1) {
+        } catch (IOException | ClassNotFoundException e1) {
             e1.printStackTrace();
+        } finally {
+            if (ois != null) {
+                try {
+                    ois.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
         }
         return null;
     }
 
-    public static String b(String string2) {
-        StringBuilder stringBuilder;
-        block5:
-        {
-            if (!CommonUtil.isWhitespace(string2)) break block5;
-            return null;
-        }
-        try {
-            MessageDigest messageDigest = MessageDigest.getInstance("SHA-1");
-            messageDigest.update(string2.getBytes("UTF-8"));
-            byte[] arrby = messageDigest.digest();
-            stringBuilder = new StringBuilder();
-            for (byte anArrby : arrby) {
-                Object[] arrobject = new Object[]{Byte.valueOf(anArrby)};
-                stringBuilder.append(String.format("%02x", arrobject));
-            }
-            String string3 = stringBuilder.toString();
-            return string3;
-        } catch (Exception var2_7) {
-            return null;
-        }
-    }
-
-    public static void b(Activity activity) {
-        Intent intent = new Intent("android.intent.action.GET_CONTENT").setType("image/*");
-        try {
-            activity.startActivityForResult(intent, 9162);
-        } catch (ActivityNotFoundException var2_2) {
-            ToastUtil.showShortToast(activity, "crop pick error");
-        }
-    }
-
-    public static void b(Context context, String string2, float f2) {
+    public static void putIntPref(Context context, String key, int value) {
         if (context == null) {
             return;
         }
         SharedPreferences.Editor editor = getEditor(context);
-        editor.putFloat(string2, f2);
+        editor.putInt(key, value);
         editor.apply();
     }
 
-    public static void b(Context context, String string2, int n2) {
-        if (context == null) {
-            return;
-        }
-        SharedPreferences.Editor editor = getEditor(context);
-        editor.putInt(string2, n2);
-        editor.apply();
-    }
-
-    public static void b(Context context, String key, long value) {
+    public static void putLongPref(Context context, String key, long value) {
         if (context == null) {
             return;
         }
@@ -671,42 +561,22 @@ public class TempUtil {
         editor.apply();
     }
 
-    public static void b(Context context, String string2, String string3, String string4) {
-        cipherBookId = string2;
-        cipherTocId = string3;
-        cipherCheckSum = string4;
-        e(context, "CIPHER_BOOK_ID", string2);
-        e(context, "CIPHER_TOC_ID", string3);
-        e(context, "CIPHER_CHECKSUM", string4);
+    public static void initCipher(Context context, String cipherBookId, String cipherTocId, String cipherCheckSum) {
+        TempUtil.cipherBookId = cipherBookId;
+        TempUtil.cipherTocId = cipherTocId;
+        TempUtil.cipherCheckSum = cipherCheckSum;
+        e(context, "CIPHER_BOOK_ID", cipherBookId);
+        e(context, "CIPHER_TOC_ID", cipherTocId);
+        e(context, "CIPHER_CHECKSUM", cipherCheckSum);
     }
 
-    public static void b(Context context, String string2, boolean bl) {
+    public static void putBoolPref(Context context, String key, boolean value) {
         if (context == null) {
             return;
         }
         SharedPreferences.Editor editor = getEditor(context);
-        editor.putBoolean(string2, bl);
+        editor.putBoolean(key, value);
         editor.apply();
-    }
-
-    /*
-     * Enabled force condition propagation
-     * Lifted jumps to return sites
-     */
-    public static void b(Closeable closeable) {
-        if (closeable == null) return;
-        try {
-            closeable.close();
-            return;
-        } catch (RuntimeException var2_1) {
-            throw var2_1;
-        } catch (Exception var1_2) {
-            return;
-        }
-    }
-
-    public static void b(String[] arrstring) {
-        syncBookShelf(arrstring, BookSyncRecord.BookModifyType.FEED_ADD);
     }
 
     public static int c(Context context, String key, int defValue) {
@@ -808,10 +678,6 @@ public class TempUtil {
         return 4;
     }
 
-    public static int d(Context context, String string2) {
-        return b(context, "drawable", string2);
-    }
-
     public static void d(Context context, String string2, long l2) {
         if (context == null) {
             return;
@@ -842,10 +708,6 @@ public class TempUtil {
             case 4:
         }
         return 200;
-    }
-
-    public static int e(Context context, String string2) {
-        return b(context, "string", string2);
     }
 
     public static int e(String string2) {
@@ -893,10 +755,6 @@ public class TempUtil {
         editor.apply();
     }
 
-    public static int f(Context context, String string2) {
-        return b(context, "layout", string2);
-    }
-
     public static String f(Context context, String string2, String string3) {
         return context.getSharedPreferences("mistat", 0).getString(string2, string3);
     }
@@ -909,10 +767,6 @@ public class TempUtil {
 
     public static boolean f(int n2) {
         return n2 == 4 || n2 == 1 || n2 == 2;
-    }
-
-    public static int g(Context context, String string2) {
-        return b(context, "id", string2);
     }
 
     public static Bitmap.CompressFormat g(String string2) {
@@ -1358,7 +1212,7 @@ public class TempUtil {
     public static void u(Context context) {
         int n2 = DateTimeUtil.getTodayValue();
         if (n2 != getIntPref(context, "key_all_post_open_by_day", 0)) {
-            b(context, "key_all_post_open_by_day", n2);
+            putIntPref(context, "key_all_post_open_by_day", n2);
         }
     }
 
@@ -1375,7 +1229,7 @@ public class TempUtil {
     public static void v(Context context) {
         int n2 = DateTimeUtil.getTodayValue();
         if (n2 != getIntPref(context, "key_audiobook_listen_count", 0)) {
-            b(context, "key_audiobook_listen_count", n2);
+            putIntPref(context, "key_audiobook_listen_count", n2);
         }
     }
 

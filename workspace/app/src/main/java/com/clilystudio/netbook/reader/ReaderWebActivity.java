@@ -97,8 +97,8 @@ public class ReaderWebActivity extends BaseReadActivity {
     }
 
     static /* synthetic */ void b(ReaderWebActivity readerWebActivity) {
-        TempUtil.b(readerWebActivity, readerWebActivity.f, true);
-        TempUtil.b(readerWebActivity, readerWebActivity.f + "source_web_alert", false);
+        TempUtil.putBoolPref(readerWebActivity, readerWebActivity.f, true);
+        TempUtil.putBoolPref(readerWebActivity, readerWebActivity.f + "source_web_alert", false);
         if (SourceRecord.get(readerWebActivity.c, readerWebActivity.f) == null) {
             SourceRecord.create(readerWebActivity.c, readerWebActivity.f, null);
         }

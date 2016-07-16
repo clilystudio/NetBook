@@ -53,7 +53,7 @@ public class SettingsActivity extends BaseActivity implements View.OnClickListen
     static /* synthetic */ void a(SettingsActivity settingsActivity, int n, String string) {
         if (settingsActivity.a != n) {
             settingsActivity.a = n;
-            TempUtil.b(settingsActivity, "key_shelf_sort", settingsActivity.a);
+            TempUtil.putIntPref(settingsActivity, "key_shelf_sort", settingsActivity.a);
             ((TextView) settingsActivity.findViewById(R.id.settings_shelf_sort_value)).setText(string);
             BusProvider.getInstance().post(new BookReadEvent());
         }
@@ -78,7 +78,7 @@ public class SettingsActivity extends BaseActivity implements View.OnClickListen
         MyApplication.getInstance().removeProperties("account.token", "user.id", "user.name", "user.avatar", "user.lv", "user.gender");
         TempUtil.e(settingsActivity, "pref_new_unimp_notif_time", "0");
         TempUtil.e(settingsActivity, "pref_new_imp_notif_time", "0");
-        TempUtil.b(settingsActivity, "remove_ad_duration", 0);
+        TempUtil.putIntPref(settingsActivity, "remove_ad_duration", 0);
         settingsActivity.finish();
         BusProvider.getInstance().post(new LogoutEvent());
     }
@@ -146,7 +146,7 @@ public class SettingsActivity extends BaseActivity implements View.OnClickListen
         switchCompat.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                TempUtil.b(SettingsActivity.this, "update_notice_key", isChecked);
+                TempUtil.putBoolPref(SettingsActivity.this, "update_notice_key", isChecked);
                 SettingsActivity.a(SettingsActivity.this, isChecked);
                 SettingsActivity.a(switchCompat, isChecked);
             }
@@ -154,7 +154,7 @@ public class SettingsActivity extends BaseActivity implements View.OnClickListen
         switchCompat2.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                TempUtil.b(SettingsActivity.this, "save_bandwidth", isChecked);
+                TempUtil.putBoolPref(SettingsActivity.this, "save_bandwidth", isChecked);
                 SettingsActivity.a(switchCompat2, isChecked);
             }
         });

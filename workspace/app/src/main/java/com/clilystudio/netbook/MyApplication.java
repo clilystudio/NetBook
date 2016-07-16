@@ -243,7 +243,7 @@ public class MyApplication extends Application {
         ImageLoaderConfiguration configuration = ImageLoaderConfiguration.createDefault(this);
         ImageLoader.getInstance().init(configuration);
         if (PreferenceManager.getDefaultSharedPreferences(this).getLong("PREF_FIRST_LAUNCH_TIME", 0L) == 0L) {
-            TempUtil.b(this, "PREF_FIRST_LAUNCH_TIME", Calendar.getInstance().getTimeInMillis());
+            TempUtil.putLongPref(this, "PREF_FIRST_LAUNCH_TIME", Calendar.getInstance().getTimeInMillis());
         }
     }
 

@@ -143,7 +143,7 @@ public class CommonUtil {
         user.setId(userId);
         user.setNickname(myApplication.getProperty("user.name"));
         user.setAvatar(myApplication.getProperty("user.avatar"));
-        user.setLv(TempUtil.b(myApplication.getProperty("user.lv"), 0));
+        user.setLv(TempUtil.parseInt(myApplication.getProperty("user.lv")));
         user.setGender(myApplication.getProperty("user.gender"));
         account.setOk(true);
         account.setToken(token);
@@ -244,7 +244,7 @@ public class CommonUtil {
     }
 
     public static boolean isFirstLaunch(Context context) {
-        TempUtil.b(context, "is_first_launch_app", false);
+        TempUtil.putBoolPref(context, "is_first_launch_app", false);
         return TempUtil.getBoolPref(context, "is_first_launch_app", true);
     }
 }

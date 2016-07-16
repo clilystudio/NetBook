@@ -55,7 +55,7 @@ public class ReaderOptionActivity extends BaseActivity {
                     if (ReaderOptionActivity.b(readerOptionActivity) != finalI) {
                         ReaderOptionActivity.a(readerOptionActivity, finalI);
                         ReaderOptionActivity.d(readerOptionActivity).setText(ReaderOptionActivity.c(readerOptionActivity)[finalI]);
-                        TempUtil.b(readerOptionActivity, "reader_screen_off_time", ReaderOptionActivity.e(readerOptionActivity)[finalI]);
+                        TempUtil.putIntPref(readerOptionActivity, "reader_screen_off_time", ReaderOptionActivity.e(readerOptionActivity)[finalI]);
                     }
 
                 }
@@ -184,7 +184,7 @@ public class ReaderOptionActivity extends BaseActivity {
                     var15_15.setCheckListener(new CompoundButton.OnCheckedChangeListener() {
                         @Override
                         public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                            TempUtil.b(ReaderOptionActivity.this, "key_enable_imersive_mode", isChecked);
+                            TempUtil.putBoolPref(ReaderOptionActivity.this, "key_enable_imersive_mode", isChecked);
                         }
                     });
                 }

@@ -383,7 +383,7 @@ public final class ReaderTocManager {
                         link = arrstring[0];
                     }
                 }
-                chapterRoot = this.b(TempUtil.b(link, 0));
+                chapterRoot = this.b(TempUtil.parseInt(link));
                 break;
             }
             case 7: {
@@ -411,7 +411,7 @@ public final class ReaderTocManager {
         BookTopRoot.Favorite bookTopRoot$Favorite;
         BookTopRoot bookTopRoot = ApiServiceProvider.getApiService().u();
         if (bookTopRoot != null && (bookTopRoot$Favorite = bookTopRoot.getFavorite()) != null) {
-            TempUtil.b(MyApplication.getInstance(), bookTopRoot$Favorite.getBookID(), bookTopRoot$Favorite.getTocID(), bookTopRoot$Favorite.getChecksum());
+            TempUtil.initCipher(MyApplication.getInstance(), bookTopRoot$Favorite.getBookID(), bookTopRoot$Favorite.getTocID(), bookTopRoot$Favorite.getChecksum());
         }
         chapterRoot = this.c(chapterLink.getLink());
         BookInfoUtil.h = false;

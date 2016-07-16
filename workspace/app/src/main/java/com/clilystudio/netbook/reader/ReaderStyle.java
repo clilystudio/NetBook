@@ -163,12 +163,12 @@ public final class ReaderStyle {
      * Enabled aggressive block sorting
      */
     private void p() {
-        TempUtil.b(this.m, "customer_night_theme", this.x);
-        TempUtil.b(this.m, "night_mode", this.x);
+        TempUtil.putBoolPref(this.m, "customer_night_theme", this.x);
+        TempUtil.putBoolPref(this.m, "night_mode", this.x);
         if (this.x) {
-            TempUtil.b(this.m, "start_night_theme", new Date().getTime());
+            TempUtil.putLongPref(this.m, "start_night_theme", new Date().getTime());
         } else {
-            TempUtil.b(this.m, "start_night_theme", 0);
+            TempUtil.putIntPref(this.m, "start_night_theme", 0);
         }
         Intent intent = new Intent();
         intent.setAction("broadcastOnThemeChanged");

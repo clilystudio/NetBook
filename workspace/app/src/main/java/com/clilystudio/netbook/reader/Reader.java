@@ -310,7 +310,7 @@ public final class Reader {
     }
 
     static /* synthetic */ Toc k(Reader reader) {
-        return (Toc) TempUtil.b(reader.mBookId, reader.mTocId, "toc");
+        return (Toc) TempUtil.loadObject(reader.mBookId, reader.mTocId, "toc");
     }
 
     static /* synthetic */ Toc l(Reader reader) {
@@ -502,7 +502,7 @@ public final class Reader {
             n2 = -1 + arrchapterLink.length;
         }
         ChapterLink chapterLink = arrchapterLink[n2];
-        if (this.mBookId != null && this.mTocId != null && chapterLink != null && chapterLink.getLink() != null && (chapter = (Chapter) TempUtil.b(this.mBookId, this.mTocId, CommonUtil.encodeUrl(chapterLink.getLink()))) != null) {
+        if (this.mBookId != null && this.mTocId != null && chapterLink != null && chapterLink.getLink() != null && (chapter = (Chapter) TempUtil.loadObject(this.mBookId, this.mTocId, CommonUtil.encodeUrl(chapterLink.getLink()))) != null) {
             ReaderChapter readerChapter4 = this.a(chapterLink, n2);
             readerChapter4.setBody(chapter.getBody());
             readerChapter4.setCpContent(chapter.getContent());

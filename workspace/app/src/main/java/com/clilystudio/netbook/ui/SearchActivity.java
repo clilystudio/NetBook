@@ -515,7 +515,7 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
             });
             return;
         }
-        TempUtil.b(this, "search_hot_words_date", 1);
+        TempUtil.putIntPref(this, "search_hot_words_date", 1);
         new BaseAsyncTask<String, Void, HotKeywordResult>() {
 
             @Override

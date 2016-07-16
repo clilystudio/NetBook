@@ -52,7 +52,7 @@ public class FeedSettingActivity extends BaseActivity {
         String string = feedSettingActivity.getString(R.string.book_feed_setting_limit);
         Object[] arrobject = new Object[]{feedSettingActivity.b};
         textView.setText(String.format(string, arrobject));
-        TempUtil.b(feedSettingActivity, "feed_chapter_count", feedSettingActivity.b);
+        TempUtil.putIntPref(feedSettingActivity, "feed_chapter_count", feedSettingActivity.b);
         BusProvider.getInstance().post(new FeedSettingChangedEvent());
     }
 

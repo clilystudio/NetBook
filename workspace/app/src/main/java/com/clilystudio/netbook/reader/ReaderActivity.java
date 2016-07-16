@@ -1483,7 +1483,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
                         } else {
                             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
                         }
-                        TempUtil.b(ReaderActivity.this, "reader_orientation", mIsPortrait);
+                        TempUtil.putBoolPref(ReaderActivity.this, "reader_orientation", mIsPortrait);
                         break;
                     case R.id.reader_download:
                         ReaderActivity.this.s.setVisibility(View.GONE);

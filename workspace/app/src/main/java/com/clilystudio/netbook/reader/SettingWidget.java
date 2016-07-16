@@ -108,7 +108,7 @@ public class SettingWidget extends LinearLayout {
             view.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    TempUtil.b(SettingWidget.this.getContext(), "start_auto_read_time", new Date().getTime());
+                    TempUtil.putLongPref(SettingWidget.this.getContext(), "start_auto_read_time", new Date().getTime());
                     dc2.a();
                 }
             });

@@ -98,25 +98,41 @@ public class LocalChapterListActivity extends BaseActivity {
         ArrayList<TocDownloadSummary> arrayList2 = new ArrayList<>();
         for (String string : arrayList) {
             if (string.contains("MIX_TOC_ID") || string.contains("_")) continue;
-            Toc toc = (Toc) TempUtil.b(localChapterListActivity.g, string, "toc");
+            Toc toc = (Toc) TempUtil.loadObject(localChapterListActivity.g, string, "toc");
             String string2 = localChapterListActivity.g;
             String string3 = "/ZhuiShuShenQi/Chapter" + File.separator + string2 + File.separator + string;
-            int n2 = TempUtil.b(new File(CachePathConst.RootPath, string3));
+            int subFileCount = getSubFileCount(new File(CachePathConst.RootPath, string3));
             if (toc != null) {
-                --n2;
+                --subFileCount;
             }
-            if (n2 <= 0) continue;
-            TocDownloadSummary tocDownloadSummary = new TocDownloadSummary();
-            tocDownloadSummary.setTocId(string);
-            tocDownloadSummary.setCount(n2);
-            if (toc != null) {
-                tocDownloadSummary.setHostName(toc.getHost());
-            } else {
-                tocDownloadSummary.setHostName("\u672a\u77e5\u6765\u6e90");
+            if (subFileCount > 0) {
+                TocDownloadSummary tocDownloadSummary = new TocDownloadSummary();
+                tocDownloadSummary.setTocId(string);
+                tocDownloadSummary.setCount(subFileCount);
+                if (toc != null) {
+                    tocDownloadSummary.setHostName(toc.getHost());
+                } else {
+                    tocDownloadSummary.setHostName("未知来源");
+                }
+                arrayList2.add(tocDownloadSummary);
             }
-            arrayList2.add(tocDownloadSummary);
         }
         return arrayList2;
+    }
+
+    private static int getSubFileCount(File file) {
+        File[] arrfile = file.listFiles();
+        int n2 = 0;
+        if (arrfile != null) {
+            n2 = arrfile.length;
+            for (File file2 : arrfile) {
+                if (file2.isDirectory()) {
+                    n2--;
+                    n2 += getSubFileCount(file2);
+                }
+            }
+        }
+        return n2;
     }
 
     private void b() {

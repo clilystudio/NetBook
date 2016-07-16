@@ -12,15 +12,14 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.clilystudio.netbook.IntentBuilder;
 import com.clilystudio.netbook.MyApplication;
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.a_pack.BaseAsyncTask;
 import com.clilystudio.netbook.a_pack.BaseLoadingTask;
-import com.clilystudio.netbook.util.CommonUtil;
-import com.clilystudio.netbook.IntentBuilder;
 import com.clilystudio.netbook.api.ApiServiceProvider;
-import com.clilystudio.netbook.event.UserInfoChangedEvent;
 import com.clilystudio.netbook.event.BusProvider;
+import com.clilystudio.netbook.event.UserInfoChangedEvent;
 import com.clilystudio.netbook.model.Account;
 import com.clilystudio.netbook.model.ChangeGenderRoot;
 import com.clilystudio.netbook.model.ChangeNickNameRoot;
@@ -30,6 +29,7 @@ import com.clilystudio.netbook.model.UserInfo;
 import com.clilystudio.netbook.ui.BaseActivity;
 import com.clilystudio.netbook.ui.CircularSmartImageView;
 import com.clilystudio.netbook.ui.CropPhotoActivity;
+import com.clilystudio.netbook.util.CommonUtil;
 import com.clilystudio.netbook.util.TempUtil;
 import com.clilystudio.netbook.util.ToastUtil;
 
@@ -91,7 +91,7 @@ public class ModifyUserInfoActivity extends BaseActivity implements View.OnClick
                         if (account != null) {
                             return ApiServiceProvider.getApiService().v(account.getToken(), var1[0]);
                         }
-                        return  null;
+                        return null;
                     }
 
                     @Override
@@ -154,7 +154,7 @@ public class ModifyUserInfoActivity extends BaseActivity implements View.OnClick
             {
                 if (n2 == -1) {
                     final Uri output = intent.getParcelableExtra("output");
-                    new BaseLoadingTask<String, Root>(ModifyUserInfoActivity.this, "正在上传图片..."){
+                    new BaseLoadingTask<String, Root>(ModifyUserInfoActivity.this, "正在上传图片...") {
 
                         @Override
                         public Root a(String... var1) {
@@ -164,10 +164,10 @@ public class ModifyUserInfoActivity extends BaseActivity implements View.OnClick
 
                         @Override
                         public void a(Root root) {
-                             if (root != null && root.isOk()) {
+                            if (root != null && root.isOk()) {
                                 ToastUtil.showShortToast(ModifyUserInfoActivity.this, "修改成功");
                                 BusProvider.getInstance().post(new UserInfoChangedEvent());
-                                 ModifyUserInfoActivity.this.mPortrait.setImageURI(output);
+                                ModifyUserInfoActivity.this.mPortrait.setImageURI(output);
                                 return;
                             }
                             ToastUtil.showShortToast(ModifyUserInfoActivity.this, "上传失败");
@@ -213,13 +213,13 @@ public class ModifyUserInfoActivity extends BaseActivity implements View.OnClick
                     h3.setPositiveButton("知道了", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            TempUtil.b(ModifyUserInfoActivity.this);
-                            TempUtil.b(ModifyUserInfoActivity.this, "EXTRA_CHANGE_AVATAR", true);
+                            startActivityForResult(new Intent("android.intent.action.GET_CONTENT").setType("image/*"), 9162);
+                            TempUtil.putBoolPref(ModifyUserInfoActivity.this, "EXTRA_CHANGE_AVATAR", true);
                         }
                     }).show();
                     return;
                 }
-                TempUtil.b(this);
+                startActivityForResult(new Intent("android.intent.action.GET_CONTENT").setType("image/*"), 9162);
                 return;
             }
             case R.id.name_section: {
@@ -229,7 +229,7 @@ public class ModifyUserInfoActivity extends BaseActivity implements View.OnClick
                     ToastUtil.showShortToast(this, "暂时无法修改");
                 }
                 if (l3 >= 2592000000L || this.b == -2) {
-                    View view2 = this.getLayoutInflater().inflate(R.layout.dialog_user_rename, (ViewGroup)getWindow().getDecorView(), false);
+                    View view2 = this.getLayoutInflater().inflate(R.layout.dialog_user_rename, (ViewGroup) getWindow().getDecorView(), false);
                     final EditText editText = (EditText) view2.findViewById(R.id.name_field);
                     editText.setText(this.a.getNickname());
                     editText.setSelection(this.a.getNickname().length());
@@ -239,7 +239,7 @@ public class ModifyUserInfoActivity extends BaseActivity implements View.OnClick
 
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            BaseLoadingTask<String, ChangeNickNameRoot> s2 = new BaseLoadingTask<String, ChangeNickNameRoot>(ModifyUserInfoActivity.this, R.string.loading){
+                            BaseLoadingTask<String, ChangeNickNameRoot> s2 = new BaseLoadingTask<String, ChangeNickNameRoot>(ModifyUserInfoActivity.this, R.string.loading) {
                                 String a;
 
                                 @Override
@@ -281,14 +281,14 @@ public class ModifyUserInfoActivity extends BaseActivity implements View.OnClick
                 long l4 = 2592000000L - l3;
                 if (l4 >= 86400000) {
                     int n2 = (int) (l4 / 86400000);
-                    ToastUtil.showShortToast(this, String.format(Locale.CHINA,"再过%d天才能修改哦", n2));
+                    ToastUtil.showShortToast(this, String.format(Locale.CHINA, "再过%d天才能修改哦", n2));
                     return;
                 }
                 int n3 = (int) (l4 / 3600000);
                 if (n3 == 0) {
                     n3 = 1;
                 }
-                ToastUtil.showShortToast(this, String.format(Locale.CHINA,"再过%d小时才能修改哦", n3));
+                ToastUtil.showShortToast(this, String.format(Locale.CHINA, "再过%d小时才能修改哦", n3));
                 return;
             }
             case R.id.gender_section:
@@ -297,7 +297,7 @@ public class ModifyUserInfoActivity extends BaseActivity implements View.OnClick
             ToastUtil.showShortToast(this, "只有一次修改性别的机会，你已经改过了哦");
             return;
         }
-        View view3 = this.getLayoutInflater().inflate(R.layout.dialog_modify_gender, (ViewGroup)getWindow().getDecorView(), false);
+        View view3 = this.getLayoutInflater().inflate(R.layout.dialog_modify_gender, (ViewGroup) getWindow().getDecorView(), false);
         final AlertDialog alertDialog = new AlertDialog.Builder(this).create();
         alertDialog.setView(view3, 0, 0, 0, 0);
         alertDialog.show();
@@ -340,7 +340,7 @@ public class ModifyUserInfoActivity extends BaseActivity implements View.OnClick
         this.b = this.getIntent().getLongExtra("nickname_updated_time", -1);
         if (this.b == -1) {
             this.c = false;
-            BaseAsyncTask<String, Void, UserInfo> r2 = new BaseAsyncTask<String, Void, UserInfo>(){
+            BaseAsyncTask<String, Void, UserInfo> r2 = new BaseAsyncTask<String, Void, UserInfo>() {
 
                 @Override
                 protected UserInfo doInBackground(String... params) {
@@ -349,7 +349,7 @@ public class ModifyUserInfoActivity extends BaseActivity implements View.OnClick
 
                 @Override
                 protected void onPostExecute(UserInfo userInfo) {
-                     super.onPostExecute(userInfo);
+                    super.onPostExecute(userInfo);
                     if (userInfo == null) {
                         ToastUtil.showShortToast(ModifyUserInfoActivity.this, "载入失败");
                         MyApplication.getInstance().loadObject("savedObject_userinfo");

@@ -44,7 +44,7 @@ public class AutoReaderSetWidget extends LinearLayout implements View.OnClickLis
         if (this.b < 10) {
             this.b = 1 + this.b;
             this.e();
-            TempUtil.b(this.a, "auto_reader_speed", this.b);
+            TempUtil.putIntPref(this.a, "auto_reader_speed", this.b);
         }
     }
 
@@ -52,7 +52,7 @@ public class AutoReaderSetWidget extends LinearLayout implements View.OnClickLis
         if (this.b > 1) {
             this.b = -1 + this.b;
             this.e();
-            TempUtil.b(this.a, "auto_reader_speed", this.b);
+            TempUtil.putIntPref(this.a, "auto_reader_speed", this.b);
         }
     }
 
@@ -66,7 +66,7 @@ public class AutoReaderSetWidget extends LinearLayout implements View.OnClickLis
                 this.h.a();
                  break;
             case R.id.btn_auto_reader_stop:
-                TempUtil.b(this.getContext(), "start_auto_read_time", 0);
+                TempUtil.putIntPref(this.getContext(), "start_auto_read_time", 0);
                 this.h.c();
                 break;
         }

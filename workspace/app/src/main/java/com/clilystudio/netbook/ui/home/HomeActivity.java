@@ -431,7 +431,7 @@ public class HomeActivity extends HomeParentActivity implements ViewPager.OnPage
             case R.id.home_menu_msg: {
                 if (this.mAccount != null) {
                     this.m();
-                    TempUtil.b(this, "key_enter_msg_time", System.currentTimeMillis());
+                    TempUtil.putLongPref(this, "key_enter_msg_time", System.currentTimeMillis());
                     AccountInfo accountInfo = AccountInfo.getOrCreate(this.mAccount.getToken());
                     accountInfo.setPrevUnimpNotif(UserNotificationManager.getInstance(this).getUnimportant());
                     accountInfo.save();
@@ -456,15 +456,15 @@ public class HomeActivity extends HomeParentActivity implements ViewPager.OnPage
                 if (TempUtil.getBoolPref(this, "customer_night_theme", false)) {
                     this.n.setText(R.string.custom_theme_night);
                     this.o.setImageResource(R.drawable.theme_night);
-                    TempUtil.b(this, "customer_night_theme", false);
-                    TempUtil.b(this, "night_mode", false);
-                    TempUtil.b(this, "start_night_theme", 0);
+                    TempUtil.putBoolPref(this, "customer_night_theme", false);
+                    TempUtil.putBoolPref(this, "night_mode", false);
+                    TempUtil.putIntPref(this, "start_night_theme", 0);
                     intent.putExtra("onThemeChange", 0);
                 } else {
                     this.n.setText(R.string.custom_theme_day);
                     this.o.setImageResource(R.drawable.theme_day);
-                    TempUtil.b(this, "customer_night_theme", true);
-                    TempUtil.b(this, "night_mode", true);
+                    TempUtil.putBoolPref(this, "customer_night_theme", true);
+                    TempUtil.putBoolPref(this, "night_mode", true);
                     intent.putExtra("onThemeChange", 1);
                 }
                 this.startActivity(intent);
@@ -573,7 +573,7 @@ public class HomeActivity extends HomeParentActivity implements ViewPager.OnPage
             if (list != null && !list.isEmpty()) {
                 HomeActivity.a(list);
             }
-            TempUtil.b(this, "bookPushRecords", true);
+            TempUtil.putBoolPref(this, "bookPushRecords", true);
         }
         this.h();
         this.i();
@@ -631,7 +631,7 @@ public class HomeActivity extends HomeParentActivity implements ViewPager.OnPage
             this.t.destroy();
         }
         this.u = false;
-        TempUtil.b(this, "search_hot_words_date", 0);
+        TempUtil.putIntPref(this, "search_hot_words_date", 0);
     }
 
     @Override
@@ -735,7 +735,7 @@ public class HomeActivity extends HomeParentActivity implements ViewPager.OnPage
                     super.onPostExecute(bookTopRoot);
                     BookTopRoot.Favorite favorite;
                     if (bookTopRoot != null && (favorite = bookTopRoot.getFavorite()) != null) {
-                        TempUtil.b(HomeActivity.this, favorite.getBookID(), favorite.getTocID(), favorite.getChecksum());
+                        TempUtil.initCipher(HomeActivity.this, favorite.getBookID(), favorite.getTocID(), favorite.getChecksum());
                     }
                 }
             }.b();

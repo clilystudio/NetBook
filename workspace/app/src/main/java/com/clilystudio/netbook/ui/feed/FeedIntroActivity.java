@@ -27,6 +27,6 @@ public class FeedIntroActivity extends BaseActivity {
     @Override
     public void onPause() {
         super.onPause();
-        TempUtil.b(this, "feed_intro", false);
+        TempUtil.putBoolPref(this, "feed_intro", false);
     }
 }
