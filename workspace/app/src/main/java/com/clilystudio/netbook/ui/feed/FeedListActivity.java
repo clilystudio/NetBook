@@ -36,7 +36,7 @@ public class FeedListActivity extends BaseActivity {
     }
 
     private void a(int n) {
-        final int n2 = TempUtil.d(n);
+        final int n2 = TempUtil.getFeedIndex(n);
         int[] arrn = new int[]{R.id.feed_chapter_10, R.id.feed_chapter_20, R.id.feed_chapter_50, R.id.feed_chapter_100, R.id.feed_chapter_200};
         View view = this.getLayoutInflater().inflate(R.layout.feed_chapter_count_dialog, (ViewGroup)getWindow().getDecorView(), false);
         BaseDialog.Builder h2 = new BaseDialog.Builder(this);
@@ -50,7 +50,8 @@ public class FeedListActivity extends BaseActivity {
                 public void onClick(View v) {
                     alertDialog.dismiss();
                     if (finalJ != n2) {
-                        int n = TempUtil.e(finalJ);
+                        int n = TempUtil.getFeedCount(finalJ);
+                        TempUtil.putIntPref(FeedListActivity.this, "feed_chapter_count", n);
                         BusProvider.getInstance().post(new FeedSettingChangedEvent());
                     }
                 }

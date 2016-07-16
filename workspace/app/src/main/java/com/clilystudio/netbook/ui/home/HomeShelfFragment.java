@@ -415,7 +415,7 @@ public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollL
     static /* synthetic */ void b(HomeShelfFragment homeShelfFragment, BookReadRecord bookReadRecord) {
         if (bookReadRecord != null) {
             long l2 = System.currentTimeMillis();
-            TempUtil.d(homeShelfFragment.getActivity(), "FeedUpdateTime", l2);
+            TempUtil.putLongPref(homeShelfFragment.getActivity(), "FeedUpdateTime", l2);
             bookReadRecord.setFeeding(true);
             bookReadRecord.setChapterCountAtFeed(bookReadRecord.getChapterCount());
             bookReadRecord.setLastActionTime(new Date().getTime());

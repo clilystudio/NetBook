@@ -19,7 +19,6 @@ import android.os.StatFs;
 import android.preference.PreferenceManager;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
@@ -45,7 +44,6 @@ import org.json.JSONObject;
 import org.mozilla.universalchardet.UniversalDetector;
 
 import java.io.BufferedReader;
-import java.io.Closeable;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -67,14 +65,11 @@ import java.util.Map;
 import okio.ByteString;
 
 public class TempUtil {
-    public static int a;
-    private static float c;
     private static String cipherBookId;
     private static String cipherTocId;
     private static String cipherCheckSum;
 
-    // TODO rename
-    public static String A(String string) {
+    public static String getChapterSecurity(String string) {
         if (cipherBookId == null || cipherTocId == null || cipherCheckSum == null) {
             return null;
         }
@@ -230,16 +225,6 @@ public class TempUtil {
             }
         }
         return null;
-    }
-
-    private static int a(int n2, int n3) {
-        if (n3 < 2) return -1;
-        if (n3 > 36) {
-            return -1;
-        }
-        int n4 = 48 <= n2 && n2 <= 57 ? n2 - 48 : (97 <= n2 && n2 <= 122 ? 10 + (n2 - 97) : (65 <= n2 && n2 <= 90 ? 10 + (n2 - 65) : -1));
-        if (n4 < n3) return n4;
-        return -1;
     }
 
     public static int getDipSize(Context context, float pixSize) {
@@ -590,87 +575,38 @@ public class TempUtil {
         return arrayList;
     }
 
-    public static void c(Closeable closeable) {
-        try {
-            closeable.close();
-        } catch (Exception var1_1) {
-            var1_1.printStackTrace();
-        }
-    }
-
-    public static void c(String string2, String string3) {
-        Log.w("PullToRefresh", "You're using the deprecated " + string2 + " attr, please switch over to " + string3);
-    }
-
-    /*
-     * Enabled force condition propagation
-     * Lifted jumps to return sites
-     */
-    public static boolean c(String string2) {
-        if (string2 == null) return true;
-        int n2 = string2.length();
-        if (n2 == 0) {
-            return true;
-        }
-        int n3 = 0;
-        while (n3 < n2) {
-            boolean bl = Character.isWhitespace(string2.charAt(n3));
-            boolean bl2 = false;
-            if (!bl) return bl2;
-            ++n3;
-        }
-        return true;
-    }
-
-    public static int d(int n2) {
-        switch (n2) {
-            default: {
-                return 2;
-            }
-            case 10: {
+    public static int getFeedIndex(int feedCount) {
+        switch (feedCount) {
+            case 10:
                 return 0;
-            }
-            case 20: {
+            case 20:
                 return 1;
-            }
-            case 100: {
+            case 100:
                 return 3;
-            }
             case 200:
+                return 4;
+            default:
+                return 2;
         }
-        return 4;
     }
 
-    public static void d(Context context, String string2, long l2) {
-        if (context == null) {
-            return;
+    public static int getFeedCount(int feedIndex) {
+        switch (feedIndex) {
+            case 0:
+                return 10;
+            case 1:
+                return 20;
+            case 3:
+                return 100;
+            case 4:
+                return 200;
+            default:
+                return 50;
         }
-        SharedPreferences.Editor editor = getEditor(context);
-        editor.putLong(string2, l2);
-        editor.apply();
     }
 
     public static boolean isMounted() {
         return "mounted".equals(Environment.getExternalStorageState());
-    }
-
-    public static int e(int n2) {
-        switch (n2) {
-            default: {
-                return 50;
-            }
-            case 0: {
-                return 10;
-            }
-            case 1: {
-                return 20;
-            }
-            case 3: {
-                return 100;
-            }
-            case 4:
-        }
-        return 200;
     }
 
     public static int e(String string2) {
