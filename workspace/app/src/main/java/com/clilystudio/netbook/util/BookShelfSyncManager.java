@@ -116,7 +116,7 @@ public final class BookShelfSyncManager {
             hashSet.retainAll(arrayList2);
             for (String string4 : arrayList) {
                 if (hashSet.contains(string4)) continue;
-                TempUtil.t(string4);
+                TempUtil.unsubscribeBook(string4);
             }
             for (String string5 : arrayList2) {
                 if (hashSet.contains(string5)) continue;

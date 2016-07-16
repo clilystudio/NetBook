@@ -543,7 +543,7 @@ public class ApiService {
         if (esChapterRoot == null) return null;
         if (esChapterRoot.getContent() != null) {
             ChapterRoot chapterRoot = new ChapterRoot();
-            String string7 = TempUtil.z(esChapterRoot.getContent());
+            String string7 = TempUtil.getBody(esChapterRoot.getContent());
             Chapter chapter = new Chapter();
             chapter.setLink(chapterLink);
             chapter.setBody(string7);
@@ -829,7 +829,7 @@ public class ApiService {
             if (string4 != null) {
                 string5 = string4.replaceAll("<p>", "").replaceAll("</p>", "\n");
             }
-            String string6 = TempUtil.z(string5);
+            String string6 = TempUtil.getBody(string5);
             Chapter chapter = new Chapter();
             chapter.setLink(ldChapterRoot.getSrc());
             chapter.setBody(string6);
@@ -1349,7 +1349,7 @@ public class ApiService {
         if (sgChapterRoot == null || sgChapterRoot.getContent() == null || sgChapterRoot.getContent().length <= 0) return null;
         {
             ChapterRoot chapterRoot = new ChapterRoot();
-            String string4 = TempUtil.z(sgChapterRoot.getContent()[0].getBlock());
+            String string4 = TempUtil.getBody(sgChapterRoot.getContent()[0].getBlock());
             Chapter chapter = new Chapter();
             chapter.setLink(string);
             if (string4 != null && string4.contains("</")) {

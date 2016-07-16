@@ -263,7 +263,7 @@ public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollL
                 BookReadRecord bookReadRecord = bookShelf.getBookRecord();
                 String string = bookReadRecord.getBookId();
                 BookReadRecord.delete(bookReadRecord);
-                TempUtil.t(string);
+                TempUtil.unsubscribeBook(string);
                 if (bl) {
                     homeShelfFragment.b(string);
                 }
@@ -592,7 +592,7 @@ public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollL
     }
 
     private void a(BookReadRecord bookReadRecord) {
-        TempUtil.t(bookReadRecord.getBookId());
+        TempUtil.unsubscribeBook(bookReadRecord.getBookId());
         BookReadRecord.addAccountInfo(bookReadRecord);
         this.k();
         TempUtil.syncBookShelf(bookReadRecord.getBookId(), BookSyncRecord.BookModifyType.FEED_ADD);
@@ -616,7 +616,7 @@ public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollL
 
     private void a(String bookId) {
         this.k();
-        TempUtil.t(bookId);
+        TempUtil.unsubscribeBook(bookId);
         TempUtil.syncBookShelf(bookId, BookSyncRecord.BookModifyType.SHELF_REMOVE);
         BusProvider.getInstance().post(new BookShelfRefreshEvent());
      }

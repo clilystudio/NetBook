@@ -29,7 +29,7 @@ public class SsChapterJson {
             chapter = new Chapter();
             String string2 = jSONObject.getString("serialcontent");
             String string3 = string2 != null ? string2.replaceAll("<br>", "\n") : null;
-            chapter.setBody(TempUtil.z(string3));
+            chapter.setBody(TempUtil.getBody(string3));
             String string4 = jSONObject.getString("serialid");
             String string5 = jSONObject.getString("serialurl");
             chapter.setLink(string4 + "_" + string5);

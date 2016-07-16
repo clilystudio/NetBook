@@ -25,7 +25,6 @@ import android.widget.Toast;
 
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.a_pack.BaseAsyncTask;
-import com.clilystudio.netbook.util.CommonUtil;
 import com.clilystudio.netbook.api.ApiServiceProvider;
 import com.clilystudio.netbook.api.DnsManager;
 import com.clilystudio.netbook.db.AccountInfo;
@@ -37,7 +36,6 @@ import com.clilystudio.netbook.event.LoginEvent;
 import com.clilystudio.netbook.event.NotifEvent;
 import com.clilystudio.netbook.model.Account;
 import com.clilystudio.netbook.model.BookTopRoot;
-import com.clilystudio.netbook.model.IKanshuUrlResult;
 import com.clilystudio.netbook.model.User;
 import com.clilystudio.netbook.model.UshaqiOnlineConfig;
 import com.clilystudio.netbook.push.BookSubRecord;
@@ -48,10 +46,11 @@ import com.clilystudio.netbook.ui.SmartImageView;
 import com.clilystudio.netbook.ui.user.AuthLoginActivity;
 import com.clilystudio.netbook.ui.user.MyMessageActivity;
 import com.clilystudio.netbook.ui.user.UserInfoActivity;
+import com.clilystudio.netbook.util.BookShelfSyncManager;
+import com.clilystudio.netbook.util.CommonUtil;
 import com.clilystudio.netbook.util.TempUtil;
 import com.clilystudio.netbook.util.ToastUtil;
 import com.clilystudio.netbook.util.UserNotificationManager;
-import com.clilystudio.netbook.util.BookShelfSyncManager;
 import com.clilystudio.netbook.widget.TabWidgetV2;
 import com.squareup.otto.Subscribe;
 import com.umeng.onlineconfig.OnlineConfigAgent;
@@ -159,31 +158,6 @@ public class HomeActivity extends HomeParentActivity implements ViewPager.OnPage
         if (n >= 0 && n < this.h.getCount()) {
             this.g.setCurrentItem(n, true);
             if (n == -1 + this.h.getCount()) {
-                boolean bl = TempUtil.r(this, "switch_17kflow");
-                float f2 = this.j();
-                double d2 = Math.random();
-                if (bl && (double) f2 > d2 && !this.u) {
-                    new BaseAsyncTask<Void, Void, IKanshuUrlResult>() {
-
-                        @Override
-                        protected IKanshuUrlResult doInBackground(Void... params) {
-                            ApiServiceProvider.getInstance();
-                            return ApiServiceProvider.getApiService().t();
-                        }
-
-                        @Override
-                        protected void onPostExecute(IKanshuUrlResult iKanshuUrlResult) {
-                            super.onPostExecute(iKanshuUrlResult);
-                            if (iKanshuUrlResult != null && iKanshuUrlResult.isOk()) {
-                                HomeActivity.a(HomeActivity.this, iKanshuUrlResult.getLinks());
-                                String string = HomeActivity.a(HomeActivity.this);
-                                if (string != null) {
-                                    HomeActivity.a(HomeActivity.this, string);
-                                }
-                            }
-                        }
-                    }.b();
-                }
                 this.u = true;
             }
         }
@@ -525,13 +499,7 @@ public class HomeActivity extends HomeParentActivity implements ViewPager.OnPage
             View view;
             TabHost.TabSpec tabSpec = this.f.newTabSpec("tab" + i2);
             tabSpec.setContent(this);
-            if (i2 == 1 && TempUtil.getBoolPref(this, "FRIST_RUN_POST", true) && TempUtil.r(this, "switch_news")) {
-                View view2 = layoutInflater.inflate(R.layout.home_tabhost_notify_item, (ViewGroup) getWindow().getDecorView(), false);
-                this.s = (ViewGroup) view2;
-                view = view2;
-            } else {
-                view = layoutInflater.inflate(R.layout.home_tabhost_item, (ViewGroup) getWindow().getDecorView(), false);
-            }
+            view = layoutInflater.inflate(R.layout.home_tabhost_item, (ViewGroup) getWindow().getDecorView(), false);
             ((TextView) view.findViewById(R.id.text)).setText(this.h.getPageTitle(i2));
             tabSpec.setIndicator(view);
             this.f.addTab(tabSpec);

@@ -10,11 +10,10 @@ import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.a_pack.BaseAsyncTask;
 import com.clilystudio.netbook.adapter.BookRankAdapter;
 import com.clilystudio.netbook.api.ApiServiceProvider;
-import com.clilystudio.netbook.event.BusProvider;
 import com.clilystudio.netbook.event.BookRankClickEvent;
+import com.clilystudio.netbook.event.BusProvider;
 import com.clilystudio.netbook.model.BookRankRoot;
 import com.clilystudio.netbook.model.BookRankSummary;
-import com.clilystudio.netbook.util.TempUtil;
 import com.clilystudio.netbook.util.ToastUtil;
 import com.squareup.otto.Subscribe;
 
@@ -64,7 +63,7 @@ public class BookRankListActivity extends BaseActivity {
 
     private void b() {
         this.a(0);
-        new BaseAsyncTask<Void, Void, BookRankRoot>(){
+        new BaseAsyncTask<Void, Void, BookRankRoot>() {
 
             @Override
             protected BookRankRoot doInBackground(Void... params) {
@@ -88,8 +87,7 @@ public class BookRankListActivity extends BaseActivity {
     @Subscribe
     public void onBookRankClickEvent(BookRankClickEvent x2) {
         BookRankSummary bookRankSummary = x2.getBookRankSummary();
-        String string = x2.isMale() ? "male" : "female";
-        Intent intent = !bookRankSummary.isCollapse() && TempUtil.r(this, "rank_revision_switch") ? BookRankMainActivity.a(this, bookRankSummary.getIds(), bookRankSummary.getTitle(), string) : BookRankDetailActivity.a(this, bookRankSummary.get_id(), bookRankSummary.getTitle());
+        Intent intent = BookRankDetailActivity.a(this, bookRankSummary.get_id(), bookRankSummary.getTitle());
         this.startActivity(intent);
     }
 

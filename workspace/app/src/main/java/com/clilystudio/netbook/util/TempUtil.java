@@ -33,7 +33,6 @@ import com.clilystudio.netbook.model.Toc;
 import com.clilystudio.netbook.model.TocSource;
 import com.clilystudio.netbook.push.BookSubRecord;
 import com.clilystudio.netbook.push.BookUnSubRecord;
-import com.umeng.onlineconfig.OnlineConfigAgent;
 import com.xiaomi.mipush.sdk.MiPushClient;
 
 import org.mozilla.universalchardet.UniversalDetector;
@@ -267,7 +266,7 @@ public class TempUtil {
                 v3--;
                 v51 = v2.readLine();
             }
-            v6.setBody(z(v41));
+            v6.setBody(getBody(v41));
             v0.setChapter(v6);
             return v0;
         } catch (IOException e1) {
@@ -742,22 +741,14 @@ public class TempUtil {
         MiPushClient.subscribe(MyApplication.getInstance(), pushId, null);
     }
 
-    public static boolean r(Context context, String string2) {
-        return "1".equals(OnlineConfigAgent.getInstance().getConfigParams(context, string2));
-    }
-
     public static String getPushId(String bookId) {
         return "book:" + bookId;
     }
 
-    public static boolean s(Context context) {
-        return getNetType(context) == 1;
-    }
-
-    public static void t(String string2) {
-        String string3 = getPushId(string2);
-        BookUnSubRecord.create(string3);
-        com.xiaomi.mipush.sdk.MiPushClient.unsubscribe(MyApplication.getInstance(), string3, null);
+    public static void unsubscribeBook(String bookId) {
+        String pushId = getPushId(bookId);
+        BookUnSubRecord.create(pushId);
+        com.xiaomi.mipush.sdk.MiPushClient.unsubscribe(MyApplication.getInstance(), pushId, null);
     }
 
     public static boolean isConnectedOrConnecting(Context context) {
@@ -769,66 +760,10 @@ public class TempUtil {
         return networkInfo != null && networkInfo.isConnectedOrConnecting();
     }
 
-    public static float u(Context context, String string2) {
-        String string3 = OnlineConfigAgent.getInstance().getConfigParams(context, string2);
-        try {
-            float f2 = Float.parseFloat(string3);
-            return f2;
-        } catch (Exception var3_4) {
-            return 0.0f;
-        }
-    }
-
-    public static void u(Context context) {
-        int n2 = DateTimeUtil.getTodayValue();
-        if (n2 != getIntPref(context, "key_all_post_open_by_day", 0)) {
-            putIntPref(context, "key_all_post_open_by_day", n2);
-        }
-    }
-
-    public static float v(Context context, String string2) {
-        String string3 = OnlineConfigAgent.getInstance().getConfigParams(context, string2);
-        try {
-            float f2 = Float.parseFloat(string3);
-            return f2;
-        } catch (Exception var3_4) {
-            return 1.0f;
-        }
-    }
-
-    public static void v(Context context) {
-        int n2 = DateTimeUtil.getTodayValue();
-        if (n2 != getIntPref(context, "key_audiobook_listen_count", 0)) {
-            putIntPref(context, "key_audiobook_listen_count", n2);
-        }
-    }
-
-    public static boolean w(Context context) {
-        return true;
-    }
-
-    public static boolean w(Context context, String string2) {
-        float f2;
-        String string3 = OnlineConfigAgent.getInstance().getConfigParams(context, string2);
-        try {
-            f2 = Float.parseFloat(string3);
-        } catch (Exception var3_4) {
-            return true;
-        }
-        return Math.random() < (double) f2;
-    }
-
-    public static boolean x(Context context, String string2) {
-        return context.getSharedPreferences("mistat", 0).contains(string2);
-    }
-
-    /*
-     * Enabled aggressive block sorting
-     */
-    public static String y(String string2) {
+    public static String formatContent(String content) {
         String string3;
-        if (string2 == null) return null;
-        String string4 = string2.replaceAll("(?m)^[ \u3000\t]+", "");
+        if (content == null) return null;
+        String string4 = content.replaceAll("(?m)^[ \u3000\t]+", "");
         if (string4 == null) return null;
         String string5 = string4.replaceAll("(?m)^", "\u3000\u3000");
         if (string5 != null) {
@@ -846,13 +781,9 @@ public class TempUtil {
         return string3 + '\n';
     }
 
-    public static boolean y(Context context) {
-        return "1".equals(OnlineConfigAgent.getInstance().getConfigParams(context, "show_remove_ad"));
-    }
-
-    public static String z(String string2) {
-        if (string2 != null) {
-            return string2.replaceAll("\\n[\\s]+", "\n").trim();
+    public static String getBody(String content) {
+        if (content != null) {
+            return content.replaceAll("\\n[\\s]+", "\n").trim();
         }
         return null;
     }

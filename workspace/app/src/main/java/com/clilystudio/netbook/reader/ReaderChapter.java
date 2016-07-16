@@ -39,7 +39,7 @@ public class ReaderChapter extends Chapter {
         if (this.getContent() != null && this.key != null) {
             if (this.clearContent == null) {
                 this.clearContent = CipherUtil.a(this.key, this.getContent());
-                this.clearContent = TempUtil.y(this.clearContent);
+                this.clearContent = TempUtil.formatContent(this.clearContent);
             }
             if (this.clearContent == null) {
                 return "  解析错误，请退出后重新进入阅读。";
@@ -48,7 +48,7 @@ public class ReaderChapter extends Chapter {
         }
         String string = this.getContent() == null || this.isVip() && this.key == null ? super.getBody() : this.getContent();
         if (this.formattedBody == null) {
-            this.formattedBody = TempUtil.y(string);
+            this.formattedBody = TempUtil.formatContent(string);
         }
         return this.formattedBody;
     }
@@ -66,7 +66,7 @@ public class ReaderChapter extends Chapter {
         if (this.getContent() != null && this.key != null) {
             if (this.clearContent == null) {
                 this.clearContent = CipherUtil.a(this.key, this.getContent());
-                this.clearContent = TempUtil.y(this.clearContent);
+                this.clearContent = TempUtil.formatContent(this.clearContent);
                 n2.a(this.clearContent);
             }
             if (this.clearContent == null) {
@@ -76,7 +76,7 @@ public class ReaderChapter extends Chapter {
         }
         String string = this.getContent() == null || this.isVip() && this.key == null ? super.getBody() : this.getContent();
         if (this.formattedBody == null) {
-            this.formattedBody = TempUtil.y(string);
+            this.formattedBody = TempUtil.formatContent(string);
         }
         return this.formattedBody;
     }
