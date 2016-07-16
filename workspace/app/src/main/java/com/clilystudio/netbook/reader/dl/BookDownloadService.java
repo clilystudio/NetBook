@@ -104,11 +104,6 @@ public class BookDownloadService extends Service {
         bookDownloadService.h();
     }
 
-
-    static /* synthetic */ String d(BookDownloadService bookDownloadService) {
-        return bookDownloadService.mBookId;
-    }
-
     static /* synthetic */ int e(BookDownloadService bookDownloadService, int n) {
         bookDownloadService.e = n;
         return n;
@@ -259,7 +254,7 @@ public class BookDownloadService extends Service {
             protected void onPostExecute(Toc toc) {
                  super.onPostExecute(toc);
                 if (toc != null && toc.getChapters() != null) {
-                    TempUtil.a(BookDownloadService.d(BookDownloadService.this), toc.get_id(), "toc", toc);
+                    TempUtil.a(BookDownloadService.this.mBookId, toc.get_id(), "toc", toc);
                     BookDownloadService.a(BookDownloadService.this, toc.getChapters());
                     BookDownloadService.e(BookDownloadService.this, BookDownloadService.p(BookDownloadService.this).length);
                     BookDownloadService.f(BookDownloadService.this, BookDownloadService.h(BookDownloadService.this));
@@ -286,11 +281,11 @@ public class BookDownloadService extends Service {
                 if (tocSourceRoot != null && tocSourceRoot.getSources() != null) {
                     TocSource[] arrtocSource = tocSourceRoot.getSources();
                     for (TocSource anArrtocSource : arrtocSource) {
-                        TempUtil.saveSourceRecord(anArrtocSource, BookDownloadService.d(BookDownloadService.this));
+                        TempUtil.saveSourceRecord(anArrtocSource, BookDownloadService.this.mBookId);
                     }
                 }
                 BookDownloadService.this.mReadMode = 5;
-                BookReadRecord bookReadRecord = BookReadRecord.getOnShelf(BookDownloadService.d(BookDownloadService.this));
+                BookReadRecord bookReadRecord = BookReadRecord.getOnShelf(BookDownloadService.this.mBookId);
                 if (bookReadRecord != null) {
                     bookReadRecord.setReadMode(5);
                     bookReadRecord.save();
@@ -359,7 +354,7 @@ public class BookDownloadService extends Service {
                 @Override
                 protected ChapterRoot doInBackground(Void... params) {
                     ChapterRoot chapterRoot = BookDownloadService.f(BookDownloadService.this).a(finalChapterLink, finalN);
-                    BookDlRecord bookDlRecord = BookDlRecord.get(BookDownloadService.d(BookDownloadService.this));
+                    BookDlRecord bookDlRecord = BookDlRecord.get(BookDownloadService.this.mBookId);
                     if (bookDlRecord != null) {
                         bookDlRecord.setProgress(BookDownloadService.g(BookDownloadService.this));
                         bookDlRecord.save();
@@ -373,7 +368,7 @@ public class BookDownloadService extends Service {
                      super.onPostExecute(chapterRoot);
                     BookDownloadService.b(BookDownloadService.this).putExtra("SerDlCurrentCount", BookDownloadService.g(BookDownloadService.this));
                     BookDownloadService.b(BookDownloadService.this).putExtra("SerDlChapterCount", BookDownloadService.h(BookDownloadService.this));
-                    BookDownloadService.b(BookDownloadService.this).putExtra("bookId", BookDownloadService.d(BookDownloadService.this));
+                    BookDownloadService.b(BookDownloadService.this).putExtra("bookId", BookDownloadService.this.mBookId);
                     BookDownloadService.i(BookDownloadService.this);
                     int n2 = TempUtil.r(BookDownloadService.this);
                     if (BookDownloadService.j(BookDownloadService.this) == 1 && n2 > 1) {
@@ -394,7 +389,7 @@ public class BookDownloadService extends Service {
                         if (BookDownloadService.m(BookDownloadService.this) == null) {
                             BookDownloadService.this.mTocId = BookInfoUtil.tocId;
                         }
-                        TempUtil.a(BookDownloadService.d(BookDownloadService.this), BookDownloadService.m(BookDownloadService.this), CommonUtil.encodeUrl(string), chapter);
+                        TempUtil.saveChapter(BookDownloadService.this.mBookId, BookDownloadService.m(BookDownloadService.this), CommonUtil.encodeUrl(string), chapter);
                     }
                     BookDownloadService.c(BookDownloadService.this);
                     if (BookDownloadService.n(BookDownloadService.this) == 0 || BookDownloadService.g(BookDownloadService.this) == BookDownloadService.h(BookDownloadService.this)) {
@@ -519,7 +514,7 @@ public class BookDownloadService extends Service {
                 BookDownloadService.c(this.a);
                 BookDownloadService.a(this.a, false);
                 BookDownloadService.a(this.a, 2);
-                BusProvider.getInstance().post(new DownloadStatusEvent(BookDownloadService.d(this.a), 2));
+                BusProvider.getInstance().post(new DownloadStatusEvent(this.a.mBookId, 2));
                 BookDownloadService.e(this.a);
                 BookDownloadService.b(this.a, false);
             }

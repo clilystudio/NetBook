@@ -120,20 +120,20 @@ public final class Reader {
                                 nx = var2_2.length - 1;
                             }
                             ChapterLink var3_3;
-                            ReaderChapter var5_4;
+                            ReaderChapter readerChapter;
                             boolean var4_5;
                             if ((var3_3 = var2_2[var1]) == null) {
-                                var5_4 = new ReaderChapter();
+                                readerChapter = new ReaderChapter();
                                 var4_5 = true;
                             } else {
                                 var4_5 = var3_3.getUnreadble();
-                                var5_4 = Reader.a(Reader.this, var3_3, nx);
+                                readerChapter = Reader.a(Reader.this, var3_3, nx);
                             }
                             if (var4_5) {
                                 if (Reader.o(Reader.this) == 5 || Reader.o(Reader.this) == 10) {
-                                    var5_4.setStatus(-2);
+                                    readerChapter.setStatus(-2);
                                 } else {
-                                    var5_4.setStatus(-3);
+                                    readerChapter.setStatus(-3);
                                 }
                             } else {
                                 if (Reader.this.A) {
@@ -141,37 +141,37 @@ public final class Reader {
                                     assert chapterRoot != null;
                                     Chapter chapter = chapterRoot.getChapter();
                                     String body = chapter.getBody();
-                                    var5_4.setBody(body);
+                                    readerChapter.setBody(body);
                                 } else {
                                     ChapterRoot var6_7 = Reader.getChapterRoot(Reader.this, var3_3, nx);
                                     if (var6_7 == null || var6_7.getChapter() == null) {
-                                        var5_4.setStatus(-1);
+                                        readerChapter.setStatus(-1);
                                     } else if (var6_7.getChapter().getBody() == null) {
-                                        var5_4.setStatus(var6_7.getStatus());
+                                        readerChapter.setStatus(var6_7.getStatus());
                                     } else {
                                         Chapter var7_8 = var6_7.getChapter();
-                                        var5_4.setBody(var7_8.getBody());
-                                        var5_4.setCpContent(var7_8.getContent());
-                                        var5_4.setId(var7_8.getId());
-                                        var5_4.setIsVip(var7_8.isVip());
+                                        readerChapter.setBody(var7_8.getBody());
+                                        readerChapter.setCpContent(var7_8.getContent());
+                                        readerChapter.setId(var7_8.getId());
+                                        readerChapter.setIsVip(var7_8.isVip());
                                         if (var7_8.getLink() != null) {
-                                            var5_4.setLink(var7_8.getLink());
+                                            readerChapter.setLink(var7_8.getLink());
                                         }
                                         ChapterLink var9_9 = (ChapterLink) Reader.p(Reader.this).get(var7_8.getId());
                                         if (var9_9 != null) {
-                                            var5_4.setIsVip(var9_9.isVip() || var7_8.isVip());
-                                            var5_4.setCurrency(var9_9.getCurrency());
-                                            String var10_10 = Reader.this.e().get(var5_4.getId());
+                                            readerChapter.setIsVip(var9_9.isVip() || var7_8.isVip());
+                                            readerChapter.setCurrency(var9_9.getCurrency());
+                                            String var10_10 = Reader.this.e().get(readerChapter.getId());
                                             if (var10_10 != null) {
-                                                var5_4.setKey(var10_10);
-                                                TempUtil.a(Reader.q(Reader.this), Reader.this.mTocId, CommonUtil.encodeUrl(var5_4.getLink()), var5_4);
+                                                readerChapter.setKey(var10_10);
+                                                TempUtil.saveChapter(Reader.this.mBookId, Reader.this.mTocId, CommonUtil.encodeUrl(readerChapter.getLink()), readerChapter);
                                             }
                                         }
                                     }
                                 }
                             }
-                            Reader.this.a.put(nx, var5_4);
-                            af(var5_4);
+                            Reader.this.a.put(nx, readerChapter);
+                            af(readerChapter);
                         }
                     });
                 }
@@ -334,10 +334,6 @@ public final class Reader {
 
     static /* synthetic */ Map p(Reader reader) {
         return reader.i;
-    }
-
-    static /* synthetic */ String q(Reader reader) {
-        return reader.mBookId;
     }
 
     private ReaderChapter a(ChapterLink chapterLink, int n2) {

@@ -7,8 +7,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.res.TypedArray;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Paint;
@@ -453,22 +451,22 @@ public class TempUtil {
         return PreferenceManager.getDefaultSharedPreferences(context).getBoolean(key, defValue);
     }
 
-    public static boolean a(String string2, String string3, String string4, Chapter chapter) {
-        if (string4 == null) {
+    public static boolean saveChapter(String string2, String tocId, String link, Chapter chapter) {
+        if (link == null) {
             return false;
         }
-        String string5 = "/ZhuiShuShenQi/Chapter" + File.separator + string2 + File.separator + string3;
-        File file = new File(CachePathConst.RootPath, string5);
+        String name = "/ZhuiShuShenQi/Chapter" + File.separator + string2 + File.separator + tocId;
+        File file = new File(CachePathConst.RootPath, name);
         try {
             if (!file.exists()) {
                 file.mkdirs();
             }
-            ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(new File(file, string4)));
+            ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(new File(file, link)));
             objectOutputStream.writeObject(chapter);
             objectOutputStream.close();
             return true;
-        } catch (Exception var6_7) {
-            var6_7.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
             return false;
         }
     }
