@@ -9,9 +9,9 @@ import android.os.AsyncTask;
 import android.os.IBinder;
 import android.support.v4.content.LocalBroadcastManager;
 
+import com.clilystudio.netbook.CachePathConst;
 import com.clilystudio.netbook.MyApplication;
 import com.clilystudio.netbook.a_pack.BaseAsyncTask;
-import com.clilystudio.netbook.util.CommonUtil;
 import com.clilystudio.netbook.api.ApiServiceProvider;
 import com.clilystudio.netbook.db.BookDlRecord;
 import com.clilystudio.netbook.db.BookReadRecord;
@@ -27,10 +27,12 @@ import com.clilystudio.netbook.model.TocSource;
 import com.clilystudio.netbook.model.TocSourceRoot;
 import com.clilystudio.netbook.reader.ReaderTocManager;
 import com.clilystudio.netbook.util.BookInfoUtil;
+import com.clilystudio.netbook.util.CommonUtil;
 import com.clilystudio.netbook.util.TempUtil;
 import com.clilystudio.netbook.util.ToastUtil;
 import com.squareup.otto.Subscribe;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -244,7 +246,7 @@ public class BookDownloadService extends Service {
         }
         this.mTocId = TempUtil.getMixTocId(this.mBookId, this.mReadMode, sourceId, this.mTocId);
         this.k.a(this.mTocId, string2, sourceId);
-        new BaseAsyncTask<Void, Void, Toc>(){
+        new BaseAsyncTask<Void, Void, Toc>() {
             @Override
             protected Toc doInBackground(Void... params) {
                 return BookDownloadService.f(BookDownloadService.this).a();
@@ -252,7 +254,7 @@ public class BookDownloadService extends Service {
 
             @Override
             protected void onPostExecute(Toc toc) {
-                 super.onPostExecute(toc);
+                super.onPostExecute(toc);
                 if (toc != null && toc.getChapters() != null) {
                     TempUtil.saveToc(BookDownloadService.this.mBookId, toc.get_id(), toc);
                     BookDownloadService.a(BookDownloadService.this, toc.getChapters());
@@ -268,7 +270,7 @@ public class BookDownloadService extends Service {
     }
 
     private void getTocSourceRoot() {
-        new AsyncTask<String, Void, TocSourceRoot>(){
+        new AsyncTask<String, Void, TocSourceRoot>() {
             @Override
             protected TocSourceRoot doInBackground(String... params) {
                 ApiServiceProvider.getInstance();
@@ -316,7 +318,7 @@ public class BookDownloadService extends Service {
         this.k.setBookId(BookInfoUtil.bookId);
         this.k.setReadMode(BookInfoUtil.readMode);
         this.i.putExtra("SerDlStopFlag", 0);
-        this.h = TempUtil.j(this.mBookId, this.mTocId);
+        this.h = TempUtil.getSubFileList(new File(CachePathConst.RootPath, "/ZhuiShuShenQi/Chapter" + File.separator + this.mBookId + File.separator + this.mTocId));
         if (TempUtil.getFreeSpaceSize() <= (long) (10 * this.e << 1)) {
             ToastUtil.showToast(this, "SD卡剩余容量不足，请减少缓存数目或增加存储");
             this.stopSelf();
@@ -350,7 +352,7 @@ public class BookDownloadService extends Service {
             }
             final ChapterLink finalChapterLink = chapterLink;
             final int finalN = n;
-            new BaseAsyncTask<Void, Void, ChapterRoot>(){
+            new BaseAsyncTask<Void, Void, ChapterRoot>() {
                 @Override
                 protected ChapterRoot doInBackground(Void... params) {
                     ChapterRoot chapterRoot = BookDownloadService.f(BookDownloadService.this).a(finalChapterLink, finalN);
@@ -365,7 +367,7 @@ public class BookDownloadService extends Service {
                 @Override
                 protected void onPostExecute(ChapterRoot chapterRoot) {
                     Chapter chapter;
-                     super.onPostExecute(chapterRoot);
+                    super.onPostExecute(chapterRoot);
                     BookDownloadService.b(BookDownloadService.this).putExtra("SerDlCurrentCount", BookDownloadService.g(BookDownloadService.this));
                     BookDownloadService.b(BookDownloadService.this).putExtra("SerDlChapterCount", BookDownloadService.h(BookDownloadService.this));
                     BookDownloadService.b(BookDownloadService.this).putExtra("bookId", BookDownloadService.this.mBookId);

@@ -692,32 +692,6 @@ public class TempUtil {
         return String.valueOf(count);
     }
 
-    public static int j(int n2) {
-        if (Build.VERSION.SDK_INT >= 11) {
-            return 255 & n2 >> 8;
-        }
-        return 255 & n2 >> 8;
-    }
-
-    public static ArrayList<String> j(String bookId, String tocId) {
-        String name = "/ZhuiShuShenQi/Chapter" + File.separator + bookId + File.separator + tocId;
-        return getSubFileList(new File(CachePathConst.RootPath, name));
-    }
-
-    public static boolean j() {
-        return Build.VERSION.SDK_INT == 19;
-    }
-
-    public static boolean j(Context context, String string2) {
-        PackageManager packageManager = context.getPackageManager();
-        try {
-            packageManager.getPackageInfo(string2, PackageManager.GET_META_DATA);
-            return true;
-        } catch (PackageManager.NameNotFoundException var3_3) {
-            return false;
-        }
-    }
-
     public static <T> T k(String string2, String string3) {
         Object object;
         File file;

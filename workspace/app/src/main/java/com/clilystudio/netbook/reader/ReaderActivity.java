@@ -62,6 +62,8 @@ import com.clilystudio.netbook.widget.ThemeLoadingView;
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 import com.squareup.otto.Subscribe;
 
+import java.io.File;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 import java.util.HashMap;
@@ -777,7 +779,8 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
 
     private void loadChapterList() {
         if (TempUtil.isMounted()) {
-            for (String s1 : TempUtil.j(this.mBookId, this.mTocId)) {
+            ArrayList<String> subFileList = TempUtil.getSubFileList(new File(CachePathConst.RootPath, "/ZhuiShuShenQi/Chapter" + File.separator + this.mBookId + File.separator + this.mTocId));
+            for (String s1 : subFileList) {
                 String string = CommonUtil.decodeUrl(s1);
                 this.x.add(string);
             }

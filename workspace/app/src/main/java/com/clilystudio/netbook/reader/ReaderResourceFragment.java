@@ -295,7 +295,8 @@ public class ReaderResourceFragment extends Fragment {
                 ArrayList<String> subFileList = TempUtil.getSubFileList(new File(CachePathConst.RootPath, "/ZhuiShuShenQi/Chapter" + File.separator + string));
                 for (String string2 : subFileList) {
                     if (string2.contains("MIX_TOC_ID") || string2.contains("_")) continue;
-                    for (String s : TempUtil.j(string, string2)) {
+                    ArrayList<String> fileList = TempUtil.getSubFileList(new File(CachePathConst.RootPath, "/ZhuiShuShenQi/Chapter" + File.separator + string + File.separator + string2));
+                    for (String s : fileList) {
                         if ("toc".equals(s)) continue;
                         bl = true;
                         break block11;
