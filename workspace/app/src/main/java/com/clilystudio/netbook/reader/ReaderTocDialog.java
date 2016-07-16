@@ -3,6 +3,7 @@ package com.clilystudio.netbook.reader;
 import android.annotation.TargetApi;
 import android.content.DialogInterface;
 import android.content.res.TypedArray;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.view.ContextThemeWrapper;
@@ -150,7 +151,7 @@ public class ReaderTocDialog extends DialogFragment implements AdapterView.OnIte
         };
         this.b.setOnItemClickListener(this);
         this.b.setAdapter(this.a);
-        if (TempUtil.i()) {
+        if (Build.VERSION.SDK_INT >= 19) {
             this.b.setFastScrollAlwaysVisible(true);
         }
         return view;

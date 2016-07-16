@@ -102,7 +102,7 @@ public final class BookSourceManager {
             this.a(ReaderActivity.a(this.mActivity, this.mBookId, this.mBookTitle, this.mTocId, this.mHasOtherSource));
             return;
         }
-        String string = TempUtil.g(readMode);
+        String string = TempUtil.getSourceName(readMode);
         SourceRecord sourceRecord = SourceRecord.get(this.mBookId, string);
         if (sourceRecord == null || sourceRecord.getSourceId() == null) {
             this.a(true);

@@ -266,7 +266,7 @@ public class HomeShelfAdapter extends BaseBookAdapter<BookShelf> {
                 boolean var23_10 = false;
                 if (var22_9 != -1) {
                     String var29_11 = var20_7.getDownloadedSource();
-                    String var30_12 = TempUtil.g(var22_9);
+                    String var30_12 = TempUtil.getSourceName(var22_9);
                     var23_10 = false;
                     if (var29_11 != null) {
                         var23_10 = var29_11.contains(var30_12);

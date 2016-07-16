@@ -40,7 +40,7 @@ public class BookDownloadManager {
             ToastUtil.showShortToast(this.mActivity, "无法缓存，请检查SD卡是否挂载");
             return;
         }
-        if (TempUtil.f(bookReadRecord.getReadMode())) {
+        if (TempUtil.isWebReadMode(bookReadRecord.getReadMode())) {
             ToastUtil.showLongToast(this.mActivity, "暂不支持当前模式缓存");
             return;
         }

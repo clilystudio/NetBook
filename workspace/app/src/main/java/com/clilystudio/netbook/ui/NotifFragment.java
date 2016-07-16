@@ -2,6 +2,7 @@ package com.clilystudio.netbook.ui;
 
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
@@ -262,7 +263,7 @@ public abstract class NotifFragment extends Fragment {
         this.m = CommonUtil.getAccount();
         this.f = LayoutInflater.from(this.getActivity()).inflate(R.layout.loading_item, (ViewGroup)getActivity().getWindow().getDecorView(), false);
         this.e = this.d.getRefreshableView();
-        if (TempUtil.i()) {
+        if (Build.VERSION.SDK_INT >= 19) {
             this.e.setFooterDividersEnabled(false);
         }
         this.e.addFooterView(this.f);

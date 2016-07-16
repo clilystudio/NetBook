@@ -43,9 +43,9 @@ public class ReadModeItem extends FrameLayout {
         this.mName.setText(n2);
         if (n3 == n4) {
             this.mFlagSelect.setVisibility(View.VISIBLE);
-            this.mFlagSelect.setText("\u5f53\u524d\u9009\u62e9");
+            this.mFlagSelect.setText("当前选择");
         }
-        if (TempUtil.f(n3)) {
+        if (TempUtil.isWebReadMode(n3)) {
             this.mFlagWeb.setVisibility(View.VISIBLE);
         }
         this.mChapter.setVisibility(View.GONE);

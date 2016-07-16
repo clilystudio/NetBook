@@ -62,8 +62,6 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
-import okio.ByteString;
-
 public class TempUtil {
     private static String cipherBookId;
     private static String cipherTocId;
@@ -309,7 +307,7 @@ public class TempUtil {
             return "MIX_TOC_ID" + bookId;
         }
         if (readMode == 0) return tocId;
-        if (!h(readMode)) return null;
+        if (!canDownload(readMode)) return null;
         if (readMode != 3) return sourceId + "_" + bookId;
         String[] arrstring = splitSourceId(sourceId);
         if (arrstring == null) return sourceId + "_" + bookId;
@@ -627,70 +625,35 @@ public class TempUtil {
         editor.apply();
     }
 
-    public static String f(Context context, String string2, String string3) {
-        return context.getSharedPreferences("mistat", 0).getString(string2, string3);
+    public static boolean isWebReadMode(int readMode) {
+        return readMode == 4 || readMode == 1 || readMode == 2;
     }
 
-    public static void f(Context context, String string2, long l2) {
-        SharedPreferences.Editor editor = context.getSharedPreferences("mistat", 0).edit();
-        editor.putLong(string2, l2);
-        editor.apply();
-    }
-
-    public static boolean f(int n2) {
-        return n2 == 4 || n2 == 1 || n2 == 2;
-    }
-
-    public static Bitmap.CompressFormat g(String string2) {
-        String string3 = string2.toLowerCase();
-        if (string3.endsWith("png") || string3.endsWith("gif")) {
-            return Bitmap.CompressFormat.PNG;
-        }
-        if (string3.endsWith("jpg") || string3.endsWith("jpeg") || string3.endsWith("bmp") || string3.endsWith("tif")) {
-            return Bitmap.CompressFormat.JPEG;
-        }
-        String string4 = detectImageType(string2);
-        if (string4.endsWith("png") || string4.endsWith("gif")) {
-            return Bitmap.CompressFormat.PNG;
-        }
-        return Bitmap.CompressFormat.JPEG;
-    }
-
-    public static String g(int mode) {
+    public static String getSourceName(int mode) {
         switch (mode) {
-            default: {
-                return "mix";
-            }
-            case 5: {
-                return "mix";
-            }
-            case 0: {
+            case 0:
                 return "zhineng";
-            }
-            case 4: {
-                return "shenma";
-            }
-            case 1: {
+            case 1:
                 return "baidu";
-            }
-            case 2: {
+            case 2:
                 return "tieba";
-            }
-            case 6: {
-                return "soso";
-            }
-            case 7: {
-                return "sogou";
-            }
-            case 8: {
-                return "leidian";
-            }
-            case 3: {
+            case 3:
                 return "easou";
-            }
+            case 4:
+                return "shenma";
+            case 5:
+                return "mix";
+            case 6:
+                return "soso";
+            case 7:
+                return "sogou";
+            case 8:
+                return "leidian";
             case 9:
+                return "zhuishuvip";
+            default:
+                return "mix";
         }
-        return "zhuishuvip";
     }
 
     private static String getImageType(byte[] bytes) {
@@ -712,157 +675,21 @@ public class TempUtil {
         return null;
     }
 
-    public static void g(Context context, String string2, String string3) {
-        SharedPreferences.Editor editor = context.getSharedPreferences("mistat", 0).edit();
-        editor.putString(string2, string3);
-        editor.apply();
+    public static boolean canDownload(int readMode) {
+        return readMode == 6 || readMode == 7 || readMode == 8 || readMode == 3;
     }
 
-    public static boolean g() {
-        return Build.VERSION.SDK_INT >= 11;
-    }
-
-    public static String h(String string2, String string3) {
-        try {
-            String string4 = ByteString.of((string2 + ":" + string3).getBytes("ISO-8859-1")).base64();
-            String string5 = "Basic " + string4;
-            return string5;
-        } catch (UnsupportedEncodingException var2_4) {
-            throw new AssertionError();
+    public static String getWordCount(int count) {
+        if (count / 10000 > 0) {
+            return "" + count / 10000 + "万";
         }
-    }
-
-    public static boolean h() {
-        return Build.VERSION.SDK_INT >= 14;
-    }
-
-    public static boolean h(int n2) {
-        return n2 == 6 || n2 == 7 || n2 == 8 || n2 == 3;
-    }
-
-    public static int i(Context context) {
-        NetworkInfo networkInfo;
-        ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
-        try {
-            networkInfo = connectivityManager.getActiveNetworkInfo();
-            if (networkInfo == null) {
-                return -1;
-            }
-        } catch (Exception var2_3) {
-            var2_3.printStackTrace();
-            return -1;
+        if (count / 1000 > 0) {
+            return "" + count / 1000 + "千";
         }
-        if (networkInfo.getState() == NetworkInfo.State.CONNECTED) {
-            if (networkInfo.getType() == 1) {
-                return 6;
-            }
-            if (networkInfo.getType() == 0) {
-                String string2 = networkInfo.getExtraInfo();
-                if (TextUtils.isEmpty(string2)) {
-                    return 1;
-                }
-                String string3 = string2.toLowerCase();
-                if (string3.equals("cmwap")) {
-                    return 0;
-                }
-                if (string3.equals("cmnet")) {
-                    return 1;
-                }
-                if (string3.equals("3gwap")) {
-                    return 7;
-                }
-                if (string3.equals("3gnet")) {
-                    return 8;
-                }
-                if (string3.equals("uniwap")) {
-                    return 2;
-                }
-                if (string3.equals("uninet")) {
-                    return 3;
-                }
-                if (string3.equals("ctwap")) {
-                    return 4;
-                }
-                if (string3.equals("ctnet") || string3.equals("#777")) {
-                    return 5;
-                }
-                return 1;
-            }
-            return 1;
+        if (count / 100 > 0) {
+            return "" + count / 100 + "百";
         }
-        NetworkInfo[] arrnetworkInfo = connectivityManager.getAllNetworkInfo();
-        if (arrnetworkInfo == null) {
-            return -1;
-        }
-        int n2 = arrnetworkInfo.length;
-        int n3 = 0;
-        while (n3 < n2) {
-            if (arrnetworkInfo[n3].getState() == NetworkInfo.State.CONNECTED && arrnetworkInfo[n3].getType() == 0) {
-                String string4 = networkInfo.getExtraInfo();
-                if (TextUtils.isEmpty(string4)) {
-                    return 1;
-                }
-                String string5 = string4.toLowerCase();
-                if (string5.equals("cmwap")) {
-                    return 0;
-                }
-                if (string5.equals("cmnet")) {
-                    return 1;
-                }
-                if (string5.equals("3gwap")) {
-                    return 7;
-                }
-                if (string5.equals("3gnet")) {
-                    return 8;
-                }
-                if (string5.equals("uniwap")) {
-                    return 2;
-                }
-                if (string5.equals("uninet")) {
-                    return 3;
-                }
-                if (string5.equals("ctwap")) {
-                    return 4;
-                }
-                if (string5.equals("ctnet") || string5.equals("#777")) {
-                    return 5;
-                }
-                return 1;
-            }
-            ++n3;
-        }
-        return -1;
-    }
-
-    public static String i(int n2) {
-        if (n2 / 10000 > 0) {
-            return "" + n2 / 10000 + "\u4e07";
-        }
-        if (n2 / 1000 > 0) {
-            return "" + n2 / 1000 + "\u5343";
-        }
-        if (n2 / 100 > 0) {
-            return "" + n2 / 100 + "\u767e";
-        }
-        return String.valueOf(n2);
-    }
-
-    public static JSONObject i(String string2, String string3) {
-        JSONObject jSONObject = new JSONObject();
-        try {
-            String[] arrstring = string2.split(string3);
-            for (String anArrstring : arrstring) {
-                String[] arrstring2 = anArrstring.split("=");
-                jSONObject.put(arrstring2[0], anArrstring.substring(1 + arrstring2[0].length()));
-            }
-        } catch (Exception var4_6) {
-            var4_6.printStackTrace();
-        }
-        return jSONObject;
-    }
-
-    public static boolean i() {
-        return Build.VERSION.SDK_INT >= 19;
+        return String.valueOf(count);
     }
 
     public static int j(int n2) {
@@ -879,10 +706,6 @@ public class TempUtil {
 
     public static boolean j() {
         return Build.VERSION.SDK_INT == 19;
-    }
-
-    public static boolean j(Context context) {
-        return i(context) != -1;
     }
 
     public static boolean j(Context context, String string2) {
@@ -914,20 +737,6 @@ public class TempUtil {
             return null;
         }
         return (T) object;
-    }
-
-    public static boolean k(Context context) {
-        boolean bl;
-        block2:
-        {
-            int n2 = i(context);
-            if (n2 != 0 && n2 != 1 && n2 != 7 && n2 != 8 && n2 != 9) {
-                bl = false;
-                if (n2 != 10) break block2;
-            }
-            bl = true;
-        }
-        return bl;
     }
 
     public static String l(String string2, String string3) {

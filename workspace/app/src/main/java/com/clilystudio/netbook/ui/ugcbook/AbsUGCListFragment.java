@@ -2,6 +2,7 @@ package com.clilystudio.netbook.ui.ugcbook;
 
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
@@ -199,7 +200,7 @@ public abstract class AbsUGCListFragment extends Fragment implements AdapterView
         this.d = view.findViewById(R.id.pb_loading);
         this.j = (TextView) view.findViewById(R.id.empty_text);
         this.e = LayoutInflater.from(this.getActivity()).inflate(R.layout.loading_item, (ViewGroup) getActivity().getWindow().getDecorView(), false);
-        if (TempUtil.i()) {
+        if (Build.VERSION.SDK_INT >= 19) {
             this.b.setFooterDividersEnabled(false);
         }
         this.b.addFooterView(this.e);

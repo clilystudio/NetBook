@@ -2,6 +2,7 @@ package com.clilystudio.netbook.ui;
 
 import android.content.res.Resources;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
@@ -154,7 +155,7 @@ public class BookCategoryFragment extends Fragment {
         this.f = (TextView) view.findViewById(R.id.empty_text);
         final LayoutInflater layoutInflater2 = LayoutInflater.from(this.getActivity());
         this.c = layoutInflater2.inflate(R.layout.loading_item, (ViewGroup)getActivity().getWindow().getDecorView(), false);
-        if (TempUtil.i()) {
+        if (Build.VERSION.SDK_INT >= 19) {
             this.b.setFooterDividersEnabled(false);
         }
         this.b.addFooterView(this.c);

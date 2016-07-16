@@ -13,11 +13,11 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
 
+import com.clilystudio.netbook.IntentBuilder;
 import com.clilystudio.netbook.MyApplication;
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.a_pack.BaseAsyncTask;
 import com.clilystudio.netbook.a_pack.BaseLoadingTask;
-import com.clilystudio.netbook.IntentBuilder;
 import com.clilystudio.netbook.api.ApiServiceProvider;
 import com.clilystudio.netbook.db.BookReadRecord;
 import com.clilystudio.netbook.db.BookTopicEnterRecord;
@@ -76,9 +76,9 @@ public class ReaderWebActivity extends BaseReadActivity {
         fragmentTransaction.replace(R.id.content_frame, readerWebPageFragment);
         try {
             fragmentTransaction.commitAllowingStateLoss();
-         } catch (IllegalStateException var7_6) {
+        } catch (IllegalStateException var7_6) {
             var7_6.printStackTrace();
-         }
+        }
     }
 
     static /* synthetic */ void a(ReaderWebActivity readerWebActivity, String string, String string2, String string3, String string4) {
@@ -93,7 +93,7 @@ public class ReaderWebActivity extends BaseReadActivity {
             fragmentTransaction.commitAllowingStateLoss();
         } catch (IllegalStateException var9_8) {
             var9_8.printStackTrace();
-         }
+        }
     }
 
     static /* synthetic */ void b(ReaderWebActivity readerWebActivity) {
@@ -112,42 +112,26 @@ public class ReaderWebActivity extends BaseReadActivity {
     }
 
     static /* synthetic */ void c(final ReaderWebActivity readerWebActivity) {
-        if (TempUtil.g()) {
-            final AlertDialog alertDialog = new AlertDialog.Builder(readerWebActivity).create();
-            View view = LayoutInflater.from(readerWebActivity).inflate(R.layout.dialog_reader_web_opt2, (ViewGroup)readerWebActivity.getWindow().getDecorView(), false);
-            Button button = (Button) view.findViewById(R.id.reader_web_opt2_btn1);
-            Button button2 = (Button) view.findViewById(R.id.reader_web_opt2_btn2);
-            button.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    alertDialog.dismiss();
-                }
-            });
-            button2.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    alertDialog.dismiss();
-                    ReaderWebActivity.b(readerWebActivity);
-                }
-            });
-            alertDialog.setCancelable(false);
-            alertDialog.setView(view);
-            alertDialog.show();
-            return;
-        }
-        new BaseDialog.Builder(readerWebActivity).setMessage(R.string.reader_web_opt_msg2).setCancelable(false)
-                .setPositiveButton("转码阅读", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        ReaderWebActivity.b(readerWebActivity);
-                    }
-                })
-                .setNegativeButton("原网页阅读", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        // Todo 原来就没处理
-                    }
-                }).show();
+        final AlertDialog alertDialog = new AlertDialog.Builder(readerWebActivity).create();
+        View view = LayoutInflater.from(readerWebActivity).inflate(R.layout.dialog_reader_web_opt2, (ViewGroup) readerWebActivity.getWindow().getDecorView(), false);
+        Button button = (Button) view.findViewById(R.id.reader_web_opt2_btn1);
+        Button button2 = (Button) view.findViewById(R.id.reader_web_opt2_btn2);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertDialog.dismiss();
+            }
+        });
+        button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertDialog.dismiss();
+                ReaderWebActivity.b(readerWebActivity);
+            }
+        });
+        alertDialog.setCancelable(false);
+        alertDialog.setView(view);
+        alertDialog.show();
     }
 
     static /* synthetic */ int d(ReaderWebActivity readerWebActivity) {
@@ -187,7 +171,7 @@ public class ReaderWebActivity extends BaseReadActivity {
         this.d = this.getIntent().getStringExtra("BOOK_TITLE");
         this.e = this.getIntent().getStringExtra("SOURCE_ID");
         this.mBookMode = var1_1 != null ? var1_1.getInt("savedCurrentMode", 5) : this.getIntent().getIntExtra("BOOK_MODE", 5);
-        this.f = TempUtil.g(this.mBookMode);
+        this.f = TempUtil.getSourceName(this.mBookMode);
         this.g = (ReaderWebActionBar) this.findViewById(R.id.reader_web_action_bar);
         this.g.setTitle(this.d);
         this.g.setChapterLink(TempUtil.getWebOptUrl(this.f));
@@ -319,7 +303,7 @@ public class ReaderWebActivity extends BaseReadActivity {
         }
         if (TempUtil.l(this, this.f + "source_web_alert")) {
             String var10_7 = this.getString(R.string.reader_web_opt_msg);
-            final View var11_8 = LayoutInflater.from(this).inflate(R.layout.dialog_reader_web_opt, (ViewGroup)getWindow().getDecorView(), false);
+            final View var11_8 = LayoutInflater.from(this).inflate(R.layout.dialog_reader_web_opt, (ViewGroup) getWindow().getDecorView(), false);
             DialogInterface.OnClickListener var12_9 = new DialogInterface.OnClickListener() {
 
                 @Override
@@ -331,23 +315,9 @@ public class ReaderWebActivity extends BaseReadActivity {
                     }
                 }
             };
-            if (TempUtil.g()) {
-                ((TextView) var11_8.findViewById(R.id.reader_web_opt_url)).setText(TempUtil.getWebOptUrl(this.f));
-                new BaseDialog.Builder(this).setView(var11_8).setCancelable(false)
-                        .setPositiveButton("好的", var12_9).show();
-            } else {
-                DialogInterface.OnClickListener var13_21 = new DialogInterface.OnClickListener() {
-
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        ReaderWebActivity.c(ReaderWebActivity.this);
-                    }
-                };
-                BaseDialog.Builder var14_22 = new BaseDialog.Builder(this);
-                var14_22.setMessage(var10_7);
-                var14_22.setCancelable(false).setPositiveButton("好的", var12_9)
-                        .setNegativeButton("不使用", var13_21).show();
-            }
+            ((TextView) var11_8.findViewById(R.id.reader_web_opt_url)).setText(TempUtil.getWebOptUrl(this.f));
+            new BaseDialog.Builder(this).setView(var11_8).setCancelable(false)
+                    .setPositiveButton("好的", var12_9).show();
         }
         BaseAsyncTask<String, Void, TopicCount> var7_10 = new BaseAsyncTask<String, Void, TopicCount>() {
 

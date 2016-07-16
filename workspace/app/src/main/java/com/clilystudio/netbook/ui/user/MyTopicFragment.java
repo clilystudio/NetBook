@@ -1,6 +1,7 @@
 package com.clilystudio.netbook.ui.user;
 
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
@@ -147,7 +148,7 @@ public class MyTopicFragment extends Fragment {
         this.c.setMode(PullToRefreshBase.Mode.PULL_FROM_START);
         this.e = layoutInflater2.inflate(R.layout.loading_item, (ViewGroup)getActivity().getWindow().getDecorView(), false);
         ListView d = this.c.getRefreshableView();
-        if (TempUtil.i()) {
+        if (Build.VERSION.SDK_INT >= 19) {
             d.setFooterDividersEnabled(false);
         }
         d.addFooterView(this.e);

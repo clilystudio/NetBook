@@ -10,6 +10,7 @@ import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -475,7 +476,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
             MyApplication.getInstance().setBookId(null);
         }
         MyApplication.getInstance().setReader(this.mReader);
-        if (!this.q() && !TempUtil.h(this.mReadMode)) {
+        if (!this.q() && !TempUtil.canDownload(this.mReadMode)) {
             if (!this.mIsShowToc || this.mChangeOrientation) {
                 this.g();
             } else {
@@ -621,7 +622,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
                     }
                 }
                 this.r.setChapterLink(string);
-                if (TempUtil.h() && !this.p) {
+                if (!this.p) {
                     this.q.setSystemUiVisibility(0);
                 }
             } else {
@@ -655,17 +656,17 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
                 this.getWindow().addFlags(2048);
                 this.getWindow().clearFlags(1024);
                 this.getWindow().clearFlags(512);
-                if (TempUtil.h() && this.p) {
+                if (this.p) {
                     this.q.setSystemUiVisibility(0);
                 }
             }
         }
         if (this.i.f()) {
-            if (TempUtil.h() && this.p) {
+            if (this.p) {
                 this.q.setSystemUiVisibility(2055);
             }
         } else {
-            if (TempUtil.h() && this.p) {
+            if (this.p) {
                 this.q.setSystemUiVisibility(1);
             }
         }
@@ -1421,7 +1422,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
         } else {
             this.mReaderBodyTV.setBackgroundResource(this.mReaderStyle.h);
         }
-        boolean bl2 = this.mReadMode == 5 || this.mReadMode == 10 || TempUtil.h(this.mReadMode) || this.mReadMode == 9;
+        boolean bl2 = this.mReadMode == 5 || this.mReadMode == 10 || TempUtil.canDownload(this.mReadMode) || this.mReadMode == 9;
         View view = this.findViewById(R.id.reader_ab_read_mode);
         view.setVisibility(bl2 ? View.VISIBLE : View.GONE);
         this.r.setReaderStyle(this.mReaderStyle);
@@ -1468,7 +1469,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
                     case R.id.reader_ab_more:
                         ReaderActivity.this.s.setVisibility(View.GONE);
                         View view = ReaderActivity.this.r.findViewById(R.id.reader_ab_more);
-                        if (TempUtil.i()) {
+                        if (Build.VERSION.SDK_INT >= 19) {
                             ReaderActivity.a(ReaderActivity.this, view);
                         } else {
                             ReaderActivity.b(ReaderActivity.this, view);
@@ -1545,14 +1546,12 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
             }
         });
         this.q = this.getWindow().getDecorView();
-        if (TempUtil.h()) {
-            this.q.setOnSystemUiVisibilityChangeListener(new View.OnSystemUiVisibilityChangeListener() {
-                @Override
-                public void onSystemUiVisibilityChange(int visibility) {
-                    ReaderActivity.this.p = (visibility & 1) == 0;
-                }
-            });
-        }
+        this.q.setOnSystemUiVisibilityChangeListener(new View.OnSystemUiVisibilityChangeListener() {
+            @Override
+            public void onSystemUiVisibilityChange(int visibility) {
+                ReaderActivity.this.p = (visibility & 1) == 0;
+            }
+        });
         this.J();
         if (this.mChangeOrientation) {
             this.mIsShowToc = false;

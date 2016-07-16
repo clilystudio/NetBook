@@ -171,7 +171,7 @@ public class ReaderOptionActivity extends BaseActivity {
                     }
                 });
                 SettingItem var15_15 = (SettingItem) this.findViewById(R.id.immersive_container);
-                boolean hasPermanentMenuKey = "xiaomi".equals(Build.BRAND.toLowerCase()) || !(TempUtil.i() && !ViewConfiguration.get(this).hasPermanentMenuKey());
+                boolean hasPermanentMenuKey = "xiaomi".equals(Build.BRAND.toLowerCase()) || !(Build.VERSION.SDK_INT >= 19 && !ViewConfiguration.get(this).hasPermanentMenuKey());
                 if (hasPermanentMenuKey) {
                     assert var15_15 != null;
                     var15_15.setVisibility(View.GONE);

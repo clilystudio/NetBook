@@ -3,6 +3,7 @@ package com.clilystudio.netbook.ui.home;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
@@ -928,7 +929,7 @@ public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollL
                 }, 1000);
             }
         });
-        if (TempUtil.i()) {
+        if (Build.VERSION.SDK_INT >= 19) {
             this.e.setFooterDividersEnabled(false);
         }
         View view = LayoutInflater.from(this.getActivity()).inflate(R.layout.ptr_list_footer_empty_view, (ViewGroup) getActivity().getWindow().getDecorView(), false);

@@ -153,7 +153,7 @@ public class BookDownloadService extends Service {
     static /* synthetic */ void l(BookDownloadService bookDownloadService) {
         BookReadRecord bookReadRecord;
         if (bookDownloadService.mBookId != null && !bookDownloadService.mBookId.equals(bookDownloadService.m) && (bookReadRecord = BookReadRecord.get(bookDownloadService.mBookId)) != null) {
-            String string = TempUtil.g(bookReadRecord.getReadMode());
+            String string = TempUtil.getSourceName(bookReadRecord.getReadMode());
             String string2 = bookReadRecord.getDownloadedSource();
             if (string2 == null || !string2.contains(string)) {
                 bookReadRecord.setDownloadedSource(string2 + string);
@@ -230,8 +230,8 @@ public class BookDownloadService extends Service {
             getTocSourceRoot();
             return;
         }
-        if (TempUtil.h(this.mReadMode)) {
-            string2 = TempUtil.g(this.mReadMode);
+        if (TempUtil.canDownload(this.mReadMode)) {
+            string2 = TempUtil.getSourceName(this.mReadMode);
             SourceRecord sourceRecord = SourceRecord.get(this.mBookId, string2);
             if (sourceRecord == null || sourceRecord.getSourceId() == null) {
                 getTocSourceRoot();
@@ -299,10 +299,10 @@ public class BookDownloadService extends Service {
 
     private void b() {
         this.k = new ReaderTocManager(this.mReadMode);
-        boolean bl = TempUtil.h(this.mReadMode);
+        boolean bl = TempUtil.canDownload(this.mReadMode);
         String string = null;
         if (bl) {
-            String string2 = TempUtil.g(this.mReadMode);
+            String string2 = TempUtil.getSourceName(this.mReadMode);
             SourceRecord sourceRecord = SourceRecord.get(this.mBookId, string2);
             string = null;
             if (sourceRecord != null) {

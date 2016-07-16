@@ -175,8 +175,7 @@ public class BookInfoActivity extends BaseActivity implements View.OnClickListen
         int n2 = bookInfoActivity.k.getWordCount();
         if (n2 > 0) {
             textView2.setVisibility(View.VISIBLE);
-            Object[] arrobject = new Object[]{TempUtil.i(n2)};
-            textView2.setText(String.format("  |  %s\u5b57", arrobject));
+            textView2.setText(String.format("  |  %s字", TempUtil.getWordCount(n2)));
         } else {
             textView2.setVisibility(View.GONE);
         }
