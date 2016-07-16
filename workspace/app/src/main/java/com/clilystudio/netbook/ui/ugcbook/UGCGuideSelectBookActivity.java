@@ -20,7 +20,6 @@ import com.clilystudio.netbook.event.BusProvider;
 import com.clilystudio.netbook.model.BookSummary;
 import com.clilystudio.netbook.model.UGCNewCollection;
 import com.clilystudio.netbook.ui.BaseActivity;
-import com.clilystudio.netbook.util.TempUtil;
 import com.clilystudio.netbook.widget.CoverView;
 
 import java.util.ArrayList;
@@ -152,7 +151,7 @@ public class UGCGuideSelectBookActivity extends BaseActivity {
                         arrayList2.add(string);
                     }
                 }
-                String[] arrstring = TempUtil.a(arrayList2, String.class);
+                String[] arrstring = (String[]) arrayList2.toArray();
                 BusProvider.getInstance().post(new AddShelfBooksEvent(arrstring));
                 finish();
             }
@@ -195,7 +194,7 @@ public class UGCGuideSelectBookActivity extends BaseActivity {
             Z z;
             if (view == null) {
                 z = new Z();
-                view = this.b.inflate(R.layout.list_item_ugc_shelf, (ViewGroup)getWindow().getDecorView(), false);
+                view = this.b.inflate(R.layout.list_item_ugc_shelf, (ViewGroup) getWindow().getDecorView(), false);
                 z.a = (TextView) view.findViewById(R.id.title);
                 z.b = (TextView) view.findViewById(R.id.desc);
                 z.c = (CoverView) view.findViewById(R.id.cover);

@@ -20,8 +20,8 @@ public class CipherUtil {
             byte[] arrby = Base64.decode(key.getBytes(), 0);
             SecretKeySpec secretKeySpec = new SecretKeySpec(arrby, 0, arrby.length, "AES");
             byte[] arrby2 = Base64.decode(content, 0);
-            byte[] arrby3 = TempUtil.a(arrby2, 0, 16);
-            byte[] arrby4 = TempUtil.a(arrby2, 16, arrby2.length);
+            byte[] arrby3 = TempUtil.copyBytes(arrby2, 0, 16);
+            byte[] arrby4 = TempUtil.copyBytes(arrby2, 16, arrby2.length);
             IvParameterSpec ivParameterSpec = new IvParameterSpec(arrby3);
             Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
             cipher.init(2, secretKeySpec, ivParameterSpec);
@@ -47,8 +47,8 @@ public class CipherUtil {
         try {
             Key key = CipherUtil.a(string);
             byte[] arrby = Base64.decode(string2, 0);
-            byte[] arrby2 = TempUtil.a(arrby, 0, 16);
-            byte[] arrby3 = TempUtil.a(arrby, 16, arrby.length);
+            byte[] arrby2 = TempUtil.copyBytes(arrby, 0, 16);
+            byte[] arrby3 = TempUtil.copyBytes(arrby, 16, arrby.length);
             IvParameterSpec ivParameterSpec = new IvParameterSpec(arrby2);
             Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
             cipher.init(2, key, ivParameterSpec);

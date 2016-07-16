@@ -61,6 +61,7 @@ import com.clilystudio.netbook.widget.ThemeLoadingView;
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 import com.squareup.otto.Subscribe;
 
+import java.util.Collection;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedHashSet;
@@ -1882,12 +1883,27 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
 
         private String c(String string) {
             StringBuffer stringBuffer = new StringBuffer();
-            Matcher matcher = Pattern.compile("[" + TempUtil.a(this.f.keySet(), "|") + "|" + TempUtil.a(this.g.keySet(), "|") + "]+").matcher(string);
+            Matcher matcher = Pattern.compile("[" + isContainsKey(this.f.keySet(), "|") + "|" + isContainsKey(this.g.keySet(), "|") + "]+").matcher(string);
             while (matcher.find()) {
                 matcher.appendReplacement(stringBuffer, String.valueOf(this.d(matcher.group())));
             }
             matcher.appendTail(stringBuffer);
             return stringBuffer.toString();
+        }
+
+        private boolean isContainsKey(Collection<String> collection, String string2) {
+            if (collection == null) {
+                return false;
+            }
+            if (string2 == null) {
+                return collection.contains(null);
+            }
+            for (String aCollection : collection) {
+                if (string2.equalsIgnoreCase(aCollection)) {
+                    return true;
+                }
+            }
+            return false;
         }
 
         /*

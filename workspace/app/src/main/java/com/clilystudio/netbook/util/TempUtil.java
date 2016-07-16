@@ -65,10 +65,8 @@ import java.net.URLDecoder;
 import java.security.MessageDigest;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -491,21 +489,6 @@ public class TempUtil {
         }
     }
 
-    public static boolean a(Collection<String> collection, String string2) {
-        if (collection == null) {
-            return false;
-        }
-        if (string2 == null) {
-            return collection.contains(null);
-        }
-        Iterator<String> iterator = collection.iterator();
-        do {
-            if (iterator.hasNext()) continue;
-            return false;
-        } while (!string2.equalsIgnoreCase(iterator.next()));
-        return true;
-    }
-
     private static boolean isEqualBytes(byte[] source, byte[] dest) {
         if (source == dest) {
             return true;
@@ -521,53 +504,13 @@ public class TempUtil {
         return true;
     }
 
-    public static byte[] a(int n2) {
-        byte[] arrby = new byte[4];
-        arrby[3] = (byte) (n2 % 256);
-        int n3 = n2 >> 8;
-        arrby[2] = (byte) (n3 % 256);
-        int n4 = n3 >> 8;
-        arrby[1] = (byte) (n4 % 256);
-        arrby[0] = (byte) ((n4 >> 8) % 256);
-        return arrby;
-    }
-
-    public static byte[] a(byte[] arrby, int n2, int n3) {
-        int n4 = arrby.length;
-        int n5 = n3 - n2;
-        int n6 = Math.min(n5, n4 - n2);
-        byte[] arrby2 = new byte[n5];
-        System.arraycopy(arrby, n2, arrby2, 0, n6);
-        return arrby2;
-    }
-
-    public static <T> T[] a(List<T> list, Class<T> class_) {
-        Object[] arrobject = (Object[]) Array.newInstance(class_, list.size());
-        for (int k = 0; k < list.size(); ++k) {
-            arrobject[k] = list.get(k);
-        }
-        return (T[]) arrobject;
-    }
-
-    public static String[] a(String string2) {
-        int n2 = 1 + string2.indexOf(40);
-        int n3 = string2.lastIndexOf(41);
-        if (n2 == 0 || n3 == -1) {
-            return null;
-        }
-        String[] arrstring = string2.substring(n2, n3).split(",");
-        if (arrstring != null) {
-            for (int k = 0; k < arrstring.length; ++k) {
-                if (TextUtils.isEmpty(arrstring[k])) continue;
-                arrstring[k] = arrstring[k].trim();
-                arrstring[k] = arrstring[k].replaceAll("'", "").replaceAll("\"", "");
-            }
-        }
-        return arrstring;
-    }
-
-    public static byte b(byte by, int n2) {
-        return (byte) (by & (-1 ^ 1 << n2));
+    public static byte[] copyBytes(byte[] src, int start, int end) {
+        int n4 = src.length;
+        int n5 = end - start;
+        int length = Math.min(n5, n4 - start);
+        byte[] dst = new byte[n5];
+        System.arraycopy(src, start, dst, 0, length);
+        return dst;
     }
 
     public static int b(Context context, int n2, int n3) {
