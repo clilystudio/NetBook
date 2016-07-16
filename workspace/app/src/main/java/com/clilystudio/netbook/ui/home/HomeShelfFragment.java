@@ -133,7 +133,7 @@ public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollL
                         }
                         break;
                     case 3:
-                        Intent intent = TempUtil.l(HomeShelfFragment.this.getActivity(), "feed_intro") ? new Intent(HomeShelfFragment.this.getActivity(), FeedIntroActivity.class) : new Intent(HomeShelfFragment.this.getActivity(), FeedListActivity.class);
+                        Intent intent = TempUtil.getBoolPref(HomeShelfFragment.this.getActivity(), "feed_intro",true) ? new Intent(HomeShelfFragment.this.getActivity(), FeedIntroActivity.class) : new Intent(HomeShelfFragment.this.getActivity(), FeedListActivity.class);
                         HomeShelfFragment.this.startActivity(intent);
                         break;
                 }
@@ -852,7 +852,7 @@ public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollL
         if (c2.isLocal()) {
             this.k();
         }
-        TempUtil.r(c2.getBookId());
+        TempUtil.subscribeBook(c2.getBookId());
     }
 
     @Subscribe
@@ -969,7 +969,7 @@ public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollL
     @Subscribe
     public void onFeedRemoved(FeedRemovedEvent n2) {
         this.k();
-        TempUtil.r(n2.getBookId());
+        TempUtil.subscribeBook(n2.getBookId());
         TempUtil.syncBookShelf(n2.getBookId(), BookSyncRecord.BookModifyType.FEED_REMOVE);
     }
 

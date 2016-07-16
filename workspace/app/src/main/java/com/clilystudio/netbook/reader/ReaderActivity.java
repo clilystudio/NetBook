@@ -680,7 +680,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
     }
 
     private void J() {
-        this.mIsFullScreen = TempUtil.l(this, "reader_opt_full_screen");
+        this.mIsFullScreen = TempUtil.getBoolPref(this, "reader_opt_full_screen", true);
         this.r.a(this.mIsFullScreen);
         this.H();
     }
@@ -1609,7 +1609,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
                         }
                         TempUtil.saveObject(hashMap, CachePathConst.ChapterKey, ReaderActivity.this.mBookId);
                     } else {
-                        hashMap = TempUtil.k(CachePathConst.ChapterKey, ReaderActivity.this.mBookId);
+                        hashMap = TempUtil.loadObject(CachePathConst.ChapterKey, ReaderActivity.this.mBookId);
                         if (hashMap == null) {
                             hashMap = new HashMap<>();
                         }

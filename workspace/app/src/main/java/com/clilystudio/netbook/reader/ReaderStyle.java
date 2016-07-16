@@ -66,7 +66,7 @@ public final class ReaderStyle {
         this.paddingVert = this.n.getDimensionPixelSize(R.dimen.page_vertical_padding);
         this.width = n - (this.paddingHori << 1);
         this.l = this.n.getDimensionPixelSize(R.dimen.page_small_text_height);
-        this.a(TempUtil.l(this.m, "reader_opt_full_screen"));
+        this.a(TempUtil.getBoolPref(this.m, "reader_opt_full_screen",true));
         this.k();
         this.c(this.z);
     }

@@ -92,7 +92,7 @@ public final class BookSourceManager {
                 this.mTocId = this.mBookReadRecord.getTocId();
             }
             if (CommonUtil.getAccount() != null) {
-                HashMap<String, String> hashMap = TempUtil.k(CachePathConst.ChapterKey, this.mBookId);
+                HashMap<String, String> hashMap = TempUtil.loadObject(CachePathConst.ChapterKey, this.mBookId);
                 if (hashMap == null) {
                     hashMap = new HashMap<>();
                 }

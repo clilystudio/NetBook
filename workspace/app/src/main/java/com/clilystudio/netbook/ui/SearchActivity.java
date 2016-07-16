@@ -475,7 +475,7 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
                 SearchActivity.d(SearchActivity.this);
             }
         });
-        this.x = TempUtil.k(CachePathConst.SearchHistory, "search_history.txt");
+        this.x = TempUtil.loadObject(CachePathConst.SearchHistory, "search_history.txt");
         if (this.x == null) {
             this.x = new ArrayList<>();
         }
@@ -497,8 +497,8 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
         this.q = (RelativeLayout) this.findViewById(R.id.ll_hot_keyword_continer);
         this.r = (AutoFlowView) this.findViewById(R.id.afv_hots);
         this.s = (TextView) this.findViewById(R.id.btn_change);
-        if (TempUtil.k(CachePathConst.SearchHistory, "search_hotword.txt") != null && TempUtil.getIntPref(this, "search_hot_words_date", 0) != 0) {
-            List<AutoFlowView.Word> list = TempUtil.k(CachePathConst.SearchHistory, "search_hotword.txt");
+        if (TempUtil.loadObject(CachePathConst.SearchHistory, "search_hotword.txt") != null && TempUtil.getIntPref(this, "search_hot_words_date", 0) != 0) {
+            List<AutoFlowView.Word> list = TempUtil.loadObject(CachePathConst.SearchHistory, "search_hotword.txt");
             this.q.setVisibility(View.VISIBLE);
             this.r.setWords(list);
             this.r.setOnItemClickListener(new AutoFlowView.OnItemClickListener() {

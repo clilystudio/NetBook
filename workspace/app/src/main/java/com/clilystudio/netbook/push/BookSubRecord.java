@@ -38,6 +38,6 @@ public class BookSubRecord extends Model {
     }
 
     public static BookSubRecord getBookId(String string) {
-        return BookSubRecord.get(TempUtil.s(string));
+        return BookSubRecord.get(TempUtil.getPushId(string));
     }
 }

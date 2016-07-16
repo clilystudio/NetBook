@@ -721,7 +721,7 @@ public class HomeActivity extends HomeParentActivity implements ViewPager.OnPage
         Account account;
         super.onResume();
         DnsManager.setUseDns("1".equals(OnlineConfigAgent.getInstance().getConfigParams(this, "use_http_dns")));
-        if (TempUtil.l()) {
+        if (TempUtil.isForceEncryptChapter()) {
             new BaseAsyncTask<Void, Void, BookTopRoot>() {
 
                 @Override

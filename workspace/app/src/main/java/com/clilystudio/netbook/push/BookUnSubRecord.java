@@ -38,6 +38,6 @@ public class BookUnSubRecord extends Model {
     }
 
     public static BookUnSubRecord getBookId(String string) {
-        return BookUnSubRecord.get(TempUtil.s(string));
+        return BookUnSubRecord.get(TempUtil.getPushId(string));
     }
 }

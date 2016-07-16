@@ -135,7 +135,7 @@ public class SettingsActivity extends BaseActivity implements View.OnClickListen
         this.findViewById(R.id.settings_market_assessment).setOnClickListener(this);
         TextView textView = (TextView) this.findViewById(R.id.settings_version_name);
         textView.setText(CommonUtil.getVersionName(this));
-        final boolean bl = TempUtil.l(this, "update_notice_key");
+        final boolean bl = TempUtil.getBoolPref(this, "update_notice_key",true);
         boolean bl2 = TempUtil.getBoolPref(this, "save_bandwidth", false);
         final SwitchCompat switchCompat = (SwitchCompat) this.findViewById(R.id.cb_notice_update);
         final SwitchCompat switchCompat2 = (SwitchCompat) this.findViewById(R.id.cb_save_bandwidth);

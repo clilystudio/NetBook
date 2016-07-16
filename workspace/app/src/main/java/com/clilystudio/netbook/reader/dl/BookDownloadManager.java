@@ -44,7 +44,7 @@ public class BookDownloadManager {
             ToastUtil.showLongToast(this.mActivity, "暂不支持当前模式缓存");
             return;
         }
-        if (1 == TempUtil.r(this.mActivity)) {
+        if (1 == TempUtil.getNetType(this.mActivity)) {
             this.startDownloadService(bookReadRecord, start, total);
             return;
         }

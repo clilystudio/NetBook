@@ -120,7 +120,7 @@ public final class BookShelfSyncManager {
             }
             for (String string5 : arrayList2) {
                 if (hashSet.contains(string5)) continue;
-                TempUtil.r(string5);
+                TempUtil.subscribeBook(string5);
             }
         }
     }

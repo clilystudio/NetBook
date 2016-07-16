@@ -170,7 +170,7 @@ public final class ReaderTocManager {
     private ChapterRoot c(String string) {
         try {
             ApiService apiService = ApiServiceProvider.getApiService();
-            if (TempUtil.l()) {
+            if (TempUtil.isForceEncryptChapter()) {
                 return apiService.x(string);
             }
             return apiService.y(string);

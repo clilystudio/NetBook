@@ -389,7 +389,7 @@ public final class ReaderPageManager {
                             }
                             TempUtil.saveObject(hashMap, CachePathConst.ChapterKey, arg);
                         } else {
-                            hashMap = TempUtil.k(CachePathConst.ChapterKey, arg);
+                            hashMap = TempUtil.loadObject(CachePathConst.ChapterKey, arg);
                             if (hashMap == null) {
                                 hashMap = new HashMap<>();
                             }

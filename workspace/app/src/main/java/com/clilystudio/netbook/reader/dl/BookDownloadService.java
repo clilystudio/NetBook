@@ -372,7 +372,7 @@ public class BookDownloadService extends Service {
                     BookDownloadService.b(BookDownloadService.this).putExtra("SerDlChapterCount", BookDownloadService.h(BookDownloadService.this));
                     BookDownloadService.b(BookDownloadService.this).putExtra("bookId", BookDownloadService.this.mBookId);
                     BookDownloadService.i(BookDownloadService.this);
-                    int n2 = TempUtil.r(BookDownloadService.this);
+                    int n2 = TempUtil.getNetType(BookDownloadService.this);
                     if (BookDownloadService.j(BookDownloadService.this) == 1 && n2 > 1) {
                         BookDownloadService.k(BookDownloadService.this);
                         ToastUtil.showToast(BookDownloadService.this.getApplicationContext(), "流量下自动暂停缓存，连接 Wi-Fi 继续或手动开始缓存");
@@ -511,7 +511,7 @@ public class BookDownloadService extends Service {
 
         @Override
         public void onReceive(Context context, Intent intent) {
-            if (BookDownloadService.a(this.a) && TempUtil.r(this.a) == 1) {
+            if (BookDownloadService.a(this.a) && TempUtil.getNetType(this.a) == 1) {
                 BookDownloadService.b(this.a).putExtra("SerDlStopFlag", 0);
                 BookDownloadService.c(this.a);
                 BookDownloadService.a(this.a, false);

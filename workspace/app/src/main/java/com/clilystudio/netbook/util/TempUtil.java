@@ -2,7 +2,6 @@ package com.clilystudio.netbook.util;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Paint;
@@ -12,12 +11,9 @@ import android.graphics.Rect;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.wifi.WifiManager;
-import android.os.Build;
-import android.os.Bundle;
 import android.os.Environment;
 import android.os.StatFs;
 import android.preference.PreferenceManager;
-import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,7 +24,6 @@ import android.widget.ListView;
 import com.clilystudio.netbook.CachePathConst;
 import com.clilystudio.netbook.MyApplication;
 import com.clilystudio.netbook.R;
-import com.clilystudio.netbook.db.BookReadRecord;
 import com.clilystudio.netbook.db.BookSyncRecord;
 import com.clilystudio.netbook.db.SourceRecord;
 import com.clilystudio.netbook.model.Chapter;
@@ -39,8 +34,8 @@ import com.clilystudio.netbook.model.TocSource;
 import com.clilystudio.netbook.push.BookSubRecord;
 import com.clilystudio.netbook.push.BookUnSubRecord;
 import com.umeng.onlineconfig.OnlineConfigAgent;
+import com.xiaomi.mipush.sdk.MiPushClient;
 
-import org.json.JSONObject;
 import org.mozilla.universalchardet.UniversalDetector;
 
 import java.io.BufferedReader;
@@ -54,13 +49,10 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
-import java.util.Map;
 
 public class TempUtil {
     private static String cipherBookId;
@@ -692,79 +684,20 @@ public class TempUtil {
         return String.valueOf(count);
     }
 
-    public static <T> T k(String string2, String string3) {
-        Object object;
-        File file;
-        block4:
-        {
-            file = new File(makeDir(string2), string3);
-            if (file.exists()) break block4;
-            return null;
-        }
+    public static <T> T loadObject(String path, String name) {
         try {
-            object = new ObjectInputStream(new FileInputStream(file)).readObject();
-        } catch (IOException var4_4) {
-            var4_4.printStackTrace();
-            return null;
-        } catch (ClassNotFoundException var3_5) {
-            var3_5.printStackTrace();
-            return null;
-        }
-        return (T) object;
-    }
-
-    public static String l(String string2, String string3) {
-        if (!TextUtils.isEmpty(string2) && !TextUtils.isEmpty(string3)) {
-            if (string2.toLowerCase().compareTo(string3.toLowerCase()) <= 0) {
-                return String.valueOf(string2) + "_" + string3;
+            File file = new File(makeDir(path), name);
+            if (file.exists()) {
+                return (T) new ObjectInputStream(new FileInputStream(file)).readObject();
             }
-            return String.valueOf(string3) + "_" + string2;
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
         }
         return null;
     }
 
-    public static boolean l() {
-        return !"0".equals(OnlineConfigAgent.getInstance().getConfigParams(MyApplication.getInstance(), "force_encrypt_chapter"));
-    }
-
-    public static boolean l(Context context, String string2) {
-        return getBoolPref(context, string2, true);
-    }
-
-    /*
-     * Enabled aggressive block sorting
-     */
-    public static Bundle m(String string2) {
-        Bundle bundle = new Bundle();
-        if (string2 == null) {
-            return bundle;
-        }
-        String[] arrstring = string2.split("&");
-        int n2 = arrstring.length;
-        int n3 = 0;
-        while (n3 < n2) {
-            String[] arrstring2 = arrstring[n3].split("=");
-            if (arrstring2.length < 2 || arrstring2[1] == null) {
-                bundle.putString(URLDecoder.decode(arrstring2[0]), "");
-            } else {
-                bundle.putString(URLDecoder.decode(arrstring2[0]), URLDecoder.decode(arrstring2[1]));
-            }
-            ++n3;
-        }
-        return bundle;
-    }
-
-    private static String n() {
-        List<BookReadRecord> list = BookReadRecord.getAll();
-        StringBuilder stringBuilder = new StringBuilder();
-        if (list.size() > 0) {
-            for (BookReadRecord aList : list) {
-                stringBuilder.append(aList.getBookId());
-                stringBuilder.append("|");
-            }
-            stringBuilder.deleteCharAt(-1 + stringBuilder.length());
-        }
-        return stringBuilder.toString();
+    public static boolean isForceEncryptChapter() {
+        return false;
     }
 
     private static String getUserId() {
@@ -774,22 +707,6 @@ public class TempUtil {
         return "";
     }
 
-    public static Map<String, String> o(Context context) {
-        Map<String, String> map = p(context);
-        map.put("iid", n());
-        return map;
-    }
-
-    public static Map<String, String> p(Context context) {
-        HashMap<String, String> hashMap = new HashMap<>();
-        hashMap.put("uid", getUserId(context));
-        return hashMap;
-    }
-
-    public static boolean p(String string2) {
-        return string2.equals("POST") || string2.equals("PUT") || string2.equals("PATCH");
-    }
-
     public static void initCipherInfo(Context context) {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
         cipherBookId = sharedPreferences.getString("CIPHER_BOOK_ID", null);
@@ -797,50 +714,48 @@ public class TempUtil {
         cipherCheckSum = sharedPreferences.getString("CIPHER_CHECKSUM", null);
     }
 
-    public static boolean q(String string2) {
-        return p(string2) || string2.equals("DELETE");
-    }
-
-    /*
-     * Enabled force condition propagation
-     * Lifted jumps to return sites
-     */
-    public static int r(Context context) {
+    public static int getNetType(Context context) {
         NetworkInfo networkInfo = ((ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE)).getActiveNetworkInfo();
         if (networkInfo == null) {
             return 0;
         }
-        int n2 = networkInfo.getType();
-        if (n2 == 0) {
-            String string2 = networkInfo.getExtraInfo();
-            if (isBlank(string2)) return 0;
-            if (!string2.toLowerCase().equals("cmnet")) return 2;
+        int type = networkInfo.getType();
+        if (type == ConnectivityManager.TYPE_MOBILE) {
+            String extraInfo = networkInfo.getExtraInfo();
+            if (isBlank(extraInfo)) {
+                return 0;
+            }
+            if (!extraInfo.toLowerCase().equals("cmnet")) {
+                return 2;
+            }
             return 3;
         }
-        if (n2 != 1) return 0;
-        return 1;
+        if (type == ConnectivityManager.TYPE_WIFI) {
+            return 1;
+        }
+        return 0;
     }
 
-    public static void r(String string2) {
-        String string3 = s(string2);
-        BookSubRecord.create(string3);
-        com.xiaomi.mipush.sdk.MiPushClient.subscribe(MyApplication.getInstance(), string3, null);
+    public static void subscribeBook(String bookId) {
+        String pushId = getPushId(bookId);
+        BookSubRecord.create(pushId);
+        MiPushClient.subscribe(MyApplication.getInstance(), pushId, null);
     }
 
     public static boolean r(Context context, String string2) {
         return "1".equals(OnlineConfigAgent.getInstance().getConfigParams(context, string2));
     }
 
-    public static String s(String string2) {
-        return "book:" + string2;
+    public static String getPushId(String bookId) {
+        return "book:" + bookId;
     }
 
     public static boolean s(Context context) {
-        return r(context) == 1;
+        return getNetType(context) == 1;
     }
 
     public static void t(String string2) {
-        String string3 = s(string2);
+        String string3 = getPushId(string2);
         BookUnSubRecord.create(string3);
         com.xiaomi.mipush.sdk.MiPushClient.unsubscribe(MyApplication.getInstance(), string3, null);
     }

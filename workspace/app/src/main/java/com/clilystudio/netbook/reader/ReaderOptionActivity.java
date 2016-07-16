@@ -98,7 +98,7 @@ public class ReaderOptionActivity extends BaseActivity {
         super.onCreate(var1_1);
         this.setContentView(R.layout.reader_option);
         this.b(R.string.reader_option_title);
-        if (TempUtil.l(this, "reader_orientation")) {
+        if (TempUtil.getBoolPref(this, "reader_orientation",true)) {
             this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         } else {
             this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
@@ -112,9 +112,9 @@ public class ReaderOptionActivity extends BaseActivity {
         this.b = (TextView) this.findViewById(R.id.reader_option_screen_off_time_value);
         this.c = this.getResources().getStringArray(R.array.reader_screen_off_time_tags);
         this.e = this.getResources().getIntArray(R.array.reader_screen_off_time_values);
-        boolean var8_8 = TempUtil.l(this, "volume_keys_flip");
+        boolean var8_8 = TempUtil.getBoolPref(this, "volume_keys_flip",true);
         boolean var9_9 = TempUtil.getBoolPref(this, "click_flip_animation", false);
-        boolean var10_10 = TempUtil.l(this, "reader_opt_full_screen");
+        boolean var10_10 = TempUtil.getBoolPref(this, "reader_opt_full_screen", true);
         boolean var11_11 = TempUtil.getBoolPref(this, "convert_t", false);
         boolean var12_12 = TempUtil.getBoolPref(this, "auto_buy_chapter" + BookInfoUtil.bookId, false);
         assert var2_2 != null;
