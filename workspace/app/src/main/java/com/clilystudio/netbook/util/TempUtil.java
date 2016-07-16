@@ -543,9 +543,9 @@ public class TempUtil {
         TempUtil.cipherBookId = cipherBookId;
         TempUtil.cipherTocId = cipherTocId;
         TempUtil.cipherCheckSum = cipherCheckSum;
-        e(context, "CIPHER_BOOK_ID", cipherBookId);
-        e(context, "CIPHER_TOC_ID", cipherTocId);
-        e(context, "CIPHER_CHECKSUM", cipherCheckSum);
+        putStringPref(context, "CIPHER_BOOK_ID", cipherBookId);
+        putStringPref(context, "CIPHER_TOC_ID", cipherTocId);
+        putStringPref(context, "CIPHER_CHECKSUM", cipherCheckSum);
     }
 
     public static void putBoolPref(Context context, String key, boolean value) {
@@ -609,48 +609,21 @@ public class TempUtil {
         return "mounted".equals(Environment.getExternalStorageState());
     }
 
-    public static int e(String string2) {
-        long l2;
-        block3:
-        {
-            try {
-                l2 = Long.parseLong(string2);
-                if (l2 > Integer.MAX_VALUE) {
-                    return Integer.MAX_VALUE;
-                }
-                if (l2 >= 0) break block3;
-                return 0;
-            } catch (NumberFormatException var1_2) {
-                return -1;
-            }
-        }
-        return (int) l2;
-    }
-
-    public static long e() {
+    public static long getFreeSpaceSize() {
         if (isMounted()) {
-            try {
-                StatFs statFs = new StatFs(Environment.getExternalStorageDirectory().getPath());
-                long l2 = (long) statFs.getBlockSize() * (long) statFs.getAvailableBlocks() / 1024;
-                return l2;
-            } catch (Exception var1_2) {
-                var1_2.printStackTrace();
-                return 0;
-            }
+            StatFs statFs = new StatFs(Environment.getExternalStorageDirectory().getPath());
+            return statFs.getBlockSizeLong() * statFs.getAvailableBlocksLong() / 1024;
+        } else {
+            return -1;
         }
-        return -1;
     }
 
-    public static long e(Context context, String string2, long l2) {
-        return context.getSharedPreferences("mistat", 0).getLong(string2, l2);
-    }
-
-    public static void e(Context context, String string2, String string3) {
+    public static void putStringPref(Context context, String key, String value) {
         if (context == null) {
             return;
         }
         SharedPreferences.Editor editor = getEditor(context);
-        editor.putString(string2, string3);
+        editor.putString(key, value);
         editor.apply();
     }
 

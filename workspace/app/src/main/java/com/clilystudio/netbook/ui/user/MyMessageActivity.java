@@ -17,6 +17,6 @@ public class MyMessageActivity extends BaseActivity {
     @Override
     public void onPause() {
         super.onPause();
-        TempUtil.e(this, "pref_new_imp_notif_time", String.valueOf(System.currentTimeMillis()));
+        TempUtil.putStringPref(this, "pref_new_imp_notif_time", String.valueOf(System.currentTimeMillis()));
     }
 }

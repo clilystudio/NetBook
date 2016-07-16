@@ -76,8 +76,8 @@ public class SettingsActivity extends BaseActivity implements View.OnClickListen
             }
         }).start();
         MyApplication.getInstance().removeProperties("account.token", "user.id", "user.name", "user.avatar", "user.lv", "user.gender");
-        TempUtil.e(settingsActivity, "pref_new_unimp_notif_time", "0");
-        TempUtil.e(settingsActivity, "pref_new_imp_notif_time", "0");
+        TempUtil.putStringPref(settingsActivity, "pref_new_unimp_notif_time", "0");
+        TempUtil.putStringPref(settingsActivity, "pref_new_imp_notif_time", "0");
         TempUtil.putIntPref(settingsActivity, "remove_ad_duration", 0);
         settingsActivity.finish();
         BusProvider.getInstance().post(new LogoutEvent());

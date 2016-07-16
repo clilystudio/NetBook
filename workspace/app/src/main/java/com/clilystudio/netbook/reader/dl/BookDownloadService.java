@@ -317,7 +317,7 @@ public class BookDownloadService extends Service {
         this.k.setReadMode(BookInfoUtil.readMode);
         this.i.putExtra("SerDlStopFlag", 0);
         this.h = TempUtil.j(this.mBookId, this.mTocId);
-        if (TempUtil.e() <= (long) (10 * this.e << 1)) {
+        if (TempUtil.getFreeSpaceSize() <= (long) (10 * this.e << 1)) {
             ToastUtil.showToast(this, "SD卡剩余容量不足，请减少缓存数目或增加存储");
             this.stopSelf();
             return;

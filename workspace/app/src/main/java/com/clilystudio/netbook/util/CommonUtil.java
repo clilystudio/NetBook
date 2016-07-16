@@ -203,7 +203,7 @@ public class CommonUtil {
         String string = sharedPreferences.getString("pref_new_imp_notif_time", null);
         if (string == null) {
             string = "0";
-            TempUtil.e(context, "pref_new_imp_notif_time", string);
+            TempUtil.putStringPref(context, "pref_new_imp_notif_time", string);
         }
         return string;
     }
@@ -218,7 +218,7 @@ public class CommonUtil {
         String string = sharedPreferences.getString("pref_new_unimp_notif_time", null);
         if (string == null) {
             string = "0";
-            TempUtil.e(context, "pref_new_unimp_notif_time", string);
+            TempUtil.putStringPref(context, "pref_new_unimp_notif_time", string);
         }
         return string;
     }
