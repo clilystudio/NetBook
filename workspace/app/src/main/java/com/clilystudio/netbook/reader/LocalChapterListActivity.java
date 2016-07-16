@@ -94,7 +94,7 @@ public class LocalChapterListActivity extends BaseActivity {
      * Enabled aggressive block sorting
      */
     static /* synthetic */ ArrayList i(LocalChapterListActivity localChapterListActivity) {
-        ArrayList<String> arrayList = TempUtil.D(localChapterListActivity.g);
+        ArrayList<String> arrayList = TempUtil.getSubFileList(new File(CachePathConst.RootPath, "/ZhuiShuShenQi/Chapter" + File.separator + localChapterListActivity.g));
         ArrayList<TocDownloadSummary> arrayList2 = new ArrayList<>();
         for (String string : arrayList) {
             if (string.contains("MIX_TOC_ID") || string.contains("_")) continue;

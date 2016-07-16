@@ -13,6 +13,7 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.clilystudio.netbook.CachePathConst;
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.a_pack.BaseAsyncTask;
 import com.clilystudio.netbook.api.ApiServiceProvider;
@@ -24,6 +25,8 @@ import com.clilystudio.netbook.util.BaseDownloadAdapter;
 import com.clilystudio.netbook.util.DateTimeUtil;
 import com.clilystudio.netbook.util.TempUtil;
 
+import java.io.File;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -289,7 +292,8 @@ public class ReaderResourceFragment extends Fragment {
             }
             String string = this.a;
             if (TempUtil.isMounted()) {
-                for (String string2 : TempUtil.D(string)) {
+                ArrayList<String> subFileList = TempUtil.getSubFileList(new File(CachePathConst.RootPath, "/ZhuiShuShenQi/Chapter" + File.separator + string));
+                for (String string2 : subFileList) {
                     if (string2.contains("MIX_TOC_ID") || string2.contains("_")) continue;
                     for (String s : TempUtil.j(string, string2)) {
                         if ("toc".equals(s)) continue;

@@ -57,7 +57,6 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -90,12 +89,6 @@ public class TempUtil {
         BookInfoUtil.h = false;
         long l = 7200 + new Date().getTime() / 1000;
         return CipherUtil.getNewAdvertWork(string2, l, string, MyApplication.getInstance());
-    }
-
-    // TODO rename
-    public static ArrayList<String> D(String string) {
-        String string2 = "/ZhuiShuShenQi/Chapter" + File.separator + string;
-        return c(new File(CachePathConst.RootPath, string2));
     }
 
     public static boolean deleteDir(String path) {
@@ -579,44 +572,14 @@ public class TempUtil {
         editor.apply();
     }
 
-    public static int c(Context context, String key, int defValue) {
-        return context.getSharedPreferences("mistat", 0).getInt(key, defValue);
-    }
-
-    private static int c(String string2, int n2) {
-        char c2;
-        while (n2 < string2.length() && ((c2 = string2.charAt(n2)) == ' ' || c2 == '\t')) {
-            ++n2;
-        }
-        return n2;
-    }
-
-    public static long c(Context context, String string2, long l2) {
+    public static long getLongPref(Context context, String key, long defValue) {
         if (context == null) {
-            return l2;
+            return defValue;
         }
-        return PreferenceManager.getDefaultSharedPreferences(context).getLong(string2, l2);
+        return PreferenceManager.getDefaultSharedPreferences(context).getLong(key, defValue);
     }
 
-    public static String c(int n2) {
-        double d2 = Math.floor((double) n2 / Math.pow(1024.0, 2.0));
-        DecimalFormat decimalFormat = new DecimalFormat("0.0");
-        return decimalFormat.format(d2) + "MB";
-    }
-
-    public static String c(byte[] arrby) {
-        int n2 = arrby.length;
-        StringBuilder stringBuffer = new StringBuilder();
-        if (arrby != null) {
-            for (byte anArrby : arrby) {
-                Object[] arrobject = new Object[]{Byte.valueOf(anArrby)};
-                stringBuffer.append(String.format("%02x", arrobject));
-            }
-        }
-        return stringBuffer.toString();
-    }
-
-    public static ArrayList<String> c(File file) {
+    public static ArrayList<String> getSubFileList(File file) {
         ArrayList<String> arrayList = new ArrayList<>();
         File[] arrfile = file.listFiles();
         if (arrfile != null) {
@@ -1002,7 +965,7 @@ public class TempUtil {
 
     public static ArrayList<String> j(String bookId, String tocId) {
         String name = "/ZhuiShuShenQi/Chapter" + File.separator + bookId + File.separator + tocId;
-        return c(new File(CachePathConst.RootPath, name));
+        return getSubFileList(new File(CachePathConst.RootPath, name));
     }
 
     public static boolean j() {

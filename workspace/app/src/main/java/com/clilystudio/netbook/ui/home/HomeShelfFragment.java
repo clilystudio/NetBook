@@ -748,7 +748,7 @@ public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollL
         List<BookReadRecord> v8 = BookReadRecord.getAllFeeding();
         long v2 = 0x0;
         if (!v8.isEmpty()) {
-            v2 = TempUtil.c(getActivity(), "FeedUpdateTime", System.currentTimeMillis());
+            v2 = TempUtil.getLongPref(getActivity(), "FeedUpdateTime", System.currentTimeMillis());
         }
         Iterator<BookReadRecord> v9 = v1.iterator();
         int v4 = 0;

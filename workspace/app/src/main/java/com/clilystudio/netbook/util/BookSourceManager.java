@@ -206,7 +206,7 @@ public final class BookSourceManager {
             }
             this.a(var3_3);
         } else if (var3_3 == -1) {
-            int var5_5 = TempUtil.c(this.mActivity, "PREF_FIRST_LAUNCH_TIME", 0);
+            int var5_5 = TempUtil.getIntPref(this.mActivity, "PREF_FIRST_LAUNCH_TIME", 0);
             boolean var7_6 = Calendar.getInstance().getTimeInMillis() - var5_5 >= 2592000000L;
             if (!var7_6) {
                 Account var8_7 = CommonUtil.getAccount();
