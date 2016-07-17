@@ -15,7 +15,6 @@ import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.event.BusProvider;
 import com.clilystudio.netbook.event.ModeChangedEvent;
 import com.clilystudio.netbook.util.CommonUtil;
-import com.clilystudio.netbook.util.CommonUtil;
 
 
 public class ReadModeItem extends FrameLayout {

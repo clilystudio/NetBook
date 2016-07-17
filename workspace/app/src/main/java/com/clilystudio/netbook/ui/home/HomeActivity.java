@@ -48,7 +48,6 @@ import com.clilystudio.netbook.ui.user.MyMessageActivity;
 import com.clilystudio.netbook.ui.user.UserInfoActivity;
 import com.clilystudio.netbook.util.BookShelfSyncManager;
 import com.clilystudio.netbook.util.CommonUtil;
-import com.clilystudio.netbook.util.CommonUtil;
 import com.clilystudio.netbook.util.ToastUtil;
 import com.clilystudio.netbook.util.UserNotificationManager;
 import com.clilystudio.netbook.widget.TabWidgetV2;

@@ -23,8 +23,7 @@ public class BookRankSummary {
     }
 
     public String[] getIds() {
-        String[] arrstring = new String[]{this._id, this.monthRank, this.totalRank};
-        return arrstring;
+        return new String[]{this._id, this.monthRank, this.totalRank};
     }
 
     public String getMonthRank() {

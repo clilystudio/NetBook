@@ -30,7 +30,6 @@ import com.clilystudio.netbook.ui.BaseActivity;
 import com.clilystudio.netbook.ui.CircularSmartImageView;
 import com.clilystudio.netbook.ui.CropPhotoActivity;
 import com.clilystudio.netbook.util.CommonUtil;
-import com.clilystudio.netbook.util.CommonUtil;
 import com.clilystudio.netbook.util.ToastUtil;
 
 import java.io.File;

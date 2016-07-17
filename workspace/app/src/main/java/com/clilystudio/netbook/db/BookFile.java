@@ -60,8 +60,7 @@ public class BookFile extends Model {
 
     public int getIntSize() {
         try {
-            int n = Integer.parseInt(this.getSize());
-            return n;
+            return Integer.parseInt(this.getSize());
         } catch (Exception var1_2) {
             return 0;
         }

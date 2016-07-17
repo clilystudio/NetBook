@@ -191,7 +191,7 @@ public final class d extends a {
                 ((b) arrayList2.get(i4)).a(this);
             }
         }
-        if (this.e.size() == 0 && 0 == 0) {
+        if (this.e.size() == 0) {
             this.i = false;
             if (this.a != null) {
                 ArrayList arrayList3 = (ArrayList) this.a.clone();

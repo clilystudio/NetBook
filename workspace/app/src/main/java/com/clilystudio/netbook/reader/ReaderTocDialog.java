@@ -18,7 +18,6 @@ import android.widget.TextView;
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.adapter.BaseBookAdapter;
 import com.clilystudio.netbook.model.ChapterLink;
-import com.clilystudio.netbook.util.CommonUtil;
 
 import java.util.LinkedList;
 

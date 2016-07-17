@@ -6,7 +6,6 @@ import android.support.annotation.NonNull;
 import com.clilystudio.netbook.MyApplication;
 import com.clilystudio.netbook.a_pack.BaseAsyncTask;
 import com.clilystudio.netbook.reader.txt.TocManager;
-import com.clilystudio.netbook.util.CommonUtil;
 import com.clilystudio.netbook.db.BookReadRecord;
 import com.clilystudio.netbook.db.MixTocRecord;
 import com.clilystudio.netbook.db.TocReadRecord;

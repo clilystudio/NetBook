@@ -97,8 +97,7 @@ public class s implements Cloneable {
      */
     final void b() {
         if (this.g == null) {
-            v v2 = this.d == Integer.class ? e : (this.d == Float.class ? f : null);
-            this.g = v2;
+            this.g = this.d == Integer.class ? e : (this.d == Float.class ? f : null);
         }
         if (this.g != null) {
             this.b.d = this.g;

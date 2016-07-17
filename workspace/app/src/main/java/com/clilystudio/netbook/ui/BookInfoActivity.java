@@ -30,7 +30,6 @@ import com.clilystudio.netbook.reader.dl.BookDownloadManager;
 import com.clilystudio.netbook.ui.user.AuthLoginActivity;
 import com.clilystudio.netbook.util.BookInfoUtil;
 import com.clilystudio.netbook.util.BookSourceManager;
-import com.clilystudio.netbook.util.CommonUtil;
 import com.clilystudio.netbook.util.DateTimeUtil;
 import com.clilystudio.netbook.util.CommonUtil;
 import com.clilystudio.netbook.util.ToastUtil;
@@ -531,8 +530,7 @@ public class BookInfoActivity extends BaseActivity implements View.OnClickListen
         this.e.setOnClickListener(this);
         this.f();
         this.mBookId = this.getIntent().getStringExtra("book_id");
-        boolean bl = BookReadRecord.getOnShelf(this.mBookId) != null;
-        this.i = bl;
+        this.i = BookReadRecord.getOnShelf(this.mBookId) != null;
         BusProvider.getInstance().register(this);
         this.j();
         this.l = this.getIntent().getIntExtra("open_type", 0);

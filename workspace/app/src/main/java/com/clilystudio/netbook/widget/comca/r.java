@@ -83,8 +83,7 @@ class r {
     public String toString() {
         String string = " ";
         for (int i = 0; i < this.a; ++i) {
-            String string2 = string + this.c.get(i).a() + "  ";
-            string = string2;
+            string = string + this.c.get(i).a() + "  ";
         }
         return string;
     }

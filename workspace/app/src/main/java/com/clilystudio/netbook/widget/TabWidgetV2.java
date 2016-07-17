@@ -8,7 +8,6 @@ import android.graphics.Canvas;
 
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.util.CommonUtil;
-import com.clilystudio.netbook.util.CommonUtil;
 
 import android.util.AttributeSet;
 import android.widget.TabWidget;

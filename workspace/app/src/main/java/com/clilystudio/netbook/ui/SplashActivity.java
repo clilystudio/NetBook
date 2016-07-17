@@ -6,9 +6,8 @@ import android.os.Bundle;
 import android.os.Handler;
 
 import com.clilystudio.netbook.R;
-import com.clilystudio.netbook.util.CommonUtil;
-import com.clilystudio.netbook.util.CommonUtil;
 import com.clilystudio.netbook.ui.home.HomeActivity;
+import com.clilystudio.netbook.util.CommonUtil;
 
 import java.util.Calendar;
 
@@ -63,10 +62,9 @@ public class SplashActivity extends Activity {
     @Override
     public void onResume() {
         int n;
-        String string;
-        Calendar calendar;
+        Calendar calendar = Calendar.getInstance();
         super.onResume();
-        if (!CommonUtil.isLogined() || (n = 10000 * (calendar = Calendar.getInstance()).get(Calendar.YEAR) + 100 * calendar.get(Calendar.MONTH) + calendar.get(Calendar.DATE)) <= CommonUtil.getIntPref(this, "KEY_OPEN_TIME", 0) || (string = CommonUtil.getAccount().getUser().getGender()) == null) {
+        if (!CommonUtil.isLogined() || (n = 10000 * calendar.get(Calendar.YEAR) + 100 * calendar.get(Calendar.MONTH) + calendar.get(Calendar.DATE)) <= CommonUtil.getIntPref(this, "KEY_OPEN_TIME", 0) || CommonUtil.getAccount().getUser().getGender() == null) {
             return;
         }
         CommonUtil.putIntPref(this, "KEY_OPEN_TIME", n);

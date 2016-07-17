@@ -28,7 +28,6 @@ import com.clilystudio.netbook.model.TocSourceRoot;
 import com.clilystudio.netbook.reader.ReaderTocManager;
 import com.clilystudio.netbook.util.BookInfoUtil;
 import com.clilystudio.netbook.util.CommonUtil;
-import com.clilystudio.netbook.util.CommonUtil;
 import com.clilystudio.netbook.util.ToastUtil;
 import com.squareup.otto.Subscribe;
 

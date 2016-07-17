@@ -850,6 +850,7 @@ public class CommonUtil {
         return String.valueOf(count);
     }
 
+    @SuppressWarnings("unchecked")
     public static <T> T loadObject(String path, String name) {
         try {
             File file = new File(makeDir(path), name);

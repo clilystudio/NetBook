@@ -62,8 +62,7 @@ public abstract class a implements Cloneable {
         while (n2 < n) {
             a2.a.add(arrayList.get(n2));
             ++n2;
-            continue;
-        }
+         }
         return a2;
     }
 }

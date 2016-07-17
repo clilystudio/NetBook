@@ -13,7 +13,6 @@ import android.view.WindowManager;
 
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.util.CommonUtil;
-import com.clilystudio.netbook.util.CommonUtil;
 import com.clilystudio.netbook.event.BusProvider;
 import com.clilystudio.netbook.event.ThemeChangedEvent;
 

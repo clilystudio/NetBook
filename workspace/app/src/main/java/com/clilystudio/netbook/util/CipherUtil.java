@@ -35,8 +35,7 @@ public class CipherUtil {
     private static Key a(String string) {
         try {
             byte[] arrby = string.getBytes();
-            SecretKeySpec secretKeySpec = new SecretKeySpec(arrby, 0, arrby.length, "AES");
-            return secretKeySpec;
+            return new SecretKeySpec(arrby, 0, arrby.length, "AES");
         } catch (Exception var1_3) {
             var1_3.printStackTrace();
             return null;
@@ -52,8 +51,7 @@ public class CipherUtil {
             IvParameterSpec ivParameterSpec = new IvParameterSpec(arrby2);
             Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
             cipher.init(2, key, ivParameterSpec);
-            String string3 = new String(cipher.doFinal(arrby3));
-            return string3;
+            return new String(cipher.doFinal(arrby3));
         } catch (Exception var2_9) {
             var2_9.printStackTrace();
             return null;

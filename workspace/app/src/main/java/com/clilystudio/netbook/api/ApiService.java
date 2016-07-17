@@ -6,7 +6,6 @@ import android.text.TextUtils;
 import android.util.Log;
 
 import com.clilystudio.netbook.MyApplication;
-import com.clilystudio.netbook.util.CommonUtil;
 import com.clilystudio.netbook.model.Account;
 import com.clilystudio.netbook.model.AutoCompleteRoot;
 import com.clilystudio.netbook.model.BookAdd;
