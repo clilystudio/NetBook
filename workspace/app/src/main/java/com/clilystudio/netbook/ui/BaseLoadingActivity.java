@@ -6,7 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.clilystudio.netbook.R;
-import com.clilystudio.netbook.util.TempUtil;
+import com.clilystudio.netbook.util.CommonUtil;
 
 public abstract class BaseLoadingActivity extends BaseActivity {
     private ViewGroup a;

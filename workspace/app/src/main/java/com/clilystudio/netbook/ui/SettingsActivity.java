@@ -18,7 +18,7 @@ import com.clilystudio.netbook.api.ApiServiceProvider;
 import com.clilystudio.netbook.event.BookReadEvent;
 import com.clilystudio.netbook.event.BusProvider;
 import com.clilystudio.netbook.event.LogoutEvent;
-import com.clilystudio.netbook.util.TempUtil;
+import com.clilystudio.netbook.util.CommonUtil;
 import com.clilystudio.netbook.util.ToastUtil;
 import com.xiaomi.mipush.sdk.MiPushClient;
 
@@ -53,7 +53,7 @@ public class SettingsActivity extends BaseActivity implements View.OnClickListen
     static /* synthetic */ void a(SettingsActivity settingsActivity, int n, String string) {
         if (settingsActivity.a != n) {
             settingsActivity.a = n;
-            TempUtil.putIntPref(settingsActivity, "key_shelf_sort", settingsActivity.a);
+            CommonUtil.putIntPref(settingsActivity, "key_shelf_sort", settingsActivity.a);
             ((TextView) settingsActivity.findViewById(R.id.settings_shelf_sort_value)).setText(string);
             BusProvider.getInstance().post(new BookReadEvent());
         }
@@ -76,9 +76,9 @@ public class SettingsActivity extends BaseActivity implements View.OnClickListen
             }
         }).start();
         MyApplication.getInstance().removeProperties("account.token", "user.id", "user.name", "user.avatar", "user.lv", "user.gender");
-        TempUtil.putStringPref(settingsActivity, "pref_new_unimp_notif_time", "0");
-        TempUtil.putStringPref(settingsActivity, "pref_new_imp_notif_time", "0");
-        TempUtil.putIntPref(settingsActivity, "remove_ad_duration", 0);
+        CommonUtil.putStringPref(settingsActivity, "pref_new_unimp_notif_time", "0");
+        CommonUtil.putStringPref(settingsActivity, "pref_new_imp_notif_time", "0");
+        CommonUtil.putIntPref(settingsActivity, "remove_ad_duration", 0);
         settingsActivity.finish();
         BusProvider.getInstance().post(new LogoutEvent());
     }
@@ -135,8 +135,8 @@ public class SettingsActivity extends BaseActivity implements View.OnClickListen
         this.findViewById(R.id.settings_market_assessment).setOnClickListener(this);
         TextView textView = (TextView) this.findViewById(R.id.settings_version_name);
         textView.setText(CommonUtil.getVersionName(this));
-        final boolean bl = TempUtil.getBoolPref(this, "update_notice_key",true);
-        boolean bl2 = TempUtil.getBoolPref(this, "save_bandwidth", false);
+        final boolean bl = CommonUtil.getBoolPref(this, "update_notice_key",true);
+        boolean bl2 = CommonUtil.getBoolPref(this, "save_bandwidth", false);
         final SwitchCompat switchCompat = (SwitchCompat) this.findViewById(R.id.cb_notice_update);
         final SwitchCompat switchCompat2 = (SwitchCompat) this.findViewById(R.id.cb_save_bandwidth);
         switchCompat.setChecked(bl);
@@ -146,7 +146,7 @@ public class SettingsActivity extends BaseActivity implements View.OnClickListen
         switchCompat.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                TempUtil.putBoolPref(SettingsActivity.this, "update_notice_key", isChecked);
+                CommonUtil.putBoolPref(SettingsActivity.this, "update_notice_key", isChecked);
                 SettingsActivity.a(SettingsActivity.this, isChecked);
                 SettingsActivity.a(switchCompat, isChecked);
             }
@@ -154,11 +154,11 @@ public class SettingsActivity extends BaseActivity implements View.OnClickListen
         switchCompat2.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                TempUtil.putBoolPref(SettingsActivity.this, "save_bandwidth", isChecked);
+                CommonUtil.putBoolPref(SettingsActivity.this, "save_bandwidth", isChecked);
                 SettingsActivity.a(switchCompat2, isChecked);
             }
         });
-        this.a = TempUtil.getIntPref(this, "key_shelf_sort", 1);
+        this.a = CommonUtil.getIntPref(this, "key_shelf_sort", 1);
         String string3 = this.getResources().getStringArray(R.array.settings_shelf_sort)[this.a];
         ((TextView) this.findViewById(R.id.settings_shelf_sort_value)).setText(string3);
     }

@@ -18,7 +18,7 @@ import android.net.Uri;
 import android.util.AttributeSet;
 
 import com.clilystudio.netbook.R;
-import com.clilystudio.netbook.util.TempUtil;
+import com.clilystudio.netbook.util.CommonUtil;
 import com.nostra13.universalimageloader.core.assist.LoadedFrom;
 import com.nostra13.universalimageloader.core.display.BitmapDisplayer;
 import com.nostra13.universalimageloader.core.imageaware.ImageAware;
@@ -28,7 +28,7 @@ public class CornerImageView extends SmartImageView {
 
     public CornerImageView(Context context) {
         super(context);
-        this.b = TempUtil.getDipSize(this.getContext(), 2.0f);
+        this.b = CommonUtil.getDipSize(this.getContext(), 2.0f);
     }
 
     public CornerImageView(Context context, AttributeSet attributeSet) {
@@ -50,7 +50,7 @@ public class CornerImageView extends SmartImageView {
 
     @Override
     public void setImageURI(Uri uri) {
-        this.setImageBitmap(TempUtil.getCircleBitmap(BitmapFactory.decodeFile(uri.getPath())));
+        this.setImageBitmap(CommonUtil.getCircleBitmap(BitmapFactory.decodeFile(uri.getPath())));
     }
 
     @Override

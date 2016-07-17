@@ -4,7 +4,7 @@ import android.os.Bundle;
 
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.ui.BaseActivity;
-import com.clilystudio.netbook.util.TempUtil;
+import com.clilystudio.netbook.util.CommonUtil;
 
 public class MyMessageActivity extends BaseActivity {
     @Override
@@ -17,6 +17,6 @@ public class MyMessageActivity extends BaseActivity {
     @Override
     public void onPause() {
         super.onPause();
-        TempUtil.putStringPref(this, "pref_new_imp_notif_time", String.valueOf(System.currentTimeMillis()));
+        CommonUtil.putStringPref(this, "pref_new_imp_notif_time", String.valueOf(System.currentTimeMillis()));
     }
 }

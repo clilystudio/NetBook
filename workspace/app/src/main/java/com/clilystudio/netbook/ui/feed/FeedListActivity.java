@@ -19,7 +19,7 @@ import com.clilystudio.netbook.event.FeedSettingChangedEvent;
 import com.clilystudio.netbook.event.FeedRemovedEvent;
 import com.clilystudio.netbook.ui.BaseActivity;
 import com.clilystudio.netbook.util.BaseDownloadAdapter;
-import com.clilystudio.netbook.util.TempUtil;
+import com.clilystudio.netbook.util.CommonUtil;
 import com.clilystudio.netbook.widget.CoverView;
 import com.squareup.otto.Subscribe;
 
@@ -36,7 +36,7 @@ public class FeedListActivity extends BaseActivity {
     }
 
     private void a(int n) {
-        final int n2 = TempUtil.getFeedIndex(n);
+        final int n2 = CommonUtil.getFeedIndex(n);
         int[] arrn = new int[]{R.id.feed_chapter_10, R.id.feed_chapter_20, R.id.feed_chapter_50, R.id.feed_chapter_100, R.id.feed_chapter_200};
         View view = this.getLayoutInflater().inflate(R.layout.feed_chapter_count_dialog, (ViewGroup)getWindow().getDecorView(), false);
         BaseDialog.Builder h2 = new BaseDialog.Builder(this);
@@ -50,8 +50,8 @@ public class FeedListActivity extends BaseActivity {
                 public void onClick(View v) {
                     alertDialog.dismiss();
                     if (finalJ != n2) {
-                        int n = TempUtil.getFeedCount(finalJ);
-                        TempUtil.putIntPref(FeedListActivity.this, "feed_chapter_count", n);
+                        int n = CommonUtil.getFeedCount(finalJ);
+                        CommonUtil.putIntPref(FeedListActivity.this, "feed_chapter_count", n);
                         BusProvider.getInstance().post(new FeedSettingChangedEvent());
                     }
                 }
@@ -62,7 +62,7 @@ public class FeedListActivity extends BaseActivity {
 
     private void b() {
         List<BookReadRecord> list = BookReadRecord.getAllFeedingOrderByCount();
-        this.b = TempUtil.getIntPref(this, "feed_chapter_count", 50);
+        this.b = CommonUtil.getIntPref(this, "feed_chapter_count", 50);
         this.a.a(list);
     }
 
@@ -163,7 +163,7 @@ public class FeedListActivity extends BaseActivity {
             }
             case R.id.action_menu_feed_setting:
         }
-        this.a(TempUtil.getIntPref(this, "feed_chapter_count", 50));
+        this.a(CommonUtil.getIntPref(this, "feed_chapter_count", 50));
         return true;
     }
 }

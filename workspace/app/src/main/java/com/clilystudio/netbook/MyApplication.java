@@ -16,7 +16,7 @@ import com.clilystudio.netbook.model.ChapterLink;
 import com.clilystudio.netbook.model.UGCNewCollection;
 import com.clilystudio.netbook.model.User;
 import com.clilystudio.netbook.reader.Reader;
-import com.clilystudio.netbook.util.TempUtil;
+import com.clilystudio.netbook.util.CommonUtil;
 import com.integralblue.httpresponsecache.HttpResponseCache;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
@@ -207,7 +207,7 @@ public class MyApplication extends Application {
         ActiveAndroid.initialize(this);
         DnsManager.setUseDns(true);
         ApiService.a(DEFUALT_API_URL);
-        TempUtil.initCipherInfo(this);
+        CommonUtil.initCipherInfo(this);
         new Thread() {
             @Override
             public void run() {
@@ -243,7 +243,7 @@ public class MyApplication extends Application {
         ImageLoaderConfiguration configuration = ImageLoaderConfiguration.createDefault(this);
         ImageLoader.getInstance().init(configuration);
         if (PreferenceManager.getDefaultSharedPreferences(this).getLong("PREF_FIRST_LAUNCH_TIME", 0L) == 0L) {
-            TempUtil.putLongPref(this, "PREF_FIRST_LAUNCH_TIME", Calendar.getInstance().getTimeInMillis());
+            CommonUtil.putLongPref(this, "PREF_FIRST_LAUNCH_TIME", Calendar.getInstance().getTimeInMillis());
         }
     }
 

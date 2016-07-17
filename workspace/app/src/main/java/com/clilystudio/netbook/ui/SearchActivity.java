@@ -32,7 +32,7 @@ import com.clilystudio.netbook.model.HotKeywordResult;
 import com.clilystudio.netbook.model.SearchPromRoot;
 import com.clilystudio.netbook.model.SearchResultRoot;
 import com.clilystudio.netbook.util.BaseDownloadAdapter;
-import com.clilystudio.netbook.util.TempUtil;
+import com.clilystudio.netbook.util.CommonUtil;
 import com.clilystudio.netbook.util.ToastUtil;
 import com.clilystudio.netbook.widget.AutoFlowView;
 import com.clilystudio.netbook.widget.CoverView;
@@ -134,7 +134,7 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
     static /* synthetic */ void d(SearchActivity searchActivity) {
         searchActivity.x.clear();
         searchActivity.w.notifyDataSetChanged();
-        TempUtil.saveObject(searchActivity.x, CachePathConst.SearchHistory, "search_history.txt");
+        CommonUtil.saveObject(searchActivity.x, CachePathConst.SearchHistory, "search_history.txt");
         searchActivity.a(false);
     }
 
@@ -217,10 +217,10 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
         }
         this.x.add(0, string2);
         this.w.notifyDataSetChanged();
-        TempUtil.saveObject(this.x, CachePathConst.SearchHistory, "search_history.txt");
+        CommonUtil.saveObject(this.x, CachePathConst.SearchHistory, "search_history.txt");
         this.a(true);
         this.g();
-        if (TempUtil.isConnectedOrConnecting(this)) {
+        if (CommonUtil.isConnectedOrConnecting(this)) {
             this.a(0);
             final BaseAsyncTask<String, Void, List<BookSummary>> bR2 = new BaseAsyncTask<String, Void, List<BookSummary>>() {
 
@@ -449,14 +449,14 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
 
             @Override
             public void afterTextChanged(Editable s) {
-                boolean bl = !TempUtil.isBlank(s.toString());
+                boolean bl = !CommonUtil.isBlank(s.toString());
                 SearchActivity.a(SearchActivity.this, bl);
             }
         });
         this.e.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
-                boolean bl2 = !TempUtil.isBlank(SearchActivity.this.e.getText().toString());
+                boolean bl2 = !CommonUtil.isBlank(SearchActivity.this.e.getText().toString());
                 SearchActivity.a(SearchActivity.this, bl2);
             }
         });
@@ -475,7 +475,7 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
                 SearchActivity.d(SearchActivity.this);
             }
         });
-        this.x = TempUtil.loadObject(CachePathConst.SearchHistory, "search_history.txt");
+        this.x = CommonUtil.loadObject(CachePathConst.SearchHistory, "search_history.txt");
         if (this.x == null) {
             this.x = new ArrayList<>();
         }
@@ -497,8 +497,8 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
         this.q = (RelativeLayout) this.findViewById(R.id.ll_hot_keyword_continer);
         this.r = (AutoFlowView) this.findViewById(R.id.afv_hots);
         this.s = (TextView) this.findViewById(R.id.btn_change);
-        if (TempUtil.loadObject(CachePathConst.SearchHistory, "search_hotword.txt") != null && TempUtil.getIntPref(this, "search_hot_words_date", 0) != 0) {
-            List<AutoFlowView.Word> list = TempUtil.loadObject(CachePathConst.SearchHistory, "search_hotword.txt");
+        if (CommonUtil.loadObject(CachePathConst.SearchHistory, "search_hotword.txt") != null && CommonUtil.getIntPref(this, "search_hot_words_date", 0) != 0) {
+            List<AutoFlowView.Word> list = CommonUtil.loadObject(CachePathConst.SearchHistory, "search_hotword.txt");
             this.q.setVisibility(View.VISIBLE);
             this.r.setWords(list);
             this.r.setOnItemClickListener(new AutoFlowView.OnItemClickListener() {
@@ -515,7 +515,7 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
             });
             return;
         }
-        TempUtil.putIntPref(this, "search_hot_words_date", 1);
+        CommonUtil.putIntPref(this, "search_hot_words_date", 1);
         new BaseAsyncTask<String, Void, HotKeywordResult>() {
 
             @Override
@@ -533,7 +533,7 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
                         word.content = string;
                         arrayList.add(word);
                     }
-                    TempUtil.saveObject(arrayList, CachePathConst.SearchHistory, "search_hotword.txt");
+                    CommonUtil.saveObject(arrayList, CachePathConst.SearchHistory, "search_hotword.txt");
                     SearchActivity.g(SearchActivity.this).setVisibility(View.VISIBLE);
                     SearchActivity.e(SearchActivity.this).setWords(hotKeywordResult.getHotWords());
                     SearchActivity.e(SearchActivity.this).setOnItemClickListener(new AutoFlowView.OnItemClickListener() {

@@ -14,7 +14,7 @@ public final class DateTimeUtil {
     private static final SimpleDateFormat mLongFormatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ", Locale.CHINA);
 
     public static int getTodayValue() {
-        return TempUtil.parseInt(mShortFormatter.format(new Date()));
+        return CommonUtil.parseInt(mShortFormatter.format(new Date()));
     }
 
     public static String formatTime(long timeMillis) {

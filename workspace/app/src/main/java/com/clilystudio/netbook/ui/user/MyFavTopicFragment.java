@@ -28,7 +28,7 @@ import com.clilystudio.netbook.model.Topic;
 import com.clilystudio.netbook.model.TopicPost;
 import com.clilystudio.netbook.util.BaseDownloadAdapter;
 import com.clilystudio.netbook.util.DateTimeUtil;
-import com.clilystudio.netbook.util.TempUtil;
+import com.clilystudio.netbook.util.CommonUtil;
 import com.clilystudio.netbook.util.ToastUtil;
 import com.clilystudio.netbook.widget.CoverView;
 import com.clilystudio.netbook.widget.LabelPtrListView;

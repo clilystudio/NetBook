@@ -23,7 +23,7 @@ import com.clilystudio.netbook.event.BusProvider;
 import com.clilystudio.netbook.model.TocSummary;
 import com.clilystudio.netbook.util.BaseDownloadAdapter;
 import com.clilystudio.netbook.util.DateTimeUtil;
-import com.clilystudio.netbook.util.TempUtil;
+import com.clilystudio.netbook.util.CommonUtil;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -291,11 +291,11 @@ public class ReaderResourceFragment extends Fragment {
                 }
             }
             String string = this.a;
-            if (TempUtil.isMounted()) {
-                ArrayList<String> subFileList = TempUtil.getSubFileList(new File(CachePathConst.RootPath, "/ZhuiShuShenQi/Chapter" + File.separator + string));
+            if (CommonUtil.isMounted()) {
+                ArrayList<String> subFileList = CommonUtil.getSubFileList(new File(CachePathConst.RootPath, "/ZhuiShuShenQi/Chapter" + File.separator + string));
                 for (String string2 : subFileList) {
                     if (string2.contains("MIX_TOC_ID") || string2.contains("_")) continue;
-                    ArrayList<String> fileList = TempUtil.getSubFileList(new File(CachePathConst.RootPath, "/ZhuiShuShenQi/Chapter" + File.separator + string + File.separator + string2));
+                    ArrayList<String> fileList = CommonUtil.getSubFileList(new File(CachePathConst.RootPath, "/ZhuiShuShenQi/Chapter" + File.separator + string + File.separator + string2));
                     for (String s : fileList) {
                         if ("toc".equals(s)) continue;
                         bl = true;
@@ -307,8 +307,8 @@ public class ReaderResourceFragment extends Fragment {
         }
         if (bl) {
             this.h.setVisibility(View.VISIBLE);
-            int n2 = TempUtil.getDipSize(this.getActivity(), 55.0f);
-            int n3 = TempUtil.getDipSize(this.getActivity(), 40.0f);
+            int n2 = CommonUtil.getDipSize(this.getActivity(), 55.0f);
+            int n3 = CommonUtil.getDipSize(this.getActivity(), 40.0f);
             if (this.g.getVisibility() == View.VISIBLE) {
                 LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(-1, n2);
                 layoutParams.setMargins(0, 0, 0, 0);

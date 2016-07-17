@@ -20,7 +20,7 @@ import com.clilystudio.netbook.event.BusProvider;
 import com.clilystudio.netbook.event.ConvertChangedEvent;
 import com.clilystudio.netbook.ui.BaseActivity;
 import com.clilystudio.netbook.util.BookInfoUtil;
-import com.clilystudio.netbook.util.TempUtil;
+import com.clilystudio.netbook.util.CommonUtil;
 import com.clilystudio.netbook.widget.SettingItem;
 
 import uk.me.lewisdeane.ldialogs.BaseDialog;
@@ -55,7 +55,7 @@ public class ReaderOptionActivity extends BaseActivity {
                     if (ReaderOptionActivity.b(readerOptionActivity) != finalI) {
                         ReaderOptionActivity.a(readerOptionActivity, finalI);
                         ReaderOptionActivity.d(readerOptionActivity).setText(ReaderOptionActivity.c(readerOptionActivity)[finalI]);
-                        TempUtil.putIntPref(readerOptionActivity, "reader_screen_off_time", ReaderOptionActivity.e(readerOptionActivity)[finalI]);
+                        CommonUtil.putIntPref(readerOptionActivity, "reader_screen_off_time", ReaderOptionActivity.e(readerOptionActivity)[finalI]);
                     }
 
                 }
@@ -98,7 +98,7 @@ public class ReaderOptionActivity extends BaseActivity {
         super.onCreate(var1_1);
         this.setContentView(R.layout.reader_option);
         this.b(R.string.reader_option_title);
-        if (TempUtil.getBoolPref(this, "reader_orientation",true)) {
+        if (CommonUtil.getBoolPref(this, "reader_orientation",true)) {
             this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         } else {
             this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
@@ -112,11 +112,11 @@ public class ReaderOptionActivity extends BaseActivity {
         this.b = (TextView) this.findViewById(R.id.reader_option_screen_off_time_value);
         this.c = this.getResources().getStringArray(R.array.reader_screen_off_time_tags);
         this.e = this.getResources().getIntArray(R.array.reader_screen_off_time_values);
-        boolean var8_8 = TempUtil.getBoolPref(this, "volume_keys_flip",true);
-        boolean var9_9 = TempUtil.getBoolPref(this, "click_flip_animation", false);
-        boolean var10_10 = TempUtil.getBoolPref(this, "reader_opt_full_screen", true);
-        boolean var11_11 = TempUtil.getBoolPref(this, "convert_t", false);
-        boolean var12_12 = TempUtil.getBoolPref(this, "auto_buy_chapter" + BookInfoUtil.bookId, false);
+        boolean var8_8 = CommonUtil.getBoolPref(this, "volume_keys_flip",true);
+        boolean var9_9 = CommonUtil.getBoolPref(this, "click_flip_animation", false);
+        boolean var10_10 = CommonUtil.getBoolPref(this, "reader_opt_full_screen", true);
+        boolean var11_11 = CommonUtil.getBoolPref(this, "convert_t", false);
+        boolean var12_12 = CommonUtil.getBoolPref(this, "auto_buy_chapter" + BookInfoUtil.bookId, false);
         assert var2_2 != null;
         var2_2.setChecked(var8_8);
         assert var3_3 != null;
@@ -127,7 +127,7 @@ public class ReaderOptionActivity extends BaseActivity {
         var5_5.setChecked(var11_11);
         assert var6_6 != null;
         var6_6.setChecked(var12_12);
-        int var13_13 = TempUtil.getIntPref(this, "reader_screen_off_time", 120000);
+        int var13_13 = CommonUtil.getIntPref(this, "reader_screen_off_time", 120000);
         for (int var14_14 = 0; var14_14 < this.c.length; var14_14++) {
             if (var13_13 == this.e[var14_14]) {
                 this.a = var14_14;
@@ -180,11 +180,11 @@ public class ReaderOptionActivity extends BaseActivity {
                     viewById.setVisibility(View.GONE);
                 } else {
                     assert var15_15 != null;
-                    var15_15.setChecked(TempUtil.getBoolPref(this, "key_enable_imersive_mode", false));
+                    var15_15.setChecked(CommonUtil.getBoolPref(this, "key_enable_imersive_mode", false));
                     var15_15.setCheckListener(new CompoundButton.OnCheckedChangeListener() {
                         @Override
                         public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                            TempUtil.putBoolPref(ReaderOptionActivity.this, "key_enable_imersive_mode", isChecked);
+                            CommonUtil.putBoolPref(ReaderOptionActivity.this, "key_enable_imersive_mode", isChecked);
                         }
                     });
                 }

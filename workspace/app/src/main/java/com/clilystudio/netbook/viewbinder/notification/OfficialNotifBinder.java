@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.graphics.BitmapFactory;
 
 import com.clilystudio.netbook.R;
-import com.clilystudio.netbook.util.TempUtil;
+import com.clilystudio.netbook.util.CommonUtil;
 import com.clilystudio.netbook.model.NotificationItem;
 import com.clilystudio.netbook.ui.SmartImageView;
 
@@ -16,7 +16,7 @@ public abstract class OfficialNotifBinder extends NotifBinder {
 
     @Override
     public void fillImageView(SmartImageView smartImageView) {
-        smartImageView.setImageBitmap(TempUtil.getCircleBitmap(BitmapFactory.decodeResource(smartImageView.getResources(), R.drawable.official_avatar)));
+        smartImageView.setImageBitmap(CommonUtil.getCircleBitmap(BitmapFactory.decodeResource(smartImageView.getResources(), R.drawable.official_avatar)));
     }
 
     @Override

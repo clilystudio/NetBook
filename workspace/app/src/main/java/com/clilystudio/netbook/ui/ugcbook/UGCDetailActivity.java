@@ -32,7 +32,7 @@ import com.clilystudio.netbook.ui.SmartImageView;
 import com.clilystudio.netbook.ui.BaseCallBack;
 import com.clilystudio.netbook.util.BaseDownloadAdapter;
 import com.clilystudio.netbook.util.DateTimeUtil;
-import com.clilystudio.netbook.util.TempUtil;
+import com.clilystudio.netbook.util.CommonUtil;
 import com.clilystudio.netbook.util.ToastUtil;
 import com.clilystudio.netbook.widget.CoverView;
 import com.squareup.otto.Subscribe;

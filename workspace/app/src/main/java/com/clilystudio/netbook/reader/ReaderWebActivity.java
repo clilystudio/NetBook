@@ -30,7 +30,7 @@ import com.clilystudio.netbook.model.mixtoc.EsTocItem;
 import com.clilystudio.netbook.model.mixtoc.EsTocRoot;
 import com.clilystudio.netbook.model.mixtoc.SgTocChapter;
 import com.clilystudio.netbook.model.mixtoc.SgTocRoot;
-import com.clilystudio.netbook.util.TempUtil;
+import com.clilystudio.netbook.util.CommonUtil;
 import com.clilystudio.netbook.util.ToastUtil;
 import com.squareup.otto.Subscribe;
 
@@ -97,8 +97,8 @@ public class ReaderWebActivity extends BaseReadActivity {
     }
 
     static /* synthetic */ void b(ReaderWebActivity readerWebActivity) {
-        TempUtil.putBoolPref(readerWebActivity, readerWebActivity.f, true);
-        TempUtil.putBoolPref(readerWebActivity, readerWebActivity.f + "source_web_alert", false);
+        CommonUtil.putBoolPref(readerWebActivity, readerWebActivity.f, true);
+        CommonUtil.putBoolPref(readerWebActivity, readerWebActivity.f + "source_web_alert", false);
         if (SourceRecord.get(readerWebActivity.c, readerWebActivity.f) == null) {
             SourceRecord.create(readerWebActivity.c, readerWebActivity.f, null);
         }
@@ -171,10 +171,10 @@ public class ReaderWebActivity extends BaseReadActivity {
         this.d = this.getIntent().getStringExtra("BOOK_TITLE");
         this.e = this.getIntent().getStringExtra("SOURCE_ID");
         this.mBookMode = var1_1 != null ? var1_1.getInt("savedCurrentMode", 5) : this.getIntent().getIntExtra("BOOK_MODE", 5);
-        this.f = TempUtil.getSourceName(this.mBookMode);
+        this.f = CommonUtil.getSourceName(this.mBookMode);
         this.g = (ReaderWebActionBar) this.findViewById(R.id.reader_web_action_bar);
         this.g.setTitle(this.d);
-        this.g.setChapterLink(TempUtil.getWebOptUrl(this.f));
+        this.g.setChapterLink(CommonUtil.getWebOptUrl(this.f));
         this.g.setOnBtnClickListener(new ReaderWebActionBar.OnBtnClickListener() {
             @Override
             public void a(int n) {
@@ -301,7 +301,7 @@ public class ReaderWebActivity extends BaseReadActivity {
                 break;
             }
         }
-        if (TempUtil.getBoolPref(this, this.f + "source_web_alert",true)) {
+        if (CommonUtil.getBoolPref(this, this.f + "source_web_alert",true)) {
             String var10_7 = this.getString(R.string.reader_web_opt_msg);
             final View var11_8 = LayoutInflater.from(this).inflate(R.layout.dialog_reader_web_opt, (ViewGroup) getWindow().getDecorView(), false);
             DialogInterface.OnClickListener var12_9 = new DialogInterface.OnClickListener() {
@@ -315,7 +315,7 @@ public class ReaderWebActivity extends BaseReadActivity {
                     }
                 }
             };
-            ((TextView) var11_8.findViewById(R.id.reader_web_opt_url)).setText(TempUtil.getWebOptUrl(this.f));
+            ((TextView) var11_8.findViewById(R.id.reader_web_opt_url)).setText(CommonUtil.getWebOptUrl(this.f));
             new BaseDialog.Builder(this).setView(var11_8).setCancelable(false)
                     .setPositiveButton("好的", var12_9).show();
         }

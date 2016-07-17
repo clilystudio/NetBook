@@ -18,7 +18,7 @@ import com.clilystudio.netbook.a_pack.BaseAsyncTask;
 import com.clilystudio.netbook.adapter.NotificationAdapter;
 import com.clilystudio.netbook.util.CommonUtil;
 import com.clilystudio.netbook.api.ApiServiceProvider;
-import com.clilystudio.netbook.util.TempUtil;
+import com.clilystudio.netbook.util.CommonUtil;
 import com.clilystudio.netbook.model.Account;
 import com.clilystudio.netbook.model.NotificationItem;
 import com.clilystudio.netbook.model.NotificationRoot;
@@ -332,7 +332,7 @@ public abstract class NotifFragment extends Fragment {
     }
 
     @Subscribe
-    public void onNewMsgClickEvent(TempUtil a2) {
+    public void onNewMsgClickEvent(CommonUtil a2) {
         if (this.d != null && this.l > 0) {
             this.d.setRefreshing();
         }

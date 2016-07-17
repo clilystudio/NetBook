@@ -27,7 +27,7 @@ import com.clilystudio.netbook.util.CommonUtil;
 import com.clilystudio.netbook.IntentBuilder;
 import com.clilystudio.netbook.model.CategoryLevelRoot;
 import com.clilystudio.netbook.ui.home.ZssqFragmentPagerAdapter;
-import com.clilystudio.netbook.util.TempUtil;
+import com.clilystudio.netbook.util.CommonUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -195,7 +195,7 @@ public class BookCategoryListActivity extends BaseTabActivity implements ViewPag
         });
         this.f = popupWindow;
         String[] arrstring = new String[]{};
-        CategoryLevelRoot categoryLevelRoot = TempUtil.loadObject(CachePathConst.CategoryLevel, "category_level.txt");
+        CategoryLevelRoot categoryLevelRoot = CommonUtil.loadObject(CachePathConst.CategoryLevel, "category_level.txt");
         String[] arrstring2 = categoryLevelRoot != null ? this.a(categoryLevelRoot) : arrstring;
         final String[] arrstring3 = new String[1 + arrstring2.length];
         arrstring3[0] = this.c;

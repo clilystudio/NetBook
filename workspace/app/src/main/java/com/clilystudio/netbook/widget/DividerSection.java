@@ -9,7 +9,7 @@ import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 
 import com.clilystudio.netbook.R;
-import com.clilystudio.netbook.util.TempUtil;
+import com.clilystudio.netbook.util.CommonUtil;
 
 public class DividerSection extends RelativeLayout {
     private final FrameLayout a;
@@ -23,7 +23,7 @@ public class DividerSection extends RelativeLayout {
         this.c = typedArray.getDrawable(R.styleable.DividerSection_divider_drawable);
         if (this.c != null) {
             this.b.setBackgroundDrawable(this.c);
-        } else if (TempUtil.getBoolPref(this.getContext(), "customer_night_theme", false)) {
+        } else if (CommonUtil.getBoolPref(this.getContext(), "customer_night_theme", false)) {
             this.b.setBackgroundResource(R.drawable.shelf_dark_divider);
         } else {
             this.b.setBackgroundResource(R.drawable.shelf_divider);

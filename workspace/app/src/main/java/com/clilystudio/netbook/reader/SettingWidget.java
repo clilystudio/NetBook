@@ -12,7 +12,7 @@ import android.widget.LinearLayout;
 import android.widget.SeekBar;
 
 import com.clilystudio.netbook.R;
-import com.clilystudio.netbook.util.TempUtil;
+import com.clilystudio.netbook.util.CommonUtil;
 
 import java.util.Date;
 
@@ -108,7 +108,7 @@ public class SettingWidget extends LinearLayout {
             view.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    TempUtil.putLongPref(SettingWidget.this.getContext(), "start_auto_read_time", new Date().getTime());
+                    CommonUtil.putLongPref(SettingWidget.this.getContext(), "start_auto_read_time", new Date().getTime());
                     dc2.a();
                 }
             });

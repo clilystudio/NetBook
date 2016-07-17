@@ -95,7 +95,7 @@ import com.clilystudio.netbook.model.mixtoc.SgChapterRoot;
 import com.clilystudio.netbook.model.mixtoc.SgTocRoot;
 import com.clilystudio.netbook.model.mixtoc.SsChapterJson;
 import com.clilystudio.netbook.model.mixtoc.SsTocRoot;
-import com.clilystudio.netbook.util.TempUtil;
+import com.clilystudio.netbook.util.CommonUtil;
 import com.github.kevinsawicki.http.HttpRequest;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -179,7 +179,7 @@ public class ApiService {
 
     public static String a(String string, int n, String string2) {
         String string3 = CommonUtil.encodeUrl(string2);
-        String[] arrstring = TempUtil.splitSourceId(string);
+        String[] arrstring = CommonUtil.splitSourceId(string);
         if (arrstring != null) {
             Object[] arrobject = new Object[]{arrstring[0], arrstring[1], n, string3};
             return String.format(Locale.CHINA, "http://book.easou.com/ta/show.m?gid=%s&nid=%s&st=%d&cu=%s", arrobject);
@@ -543,7 +543,7 @@ public class ApiService {
         if (esChapterRoot == null) return null;
         if (esChapterRoot.getContent() != null) {
             ChapterRoot chapterRoot = new ChapterRoot();
-            String string7 = TempUtil.getBody(esChapterRoot.getContent());
+            String string7 = CommonUtil.getBody(esChapterRoot.getContent());
             Chapter chapter = new Chapter();
             chapter.setLink(chapterLink);
             chapter.setBody(string7);
@@ -829,7 +829,7 @@ public class ApiService {
             if (string4 != null) {
                 string5 = string4.replaceAll("<p>", "").replaceAll("</p>", "\n");
             }
-            String string6 = TempUtil.getBody(string5);
+            String string6 = CommonUtil.getBody(string5);
             Chapter chapter = new Chapter();
             chapter.setLink(ldChapterRoot.getSrc());
             chapter.setBody(string6);
@@ -1349,7 +1349,7 @@ public class ApiService {
         if (sgChapterRoot == null || sgChapterRoot.getContent() == null || sgChapterRoot.getContent().length <= 0) return null;
         {
             ChapterRoot chapterRoot = new ChapterRoot();
-            String string4 = TempUtil.getBody(sgChapterRoot.getContent()[0].getBlock());
+            String string4 = CommonUtil.getBody(sgChapterRoot.getContent()[0].getBlock());
             Chapter chapter = new Chapter();
             chapter.setLink(string);
             if (string4 != null && string4.contains("</")) {
@@ -1396,13 +1396,13 @@ public class ApiService {
     }
 
     public final NotificationRoot r(String string, String string2) {
-        String string3 = TempUtil.isBlank(string2) ? String.format(Locale.CHINA, "/user/notification/important?token=%s", string) : String.format(Locale.CHINA, "/user/notification/important?token=%s&startTime=%s", string, string2);
+        String string3 = CommonUtil.isBlank(string2) ? String.format(Locale.CHINA, "/user/notification/important?token=%s", string) : String.format(Locale.CHINA, "/user/notification/important?token=%s&startTime=%s", string, string2);
         String string4 = f + string3;
         return ApiService.a(this.a(HttpRequest.get(string4)), NotificationRoot.class);
     }
 
     public final NotificationRoot s(String string, String string2) {
-        String string3 = TempUtil.isBlank(string2) ? String.format(Locale.CHINA, "/user/notification/unimportant?token=%s", string) : String.format(Locale.CHINA, "/user/notification/unimportant?token=%s&startTime=%s", string, string2);
+        String string3 = CommonUtil.isBlank(string2) ? String.format(Locale.CHINA, "/user/notification/unimportant?token=%s", string) : String.format(Locale.CHINA, "/user/notification/unimportant?token=%s&startTime=%s", string, string2);
         String string4 = f + string3;
         return ApiService.a(this.a(HttpRequest.get(string4)), NotificationRoot.class);
     }
@@ -1463,7 +1463,7 @@ public class ApiService {
     }
 
     public final EsTocRoot v(String string) {
-        String[] arrstring = TempUtil.splitSourceId(string);
+        String[] arrstring = CommonUtil.splitSourceId(string);
         if (arrstring == null) {
             return null;
         }
@@ -1488,7 +1488,7 @@ public class ApiService {
     public final ChapterRoot x(String string) {
         String string2 = String.format(Locale.CHINA, "/chapter/%s", CommonUtil.encodeUrl(string));
         String string3 = h + string2;
-        String string4 = string3 + "?" + TempUtil.getChapterSecurity(string2);
+        String string4 = string3 + "?" + CommonUtil.getChapterSecurity(string2);
         HttpRequest httpRequest = HttpRequest.get(string4);
         if (DnsManager.isUseDns()) {
             httpRequest = DnsManager.a2(httpRequest);

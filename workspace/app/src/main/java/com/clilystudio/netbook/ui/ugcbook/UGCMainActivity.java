@@ -29,7 +29,7 @@ import com.clilystudio.netbook.ui.ActionBarClickListener;
 import com.clilystudio.netbook.ui.BaseTabActivity;
 import com.clilystudio.netbook.ui.home.ZssqFragmentPagerAdapter;
 import com.clilystudio.netbook.ui.user.UserUGCActivity;
-import com.clilystudio.netbook.util.TempUtil;
+import com.clilystudio.netbook.util.CommonUtil;
 import com.clilystudio.netbook.widget.UgcFilterTextView;
 
 import java.util.ArrayList;
@@ -75,7 +75,7 @@ public class UGCMainActivity extends BaseTabActivity implements ViewPager.OnPage
     static /* synthetic */ void b(UGCMainActivity uGCMainActivity) {
         if (uGCMainActivity.g != null && !uGCMainActivity.g.isShowing()) {
             if (uGCMainActivity.f == null || !uGCMainActivity.f.isShowing()) {
-                uGCMainActivity.f = new PopupWindow(uGCMainActivity.getLayoutInflater().inflate(R.layout.home_menu_bg_popup, (ViewGroup)uGCMainActivity.getWindow().getDecorView(), false), -1, TempUtil.getWindowHeight(uGCMainActivity));
+                uGCMainActivity.f = new PopupWindow(uGCMainActivity.getLayoutInflater().inflate(R.layout.home_menu_bg_popup, (ViewGroup)uGCMainActivity.getWindow().getDecorView(), false), -1, CommonUtil.getWindowHeight(uGCMainActivity));
                 uGCMainActivity.f.setAnimationStyle(R.style.home_menu_bg_anim);
                 uGCMainActivity.f.showAtLocation(uGCMainActivity.getActionBar().getCustomView(), 0, 0, 0);
             }

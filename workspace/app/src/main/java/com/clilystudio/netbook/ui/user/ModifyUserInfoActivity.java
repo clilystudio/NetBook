@@ -30,7 +30,7 @@ import com.clilystudio.netbook.ui.BaseActivity;
 import com.clilystudio.netbook.ui.CircularSmartImageView;
 import com.clilystudio.netbook.ui.CropPhotoActivity;
 import com.clilystudio.netbook.util.CommonUtil;
-import com.clilystudio.netbook.util.TempUtil;
+import com.clilystudio.netbook.util.CommonUtil;
 import com.clilystudio.netbook.util.ToastUtil;
 
 import java.io.File;
@@ -205,7 +205,7 @@ public class ModifyUserInfoActivity extends BaseActivity implements View.OnClick
                     h2.setPositiveButton("知道了", null).show();
                 }
                 if (!bl) return;
-                boolean bl2 = !TempUtil.getBoolPref(this, "EXTRA_CHANGE_AVATAR", false);
+                boolean bl2 = !CommonUtil.getBoolPref(this, "EXTRA_CHANGE_AVATAR", false);
                 if (bl2) {
                     BaseDialog.Builder h3 = new BaseDialog.Builder(this);
                     h3.setTitle("提醒");
@@ -214,7 +214,7 @@ public class ModifyUserInfoActivity extends BaseActivity implements View.OnClick
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             startActivityForResult(new Intent("android.intent.action.GET_CONTENT").setType("image/*"), 9162);
-                            TempUtil.putBoolPref(ModifyUserInfoActivity.this, "EXTRA_CHANGE_AVATAR", true);
+                            CommonUtil.putBoolPref(ModifyUserInfoActivity.this, "EXTRA_CHANGE_AVATAR", true);
                         }
                     }).show();
                     return;

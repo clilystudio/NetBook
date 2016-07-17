@@ -10,7 +10,7 @@ import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.a_pack.BaseLoadingTask;
 import com.clilystudio.netbook.api.ApiServiceProvider;
 import com.clilystudio.netbook.model.BookAdd;
-import com.clilystudio.netbook.util.TempUtil;
+import com.clilystudio.netbook.util.CommonUtil;
 import com.clilystudio.netbook.util.ToastUtil;
 
 public class CustomSearchActivity extends BaseActivity {
@@ -23,11 +23,11 @@ public class CustomSearchActivity extends BaseActivity {
     static /* synthetic */ void a(final CustomSearchActivity customSearchActivity) {
         String string = customSearchActivity.a.getText().toString();
         String string2 = customSearchActivity.b.getText().toString();
-        if (TempUtil.isBlank(string)) {
+        if (CommonUtil.isBlank(string)) {
             ToastUtil.showShortToast(customSearchActivity, "书名不能为空");
             return;
         }
-        if (TempUtil.isBlank(string2)) {
+        if (CommonUtil.isBlank(string2)) {
             ToastUtil.showShortToast(customSearchActivity, "作者不能为空");
             return;
         }

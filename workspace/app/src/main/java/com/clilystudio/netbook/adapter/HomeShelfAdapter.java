@@ -21,7 +21,7 @@ import com.clilystudio.netbook.event.DownloadStatusEvent;
 import com.clilystudio.netbook.model.BookFeed;
 import com.clilystudio.netbook.model.BookShelf;
 import com.clilystudio.netbook.reader.dl.BookDownloadManager;
-import com.clilystudio.netbook.util.TempUtil;
+import com.clilystudio.netbook.util.CommonUtil;
 import com.clilystudio.netbook.widget.BookShelfFlagView;
 import com.clilystudio.netbook.widget.CoverLoadingLayer;
 import com.clilystudio.netbook.widget.CoverView;
@@ -266,7 +266,7 @@ public class HomeShelfAdapter extends BaseBookAdapter<BookShelf> {
                 boolean var23_10 = false;
                 if (var22_9 != -1) {
                     String var29_11 = var20_7.getDownloadedSource();
-                    String var30_12 = TempUtil.getSourceName(var22_9);
+                    String var30_12 = CommonUtil.getSourceName(var22_9);
                     var23_10 = false;
                     if (var29_11 != null) {
                         var23_10 = var29_11.contains(var30_12);

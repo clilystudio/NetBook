@@ -16,7 +16,7 @@ import com.clilystudio.netbook.event.BusProvider;
 import com.clilystudio.netbook.event.LoginEvent;
 import com.clilystudio.netbook.model.ChapterKeysRoot;
 import com.clilystudio.netbook.model.ChapterLink;
-import com.clilystudio.netbook.util.TempUtil;
+import com.clilystudio.netbook.util.CommonUtil;
 import com.clilystudio.netbook.util.ToastUtil;
 import com.clilystudio.netbook.widget.JustifyTextView;
 import com.squareup.otto.Subscribe;
@@ -116,7 +116,7 @@ public final class ReaderPageManager {
                 this.p();
                 this.mErrorTextTV.setVisibility(View.VISIBLE);
                 this.t();
-                if (TempUtil.isConnectedOrConnecting(this.mActivity)) {
+                if (CommonUtil.isConnectedOrConnecting(this.mActivity)) {
                     this.mErrorTitleTV.setText("连接超时，再试试？");
                     this.mErrorHintTV.setText("请刷新重试或切换来源");
                     this.setErrorImage(R.drawable.ic_reader_connection_error_network_normal);
@@ -157,7 +157,7 @@ public final class ReaderPageManager {
                 this.mErrorTextTV.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        if (TempUtil.isConnectedOrConnecting(ReaderPageManager.this.mActivity)) {
+                        if (CommonUtil.isConnectedOrConnecting(ReaderPageManager.this.mActivity)) {
                             ReaderPageManager.this.mPageErrorView.setVisibility(View.GONE);
                             if (ReaderPageManager.this.mOnReloadSourceListener != null) {
                                 ReaderPageManager.this.mOnReloadSourceListener.onReload();
@@ -214,7 +214,7 @@ public final class ReaderPageManager {
         this.mErrorTextTV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (TempUtil.isConnectedOrConnecting(ReaderPageManager.this.mActivity)) {
+                if (CommonUtil.isConnectedOrConnecting(ReaderPageManager.this.mActivity)) {
                     ReaderPageManager.this.mPageErrorView.setVisibility(View.GONE);
                     if (ReaderPageManager.this.q != null) {
                         ReaderPageManager.this.q.a(ReaderPageManager.this.d.l());
@@ -387,9 +387,9 @@ public final class ReaderPageManager {
                             for (ChapterKeysRoot.ChapterKey chapterKeysRoot$ChapterKey : chapterKeysRoot.getKeys()) {
                                 hashMap.put(chapterKeysRoot$ChapterKey.get_id(), chapterKeysRoot$ChapterKey.getKey());
                             }
-                            TempUtil.saveObject(hashMap, CachePathConst.ChapterKey, arg);
+                            CommonUtil.saveObject(hashMap, CachePathConst.ChapterKey, arg);
                         } else {
-                            hashMap = TempUtil.loadObject(CachePathConst.ChapterKey, arg);
+                            hashMap = CommonUtil.loadObject(CachePathConst.ChapterKey, arg);
                             if (hashMap == null) {
                                 hashMap = new HashMap<>();
                             }

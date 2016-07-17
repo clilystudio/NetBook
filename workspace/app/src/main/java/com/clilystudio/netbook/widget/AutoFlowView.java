@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import com.clilystudio.netbook.CachePathConst;
 import com.clilystudio.netbook.R;
-import com.clilystudio.netbook.util.TempUtil;
+import com.clilystudio.netbook.util.CommonUtil;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -55,13 +55,13 @@ public class AutoFlowView extends LinearLayout implements View.OnClickListener {
     private void b() {
         this.setOrientation(LinearLayout.HORIZONTAL);
         this.j = new ArrayList<>();
-        g = TempUtil.getDipSize(this.getContext(), 12.0f);
-        b = TempUtil.getDipSize(this.getContext(), 6.0f);
-        c = TempUtil.getDipSize(this.getContext(), 12.0f);
-        d = TempUtil.getDipSize(this.getContext(), 12.0f);
-        e = TempUtil.getDipSize(this.getContext(), 16.0f);
-        f = TempUtil.getDipSize(this.getContext(), 4.0f);
-        if (TempUtil.getBoolPref(this.getContext(), "customer_night_theme", false)) {
+        g = CommonUtil.getDipSize(this.getContext(), 12.0f);
+        b = CommonUtil.getDipSize(this.getContext(), 6.0f);
+        c = CommonUtil.getDipSize(this.getContext(), 12.0f);
+        d = CommonUtil.getDipSize(this.getContext(), 12.0f);
+        e = CommonUtil.getDipSize(this.getContext(), 16.0f);
+        f = CommonUtil.getDipSize(this.getContext(), 4.0f);
+        if (CommonUtil.getBoolPref(this.getContext(), "customer_night_theme", false)) {
             this.l = new int[]{R.drawable.bg_book_info_tag0_dark, R.drawable.bg_book_info_tag1_dark, R.drawable.bg_book_info_tag2_dark, R.drawable.bg_book_info_tag3_dark, R.drawable.bg_book_info_tag4_dark, R.drawable.bg_book_info_tag5_dark, R.drawable.bg_book_info_tag6_dark};
             return;
         }
@@ -125,7 +125,7 @@ public class AutoFlowView extends LinearLayout implements View.OnClickListener {
                 word.show = 1 + word.show;
             }
         }
-        TempUtil.saveObject(this.j, CachePathConst.SearchHistory, "search_hotword.txt");
+        CommonUtil.saveObject(this.j, CachePathConst.SearchHistory, "search_hotword.txt");
     }
 
     @Override

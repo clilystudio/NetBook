@@ -28,7 +28,7 @@ import com.clilystudio.netbook.model.TocSourceRoot;
 import com.clilystudio.netbook.reader.ReaderTocManager;
 import com.clilystudio.netbook.util.BookInfoUtil;
 import com.clilystudio.netbook.util.CommonUtil;
-import com.clilystudio.netbook.util.TempUtil;
+import com.clilystudio.netbook.util.CommonUtil;
 import com.clilystudio.netbook.util.ToastUtil;
 import com.squareup.otto.Subscribe;
 
@@ -155,7 +155,7 @@ public class BookDownloadService extends Service {
     static /* synthetic */ void l(BookDownloadService bookDownloadService) {
         BookReadRecord bookReadRecord;
         if (bookDownloadService.mBookId != null && !bookDownloadService.mBookId.equals(bookDownloadService.m) && (bookReadRecord = BookReadRecord.get(bookDownloadService.mBookId)) != null) {
-            String string = TempUtil.getSourceName(bookReadRecord.getReadMode());
+            String string = CommonUtil.getSourceName(bookReadRecord.getReadMode());
             String string2 = bookReadRecord.getDownloadedSource();
             if (string2 == null || !string2.contains(string)) {
                 bookReadRecord.setDownloadedSource(string2 + string);
@@ -232,8 +232,8 @@ public class BookDownloadService extends Service {
             getTocSourceRoot();
             return;
         }
-        if (TempUtil.canDownload(this.mReadMode)) {
-            string2 = TempUtil.getSourceName(this.mReadMode);
+        if (CommonUtil.canDownload(this.mReadMode)) {
+            string2 = CommonUtil.getSourceName(this.mReadMode);
             SourceRecord sourceRecord = SourceRecord.get(this.mBookId, string2);
             if (sourceRecord == null || sourceRecord.getSourceId() == null) {
                 getTocSourceRoot();
@@ -244,7 +244,7 @@ public class BookDownloadService extends Service {
             sourceId = null;
             string2 = null;
         }
-        this.mTocId = TempUtil.getMixTocId(this.mBookId, this.mReadMode, sourceId, this.mTocId);
+        this.mTocId = CommonUtil.getMixTocId(this.mBookId, this.mReadMode, sourceId, this.mTocId);
         this.k.a(this.mTocId, string2, sourceId);
         new BaseAsyncTask<Void, Void, Toc>() {
             @Override
@@ -256,7 +256,7 @@ public class BookDownloadService extends Service {
             protected void onPostExecute(Toc toc) {
                 super.onPostExecute(toc);
                 if (toc != null && toc.getChapters() != null) {
-                    TempUtil.saveToc(BookDownloadService.this.mBookId, toc.get_id(), toc);
+                    CommonUtil.saveToc(BookDownloadService.this.mBookId, toc.get_id(), toc);
                     BookDownloadService.a(BookDownloadService.this, toc.getChapters());
                     BookDownloadService.e(BookDownloadService.this, BookDownloadService.p(BookDownloadService.this).length);
                     BookDownloadService.f(BookDownloadService.this, BookDownloadService.h(BookDownloadService.this));
@@ -283,7 +283,7 @@ public class BookDownloadService extends Service {
                 if (tocSourceRoot != null && tocSourceRoot.getSources() != null) {
                     TocSource[] arrtocSource = tocSourceRoot.getSources();
                     for (TocSource anArrtocSource : arrtocSource) {
-                        TempUtil.saveSourceRecord(anArrtocSource, BookDownloadService.this.mBookId);
+                        CommonUtil.saveSourceRecord(anArrtocSource, BookDownloadService.this.mBookId);
                     }
                 }
                 BookDownloadService.this.mReadMode = 5;
@@ -301,10 +301,10 @@ public class BookDownloadService extends Service {
 
     private void b() {
         this.k = new ReaderTocManager(this.mReadMode);
-        boolean bl = TempUtil.canDownload(this.mReadMode);
+        boolean bl = CommonUtil.canDownload(this.mReadMode);
         String string = null;
         if (bl) {
-            String string2 = TempUtil.getSourceName(this.mReadMode);
+            String string2 = CommonUtil.getSourceName(this.mReadMode);
             SourceRecord sourceRecord = SourceRecord.get(this.mBookId, string2);
             string = null;
             if (sourceRecord != null) {
@@ -313,13 +313,13 @@ public class BookDownloadService extends Service {
                 this.k.a(string, string3);
             }
         }
-        this.mTocId = TempUtil.getMixTocId(this.mBookId, this.mReadMode, string, this.mTocId);
+        this.mTocId = CommonUtil.getMixTocId(this.mBookId, this.mReadMode, string, this.mTocId);
         this.k.setTocId(BookInfoUtil.tocId);
         this.k.setBookId(BookInfoUtil.bookId);
         this.k.setReadMode(BookInfoUtil.readMode);
         this.i.putExtra("SerDlStopFlag", 0);
-        this.h = TempUtil.getSubFileList(new File(CachePathConst.RootPath, "/ZhuiShuShenQi/Chapter" + File.separator + this.mBookId + File.separator + this.mTocId));
-        if (TempUtil.getFreeSpaceSize() <= (long) (10 * this.e << 1)) {
+        this.h = CommonUtil.getSubFileList(new File(CachePathConst.RootPath, "/ZhuiShuShenQi/Chapter" + File.separator + this.mBookId + File.separator + this.mTocId));
+        if (CommonUtil.getFreeSpaceSize() <= (long) (10 * this.e << 1)) {
             ToastUtil.showToast(this, "SD卡剩余容量不足，请减少缓存数目或增加存储");
             this.stopSelf();
             return;
@@ -372,11 +372,11 @@ public class BookDownloadService extends Service {
                     BookDownloadService.b(BookDownloadService.this).putExtra("SerDlChapterCount", BookDownloadService.h(BookDownloadService.this));
                     BookDownloadService.b(BookDownloadService.this).putExtra("bookId", BookDownloadService.this.mBookId);
                     BookDownloadService.i(BookDownloadService.this);
-                    int n2 = TempUtil.getNetType(BookDownloadService.this);
+                    int n2 = CommonUtil.getNetType(BookDownloadService.this);
                     if (BookDownloadService.j(BookDownloadService.this) == 1 && n2 > 1) {
                         BookDownloadService.k(BookDownloadService.this);
                         ToastUtil.showToast(BookDownloadService.this.getApplicationContext(), "流量下自动暂停缓存，连接 Wi-Fi 继续或手动开始缓存");
-                    } else if (TempUtil.isConnectedOrConnecting(BookDownloadService.this)) {
+                    } else if (CommonUtil.isConnectedOrConnecting(BookDownloadService.this)) {
                         BookDownloadService.e(BookDownloadService.this);
                         BookDownloadService.b(BookDownloadService.this, false);
                     } else {
@@ -391,7 +391,7 @@ public class BookDownloadService extends Service {
                         if (BookDownloadService.m(BookDownloadService.this) == null) {
                             BookDownloadService.this.mTocId = BookInfoUtil.tocId;
                         }
-                        TempUtil.saveChapter(BookDownloadService.this.mBookId, BookDownloadService.m(BookDownloadService.this), CommonUtil.encodeUrl(string), chapter);
+                        CommonUtil.saveChapter(BookDownloadService.this.mBookId, BookDownloadService.m(BookDownloadService.this), CommonUtil.encodeUrl(string), chapter);
                     }
                     BookDownloadService.c(BookDownloadService.this);
                     if (BookDownloadService.n(BookDownloadService.this) == 0 || BookDownloadService.g(BookDownloadService.this) == BookDownloadService.h(BookDownloadService.this)) {
@@ -511,7 +511,7 @@ public class BookDownloadService extends Service {
 
         @Override
         public void onReceive(Context context, Intent intent) {
-            if (BookDownloadService.a(this.a) && TempUtil.getNetType(this.a) == 1) {
+            if (BookDownloadService.a(this.a) && CommonUtil.getNetType(this.a) == 1) {
                 BookDownloadService.b(this.a).putExtra("SerDlStopFlag", 0);
                 BookDownloadService.c(this.a);
                 BookDownloadService.a(this.a, false);

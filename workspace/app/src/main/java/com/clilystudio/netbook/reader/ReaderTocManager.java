@@ -23,7 +23,7 @@ import com.clilystudio.netbook.model.mixtoc.SgTocRoot;
 import com.clilystudio.netbook.model.mixtoc.SsTocRoot;
 import com.clilystudio.netbook.model.mixtoc.SsTocRow;
 import com.clilystudio.netbook.util.BookInfoUtil;
-import com.clilystudio.netbook.util.TempUtil;
+import com.clilystudio.netbook.util.CommonUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -66,7 +66,7 @@ public final class ReaderTocManager {
      * Lifted jumps to return sites
      */
     private ChapterRoot a(int sort, String chapterName, String chapterLink) {
-        String[] arrstring = TempUtil.splitSourceId(this.mSourceId);
+        String[] arrstring = CommonUtil.splitSourceId(this.mSourceId);
         if (arrstring == null) return null;
         try {
             return ApiServiceProvider.getApiService().a(arrstring[0], arrstring[1], sort, chapterName, chapterLink);
@@ -170,7 +170,7 @@ public final class ReaderTocManager {
     private ChapterRoot c(String string) {
         try {
             ApiService apiService = ApiServiceProvider.getApiService();
-            if (TempUtil.isForceEncryptChapter()) {
+            if (CommonUtil.isForceEncryptChapter()) {
                 return apiService.x(string);
             }
             return apiService.y(string);
@@ -383,7 +383,7 @@ public final class ReaderTocManager {
                         link = arrstring[0];
                     }
                 }
-                chapterRoot = this.b(TempUtil.parseInt(link));
+                chapterRoot = this.b(CommonUtil.parseInt(link));
                 break;
             }
             case 7: {
@@ -411,7 +411,7 @@ public final class ReaderTocManager {
         BookTopRoot.Favorite bookTopRoot$Favorite;
         BookTopRoot bookTopRoot = ApiServiceProvider.getApiService().u();
         if (bookTopRoot != null && (bookTopRoot$Favorite = bookTopRoot.getFavorite()) != null) {
-            TempUtil.initCipher(MyApplication.getInstance(), bookTopRoot$Favorite.getBookID(), bookTopRoot$Favorite.getTocID(), bookTopRoot$Favorite.getChecksum());
+            CommonUtil.initCipher(MyApplication.getInstance(), bookTopRoot$Favorite.getBookID(), bookTopRoot$Favorite.getTocID(), bookTopRoot$Favorite.getChecksum());
         }
         chapterRoot = this.c(chapterLink.getLink());
         BookInfoUtil.h = false;

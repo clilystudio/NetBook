@@ -20,7 +20,7 @@ import com.clilystudio.netbook.model.Account;
 import com.clilystudio.netbook.model.UGCBookListRoot;
 import com.clilystudio.netbook.util.BaseDownloadAdapter;
 import com.clilystudio.netbook.util.DateTimeUtil;
-import com.clilystudio.netbook.util.TempUtil;
+import com.clilystudio.netbook.util.CommonUtil;
 import com.clilystudio.netbook.util.ToastUtil;
 import com.clilystudio.netbook.widget.CoverView;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
@@ -192,7 +192,7 @@ public abstract class AbsUGCListFragment extends Fragment implements AdapterView
         this.a = (PullToRefreshListView) view.findViewById(R.id.ptr_list);
         this.b = this.a.getRefreshableView();
         this.b.setOnItemClickListener(this);
-        TempUtil.addHeaderView(this.getActivity(), this.b);
+        CommonUtil.addHeaderView(this.getActivity(), this.b);
         View view2 = layoutInflater.inflate(R.layout.my_ugc_header_label, this.b, false);
         this.k = (TextView) view2.findViewById(R.id.content);
         this.k.setVisibility(View.GONE);

@@ -27,7 +27,7 @@ import com.clilystudio.netbook.model.BookSummary;
 import com.clilystudio.netbook.model.SearchPromRoot;
 import com.clilystudio.netbook.ui.BaseActivity;
 import com.clilystudio.netbook.util.BaseDownloadAdapter;
-import com.clilystudio.netbook.util.TempUtil;
+import com.clilystudio.netbook.util.CommonUtil;
 import com.clilystudio.netbook.util.ToastUtil;
 import com.clilystudio.netbook.widget.CoverView;
 import com.clilystudio.netbook.widget.SearchEditText;
@@ -150,7 +150,7 @@ public class UGCGuideAddBookActivity extends BaseActivity implements View.OnClic
         this.h.setVisibility(View.GONE);
         this.b = this.c.getText().toString().trim();
         this.f();
-        if (TempUtil.isConnectedOrConnecting(this)) {
+        if (CommonUtil.isConnectedOrConnecting(this)) {
             this.a(0);
             if (bl) {
                 BaseAsyncTask<String, Void, List<BookSummary>> w2 = new BaseAsyncTask<String, Void, List<BookSummary>>() {
@@ -406,14 +406,14 @@ public class UGCGuideAddBookActivity extends BaseActivity implements View.OnClic
 
             @Override
             public void afterTextChanged(Editable editable) {
-                boolean bl = !TempUtil.isBlank(editable.toString());
+                boolean bl = !CommonUtil.isBlank(editable.toString());
                 UGCGuideAddBookActivity.c(UGCGuideAddBookActivity.this, bl);
             }
         });
         this.c.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
-                boolean bl2 = !TempUtil.isBlank(UGCGuideAddBookActivity.a(UGCGuideAddBookActivity.this).getText().toString());
+                boolean bl2 = !CommonUtil.isBlank(UGCGuideAddBookActivity.a(UGCGuideAddBookActivity.this).getText().toString());
                 UGCGuideAddBookActivity.c(UGCGuideAddBookActivity.this, bl2);
             }
         });

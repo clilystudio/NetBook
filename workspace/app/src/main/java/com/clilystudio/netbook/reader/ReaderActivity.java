@@ -56,7 +56,7 @@ import com.clilystudio.netbook.ui.BaseReadSlmActivity;
 import com.clilystudio.netbook.ui.BookInfoActivity;
 import com.clilystudio.netbook.util.BookInfoUtil;
 import com.clilystudio.netbook.util.CommonUtil;
-import com.clilystudio.netbook.util.TempUtil;
+import com.clilystudio.netbook.util.CommonUtil;
 import com.clilystudio.netbook.util.ToastUtil;
 import com.clilystudio.netbook.widget.ThemeLoadingView;
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
@@ -358,7 +358,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
 
     static /* synthetic */ void ad(ReaderActivity readerActivity) {
         readerActivity.mReader.a();
-        TempUtil.syncBookShelf(readerActivity.mBookId, BookSyncRecord.BookModifyType.SHELF_ADD);
+        CommonUtil.syncBookShelf(readerActivity.mBookId, BookSyncRecord.BookModifyType.SHELF_ADD);
         String string = readerActivity.getString(R.string.add_book_event);
         Object[] arrobject = new Object[]{readerActivity.mBookTitle};
         ToastUtil.showShortToast(readerActivity, String.format(string, arrobject));
@@ -478,7 +478,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
             MyApplication.getInstance().setBookId(null);
         }
         MyApplication.getInstance().setReader(this.mReader);
-        if (!this.q() && !TempUtil.canDownload(this.mReadMode)) {
+        if (!this.q() && !CommonUtil.canDownload(this.mReadMode)) {
             if (!this.mIsShowToc || this.mChangeOrientation) {
                 this.g();
             } else {
@@ -680,7 +680,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
     }
 
     private void J() {
-        this.mIsFullScreen = TempUtil.getBoolPref(this, "reader_opt_full_screen", true);
+        this.mIsFullScreen = CommonUtil.getBoolPref(this, "reader_opt_full_screen", true);
         this.r.a(this.mIsFullScreen);
         this.H();
     }
@@ -778,8 +778,8 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
     }
 
     private void loadChapterList() {
-        if (TempUtil.isMounted()) {
-            ArrayList<String> subFileList = TempUtil.getSubFileList(new File(CachePathConst.RootPath, "/ZhuiShuShenQi/Chapter" + File.separator + this.mBookId + File.separator + this.mTocId));
+        if (CommonUtil.isMounted()) {
+            ArrayList<String> subFileList = CommonUtil.getSubFileList(new File(CachePathConst.RootPath, "/ZhuiShuShenQi/Chapter" + File.separator + this.mBookId + File.separator + this.mTocId));
             for (String s1 : subFileList) {
                 String string = CommonUtil.decodeUrl(s1);
                 this.x.add(string);
@@ -1425,7 +1425,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
         } else {
             this.mReaderBodyTV.setBackgroundResource(this.mReaderStyle.h);
         }
-        boolean bl2 = this.mReadMode == 5 || this.mReadMode == 10 || TempUtil.canDownload(this.mReadMode) || this.mReadMode == 9;
+        boolean bl2 = this.mReadMode == 5 || this.mReadMode == 10 || CommonUtil.canDownload(this.mReadMode) || this.mReadMode == 9;
         View view = this.findViewById(R.id.reader_ab_read_mode);
         view.setVisibility(bl2 ? View.VISIBLE : View.GONE);
         this.r.setReaderStyle(this.mReaderStyle);
@@ -1487,7 +1487,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
                         } else {
                             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
                         }
-                        TempUtil.putBoolPref(ReaderActivity.this, "reader_orientation", mIsPortrait);
+                        CommonUtil.putBoolPref(ReaderActivity.this, "reader_orientation", mIsPortrait);
                         break;
                     case R.id.reader_download:
                         ReaderActivity.this.s.setVisibility(View.GONE);
@@ -1607,9 +1607,9 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
                         for (ChapterKeysRoot.ChapterKey chapterKey : chapterKeysRoot.getKeys()) {
                             hashMap.put(chapterKey.get_id(), chapterKey.getKey());
                         }
-                        TempUtil.saveObject(hashMap, CachePathConst.ChapterKey, ReaderActivity.this.mBookId);
+                        CommonUtil.saveObject(hashMap, CachePathConst.ChapterKey, ReaderActivity.this.mBookId);
                     } else {
-                        hashMap = TempUtil.loadObject(CachePathConst.ChapterKey, ReaderActivity.this.mBookId);
+                        hashMap = CommonUtil.loadObject(CachePathConst.ChapterKey, ReaderActivity.this.mBookId);
                         if (hashMap == null) {
                             hashMap = new HashMap<>();
                         }
@@ -1712,7 +1712,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
         if (this.mReader != null) {
             this.mReader.c();
         }
-        if (TempUtil.getIntPref(this, "key_shelf_sort", n2) != n2) {
+        if (CommonUtil.getIntPref(this, "key_shelf_sort", n2) != n2) {
             n2 = 0;
         }
         if (n2 != 0 && (bookReadRecord = BookReadRecord.get(this.mBookId)) != null) {

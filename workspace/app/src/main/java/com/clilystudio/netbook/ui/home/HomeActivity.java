@@ -48,7 +48,7 @@ import com.clilystudio.netbook.ui.user.MyMessageActivity;
 import com.clilystudio.netbook.ui.user.UserInfoActivity;
 import com.clilystudio.netbook.util.BookShelfSyncManager;
 import com.clilystudio.netbook.util.CommonUtil;
-import com.clilystudio.netbook.util.TempUtil;
+import com.clilystudio.netbook.util.CommonUtil;
 import com.clilystudio.netbook.util.ToastUtil;
 import com.clilystudio.netbook.util.UserNotificationManager;
 import com.clilystudio.netbook.widget.TabWidgetV2;
@@ -236,7 +236,7 @@ public class HomeActivity extends HomeParentActivity implements ViewPager.OnPage
     private void l() {
         try {
             if (this.j == null || !this.j.isShowing()) {
-                this.j = new PopupWindow(this.getLayoutInflater().inflate(R.layout.home_menu_bg_popup, (ViewGroup) getWindow().getDecorView(), false), -1, TempUtil.getWindowHeight(this));
+                this.j = new PopupWindow(this.getLayoutInflater().inflate(R.layout.home_menu_bg_popup, (ViewGroup) getWindow().getDecorView(), false), -1, CommonUtil.getWindowHeight(this));
                 this.j.setAnimationStyle(R.style.home_menu_bg_anim);
                 this.j.showAtLocation(this.getActionBar().getCustomView(), 0, 0, 0);
             }
@@ -260,7 +260,7 @@ public class HomeActivity extends HomeParentActivity implements ViewPager.OnPage
                 });
             }
             this.i.setAnimationStyle(R.style.home_menu_anim);
-            this.i.showAtLocation(view, 53, TempUtil.getDipSize(this, 5.0f), CommonUtil.getActionBarHeight(this) + CommonUtil.getStatusBarHeight(this));
+            this.i.showAtLocation(view, 53, CommonUtil.getDipSize(this, 5.0f), CommonUtil.getActionBarHeight(this) + CommonUtil.getStatusBarHeight(this));
             this.i.setOnDismissListener(new PopupWindow.OnDismissListener() {
                 @Override
                 public void onDismiss() {
@@ -405,7 +405,7 @@ public class HomeActivity extends HomeParentActivity implements ViewPager.OnPage
             case R.id.home_menu_msg: {
                 if (this.mAccount != null) {
                     this.m();
-                    TempUtil.putLongPref(this, "key_enter_msg_time", System.currentTimeMillis());
+                    CommonUtil.putLongPref(this, "key_enter_msg_time", System.currentTimeMillis());
                     AccountInfo accountInfo = AccountInfo.getOrCreate(this.mAccount.getToken());
                     accountInfo.setPrevUnimpNotif(UserNotificationManager.getInstance(this).getUnimportant());
                     accountInfo.save();
@@ -427,18 +427,18 @@ public class HomeActivity extends HomeParentActivity implements ViewPager.OnPage
             }
             case R.id.home_menu_theme: {
                 Intent intent = new Intent(this, HomeTransparentActivity.class);
-                if (TempUtil.getBoolPref(this, "customer_night_theme", false)) {
+                if (CommonUtil.getBoolPref(this, "customer_night_theme", false)) {
                     this.n.setText(R.string.custom_theme_night);
                     this.o.setImageResource(R.drawable.theme_night);
-                    TempUtil.putBoolPref(this, "customer_night_theme", false);
-                    TempUtil.putBoolPref(this, "night_mode", false);
-                    TempUtil.putIntPref(this, "start_night_theme", 0);
+                    CommonUtil.putBoolPref(this, "customer_night_theme", false);
+                    CommonUtil.putBoolPref(this, "night_mode", false);
+                    CommonUtil.putIntPref(this, "start_night_theme", 0);
                     intent.putExtra("onThemeChange", 0);
                 } else {
                     this.n.setText(R.string.custom_theme_day);
                     this.o.setImageResource(R.drawable.theme_day);
-                    TempUtil.putBoolPref(this, "customer_night_theme", true);
-                    TempUtil.putBoolPref(this, "night_mode", true);
+                    CommonUtil.putBoolPref(this, "customer_night_theme", true);
+                    CommonUtil.putBoolPref(this, "night_mode", true);
                     intent.putExtra("onThemeChange", 1);
                 }
                 this.startActivity(intent);
@@ -529,19 +529,19 @@ public class HomeActivity extends HomeParentActivity implements ViewPager.OnPage
         }
         this.n = (TextView) this.k.findViewById(R.id.text_theme);
         this.o = (ImageView) this.k.findViewById(R.id.icon_theme);
-        if (TempUtil.getBoolPref(this, "customer_night_theme", false)) {
+        if (CommonUtil.getBoolPref(this, "customer_night_theme", false)) {
             this.n.setText(R.string.custom_theme_day);
             this.o.setImageResource(R.drawable.theme_day);
         } else {
             this.n.setText(R.string.custom_theme_night);
             this.o.setImageResource(R.drawable.theme_night);
         }
-        if (!TempUtil.getBoolPref(this, "bookPushRecords", false)) {
+        if (!CommonUtil.getBoolPref(this, "bookPushRecords", false)) {
             List<BookReadRecord> list = BookReadRecord.getAll();
             if (list != null && !list.isEmpty()) {
                 HomeActivity.a(list);
             }
-            TempUtil.putBoolPref(this, "bookPushRecords", true);
+            CommonUtil.putBoolPref(this, "bookPushRecords", true);
         }
         this.h();
         this.i();
@@ -599,7 +599,7 @@ public class HomeActivity extends HomeParentActivity implements ViewPager.OnPage
             this.t.destroy();
         }
         this.u = false;
-        TempUtil.putIntPref(this, "search_hot_words_date", 0);
+        CommonUtil.putIntPref(this, "search_hot_words_date", 0);
     }
 
     @Override
@@ -689,7 +689,7 @@ public class HomeActivity extends HomeParentActivity implements ViewPager.OnPage
         Account account;
         super.onResume();
         DnsManager.setUseDns("1".equals(OnlineConfigAgent.getInstance().getConfigParams(this, "use_http_dns")));
-        if (TempUtil.isForceEncryptChapter()) {
+        if (CommonUtil.isForceEncryptChapter()) {
             new BaseAsyncTask<Void, Void, BookTopRoot>() {
 
                 @Override
@@ -703,7 +703,7 @@ public class HomeActivity extends HomeParentActivity implements ViewPager.OnPage
                     super.onPostExecute(bookTopRoot);
                     BookTopRoot.Favorite favorite;
                     if (bookTopRoot != null && (favorite = bookTopRoot.getFavorite()) != null) {
-                        TempUtil.initCipher(HomeActivity.this, favorite.getBookID(), favorite.getTocID(), favorite.getChecksum());
+                        CommonUtil.initCipher(HomeActivity.this, favorite.getBookID(), favorite.getTocID(), favorite.getChecksum());
                     }
                 }
             }.b();

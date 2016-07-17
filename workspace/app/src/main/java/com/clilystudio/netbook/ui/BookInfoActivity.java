@@ -32,7 +32,7 @@ import com.clilystudio.netbook.util.BookInfoUtil;
 import com.clilystudio.netbook.util.BookSourceManager;
 import com.clilystudio.netbook.util.CommonUtil;
 import com.clilystudio.netbook.util.DateTimeUtil;
-import com.clilystudio.netbook.util.TempUtil;
+import com.clilystudio.netbook.util.CommonUtil;
 import com.clilystudio.netbook.util.ToastUtil;
 import com.clilystudio.netbook.widget.CoverView;
 import com.clilystudio.netbook.widget.TagsLayout;
@@ -132,7 +132,7 @@ public class BookInfoActivity extends BaseActivity implements View.OnClickListen
 
     static /* synthetic */ void c(BookInfoActivity bookInfoActivity, boolean bl) {
         if (bl) {
-            TempUtil.putBoolPref(bookInfoActivity, "add_update_notify_login", false);
+            CommonUtil.putBoolPref(bookInfoActivity, "add_update_notify_login", false);
         }
     }
 
@@ -175,7 +175,7 @@ public class BookInfoActivity extends BaseActivity implements View.OnClickListen
         int n2 = bookInfoActivity.k.getWordCount();
         if (n2 > 0) {
             textView2.setVisibility(View.VISIBLE);
-            textView2.setText(String.format("  |  %s字", TempUtil.getWordCount(n2)));
+            textView2.setText(String.format("  |  %s字", CommonUtil.getWordCount(n2)));
         } else {
             textView2.setVisibility(View.GONE);
         }
@@ -292,7 +292,7 @@ public class BookInfoActivity extends BaseActivity implements View.OnClickListen
         View view = this.findViewById(R.id.book_info_tags_root);
         view.setVisibility(View.VISIBLE);
         int n2 = arrstring.length;
-        int n3 = TempUtil.getDipSize(this, 16.0f);
+        int n3 = CommonUtil.getDipSize(this, 16.0f);
         TagsLayout tagsLayout = (TagsLayout) view.findViewById(R.id.tags_layout);
         for (String anArrstring : arrstring) {
             TextView textView = (TextView) layoutInflater.inflate(R.layout.book_info_tags_item, tagsLayout, false).findViewById(R.id.tag_text);
@@ -361,17 +361,17 @@ public class BookInfoActivity extends BaseActivity implements View.OnClickListen
         String string;
         if (this.i) {
             BookReadRecord.deleteAndSync(this.mBookId);
-            TempUtil.syncBookShelf(this.mBookId, BookSyncRecord.BookModifyType.SHELF_REMOVE);
+            CommonUtil.syncBookShelf(this.mBookId, BookSyncRecord.BookModifyType.SHELF_REMOVE);
             String string2 = this.getString(R.string.remove_book_event);
             Object[] arrobject = new Object[]{this.k.getTitle()};
             string = String.format(string2, arrobject);
         } else {
             BookReadRecord.create(this.k);
-            TempUtil.syncBookShelf(this.mBookId, BookSyncRecord.BookModifyType.SHELF_ADD);
+            CommonUtil.syncBookShelf(this.mBookId, BookSyncRecord.BookModifyType.SHELF_ADD);
             String string3 = this.getString(R.string.add_book_event);
             Object[] arrobject = new Object[]{this.k.getTitle()};
             String string4 = String.format(string3, arrobject);
-            if (TempUtil.getBoolPref(this, "add_update_notify_login", true) && !CommonUtil.isLogined()) {
+            if (CommonUtil.getBoolPref(this, "add_update_notify_login", true) && !CommonUtil.isLogined()) {
                 View view = this.getLayoutInflater().inflate(R.layout.remove_shelf_confirm, (ViewGroup) getWindow().getDecorView(), false);
                 final CheckBox checkBox = (CheckBox) view.findViewById(R.id.remove_shelf_cache);
                 checkBox.setText(this.getString(R.string.add_update_not_notify));

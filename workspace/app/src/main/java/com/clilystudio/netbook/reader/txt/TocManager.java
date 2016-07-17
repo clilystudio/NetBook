@@ -6,7 +6,7 @@ import com.clilystudio.netbook.CachePathConst;
 import com.clilystudio.netbook.model.ChapterLink;
 import com.clilystudio.netbook.model.Toc;
 import com.clilystudio.netbook.model.mixtoc.LocalTxtToc;
-import com.clilystudio.netbook.util.TempUtil;
+import com.clilystudio.netbook.util.CommonUtil;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -39,7 +39,7 @@ public final class TocManager {
         try {
             for (int var5_4 = 0; var5_4 < 2; ++var5_4) {
                 String var6_5 = TocManager.a[var5_4];
-                BufferedReader var7_6 = TempUtil.getBufferedReader(host);
+                BufferedReader var7_6 = CommonUtil.getBufferedReader(host);
                 List<ChapterLink> var8_7 = new ArrayList<>();
                 Pattern var9_8 = Pattern.compile(var6_5);
                 int var10_9 = 0;
@@ -101,7 +101,7 @@ public final class TocManager {
         try {
             String name = getFileName(filePath);
             if (name != null) {
-                ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(new File(TempUtil.makeDir(CachePathConst.TextToc), name)));
+                ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(new File(CommonUtil.makeDir(CachePathConst.TextToc), name)));
                 objectOutputStream.writeObject(new LocalTxtToc(new File(filePath).length(), list));
                 objectOutputStream.flush();
                 objectOutputStream.close();
@@ -124,7 +124,7 @@ public final class TocManager {
 
     private static List<ChapterLink> loadChapterLinkList(String host) {
         String string2;
-        BufferedReader bufferedReader = TempUtil.getBufferedReader(host);
+        BufferedReader bufferedReader = CommonUtil.getBufferedReader(host);
         ArrayList<ChapterLink> arrayList = new ArrayList<>();
         int n = 1;
         int n2 = 0;
@@ -171,7 +171,7 @@ public final class TocManager {
         File file;
         String name = TocManager.getFileName(host);
         if (name != null) {
-            file = new File(TempUtil.makeDir(CachePathConst.TextToc), name);
+            file = new File(CommonUtil.makeDir(CachePathConst.TextToc), name);
             if (!file.exists()) return null;
             try {
                 ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream(file));

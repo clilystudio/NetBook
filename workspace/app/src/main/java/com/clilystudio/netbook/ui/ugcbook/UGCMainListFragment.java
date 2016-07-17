@@ -20,7 +20,7 @@ import com.clilystudio.netbook.api.ApiServiceProvider;
 import com.clilystudio.netbook.model.UGCBookListRoot;
 import com.clilystudio.netbook.util.BaseDownloadAdapter;
 import com.clilystudio.netbook.util.DateTimeUtil;
-import com.clilystudio.netbook.util.TempUtil;
+import com.clilystudio.netbook.util.CommonUtil;
 import com.clilystudio.netbook.util.ToastUtil;
 import com.clilystudio.netbook.widget.CoverView;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
@@ -220,7 +220,7 @@ public class UGCMainListFragment extends Fragment implements AdapterView.OnItemC
         View view = layoutInflater.inflate(R.layout.fragment_ugc_main, viewGroup, false);
         this.a = (PullToRefreshListView) view.findViewById(R.id.ptr_list);
         this.b = this.a.getRefreshableView();
-        TempUtil.addHeaderView(this.getActivity(), this.b);
+        CommonUtil.addHeaderView(this.getActivity(), this.b);
         this.b.setOnItemClickListener(this);
         this.e = view.findViewById(R.id.pb_loading);
         this.f = (TextView) view.findViewById(R.id.empty_text);

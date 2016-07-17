@@ -20,7 +20,7 @@ import com.clilystudio.netbook.model.Toc;
 import com.clilystudio.netbook.model.TocDownloadSummary;
 import com.clilystudio.netbook.ui.BaseActivity;
 import com.clilystudio.netbook.util.BaseDownloadAdapter;
-import com.clilystudio.netbook.util.TempUtil;
+import com.clilystudio.netbook.util.CommonUtil;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -50,7 +50,7 @@ public class LocalChapterListActivity extends BaseActivity {
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();
                 String string2 = LocalChapterListActivity.c(localChapterListActivity);
-                TempUtil.deleteDir(CachePathConst.Chapter + File.separator + string2 + File.separator + string);
+                CommonUtil.deleteDir(CachePathConst.Chapter + File.separator + string2 + File.separator + string);
                 LocalChapterListActivity.e(localChapterListActivity);
             }
         }).setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
@@ -94,11 +94,11 @@ public class LocalChapterListActivity extends BaseActivity {
      * Enabled aggressive block sorting
      */
     static /* synthetic */ ArrayList i(LocalChapterListActivity localChapterListActivity) {
-        ArrayList<String> arrayList = TempUtil.getSubFileList(new File(CachePathConst.RootPath, "/ZhuiShuShenQi/Chapter" + File.separator + localChapterListActivity.g));
+        ArrayList<String> arrayList = CommonUtil.getSubFileList(new File(CachePathConst.RootPath, "/ZhuiShuShenQi/Chapter" + File.separator + localChapterListActivity.g));
         ArrayList<TocDownloadSummary> arrayList2 = new ArrayList<>();
         for (String string : arrayList) {
             if (string.contains("MIX_TOC_ID") || string.contains("_")) continue;
-            Toc toc = (Toc) TempUtil.loadObject(localChapterListActivity.g, string, "toc");
+            Toc toc = (Toc) CommonUtil.loadObject(localChapterListActivity.g, string, "toc");
             String string2 = localChapterListActivity.g;
             String string3 = "/ZhuiShuShenQi/Chapter" + File.separator + string2 + File.separator + string;
             int subFileCount = getSubFileCount(new File(CachePathConst.RootPath, string3));
@@ -225,7 +225,7 @@ public class LocalChapterListActivity extends BaseActivity {
                 return true;
             }
         });
-        if (!TempUtil.isMounted()) {
+        if (!CommonUtil.isMounted()) {
             this.a.setVisibility(View.VISIBLE);
             String text = "无法获取预读章节，请检查SD卡";
             this.a.setText(text);
