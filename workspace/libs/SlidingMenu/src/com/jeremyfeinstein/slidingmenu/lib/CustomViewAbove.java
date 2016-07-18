@@ -813,7 +813,7 @@ public class CustomViewAbove extends ViewGroup {
 				targetPage += 1;
 			}
 		} else {
-			targetPage = (int) Math.round(mCurItem + pageOffset);
+			targetPage = Math.round(mCurItem + pageOffset);
 		}
 		return targetPage;
 	}

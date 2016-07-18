@@ -908,7 +908,7 @@ public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollL
                 if (HomeShelfFragment.a(HomeShelfFragment.this) == null) return;
                 List<BookShelf> list = HomeShelfFragment.a(HomeShelfFragment.this).e();
                 if (list == null || list.size() == 0) {
-                    ToastUtil.showToast((Context) HomeShelfFragment.this.getActivity(), "你没有选择要删除的书哦");
+                    ToastUtil.showToast(HomeShelfFragment.this.getActivity(), "你没有选择要删除的书哦");
                     return;
                 }
                 HomeShelfFragment.a(HomeShelfFragment.this, list);

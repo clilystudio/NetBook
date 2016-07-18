@@ -119,7 +119,7 @@ public class UGCDetailActivity extends BaseActivity implements View.OnClickListe
             uGCDetailActivity.startActivity(intent);
             return;
         }
-        ToastUtil.showToast((Context) uGCDetailActivity, "书单信息未加载，请检查网络或稍后再试");
+        ToastUtil.showToast(uGCDetailActivity, "书单信息未加载，请检查网络或稍后再试");
     }
 
     static /* synthetic */ void b(UGCDetailActivity uGCDetailActivity, UGCBookDetail uGCBookDetail) {
