@@ -14,7 +14,6 @@ import com.clilystudio.netbook.model.BookInfo;
 import com.clilystudio.netbook.model.BookListRoot;
 import com.clilystudio.netbook.model.BookRankDetailRoot;
 import com.clilystudio.netbook.model.BookRankRoot;
-import com.clilystudio.netbook.model.BookReviewRoot;
 import com.clilystudio.netbook.model.BookShelfSyncTime;
 import com.clilystudio.netbook.model.BookSummary;
 import com.clilystudio.netbook.model.BookTagRoot;
@@ -222,11 +221,6 @@ public class ApiService {
     public final RemoteBookShelf B(String string) {
         String string2 = f + String.format(Locale.CHINA, "/user/bookshelf?token=%s", string);
         return ApiService.a(this.a(HttpRequest.get(string2)), RemoteBookShelf.class);
-    }
-
-    public final BookReviewRoot C(String string) {
-        String string2 = f + String.format(Locale.CHINA, "/post/review/best-by-book?book=%s", string);
-        return ApiService.a(this.a(HttpRequest.get(string2)), BookReviewRoot.class);
     }
 
     public final UGCBookDetailRoot C(String string, String string2) {
