@@ -1,18 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_init_message" formatted="false">首次打开应用，正在加载模块中…%n%</string>
     <string name="app_name">静读</string>
-    <string name="bad_tf_card_state">找不到TF卡！</string>
-    <string name="copy_right">©1999–2015 网际傲游（北京）科技有限公司</string>
-    <string name="game_center">游戏中心</string>
-    <string name="game_not_found">游戏找不到了！</string>
-    <string name="game_not_found_for_shortcut">游戏已下架，请尝试其他游戏。</string>
-    <string name="init_failure_message">应用初始化失败，请保证您的网络畅通！</string>
     <string name="loading">资源加载中</string>
-    <string name="no_network_connection">请连接网络后重试！</string>
-    <string name="once_more_to_exit">再按一次退出游戏中心</string>
-    <string name="once_more_to_exit_online">再按一次退出游戏</string>
-    <string name="shortcut_gamecenter_addgame_title">更多游戏</string>
-    <string name="shortcut_gamecenter_title">免费游戏</string>
-    <string name="storage_permission">创建目录失败！</string>
 </resources>

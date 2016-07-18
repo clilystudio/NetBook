@@ -584,14 +584,6 @@
         <item name="drawSelectorOnTop">false</item>
     </style>
 
-    <style name="CenterBottom">
-        <item name="android:gravity">center</item>
-        <item name="android:padding">10.0dip</item>
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_alignParentBottom">true</item>
-        <item name="android:layout_centerHorizontal">true</item>
-    </style>
-
     <style name="Cover">
         <item name="android:background">@drawable/cover_bg</item>
         <item name="android:layout_width">@dimen/cover_width</item>
@@ -715,27 +707,9 @@
         <item name="android:divider">?android:divider</item>
     </style>
 
-    <style name="FabStyle">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_margin">@dimen/fab_compat_margin</item>
-        <item name="elevation">5.0dip</item>
-        <item name="rippleColor">@android:color/holo_red_dark</item>
-        <item name="pressedTranslationZ">10.0dip</item>
-        <item name="borderWidth">0.0dip</item>
-        <item name="backgroundTint">@android:color/holo_red_light</item>
-    </style>
-
     <style name="Feed_Add_Checkbox" parent="@android:style/Widget.CompoundButton.CheckBox">
         <item name="android:button">@null</item>
         <item name="android:drawableRight">@drawable/feed_add_checkbox</item>
-    </style>
-
-    <style name="HomeListItemLabelV3">
-        <item name="android:textSize">@dimen/text_size_12</item>
-        <item name="android:textColor">?android:textColorTertiary</item>
-        <item name="android:gravity">left|center</item>
-        <item name="android:paddingLeft">@dimen/dp_20</item>
     </style>
 
     <style name="Home_Settings_Item">
@@ -805,13 +779,6 @@
         <item name="android:paddingBottom">@dimen/list_item_book_summary_top</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-    </style>
-
-    <style name="ListItem_MainText" parent="@style/MainText">
-        <item name="android:ellipsize">end</item>
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:singleLine">true</item>
     </style>
 
     <style name="ListItem_Post">
@@ -903,11 +870,6 @@
         <item name="android:indeterminateDuration">2000</item>
     </style>
 
-    <style name="MainText">
-        <item name="android:textSize">@dimen/text_size_xl</item>
-        <item name="android:textColor">@color/main_text</item>
-    </style>
-
     <style name="MediumText">
         <item name="android:textSize">@dimen/text_size_14</item>
         <item name="android:textColor">?android:textColorSecondary</item>
@@ -923,15 +885,6 @@
         <item name="android:layout_marginLeft">3.0dip</item>
         <item name="android:layout_marginTop">3.0dip</item>
         <item name="android:layout_marginBottom">6.0dip</item>
-        <item name="android:layout_below">@id/time</item>
-    </style>
-
-    <style name="MessageAvatar">
-        <item name="android:layout_width">40.0dip</item>
-        <item name="android:layout_height">40.0dip</item>
-        <item name="android:layout_marginLeft">16.0dip</item>
-        <item name="android:layout_marginRight">16.0dip</item>
-        <item name="android:src">@drawable/avatar_default</item>
         <item name="android:layout_below">@id/time</item>
     </style>
 
@@ -983,39 +936,6 @@
         <item name="android:src">@drawable/ic_action_overflow</item>
     </style>
 
-    <style name="PostFlag">
-        <item name="android:textSize">8.699982sp</item>
-        <item name="android:textColor">@android:color/white</item>
-        <item name="android:visibility">gone</item>
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:drawablePadding">2.0dip</item>
-        <item name="android:layout_alignParentRight">true</item>
-    </style>
-
-    <style name="Post_List_PopupWindow">
-        <item name="android:background">?redSelector</item>
-        <item name="android:paddingTop">@dimen/book_post_pop_top</item>
-        <item name="android:paddingBottom">@dimen/book_post_pop_top</item>
-        <item name="android:layout_width">fill_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-    </style>
-
-    <style name="Post_List_PopupWindow_Item">
-        <item name="android:textSize">@dimen/book_post_pop_item_text</item>
-        <item name="android:textColor">#ff9c9c9c</item>
-        <item name="android:background">?backgroundSelector</item>
-        <item name="android:paddingLeft">20.0dip</item>
-        <item name="android:paddingTop">@dimen/book_post_pop_item_top</item>
-        <item name="android:paddingBottom">@dimen/book_post_pop_item_top</item>
-        <item name="android:layout_width">fill_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-    </style>
-
-    <style name="Post_detail_comment_item">
-        <item name="android:background">@drawable/common_list_item_bg</item>
-    </style>
-
     <style name="ProgressBar.Horizontal" parent="@android:style/Widget.ProgressBar.Horizontal"/>
 
     <style name="RankItemText">
@@ -1048,11 +968,6 @@
         <item name="android:layout_width">@dimen/dp_53</item>
         <item name="android:layout_height">@dimen/dp_53</item>
         <item name="android:shadowColor">@android:color/white</item>
-    </style>
-
-    <style name="SectionItem">
-        <item name="android:layout_width">fill_parent</item>
-        <item name="android:layout_height">72.0dip</item>
     </style>
 
     <style name="SettingLabel">
@@ -1238,38 +1153,10 @@
         <item name="android:singleLine">true</item>
     </style>
 
-    <style name="TopicLabel">
-        <item name="android:textSize">@dimen/text_size_16</item>
-        <item name="android:layout_gravity">center</item>
-        <item name="android:layout_weight">1.0</item>
-    </style>
-
-    <style name="TopicSectionItem">
-        <item name="android:layout_width">fill_parent</item>
-        <item name="android:layout_height">@dimen/home_topic_item_height</item>
-    </style>
-
     <style name="Tweet_float_menu_dialog" parent="@style/Base.V21.Theme.AppCompat.Light.Dialog">
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowIsTranslucent">true</item>
         <item name="android:windowFullscreen">true</item>
-    </style>
-
-    <style name="TxtFileSpinner">
-        <item name="android:layout_gravity">center_vertical</item>
-        <item name="android:layout_width">11.0dip</item>
-        <item name="android:layout_height">11.0dip</item>
-        <item name="android:layout_marginLeft">3.0dip</item>
-        <item name="android:indeterminate">true</item>
-        <item name="android:indeterminateOnly">true</item>
-        <item name="android:indeterminateDrawable">@drawable/book_file_spinner</item>
-        <item name="android:indeterminateDuration">2000</item>
-    </style>
-
-    <style name="User_Info_Task_L">
-        <item name="android:textSize">@dimen/use_info_task</item>
-        <item name="android:textColor">@android:color/black</item>
-        <item name="android:layout_marginLeft">@dimen/use_info_task_left</item>
     </style>
 
     <style name="alertDialogStyleDark" parent="@style/Theme.AppCompat.Dialog.Alert">
@@ -1422,13 +1309,4 @@
         <item name="android:background">@drawable/tweet_operator_dark_circle</item>
     </style>
 
-    <style name="tweet_operated_TextView_style">
-        <item name="android:background">@drawable/tweet_operated_circle</item>
-    </style>
-
-    <style name="tweet_operated_dark_TextView_style">
-        <item name="android:background">@drawable/tweet_operated_dark_circle</item>
-        <item name="bookRateSelector">@drawable/dark_bg_review_rating</item>
-        <item name="redSelector">@drawable/dark_red_bg</item>
-    </style>
 </resources>

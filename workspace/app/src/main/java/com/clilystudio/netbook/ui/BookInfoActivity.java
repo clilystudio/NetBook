@@ -182,7 +182,11 @@ public class BookInfoActivity extends BaseActivity implements View.OnClickListen
             String string2 = bookInfoActivity.k.getIsSerial() ? DateTimeUtil.e(bookInfoActivity.k.getUpdated()) : "完结";
             ((TextView) bookInfoActivity.findViewById(R.id.update_time)).setText(string2);
         }
-        ((TextView) bookInfoActivity.findViewById(R.id.book_detail_info_followers)).setText(Integer.toString(bookInfoActivity.k.getLatelyFollower()));
+        TextView followersTV = (TextView) bookInfoActivity.findViewById(R.id.book_detail_info_followers);
+        if (followersTV != null) {
+            String text1 = Integer.toString(bookInfoActivity.k.getLatelyFollower());
+            followersTV.setText(text1);
+        }
         TextView textView3 = (TextView) bookInfoActivity.findViewById(R.id.book_detail_info_retention);
         String text1 = "-";
         if (bookInfoActivity.k.getRetentionRatio() != 0.0f) {
@@ -200,10 +204,18 @@ public class BookInfoActivity extends BaseActivity implements View.OnClickListen
         bookInfoActivity.findViewById(R.id.book_detail_info_topic_layout).setOnClickListener(bookInfoActivity);
         String string3 = bookInfoActivity.k.getTitle();
         String string4 = string3.length() > 10 ? string3.substring(0, 10) + "..." : string3;
-        ((TextView) bookInfoActivity.findViewById(R.id.book_info_topic)).setText(string4 + "的社区");
-        ((TextView) bookInfoActivity.findViewById(R.id.topic_count)).setText("共有 " + bookInfoActivity.k.getPostCount() + " 个帖子");
+        TextView topicTV = (TextView) bookInfoActivity.findViewById(R.id.book_info_topic);
+        if (topicTV != null) {
+            String text3 = string4 + "的社区";
+            topicTV.setText(text3);
+        }
+        TextView countTV = (TextView) bookInfoActivity.findViewById(R.id.topic_count);
+        if (countTV != null) {
+            String text3 = "共有 " + bookInfoActivity.k.getPostCount() + " 个帖子";
+            countTV.setText(text3);
+        }
         final TextView textView5 = (TextView) bookInfoActivity.findViewById(R.id.book_detail_info_desc);
-        if (bookInfoActivity.k.getLongIntro() != null) {
+        if (textView5 != null && bookInfoActivity.k.getLongIntro() != null) {
             textView5.setText(bookInfoActivity.k.getLongIntro());
             textView5.post(new Runnable() {
                 @Override

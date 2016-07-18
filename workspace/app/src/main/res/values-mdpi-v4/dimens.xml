@@ -1,6 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="add_vote_item_btn_text">2.0dip</dimen>
-    <dimen name="book_review_pop_height">240.0dip</dimen>
-    <dimen name="post_comment_name_width">100.0dip</dimen>
 </resources>

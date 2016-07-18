@@ -1,5 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <bool name="spb_default_mirror_mode">false</bool>
-    <bool name="spb_default_reversed">false</bool>
 </resources>

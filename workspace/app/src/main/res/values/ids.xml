@@ -4,65 +4,17 @@
     <item name="action_bar_spinner" type="id"/>
     <item name="action_menu_divider" type="id"/>
     <item name="action_menu_presenter" type="id"/>
-    <item name="add_vote_item_add_btn" type="id"/>
-    <item name="add_vote_item_del_1" type="id"/>
-    <item name="add_vote_item_del_2" type="id"/>
-    <item name="add_vote_item_del_3" type="id"/>
-    <item name="add_vote_item_del_4" type="id"/>
-    <item name="add_vote_item_del_5" type="id"/>
-    <item name="add_vote_item_del_6" type="id"/>
-    <item name="add_vote_item_del_7" type="id"/>
-    <item name="add_vote_item_edit_1" type="id"/>
-    <item name="add_vote_item_edit_2" type="id"/>
-    <item name="add_vote_item_edit_3" type="id"/>
-    <item name="add_vote_item_edit_4" type="id"/>
-    <item name="add_vote_item_edit_5" type="id"/>
-    <item name="add_vote_item_edit_6" type="id"/>
-    <item name="add_vote_item_edit_7" type="id"/>
-    <item name="add_vote_item_index_1" type="id"/>
-    <item name="add_vote_item_index_2" type="id"/>
-    <item name="add_vote_item_index_3" type="id"/>
-    <item name="add_vote_item_index_4" type="id"/>
-    <item name="add_vote_item_index_5" type="id"/>
-    <item name="add_vote_item_index_6" type="id"/>
-    <item name="add_vote_item_index_7" type="id"/>
-    <item name="add_vote_item_layout1" type="id"/>
-    <item name="add_vote_item_layout2" type="id"/>
-    <item name="add_vote_item_layout3" type="id"/>
-    <item name="add_vote_item_layout4" type="id"/>
-    <item name="add_vote_item_layout5" type="id"/>
-    <item name="add_vote_item_layout6" type="id"/>
-    <item name="add_vote_item_layout7" type="id"/>
-    <item name="add_vote_item_ok_btn" type="id"/>
-    <item name="alarm" type="id"/>
     <item name="avatar" type="id"/>
     <item name="checked" type="id"/>
-    <item name="comment_item_avatar" type="id"/>
-    <item name="comment_item_content" type="id"/>
-    <item name="comment_item_time" type="id"/>
-    <item name="comment_total" type="id"/>
     <item name="content" type="id"/>
     <item name="cover_loading" type="id"/>
     <item name="delete" type="id"/>
-    <item name="dis_list_more_layout" type="id"/>
-    <item name="dis_post_comment_time" type="id"/>
-    <item name="dis_post_detail_comment_item_1" type="id"/>
-    <item name="dis_post_detail_comment_percent_bar" type="id"/>
-    <item name="dis_post_detail_comment_percent_text" type="id"/>
-    <item name="dis_post_detail_comment_title" type="id"/>
-    <item name="dis_post_detail_comment_vote" type="id"/>
-    <item name="dis_post_detail_comment_vote_layout" type="id"/>
     <item name="download" type="id"/>
-    <item name="feedback_fail" type="id">发送失败，请检查网络</item>
     <item name="gridview" type="id"/>
-    <item name="group_book_shelf" type="id"/>
     <item name="home" type="id"/>
     <item name="home_actionbar_right" type="id"/>
-    <item name="id_notification" type="id"/>
     <item name="item_touch_helper_previous_elevation" type="id"/>
     <item name="list" type="id"/>
-    <item name="make_top" type="id"/>
-    <item name="menu" type="id"/>
     <item name="msg_comment_to_me_new" type="id"/>
     <item name="name" type="id"/>
     <item name="progress_circular" type="id"/>
@@ -73,16 +25,8 @@
     <item name="split_action_bar" type="id"/>
     <item name="time" type="id"/>
     <item name="title" type="id"/>
-    <item name="umeng_feedback_notification" type="id"/>
     <item name="up" type="id"/>
     <item name="view_offset_helper" type="id"/>
-    <item name="vote_item_1" type="id"/>
-    <item name="vote_item_2" type="id"/>
-    <item name="vote_item_3" type="id"/>
-    <item name="vote_item_4" type="id"/>
-    <item name="vote_item_5" type="id"/>
-    <item name="vote_item_6" type="id"/>
-    <item name="vote_item_7" type="id"/>
     <item name="vote_total" type="id"/>
     <item name="webview" type="id"/>
     <item name="actionbar_custom_right_text" type="id">false</item>
@@ -142,59 +86,24 @@
     <item name="select_dialog_listview" type="id">false</item>
     <item name="ab_icon" type="id">false</item>
     <item name="add_book_failed_tips" type="id">false</item>
-    <item name="add_book_help_content_title" type="id">false</item>
-    <item name="add_book_help_content_desc" type="id">false</item>
-    <item name="add_game_post_content" type="id">false</item>
-    <item name="add_girl_topic_content_title" type="id">false</item>
-    <item name="add_girl_topic_content_desc" type="id">false</item>
-    <item name="add_review_content_title" type="id">false</item>
-    <item name="add_review_content_desc" type="id">false</item>
-    <item name="add_vote_title_text" type="id">false</item>
-    <item name="v_dirver" type="id">false</item>
-    <item name="add_vote_desc_text" type="id">false</item>
-    <item name="dis_post_detail_talk" type="id">false</item>
-    <item name="post_detail_book_name" type="id">false</item>
     <item name="dis_post_detail_talk2" type="id">false</item>
     <item name="content_category" type="id">false</item>
-    <item name="tags_layout_category" type="id">false</item>
     <item name="content_empty_text" type="id">false</item>
     <item name="content_loading_pb" type="id">false</item>
     <item name="content_load_error" type="id">false</item>
-    <item name="bottom_bg" type="id">false</item>
-    <item name="BottomContentText" type="id">false</item>
     <item name="pb_loading" type="id">false</item>
     <item name="load_error_hint_btn" type="id">false</item>
-    <item name="audio_album_info" type="id">false</item>
-    <item name="audio_album_cover" type="id">false</item>
-    <item name="audio_album_title" type="id">false</item>
-    <item name="audio_chapter_title" type="id">false</item>
-    <item name="audiobook_listview" type="id">false</item>
-    <item name="audiobook_loading" type="id">false</item>
     <item name="scroll_content" type="id">false</item>
     <item name="tags_layout_boy" type="id">false</item>
     <item name="tags_layout_girl" type="id">false</item>
     <item name="host" type="id">false</item>
     <item name="pager" type="id">false</item>
-    <item name="divider" type="id">false</item>
     <item name="ptr_list" type="id">false</item>
     <item name="empty_text" type="id">false</item>
     <item name="common_list_content" type="id">false</item>
     <item name="common_list_pb" type="id">false</item>
     <item name="common_list_error" type="id">false</item>
     <item name="common_list_empty" type="id">false</item>
-    <item name="book_review_top_left" type="id">false</item>
-    <item name="book_review_top_left_title" type="id">false</item>
-    <item name="book_review_top_left_arrow" type="id">false</item>
-    <item name="book_review_top_mid" type="id">false</item>
-    <item name="book_review_top_mid_title" type="id">false</item>
-    <item name="book_review_top_mid_arrow" type="id">false</item>
-    <item name="book_review_top_right" type="id">false</item>
-    <item name="book_review_top_right_title" type="id">false</item>
-    <item name="book_review_top_right_arrow" type="id">false</item>
-    <item name="roundProgressBarBg" type="id">false</item>
-    <item name="gameCenter" type="id">false</item>
-    <item name="loading" type="id">false</item>
-    <item name="copyRight" type="id">false</item>
     <item name="crop" type="id">false</item>
     <item name="add_book_name" type="id">false</item>
     <item name="add_book_author" type="id">false</item>
@@ -208,9 +117,6 @@
     <item name="book_feed_set_chapter" type="id">false</item>
     <item name="book_feed_set_chapter_title" type="id">false</item>
     <item name="book_feed_set_chapter_count" type="id">false</item>
-    <item name="lv_follows" type="id">false</item>
-    <item name="rl_empty_container" type="id">false</item>
-    <item name="recycler" type="id">false</item>
     <item name="bg_layout" type="id">false</item>
     <item name="content_list" type="id">false</item>
     <item name="base_layout" type="id">false</item>
@@ -227,13 +133,6 @@
     <item name="name_section" type="id">false</item>
     <item name="gender_section" type="id">false</item>
     <item name="gender" type="id">false</item>
-    <item name="mystery_list" type="id">false</item>
-    <item name="pay_grid_view" type="id">false</item>
-    <item name="charge_declare_desc1" type="id">false</item>
-    <item name="charge_declare_desc2" type="id">false</item>
-    <item name="charge_declare_desc3_row" type="id">false</item>
-    <item name="charge_declare_desc3" type="id">false</item>
-    <item name="read_random_book" type="id">false</item>
     <item name="root" type="id">false</item>
     <item name="main_view" type="id">false</item>
     <item name="reader_download_pro" type="id">false</item>
@@ -241,25 +140,14 @@
     <item name="tv_auto_reader_body" type="id">false</item>
     <item name="view_auto_reader_shadow" type="id">false</item>
     <item name="auto_reader_setting" type="id">false</item>
-    <item name="reader_tts_setting" type="id">false</item>
     <item name="setting_widget" type="id">false</item>
     <item name="bottom_action_bar" type="id">false</item>
     <item name="reader_content_loading" type="id">false</item>
     <item name="light_loading" type="id">false</item>
     <item name="dark_loading" type="id">false</item>
-    <item name="reader_random_action_bar" type="id">false</item>
-    <item name="read_random_widget" type="id">false</item>
-    <item name="reader_txt_action_bar" type="id">false</item>
     <item name="reader_web_action_bar" type="id">false</item>
     <item name="content_frame" type="id">false</item>
-    <item name="recycler_view" type="id">false</item>
-    <item name="txt_share_remove" type="id">false</item>
-    <item name="rl_share_remove" type="id">false</item>
-    <item name="vip_content" type="id">false</item>
-    <item name="btn_share_remove_ad" type="id">false</item>
-    <item name="hot_flag" type="id">false</item>
     <item name="empty" type="id">false</item>
-    <item name="import_book" type="id">false</item>
     <item name="focusable" type="id">false</item>
     <item name="search_empty_layout" type="id">false</item>
     <item name="search_list" type="id">false</item>
@@ -271,8 +159,6 @@
     <item name="clear_history" type="id">false</item>
     <item name="search_history_list" type="id">false</item>
     <item name="search_prompt_list" type="id">false</item>
-    <item name="edt_test_url" type="id">false</item>
-    <item name="btn_access_url" type="id">false</item>
     <item name="main_settings_content" type="id">false</item>
     <item name="settings_shelf_sort" type="id">false</item>
     <item name="settings_shelf_sort_value" type="id">false</item>
@@ -285,22 +171,6 @@
     <item name="tv_feedback" type="id">false</item>
     <item name="settings_market_assessment" type="id">false</item>
     <item name="settings_version_name" type="id">false</item>
-    <item name="rl_share_button_container" type="id">false</item>
-    <item name="btn_share" type="id">false</item>
-    <item name="sms_number_text" type="id">false</item>
-    <item name="sms_normal_line" type="id">false</item>
-    <item name="sms_error_line" type="id">false</item>
-    <item name="sms_wrong_text" type="id">false</item>
-    <item name="sms_pay_next" type="id">false</item>
-    <item name="sms_verify_appname" type="id">false</item>
-    <item name="sms_verify_goods" type="id">false</item>
-    <item name="sms_verify_price" type="id">false</item>
-    <item name="sms_verify_phone" type="id">false</item>
-    <item name="sms_verify_sendcode" type="id">false</item>
-    <item name="sms_verify_code" type="id">false</item>
-    <item name="sms_verify_commit" type="id">false</item>
-    <item name="fab_bg_container" type="id">false</item>
-    <item name="fab_container" type="id">false</item>
     <item name="name_field" type="id">false</item>
     <item name="desc_field" type="id">false</item>
     <item name="ugc_add_shelf_list" type="id">false</item>
@@ -309,7 +179,6 @@
     <item name="select_ok" type="id">false</item>
     <item name="load_error_view" type="id">false</item>
     <item name="share_bottom" type="id">false</item>
-    <item name="rl_follow_weixin" type="id">false</item>
     <item name="level" type="id">false</item>
     <item name="exp" type="id">false</item>
     <item name="exp_pregress" type="id">false</item>
@@ -337,57 +206,12 @@
     <item name="user_exp_share_book" type="id">false</item>
     <item name="user_vote_layout" type="id">false</item>
     <item name="user_exp_vote" type="id">false</item>
-    <item name="ip_address" type="id">false</item>
-    <item name="wifi_name" type="id">false</item>
-    <item name="splash_ad" type="id">false</item>
     <item name="splash_ad_container" type="id">false</item>
     <item name="splash_ad_img" type="id">false</item>
-    <item name="splash_ad_skip" type="id">false</item>
-    <item name="add_post_category_1" type="id">false</item>
-    <item name="add_post_category_icon1" type="id">false</item>
-    <item name="add_post_category_2" type="id">false</item>
-    <item name="add_post_category_icon2" type="id">false</item>
-    <item name="add_review_empty" type="id">false</item>
-    <item name="add_review_list" type="id">false</item>
-    <item name="review_rating_item1" type="id">false</item>
-    <item name="review_rating_item1_icon" type="id">false</item>
-    <item name="review_rating_item2" type="id">false</item>
-    <item name="review_rating_item2_icon" type="id">false</item>
-    <item name="review_rating_item3" type="id">false</item>
-    <item name="review_rating_item3_icon" type="id">false</item>
-    <item name="review_rating_item4" type="id">false</item>
-    <item name="review_rating_item4_icon" type="id">false</item>
-    <item name="review_rating_item5" type="id">false</item>
-    <item name="review_rating_item5_icon" type="id">false</item>
     <item name="book_detail_info_cover" type="id">false</item>
-    <item name="tv_album_name" type="id">false</item>
     <item name="author_and_type" type="id">false</item>
-    <item name="tv_announcer" type="id">false</item>
-    <item name="audiobook_info_add" type="id">false</item>
     <item name="book_detail_info_add_iv" type="id">false</item>
     <item name="book_detail_info_add_text" type="id">false</item>
-    <item name="audiobook_listen" type="id">false</item>
-    <item name="img_play_audiobook" type="id">false</item>
-    <item name="tv_play_or_pause" type="id">false</item>
-    <item name="tv_audiobook_intro" type="id">false</item>
-    <item name="tv_total_count" type="id">false</item>
-    <item name="image_arrow" type="id">false</item>
-    <item name="tv_audiobook_sort" type="id">false</item>
-    <item name="linear_layout_track_list" type="id">false</item>
-    <item name="audio_item_index" type="id">false</item>
-    <item name="audio_item_state" type="id">false</item>
-    <item name="audio_item_title" type="id">false</item>
-    <item name="audio_item_time" type="id">false</item>
-    <item name="audiobook_seekbar" type="id">false</item>
-    <item name="play_layout" type="id">false</item>
-    <item name="audiobook_playtime" type="id">false</item>
-    <item name="audiobook_totaltime" type="id">false</item>
-    <item name="audiobook_playpre" type="id">false</item>
-    <item name="audiobook_play_pause" type="id">false</item>
-    <item name="audiobook_playnext" type="id">false</item>
-    <item name="text_item0" type="id">false</item>
-    <item name="text_item1" type="id">false</item>
-    <item name="text_item2" type="id">false</item>
     <item name="book_info_ad_view" type="id">false</item>
     <item name="book_info_ad_cover" type="id">false</item>
     <item name="book_info_ad_flag" type="id">false</item>
@@ -415,36 +239,10 @@
     <item name="tags_layout" type="id">false</item>
     <item name="book_info_tags_divider" type="id">false</item>
     <item name="tag_text" type="id">false</item>
-    <item name="text_item3" type="id">false</item>
-    <item name="text_item4" type="id">false</item>
-    <item name="text_item5" type="id">false</item>
-    <item name="text_item6" type="id">false</item>
-    <item name="text_item7" type="id">false</item>
-    <item name="text_item8" type="id">false</item>
-    <item name="text_item9" type="id">false</item>
-    <item name="text_item10" type="id">false</item>
-    <item name="text_item11" type="id">false</item>
-    <item name="text_item12" type="id">false</item>
-    <item name="review_rating_container" type="id">false</item>
-    <item name="book_cover" type="id">false</item>
-    <item name="book_name" type="id">false</item>
-    <item name="review_rating" type="id">false</item>
-    <item name="review_useful_container" type="id">false</item>
-    <item name="review_useful_yes" type="id">false</item>
-    <item name="review_useful_yes_count" type="id">false</item>
-    <item name="review_useful_yes_label" type="id">false</item>
-    <item name="review_useful_no" type="id">false</item>
-    <item name="review_useful_no_count" type="id">false</item>
-    <item name="review_useful_no_label" type="id">false</item>
-    <item name="vote_total_layout" type="id">false</item>
-    <item name="vote_divider" type="id">false</item>
     <item name="home_shelf_empty" type="id">false</item>
     <item name="add_new_book" type="id">false</item>
-    <item name="bottom_dialog_content" type="id">false</item>
-    <item name="bottom_sheet_divider" type="id">false</item>
     <item name="bottom_sheet_title" type="id">false</item>
     <item name="bottom_sheet_gridview" type="id">false</item>
-    <item name="bottom_sheet_customview" type="id">false</item>
     <item name="bs_list_image" type="id">false</item>
     <item name="bs_list_title" type="id">false</item>
     <item name="category_name" type="id">false</item>
@@ -452,34 +250,13 @@
     <item name="popup_view" type="id">false</item>
     <item name="back_view" type="id">false</item>
     <item name="min_category_list" type="id">false</item>
-    <item name="dot" type="id">false</item>
-    <item name="community_top_left" type="id">false</item>
-    <item name="community_top_line" type="id">false</item>
-    <item name="community_top_left_title" type="id">false</item>
-    <item name="community_top_left_arrow" type="id">false</item>
-    <item name="community_top_right" type="id">false</item>
-    <item name="community_top_right_title" type="id">false</item>
-    <item name="community_top_right_arrow" type="id">false</item>
-    <item name="dialog_chapter_title" type="id">false</item>
-    <item name="dialog_chapter_list" type="id">false</item>
     <item name="dialog_custom_title" type="id">false</item>
     <item name="dialog_custom_content" type="id">false</item>
     <item name="dialog_custom_alongside_buttons" type="id">false</item>
-    <item name="button_separate" type="id">false</item>
     <item name="dialog_custom_stacked_buttons" type="id">false</item>
     <item name="dialog_custom_confirm_stacked" type="id">false</item>
     <item name="dialog_custom_cancel_stacked" type="id">false</item>
-    <item name="dialog_edit_content" type="id">false</item>
     <item name="dialog_feed_intro_btn" type="id">false</item>
-    <item name="game_gift_icon" type="id">false</item>
-    <item name="game_gift_name" type="id">false</item>
-    <item name="game_gift_type_size" type="id">false</item>
-    <item name="game_gift_left" type="id">false</item>
-    <item name="game_gift_download" type="id">false</item>
-    <item name="game_gift_desc" type="id">false</item>
-    <item name="game_gift_date" type="id">false</item>
-    <item name="game_gift_use" type="id">false</item>
-    <item name="game_gift_btn" type="id">false</item>
     <item name="imgCancel" type="id">false</item>
     <item name="imgGenderLogo" type="id">false</item>
     <item name="txtPrompt1" type="id">false</item>
@@ -499,30 +276,16 @@
     <item name="dialog_toc_title" type="id">false</item>
     <item name="dialog_toc_line" type="id">false</item>
     <item name="dialog_toc_list" type="id">false</item>
-    <item name="waring_content" type="id">false</item>
-    <item name="distillate_flag" type="id">false</item>
     <item name="feed_group" type="id">false</item>
     <item name="feed_chapter_10" type="id">false</item>
     <item name="feed_chapter_20" type="id">false</item>
     <item name="feed_chapter_50" type="id">false</item>
     <item name="feed_chapter_100" type="id">false</item>
     <item name="feed_chapter_200" type="id">false</item>
-    <item name="best_reviews_root" type="id">false</item>
-    <item name="best_reviews_top" type="id">false</item>
     <item name="more" type="id">false</item>
-    <item name="best_reviews_top_empty" type="id">false</item>
-    <item name="best_reviews_edit" type="id">false</item>
-    <item name="reviews" type="id">false</item>
-    <item name="rl_container" type="id">false</item>
-    <item name="fab" type="id">false</item>
-    <item name="fl_not_login_cover" type="id">false</item>
     <item name="home_find_container" type="id">false</item>
     <item name="home_shelf_ptr" type="id">false</item>
-    <item name="ic_audio_bar" type="id">false</item>
     <item name="delete_shelf_bar" type="id">false</item>
-    <item name="ptr_list_home_topic" type="id">false</item>
-    <item name="empty_view" type="id">false</item>
-    <item name="voucher_empty_text" type="id">false</item>
     <item name="rl_ad_container" type="id">false</item>
     <item name="download_layout" type="id">false</item>
     <item name="slm_reader_app_icon" type="id">false</item>
@@ -543,25 +306,7 @@
     <item name="books" type="id">false</item>
     <item name="relate_ugc_root" type="id">false</item>
     <item name="ugcs" type="id">false</item>
-    <item name="game_detail_banner" type="id">false</item>
-    <item name="game_detail_name_layout" type="id">false</item>
-    <item name="game_detail_icon" type="id">false</item>
-    <item name="game_detail_name" type="id">false</item>
-    <item name="game_detail_type_size" type="id">false</item>
-    <item name="game_detail_desc" type="id">false</item>
-    <item name="game_detail_download" type="id">false</item>
-    <item name="line_gap" type="id">false</item>
-    <item name="game_detail_intro_layout" type="id">false</item>
-    <item name="game_detail_intro" type="id">false</item>
-    <item name="game_detail_intro_expand" type="id">false</item>
-    <item name="horizontal_scroll_view" type="id">false</item>
-    <item name="game_gift_line_gap" type="id">false</item>
-    <item name="game_gift_label" type="id">false</item>
-    <item name="game_gift_all" type="id">false</item>
     <item name="desc" type="id">false</item>
-    <item name="playingCount" type="id">false</item>
-    <item name="promotion_pager" type="id">false</item>
-    <item name="promotion_bottom_dots" type="id">false</item>
     <item name="home_action_menu_game" type="id">false</item>
     <item name="home_action_menu_search" type="id">false</item>
     <item name="home_action_menu_more" type="id">false</item>
@@ -587,144 +332,22 @@
     <item name="home_menu_settings" type="id">false</item>
     <item name="icon_settings" type="id">false</item>
     <item name="text" type="id">false</item>
-    <item name="community_section" type="id">false</item>
-    <item name="discuss_section" type="id">false</item>
-    <item name="review_section" type="id">false</item>
-    <item name="helper_section" type="id">false</item>
-    <item name="girl_section" type="id">false</item>
-    <item name="label" type="id">false</item>
-    <item name="hot_comment_view" type="id">false</item>
-    <item name="hot_comment_label" type="id">false</item>
-    <item name="hot_comment_label_line" type="id">false</item>
-    <item name="comment_count" type="id">false</item>
-    <item name="hpay_ll_layout_dd" type="id">false</item>
-    <item name="hpay_img_back_dd" type="id">false</item>
-    <item name="hpay_tv_top_dd" type="id">false</item>
-    <item name="hpay_tv_yymc_left_dd" type="id">false</item>
-    <item name="hpay_tv_yymc_right_dd" type="id">false</item>
-    <item name="hpay_tv_spmc_left_dd" type="id">false</item>
-    <item name="hpay_tv_spmc_right_dd" type="id">false</item>
-    <item name="hpay_tv_zfje_left_dd" type="id">false</item>
-    <item name="hpay_tv_zfje_right_dd" type="id">false</item>
-    <item name="hpay_btn_qdtj_dd" type="id">false</item>
-    <item name="hpay_tv_wxts_bottom_dd" type="id">false</item>
-    <item name="hpay_ll_Layout_dy" type="id">false</item>
-    <item name="hpay_img_back_dy" type="id">false</item>
-    <item name="hpay_tv_top_dy" type="id">false</item>
-    <item name="hpay_scroll_inputphone_dy" type="id">false</item>
-    <item name="hpay_ll_inputphone_dy" type="id">false</item>
-    <item name="hpay_tv_input_title_dy" type="id">false</item>
-    <item name="hpay_et_inputphone_dy" type="id">false</item>
-    <item name="hpay_view_line_inputphone_dy" type="id">false</item>
-    <item name="tv_input_num_error" type="id">false</item>
-    <item name="hpay_btn_input_next_dy" type="id">false</item>
-    <item name="hpay_tv_input_wxts_bottom_dy" type="id">false</item>
-    <item name="hpay_scroll_layout_ver_dy" type="id">false</item>
-    <item name="hpay_ll_layout_ver_dy" type="id">false</item>
-    <item name="hpay_tv_ver_yyms_left_dy" type="id">false</item>
-    <item name="hpay_tv_ver_yyms_right_dy" type="id">false</item>
-    <item name="hpay_tv_ver_spmc_left_dy" type="id">false</item>
-    <item name="hpay_tv_ver_spmc_right_dy" type="id">false</item>
-    <item name="hpay_tv_ver_zfje_left_dy" type="id">false</item>
-    <item name="hpay_tv_ver_zfje_right_dy" type="id">false</item>
-    <item name="hpay_tv_ver_sjh_left_dy" type="id">false</item>
-    <item name="hpay_tv_ver_sjh_right_dy" type="id">false</item>
-    <item name="hpay_et_ver_yzm_dy" type="id">false</item>
-    <item name="hpay_iv_ver_yzm_line_dy" type="id">false</item>
-    <item name="hpay_btn_ver_yzm_dy" type="id">false</item>
-    <item name="hpay_tv_show_yzm_error_dy" type="id">false</item>
-    <item name="hpay_btn_ver_tj_dy" type="id">false</item>
-    <item name="hpay_tv_ver_wxts_bottom_dy" type="id">false</item>
-    <item name="tv_giveup_recharge" type="id">false</item>
-    <item name="hpay_message" type="id">false</item>
-    <item name="hpay_positiveButton" type="id">false</item>
-    <item name="hpay_negativeButton" type="id">false</item>
-    <item name="hpay_btnback" type="id">false</item>
-    <item name="hpay_tvTitle" type="id">false</item>
-    <item name="hpay_flwebview" type="id">false</item>
-    <item name="hpay_webview" type="id">false</item>
-    <item name="hpay_net_error" type="id">false</item>
-    <item name="hpay_error_image_retry" type="id">false</item>
-    <item name="hpay_progressbar" type="id">false</item>
-    <item name="alert_progressBar_id" type="id">false</item>
-    <item name="alert_text_show_id" type="id">false</item>
     <item name="unimportant_section" type="id">false</item>
     <item name="red_dot" type="id">false</item>
-    <item name="message_tv" type="id">false</item>
-    <item name="progressBar" type="id">false</item>
     <item name="item_dialog_list_item" type="id">false</item>
-    <item name="section_name" type="id">false</item>
     <item name="container" type="id">false</item>
-    <item name="item_container" type="id">false</item>
-    <item name="ll_activity_container" type="id">false</item>
-    <item name="fab_activty" type="id">false</item>
-    <item name="ll_tweet_container" type="id">false</item>
-    <item name="fab_tweet" type="id">false</item>
-    <item name="ll_artics_container" type="id">false</item>
-    <item name="fab_article" type="id">false</item>
-    <item name="ll_comment_container" type="id">false</item>
-    <item name="fab_comment" type="id">false</item>
-    <item name="iv_not_login" type="id">false</item>
-    <item name="tv_login_prompt" type="id">false</item>
-    <item name="tv_login" type="id">false</item>
-    <item name="tv_desc" type="id">false</item>
-    <item name="siv_avater" type="id">false</item>
-    <item name="btn_edit" type="id">false</item>
-    <item name="tv_username" type="id">false</item>
-    <item name="iv_sign" type="id">false</item>
-    <item name="ll_following_container" type="id">false</item>
-    <item name="tv_following" type="id">false</item>
-    <item name="tv_static_follow" type="id">false</item>
-    <item name="ll_followers_container" type="id">false</item>
-    <item name="tv_fans" type="id">false</item>
-    <item name="tv_static_fans" type="id">false</item>
-    <item name="label_container" type="id">false</item>
-    <item name="top_divider" type="id">false</item>
-    <item name="bottom_divider" type="id">false</item>
     <item name="cover" type="id">false</item>
     <item name="tv_title" type="id">false</item>
     <item name="tv_time" type="id">false</item>
-    <item name="iv_control" type="id">false</item>
     <item name="snackbar_text" type="id">false</item>
     <item name="snackbar_action" type="id">false</item>
-    <item name="retween_count" type="id">false</item>
     <item name="follow" type="id">false</item>
-    <item name="add_review_cover" type="id">false</item>
-    <item name="add_review_title" type="id">false</item>
-    <item name="add_review_selected" type="id">false</item>
     <item name="left_part" type="id">false</item>
     <item name="iv_cover" type="id">false</item>
     <item name="tv_short_intro" type="id">false</item>
-    <item name="iv_favorite_count" type="id">false</item>
-    <item name="tv_favorite_count" type="id">false</item>
-    <item name="iv_track_count" type="id">false</item>
-    <item name="tv_track_count" type="id">false</item>
-    <item name="tv_track_number" type="id">false</item>
-    <item name="tv_track_name" type="id">false</item>
-    <item name="img_play_button" type="id">false</item>
-    <item name="size" type="id">false</item>
     <item name="list_item_book_rank_cover" type="id">false</item>
     <item name="list_item_book_rank_title" type="id">false</item>
-    <item name="list_item_book_review_container" type="id">false</item>
-    <item name="avatar_verify" type="id">false</item>
-    <item name="user" type="id">false</item>
-    <item name="lv" type="id">false</item>
-    <item name="post_flag" type="id">false</item>
-    <item name="rating" type="id">false</item>
-    <item name="helpful_count" type="id">false</item>
     <item name="book_tags" type="id">false</item>
-    <item name="list_item_reader_chapter_site" type="id">false</item>
-    <item name="list_item_reader_chapter_select" type="id">false</item>
-    <item name="consume_record_pay_info" type="id">false</item>
-    <item name="consume_record_book" type="id">false</item>
-    <item name="consume_record_chapter" type="id">false</item>
-    <item name="consume_record_type" type="id">false</item>
-    <item name="consume_record_time" type="id">false</item>
-    <item name="consume_record_more" type="id">false</item>
-    <item name="consume_record_currency" type="id">false</item>
-    <item name="consume_record_voucher_layout" type="id">false</item>
-    <item name="consume_record_voucher" type="id">false</item>
-    <item name="consume_record_id" type="id">false</item>
     <item name="book_feed_add_cover" type="id">false</item>
     <item name="book_feed_add_title" type="id">false</item>
     <item name="book_feed_add_checkbox" type="id">false</item>
@@ -732,46 +355,10 @@
     <item name="book_feed_list_cover" type="id">false</item>
     <item name="book_feed_list_title" type="id">false</item>
     <item name="book_feed_list_chapter" type="id">false</item>
-    <item name="game_list_item_icon" type="id">false</item>
-    <item name="game_list_item_cat" type="id">false</item>
-    <item name="game_list_item_intro" type="id">false</item>
-    <item name="game_list_item_download" type="id">false</item>
-    <item name="game_list_item_name" type="id">false</item>
-    <item name="game_list_item_count" type="id">false</item>
-    <item name="game_detail_item_line" type="id">false</item>
-    <item name="game_detail_item_avatar" type="id">false</item>
-    <item name="game_detail_item_avatar_verify" type="id">false</item>
-    <item name="game_detail_item_name" type="id">false</item>
-    <item name="game_detail_item_time" type="id">false</item>
-    <item name="game_detail_item_more" type="id">false</item>
-    <item name="game_detail_item_content" type="id">false</item>
-    <item name="game_detail_item_count_layout" type="id">false</item>
-    <item name="game_detail_item_flag" type="id">false</item>
-    <item name="game_detail_item_comment" type="id">false</item>
-    <item name="game_detail_item_like_btn" type="id">false</item>
-    <item name="game_detail_item_like" type="id">false</item>
-    <item name="game_gift_item" type="id">false</item>
-    <item name="game_gift_item_icon" type="id">false</item>
-    <item name="game_gift_item_title" type="id">false</item>
-    <item name="game_gift_item_btn" type="id">false</item>
-    <item name="game_gift_item_desc" type="id">false</item>
-    <item name="gap" type="id">false</item>
-    <item name="button" type="id">false</item>
     <item name="find_item_icon" type="id">false</item>
     <item name="sub_flag" type="id">false</item>
     <item name="find_item_arrow" type="id">false</item>
     <item name="sub_flag_text" type="id">false</item>
-    <item name="list_item_mhd_cover" type="id">false</item>
-    <item name="list_item_mhd_title" type="id">false</item>
-    <item name="list_item_mhd_intro" type="id">false</item>
-    <item name="iv_follower_count_icon" type="id">false</item>
-    <item name="list_item_mhd_rate" type="id">false</item>
-    <item name="micro_game_item_container" type="id">false</item>
-    <item name="micro_game_item_icon" type="id">false</item>
-    <item name="micro_game_item_play" type="id">false</item>
-    <item name="micro_game_item_name" type="id">false</item>
-    <item name="micro_game_item_intro" type="id">false</item>
-    <item name="micro_game_item_count" type="id">false</item>
     <item name="source_icon" type="id">false</item>
     <item name="source_icon_logo" type="id">false</item>
     <item name="source_icon_text" type="id">false</item>
@@ -781,8 +368,6 @@
     <item name="flag_web" type="id">false</item>
     <item name="chapter" type="id">false</item>
     <item name="flag_select" type="id">false</item>
-    <item name="active_require" type="id">false</item>
-    <item name="action" type="id">false</item>
     <item name="new_topic_listitem_cover" type="id">false</item>
     <item name="new_topic_listitem_user" type="id">false</item>
     <item name="new_topic_listitem_vote" type="id">false</item>
@@ -797,36 +382,13 @@
     <item name="tv_follower_count" type="id">false</item>
     <item name="tv_retention_separate" type="id">false</item>
     <item name="tv_retention_ratio" type="id">false</item>
-    <item name="pay_record_item_flag" type="id">false</item>
-    <item name="pay_record_content_layout" type="id">false</item>
-    <item name="pay_record_item_icon" type="id">false</item>
-    <item name="pay_record_item_price" type="id">false</item>
-    <item name="pay_record_item_voucher" type="id">false</item>
-    <item name="pay_record_item_date" type="id">false</item>
-    <item name="pay_record_item_time" type="id">false</item>
-    <item name="like_count" type="id">false</item>
-    <item name="post_detail_vote_item_index" type="id">false</item>
-    <item name="post_detail_vote_item_content" type="id">false</item>
-    <item name="post_detail_vote_item_vote" type="id">false</item>
-    <item name="post_detail_vote_item_vote_full_layout" type="id">false</item>
-    <item name="post_detail_vote_item_vote_result_layout" type="id">false</item>
-    <item name="post_detail_vote_item_count" type="id">false</item>
-    <item name="post_detail_vote_item_percent_bar" type="id">false</item>
-    <item name="post_detail_vote_item_percent_value" type="id">false</item>
     <item name="link" type="id">false</item>
-    <item name="vip_purchase" type="id">false</item>
     <item name="tv_last_chapter" type="id">false</item>
     <item name="first_line" type="id">false</item>
     <item name="resource_list_item_last_select" type="id">false</item>
     <item name="tv_name" type="id">false</item>
     <item name="iv_ic_updated" type="id">false</item>
     <item name="tv_updated" type="id">false</item>
-    <item name="book_review_listitem_cover" type="id">false</item>
-    <item name="book_review_listitem_book" type="id">false</item>
-    <item name="book_review_listitem_type" type="id">false</item>
-    <item name="book_review_listitem_time" type="id">false</item>
-    <item name="book_review_listitem_title" type="id">false</item>
-    <item name="support_percentage" type="id">false</item>
     <item name="search_history_item" type="id">false</item>
     <item name="search_prompt_list_item" type="id">false</item>
     <item name="book_summary_listitem_cover_layout" type="id">false</item>
@@ -835,23 +397,6 @@
     <item name="ll_item" type="id">false</item>
     <item name="iv_icon" type="id">false</item>
     <item name="iv_readable" type="id">false</item>
-    <item name="comment_item" type="id">false</item>
-    <item name="visible_item" type="id">false</item>
-    <item name="user_icon" type="id">false</item>
-    <item name="post_comment_item_avatar" type="id">false</item>
-    <item name="post_comment_item_avatar_verify" type="id">false</item>
-    <item name="post_comment_item_floor" type="id">false</item>
-    <item name="post_comment_item_name" type="id">false</item>
-    <item name="post_comment_item_lv" type="id">false</item>
-    <item name="post_comment_item_content" type="id">false</item>
-    <item name="post_comment_item_reply" type="id">false</item>
-    <item name="post_comment_like_count" type="id">false</item>
-    <item name="post_comment_item_time" type="id">false</item>
-    <item name="invisible_item" type="id">false</item>
-    <item name="reply" type="id">false</item>
-    <item name="like" type="id">false</item>
-    <item name="more_divider" type="id">false</item>
-    <item name="tv_retweet" type="id">false</item>
     <item name="followcount" type="id">false</item>
     <item name="wordcount" type="id">false</item>
     <item name="wordunit" type="id">false</item>
@@ -870,24 +415,8 @@
     <item name="message_textcount" type="id">false</item>
     <item name="message_textunit" type="id">false</item>
     <item name="desc_layout" type="id">false</item>
-    <item name="voucher_right_text" type="id">false</item>
-    <item name="voucher_amount" type="id">false</item>
-    <item name="voucher_balance" type="id">false</item>
-    <item name="voucher_expired" type="id">false</item>
-    <item name="voucher_source" type="id">false</item>
     <item name="tv_loading" type="id">false</item>
     <item name="menu_frame" type="id">false</item>
-    <item name="update_progress" type="id">false</item>
-    <item name="update_progress_text" type="id">false</item>
-    <item name="section_pay_currency" type="id">false</item>
-    <item name="section_pay_voucher" type="id">false</item>
-    <item name="section_pay_charge" type="id">false</item>
-    <item name="section_pay_consume" type="id">false</item>
-    <item name="label_remove_ad" type="id">false</item>
-    <item name="section_remove_ad" type="id">false</item>
-    <item name="header_container" type="id">false</item>
-    <item name="progress_container" type="id">false</item>
-    <item name="progress" type="id">false</item>
     <item name="action0" type="id">false</item>
     <item name="cancel_action" type="id">false</item>
     <item name="status_bar_latest_event_content" type="id">false</item>
@@ -899,30 +428,7 @@
     <item name="line3" type="id">false</item>
     <item name="info" type="id">false</item>
     <item name="end_padder" type="id">false</item>
-    <item name="account_label" type="id">false</item>
-    <item name="balance" type="id">false</item>
-    <item name="product_subject" type="id">false</item>
-    <item name="product_body" type="id">false</item>
-    <item name="product_price" type="id">false</item>
-    <item name="alipayBtn" type="id">false</item>
-    <item name="wxpayBtn" type="id">false</item>
-    <item name="msgpayBtn" type="id">false</item>
-    <item name="pay" type="id">false</item>
-    <item name="pay_grid_item" type="id">false</item>
-    <item name="pay_grid_price" type="id">false</item>
-    <item name="pay_grid_currency" type="id">false</item>
-    <item name="pay_grid_voucher" type="id">false</item>
-    <item name="consume_record_copy" type="id">false</item>
-    <item name="consume_record_line" type="id">false</item>
-    <item name="consume_record_desc" type="id">false</item>
-    <item name="topic_detail_bottom_view" type="id">false</item>
     <item name="author_layout" type="id">false</item>
-    <item name="post_agree_view" type="id">false</item>
-    <item name="agree" type="id">false</item>
-    <item name="post_detail_share" type="id">false</item>
-    <item name="post_detail_more" type="id">false</item>
-    <item name="previous_comment_detail_title" type="id">false</item>
-    <item name="previous_comment_detail_content" type="id">false</item>
     <item name="fl_inner" type="id">false</item>
     <item name="pull_to_refresh_image" type="id">false</item>
     <item name="pull_to_refresh_progress" type="id">false</item>
@@ -930,12 +436,6 @@
     <item name="pull_to_refresh_tick" type="id">false</item>
     <item name="pull_to_refresh_text" type="id">false</item>
     <item name="pull_to_refresh_sub_text" type="id">false</item>
-    <item name="rating_root" type="id">false</item>
-    <item name="img1" type="id">false</item>
-    <item name="img2" type="id">false</item>
-    <item name="img3" type="id">false</item>
-    <item name="img4" type="id">false</item>
-    <item name="img5" type="id">false</item>
     <item name="reader_ab_tts" type="id">false</item>
     <item name="reader_ab_more" type="id">false</item>
     <item name="reader_ab_topic" type="id">false</item>
@@ -947,8 +447,6 @@
     <item name="btn_auto_reader_dec" type="id">false</item>
     <item name="btn_auto_reader_acc" type="id">false</item>
     <item name="btn_auto_reader_stop" type="id">false</item>
-    <item name="slm_reader_app_name" type="id">false</item>
-    <item name="slm_reader_app_size" type="id">false</item>
     <item name="reader_cp_header" type="id">false</item>
     <item name="img_cp_icon" type="id">false</item>
     <item name="txt_cp_prompt" type="id">false</item>
@@ -984,10 +482,6 @@
     <item name="reader_option_screen_off_time" type="id">false</item>
     <item name="reader_option_screen_off_time_value" type="id">false</item>
     <item name="reader_option_auto_buy" type="id">false</item>
-    <item name="reader_ad_cover" type="id">false</item>
-    <item name="reader_ad_delete" type="id">false</item>
-    <item name="reader_ad_title" type="id">false</item>
-    <item name="reader_ad_desc" type="id">false</item>
     <item name="reader_page_normal" type="id">false</item>
     <item name="tv_body" type="id">false</item>
     <item name="tv_battery" type="id">false</item>
@@ -998,24 +492,9 @@
     <item name="reader_page_error_hint" type="id">false</item>
     <item name="reader_page_error_txt" type="id">false</item>
     <item name="reader_page_sub_error_txt" type="id">false</item>
-    <item name="reader_page_pay" type="id">false</item>
-    <item name="reader_page_pay_title" type="id">false</item>
-    <item name="reader_page_pay_buy" type="id">false</item>
-    <item name="reader_page_pay_price" type="id">false</item>
-    <item name="reader_page_pay_checkbox" type="id">false</item>
-    <item name="reader_page_pay_btn" type="id">false</item>
-    <item name="reader_page_change_btn" type="id">false</item>
-    <item name="reader_page_pay_login" type="id">false</item>
-    <item name="reader_page_pay_btn_login" type="id">false</item>
     <item name="menu_item_1" type="id">false</item>
     <item name="menu_item_2" type="id">false</item>
     <item name="menu_item_3" type="id">false</item>
-    <item name="reader_random_ab_back" type="id">false</item>
-    <item name="reader_random_ab_title" type="id">false</item>
-    <item name="read_random_add" type="id">false</item>
-    <item name="bg_read_random_add_text" type="id">false</item>
-    <item name="read_random_add_text" type="id">false</item>
-    <item name="read_random_next" type="id">false</item>
     <item name="resource_last_read_layout" type="id">false</item>
     <item name="resource_last_read_icon" type="id">false</item>
     <item name="resource_last_read_text" type="id">false</item>
@@ -1035,18 +514,6 @@
     <item name="reader_set_bg_3" type="id">false</item>
     <item name="reader_set_more" type="id">false</item>
     <item name="image_reader_setting" type="id">false</item>
-    <item name="slow_text" type="id">false</item>
-    <item name="tts_voice_speed" type="id">false</item>
-    <item name="fast_text" type="id">false</item>
-    <item name="tts_voice1" type="id">false</item>
-    <item name="tts_voice2" type="id">false</item>
-    <item name="tts_voice3" type="id">false</item>
-    <item name="tts_voice_more" type="id">false</item>
-    <item name="tts_time1" type="id">false</item>
-    <item name="tts_time2" type="id">false</item>
-    <item name="tts_time3" type="id">false</item>
-    <item name="tts_time4" type="id">false</item>
-    <item name="tts_exit" type="id">false</item>
     <item name="book" type="id">false</item>
     <item name="remove_shelf_text" type="id">false</item>
     <item name="remove_shelf_cache" type="id">false</item>
@@ -1063,15 +530,9 @@
     <item name="sort_group" type="id">false</item>
     <item name="sort_by_time" type="id">false</item>
     <item name="sort_by_read" type="id">false</item>
-    <item name="close" type="id">false</item>
-    <item name="negative" type="id">false</item>
-    <item name="positive" type="id">false</item>
     <item name="select_all" type="id">false</item>
-    <item name="gamecenter_layout" type="id">false</item>
-    <item name="gamecenter_gridview" type="id">false</item>
     <item name="slidingmenumain" type="id">false</item>
     <item name="splash_layout" type="id">false</item>
-    <item name="splash_bottom" type="id">false</item>
     <item name="vp_intro" type="id">false</item>
     <item name="linear_bottom_dots" type="id">false</item>
     <item name="linearLayout" type="id">false</item>
@@ -1079,9 +540,6 @@
     <item name="img_dot2" type="id">false</item>
     <item name="btnQuickLogin" type="id">false</item>
     <item name="btnEntryApp" type="id">false</item>
-    <item name="bottom_container" type="id">false</item>
-    <item name="send_content" type="id">false</item>
-    <item name="commit" type="id">false</item>
     <item name="ugc_add_empty" type="id">false</item>
     <item name="collection_title" type="id">false</item>
     <item name="collection_desc" type="id">false</item>
@@ -1093,7 +551,6 @@
     <item name="ugc_filter_list" type="id">false</item>
     <item name="group_name" type="id">false</item>
     <item name="group_container" type="id">false</item>
-    <item name="ugc_filter_selected" type="id">false</item>
     <item name="create_ugc" type="id">false</item>
     <item name="my_ugc" type="id">false</item>
     <item name="item_add_layout" type="id">false</item>
@@ -1107,22 +564,6 @@
     <item name="author_info" type="id">false</item>
     <item name="author_time" type="id">false</item>
     <item name="list_fav_count" type="id">false</item>
-    <item name="umeng_common_icon_view" type="id">false</item>
-    <item name="umeng_common_notification_controller" type="id">false</item>
-    <item name="umeng_common_rich_notification_continue" type="id">false</item>
-    <item name="umeng_common_rich_notification_cancel" type="id">false</item>
-    <item name="umeng_common_notification" type="id">false</item>
-    <item name="umeng_common_title" type="id">false</item>
-    <item name="umeng_common_progress_text" type="id">false</item>
-    <item name="umeng_common_progress_bar" type="id">false</item>
-    <item name="umeng_update_wifi_indicator" type="id">false</item>
-    <item name="umeng_update_id_close" type="id">false</item>
-    <item name="umeng_update_content" type="id">false</item>
-    <item name="umeng_update_id_check" type="id">false</item>
-    <item name="umeng_update_id_ok" type="id">false</item>
-    <item name="umeng_update_id_cancel" type="id">false</item>
-    <item name="umeng_update_id_ignore" type="id">false</item>
-    <item name="message_block" type="id">false</item>
     <item name="task_container" type="id">false</item>
     <item name="wv_web_page" type="id">false</item>
     <item name="browser_nav" type="id">false</item>
@@ -1132,15 +573,4 @@
     <item name="mask" type="id">false</item>
     <item name="action_menu_feed_add" type="id">false</item>
     <item name="action_menu_feed_setting" type="id">false</item>
-    <item name="action_menu_ugc_create" type="id">false</item>
-    <item name="item_sort_asc" type="id">false</item>
-    <item name="item_sort_desc" type="id">false</item>
-    <item name="game_post_menu_1" type="id">false</item>
-    <item name="game_post_menu_2" type="id">false</item>
-    <item name="wx_friend" type="id">false</item>
-    <item name="qq_friend" type="id">false</item>
-    <item name="qzone" type="id">false</item>
-    <item name="sina" type="id">false</item>
-    <item name="wx_moments" type="id">false</item>
-    <item name="copy" type="id">false</item>
 </resources>

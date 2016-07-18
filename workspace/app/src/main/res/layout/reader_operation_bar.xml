@@ -6,7 +6,7 @@
                                                 android:orientation="horizontal">
 
     <RelativeLayout
-        android:id="@id/top"
+        android:id="@+id/top"
         android:layout_width="fill_parent"
         android:layout_height="@dimen/actionbar_height"
         android:layout_alignParentTop="true"
