@@ -24,6 +24,7 @@ import android.os.Environment;
 import android.os.StatFs;
 import android.preference.PreferenceManager;
 import android.provider.Settings;
+import android.util.Base64;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
 import android.view.View;
@@ -66,10 +67,19 @@ import java.io.Serializable;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
+import java.security.InvalidAlgorithmParameterException;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+
+import javax.crypto.BadPaddingException;
+import javax.crypto.Cipher;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.NoSuchPaddingException;
+import javax.crypto.spec.IvParameterSpec;
+import javax.crypto.spec.SecretKeySpec;
 
 public class CommonUtil {
 
@@ -274,28 +284,6 @@ public class CommonUtil {
     public static boolean isFirstLaunch(Context context) {
         CommonUtil.putBoolPref(context, "is_first_launch_app", false);
         return CommonUtil.getBoolPref(context, "is_first_launch_app", true);
-    }
-
-    private static String cipherBookId;
-    private static String cipherTocId;
-    private static String cipherCheckSum;
-
-    public static String getChapterSecurity(String string) {
-        if (cipherBookId == null || cipherTocId == null || cipherCheckSum == null) {
-            return null;
-        }
-        String encretyStr = CipherUtil.b(cipherTocId, CipherUtil.b(cipherBookId, cipherCheckSum));
-        if (encretyStr != null && encretyStr.length() >= 20) {
-            String string2 = encretyStr.substring(0, 20);
-            if (!BookInfoUtil.h) {
-                return CipherUtil.getNewAdvert(string2, string, MyApplication.getInstance());
-            }
-            BookInfoUtil.h = false;
-            long l = 7200 + new Date().getTime() / 1000;
-            return CipherUtil.getNewAdvertWork(string2, l, string, MyApplication.getInstance());
-        } else {
-            return null;
-        }
     }
 
     public static boolean deleteDir(String path) {
@@ -714,15 +702,6 @@ public class CommonUtil {
         editor.apply();
     }
 
-    public static void initCipher(Context context, String cipherBookId, String cipherTocId, String cipherCheckSum) {
-        CommonUtil.cipherBookId = cipherBookId;
-        CommonUtil.cipherTocId = cipherTocId;
-        CommonUtil.cipherCheckSum = cipherCheckSum;
-        putStringPref(context, "CIPHER_BOOK_ID", cipherBookId);
-        putStringPref(context, "CIPHER_TOC_ID", cipherTocId);
-        putStringPref(context, "CIPHER_CHECKSUM", cipherCheckSum);
-    }
-
     public static void putBoolPref(Context context, String key, boolean value) {
         if (context == null) {
             return;
@@ -875,13 +854,6 @@ public class CommonUtil {
         return "";
     }
 
-    public static void initCipherInfo(Context context) {
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
-        cipherBookId = sharedPreferences.getString("CIPHER_BOOK_ID", null);
-        cipherTocId = sharedPreferences.getString("CIPHER_TOC_ID", null);
-        cipherCheckSum = sharedPreferences.getString("CIPHER_CHECKSUM", null);
-    }
-
     public static int getNetType(Context context) {
         NetworkInfo networkInfo = ((ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE)).getActiveNetworkInfo();
         if (networkInfo == null) {
@@ -968,5 +940,22 @@ public class CommonUtil {
             return 10 + (getLevelExp(level - 1) << 1);
         }
         return 3840 + (getLevelExp(level - 1) + 50 * (n2 - 10));
+    }
+
+    public static String getClearContent(String key, String content) {
+        byte[] keyBytes = Base64.decode(key.getBytes(), 0);
+        SecretKeySpec keySpec = new SecretKeySpec(keyBytes, 0, keyBytes.length, "AES");
+        byte[] content64 = Base64.decode(content, 0);
+        byte[] iv = CommonUtil.copyBytes(content64, 0, 16);
+        byte[] input = CommonUtil.copyBytes(content64, 16, content64.length);
+        IvParameterSpec params = new IvParameterSpec(iv);
+        try {
+            Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
+            cipher.init(Cipher.DECRYPT_MODE, keySpec, params);
+            return new String(cipher.doFinal(input));
+        } catch (NoSuchAlgorithmException | NoSuchPaddingException | BadPaddingException | InvalidKeyException | IllegalBlockSizeException | InvalidAlgorithmParameterException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }

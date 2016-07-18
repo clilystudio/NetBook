@@ -464,25 +464,6 @@ public class HomeActivity extends HomeParentActivity implements ViewPager.OnPage
     public void onResume() {
         super.onResume();
         DnsManager.setUseDns("1".equals(OnlineConfigAgent.getInstance().getConfigParams(this, "use_http_dns")));
-        if (CommonUtil.isForceEncryptChapter()) {
-            new BaseAsyncTask<Void, Void, BookTopRoot>() {
-
-                @Override
-                protected BookTopRoot doInBackground(Void... params) {
-                    ApiServiceProvider.getInstance();
-                    return ApiServiceProvider.getApiService().u();
-                }
-
-                @Override
-                protected void onPostExecute(BookTopRoot bookTopRoot) {
-                    super.onPostExecute(bookTopRoot);
-                    BookTopRoot.Favorite favorite;
-                    if (bookTopRoot != null && (favorite = bookTopRoot.getFavorite()) != null) {
-                        CommonUtil.initCipher(HomeActivity.this, favorite.getBookID(), favorite.getTocID(), favorite.getChecksum());
-                    }
-                }
-            }.b();
-        }
         this.mAccount = CommonUtil.getAccount();
         if (this.mAccount != null) {
             this.setUserMenuItem();

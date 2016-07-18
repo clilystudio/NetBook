@@ -1487,8 +1487,7 @@ public class ApiService {
     public final ChapterRoot x(String string) {
         String string2 = String.format(Locale.CHINA, "/chapter/%s", CommonUtil.encodeUrl(string));
         String string3 = h + string2;
-        String string4 = string3 + "?" + CommonUtil.getChapterSecurity(string2);
-        HttpRequest httpRequest = HttpRequest.get(string4);
+        HttpRequest httpRequest = HttpRequest.get(string3);
         if (DnsManager.isUseDns()) {
             httpRequest = DnsManager.a2(httpRequest);
         }

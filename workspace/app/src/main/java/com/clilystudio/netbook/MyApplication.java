@@ -207,7 +207,6 @@ public class MyApplication extends Application {
         ActiveAndroid.initialize(this);
         DnsManager.setUseDns(true);
         ApiService.a(DEFUALT_API_URL);
-        CommonUtil.initCipherInfo(this);
         new Thread() {
             @Override
             public void run() {

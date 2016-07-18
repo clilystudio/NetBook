@@ -3,7 +3,6 @@ package com.clilystudio.netbook.reader;
 import android.content.Context;
 
 import com.clilystudio.netbook.util.CommonUtil;
-import com.clilystudio.netbook.util.CipherUtil;
 
 import java.util.LinkedList;
 
@@ -147,7 +146,7 @@ public final class ReaderLineInfo {
     }
 
     public final void g() {
-        String string = CipherUtil.a(this.mReaderChapter.getKey(), this.mReaderChapter.getContent());
+        String string = CommonUtil.getClearContent(this.mReaderChapter.getKey(), this.mReaderChapter.getContent());
         if (string == null) {
             return;
         }

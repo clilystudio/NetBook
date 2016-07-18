@@ -1,9 +1,8 @@
 package com.clilystudio.netbook.reader;
 
-import com.clilystudio.netbook.util.CommonUtil;
 import com.clilystudio.netbook.model.Chapter;
 import com.clilystudio.netbook.model.ChapterLink;
-import com.clilystudio.netbook.util.CipherUtil;
+import com.clilystudio.netbook.util.CommonUtil;
 
 public class ReaderChapter extends Chapter {
     public static final int STATUS_CONNECTION_ERROR = -1;
@@ -38,7 +37,7 @@ public class ReaderChapter extends Chapter {
     public String getBody() {
         if (this.getContent() != null && this.key != null) {
             if (this.clearContent == null) {
-                this.clearContent = CipherUtil.a(this.key, this.getContent());
+                this.clearContent = CommonUtil.getClearContent(this.key, this.getContent());
                 this.clearContent = CommonUtil.formatContent(this.clearContent);
             }
             if (this.clearContent == null) {
@@ -65,7 +64,7 @@ public class ReaderChapter extends Chapter {
     public String getBody(ReaderLineInfo n2) {
         if (this.getContent() != null && this.key != null) {
             if (this.clearContent == null) {
-                this.clearContent = CipherUtil.a(this.key, this.getContent());
+                this.clearContent = CommonUtil.getClearContent(this.key, this.getContent());
                 this.clearContent = CommonUtil.formatContent(this.clearContent);
                 n2.a(this.clearContent);
             }

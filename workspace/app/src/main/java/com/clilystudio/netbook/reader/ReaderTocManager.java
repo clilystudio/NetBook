@@ -2,13 +2,11 @@ package com.clilystudio.netbook.reader;
 
 import android.text.Html;
 
-import com.clilystudio.netbook.MyApplication;
 import com.clilystudio.netbook.api.ApiService;
 import com.clilystudio.netbook.api.ApiServiceProvider;
 import com.clilystudio.netbook.db.BookReadRecord;
 import com.clilystudio.netbook.db.SourceRecord;
 import com.clilystudio.netbook.model.BookInfo;
-import com.clilystudio.netbook.model.BookTopRoot;
 import com.clilystudio.netbook.model.ChapterLink;
 import com.clilystudio.netbook.model.ChapterRoot;
 import com.clilystudio.netbook.model.MixTocRoot;
@@ -408,11 +406,6 @@ public final class ReaderTocManager {
         if (this.mReadMode == 8) return chapterRoot;
         if (this.mReadMode == 3) return chapterRoot;
         BookInfoUtil.h = true;
-        BookTopRoot.Favorite bookTopRoot$Favorite;
-        BookTopRoot bookTopRoot = ApiServiceProvider.getApiService().u();
-        if (bookTopRoot != null && (bookTopRoot$Favorite = bookTopRoot.getFavorite()) != null) {
-            CommonUtil.initCipher(MyApplication.getInstance(), bookTopRoot$Favorite.getBookID(), bookTopRoot$Favorite.getTocID(), bookTopRoot$Favorite.getChecksum());
-        }
         chapterRoot = this.c(chapterLink.getLink());
         BookInfoUtil.h = false;
         return chapterRoot;
