@@ -5,7 +5,7 @@
                 android:layout_height="98.0dip"
                 android:background="?android:windowBackground">
 
-    <com.clilystudio.netbook.ui.CornerImageView
+    <com.clilystudio.netbook.widget.CornerImageView
         android:id="@id/siv_avater"
         android:layout_width="60.0dip"
         android:layout_height="60.0dip"

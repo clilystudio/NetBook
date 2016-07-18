@@ -1,4 +1,4 @@
-package com.clilystudio.netbook.ui;
+package com.clilystudio.netbook.widget;
 
 import android.content.Context;
 import android.graphics.Bitmap;

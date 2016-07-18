@@ -10,7 +10,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.clilystudio.netbook.R;
-import com.clilystudio.netbook.ui.MaskAbleImageView;
 
 public class HomeFindItem extends FrameLayout {
     MaskAbleImageView mIcon;

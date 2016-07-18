@@ -56,7 +56,7 @@
         android:gravity="center"
         android:orientation="vertical">
 
-        <com.clilystudio.netbook.ui.SmartImageView
+        <com.clilystudio.netbook.widget.SmartImageView
             android:id="@id/icon"
             android:layout_width="80.0dip"
             android:layout_height="80.0dip"

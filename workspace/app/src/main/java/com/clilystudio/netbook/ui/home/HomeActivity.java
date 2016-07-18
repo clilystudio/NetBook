@@ -37,7 +37,7 @@ import com.clilystudio.netbook.push.BookUnSubRecord;
 import com.clilystudio.netbook.ui.BaseActivity;
 import com.clilystudio.netbook.ui.SearchActivity;
 import com.clilystudio.netbook.ui.SettingsActivity;
-import com.clilystudio.netbook.ui.SmartImageView;
+import com.clilystudio.netbook.widget.SmartImageView;
 import com.clilystudio.netbook.ui.user.AuthLoginActivity;
 import com.clilystudio.netbook.ui.user.MyMessageActivity;
 import com.clilystudio.netbook.ui.user.UserInfoActivity;

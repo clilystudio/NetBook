@@ -18,7 +18,7 @@
             android:paddingRight="@dimen/dp_16"
             android:paddingTop="@dimen/dp_6">
 
-            <com.clilystudio.netbook.ui.CircularSmartImageView
+            <com.clilystudio.netbook.widget.CircularSmartImageView
                 android:id="@id/portrait"
                 android:layout_width="@dimen/dp_60"
                 android:layout_height="@dimen/dp_60"

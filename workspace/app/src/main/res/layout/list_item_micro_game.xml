@@ -5,7 +5,7 @@
                 android:layout_height="wrap_content"
                 android:background="?backgroundSelector">
 
-    <com.clilystudio.netbook.ui.SmartImageView
+    <com.clilystudio.netbook.widget.SmartImageView
         android:id="@id/micro_game_item_icon"
         android:layout_width="60.0dip"
         android:layout_height="60.0dip"

@@ -5,7 +5,7 @@
                 android:background="?android:listSelector"
                 android:orientation="horizontal">
 
-    <com.clilystudio.netbook.ui.SmartImageView
+    <com.clilystudio.netbook.widget.SmartImageView
         android:id="@id/list_item_book_rank_cover"
         style="@style/Cover_BookRank"
         android:layout_centerVertical="true"

@@ -13,7 +13,7 @@
         android:paddingLeft="@dimen/dp_15"
         android:paddingRight="@dimen/dp_15">
 
-        <com.clilystudio.netbook.ui.CircularSmartImageView
+        <com.clilystudio.netbook.widget.CircularSmartImageView
             android:id="@id/home_menu_user_avatar"
             android:layout_width="21.0dip"
             android:layout_height="21.0dip"

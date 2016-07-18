@@ -6,7 +6,7 @@
               android:paddingLeft="@dimen/dp_16"
               android:paddingRight="@dimen/dp_16">
 
-    <com.clilystudio.netbook.ui.SmartImageView
+    <com.clilystudio.netbook.widget.SmartImageView
         android:id="@id/cover"
         android:layout_width="@dimen/dp_40"
         android:layout_height="@dimen/dp_40"

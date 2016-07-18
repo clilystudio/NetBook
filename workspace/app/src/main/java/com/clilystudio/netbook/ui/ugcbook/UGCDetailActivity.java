@@ -27,7 +27,7 @@ import com.clilystudio.netbook.model.UGCBookDetailRoot;
 import com.clilystudio.netbook.model.UGCNewCollection;
 import com.clilystudio.netbook.ui.BaseActivity;
 import com.clilystudio.netbook.ui.BookInfoActivity;
-import com.clilystudio.netbook.ui.SmartImageView;
+import com.clilystudio.netbook.widget.SmartImageView;
 import com.clilystudio.netbook.ui.BaseCallBack;
 import com.clilystudio.netbook.util.BaseDownloadAdapter;
 import com.clilystudio.netbook.util.DateTimeUtil;

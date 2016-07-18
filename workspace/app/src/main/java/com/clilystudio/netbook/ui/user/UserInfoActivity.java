@@ -20,7 +20,7 @@ import com.clilystudio.netbook.model.Account;
 import com.clilystudio.netbook.model.User;
 import com.clilystudio.netbook.model.UserInfo;
 import com.clilystudio.netbook.ui.BaseActivity;
-import com.clilystudio.netbook.ui.CircularSmartImageView;
+import com.clilystudio.netbook.widget.CircularSmartImageView;
 import com.clilystudio.netbook.ui.SettingsActivity;
 import com.clilystudio.netbook.ui.BaseCallBack;
 import com.clilystudio.netbook.util.CommonUtil;

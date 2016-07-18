@@ -1,4 +1,4 @@
-package com.clilystudio.netbook.ui;
+package com.clilystudio.netbook.widget;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -19,6 +19,7 @@ import android.util.AttributeSet;
 
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.util.CommonUtil;
+import com.clilystudio.netbook.widget.SmartImageView;
 import com.nostra13.universalimageloader.core.assist.LoadedFrom;
 import com.nostra13.universalimageloader.core.display.BitmapDisplayer;
 import com.nostra13.universalimageloader.core.imageaware.ImageAware;

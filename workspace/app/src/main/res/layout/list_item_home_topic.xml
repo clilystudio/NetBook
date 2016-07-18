@@ -13,7 +13,7 @@
             android:layout_width="@dimen/shelf_divider_left_gap"
             android:layout_height="fill_parent">
 
-            <com.clilystudio.netbook.ui.SmartImageView
+            <com.clilystudio.netbook.widget.SmartImageView
                 android:id="@id/cover"
                 android:layout_width="@dimen/dp_28"
                 android:layout_height="@dimen/dp_35"

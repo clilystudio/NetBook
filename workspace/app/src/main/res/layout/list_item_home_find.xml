@@ -11,7 +11,7 @@
         android:layout_centerVertical="true"
         android:paddingLeft="@dimen/dp_20">
 
-        <com.clilystudio.netbook.ui.MaskAbleImageView
+        <com.clilystudio.netbook.widget.MaskAbleImageView
             android:id="@id/icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

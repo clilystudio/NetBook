@@ -7,7 +7,7 @@ import android.widget.TextView;
 
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.model.NotificationItem;
-import com.clilystudio.netbook.ui.SmartImageView;
+import com.clilystudio.netbook.widget.SmartImageView;
 
 public abstract class NotifBinder {
     protected NotificationItem mItem;

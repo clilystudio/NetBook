@@ -51,7 +51,7 @@
         android:layout_marginLeft="@dimen/dp_16"
         android:layout_marginTop="@dimen/dp_36">
 
-        <com.clilystudio.netbook.ui.CircularSmartImageView
+        <com.clilystudio.netbook.widget.CircularSmartImageView
             android:id="@id/avatar"
             style="@style/Cover_Ugc_Detail"
             android:src="@drawable/avatar_default"/>

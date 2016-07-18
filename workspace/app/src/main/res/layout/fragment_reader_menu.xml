@@ -20,7 +20,7 @@
             android:orientation="vertical"
             android:padding="@dimen/dp_10">
 
-            <com.clilystudio.netbook.ui.SmartImageView
+            <com.clilystudio.netbook.widget.SmartImageView
                 android:id="@id/slm_reader_app_icon"
                 style="@style/Slm_Reader_App_Icon"
                 android:layout_gravity="center_horizontal"/>

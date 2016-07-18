@@ -10,7 +10,7 @@ import com.clilystudio.netbook.event.BookRankClickEvent;
 import com.clilystudio.netbook.event.BusProvider;
 import com.clilystudio.netbook.model.BookRankRoot;
 import com.clilystudio.netbook.model.BookRankSummary;
-import com.clilystudio.netbook.ui.SmartImageView;
+import com.clilystudio.netbook.widget.SmartImageView;
 
 import java.util.List;
 

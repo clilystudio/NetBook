@@ -27,7 +27,7 @@ import com.clilystudio.netbook.model.Root;
 import com.clilystudio.netbook.model.User;
 import com.clilystudio.netbook.model.UserInfo;
 import com.clilystudio.netbook.ui.BaseActivity;
-import com.clilystudio.netbook.ui.CircularSmartImageView;
+import com.clilystudio.netbook.widget.CircularSmartImageView;
 import com.clilystudio.netbook.ui.CropPhotoActivity;
 import com.clilystudio.netbook.util.CommonUtil;
 import com.clilystudio.netbook.util.ToastUtil;

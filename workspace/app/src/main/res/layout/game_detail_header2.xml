@@ -6,7 +6,7 @@
                 android:orientation="vertical"
                 android:paddingBottom="@dimen/dp_10">
 
-    <com.clilystudio.netbook.ui.SmartImageView
+    <com.clilystudio.netbook.widget.SmartImageView
         android:id="@id/game_detail_banner"
         android:layout_width="fill_parent"
         android:layout_height="180.0dip"
@@ -22,7 +22,7 @@
         android:paddingBottom="@dimen/dp_16"
         android:paddingTop="@dimen/dp_16">
 
-        <com.clilystudio.netbook.ui.SmartImageView
+        <com.clilystudio.netbook.widget.SmartImageView
             android:id="@id/game_detail_icon"
             android:layout_width="48.0dip"
             android:layout_height="48.0dip"

@@ -10,7 +10,7 @@
         android:layout_alignParentLeft="true"
         android:layout_marginTop="@dimen/dp_16">
 
-        <com.clilystudio.netbook.ui.CircularSmartImageView
+        <com.clilystudio.netbook.widget.CircularSmartImageView
             android:id="@id/avatar"
             android:layout_width="34.0dip"
             android:layout_height="34.0dip"

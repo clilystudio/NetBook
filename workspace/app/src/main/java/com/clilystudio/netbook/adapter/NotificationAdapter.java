@@ -8,7 +8,7 @@ import android.widget.TextView;
 
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.model.NotificationItem;
-import com.clilystudio.netbook.ui.CircularSmartImageView;
+import com.clilystudio.netbook.widget.CircularSmartImageView;
 import com.clilystudio.netbook.viewbinder.notification.NotifBinder;
 import com.clilystudio.netbook.viewbinder.notification.NotifBinderFactory;
 import com.clilystudio.netbook.widget.DividerSection;

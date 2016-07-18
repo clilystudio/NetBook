@@ -23,7 +23,7 @@
         android:layout_marginRight="@dimen/dp_16"
         android:layout_marginTop="@dimen/dp_20">
 
-        <com.clilystudio.netbook.ui.SmartImageView
+        <com.clilystudio.netbook.widget.SmartImageView
             android:id="@id/game_gift_icon"
             android:layout_width="@dimen/dp_42"
             android:layout_height="@dimen/dp_42"

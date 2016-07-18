@@ -9,7 +9,7 @@
         android:layout_height="8.0dip"
         android:background="?backgroundPressed"/>
 
-    <com.clilystudio.netbook.ui.AutoScaleImageView
+    <com.clilystudio.netbook.widget.AutoScaleImageView
         android:id="@id/image"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"/>

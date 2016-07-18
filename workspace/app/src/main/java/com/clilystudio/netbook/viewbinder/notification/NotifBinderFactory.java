@@ -16,21 +16,16 @@ public class NotifBinderFactory {
             notificationItem = new NotificationItem();
         }
         String string = notificationItem.getType();
-        Class[] arrclass = mNotifBinders;
-        int n = arrclass.length;
-        int n2 = 0;
-        while (n2 < n) {
-            Class class_ = arrclass[n2];
+        for (Class cls : mNotifBinders) {
             try {
-                 if (FieldUtils.getDeclaredField(class_, "LABEL", false).get("").equals(string)) {
-                    return (NotifBinder) ConstructorUtils.invokeConstructor(class_, (Object)notificationItem);
+                if (FieldUtils.getDeclaredField(cls, "LABEL", false).get("").equals(string)) {
+                    return (NotifBinder) ConstructorUtils.invokeConstructor(cls, (Object) notificationItem);
                 }
-            } catch (IllegalAccessException var9_10) {
+            } catch (NoSuchMethodException | InstantiationException | InvocationTargetException e) {
+                e.printStackTrace();
+            } catch (IllegalAccessException e1) {
                 throw new RuntimeException("Label field must be set for every NotifBinder.");
-            } catch (NoSuchMethodException | InstantiationException | InvocationTargetException var8_8) {
-                var8_8.printStackTrace();
             }
-            ++n2;
         }
         return new UnknowBinder(notificationItem);
     }
