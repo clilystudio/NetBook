@@ -38,6 +38,7 @@ import com.clilystudio.netbook.model.User;
 import com.clilystudio.netbook.model.UshaqiOnlineConfig;
 import com.clilystudio.netbook.push.BookSubRecord;
 import com.clilystudio.netbook.push.BookUnSubRecord;
+import com.clilystudio.netbook.ui.BaseActivity;
 import com.clilystudio.netbook.ui.SearchActivity;
 import com.clilystudio.netbook.ui.SettingsActivity;
 import com.clilystudio.netbook.ui.SmartImageView;
@@ -57,7 +58,7 @@ import java.util.List;
 
 import cn.sharesdk.framework.ShareSDK;
 
-public class HomeActivity extends HomeParentActivity implements ViewPager.OnPageChangeListener, View.OnClickListener, TabHost.OnTabChangeListener, TabHost.TabContentFactory {
+public class HomeActivity extends BaseActivity implements ViewPager.OnPageChangeListener, View.OnClickListener, TabHost.OnTabChangeListener, TabHost.TabContentFactory {
     private static final String TAG = HomeActivity.class.getSimpleName();
     private long mBackPressTime = 0;
     private List<Fragment> mFragmentList = new ArrayList<>();
@@ -338,26 +339,6 @@ public class HomeActivity extends HomeParentActivity implements ViewPager.OnPage
         for (BookUnSubRecord bookUnSubRecord : BookUnSubRecord.getAll()) {
             MiPushClient.unsubscribe(this.getApplicationContext(), bookUnSubRecord.pushId, null);
         }
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                new BaseAsyncTask<Void, Void, UshaqiOnlineConfig>() {
-
-                    @Override
-                    protected UshaqiOnlineConfig doInBackground(Void... params) {
-                        return ApiServiceProvider.getApiService().a();
-                    }
-
-                    @Override
-                    protected void onPostExecute(UshaqiOnlineConfig ushaqiOnlineConfig) {
-                        super.onPostExecute(ushaqiOnlineConfig);
-                        if (ushaqiOnlineConfig != null && ushaqiOnlineConfig.isServerError()) {
-                            HomeParentActivity.a(HomeActivity.this, ushaqiOnlineConfig.getServerError());
-                        }
-                    }
-                }.b();
-            }
-        }, 3000);
         if (mAccount != null) {
             new Thread() {
                 @Override

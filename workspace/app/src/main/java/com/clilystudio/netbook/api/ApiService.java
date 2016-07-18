@@ -10,8 +10,6 @@ import com.clilystudio.netbook.model.Account;
 import com.clilystudio.netbook.model.AutoCompleteRoot;
 import com.clilystudio.netbook.model.BookAdd;
 import com.clilystudio.netbook.model.BookGenderRecommend;
-import com.clilystudio.netbook.model.BookHelpList;
-import com.clilystudio.netbook.model.BookHelpResult;
 import com.clilystudio.netbook.model.BookInfo;
 import com.clilystudio.netbook.model.BookListRoot;
 import com.clilystudio.netbook.model.BookRankDetailRoot;
@@ -20,7 +18,6 @@ import com.clilystudio.netbook.model.BookReviewRoot;
 import com.clilystudio.netbook.model.BookShelfSyncTime;
 import com.clilystudio.netbook.model.BookSummary;
 import com.clilystudio.netbook.model.BookTagRoot;
-import com.clilystudio.netbook.model.BookTopRoot;
 import com.clilystudio.netbook.model.BookUpdate;
 import com.clilystudio.netbook.model.CategoryLevelRoot;
 import com.clilystudio.netbook.model.CategoryRoot;
@@ -29,63 +26,31 @@ import com.clilystudio.netbook.model.ChangeNickNameRoot;
 import com.clilystudio.netbook.model.Chapter;
 import com.clilystudio.netbook.model.ChapterKeysRoot;
 import com.clilystudio.netbook.model.ChapterRoot;
-import com.clilystudio.netbook.model.ChapterSingleKey;
-import com.clilystudio.netbook.model.ChargeTypes;
 import com.clilystudio.netbook.model.ChineseAllPromRoot;
-import com.clilystudio.netbook.model.CommentDetail;
-import com.clilystudio.netbook.model.DeleteResult;
-import com.clilystudio.netbook.model.DiscussSummaryList;
-import com.clilystudio.netbook.model.FollowResult;
-import com.clilystudio.netbook.model.FollowersResult;
 import com.clilystudio.netbook.model.FollowingsResult;
-import com.clilystudio.netbook.model.GirlTopicList;
-import com.clilystudio.netbook.model.GirlTopicResult;
-import com.clilystudio.netbook.model.HotCommentRoot;
 import com.clilystudio.netbook.model.HotKeywordResult;
-import com.clilystudio.netbook.model.HotTweetResult;
-import com.clilystudio.netbook.model.IKanshuUrlResult;
 import com.clilystudio.netbook.model.MixTocRoot;
-import com.clilystudio.netbook.model.MysteryBookList;
 import com.clilystudio.netbook.model.NotifCountRoot;
 import com.clilystudio.netbook.model.NotificationRoot;
-import com.clilystudio.netbook.model.PostCountRoot;
-import com.clilystudio.netbook.model.PostDetail;
-import com.clilystudio.netbook.model.PostDetailComment;
-import com.clilystudio.netbook.model.PostPublish;
-import com.clilystudio.netbook.model.PurchaseChapterResult;
-import com.clilystudio.netbook.model.PurchaseVipResult;
 import com.clilystudio.netbook.model.RecommendUgcRoot;
 import com.clilystudio.netbook.model.RelateBookRoot;
 import com.clilystudio.netbook.model.RemoteBookShelf;
-import com.clilystudio.netbook.model.ResultServer;
 import com.clilystudio.netbook.model.ResultStatus;
-import com.clilystudio.netbook.model.ReviewHistory;
-import com.clilystudio.netbook.model.ReviewList;
-import com.clilystudio.netbook.model.ReviewResult;
 import com.clilystudio.netbook.model.Root;
 import com.clilystudio.netbook.model.SearchPromRoot;
 import com.clilystudio.netbook.model.SearchResultRoot;
 import com.clilystudio.netbook.model.ShelfMsgRoot;
 import com.clilystudio.netbook.model.SyncUploadResult;
-import com.clilystudio.netbook.model.TimelineResult;
 import com.clilystudio.netbook.model.Toc;
 import com.clilystudio.netbook.model.TocSourceRoot;
 import com.clilystudio.netbook.model.TocSummary;
 import com.clilystudio.netbook.model.Topic;
 import com.clilystudio.netbook.model.TopicCount;
-import com.clilystudio.netbook.model.TopicSummary;
-import com.clilystudio.netbook.model.TweetResult;
-import com.clilystudio.netbook.model.TweetsResult;
 import com.clilystudio.netbook.model.UGCBookDetailRoot;
 import com.clilystudio.netbook.model.UGCBookListRoot;
 import com.clilystudio.netbook.model.UGCNewCollection;
 import com.clilystudio.netbook.model.UgcFilterRoot;
 import com.clilystudio.netbook.model.UserInfo;
-import com.clilystudio.netbook.model.UserInfoResult;
-import com.clilystudio.netbook.model.UserVipInfo;
-import com.clilystudio.netbook.model.UshaqiOnlineConfig;
-import com.clilystudio.netbook.model.VipPlan;
-import com.clilystudio.netbook.model.VoteResult;
 import com.clilystudio.netbook.model.mixtoc.EsChapterRoot;
 import com.clilystudio.netbook.model.mixtoc.EsTocRoot;
 import com.clilystudio.netbook.model.mixtoc.LdChapterRoot;
@@ -195,7 +160,6 @@ public class ApiService {
     }
 
     private HttpRequest a(HttpRequest httpRequest) {
-        long l = new Date().getTime();
         if (DnsManager.isUseDns()) {
             httpRequest = DnsManager.a2(httpRequest);
         }
@@ -255,11 +219,6 @@ public class ApiService {
         return ApiService.a(this.a(HttpRequest.get(string2)), BookShelfSyncTime.class);
     }
 
-    public final CommentDetail A(String string, String string2) {
-        String string3 = f + String.format(Locale.CHINA, "/post/%s/comment/%s", string, string2);
-        return ApiService.a(this.a(HttpRequest.get(string3)), CommentDetail.class);
-    }
-
     public final RemoteBookShelf B(String string) {
         String string2 = f + String.format(Locale.CHINA, "/user/bookshelf?token=%s", string);
         return ApiService.a(this.a(HttpRequest.get(string2)), RemoteBookShelf.class);
@@ -285,16 +244,6 @@ public class ApiService {
         return ApiService.a(var5_4, ResultStatus.class);
     }
 
-    public final ReviewResult D(String string) {
-        String string2 = f + String.format(Locale.CHINA, "/post/review/%s", string);
-        return ApiService.a(this.a(HttpRequest.get(string2)), ReviewResult.class);
-    }
-
-    public final BookHelpResult E(String string) {
-        String string2 = f + String.format(Locale.CHINA, "/post/help/%s", string);
-        return ApiService.a(this.a(HttpRequest.get(string2)), BookHelpResult.class);
-    }
-
     public final ResultStatus E(String string, String string2) {
         String string3 = f + "/user/collected-book-list/remove";
         HttpRequest httpRequest = HttpRequest.post(string3);
@@ -304,21 +253,6 @@ public class ApiService {
         HttpRequest httpRequest2 = this.b(httpRequest);
         httpRequest2.form(hashMap);
         return ApiService.a(httpRequest2, ResultStatus.class);
-    }
-
-    public final GirlTopicResult F(String string) {
-        String string2 = f + String.format(Locale.CHINA, "/post/%s", string);
-        return ApiService.a(this.a(HttpRequest.get(string2)), GirlTopicResult.class);
-    }
-
-    public final Root F(String string, String string2) {
-        String string3 = f + String.format(Locale.CHINA, "/post/%s/like", string);
-        HashMap<String, String> hashMap = new HashMap<>();
-        HttpRequest httpRequest = HttpRequest.post(string3);
-        hashMap.put("token", string2);
-        HttpRequest httpRequest2 = this.b(httpRequest);
-        httpRequest2.form(hashMap);
-        return ApiService.a(httpRequest2, Root.class);
     }
 
     public final NotifCountRoot G(String string) {
@@ -334,11 +268,6 @@ public class ApiService {
         HttpRequest httpRequest2 = this.b(httpRequest);
         httpRequest2.form(hashMap);
         return ApiService.a(httpRequest2, SyncUploadResult.class);
-    }
-
-    public final PostDetail H(String string) {
-        String string2 = f + String.format(Locale.CHINA, "/post/%s", string);
-        return ApiService.a(this.a(HttpRequest.get(string2)), PostDetail.class);
     }
 
     public final SyncUploadResult H(String string, String string2) {
@@ -390,11 +319,6 @@ public class ApiService {
         return ApiService.a(this.a(HttpRequest.get(string3)), AutoCompleteRoot.class);
     }
 
-    public final UserVipInfo O(String string) {
-        String string2 = f + String.format(Locale.CHINA, "/user/account/vip?token=%s", string);
-        return ApiService.a(this.a(HttpRequest.get(string2)), UserVipInfo.class);
-    }
-
     public final ResultStatus P(String string) {
         String string2 = f + "/user/logout";
         HashMap<String, String> hashMap = new HashMap<>();
@@ -404,19 +328,9 @@ public class ApiService {
         return ApiService.a(httpRequest, ResultStatus.class);
     }
 
-    public final HotCommentRoot T(String string) {
-        String string2 = f + String.format(Locale.CHINA, "/post/%s/comment/best", string);
-        return ApiService.a(this.a(HttpRequest.get(string2)), HotCommentRoot.class);
-    }
-
     public final UGCBookDetailRoot U(String string) {
         String string2 = f + String.format(Locale.CHINA, "/book-list/%s", string);
         return ApiService.a(this.a(HttpRequest.get(string2)), UGCBookDetailRoot.class);
-    }
-
-    public final RelateBookRoot V(String string) {
-        String string2 = f + "/books/by-ids" + string;
-        return ApiService.a(this.a(HttpRequest.get(string2)), RelateBookRoot.class);
     }
 
     public final ResultStatus W(String string) {
@@ -433,14 +347,6 @@ public class ApiService {
     public final RelateBookRoot X(String string) {
         String string2 = f + String.format(Locale.CHINA, "/book/%s/recommend", string);
         return ApiService.a(this.a(HttpRequest.get(string2)), RelateBookRoot.class);
-    }
-
-    public final BookHelpList a(String string, String string2, int n, int n2, boolean bl) {
-        String string3 = f + String.format(Locale.CHINA, "/post/help?duration=%s&sort=%s&start=%d&limit=%d", string, string2, n, n2);
-        if (bl) {
-            string3 = string3 + "&distillate=true";
-        }
-        return ApiService.a(this.a(HttpRequest.get(string3)), BookHelpList.class);
     }
 
     public final BookListRoot a(String string, String string2, String string3, String string4, int n, int n2) {
@@ -469,52 +375,6 @@ public class ApiService {
         }
         if (esChapterRoot.isSuccess()) return null;
         return ApiService.getDefaultChapterRoot();
-    }
-
-    public final DiscussSummaryList a(String string, String string2, int n, int n2, String string3, boolean bl) {
-        String string4 = f + String.format(Locale.CHINA, "/post/by-block?block=%s&duration=%s&sort=%s&type=all&start=%d&limit=%d", string3, string, string2, n, n2);
-        if (bl) {
-            string4 = string4 + "&distillate=true";
-        }
-        return ApiService.a(this.a(HttpRequest.get(string4)), DiscussSummaryList.class);
-    }
-
-    public final PostPublish a(String string, String string2, String string3, String string4) {
-        String string5 = f + String.format(Locale.CHINA, "/user/twitter/%s/reply/comment/%s", string2, string3);
-        HashMap<String, String> hashMap = new HashMap<>();
-        hashMap.put("token", string);
-        hashMap.put("content", string4);
-        HttpRequest httpRequest = this.b(HttpRequest.post(string5));
-        httpRequest.form(hashMap);
-        return ApiService.a(httpRequest, PostPublish.class);
-    }
-
-    public final PostPublish a(String string, String string2, String string3, String string4, String string5, boolean bl) {
-        String string6 = f + "/post/review";
-        HashMap<String, String> hashMap = new HashMap<>();
-        hashMap.put("token", string);
-        hashMap.put("book", string2);
-        hashMap.put("title", string3);
-        hashMap.put("content", string4);
-        hashMap.put("rating", string5);
-        String string7 = bl ? "book" : "community";
-        hashMap.put("from", string7);
-        HttpRequest httpRequest = this.b(HttpRequest.post(string6));
-        httpRequest.form(hashMap);
-        return ApiService.a(httpRequest, PostPublish.class);
-    }
-
-    public final PurchaseChapterResult a(String string, String string2, int n) {
-        String string3 = f + "/purchase/buy";
-        HashMap<String, String> hashMap = new HashMap<>();
-        hashMap.put("token", string);
-        hashMap.put("chapter", string2);
-        if (n == 1) {
-            hashMap.put("type", "auto");
-        }
-        HttpRequest httpRequest = this.b(HttpRequest.post(string3));
-        httpRequest.form(hashMap);
-        return ApiService.a(httpRequest, PurchaseChapterResult.class);
     }
 
     public final ResultStatus a(UGCNewCollection var1_1, String var2_2) {
@@ -547,14 +407,6 @@ public class ApiService {
         return ApiService.a(var6_5, ResultStatus.class);
     }
 
-    public final ReviewList a(String string, String string2, String string3, int n, int n2, boolean bl) {
-        String string4 = f + String.format(Locale.CHINA, "/post/review?duration=%s&sort=%s&type=%s&start=%d&limit=%d", string, string3, string2, n, n2);
-        if (bl) {
-            string4 = string4 + "&distillate=true";
-        }
-        return ApiService.a(this.a(HttpRequest.get(string4)), ReviewList.class);
-    }
-
     public final Root a(String string, Uri uri) {
         String string2 = f + "/user/change-avatar";
         HttpRequest httpRequest = this.b(HttpRequest.post(string2));
@@ -565,20 +417,6 @@ public class ApiService {
     public final UGCBookListRoot a(String string, String string2, int n, int n2, String string3) {
         String string4 = f + String.format(Locale.CHINA, "/book-list?duration=%s&sort=%s&start=%d&limit=%d&tag=%s", string, string2, n, n2, string3);
         return ApiService.a(this.a(HttpRequest.get(string4)), UGCBookListRoot.class);
-    }
-
-    public final UshaqiOnlineConfig a() {
-        return ApiService.a(this.a(HttpRequest.get("http://alertserver.ushaqi.com/server_config")), UshaqiOnlineConfig.class);
-    }
-
-    public final VoteResult a(String string, String string2, String string3) {
-        String string4 = f + String.format(Locale.CHINA, "/user/twitter/%s/vote", string2);
-        HashMap<String, String> hashMap = new HashMap<>();
-        hashMap.put("token", string);
-        hashMap.put("n", string3);
-        HttpRequest httpRequest = this.b(HttpRequest.post(string4));
-        httpRequest.form(hashMap);
-        return ApiService.a(httpRequest, VoteResult.class);
     }
 
     public final SsTocRoot a(int n, int n2, String string) {
@@ -621,51 +459,9 @@ public class ApiService {
         return ApiService.a(this.a(HttpRequest.get(string2)), BookGenderRecommend.class);
     }
 
-    public final GirlTopicList b(String string, String string2, int n, int n2, boolean bl) {
-        String string3 = f + String.format(Locale.CHINA, "/post/by-block?block=girl&duration=%s&sort=%s&start=%d&limit=%d", string, string2, n, n2);
-        if (bl) {
-            string3 = string3 + "&distillate=true";
-        }
-        return ApiService.a(this.a(HttpRequest.get(string3)), GirlTopicList.class);
-    }
-
     public final HotKeywordResult b() {
         String string = f + "/book/hot-word";
         return ApiService.a(this.a(HttpRequest.get(string)), HotKeywordResult.class);
-    }
-
-    public final PostPublish b(String string, String string2, String string3) {
-        String string4 = f + "/user/twitter/article";
-        HashMap<String, String> hashMap = new HashMap<>();
-        hashMap.put("token", string);
-        hashMap.put("title", string2);
-        hashMap.put("content", string3);
-        HttpRequest httpRequest = this.b(HttpRequest.post(string4));
-        httpRequest.form(hashMap);
-        return ApiService.a(httpRequest, PostPublish.class);
-    }
-
-    public final PostPublish b(String string, String string2, String string3, String string4) {
-        String string5 = f + String.format(Locale.CHINA, "/user/twitter/%s/comment/%s/report", string2, string3);
-        HashMap<String, String> hashMap = new HashMap<>();
-        hashMap.put("token", string);
-        hashMap.put("reason", string4);
-        HttpRequest httpRequest = this.b(HttpRequest.post(string5));
-        httpRequest.form(hashMap);
-        return ApiService.a(httpRequest, PostPublish.class);
-    }
-
-    public final PostPublish b(String string, String string2, String string3, String string4, String string5) {
-        String string6 = f + "/post";
-        HashMap<String, String> hashMap = new HashMap<>();
-        hashMap.put("token", string);
-        hashMap.put("book", string2);
-        hashMap.put("title", string3);
-        hashMap.put("content", string4);
-        hashMap.put("votes", string5);
-        HttpRequest httpRequest = this.b(HttpRequest.post(string6));
-        httpRequest.form(hashMap);
-        return ApiService.a(httpRequest, PostPublish.class);
     }
 
     public final ResultStatus b(UGCNewCollection var1_1, String var2_2) {
@@ -698,19 +494,9 @@ public class ApiService {
         return ApiService.a(var6_5, ResultStatus.class);
     }
 
-    public final Topic b(String string, String string2, int n, int n2) {
-        String string3 = f + String.format(Locale.CHINA, "/post/by-book?book=%s&sort=%s&type=normal,vote&start=%d&limit=%d", string, string2, n, n2);
-        return ApiService.a(this.a(HttpRequest.get(string3)), Topic.class);
-    }
-
     public final String b(String string, int n) {
         String string2 = String.format(Locale.CHINA, "http://bookshelf.html5.qq.com/ajax?m=show_bookdetail&resourceid=%s&serialid=%d", string, n);
         return SsChapterJson.getChapterUrl(this.a(HttpRequest.get(string2), 6).body());
-    }
-
-    public final BookReviewRoot c(String string, String string2, int n, int n2) {
-        String string3 = f + String.format(Locale.CHINA, "/post/review/by-book?book=%s&sort=%s&start=%d&limit=%d", string, string2, n, n2);
-        return ApiService.a(this.a(HttpRequest.get(string3)), BookReviewRoot.class);
     }
 
     public final BookTagRoot c(String string, int n, int n2) {
@@ -719,8 +505,7 @@ public class ApiService {
     }
 
     public final ChapterRoot c(String string, int n) {
-        Object[] arrobject = new Object[]{string, n};
-        String string2 = String.format(Locale.CHINA, "http://bookshelf.html5.qq.com/ajax?m=show_bookdetail&resourceid=%s&serialid=%d", arrobject);
+        String string2 = String.format(Locale.CHINA, "http://bookshelf.html5.qq.com/ajax?m=show_bookdetail&resourceid=%s&serialid=%d", string, n);
         HttpRequest httpRequest = this.b(HttpRequest.get(string2), 6);
         boolean bl = httpRequest.ok();
         int n2 = httpRequest.code();
@@ -755,52 +540,6 @@ public class ApiService {
         }
     }
 
-    public final ChargeTypes c() {
-        String string = e + "/charge/product?platform=android";
-        return ApiService.a(this.a(HttpRequest.get(string)), ChargeTypes.class);
-    }
-
-    public final PostCountRoot c(String string) {
-        String string2 = f + String.format(Locale.CHINA, "/post/post-count-by-book?bookId=%s", string);
-        return ApiService.a(this.a(HttpRequest.get(string2)), PostCountRoot.class);
-    }
-
-    public final PostPublish c(String string, String string2, String string3) {
-        String string4 = f + String.format(Locale.CHINA, "/user/twitter/%s/comment", string2);
-        HashMap<String, String> hashMap = new HashMap<>();
-        hashMap.put("token", string);
-        hashMap.put("content", string3);
-        HttpRequest httpRequest = this.b(HttpRequest.post(string4));
-        httpRequest.form(hashMap);
-        return ApiService.a(httpRequest, PostPublish.class);
-    }
-
-    public final PostPublish c(String string, String string2, String string3, String string4) {
-        String string5 = f + "/post";
-        HashMap<String, String> hashMap = new HashMap<>();
-        hashMap.put("token", string);
-        hashMap.put("block", "girl");
-        hashMap.put("title", string2);
-        hashMap.put("content", string3);
-        hashMap.put("votes", string4);
-        HttpRequest httpRequest = this.b(HttpRequest.post(string5));
-        httpRequest.form(hashMap);
-        return ApiService.a(httpRequest, PostPublish.class);
-    }
-
-    public final PostPublish c(String string, String string2, String string3, String string4, String string5) {
-        String string6 = f + "/user/twitter/book";
-        HashMap<String, String> hashMap = new HashMap<>();
-        hashMap.put("token", string);
-        hashMap.put("bookId", string2);
-        hashMap.put("title", string3);
-        hashMap.put("content", string4);
-        hashMap.put("score", string5);
-        HttpRequest httpRequest = this.b(HttpRequest.post(string6));
-        httpRequest.form(hashMap);
-        return ApiService.a(httpRequest, PostPublish.class);
-    }
-
     public final ResultStatus c(UGCNewCollection var1_1, String var2_2, String var3_3) {
         String var4_4 = ApiService.f + String.format(Locale.CHINA, "/book-list/%s/public", var3_3);
         HttpRequest var6_5 = this.b(HttpRequest.post(var4_4));
@@ -821,32 +560,6 @@ public class ApiService {
         return ApiService.a(this.a(HttpRequest.get(string)), BookRankRoot.class);
     }
 
-    public final PostPublish d(String string, String string2, String string3, String string4) {
-        String string5 = f + "/post";
-        HashMap<String, String> hashMap = new HashMap<>();
-        hashMap.put("token", string);
-        hashMap.put("title", string2);
-        hashMap.put("content", string3);
-        hashMap.put("votes", string4);
-        hashMap.put("block", "ramble");
-        HttpRequest httpRequest = this.b(HttpRequest.post(string5));
-        httpRequest.form(hashMap);
-        return ApiService.a(httpRequest, PostPublish.class);
-    }
-
-    public final TimelineResult d(String string, String string2, String string3) {
-        HttpRequest httpRequest;
-        String string4 = f + String.format(Locale.CHINA, "/user/twitter/timeline/%s?token=%s", string2, string);
-        if (string3 != null) {
-            HashMap<String, String> hashMap = new HashMap<>();
-            hashMap.put("last", string3);
-            httpRequest = HttpRequest.get(string4, hashMap, false);
-        } else {
-            httpRequest = HttpRequest.get(string4);
-        }
-             return ApiService.a(this.a(httpRequest), TimelineResult.class);
-     }
-
     public final Topic d(String string, int n) {
         String string2 = f + String.format(Locale.CHINA, "/user/collected-post?token=%s&start=%s", string, n);
         return ApiService.a(this.a(HttpRequest.get(string2)), Topic.class);
@@ -860,38 +573,6 @@ public class ApiService {
     public final CategoryRoot e() {
         String string = f + "/cats/lv2/statistics";
         return ApiService.a(this.a(HttpRequest.get(string)), CategoryRoot.class);
-    }
-
-    public final DeleteResult e(String string, String string2) {
-        String string3 = e + String.format(Locale.CHINA, "/charge/order/%s?token=%s", string, string2);
-        return ApiService.a(this.a(HttpRequest.put(string3)), DeleteResult.class);
-    }
-
-    public final PostDetailComment e(String string, int n, int n2) {
-        String string2 = f + String.format(Locale.CHINA, "/post/%s/comment?start=%d&limit=%d", string, n, n2);
-        return ApiService.a(this.a(HttpRequest.get(string2)), PostDetailComment.class);
-    }
-
-    public final PostPublish e(String string, String string2, String string3) {
-        String string4 = f + String.format(Locale.CHINA, "/user/twitter/%s/report", string2);
-        HashMap<String, String> hashMap = new HashMap<>();
-        hashMap.put("token", string);
-        hashMap.put("reason", string3);
-        HttpRequest httpRequest = this.b(HttpRequest.post(string4));
-        httpRequest.form(hashMap);
-        return ApiService.a(httpRequest, PostPublish.class);
-    }
-
-    public final PostPublish e(String string, String string2, String string3, String string4) {
-        String string5 = f + "/post";
-        HashMap<String, String> hashMap = new HashMap<>();
-        hashMap.put("token", string);
-        hashMap.put("book", string2);
-        hashMap.put("title", string3);
-        hashMap.put("content", string4);
-        HttpRequest httpRequest = this.b(HttpRequest.post(string5));
-        httpRequest.form(hashMap);
-        return ApiService.a(httpRequest, PostPublish.class);
     }
 
     public final Toc e(String string) {
@@ -920,30 +601,9 @@ public class ApiService {
         return ApiService.a(this.a(HttpRequest.get(string)), CategoryLevelRoot.class);
     }
 
-    public final ChapterSingleKey f(String string, String string2) {
-        String string3 = f + String.format(Locale.CHINA, "/purchase/chapter/%s/key?token=%s", string, string2);
-        return ApiService.a(this.a(HttpRequest.get(string3)), ChapterSingleKey.class);
-    }
-
     public final MixTocRoot f(String string) {
         String string2 = f + String.format(Locale.CHINA, "/mix-toc/%s", string);
         return ApiService.a(this.a(HttpRequest.get(string2)), MixTocRoot.class);
-    }
-
-    public final PostDetailComment f(String string, int n, int n2) {
-        String string2 = f + String.format(Locale.CHINA, "/post/review/%s/comment?start=%d&limit=%d", string, n, n2);
-        return ApiService.a(this.a(HttpRequest.get(string2)), PostDetailComment.class);
-    }
-
-    public final ResultStatus f(String string, String string2, String string3, String string4) {
-        String string5 = f + String.format(Locale.CHINA, "/post/%s/comment", string);
-        HashMap<String, String> hashMap = new HashMap<>();
-        hashMap.put("token", string2);
-        hashMap.put("content", string3);
-        hashMap.put("replyTo", string4);
-        HttpRequest httpRequest = this.b(HttpRequest.post(string5));
-        httpRequest.form(hashMap);
-        return ApiService.a(httpRequest, ResultStatus.class);
     }
 
     public final UGCBookListRoot f(String string, int n) {
@@ -967,18 +627,6 @@ public class ApiService {
         return ApiService.a(this.a(HttpRequest.get(string3)), ChapterKeysRoot.class);
     }
 
-    public final PostPublish g(String string, String string2, String string3, String string4) {
-        String string5 = f + "/post";
-        HashMap<String, String> hashMap = new HashMap<>();
-        hashMap.put("token", string);
-        hashMap.put("title", string2);
-        hashMap.put("content", string3);
-        hashMap.put("block", string4);
-        HttpRequest httpRequest = this.b(HttpRequest.post(string5));
-        httpRequest.form(hashMap);
-        return ApiService.a(httpRequest, PostPublish.class);
-    }
-
     public final TocSourceRoot g(String string) {
         String string2 = f + String.format(Locale.CHINA, "/aggregation-source/by-book?book=%s&v=5", string);
         return ApiService.a(this.a(HttpRequest.get(string2)), TocSourceRoot.class);
@@ -994,52 +642,9 @@ public class ApiService {
         return ApiService.a(this.a(HttpRequest.get(string2)), FollowingsResult.class);
     }
 
-    public final MysteryBookList h() {
-        String string = f + "/book/mystery-box";
-        return ApiService.a(this.a(HttpRequest.get(string)), MysteryBookList.class);
-    }
-
-    public final PostPublish h(String string, String string2, String string3) {
-        String string4 = f + "/post/help";
-        HashMap<String, String> hashMap = new HashMap<>();
-        hashMap.put("token", string);
-        hashMap.put("title", string2);
-        hashMap.put("content", string3);
-        HttpRequest httpRequest = this.b(HttpRequest.post(string4));
-        httpRequest.form(hashMap);
-        return ApiService.a(httpRequest, PostPublish.class);
-    }
-
-    public final ResultStatus h(String string, String string2) {
-        String string3 = f + "/user/follow";
-        HashMap<String, String> hashMap = new HashMap<>();
-        hashMap.put("token", string);
-        hashMap.put("followeeId", string2);
-        HttpRequest httpRequest = this.b(HttpRequest.post(string3));
-        httpRequest.form(hashMap);
-        return ApiService.a(httpRequest, ResultStatus.class);
-    }
-
     public final UGCBookListRoot h(String string, int n) {
         String string2 = f + String.format(Locale.CHINA, "/user/draft-book-list?token=%s&start=%d", string, n);
         return ApiService.a(this.a(HttpRequest.get(string2)), UGCBookListRoot.class);
-    }
-
-    public final FollowersResult i(String string) {
-        String string2 = f + String.format(Locale.CHINA, "/user/followers/%s", string);
-        return ApiService.a(this.a(HttpRequest.get(string2)), FollowersResult.class);
-    }
-
-    public final PostPublish i(String string, String string2, String string3) {
-        String string4 = f + "/post";
-        HashMap<String, String> hashMap = new HashMap<>();
-        hashMap.put("token", string);
-        hashMap.put("content", string3);
-        hashMap.put("game", string2);
-        hashMap.put("block", "game");
-        HttpRequest httpRequest = this.b(HttpRequest.post(string4));
-        httpRequest.form(hashMap);
-        return ApiService.a(httpRequest, PostPublish.class);
     }
 
     public final RecommendUgcRoot i(String string, int n) {
@@ -1047,172 +652,13 @@ public class ApiService {
         return ApiService.a(this.a(HttpRequest.get(string2)), RecommendUgcRoot.class);
     }
 
-    public final ResultStatus i(String string, String string2) {
-        String string3 = f + "/user/unfollow";
-        HashMap<String, String> hashMap = new HashMap<>();
-        hashMap.put("token", string);
-        hashMap.put("followeeId", string2);
-        HttpRequest httpRequest = this.b(HttpRequest.post(string3));
-        httpRequest.form(hashMap);
-        return ApiService.a(httpRequest, ResultStatus.class);
-    }
-
-    public final HotTweetResult j(String string) {
-        HttpRequest httpRequest;
-        String string2 = f + "/user/twitter/hottweets";
-        if (string != null) {
-            HashMap<String, String> hashMap = new HashMap<>();
-            hashMap.put("last", string);
-            httpRequest = HttpRequest.get(string2, hashMap, false);
-        } else {
-            httpRequest = HttpRequest.get(string2);
-        }
-        return ApiService.a(this.a(httpRequest), HotTweetResult.class);
-    }
-
-    public final PostPublish j(String string, String string2) {
-        String string3 = f + "/user/twitter";
-        HashMap<String, String> hashMap = new HashMap<>();
-        hashMap.put("token", string);
-        hashMap.put("content", string2);
-        HttpRequest httpRequest = this.b(HttpRequest.post(string3));
-        httpRequest.form(hashMap);
-        return ApiService.a(httpRequest, PostPublish.class);
-    }
-
-    public final ResultStatus j(String string, String string2, String string3) {
-        String string4 = f + String.format(Locale.CHINA, "/post/%s/comment", string);
-        HashMap<String, String> hashMap = new HashMap<>();
-        hashMap.put("token", string2);
-        hashMap.put("content", string3);
-        HttpRequest httpRequest = this.b(HttpRequest.post(string4));
-        httpRequest.form(hashMap);
-        return ApiService.a(httpRequest, ResultStatus.class);
-    }
-//
-//    public final SplashRoot j() {
-//        String string = f + "/splashes/android";
-//        return ApiService.a(this.a(HttpRequest.get(string)), SplashRoot.class);
-//    }
-
-    public final PostPublish k(String string, String string2) {
-        String string3 = f + String.format(Locale.CHINA, "/user/twitter/delete/%s", string2);
-        HashMap<String, String> hashMap = new HashMap<>();
-        hashMap.put("token", string);
-        HttpRequest httpRequest = this.b(HttpRequest.post(string3));
-        httpRequest.form(hashMap);
-        return ApiService.a(httpRequest, PostPublish.class);
-    }
-
-    public final TopicSummary k() {
-        String string = f + "/post/post-count";
-        return ApiService.a(this.a(HttpRequest.get(string)), TopicSummary.class);
-    }
-
-    public final TweetsResult k(String string) {
-        HttpRequest httpRequest;
-        StringBuilder stringBuilder = new StringBuilder().append(f);
-        Object[] arrobject = new Object[]{CommonUtil.getAccount().getUser().getId()};
-        String string2 = stringBuilder.append(String.format(Locale.CHINA, "/user/%s/twitter", arrobject)).toString();
-        if (string != null) {
-            HashMap<String, String> hashMap = new HashMap<>();
-            hashMap.put("last", string);
-            httpRequest = HttpRequest.get(string2, hashMap, false);
-        } else {
-            httpRequest = HttpRequest.get(string2);
-        }
-        return ApiService.a(this.a(httpRequest), TweetsResult.class);
-    }
-
-    public final VoteResult k(String string, String string2, String string3) {
-        String string4 = f + String.format(Locale.CHINA, "/post/%s/vote", string);
-        HashMap<String, String> hashMap = new HashMap<>();
-        hashMap.put("token", string2);
-        hashMap.put("n", string3);
-        HttpRequest httpRequest = this.b(HttpRequest.post(string4));
-        httpRequest.form(hashMap);
-        return ApiService.a(httpRequest, VoteResult.class);
-    }
-
-    public final PostDetailComment l(String string, String string2) {
-        HttpRequest httpRequest;
-        String string3 = f + String.format(Locale.CHINA, "/user/twitter/%s/comments", string);
-        if (string2 != null) {
-            HashMap<String, String> hashMap = new HashMap<>();
-            hashMap.put("last", string2);
-            httpRequest = HttpRequest.get(string3, hashMap, false);
-        } else {
-            httpRequest = HttpRequest.get(string3);
-        }
-        return ApiService.a(this.a(httpRequest), PostDetailComment.class);
-    }
-
-    public final ResultStatus l(String string, String string2, String string3) {
-        String string4 = f + String.format(Locale.CHINA, "/post/%s/comment/%s/report", string, string2);
-        HashMap<String, String> hashMap = new HashMap<>();
-        hashMap.put("reason", string3);
-        HttpRequest httpRequest = this.b(HttpRequest.post(string4));
-        httpRequest.form(hashMap);
-        return ApiService.a(httpRequest, ResultStatus.class);
-    }
-
     public final ShelfMsgRoot l() {
         String string = f + "/notification/shelfMessage?platform=android";
         return ApiService.a(this.a(HttpRequest.get(string)), ShelfMsgRoot.class);
     }
 
-    public final TweetResult l(String string) {
-        String string2 = f + String.format(Locale.CHINA, "/user/twitter/%s", string);
-        return ApiService.a(this.a(HttpRequest.get(string2)), TweetResult.class);
-    }
-
-    public final PostPublish m(String string, String string2) {
-        String string3 = f + String.format(Locale.CHINA, "/user/twitter/retweet/%s", string2);
-        HashMap<String, String> hashMap = new HashMap<>();
-        hashMap.put("token", string);
-        HttpRequest httpRequest = this.b(HttpRequest.post(string3));
-        httpRequest.form(hashMap);
-        return ApiService.a(httpRequest, PostPublish.class);
-    }
-
-    public final ResultStatus m(String string, String string2, String string3) {
-        String string4 = f + String.format(Locale.CHINA, "/post/review/%s/helpful", string2);
-        HashMap<String, String> hashMap = new HashMap<>();
-        hashMap.put("token", string);
-        hashMap.put("is_helpful", string3);
-        HttpRequest httpRequest = this.b(HttpRequest.post(string4));
-        httpRequest.form(hashMap);
-        return ApiService.a(httpRequest, ResultStatus.class);
-    }
-
-    public final UserInfoResult m(String string) {
-        String string2 = f + String.format(Locale.CHINA, "/user/info/%s", string);
-        return ApiService.a(this.a(HttpRequest.get(string2)), UserInfoResult.class);
-    }
-
-    public final VipPlan m() {
-        String string = f + "/purchase/vip/plan";
-        return ApiService.a(this.a(HttpRequest.get(string)), VipPlan.class);
-    }
-
-    public final FollowResult n(String string, String string2) {
-        String string3 = f + String.format(Locale.CHINA, "/user/%s/has/followed/%s", string, string2);
-        return ApiService.a(this.b(HttpRequest.get(string3)), FollowResult.class);
-    }
-
-    public final ResultStatus n(String string, String string2, String string3) {
-        String string4 = f + "/statistics/read";
-        HashMap<String, String> hashMap = new HashMap<>();
-        hashMap.put("date", string);
-        hashMap.put("uuid", string2);
-        hashMap.put("book", string3);
-        HttpRequest httpRequest = this.b(HttpRequest.post(string4));
-        httpRequest.form(hashMap);
-        return ApiService.a(httpRequest, ResultStatus.class);
-    }
-
     public final List<BookSummary> n(String string) {
-         ArrayList<BookSummary> arrayList = new ArrayList<>();
+        ArrayList<BookSummary> arrayList = new ArrayList<>();
         String string2 = CommonUtil.encodeUrl(string);
         String string3 = f + String.format(Locale.CHINA, "/book/fuzzy-search?query=%s", string2);
         SearchResultRoot searchResultRoot = ApiService.a(this.a(HttpRequest.get(string3)), SearchResultRoot.class);
@@ -1220,33 +666,10 @@ public class ApiService {
         return searchResultRoot.getBooks();
     }
 
-    public final ResultStatus o(String var1_1, String var2_2, String var3_3) {
-        String var4_4 = ApiService.f + String.format(Locale.CHINA, "/post/%s/comment/%s/like", var1_1, var2_2);
-        HttpRequest var6_5 = HttpRequest.post(var4_4);
-        HashMap<String, String> var7_6 = new HashMap<>();
-        var7_6.put("token", var3_3);
-        HttpRequest var9_7 = this.b(var6_5);
-        var9_7.form(var7_6);
-        return ApiService.a(var9_7, ResultStatus.class);
-    }
-
     public final SearchResultRoot o(String string) {
         String string2 = CommonUtil.encodeUrl(string);
         String string3 = f + "/book/accurate-search?author=" + string2;
         return ApiService.a(this.a(HttpRequest.get(string3)), SearchResultRoot.class);
-    }
-
-    public final TweetsResult o(String string, String string2) {
-        HttpRequest httpRequest;
-        String string3 = f + String.format(Locale.CHINA, "/user/%s/twitter", string);
-        if (string2 != null) {
-            HashMap<String, String> hashMap = new HashMap<>();
-            hashMap.put("last", string2);
-            httpRequest = HttpRequest.get(string3, hashMap, false);
-        } else {
-            httpRequest = HttpRequest.get(string3);
-        }
-        return ApiService.a(this.a(httpRequest), TweetsResult.class);
     }
 
     public final UgcFilterRoot o() {
@@ -1278,27 +701,10 @@ public class ApiService {
         }
     }
 
-    public final ResultServer p(String string, String string2, String string3) {
-        String string4 = f + "/statistics/install";
-        HashMap<String, String> hashMap = new HashMap<>();
-        hashMap.put("platform", "android");
-        hashMap.put("device-id", string);
-        hashMap.put("recommended", string2);
-        hashMap.put("op", string3);
-        HttpRequest httpRequest = this.b(HttpRequest.post(string4));
-        httpRequest.form(hashMap);
-        return ApiService.a(httpRequest, ResultServer.class);
-    }
-
     public final SearchResultRoot p(String string) {
         String string2 = CommonUtil.encodeUrl(string);
         String string3 = f + String.format(Locale.CHINA, "/book/fuzzy-search?query=%s", string2) + "&onlyTitle=true";
         return ApiService.a(this.a(HttpRequest.get(string3)), SearchResultRoot.class);
-    }
-
-    public final ReviewHistory q(String string, String string2) {
-        String string3 = f + String.format(Locale.CHINA, "/post/review/one-by-book-user?book=%s&token=%s", string, string2);
-        return ApiService.a(this.a(HttpRequest.get(string3)), ReviewHistory.class);
     }
 
     public final SearchPromRoot q(String string) {
@@ -1329,29 +735,9 @@ public class ApiService {
         return ApiService.a(this.a(HttpRequest.get(string2), 7), SgTocRoot.class);
     }
 
-    public final IKanshuUrlResult t() {
-        String string = f + "/promotion/17k";
-        return ApiService.a(this.a(HttpRequest.get(string)), IKanshuUrlResult.class);
-    }
-
-    public final PurchaseVipResult t(String string, String string2) {
-        String string3 = f + "/purchase/vip/plan";
-        HashMap<String, String> hashMap = new HashMap<>();
-        hashMap.put("token", string);
-        hashMap.put("plan", string2);
-        HttpRequest httpRequest = this.b(HttpRequest.post(string3));
-        httpRequest.form(hashMap);
-        return ApiService.a(httpRequest, PurchaseVipResult.class);
-    }
-
     public final LdTocRoot t(String sourceId) {
         String string2 = String.format(Locale.CHINA, "http://m.leidian.com/ebook/detail/index.php?c=ebook&a=chapterlist&bid=%s&total=100000", sourceId);
         return ApiService.a(this.a(HttpRequest.get(string2), 8), LdTocRoot.class);
-    }
-
-    public final BookTopRoot u() {
-        String string = f + "/favorite/book/top";
-        return ApiService.a(this.a(HttpRequest.get(string)), BookTopRoot.class);
     }
 
     public final ChangeNickNameRoot u(String string, String string2) {
@@ -1391,15 +777,6 @@ public class ApiService {
     public final int w(String string) {
         String string2 = String.format(Locale.CHINA, "http://bookshelf.html5.qq.com/ajax?m=show_bookcatalog&resourceid=%s", string);
         return SsChapterJson.getTocCount(this.a(HttpRequest.get(string2), 6).body());
-    }
-
-    public final ResultStatus w(String string, String string2) {
-        String string3 = f + String.format(Locale.CHINA, "/post/%s/report", string);
-        HashMap<String, String> hashMap = new HashMap<>();
-        hashMap.put("reason", string2);
-        HttpRequest httpRequest = this.b(HttpRequest.post(string3));
-        httpRequest.form(hashMap);
-        return ApiService.a(httpRequest, ResultStatus.class);
     }
 
     public final ChapterRoot x(String string) {
@@ -1454,16 +831,6 @@ public class ApiService {
         }
     }
 
-    public final ResultStatus y(String string, String string2) {
-        String string3 = f + "/user/collected-post";
-        HashMap<String, String> hashMap = new HashMap<>();
-        hashMap.put("token", string);
-        hashMap.put("post", string2);
-        HttpRequest httpRequest = this.b(HttpRequest.post(string3));
-        httpRequest.form(hashMap);
-        return ApiService.a(httpRequest, ResultStatus.class);
-    }
-
     public final BookRankDetailRoot z(String string) {
         String string2 = f + String.format(Locale.CHINA, "/ranking/%s", string);
         return ApiService.a(this.a(HttpRequest.get(string2)), BookRankDetailRoot.class);
@@ -1478,15 +845,6 @@ public class ApiService {
         httpRequest.form(hashMap);
         return ApiService.a(httpRequest, ResultStatus.class);
     }
-
-//    static class JsonException extends IOException {
-//        private static final long serialVersionUID = -8247637549733902252L;
-//
-//        public JsonException(JsonParseException jsonParseException) {
-//            super(jsonParseException.getMessage());
-//            this.initCause(jsonParseException);
-//        }
-//    }
 
     static final class DateDeserializer implements JsonDeserializer<Date> {
         @Override
