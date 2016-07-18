@@ -46,16 +46,6 @@
         <item>"你还没有过期的追书券哟
 赶快去书城使用吧！"</item>
     </string-array>
-    <string-array name="pay_voucher_params">
-        <item>useable</item>
-        <item>unuseable</item>
-        <item>expired</item>
-    </string-array>
-    <string-array name="pay_voucher_tabs">
-        <item>可使用</item>
-        <item>已用完</item>
-        <item>已过期</item>
-    </string-array>
     <string-array name="post_detail_report">
         <item>催更、辱骂作者及他人</item>
         <item>广告及垃圾信息</item>
