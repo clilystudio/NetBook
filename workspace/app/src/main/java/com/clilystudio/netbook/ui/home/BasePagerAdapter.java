@@ -8,12 +8,12 @@ import android.support.v4.view.PagerAdapter;
 import android.view.View;
 import android.view.ViewGroup;
 
-public abstract class QuiteBookPagerAdapter extends PagerAdapter {
+public abstract class BasePagerAdapter extends PagerAdapter {
     private final FragmentManager a;
     private FragmentTransaction b = null;
     private Fragment c = null;
 
-    public QuiteBookPagerAdapter(FragmentManager fragmentManager) {
+    public BasePagerAdapter(FragmentManager fragmentManager) {
         this.a = fragmentManager;
     }
 

@@ -16,7 +16,7 @@ import android.widget.TextView;
 
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.IntentBuilder;
-import com.clilystudio.netbook.ui.home.QuiteBookPagerAdapter;
+import com.clilystudio.netbook.ui.home.BasePagerAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -132,7 +132,7 @@ public class BookRankMainActivity extends BaseTabActivity implements ViewPager.O
         }
     }
 
-    final class aS extends QuiteBookPagerAdapter {
+    final class aS extends BasePagerAdapter {
         private String[] a;
 
         public aS(FragmentManager fragmentManager) {

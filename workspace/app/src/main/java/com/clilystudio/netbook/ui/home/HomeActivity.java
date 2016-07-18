@@ -463,7 +463,7 @@ public class HomeActivity extends BaseActivity implements ViewPager.OnPageChange
         }
     }
 
-    final class HomeAdapter extends QuiteBookPagerAdapter {
+    final class HomeAdapter extends BasePagerAdapter {
         private String[] mTags = {"homeTag0", "homeTag1"};
 
         public HomeAdapter(FragmentManager fragmentManager) {

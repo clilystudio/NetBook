@@ -13,7 +13,7 @@ import android.widget.TabWidget;
 import android.widget.TextView;
 
 import com.clilystudio.netbook.R;
-import com.clilystudio.netbook.ui.home.QuiteBookPagerAdapter;
+import com.clilystudio.netbook.ui.home.BasePagerAdapter;
 import com.clilystudio.netbook.widget.TabWidgetV2;
 
 import java.util.ArrayList;
@@ -143,7 +143,7 @@ public abstract class SimpleTabActivity extends BaseTabActivity implements ViewP
         }
     }
 
-    final class ch extends QuiteBookPagerAdapter {
+    final class ch extends BasePagerAdapter {
 
         public ch(FragmentManager fragmentManager) {
             super(fragmentManager);
