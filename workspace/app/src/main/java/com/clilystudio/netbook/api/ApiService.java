@@ -123,33 +123,18 @@ import java.util.Locale;
 
 public class ApiService {
     private static final String b = ApiService.class.getSimpleName();
-    private static String d = "zhuishushenqi.com";
-    private static final String e = "http://api." + d;
+    private static String mApiUrl = "zhuishushenqi.com";
+    private static final String e = "http://api." + mApiUrl;
     private static String f = e;
-    private static String g = "http://chapter." + d;
-    private static String h = "http://chapter2." + d;
-    public static String a = "http://statics." + d;
-    private static String i = "http://m.baidu.com/s?word=";
-    private static String j = "http://tieba.baidu.com/f?kw=";
-    private static String k = "http://m.sm.cn/s?q=";
+    private static String g = "http://chapter." + mApiUrl;
+    private static String h = "http://chapter2." + mApiUrl;
+    public static String a = "http://statics." + mApiUrl;
     private static final Gson l = new GsonBuilder().registerTypeAdapter(Date.class, new DateDeserializer()).create();
 
     private final UserAgentManager c;
 
     public ApiService(UserAgentManager f2) {
         this.c = f2;
-    }
-
-    public static String Q(String string) {
-        return i + string;
-    }
-
-    public static String R(String string) {
-        return j + string;
-    }
-
-    public static String S(String string) {
-        return k + string;
     }
 
     private static <V> V a(HttpRequest httpRequest, Class<V> class_) {
@@ -172,58 +157,13 @@ public class ApiService {
         return v;
     }
 
-    public static String a(String string, int n) {
-        return String.format(Locale.CHINA, "http://m.leidian.com/index.php?c=ebook&a=chapterData&bid=%s&idx=%d", string, n);
-    }
-
-    public static String a(String string, int n, String string2) {
-        String string3 = CommonUtil.encodeUrl(string2);
-        String[] arrstring = CommonUtil.splitSourceId(string);
-        if (arrstring != null) {
-            Object[] arrobject = new Object[]{arrstring[0], arrstring[1], n, string3};
-            return String.format(Locale.CHINA, "http://book.easou.com/ta/show.m?gid=%s&nid=%s&st=%d&cu=%s", arrobject);
+    public static void a(String apiUrl) {
+        if (!apiUrl.equals(mApiUrl)) {
+            mApiUrl = apiUrl;
+            f = "http://api." + mApiUrl;
+            g = "http://chapter." + mApiUrl;
+            a = "http://statics." + mApiUrl;
         }
-        return null;
-    }
-
-    public static String a(String string, String string2, String string3, String string4, String string5) {
-        return String.format(Locale.CHINA, "http://novel.mse.sogou.com/content.php?md=%s&bid=%s&cmd=%s&url=%s&chapter=%s&page=1&referred=detail", string, string2, string3, string4, string5);
-    }
-
-    /*
-     * Enabled aggressive block sorting
-     */
-    public static void a(String string) {
-        if (string.equals(d) || d.contains("192.168")) {
-            return;
-        }
-        d = string;
-        f = "http://api." + d;
-        g = "http://chapter." + d;
-        a = "http://statics." + d;
-    }
-
-    /*
-     * Enabled force condition propagation
-     * Lifted jumps to return sites
-     */
-    private static void a(String url, long timeCost, int responseCode, String exceptionName) {
-        long l2;
-        try {
-            l2 = new Date().getTime();
-            if (l2 <= timeCost) return;
-        } catch (Exception var5_5) {
-            return;
-        }
-    }
-
-    private static String ad(String string) {
-        return string + "&distillate=true";
-    }
-
-    public static String b(String string, int n, String string2) {
-        String string3 = CommonUtil.encodeUrl(CommonUtil.encodeUrl(string2));
-        return String.format(Locale.CHINA, "http://book.soso.com/#!/detail/%s/%d/%s", string, n, string3);
     }
 
     private static <V> List<V> b(HttpRequest httpRequest, Class<V> class_) {
@@ -247,24 +187,13 @@ public class ApiService {
         return arrayList;
     }
 
-    private static ChapterRoot w() {
+    private static ChapterRoot getDefaultChapterRoot() {
         ChapterRoot chapterRoot = new ChapterRoot();
         chapterRoot.setStatus(-3);
         chapterRoot.setChapter(new Chapter());
         return chapterRoot;
     }
 
-    private static ChapterRoot x() {
-        ChapterRoot chapterRoot = new ChapterRoot();
-        chapterRoot.setStatus(-3);
-        chapterRoot.setChapter(new Chapter());
-        return chapterRoot;
-    }
-
-    /*
-     * Enabled force condition propagation
-     * Lifted jumps to return sites
-     */
     private HttpRequest a(HttpRequest httpRequest) {
         long l = new Date().getTime();
         if (DnsManager.isUseDns()) {
@@ -272,19 +201,18 @@ public class ApiService {
         }
         try {
             boolean bl = this.b(httpRequest).ok();
-            ApiService.a(httpRequest.url().toString(), l, httpRequest.code(), "");
             if (!bl) {
                 Log.e("ApiService", "Unexpected response code: " + httpRequest.code());
             }
         } catch (HttpRequest.HttpRequestException var4_4) {
-            ApiService.a(httpRequest.url().toString(), l, httpRequest.code(), var4_4.getClass().getName());
+            var4_4.printStackTrace();
         }
         return httpRequest;
     }
 
-    private HttpRequest a(HttpRequest httpRequest, int n) {
+    private HttpRequest a(HttpRequest httpRequest, int deviceType) {
         try {
-            if (!this.b(httpRequest, n).ok()) {
+            if (!this.b(httpRequest, deviceType).ok()) {
                 Log.e(b, "Unexpected response code: " + httpRequest.code());
             }
         } catch (HttpRequest.HttpRequestException var3_3) {
@@ -293,10 +221,10 @@ public class ApiService {
         return httpRequest;
     }
 
-    private Root a(String var1_1, HashMap<String, String> var2_2) {
-        HttpRequest var4_3 = this.b(HttpRequest.post(ApiService.f + var1_1));
-        var4_3.form(var2_2);
-        return ApiService.a(var4_3, Root.class);
+    private Root a(String url, HashMap<String, String> values) {
+        HttpRequest request = this.b(HttpRequest.post(ApiService.f + url));
+        request.form(values);
+        return ApiService.a(request, Root.class);
     }
 
     private <V> V a(String string, Class<V> class_) {
@@ -313,10 +241,10 @@ public class ApiService {
         return httpRequest;
     }
 
-    private HttpRequest b(HttpRequest httpRequest, int n) {
+    private HttpRequest b(HttpRequest httpRequest, int deviceType) {
         httpRequest.chunk(15000).bufferSize(15000);
-        httpRequest.userAgent(this.c.getUserAgent(n));
-        if (n == 6) {
+        httpRequest.userAgent(this.c.getUserAgent(deviceType));
+        if (deviceType == 6) {
             httpRequest.referer("http://bookshelf.html5.qq.com/page?t=pad");
         }
         return httpRequest;
@@ -335,16 +263,6 @@ public class ApiService {
     public final RemoteBookShelf B(String string) {
         String string2 = f + String.format(Locale.CHINA, "/user/bookshelf?token=%s", string);
         return ApiService.a(this.a(HttpRequest.get(string2)), RemoteBookShelf.class);
-    }
-
-    public final void B(String string, String string2) {
-        String string3 = f + String.format(Locale.CHINA, "/recommend-app/android/%s/download", string);
-        HttpRequest httpRequest = HttpRequest.post(string3);
-        HashMap<String, String> hashMap = new HashMap<>();
-        hashMap.put("token", string2);
-        HttpRequest httpRequest2 = this.b(httpRequest);
-        httpRequest2.form(hashMap);
-        ApiService.a(httpRequest2, ResultStatus.class);
     }
 
     public final BookReviewRoot C(String string) {
@@ -520,7 +438,7 @@ public class ApiService {
     public final BookHelpList a(String string, String string2, int n, int n2, boolean bl) {
         String string3 = f + String.format(Locale.CHINA, "/post/help?duration=%s&sort=%s&start=%d&limit=%d", string, string2, n, n2);
         if (bl) {
-            string3 = ApiService.ad(string3);
+            string3 = string3 + "&distillate=true";
         }
         return ApiService.a(this.a(HttpRequest.get(string3)), BookHelpList.class);
     }
@@ -536,7 +454,7 @@ public class ApiService {
         boolean bl = httpRequest.ok();
         int n2 = httpRequest.code();
         if (!bl && n2 >= 500) {
-            return ApiService.x();
+            return ApiService.getDefaultChapterRoot();
         }
         EsChapterRoot esChapterRoot = ApiService.a(httpRequest, EsChapterRoot.class);
         if (esChapterRoot == null) return null;
@@ -550,13 +468,13 @@ public class ApiService {
             return chapterRoot;
         }
         if (esChapterRoot.isSuccess()) return null;
-        return ApiService.x();
+        return ApiService.getDefaultChapterRoot();
     }
 
     public final DiscussSummaryList a(String string, String string2, int n, int n2, String string3, boolean bl) {
         String string4 = f + String.format(Locale.CHINA, "/post/by-block?block=%s&duration=%s&sort=%s&type=all&start=%d&limit=%d", string3, string, string2, n, n2);
         if (bl) {
-            string4 = ApiService.ad(string4);
+            string4 = string4 + "&distillate=true";
         }
         return ApiService.a(this.a(HttpRequest.get(string4)), DiscussSummaryList.class);
     }
@@ -632,7 +550,7 @@ public class ApiService {
     public final ReviewList a(String string, String string2, String string3, int n, int n2, boolean bl) {
         String string4 = f + String.format(Locale.CHINA, "/post/review?duration=%s&sort=%s&type=%s&start=%d&limit=%d", string, string3, string2, n, n2);
         if (bl) {
-            string4 = ApiService.ad(string4);
+            string4 = string4 + "&distillate=true";
         }
         return ApiService.a(this.a(HttpRequest.get(string4)), ReviewList.class);
     }
@@ -706,7 +624,7 @@ public class ApiService {
     public final GirlTopicList b(String string, String string2, int n, int n2, boolean bl) {
         String string3 = f + String.format(Locale.CHINA, "/post/by-block?block=girl&duration=%s&sort=%s&start=%d&limit=%d", string, string2, n, n2);
         if (bl) {
-            string3 = ApiService.ad(string3);
+            string3 = string3 + "&distillate=true";
         }
         return ApiService.a(this.a(HttpRequest.get(string3)), GirlTopicList.class);
     }
@@ -808,7 +726,7 @@ public class ApiService {
         int n2 = httpRequest.code();
         if (bl) return SsChapterJson.getChapterRoot(httpRequest.body());
         if (n2 < 500) return SsChapterJson.getChapterRoot(httpRequest.body());
-        return ApiService.x();
+        return ApiService.getDefaultChapterRoot();
     }
 
     public final ChapterRoot c(String sourceId, int index, String leidianTK) {
@@ -817,7 +735,7 @@ public class ApiService {
         boolean bl = httpRequest.ok();
         int n2 = httpRequest.code();
         if (!bl && n2 >= 500) {
-            return ApiService.x();
+            return ApiService.getDefaultChapterRoot();
         }
         LdChapterRoot ldChapterRoot = ApiService.a(httpRequest, LdChapterRoot.class);
         if (ldChapterRoot == null || ldChapterRoot.getContent() == null) return null;
@@ -1342,7 +1260,7 @@ public class ApiService {
         boolean bl = httpRequest.ok();
         int n = httpRequest.code();
         if (!bl && n >= 500) {
-            return ApiService.x();
+            return ApiService.getDefaultChapterRoot();
         }
         SgChapterRoot sgChapterRoot = ApiService.a(httpRequest, SgChapterRoot.class);
         if (sgChapterRoot == null || sgChapterRoot.getContent() == null || sgChapterRoot.getContent().length <= 0) return null;
@@ -1495,7 +1413,7 @@ public class ApiService {
         boolean bl = httpRequest2.ok();
         int n = httpRequest2.code();
         if (!bl && n >= 500) {
-            return ApiService.w();
+            return ApiService.getDefaultChapterRoot();
         }
         ChapterRoot chapterRoot = ApiService.a(httpRequest2, ChapterRoot.class);
         if (chapterRoot == null || chapterRoot.getChapter() == null) return chapterRoot;
@@ -1526,7 +1444,7 @@ public class ApiService {
         boolean bl = httpRequest2.ok();
         int n = httpRequest2.code();
         if (!bl && n >= 500) {
-            return ApiService.w();
+            return ApiService.getDefaultChapterRoot();
         }
         ChapterRoot chapterRoot = ApiService.a(httpRequest2, ChapterRoot.class);
         if (chapterRoot == null || chapterRoot.getChapter() == null) return chapterRoot;

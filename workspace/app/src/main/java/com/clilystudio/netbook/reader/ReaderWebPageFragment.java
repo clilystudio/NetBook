@@ -2,8 +2,10 @@ package com.clilystudio.netbook.reader;
 
 import android.os.Bundle;
 
-import com.clilystudio.netbook.api.ApiService;
 import com.clilystudio.netbook.api.ApiServiceProvider;
+import com.clilystudio.netbook.util.CommonUtil;
+
+import java.util.Locale;
 
 public class ReaderWebPageFragment extends WebPageFragment {
 
@@ -52,31 +54,29 @@ public class ReaderWebPageFragment extends WebPageFragment {
 
     @Override
     protected final String a() {
-        int a = this.getArguments().getInt("MODE");
-        String string = this.getArguments().getString("KEY");
+        String key = this.getArguments().getString("KEY");
         ApiServiceProvider.getInstance();
         ApiServiceProvider.getApiService();
-        switch (a) {
-            default: {
-                return ApiService.Q(string);
-            }
-            case 4: {
-                return ApiService.S(string);
-            }
-            case 2: {
-                return ApiService.R(string);
-            }
-            case 6: {
-                return ApiService.b(string, this.getArguments().getInt("CHAPTER_INDEX"), this.getArguments().getString("CHAPTER_URL"));
-            }
-            case 7: {
-                return ApiService.a(this.getArguments().getString("SG_MD"), string, this.getArguments().getString("SG_CMD"), this.getArguments().getString("CHAPTER_URL"), this.getArguments().getString("SG_CHAPTER"));
-            }
-            case 8: {
-                return ApiService.a(string, this.getArguments().getInt("CHAPTER_INDEX"));
-            }
+        switch (this.getArguments().getInt("MODE")) {
+            case 2:
+                return "http://tieba.baidu.com/f?kw=" + key;
             case 3:
+                String[] ids = CommonUtil.splitSourceId(key);
+                if (ids != null) {
+                    return String.format(Locale.CHINA, "http://book.easou.com/ta/show.m?gid=%s&nid=%s&st=%d&cu=%s", ids[0], ids[1], this.getArguments().getInt("CHAPTER_INDEX"), CommonUtil.encodeUrl(this.getArguments().getString("CHAPTER_URL")));
+                } else {
+                    return null;
+                }
+            case 4:
+                return "http://m.sm.cn/s?q=" + key;
+            case 6:
+                return String.format(Locale.CHINA, "http://book.soso.com/#!/detail/%s/%d/%s", key, this.getArguments().getInt("CHAPTER_INDEX"), CommonUtil.encodeUrl(CommonUtil.encodeUrl(this.getArguments().getString("CHAPTER_URL"))));
+            case 7:
+                return String.format(Locale.CHINA, "http://novel.mse.sogou.com/content.php?md=%s&bid=%s&cmd=%s&url=%s&chapter=%s&page=1&referred=detail", this.getArguments().getString("SG_MD"), key, this.getArguments().getString("SG_CMD"), this.getArguments().getString("CHAPTER_URL"), this.getArguments().getString("SG_CHAPTER"));
+            case 8:
+                return String.format(Locale.CHINA, "http://m.leidian.com/index.php?c=ebook&a=chapterData&bid=%s&idx=%d", key, this.getArguments().getInt("CHAPTER_INDEX"));
+            default:
+                return "http://m.baidu.com/s?word=" + key;
         }
-        return ApiService.a(string, this.getArguments().getInt("CHAPTER_INDEX"), this.getArguments().getString("CHAPTER_URL"));
     }
 }
