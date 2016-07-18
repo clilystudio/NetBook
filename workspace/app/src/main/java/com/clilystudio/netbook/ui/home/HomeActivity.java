@@ -14,8 +14,6 @@ import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.WebView;
-import android.webkit.WebViewClient;
 import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.TabHost;
@@ -48,280 +46,105 @@ import com.clilystudio.netbook.ui.user.MyMessageActivity;
 import com.clilystudio.netbook.ui.user.UserInfoActivity;
 import com.clilystudio.netbook.util.BookShelfSyncManager;
 import com.clilystudio.netbook.util.CommonUtil;
-import com.clilystudio.netbook.util.ToastUtil;
 import com.clilystudio.netbook.util.UserNotificationManager;
 import com.clilystudio.netbook.widget.TabWidgetV2;
 import com.squareup.otto.Subscribe;
 import com.umeng.onlineconfig.OnlineConfigAgent;
 import com.xiaomi.mipush.sdk.MiPushClient;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.Enumeration;
 import java.util.List;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipFile;
 
 import cn.sharesdk.framework.ShareSDK;
 
-public class HomeActivity extends HomeParentActivity implements ViewPager.OnPageChangeListener,
-        View.OnClickListener,
-        TabHost.OnTabChangeListener,
-        TabHost.TabContentFactory {
-    private static final String a = HomeActivity.class.getSimpleName();
-    private static HomeActivity w;
-    private long b = 0;
-    private List<Fragment> e = new ArrayList<>();
-    private TabHost f;
-    private ViewPager g;
-    private i h;
-    private PopupWindow i;
-    private PopupWindow j;
-    private View k;
+public class HomeActivity extends HomeParentActivity implements ViewPager.OnPageChangeListener, View.OnClickListener, TabHost.OnTabChangeListener, TabHost.TabContentFactory {
+    private static final String TAG = HomeActivity.class.getSimpleName();
+    private long mBackPressTime = 0;
+    private List<Fragment> mFragmentList = new ArrayList<>();
+    private TabHost mTabHost;
+    private ViewPager mViewPager;
+    private HomeAdapter mAdapter;
+    private PopupWindow mPopMenu;
+    private PopupWindow mPopMenuBg;
+    private View mHomeMenu;
     private SmartImageView l;
     private TextView m;
     private TextView n;
     private ImageView o;
     private Account mAccount;
     private ImageView q;
-    private ViewGroup s;
-    private WebView t;
-    private boolean u;
-    private String[] v;
 
-    static /* synthetic */ String a(HomeActivity homeActivity) {
-        if (homeActivity.v != null && homeActivity.v.length > 0) {
-            int n = (int) (Math.random() * (double) homeActivity.v.length);
-            return homeActivity.v[n];
-        }
-        return null;
-    }
-
-    static /* synthetic */ void a(HomeActivity homeActivity, String string) {
-        if (homeActivity.t != null) {
-            homeActivity.t.destroy();
-        }
-        homeActivity.t = new WebView(homeActivity);
-        homeActivity.t.getSettings().setJavaScriptEnabled(true);
-        homeActivity.t.getSettings().setCacheMode(2);
-        homeActivity.t.setWebViewClient(new WebViewClient() {
-
-            @Override
-            public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                view.loadUrl(url);
-                return true;
-            }
-        });
-        homeActivity.t.loadUrl(string);
-        homeActivity.u = true;
-    }
-
-    private static void a(List<BookReadRecord> list) {
-        for (BookReadRecord bookReadRecord : list) {
-            BookSubRecord.create("book:" + bookReadRecord.getBookId());
-        }
-    }
-
-    static /* synthetic */ String[] a(HomeActivity homeActivity, String[] arrstring) {
-        homeActivity.v = arrstring;
-        return arrstring;
-    }
-
-    public static HomeActivity b() {
-        return w;
-    }
-
-    static /* synthetic */ List b(HomeActivity homeActivity) {
-        return homeActivity.e;
-    }
-
-    static /* synthetic */ ViewPager c(HomeActivity homeActivity) {
-        return homeActivity.g;
-    }
-
-    static /* synthetic */ ApiServiceProvider f(HomeActivity homeActivity) {
-        return homeActivity.d;
-    }
-
-    static /* synthetic */ String g(HomeActivity homeActivity) {
-        return homeActivity.o();
-    }
-
-    static /* synthetic */ ApiServiceProvider h(HomeActivity homeActivity) {
-        return homeActivity.d;
-    }
-
-    private void a(int n) {
-        if (n >= 0 && n < this.h.getCount()) {
-            this.g.setCurrentItem(n, true);
-            if (n == -1 + this.h.getCount()) {
-                this.u = true;
+    private void setUserMenuItem() {
+        if (this.mHomeMenu != null) {
+            if (this.mAccount == null || this.mAccount.getUser() == null) {
+                this.l.setImageResource(R.drawable.home_menu_0);
+                this.m.setText("请登录");
+            } else {
+                User user = this.mAccount.getUser();
+                this.l.setImageUrl(user.getFullAvatar());
+                this.m.setText(user.getNickname());
             }
         }
     }
 
-    /*
-     * Enabled force condition propagation
-     * Lifted jumps to return sites
-     */
-    private void a(Intent intent) {
-        String string = intent.getStringExtra("file_name");
-        if (string == null) return;
-        if ("nonsupport".equals(string)) {
-            ToastUtil.showShortToast(this, "\u5f88\u62b1\u6b49\uff0c\u6682\u4e0d\u652f\u6301\u6b64\u683c\u5f0f\u7684\u56fe\u4e66");
-            return;
+    private void showPopMenu() {
+        if (this.mPopMenuBg == null || !this.mPopMenuBg.isShowing()) {
+            this.mPopMenuBg = new PopupWindow(this.getLayoutInflater().inflate(R.layout.home_menu_bg_popup, (ViewGroup) getWindow().getDecorView(), false), -1, CommonUtil.getWindowHeight(this));
+            this.mPopMenuBg.setAnimationStyle(R.style.home_menu_bg_anim);
+            this.mPopMenuBg.showAtLocation(this.getActionBar().getCustomView(), 0, 0, 0);
         }
-        Intent intent2 = new Intent("com.clilystudio.netbook.ACTION_READ_TXT");
-        intent2.putExtra("file_name", string);
-        this.startActivity(intent2);
-    }
-
-    private void a(Account account) {
-        UserNotificationManager.getInstance(this).getUserNotificationCount(account);
-    }
-
-    /*
-     * Enabled aggressive block sorting
-     */
-    private void a(User user) {
-        if (user == null || this.k == null) {
-            return;
-        }
-        this.l.setImageUrl(user.getFullAvatar());
-        this.m.setText(user.getNickname());
-    }
-
-    private void e(int n) {
-        switch (n) {
-            case R.id.home_action_menu_search:
-                this.startActivity(SearchActivity.a(this));
-                break;
-            case R.id.home_action_menu_more:
-                this.l();
-                break;
-        }
-    }
-
-    private void h() {
-        for (BookSubRecord bookSubRecord : BookSubRecord.getAll()) {
-            MiPushClient.subscribe(this.getApplicationContext(), bookSubRecord.pushId, null);
-        }
-    }
-
-    private void i() {
-        for (BookUnSubRecord bookUnSubRecord : BookUnSubRecord.getAll()) {
-            MiPushClient.unsubscribe(this.getApplicationContext(), bookUnSubRecord.pushId, null);
-        }
-    }
-
-    private float j() {
-        String string = OnlineConfigAgent.getInstance().getConfigParams(this, "rate_17kflow");
-        try {
-            return Float.parseFloat(string);
-        } catch (Exception var2_3) {
-            return 0.0f;
-        }
-    }
-
-    private void k() {
-        if (this.k != null) {
-            this.l.setImageResource(R.drawable.home_menu_0);
-            this.m.setText("\u8bf7\u767b\u5f55");
-        }
-    }
-
-    private void l() {
-        try {
-            if (this.j == null || !this.j.isShowing()) {
-                this.j = new PopupWindow(this.getLayoutInflater().inflate(R.layout.home_menu_bg_popup, (ViewGroup) getWindow().getDecorView(), false), -1, CommonUtil.getWindowHeight(this));
-                this.j.setAnimationStyle(R.style.home_menu_bg_anim);
-                this.j.showAtLocation(this.getActionBar().getCustomView(), 0, 0, 0);
-            }
-            View view = this.findViewById(R.id.host);
-            if (this.i == null) {
-                this.i = new PopupWindow(this.k, this.getResources().getDimensionPixelSize(R.dimen.home_popup_width), -2);
-                this.i.setFocusable(true);
-                this.i.setOutsideTouchable(true);
-                this.i.setBackgroundDrawable(new ColorDrawable(0));
-                this.i.getContentView().setFocusableInTouchMode(true);
-                this.i.getContentView().setFocusable(true);
-                this.i.getContentView().setOnKeyListener(new View.OnKeyListener() {
-                    @Override
-                    public boolean onKey(View v, int keyCode, KeyEvent event) {
-                        if (event.getAction() == 0 && keyCode == KeyEvent.KEYCODE_MENU && event.getRepeatCount() == 0) {
-                            HomeActivity.this.m();
-                            return true;
-                        }
-                        return false;
-                    }
-                });
-            }
-            this.i.setAnimationStyle(R.style.home_menu_anim);
-            this.i.showAtLocation(view, 53, CommonUtil.getDipSize(this, 5.0f), CommonUtil.getActionBarHeight(this) + CommonUtil.getStatusBarHeight(this));
-            this.i.setOnDismissListener(new PopupWindow.OnDismissListener() {
+        View view = this.findViewById(R.id.host);
+        if (this.mPopMenu == null) {
+            this.mPopMenu = new PopupWindow(this.mHomeMenu, this.getResources().getDimensionPixelSize(R.dimen.home_popup_width), -2);
+            this.mPopMenu.setFocusable(true);
+            this.mPopMenu.setOutsideTouchable(true);
+            this.mPopMenu.setBackgroundDrawable(new ColorDrawable(0));
+            this.mPopMenu.getContentView().setFocusableInTouchMode(true);
+            this.mPopMenu.getContentView().setFocusable(true);
+            this.mPopMenu.getContentView().setOnKeyListener(new View.OnKeyListener() {
                 @Override
-                public void onDismiss() {
-                    HomeActivity.this.n();
+                public boolean onKey(View v, int keyCode, KeyEvent event) {
+                    if (event.getAction() == 0 && keyCode == KeyEvent.KEYCODE_MENU && event.getRepeatCount() == 0) {
+                        HomeActivity.this.dismissPopMenu();
+                        return true;
+                    }
+                    return false;
                 }
             });
-        } catch (Exception var1_2) {
-            var1_2.printStackTrace();
         }
-    }
-
-    private void m() {
-        if (this.i != null && this.i.isShowing()) {
-            this.i.dismiss();
-        }
-        this.n();
-    }
-
-    private void n() {
-        if (this.j != null && this.j.isShowing()) {
-            this.j.dismiss();
-        }
-    }
-
-    /*
-     * Unable to fully structure code
-     * Enabled aggressive block sorting
-     * Enabled unnecessary exception pruning
-     * Enabled aggressive exception aggregation
-     * Lifted jumps to return sites
-     */
-    private String o() {
-        ZipFile var2_2;
-        try {
-            var2_2 = new ZipFile(getApplicationInfo().sourceDir);
-            Enumeration<? extends ZipEntry> entries = var2_2.entries();
-            do {
-                ZipEntry var9_4 = entries.nextElement();
-                if (var9_4.getName().equals("META-INF/DATA")) {
-                    BufferedReader var10_5 = new BufferedReader(new InputStreamReader(var2_2.getInputStream(var9_4)));
-                    StringBuilder var11_6 = new StringBuilder();
-                    String var12_7;
-                    while ((var12_7 = var10_5.readLine()) != null) {
-                        var11_6.append(var12_7);
-                    }
-                    var10_5.close();
-                    return var11_6.toString();
+        this.mPopMenu.setAnimationStyle(R.style.home_menu_anim);
+        this.mPopMenu.showAtLocation(view, 53, CommonUtil.getDipSize(this, 5.0f), CommonUtil.getActionBarHeight(this) + CommonUtil.getStatusBarHeight(this));
+        this.mPopMenu.setOnDismissListener(new PopupWindow.OnDismissListener() {
+            @Override
+            public void onDismiss() {
+                if (mPopMenuBg != null && mPopMenuBg.isShowing()) {
+                    mPopMenuBg.dismiss();
                 }
-            } while (entries.hasMoreElements());
-        } catch (IOException e1) {
-            e1.printStackTrace();
-        }
-        return null;
+            }
+        });
     }
 
-    public final HomeShelfFragment a(String string) {
-        HomeShelfFragment homeShelfFragment = (HomeShelfFragment) this.getSupportFragmentManager().findFragmentByTag(string);
+    private void dismissPopMenu() {
+        if (this.mPopMenu != null && this.mPopMenu.isShowing()) {
+            this.mPopMenu.dismiss();
+        }
+    }
+
+    public final HomeShelfFragment getHomeShelfFragment(String tag) {
+        HomeShelfFragment homeShelfFragment = (HomeShelfFragment) this.getSupportFragmentManager().findFragmentByTag(tag);
         if (homeShelfFragment == null) {
-            Log.i(a, "getHomeShelfFragment ");
+            Log.i(TAG, "getHomeShelfFragment ");
             homeShelfFragment = HomeShelfFragment.b();
         }
         return homeShelfFragment;
+    }
+
+    public final HomeFindFragment getHomeFindFragment(String tag) {
+        HomeFindFragment homeFindFragment = (HomeFindFragment) this.getSupportFragmentManager().findFragmentByTag(tag);
+        if (homeFindFragment == null) {
+            homeFindFragment = HomeFindFragment.a(new Bundle());
+        }
+        return homeFindFragment;
     }
 
     @Override
@@ -332,45 +155,33 @@ public class HomeActivity extends HomeParentActivity implements ViewPager.OnPage
         return view;
     }
 
-    public final void f() {
-        this.a(0);
-    }
-
-    public final HomeFindFragment g(String string) {
-        HomeFindFragment homeFindFragment = (HomeFindFragment) this.getSupportFragmentManager().findFragmentByTag(string);
-        if (homeFindFragment == null) {
-            Bundle bundle = new Bundle();
-            homeFindFragment = HomeFindFragment.a(bundle);
-        }
-        return homeFindFragment;
-    }
-
-    public final void g() {
-        this.g.setCurrentItem(2, true);
+    public final void gotoHomeFind() {
+        this.mViewPager.setCurrentItem(1, true);
     }
 
     @Subscribe
-    public void onAccountUpdated(AccountUpdatedEvent a2) {
+    public void onAccountUpdated(AccountUpdatedEvent event) {
         Account account = CommonUtil.getAccount();
         if (account != null) {
-            this.l.setImageUrl(account.getUser().getFullAvatar());
-            this.m.setText(account.getUser().getNickname());
+            User user = account.getUser();
+            this.l.setImageUrl(user.getFullAvatar());
+            this.m.setText(user.getNickname());
         }
     }
 
     @Override
     public void onBackPressed() {
-        if (this.e != null && this.e.size() > 0 && this.e.get(0) instanceof HomeShelfFragment && ((HomeShelfFragment) this.e.get(0)).c()) {
-            ((HomeShelfFragment) this.e.get(0)).e();
+        if (this.mFragmentList != null && this.mFragmentList.size() > 0 && this.mFragmentList.get(0) instanceof HomeShelfFragment && ((HomeShelfFragment) this.mFragmentList.get(0)).c()) {
+            ((HomeShelfFragment) this.mFragmentList.get(0)).e();
             return;
         }
-        long l2 = System.currentTimeMillis();
-        if (l2 - this.b > 2000) {
-            this.b = l2;
+        long backPressTime = System.currentTimeMillis();
+        if (backPressTime - this.mBackPressTime > 2000) {
+            this.mBackPressTime = backPressTime;
             Toast.makeText(this, R.string.exit_hint, Toast.LENGTH_SHORT).show();
-            return;
+        } else {
+            super.onBackPressed();
         }
-        super.onBackPressed();
     }
 
     @Subscribe
@@ -380,51 +191,39 @@ public class HomeActivity extends HomeParentActivity implements ViewPager.OnPage
         }
     }
 
-    /*
-     * Enabled aggressive block sorting
-     */
     @Override
     public void onClick(View view) {
-        this.m();
+        this.dismissPopMenu();
         switch (view.getId()) {
-            default: {
-                return;
-            }
-            case R.id.home_menu_user: {
+            case R.id.home_menu_user:
                 if (this.mAccount != null) {
-                    this.m();
                     this.startActivity(UserInfoActivity.a(this, this.mAccount.getToken()));
-                    return;
+                } else {
+                    Intent intent = AuthLoginActivity.a(this);
+                    intent.putExtra("KEY_SOURCE", AuthLoginActivity.Source.HOME);
+                    this.startActivityForResult(intent, 100);
                 }
-                Intent intent = AuthLoginActivity.a(this);
-                intent.putExtra("KEY_SOURCE", AuthLoginActivity.Source.HOME);
-                this.startActivityForResult(intent, 100);
-                return;
-            }
-            case R.id.home_menu_msg: {
+                break;
+            case R.id.home_menu_msg:
                 if (this.mAccount != null) {
-                    this.m();
                     CommonUtil.putLongPref(this, "key_enter_msg_time", System.currentTimeMillis());
                     AccountInfo accountInfo = AccountInfo.getOrCreate(this.mAccount.getToken());
                     accountInfo.setPrevUnimpNotif(UserNotificationManager.getInstance(this).getUnimportant());
                     accountInfo.save();
                     BusProvider.getInstance().post(new NotifEvent());
                     this.startActivity(new Intent(this, MyMessageActivity.class));
-                    return;
+                } else {
+                    this.startActivityForResult(AuthLoginActivity.a(this), 100);
                 }
-                this.startActivityForResult(AuthLoginActivity.a(this), 100);
-                return;
-            }
-            case R.id.home_menu_sync: {
+                break;
+            case R.id.home_menu_sync:
                 if (this.mAccount != null) {
-                    this.m();
                     new BookShelfSyncManager(this, this.mAccount.getToken()).a(false);
-                    return;
+                } else {
+                    this.startActivityForResult(AuthLoginActivity.a(this), 100);
                 }
-                this.startActivityForResult(AuthLoginActivity.a(this), 100);
-                return;
-            }
-            case R.id.home_menu_theme: {
+                break;
+            case R.id.home_menu_theme:
                 Intent intent = new Intent(this, HomeTransparentActivity.class);
                 if (CommonUtil.getBoolPref(this, "customer_night_theme", false)) {
                     this.n.setText(R.string.custom_theme_night);
@@ -442,34 +241,23 @@ public class HomeActivity extends HomeParentActivity implements ViewPager.OnPage
                 }
                 this.startActivity(intent);
                 this.overridePendingTransition(R.anim.shade_alpha_in, R.anim.shade_alpha_out);
-                return;
-            }
-            case R.id.home_menu_settings: {
+                break;
+            case R.id.home_menu_settings:
                 this.startActivity(new Intent(this, SettingsActivity.class));
-                return;
-            }
-            case R.id.home_action_menu_game: {
-                this.e(view.getId());
-                return;
-            }
-            case R.id.home_action_menu_search: {
-                this.e(view.getId());
-                return;
-            }
+                break;
+            case R.id.home_action_menu_search:
+                this.startActivity(SearchActivity.a(this));
+                break;
             case R.id.home_action_menu_more:
+                this.showPopMenu();
+                break;
         }
-        this.e(view.getId());
     }
 
-    /*
-     * Enabled aggressive block sorting
-     */
     @Override
     public void onCreate(Bundle bundle) {
-        Account account;
         super.onCreate(bundle);
-        this.setContentView(R.layout.activity_home_tabhost);
-        w = this;
+        setContentView(R.layout.activity_home_tabhost);
         ActionBar a2 = this.getActionBar();
         a2.setDisplayUseLogoEnabled(false);
         a2.setDisplayShowHomeEnabled(false);
@@ -480,39 +268,39 @@ public class HomeActivity extends HomeParentActivity implements ViewPager.OnPage
         this.q.setOnClickListener(this);
         imageView.setOnClickListener(this);
         BusProvider.getInstance().register(this);
-        this.f = (TabHost) this.findViewById(R.id.host);
+        this.mTabHost = (TabHost) this.findViewById(R.id.host);
         TabWidgetV2 tabWidgetV2 = (TabWidgetV2) this.findViewById(android.R.id.content);
-        this.g = (ViewPager) this.findViewById(R.id.pager);
-        this.h = new i(this, this.getSupportFragmentManager());
-        this.g.setOffscreenPageLimit(3);
-        this.g.setAdapter(this.h);
-        this.g.setOnPageChangeListener(this);
-        this.f.setup();
-        this.f.setOnTabChangedListener(this);
-        if (this.f.getTabWidget().getTabCount() > 0) {
-            this.f.setCurrentTab(0);
-            this.f.clearAllTabs();
+        this.mViewPager = (ViewPager) this.findViewById(R.id.pager);
+        this.mAdapter = new HomeAdapter(this.getSupportFragmentManager());
+        this.mViewPager.setOffscreenPageLimit(3);
+        this.mViewPager.setAdapter(this.mAdapter);
+        this.mViewPager.setOnPageChangeListener(this);
+        this.mTabHost.setup();
+        this.mTabHost.setOnTabChangedListener(this);
+        if (this.mTabHost.getTabWidget().getTabCount() > 0) {
+            this.mTabHost.setCurrentTab(0);
+            this.mTabHost.clearAllTabs();
         }
         LayoutInflater layoutInflater = this.getLayoutInflater();
-        for (int i2 = 0; i2 < this.h.getCount(); ++i2) {
+        for (int i2 = 0; i2 < this.mAdapter.getCount(); ++i2) {
             View view;
-            TabHost.TabSpec tabSpec = this.f.newTabSpec("tab" + i2);
+            TabHost.TabSpec tabSpec = this.mTabHost.newTabSpec("tab" + i2);
             tabSpec.setContent(this);
             view = layoutInflater.inflate(R.layout.home_tabhost_item, (ViewGroup) getWindow().getDecorView(), false);
-            ((TextView) view.findViewById(R.id.text)).setText(this.h.getPageTitle(i2));
+            ((TextView) view.findViewById(R.id.text)).setText(this.mAdapter.getPageTitle(i2));
             tabSpec.setIndicator(view);
-            this.f.addTab(tabSpec);
+            this.mTabHost.addTab(tabSpec);
         }
         this.mAccount = CommonUtil.getAccount();
-        this.k = this.getLayoutInflater().inflate(R.layout.home_popupwindow_layout, (ViewGroup) getWindow().getDecorView(), false);
-        View view = this.k.findViewById(R.id.home_menu_user);
-        View view3 = this.k.findViewById(R.id.home_menu_msg);
-        View view4 = this.k.findViewById(R.id.home_menu_sync);
-        View view5 = this.k.findViewById(R.id.home_menu_feedback);
-        View view6 = this.k.findViewById(R.id.home_menu_settings);
-        View view7 = this.k.findViewById(R.id.home_menu_theme);
-        this.k.findViewById(R.id.home_menu_scan).setOnClickListener(this);
-        this.k.findViewById(R.id.home_menu_wifi_transfer).setOnClickListener(this);
+        this.mHomeMenu = this.getLayoutInflater().inflate(R.layout.home_popupwindow_layout, (ViewGroup) getWindow().getDecorView(), false);
+        View view = this.mHomeMenu.findViewById(R.id.home_menu_user);
+        View view3 = this.mHomeMenu.findViewById(R.id.home_menu_msg);
+        View view4 = this.mHomeMenu.findViewById(R.id.home_menu_sync);
+        View view5 = this.mHomeMenu.findViewById(R.id.home_menu_feedback);
+        View view6 = this.mHomeMenu.findViewById(R.id.home_menu_settings);
+        View view7 = this.mHomeMenu.findViewById(R.id.home_menu_theme);
+        this.mHomeMenu.findViewById(R.id.home_menu_scan).setOnClickListener(this);
+        this.mHomeMenu.findViewById(R.id.home_menu_wifi_transfer).setOnClickListener(this);
         view.setOnClickListener(this);
         view3.setOnClickListener(this);
         view4.setOnClickListener(this);
@@ -522,12 +310,12 @@ public class HomeActivity extends HomeParentActivity implements ViewPager.OnPage
         this.l = (SmartImageView) view.findViewById(R.id.home_menu_user_avatar);
         this.m = (TextView) view.findViewById(R.id.home_menu_user_name);
         if (this.mAccount != null) {
-            this.a(this.mAccount.getUser());
+            this.setUserMenuItem();
         } else {
-            this.k();
+            this.setUserMenuItem();
         }
-        this.n = (TextView) this.k.findViewById(R.id.text_theme);
-        this.o = (ImageView) this.k.findViewById(R.id.icon_theme);
+        this.n = (TextView) this.mHomeMenu.findViewById(R.id.text_theme);
+        this.o = (ImageView) this.mHomeMenu.findViewById(R.id.icon_theme);
         if (CommonUtil.getBoolPref(this, "customer_night_theme", false)) {
             this.n.setText(R.string.custom_theme_day);
             this.o.setImageResource(R.drawable.theme_day);
@@ -538,12 +326,18 @@ public class HomeActivity extends HomeParentActivity implements ViewPager.OnPage
         if (!CommonUtil.getBoolPref(this, "bookPushRecords", false)) {
             List<BookReadRecord> list = BookReadRecord.getAll();
             if (list != null && !list.isEmpty()) {
-                HomeActivity.a(list);
+                for (BookReadRecord bookReadRecord : list) {
+                    BookSubRecord.create("book:" + bookReadRecord.getBookId());
+                }
             }
             CommonUtil.putBoolPref(this, "bookPushRecords", true);
         }
-        this.h();
-        this.i();
+        for (BookSubRecord bookSubRecord : BookSubRecord.getAll()) {
+            MiPushClient.subscribe(this.getApplicationContext(), bookSubRecord.pushId, null);
+        }
+        for (BookUnSubRecord bookUnSubRecord : BookUnSubRecord.getAll()) {
+            MiPushClient.unsubscribe(this.getApplicationContext(), bookUnSubRecord.pushId, null);
+        }
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -578,10 +372,10 @@ public class HomeActivity extends HomeParentActivity implements ViewPager.OnPage
         }
         this.findViewById(R.id.home_action_menu_more).setOnClickListener(this);
         this.findViewById(R.id.home_action_menu_search).setOnClickListener(this);
-        if (this != null && (account = CommonUtil.getAccount()) != null) {
+        Account account = CommonUtil.getAccount();
+        if (account != null) {
             new BookShelfSyncManager(this, account.getToken()).a(true);
         }
-        this.a(this.getIntent());
     }
 
     @Override
@@ -590,21 +384,13 @@ public class HomeActivity extends HomeParentActivity implements ViewPager.OnPage
         ShareSDK.stopSDK(this);
         BusProvider.getInstance().unregister(this);
         this.mAccount = null;
-        if (this.t != null) {
-            this.t.clearHistory();
-            this.t.clearCache(true);
-            this.t.freeMemory();
-            this.t.pauseTimers();
-            this.t.destroy();
-        }
-        this.u = false;
         CommonUtil.putIntPref(this, "search_hot_words_date", 0);
     }
 
     @Override
     public boolean onKeyDown(int n2, KeyEvent keyEvent) {
         if (n2 == KeyEvent.KEYCODE_MENU && keyEvent.getRepeatCount() == 0) {
-            this.l();
+            this.showPopMenu();
             return true;
         }
         return super.onKeyDown(n2, keyEvent);
@@ -614,27 +400,18 @@ public class HomeActivity extends HomeParentActivity implements ViewPager.OnPage
     public void onLoginEvent(LoginEvent t2) {
         this.mAccount = t2.getAccount();
         if (this.mAccount != null) {
-            this.a(this.mAccount.getUser());
+            this.setUserMenuItem();
             boolean bl = t2.getSource() != AuthLoginActivity.Source.HOME;
             new BookShelfSyncManager(this, this.mAccount.getToken()).a(bl);
             UserNotificationManager.getInstance(this).getUserNotificationCount(mAccount);
         }
     }
 
-    private void refreshUserVipInfo() {
-    }
-
-    @Override
-    protected void onNewIntent(Intent intent) {
-        super.onNewIntent(intent);
-        this.a(intent);
-    }
-
     @Subscribe
     public void onNotifEvent(NotifEvent w2) {
         int n2 = UserNotificationManager.getInstance(this).getNotificationCount();
-        View view = this.k.findViewById(R.id.msg_dot);
-        TextView textView = (TextView) this.k.findViewById(R.id.msg_count);
+        View view = this.mHomeMenu.findViewById(R.id.msg_dot);
+        TextView textView = (TextView) this.mHomeMenu.findViewById(R.id.msg_count);
         if (n2 > 0) {
             textView.setVisibility(View.VISIBLE);
             view.setVisibility(View.GONE);
@@ -663,29 +440,28 @@ public class HomeActivity extends HomeParentActivity implements ViewPager.OnPage
 
     @Override
     public void onPageScrolled(int n2, float f2, int n3) {
-        ((TabWidgetV2) this.f.getTabWidget()).a(n2, n3);
+        ((TabWidgetV2) this.mTabHost.getTabWidget()).a(n2, n3);
     }
 
     @Override
     public void onPageSelected(int n2) {
-        TabWidget tabWidget = this.f.getTabWidget();
+        TabWidget tabWidget = this.mTabHost.getTabWidget();
         int n3 = tabWidget.getDescendantFocusability();
         tabWidget.setDescendantFocusability(ViewGroup.FOCUS_BLOCK_DESCENDANTS);
-        this.f.setCurrentTab(n2);
+        this.mTabHost.setCurrentTab(n2);
         tabWidget.setDescendantFocusability(n3);
     }
 
     @Override
     public void onPause() {
         super.onPause();
-        if (this.i != null && this.i.isShowing() && this.j != null && this.j.isShowing()) {
-            this.m();
+        if (this.mPopMenu != null && this.mPopMenu.isShowing() && this.mPopMenuBg != null && this.mPopMenuBg.isShowing()) {
+            this.dismissPopMenu();
         }
     }
 
     @Override
     public void onResume() {
-        Account account;
         super.onResume();
         DnsManager.setUseDns("1".equals(OnlineConfigAgent.getInstance().getConfigParams(this, "use_http_dns")));
         if (CommonUtil.isForceEncryptChapter()) {
@@ -707,44 +483,41 @@ public class HomeActivity extends HomeParentActivity implements ViewPager.OnPage
                 }
             }.b();
         }
-        if ((account = CommonUtil.getAccount()) != null) {
-            this.mAccount = account;
-            this.a(account.getUser());
-            return;
+        this.mAccount = CommonUtil.getAccount();
+        if (this.mAccount != null) {
+            this.setUserMenuItem();
+        } else {
+            this.setUserMenuItem();
         }
-        this.mAccount = null;
-        this.k();
     }
 
     @Override
     protected void onSaveInstanceState(Bundle bundle) {
         super.onSaveInstanceState(bundle);
-        bundle.putInt("extra_index", this.f.getCurrentTab());
+        bundle.putInt("extra_index", this.mTabHost.getCurrentTab());
     }
 
     @Override
     public void onTabChanged(String string) {
-        this.a(this.f.getCurrentTab());
+        int currentTab = this.mTabHost.getCurrentTab();
+        if (currentTab >= 0 && currentTab < this.mAdapter.getCount()) {
+            this.mViewPager.setCurrentItem(currentTab, true);
+        }
     }
 
-    final class i extends ZssqFragmentPagerAdapter {
-        private String[] a;
-        private /* synthetic */ HomeActivity b;
+    final class HomeAdapter extends QuiteBookPagerAdapter {
+        private String[] mTags = {"homeTag0", "homeTag1"};
 
-        public i(HomeActivity homeActivity, FragmentManager fragmentManager) {
+        public HomeAdapter(FragmentManager fragmentManager) {
             super(fragmentManager);
-            int n2 = 0;
-            this.b = homeActivity;
-            this.a = new String[]{"homeTag0", "homeTag1"};
-            homeActivity.e.add(homeActivity.a(this.a[0]));
-            homeActivity.e.add(homeActivity.g(this.a[1]));
+            mFragmentList.add(getHomeShelfFragment(this.mTags[0]));
+            mFragmentList.add(getHomeFindFragment(this.mTags[1]));
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            while (n2 < 2) {
-                Fragment fragment = (Fragment) HomeActivity.b(homeActivity).get(n2);
+            for (int i = 0; i < mTags.length; i++) {
+                Fragment fragment = mFragmentList.get(i);
                 if (!fragment.isAdded()) {
-                    fragmentTransaction.add(HomeActivity.c(homeActivity).getId(), fragment, this.a[n2]);
+                    fragmentTransaction.add(mViewPager.getId(), fragment, this.mTags[i]);
                 }
-                ++n2;
             }
             if (!fragmentTransaction.isEmpty()) {
                 fragmentTransaction.commit();
@@ -753,23 +526,23 @@ public class HomeActivity extends HomeParentActivity implements ViewPager.OnPage
         }
 
         @Override
-        public final Fragment a(int n2) {
-            return (Fragment) HomeActivity.b(this.b).get(n2);
+        public final Fragment getFragment(int position) {
+            return mFragmentList.get(position);
         }
 
         @Override
-        protected final String b(int n2) {
-            return this.a[n2];
+        protected final String getTag(int position) {
+            return mTags[position];
         }
 
         @Override
         public final int getCount() {
-            return 3;
+            return mTags.length;
         }
 
         @Override
-        public final CharSequence getPageTitle(int n2) {
-            return this.b.getResources().getStringArray(R.array.home_tabs)[n2];
+        public final CharSequence getPageTitle(int position) {
+            return getResources().getStringArray(R.array.home_tabs)[position];
         }
     }
 }

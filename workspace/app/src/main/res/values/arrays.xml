@@ -32,7 +32,6 @@
     </string-array>
     <string-array name="home_tabs">
         <item>追书</item>
-        <item>社区</item>
         <item>发现</item>
     </string-array>
     <string-array name="my_msg_tabs">

@@ -25,7 +25,7 @@ import com.clilystudio.netbook.CachePathConst;
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.IntentBuilder;
 import com.clilystudio.netbook.model.CategoryLevelRoot;
-import com.clilystudio.netbook.ui.home.ZssqFragmentPagerAdapter;
+import com.clilystudio.netbook.ui.home.QuiteBookPagerAdapter;
 import com.clilystudio.netbook.util.CommonUtil;
 
 import java.util.ArrayList;
@@ -281,7 +281,7 @@ public class BookCategoryListActivity extends BaseTabActivity implements ViewPag
         }
     }
 
-    final class avAdapter extends ZssqFragmentPagerAdapter {
+    final class avAdapter extends QuiteBookPagerAdapter {
         private String[] a;
 
         public avAdapter(FragmentManager fragmentManager) {
@@ -304,13 +304,13 @@ public class BookCategoryListActivity extends BaseTabActivity implements ViewPag
         }
 
         @Override
-        public final Fragment a(int n) {
-            return BookCategoryListActivity.this.j.get(n);
+        public final Fragment getFragment(int position) {
+            return BookCategoryListActivity.this.j.get(position);
         }
 
         @Override
-        protected final String b(int n) {
-            return this.a[n];
+        protected final String getTag(int position) {
+            return this.a[position];
         }
 
         @Override

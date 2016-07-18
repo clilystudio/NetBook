@@ -13,7 +13,7 @@ import android.widget.TabWidget;
 import android.widget.TextView;
 
 import com.clilystudio.netbook.R;
-import com.clilystudio.netbook.ui.home.ZssqFragmentPagerAdapter;
+import com.clilystudio.netbook.ui.home.QuiteBookPagerAdapter;
 import com.clilystudio.netbook.widget.TabWidgetV2;
 
 import java.util.ArrayList;
@@ -143,7 +143,7 @@ public abstract class SimpleTabActivity extends BaseTabActivity implements ViewP
         }
     }
 
-    final class ch extends ZssqFragmentPagerAdapter {
+    final class ch extends QuiteBookPagerAdapter {
 
         public ch(FragmentManager fragmentManager) {
             super(fragmentManager);
@@ -166,13 +166,13 @@ public abstract class SimpleTabActivity extends BaseTabActivity implements ViewP
         }
 
         @Override
-        public final Fragment a(int n) {
-            return (Fragment) SimpleTabActivity.a(SimpleTabActivity.this).get(n);
+        public final Fragment getFragment(int position) {
+            return (Fragment) SimpleTabActivity.a(SimpleTabActivity.this).get(position);
         }
 
         @Override
-        protected final String b(int n) {
-            return SimpleTabActivity.this.c[n];
+        protected final String getTag(int position) {
+            return SimpleTabActivity.this.c[position];
         }
 
         @Override

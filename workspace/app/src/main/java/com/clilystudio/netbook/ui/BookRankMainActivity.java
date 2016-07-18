@@ -16,7 +16,7 @@ import android.widget.TextView;
 
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.IntentBuilder;
-import com.clilystudio.netbook.ui.home.ZssqFragmentPagerAdapter;
+import com.clilystudio.netbook.ui.home.QuiteBookPagerAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -132,7 +132,7 @@ public class BookRankMainActivity extends BaseTabActivity implements ViewPager.O
         }
     }
 
-    final class aS extends ZssqFragmentPagerAdapter {
+    final class aS extends QuiteBookPagerAdapter {
         private String[] a;
 
         public aS(FragmentManager fragmentManager) {
@@ -154,13 +154,13 @@ public class BookRankMainActivity extends BaseTabActivity implements ViewPager.O
         }
 
         @Override
-        public final Fragment a(int n) {
-            return (Fragment) BookRankMainActivity.b(BookRankMainActivity.this).get(n);
+        public final Fragment getFragment(int position) {
+            return (Fragment) BookRankMainActivity.b(BookRankMainActivity.this).get(position);
         }
 
         @Override
-        protected final String b(int n) {
-            return this.a[n];
+        protected final String getTag(int position) {
+            return this.a[position];
         }
 
         @Override

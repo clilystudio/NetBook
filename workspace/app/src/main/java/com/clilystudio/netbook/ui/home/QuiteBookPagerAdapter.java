@@ -8,18 +8,18 @@ import android.support.v4.view.PagerAdapter;
 import android.view.View;
 import android.view.ViewGroup;
 
-public abstract class ZssqFragmentPagerAdapter extends PagerAdapter {
+public abstract class QuiteBookPagerAdapter extends PagerAdapter {
     private final FragmentManager a;
     private FragmentTransaction b = null;
     private Fragment c = null;
 
-    public ZssqFragmentPagerAdapter(FragmentManager fragmentManager) {
+    public QuiteBookPagerAdapter(FragmentManager fragmentManager) {
         this.a = fragmentManager;
     }
 
-    public abstract Fragment a(int var1);
+    public abstract Fragment getFragment(int position);
 
-    protected abstract String b(int var1);
+    protected abstract String getTag(int position);
 
     @Override
     public void destroyItem(ViewGroup viewGroup, int n, Object object) {
@@ -47,12 +47,12 @@ public abstract class ZssqFragmentPagerAdapter extends PagerAdapter {
         if (this.b == null) {
             this.b = this.a.beginTransaction();
         }
-        if ((fragment = this.a.findFragmentByTag(this.b(n))) != null) {
+        if ((fragment = this.a.findFragmentByTag(this.getTag(n))) != null) {
             this.b.attach(fragment);
         } else {
-            fragment = this.a(n);
+            fragment = this.getFragment(n);
             if (!fragment.isAdded()) {
-                this.b.add(viewGroup.getId(), fragment, this.b(n));
+                this.b.add(viewGroup.getId(), fragment, this.getTag(n));
             } else {
                 this.b.show(fragment);
             }

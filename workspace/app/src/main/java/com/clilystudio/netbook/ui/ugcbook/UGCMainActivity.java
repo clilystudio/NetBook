@@ -26,7 +26,7 @@ import com.clilystudio.netbook.api.ApiServiceProvider;
 import com.clilystudio.netbook.model.UgcFilterRoot;
 import com.clilystudio.netbook.ui.ActionBarClickListener;
 import com.clilystudio.netbook.ui.BaseTabActivity;
-import com.clilystudio.netbook.ui.home.ZssqFragmentPagerAdapter;
+import com.clilystudio.netbook.ui.home.QuiteBookPagerAdapter;
 import com.clilystudio.netbook.ui.user.UserUGCActivity;
 import com.clilystudio.netbook.util.CommonUtil;
 import com.clilystudio.netbook.widget.UgcFilterTextView;
@@ -323,7 +323,7 @@ public class UGCMainActivity extends BaseTabActivity implements ViewPager.OnPage
         }
     }
 
-    final class aj extends ZssqFragmentPagerAdapter {
+    final class aj extends QuiteBookPagerAdapter {
         private String[] a;
         private /* synthetic */ UGCMainActivity b;
 
@@ -347,13 +347,13 @@ public class UGCMainActivity extends BaseTabActivity implements ViewPager.OnPage
         }
 
         @Override
-        public final Fragment a(int n) {
-            return (Fragment) UGCMainActivity.e(this.b).get(n);
+        public final Fragment getFragment(int position) {
+            return (Fragment) UGCMainActivity.e(this.b).get(position);
         }
 
         @Override
-        protected final String b(int n) {
-            return this.a[n];
+        protected final String getTag(int position) {
+            return this.a[position];
         }
 
         @Override

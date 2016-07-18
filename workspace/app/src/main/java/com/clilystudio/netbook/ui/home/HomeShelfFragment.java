@@ -873,7 +873,6 @@ public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollL
     @Override
     public View onCreateView(LayoutInflater layoutInflater, ViewGroup viewGroup, Bundle bundle) {
         Log.i(a, "HomeShelfFragment onCreateView");
-//        60.0f * ((float) this.getActivity().getResources().getDisplayMetrics().densityDpi / 160.0f);
         View c = layoutInflater.inflate(R.layout.fragment_home_shelf, viewGroup, false);
         this.d = (PullToRefreshListView) c.findViewById(R.id.home_shelf_ptr);
         this.e = this.d.getRefreshableView();
@@ -883,7 +882,7 @@ public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollL
         c.findViewById(R.id.add_new_book).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((HomeActivity) HomeShelfFragment.this.getActivity()).g();
+                ((HomeActivity) HomeShelfFragment.this.getActivity()).gotoHomeFind();
             }
         });
         this.w = (RelativeLayout) c.findViewById(R.id.delete_shelf_bar);
