@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <item name="abc_action_bar_up_container" type="layout">false</item>
-    <item name="abc_action_bar_view_list_nav_layout" type="layout">false</item>
-    <item name="ad_layout" type="layout">false</item>
-    <item name="ugc_major_list_item" type="layout">false</item>
-    <item name="ugc_miner_list_item" type="layout">false</item>
-</resources>

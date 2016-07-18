@@ -6,9 +6,5 @@
     <dimen name="dp_18">16.0dip</dimen>
     <dimen name="dp_20">18.0dip</dimen>
     <dimen name="post_comment_name_width">120.0dip</dimen>
-    <dimen name="abc_action_bar_default_height_material">48.0dip</dimen>
     <dimen name="abc_action_bar_default_padding_material">0.0dip</dimen>
-    <dimen name="abc_action_bar_progress_bar_size">32.0dip</dimen>
-    <dimen name="abc_text_size_subtitle_material_toolbar">12.0dip</dimen>
-    <dimen name="abc_text_size_title_material_toolbar">14.0dip</dimen>
 </resources>
