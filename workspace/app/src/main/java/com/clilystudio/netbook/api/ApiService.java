@@ -87,8 +87,9 @@ import java.util.Locale;
 
 public class ApiService {
     private static final String TAG = ApiService.class.getSimpleName();
+    public static final int BUFF_SIZE = 15000;
     private static String mDomain = "zhuishushenqi.com";
-    private static String mApiUrl = "http://api." + mDomain;
+    private static String mApiBaseUrl = "http://api." + mDomain;
     private static String mChapterUrl = "http://chapter." + mDomain;
     private static String mChapter2Url = "http://chapter2." + mDomain;
     public static String mStaticsUrl = "http://statics." + mDomain;
@@ -123,7 +124,7 @@ public class ApiService {
     public static void setDomain(String domain) {
         if (!domain.equals(mDomain)) {
             mDomain = domain;
-            mApiUrl = "http://api." + mDomain;
+            mApiBaseUrl = "http://api." + mDomain;
             mChapterUrl = "http://chapter." + mDomain;
             mStaticsUrl = "http://statics." + mDomain;
         }
@@ -165,8 +166,8 @@ public class ApiService {
             if (!this.b(httpRequest).ok()) {
                 Log.e("ApiService", "Unexpected response code: " + httpRequest.code());
             }
-        } catch (HttpRequest.HttpRequestException var4_4) {
-            var4_4.printStackTrace();
+        } catch (HttpRequest.HttpRequestException e) {
+            e.printStackTrace();
         }
         return httpRequest;
     }
@@ -183,17 +184,17 @@ public class ApiService {
     }
 
     private Root a(String url, HashMap<String, String> values) {
-        HttpRequest request = this.b(HttpRequest.post(ApiService.mApiUrl + url));
+        HttpRequest request = this.b(HttpRequest.post(ApiService.mApiBaseUrl + url));
         request.form(values);
         return ApiService.getResponse(request, Root.class);
     }
 
     private <V> V a(String string, Class<V> class_) {
-        return ApiService.getResponse(this.a(HttpRequest.post(mApiUrl + string)), class_);
+        return ApiService.getResponse(this.a(HttpRequest.post(mApiBaseUrl + string)), class_);
     }
 
     private HttpRequest b(HttpRequest httpRequest) {
-        httpRequest.chunk(15000).bufferSize(15000);
+        httpRequest.chunk(BUFF_SIZE).bufferSize(BUFF_SIZE);
         UserAgentManager f2 = this.mUserAgentManager;
         String string = "1".equals(OnlineConfigAgent.getInstance().getConfigParams(MyApplication.getInstance(), "ua-toggle")) ? f2.getXUserAgent() : "";
         httpRequest.header(string);
@@ -203,7 +204,7 @@ public class ApiService {
     }
 
     private HttpRequest b(HttpRequest httpRequest, int deviceType) {
-        httpRequest.chunk(15000).bufferSize(15000);
+        httpRequest.chunk(BUFF_SIZE).bufferSize(BUFF_SIZE);
         httpRequest.userAgent(this.mUserAgentManager.getUserAgent(deviceType));
         if (deviceType == 6) {
             httpRequest.referer("http://bookshelf.html5.qq.com/page?t=pad");
@@ -212,22 +213,22 @@ public class ApiService {
     }
 
     public final BookShelfSyncTime getBookShelfSyncTime(String token) {
-        String url = mApiUrl + String.format(Locale.CHINA, "/user/bookshelf-updated?token=%s", token);
+        String url = mApiBaseUrl + String.format(Locale.CHINA, "/user/bookshelf-updated?token=%s", token);
         return ApiService.getResponse(this.a(HttpRequest.get(url)), BookShelfSyncTime.class);
     }
 
     public final RemoteBookShelf getRemoteBookShelf(String token) {
-        String url = mApiUrl + String.format(Locale.CHINA, "/user/bookshelf?token=%s", token);
+        String url = mApiBaseUrl + String.format(Locale.CHINA, "/user/bookshelf?token=%s", token);
         return ApiService.getResponse(this.a(HttpRequest.get(url)), RemoteBookShelf.class);
     }
 
     public final UGCBookDetailRoot C(String string, String string2) {
-        String string3 = mApiUrl + String.format(Locale.CHINA, "/book-list/%s/draft?token=%s", string2, string);
+        String string3 = mApiBaseUrl + String.format(Locale.CHINA, "/book-list/%s/draft?token=%s", string2, string);
         return ApiService.getResponse(this.a(HttpRequest.get(string3)), UGCBookDetailRoot.class);
     }
 
     public final ResultStatus D(String var1_1, String var2_2) {
-        String var3_3 = ApiService.mApiUrl + "/user/collected-book-list";
+        String var3_3 = ApiService.mApiBaseUrl + "/user/collected-book-list";
         HttpRequest var5_4 = this.b(HttpRequest.post(var3_3));
         HashMap<String, String> var6_5 = new HashMap<>();
         var6_5.put("token", var1_1);
@@ -237,7 +238,7 @@ public class ApiService {
     }
 
     public final ResultStatus E(String string, String string2) {
-        String string3 = mApiUrl + "/user/collected-book-list/remove";
+        String string3 = mApiBaseUrl + "/user/collected-book-list/remove";
         HttpRequest httpRequest = HttpRequest.post(string3);
         HashMap<String, String> hashMap = new HashMap<>();
         hashMap.put("token", string);
@@ -252,7 +253,7 @@ public class ApiService {
     }
 
     public final SyncUploadResult G(String string, String string2) {
-        String string3 = mApiUrl + "/user/bookshelf";
+        String string3 = mApiBaseUrl + "/user/bookshelf";
         HttpRequest httpRequest = HttpRequest.post(string3);
         HashMap<String, String> hashMap = new HashMap<>();
         hashMap.put("token", string);
@@ -263,7 +264,7 @@ public class ApiService {
     }
 
     public final SyncUploadResult H(String string, String string2) {
-        String string3 = mApiUrl + "/user/feedingBooks";
+        String string3 = mApiBaseUrl + "/user/feedingBooks";
         HttpRequest httpRequest = HttpRequest.post(string3);
         HashMap<String, String> hashMap = new HashMap<>();
         hashMap.put("token", string);
@@ -274,22 +275,22 @@ public class ApiService {
     }
 
     public final SyncUploadResult I(String string, String string2) {
-        String string3 = mApiUrl + String.format(Locale.CHINA, "/user/bookshelf?token=%s&books=%s", string, string2);
+        String string3 = mApiBaseUrl + String.format(Locale.CHINA, "/user/bookshelf?token=%s&books=%s", string, string2);
         return ApiService.getResponse(this.a(HttpRequest.put(string3)), SyncUploadResult.class);
     }
 
     public final TopicCount I(String string) {
-        String string2 = mApiUrl + String.format(Locale.CHINA, "/post/total-count?books=%s", string);
+        String string2 = mApiBaseUrl + String.format(Locale.CHINA, "/post/total-count?books=%s", string);
         return ApiService.getResponse(this.a(HttpRequest.get(string2)), TopicCount.class);
     }
 
     public final SyncUploadResult J(String string, String string2) {
-        String string3 = mApiUrl + String.format(Locale.CHINA, "/user/feedingBooks?token=%s&books=%s", string, string2);
+        String string3 = mApiBaseUrl + String.format(Locale.CHINA, "/user/feedingBooks?token=%s&books=%s", string, string2);
         return ApiService.getResponse(this.a(HttpRequest.put(string3)), SyncUploadResult.class);
     }
 
     public final UserInfo K(String string) {
-        String string2 = mApiUrl + String.format(Locale.CHINA, "/user/detail-info?token=%s", string);
+        String string2 = mApiBaseUrl + String.format(Locale.CHINA, "/user/detail-info?token=%s", string);
         return ApiService.getResponse(this.a(HttpRequest.get(string2)), UserInfo.class);
     }
 
@@ -307,12 +308,12 @@ public class ApiService {
 
     public final AutoCompleteRoot N(String string) {
         String string2 = CommonUtil.encodeUrl(string);
-        String string3 = mApiUrl + String.format(Locale.CHINA, "/book/auto-complete?query=%s", string2);
+        String string3 = mApiBaseUrl + String.format(Locale.CHINA, "/book/auto-complete?query=%s", string2);
         return ApiService.getResponse(this.a(HttpRequest.get(string3)), AutoCompleteRoot.class);
     }
 
     public final ResultStatus P(String string) {
-        String string2 = mApiUrl + "/user/logout";
+        String string2 = mApiBaseUrl + "/user/logout";
         HashMap<String, String> hashMap = new HashMap<>();
         hashMap.put("token", string);
         HttpRequest httpRequest = this.b(HttpRequest.post(string2));
@@ -321,12 +322,12 @@ public class ApiService {
     }
 
     public final UGCBookDetailRoot U(String string) {
-        String string2 = mApiUrl + String.format(Locale.CHINA, "/book-list/%s", string);
+        String string2 = mApiBaseUrl + String.format(Locale.CHINA, "/book-list/%s", string);
         return ApiService.getResponse(this.a(HttpRequest.get(string2)), UGCBookDetailRoot.class);
     }
 
     public final ResultStatus W(String string) {
-        String string2 = mApiUrl + "/user/add-exp-week";
+        String string2 = mApiBaseUrl + "/user/add-exp-week";
         HttpRequest httpRequest = HttpRequest.post(string2);
         HashMap<String, String> hashMap = new HashMap<>();
         hashMap.put("token", string);
@@ -337,12 +338,12 @@ public class ApiService {
     }
 
     public final RelateBookRoot X(String string) {
-        String string2 = mApiUrl + String.format(Locale.CHINA, "/book/%s/recommend", string);
+        String string2 = mApiBaseUrl + String.format(Locale.CHINA, "/book/%s/recommend", string);
         return ApiService.getResponse(this.a(HttpRequest.get(string2)), RelateBookRoot.class);
     }
 
     public final BookListRoot a(String string, String string2, String string3, String string4, int n, int n2) {
-        String string5 = mApiUrl + String.format(Locale.CHINA, "/book/by-categories?gender=%s&type=%s&major=%s&minor=%s&start=%d&limit=%d", string, string2, CommonUtil.encodeUrl(string3), CommonUtil.encodeUrl(string4), n, n2);
+        String string5 = mApiBaseUrl + String.format(Locale.CHINA, "/book/by-categories?gender=%s&type=%s&major=%s&minor=%s&start=%d&limit=%d", string, string2, CommonUtil.encodeUrl(string3), CommonUtil.encodeUrl(string4), n, n2);
         return ApiService.getResponse(this.a(HttpRequest.get(string5)), BookListRoot.class);
     }
 
@@ -370,7 +371,7 @@ public class ApiService {
     }
 
     public final ResultStatus a(UGCNewCollection var1_1, String var2_2) {
-        String var3_3 = ApiService.mApiUrl + "/book-list";
+        String var3_3 = ApiService.mApiBaseUrl + "/book-list";
         HttpRequest var5_4 = this.b(HttpRequest.post(var3_3));
         HashMap<String, String> var6_5 = new HashMap<>();
         var6_5.put("token", var2_2);
@@ -385,7 +386,7 @@ public class ApiService {
     }
 
     public final ResultStatus a(UGCNewCollection var1_1, String var2_2, String var3_3) {
-        String var4_4 = ApiService.mApiUrl + String.format(Locale.CHINA, "/book-list/%s", var3_3);
+        String var4_4 = ApiService.mApiBaseUrl + String.format(Locale.CHINA, "/book-list/%s", var3_3);
         HttpRequest var6_5 = this.b(HttpRequest.post(var4_4));
         HashMap<String, String> var7_6 = new HashMap<>();
         var7_6.put("token", var2_2);
@@ -400,14 +401,14 @@ public class ApiService {
     }
 
     public final Root a(String string, Uri uri) {
-        String string2 = mApiUrl + "/user/change-avatar";
+        String string2 = mApiBaseUrl + "/user/change-avatar";
         HttpRequest httpRequest = this.b(HttpRequest.post(string2));
         httpRequest.part("token", null, null, string).part("avatar", uri.getPath(), "image/jpeg", new File(uri.getPath())).ok();
         return ApiService.getResponse(httpRequest, Root.class);
     }
 
     public final UGCBookListRoot a(String string, String string2, int n, int n2, String string3) {
-        String string4 = mApiUrl + String.format(Locale.CHINA, "/book-list?duration=%s&sort=%s&start=%d&limit=%d&tag=%s", string, string2, n, n2, string3);
+        String string4 = mApiBaseUrl + String.format(Locale.CHINA, "/book-list?duration=%s&sort=%s&start=%d&limit=%d&tag=%s", string, string2, n, n2, string3);
         return ApiService.getResponse(this.a(HttpRequest.get(string4)), UGCBookListRoot.class);
     }
 
@@ -421,7 +422,7 @@ public class ApiService {
             return Collections.emptyList();
         }
         String string = TextUtils.join(",", list.toArray());
-        String string2 = mApiUrl + String.format(Locale.CHINA, "/book?view=updated&id=%s", string);
+        String string2 = mApiBaseUrl + String.format(Locale.CHINA, "/book?view=updated&id=%s", string);
         return ApiService.b(this.a(HttpRequest.get(string2)), BookUpdate.class);
     }
 
@@ -435,29 +436,29 @@ public class ApiService {
             }
             stringBuffer.append("&ids=").append(arrstring[j]);
         }
-        String string = mApiUrl + "/books/by-ids" + stringBuffer;
+        String string = mApiBaseUrl + "/books/by-ids" + stringBuffer;
         SearchResultRoot searchResultRoot = ApiService.getResponse(this.a(HttpRequest.get(string)), SearchResultRoot.class);
         if (searchResultRoot == null) return arrayList;
         return searchResultRoot.getBooks();
     }
 
     public final ChineseAllPromRoot aa(String string) {
-        String string2 = mApiUrl + String.format(Locale.CHINA, "/book/%s/chinese-all-promo", string);
+        String string2 = mApiBaseUrl + String.format(Locale.CHINA, "/book/%s/chinese-all-promo", string);
         return ApiService.getResponse(this.a(HttpRequest.get(string2)), ChineseAllPromRoot.class);
     }
 
     public final BookGenderRecommend ac(String string) {
-        String string2 = mApiUrl + String.format(Locale.CHINA, "/book/recommend?gender=%s", string);
+        String string2 = mApiBaseUrl + String.format(Locale.CHINA, "/book/recommend?gender=%s", string);
         return ApiService.getResponse(this.a(HttpRequest.get(string2)), BookGenderRecommend.class);
     }
 
     public final HotKeywordResult b() {
-        String string = mApiUrl + "/book/hot-word";
+        String string = mApiBaseUrl + "/book/hot-word";
         return ApiService.getResponse(this.a(HttpRequest.get(string)), HotKeywordResult.class);
     }
 
     public final ResultStatus b(UGCNewCollection var1_1, String var2_2) {
-        String var3_3 = ApiService.mApiUrl + "/book-list/draft";
+        String var3_3 = ApiService.mApiBaseUrl + "/book-list/draft";
         HttpRequest var5_4 = this.b(HttpRequest.post(var3_3));
         HashMap<String, String> var6_5 = new HashMap<>();
         var6_5.put("token", var2_2);
@@ -472,7 +473,7 @@ public class ApiService {
     }
 
     public final ResultStatus b(UGCNewCollection var1_1, String var2_2, String var3_3) {
-        String var4_4 = ApiService.mApiUrl + String.format(Locale.CHINA, "/book-list/%s/draft", var3_3);
+        String var4_4 = ApiService.mApiBaseUrl + String.format(Locale.CHINA, "/book-list/%s/draft", var3_3);
         HttpRequest var6_5 = this.b(HttpRequest.post(var4_4));
         HashMap<String, String> var7_6 = new HashMap<>();
         var7_6.put("token", var2_2);
@@ -492,7 +493,7 @@ public class ApiService {
     }
 
     public final BookTagRoot c(String string, int n, int n2) {
-        String string2 = mApiUrl + String.format(Locale.CHINA, "/book/by-tags?tags=%s&start=%d&limit=%d", CommonUtil.encodeUrl(string), n, n2);
+        String string2 = mApiBaseUrl + String.format(Locale.CHINA, "/book/by-tags?tags=%s&start=%d&limit=%d", CommonUtil.encodeUrl(string), n, n2);
         return ApiService.getResponse(this.a(HttpRequest.get(string2)), BookTagRoot.class);
     }
 
@@ -533,7 +534,7 @@ public class ApiService {
     }
 
     public final ResultStatus c(UGCNewCollection var1_1, String var2_2, String var3_3) {
-        String var4_4 = ApiService.mApiUrl + String.format(Locale.CHINA, "/book-list/%s/public", var3_3);
+        String var4_4 = ApiService.mApiBaseUrl + String.format(Locale.CHINA, "/book-list/%s/public", var3_3);
         HttpRequest var6_5 = this.b(HttpRequest.post(var4_4));
         HashMap<String, String> var7_6 = new HashMap<>();
         var7_6.put("token", var2_2);
@@ -548,37 +549,37 @@ public class ApiService {
     }
 
     public final BookRankRoot d() {
-        String string = mApiUrl + "/ranking/gender";
+        String string = mApiBaseUrl + "/ranking/gender";
         return ApiService.getResponse(this.a(HttpRequest.get(string)), BookRankRoot.class);
     }
 
     public final Topic d(String string, int n) {
-        String string2 = mApiUrl + String.format(Locale.CHINA, "/user/collected-post?token=%s&start=%s", string, n);
+        String string2 = mApiBaseUrl + String.format(Locale.CHINA, "/user/collected-post?token=%s&start=%s", string, n);
         return ApiService.getResponse(this.a(HttpRequest.get(string2)), Topic.class);
     }
 
     public final List<TocSummary> d(String bookId) {
-        String url = mApiUrl + String.format(Locale.CHINA, "/toc?view=summary&book=%s", bookId);
+        String url = mApiBaseUrl + String.format(Locale.CHINA, "/toc?view=summary&book=%s", bookId);
         return ApiService.b(this.a(HttpRequest.get(url)), TocSummary.class);
     }
 
     public final CategoryRoot e() {
-        String string = mApiUrl + "/cats/lv2/statistics";
+        String string = mApiBaseUrl + "/cats/lv2/statistics";
         return ApiService.getResponse(this.a(HttpRequest.get(string)), CategoryRoot.class);
     }
 
     public final Toc e(String string) {
-        String string2 = mApiUrl + String.format(Locale.CHINA, "/toc/%s?view=chapters", string);
+        String string2 = mApiBaseUrl + String.format(Locale.CHINA, "/toc/%s?view=chapters", string);
         return ApiService.getResponse(this.a(HttpRequest.get(string2)), Toc.class);
     }
 
     public final Topic e(String string, int n) {
-        String string2 = mApiUrl + String.format(Locale.CHINA, "/user/posted?token=%s&start=%s", string, n);
+        String string2 = mApiBaseUrl + String.format(Locale.CHINA, "/user/posted?token=%s&start=%s", string, n);
         return ApiService.getResponse(this.a(HttpRequest.get(string2)), Topic.class);
     }
 
     public final BookAdd f(String string, String string2, String string3) {
-        String string4 = mApiUrl + "/book/add";
+        String string4 = mApiBaseUrl + "/book/add";
         HashMap<String, String> hashMap = new HashMap<>();
         hashMap.put("title", string);
         hashMap.put("author", string2);
@@ -589,22 +590,22 @@ public class ApiService {
     }
 
     public final CategoryLevelRoot f() {
-        String string = mApiUrl + "/cats/lv2";
+        String string = mApiBaseUrl + "/cats/lv2";
         return ApiService.getResponse(this.a(HttpRequest.get(string)), CategoryLevelRoot.class);
     }
 
     public final MixTocRoot f(String string) {
-        String string2 = mApiUrl + String.format(Locale.CHINA, "/mix-toc/%s", string);
+        String string2 = mApiBaseUrl + String.format(Locale.CHINA, "/mix-toc/%s", string);
         return ApiService.getResponse(this.a(HttpRequest.get(string2)), MixTocRoot.class);
     }
 
     public final UGCBookListRoot f(String string, int n) {
-        String string2 = mApiUrl + String.format(Locale.CHINA, "/user/collected-book-list?token=%s&start=%d", string, n);
+        String string2 = mApiBaseUrl + String.format(Locale.CHINA, "/user/collected-book-list?token=%s&start=%d", string, n);
         return ApiService.getResponse(this.a(HttpRequest.get(string2)), UGCBookListRoot.class);
     }
 
     public final Account g(String string, String string2, String string3) {
-        String string4 = mApiUrl + "/user/login";
+        String string4 = mApiBaseUrl + "/user/login";
         HashMap<String, String> hashMap = new HashMap<>();
         hashMap.put("platform_code", string);
         hashMap.put("platform_uid", string2);
@@ -615,44 +616,44 @@ public class ApiService {
     }
 
     public final ChapterKeysRoot g(String string, String string2) {
-        String string3 = mApiUrl + String.format(Locale.CHINA, "/purchase/book/%s/chapters/bought?token=%s", string2, string);
+        String string3 = mApiBaseUrl + String.format(Locale.CHINA, "/purchase/book/%s/chapters/bought?token=%s", string2, string);
         return ApiService.getResponse(this.a(HttpRequest.get(string3)), ChapterKeysRoot.class);
     }
 
     public final TocSourceRoot g(String string) {
-        String string2 = mApiUrl + String.format(Locale.CHINA, "/aggregation-source/by-book?book=%s&v=5", string);
+        String string2 = mApiBaseUrl + String.format(Locale.CHINA, "/aggregation-source/by-book?book=%s&v=5", string);
         return ApiService.getResponse(this.a(HttpRequest.get(string2)), TocSourceRoot.class);
     }
 
     public final UGCBookListRoot g(String string, int n) {
-        String string2 = mApiUrl + String.format(Locale.CHINA, "/user/posted-book-list?token=%s&start=%d", string, n);
+        String string2 = mApiBaseUrl + String.format(Locale.CHINA, "/user/posted-book-list?token=%s&start=%d", string, n);
         return ApiService.getResponse(this.a(HttpRequest.get(string2)), UGCBookListRoot.class);
     }
 
     public final FollowingsResult h(String string) {
-        String string2 = mApiUrl + String.format(Locale.CHINA, "/user/followings/%s", string);
+        String string2 = mApiBaseUrl + String.format(Locale.CHINA, "/user/followings/%s", string);
         return ApiService.getResponse(this.a(HttpRequest.get(string2)), FollowingsResult.class);
     }
 
     public final UGCBookListRoot h(String string, int n) {
-        String string2 = mApiUrl + String.format(Locale.CHINA, "/user/draft-book-list?token=%s&start=%d", string, n);
+        String string2 = mApiBaseUrl + String.format(Locale.CHINA, "/user/draft-book-list?token=%s&start=%d", string, n);
         return ApiService.getResponse(this.a(HttpRequest.get(string2)), UGCBookListRoot.class);
     }
 
     public final RecommendUgcRoot i(String string, int n) {
-        String string2 = mApiUrl + String.format(Locale.CHINA, "/book-list/%s/recommend?limit=%s", string, n);
+        String string2 = mApiBaseUrl + String.format(Locale.CHINA, "/book-list/%s/recommend?limit=%s", string, n);
         return ApiService.getResponse(this.a(HttpRequest.get(string2)), RecommendUgcRoot.class);
     }
 
     public final ShelfMsgRoot l() {
-        String string = mApiUrl + "/notification/shelfMessage?platform=android";
+        String string = mApiBaseUrl + "/notification/shelfMessage?platform=android";
         return ApiService.getResponse(this.a(HttpRequest.get(string)), ShelfMsgRoot.class);
     }
 
     public final List<BookSummary> n(String string) {
         ArrayList<BookSummary> arrayList = new ArrayList<>();
         String string2 = CommonUtil.encodeUrl(string);
-        String string3 = mApiUrl + String.format(Locale.CHINA, "/book/fuzzy-search?query=%s", string2);
+        String string3 = mApiBaseUrl + String.format(Locale.CHINA, "/book/fuzzy-search?query=%s", string2);
         SearchResultRoot searchResultRoot = ApiService.getResponse(this.a(HttpRequest.get(string3)), SearchResultRoot.class);
         if (searchResultRoot == null) return arrayList;
         return searchResultRoot.getBooks();
@@ -660,12 +661,12 @@ public class ApiService {
 
     public final SearchResultRoot o(String string) {
         String string2 = CommonUtil.encodeUrl(string);
-        String string3 = mApiUrl + "/book/accurate-search?author=" + string2;
+        String string3 = mApiBaseUrl + "/book/accurate-search?author=" + string2;
         return ApiService.getResponse(this.a(HttpRequest.get(string3)), SearchResultRoot.class);
     }
 
     public final UgcFilterRoot o() {
-        String string = mApiUrl + "/book-list/tagType";
+        String string = mApiBaseUrl + "/book-list/tagType";
         return ApiService.getResponse(this.a(HttpRequest.get(string)), UgcFilterRoot.class);
     }
 
@@ -695,30 +696,30 @@ public class ApiService {
 
     public final SearchResultRoot p(String string) {
         String string2 = CommonUtil.encodeUrl(string);
-        String string3 = mApiUrl + String.format(Locale.CHINA, "/book/fuzzy-search?query=%s", string2) + "&onlyTitle=true";
+        String string3 = mApiBaseUrl + String.format(Locale.CHINA, "/book/fuzzy-search?query=%s", string2) + "&onlyTitle=true";
         return ApiService.getResponse(this.a(HttpRequest.get(string3)), SearchResultRoot.class);
     }
 
     public final SearchPromRoot q(String string) {
         String string2 = CommonUtil.encodeUrl(string);
-        String string3 = mApiUrl + String.format(Locale.CHINA, "/book/search/%s/chinese-all-promo", string2);
+        String string3 = mApiBaseUrl + String.format(Locale.CHINA, "/book/search/%s/chinese-all-promo", string2);
         return ApiService.getResponse(this.a(HttpRequest.get(string3)), SearchPromRoot.class);
     }
 
     public final BookInfo r(String string) {
-        String string2 = mApiUrl + String.format(Locale.CHINA, "/book/%s", string);
+        String string2 = mApiBaseUrl + String.format(Locale.CHINA, "/book/%s", string);
         return ApiService.getResponse(this.a(HttpRequest.get(string2)), BookInfo.class);
     }
 
     public final NotificationRoot r(String string, String string2) {
         String string3 = CommonUtil.isBlank(string2) ? String.format(Locale.CHINA, "/user/notification/important?token=%s", string) : String.format(Locale.CHINA, "/user/notification/important?token=%s&startTime=%s", string, string2);
-        String string4 = mApiUrl + string3;
+        String string4 = mApiBaseUrl + string3;
         return ApiService.getResponse(this.a(HttpRequest.get(string4)), NotificationRoot.class);
     }
 
     public final NotificationRoot s(String string, String string2) {
         String string3 = CommonUtil.isBlank(string2) ? String.format(Locale.CHINA, "/user/notification/unimportant?token=%s", string) : String.format(Locale.CHINA, "/user/notification/unimportant?token=%s&startTime=%s", string, string2);
-        String string4 = mApiUrl + string3;
+        String string4 = mApiBaseUrl + string3;
         return ApiService.getResponse(this.a(HttpRequest.get(string4)), NotificationRoot.class);
     }
 
@@ -733,7 +734,7 @@ public class ApiService {
     }
 
     public final ChangeNickNameRoot u(String string, String string2) {
-        String string3 = mApiUrl + "/user/change-nickname";
+        String string3 = mApiBaseUrl + "/user/change-nickname";
         HashMap<String, String> hashMap = new HashMap<>();
         hashMap.put("token", string);
         hashMap.put("nickname", string2);
@@ -748,7 +749,7 @@ public class ApiService {
     }
 
     public final ChangeGenderRoot v(String string, String string2) {
-        String string3 = mApiUrl + "/user/change-gender";
+        String string3 = mApiBaseUrl + "/user/change-gender";
         HashMap<String, String> hashMap = new HashMap<>();
         hashMap.put("token", string);
         hashMap.put("gender", string2);
@@ -793,7 +794,7 @@ public class ApiService {
     }
 
     public final ResultStatus addUserExp(String token, String type) {
-        String string3 = mApiUrl + "/user/add-exp";
+        String string3 = mApiBaseUrl + "/user/add-exp";
         HashMap<String, String> hashMap = new HashMap<>();
         hashMap.put("token", token);
         hashMap.put("type", type);
@@ -824,12 +825,12 @@ public class ApiService {
     }
 
     public final BookRankDetailRoot z(String string) {
-        String string2 = mApiUrl + String.format(Locale.CHINA, "/ranking/%s", string);
+        String string2 = mApiBaseUrl + String.format(Locale.CHINA, "/ranking/%s", string);
         return ApiService.getResponse(this.a(HttpRequest.get(string2)), BookRankDetailRoot.class);
     }
 
     public final ResultStatus z(String string, String string2) {
-        String string3 = mApiUrl + "/user/collected-post/remove";
+        String string3 = mApiBaseUrl + "/user/collected-post/remove";
         HashMap<String, String> hashMap = new HashMap<>();
         hashMap.put("token", string);
         hashMap.put("post", string2);
