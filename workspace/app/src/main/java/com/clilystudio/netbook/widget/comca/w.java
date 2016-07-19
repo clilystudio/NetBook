@@ -63,7 +63,7 @@ public final class w extends a {
     private Interpolator y = j;
     private ArrayList<D> z = null;
 
-    static /* synthetic */ long a(w w2) {
+    static long a(w w2) {
         return w2.u;
     }
 
@@ -106,7 +106,7 @@ public final class w extends a {
     /*
      * Enabled aggressive block sorting
      */
-    static /* synthetic */ boolean a(w w2, long l) {
+    static boolean a(w w2, long l) {
         if (!w2.n) {
             w2.n = true;
             w2.o = l;
@@ -122,40 +122,40 @@ public final class w extends a {
         }
     }
 
-    static /* synthetic */ boolean a(w w2, boolean bl) {
+    static boolean a(w w2, boolean bl) {
         w2.q = true;
         return true;
     }
 
-    static /* synthetic */ void b(w w2) {
+    static void b(w w2) {
         w2.p();
     }
 
-    static /* synthetic */ void c(w w2) {
+    static void c(w w2) {
         w2.o();
     }
 
-    static /* synthetic */ ThreadLocal h() {
+    static ThreadLocal h() {
         return e;
     }
 
-    static /* synthetic */ ThreadLocal i() {
+    static ThreadLocal i() {
         return g;
     }
 
-    static /* synthetic */ ThreadLocal j() {
+    static ThreadLocal j() {
         return f;
     }
 
-    static /* synthetic */ ThreadLocal k() {
+    static ThreadLocal k() {
         return i;
     }
 
-    static /* synthetic */ ThreadLocal l() {
+    static ThreadLocal l() {
         return h;
     }
 
-    static /* synthetic */ long m() {
+    static long m() {
         return v;
     }
 
@@ -370,7 +370,7 @@ public final class w extends a {
         throw new IllegalStateException("Decompilation failed");
     }
 
-    public final /* synthetic */ Object clone() {
+    public final Object clone() {
         return this.q();
     }
 
@@ -378,7 +378,7 @@ public final class w extends a {
         return this.p == 1 || this.q;
     }
 
-    public final /* synthetic */ a e() {
+    public final a e() {
         return this.q();
     }
 

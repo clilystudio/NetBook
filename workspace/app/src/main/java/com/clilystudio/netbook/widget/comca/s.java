@@ -21,13 +21,9 @@ public class s implements Cloneable {
     private v g;
     private Object h;
 
-    private s(String string) {
+    s(String string) {
         new ReentrantReadWriteLock();
         this.a = string;
-    }
-
-    /* synthetic */ s(String string, byte by) {
-        this(string);
     }
 
     public static s a(String string, float... arrf) {
@@ -108,7 +104,7 @@ public class s implements Cloneable {
         return this.h;
     }
 
-    public /* synthetic */ Object clone() {
+    public Object clone() {
         return this.a();
     }
 

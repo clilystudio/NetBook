@@ -32,26 +32,6 @@ public class ReaderTocDialog extends DialogFragment implements AdapterView.OnIte
     private LinkedList<String> h;
     private int i;
 
-    static /* synthetic */ int a(ReaderTocDialog readerTocDialog) {
-        return readerTocDialog.i;
-    }
-
-    static /* synthetic */ int a(ReaderTocDialog readerTocDialog, int n) {
-        return readerTocDialog.a(n);
-    }
-
-    static /* synthetic */ boolean a(ReaderTocDialog readerTocDialog, ChapterLink chapterLink) {
-        return readerTocDialog.a(chapterLink);
-    }
-
-    static /* synthetic */ Reader b(ReaderTocDialog readerTocDialog) {
-        return readerTocDialog.d;
-    }
-
-    static /* synthetic */ LinkedList c(ReaderTocDialog readerTocDialog) {
-        return readerTocDialog.h;
-    }
-
     private int a(int n) {
         return -1 + this.d.f() - n;
     }
@@ -125,22 +105,22 @@ public class ReaderTocDialog extends DialogFragment implements AdapterView.OnIte
                 }
                 ImageView imageView = (ImageView) view2.findViewById(R.id.iv_icon);
                 TextView textView = (TextView) view2.findViewById(R.id.tv_title);
-                int n2 = ReaderTocDialog.a(ReaderTocDialog.this, position);
+                int n2 = ReaderTocDialog.this.a(position);
                 String text = "" + (n2 + 1) + ". " + chapterLink.getTitle();
                 textView.setText(text);
-                if (n2 == ReaderTocDialog.b(ReaderTocDialog.this).k()) {
+                if (n2 == ReaderTocDialog.this.d.k()) {
                     imageView.setImageLevel(1);
                     textView.setTextColor(getAttrColor(R.attr.dialog_text_color_highlight));
                 } else {
                     String string = chapterLink.getLink();
-                    if (ReaderTocDialog.c(ReaderTocDialog.this) != null && ReaderTocDialog.c(ReaderTocDialog.this).contains(string)) {
+                    if (ReaderTocDialog.this.h != null && ReaderTocDialog.this.h.contains(string)) {
                         imageView.setImageLevel(2);
                     } else {
                         imageView.setImageLevel(0);
                     }
                     textView.setTextColor(getAttrColor(R.attr.dialog_text_color));
                 }
-                if (!ReaderTocDialog.a(ReaderTocDialog.this, chapterLink)) {
+                if (!ReaderTocDialog.this.a(chapterLink)) {
                     view2.findViewById(R.id.iv_readable).setVisibility(View.VISIBLE);
                     return view2;
                 }

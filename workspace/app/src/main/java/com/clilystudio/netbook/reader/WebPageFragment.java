@@ -19,10 +19,7 @@ public abstract class WebPageFragment extends Fragment implements View.OnClickLi
     private View c;
     private View d;
 
-    /*
-     * Enabled aggressive block sorting
-     */
-    static /* synthetic */ void a(WebPageFragment webPageFragment) {
+    static void a(WebPageFragment webPageFragment) {
         boolean bl = true;
         View view = webPageFragment.c;
         boolean bl2 = (webPageFragment.a != null && webPageFragment.a.canGoBack());
@@ -32,18 +29,6 @@ public abstract class WebPageFragment extends Fragment implements View.OnClickLi
             bl = false;
         }
         view2.setEnabled(bl);
-    }
-
-    static /* synthetic */ void b(WebPageFragment webPageFragment) {
-        webPageFragment.b.setVisibility(View.VISIBLE);
-    }
-
-    static /* synthetic */ void c(WebPageFragment webPageFragment) {
-        webPageFragment.b.setVisibility(View.GONE);
-    }
-
-    static /* synthetic */ WebView d(WebPageFragment webPageFragment) {
-        return webPageFragment.a;
     }
 
     protected abstract String a();
@@ -96,13 +81,13 @@ public abstract class WebPageFragment extends Fragment implements View.OnClickLi
 
             @Override
             public final void onPageFinished(WebView webView, String string) {
-                WebPageFragment.c(WebPageFragment.this);
+                WebPageFragment.this.b.setVisibility(View.GONE);
                 WebPageFragment.a(WebPageFragment.this);
             }
 
             @Override
             public final void onPageStarted(WebView webView, String string, Bitmap bitmap) {
-                WebPageFragment.b(WebPageFragment.this);
+                WebPageFragment.this.b.setVisibility(View.VISIBLE);
             }
 
             @Override
@@ -116,8 +101,8 @@ public abstract class WebPageFragment extends Fragment implements View.OnClickLi
         this.a.setOnKeyListener(new View.OnKeyListener() {
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
-                if (keyCode == 4 && WebPageFragment.d(WebPageFragment.this).canGoBack()) {
-                    WebPageFragment.d(WebPageFragment.this).goBack();
+                if (keyCode == 4 && WebPageFragment.this.a.canGoBack()) {
+                    WebPageFragment.this.a.goBack();
                     return true;
                 }
                 return false;

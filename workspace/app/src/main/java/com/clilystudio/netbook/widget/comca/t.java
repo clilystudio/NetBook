@@ -5,7 +5,7 @@ final class t extends s {
     private float d;
 
     public t(String string, float... arrf) {
-        super(string, (byte)0);
+        super(string);
         this.a(arrf);
     }
 
@@ -16,7 +16,7 @@ final class t extends s {
     }
 
     @Override
-    public final /* synthetic */ s a() {
+    public final s a() {
         return this.d();
     }
 
@@ -37,7 +37,7 @@ final class t extends s {
     }
 
     @Override
-    public final /* synthetic */ Object clone() {
+    public final Object clone() {
         return this.d();
     }
 }

@@ -45,37 +45,7 @@ public class ReaderMixActivity extends BaseLoadingActivity {
         return new IntentBuilder().put(context, ReaderMixActivity.class).put("BOOK_ID", bookId).put("BOOK_TITLE", bookTitle).put("SOURCE", source).build();
     }
 
-    static /* synthetic */ ChineseAllPromRoot a(ReaderMixActivity readerMixActivity, ChineseAllPromRoot chineseAllPromRoot) {
-        readerMixActivity.h = chineseAllPromRoot;
-        return chineseAllPromRoot;
-    }
-
-    static /* synthetic */ TocSummary a(ReaderMixActivity readerMixActivity, TocSummary tocSummary) {
-        readerMixActivity.k = tocSummary;
-        return tocSummary;
-    }
-
-    static /* synthetic */ String a(ReaderMixActivity readerMixActivity) {
-        return readerMixActivity.c;
-    }
-
-    static /* synthetic */ void a(ReaderMixActivity readerMixActivity, String string) {
-        readerMixActivity.startActivity(ReaderActivity.a(readerMixActivity, readerMixActivity.a, readerMixActivity.b, string, (String)null, true));
-    }
-
-    static /* synthetic */ String b(ReaderMixActivity readerMixActivity) {
-        return readerMixActivity.a;
-    }
-
-    static /* synthetic */ ListView c(ReaderMixActivity readerMixActivity) {
-        return readerMixActivity.e;
-    }
-
-    static /* synthetic */ BaseDownloadAdapter<TocSummary> d(ReaderMixActivity readerMixActivity) {
-        return readerMixActivity.f;
-    }
-
-    static /* synthetic */ void e(final ReaderMixActivity readerMixActivity) {
+    static void e(final ReaderMixActivity readerMixActivity) {
         readerMixActivity.i.setVisibility(View.VISIBLE);
         readerMixActivity.j.setVisibility(View.GONE);
         final String string = readerMixActivity.k.getHost();
@@ -85,27 +55,15 @@ public class ReaderMixActivity extends BaseLoadingActivity {
         readerMixActivity.i.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!string.equals(ReaderMixActivity.a(readerMixActivity))) {
-                    MyApplication.getInstance().setBookId(ReaderMixActivity.b(readerMixActivity));
-                    CommonUtil.setReadMode(ReaderMixActivity.b(readerMixActivity), 9);
+                if (!string.equals(readerMixActivity.c)) {
+                    MyApplication.getInstance().setBookId(readerMixActivity.a);
+                    CommonUtil.setReadMode(readerMixActivity.a, 9);
                     BusProvider.getInstance().post(new ModeChangedEvent(1));
-                    ReaderMixActivity.a(readerMixActivity, ReaderMixActivity.f(readerMixActivity).get_id());
+                    readerMixActivity.startActivity(ReaderActivity.a(readerMixActivity, readerMixActivity.a, readerMixActivity.b, readerMixActivity.k.get_id(), (String)null, true));
                 }
                 readerMixActivity.finish();
             }
         });
-    }
-
-    static /* synthetic */ TocSummary f(ReaderMixActivity readerMixActivity) {
-        return readerMixActivity.k;
-    }
-
-    static /* synthetic */ ChineseAllPromRoot g(ReaderMixActivity readerMixActivity) {
-        return readerMixActivity.h;
-    }
-
-    static /* synthetic */ View h(ReaderMixActivity readerMixActivity) {
-        return readerMixActivity.g;
     }
 
     @Override
@@ -144,15 +102,15 @@ public class ReaderMixActivity extends BaseLoadingActivity {
                     boolean bl2;
                     TocSummary tocSummary = (TocSummary) iterator.next();
                     if ("zhuishuvip".equals(tocSummary.getSource())) {
-                        ReaderMixActivity.a(ReaderMixActivity.this, tocSummary);
+                        ReaderMixActivity.this.k = tocSummary;
                         bl2 = true;
                     } else {
                         bl2 = bl;
                     }
                     bl = bl2;
                 }
-                ReaderMixActivity.d(ReaderMixActivity.this).a(list);
-                ReaderMixActivity.a(ReaderMixActivity.this, (ChineseAllPromRoot) objects[1]);
+                ReaderMixActivity.this.f.a(list);
+                ReaderMixActivity.this.h = (ChineseAllPromRoot) objects[1];
                 ReaderMixActivity.this.g.setVisibility(View.GONE);
             }
         };
@@ -200,7 +158,7 @@ public class ReaderMixActivity extends BaseLoadingActivity {
                 this.setText(2, string);
                 this.setText(3, DateTimeUtil.e(tocSummary.getUpdated()) + "\uff1a");
                 this.setText(4, tocSummary.getLastChapter());
-                if (string.equals(ReaderMixActivity.a(ReaderMixActivity.this))) {
+                if (string.equals(ReaderMixActivity.this.c)) {
                     this.setVisibility(5, false);
                     return;
                 }
@@ -229,11 +187,11 @@ public class ReaderMixActivity extends BaseLoadingActivity {
         view2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!"mix".equals(ReaderMixActivity.a(ReaderMixActivity.this))) {
-                    MyApplication.getInstance().setBookId(ReaderMixActivity.b(ReaderMixActivity.this));
-                    CommonUtil.setReadMode(ReaderMixActivity.b(ReaderMixActivity.this), 5);
+                if (!"mix".equals(ReaderMixActivity.this.c)) {
+                    MyApplication.getInstance().setBookId(ReaderMixActivity.this.a);
+                    CommonUtil.setReadMode(ReaderMixActivity.this.a, 5);
                     BusProvider.getInstance().post(new ModeChangedEvent(1));
-                    ReaderMixActivity.a(ReaderMixActivity.this, "MIX_TOC_ID");
+                    startActivity(ReaderActivity.a(ReaderMixActivity.this, ReaderMixActivity.this.a, ReaderMixActivity.this.b, "MIX_TOC_ID", (String)null, true));
                 }
                 ReaderMixActivity.this.finish();
             }
@@ -244,17 +202,17 @@ public class ReaderMixActivity extends BaseLoadingActivity {
         this.e.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                int n2 = position - ReaderMixActivity.c(ReaderMixActivity.this).getHeaderViewsCount();
-                TocSummary tocSummary = ReaderMixActivity.d(ReaderMixActivity.this).getItem(n2);
-                if (!tocSummary.getHost().equals(ReaderMixActivity.a(ReaderMixActivity.this))) {
-                    MyApplication.getInstance().setBookId(ReaderMixActivity.b(ReaderMixActivity.this));
-                    if ("vip.zhuishushenqi.com".equals(ReaderMixActivity.a(ReaderMixActivity.this))) {
-                        CommonUtil.setReadMode(ReaderMixActivity.b(ReaderMixActivity.this), 9);
+                int n2 = position - ReaderMixActivity.this.e.getHeaderViewsCount();
+                TocSummary tocSummary = ReaderMixActivity.this.f.getItem(n2);
+                if (!tocSummary.getHost().equals(ReaderMixActivity.this.c)) {
+                    MyApplication.getInstance().setBookId(ReaderMixActivity.this.a);
+                    if ("vip.zhuishushenqi.com".equals(ReaderMixActivity.this.c)) {
+                        CommonUtil.setReadMode(ReaderMixActivity.this.a, 9);
                     } else {
-                        CommonUtil.setReadMode(ReaderMixActivity.b(ReaderMixActivity.this), 10);
+                        CommonUtil.setReadMode(ReaderMixActivity.this.a, 10);
                     }
                     BusProvider.getInstance().post(new ModeChangedEvent(1));
-                    ReaderMixActivity.a(ReaderMixActivity.this, tocSummary.get_id());
+                    startActivity(ReaderActivity.a(ReaderMixActivity.this, ReaderMixActivity.this.a, ReaderMixActivity.this.b, tocSummary.get_id(), (String)null, true));
                 }
                 ReaderMixActivity.this.finish();
             }

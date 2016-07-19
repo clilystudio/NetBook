@@ -47,10 +47,10 @@ public class MyTopicFragment extends Fragment {
 
             @Override
             public void onLastItemVisible() {
-                if (MyTopicFragment.e(MyTopicFragment.this) == null || MyTopicFragment.e(MyTopicFragment.this).getStatus() == AsyncTask.Status.FINISHED) {
-                    MyTopicFragment.i(MyTopicFragment.this).setVisibility(View.VISIBLE);
-                    if (MyTopicFragment.f(MyTopicFragment.this) != null && MyTopicFragment.f(MyTopicFragment.this).getStatus() != AsyncTask.Status.FINISHED && !MyTopicFragment.f(MyTopicFragment.this).isCancelled()) {
-                        MyTopicFragment.f(MyTopicFragment.this).cancel(true);
+                if (MyTopicFragment.this.a == null || MyTopicFragment.this.a.getStatus() == AsyncTask.Status.FINISHED) {
+                    MyTopicFragment.this.e.setVisibility(View.VISIBLE);
+                    if (MyTopicFragment.this.b != null && MyTopicFragment.this.b.getStatus() != AsyncTask.Status.FINISHED && !MyTopicFragment.this.b.isCancelled()) {
+                        MyTopicFragment.this.b.cancel(true);
                     }
                     MyTopicFragment.this.a = new BaseAsyncTask<String, Void, Topic>(){
 
@@ -63,10 +63,10 @@ public class MyTopicFragment extends Fragment {
                         @Override
                         protected void onPostExecute(Topic topic) {
                             super.onPostExecute(topic);
-                            MyTopicFragment.a(MyTopicFragment.this).setVisibility(View.GONE);
-                            MyTopicFragment.c(MyTopicFragment.this).setVisibility(View.GONE);
-                            MyTopicFragment.i(MyTopicFragment.this).setVisibility(View.GONE);
-                            MyTopicFragment.d(MyTopicFragment.this).onRefreshComplete();
+                            MyTopicFragment.this.g.setVisibility(View.GONE);
+                            MyTopicFragment.this.f.setVisibility(View.GONE);
+                            MyTopicFragment.this.e.setVisibility(View.GONE);
+                            MyTopicFragment.this.c.onRefreshComplete();
                             if (this.isCancelled()) return;
                             if (topic != null && topic.getPosts() != null) {
                                 TopicPost[] arrtopicPost = topic.getPosts();
@@ -76,65 +76,24 @@ public class MyTopicFragment extends Fragment {
                                         if (topicPost.getBook() == null) continue;
                                         MyTopicFragment.this.i.add(topicPost);
                                     }
-                                    MyTopicFragment.k(MyTopicFragment.this).a(MyTopicFragment.this.i);
-                                    MyTopicFragment.a(MyTopicFragment.this, MyTopicFragment.this.i.size());
+                                    MyTopicFragment.this.h.a(MyTopicFragment.this.i);
+                                    MyTopicFragment.this.c.setCountText("共发布了%d条话题", MyTopicFragment.this.i.size());
                                     if (n >= 10) {
-                                        MyTopicFragment.d(MyTopicFragment.this).setOnLastItemVisibleListener(MyTopicFragment.j(MyTopicFragment.this));
+                                        MyTopicFragment.this.c.setOnLastItemVisibleListener(MyTopicFragment.this.k);
                                         return;
                                     }
                                 }
-                                MyTopicFragment.d(MyTopicFragment.this).setOnLastItemVisibleListener(null);
+                                MyTopicFragment.this.c.setOnLastItemVisibleListener(null);
                                 return;
                             }
                             ToastUtil.showShortToast(MyTopicFragment.this.getActivity(), "加载失败，请检查网络或稍后再试");
                         }
                     };
-                    BaseAsyncTask<String, Void, Topic> f = MyTopicFragment.e(MyTopicFragment.this);
-                    String[] arrstring = new String[]{MyTopicFragment.b(MyTopicFragment.this)};
-                    f.b(arrstring);
+                    BaseAsyncTask<String, Void, Topic> f = MyTopicFragment.this.a;
+                    f.b(MyTopicFragment.this.j);
                 }
             }
         };
-    }
-
-    static /* synthetic */ TextView a(MyTopicFragment myTopicFragment) {
-        return myTopicFragment.g;
-    }
-
-    static /* synthetic */ void a(MyTopicFragment myTopicFragment, int n) {
-        myTopicFragment.c.setCountText("\u5171\u53d1\u5e03\u4e86%d\u6761\u8bdd\u9898", n);
-    }
-
-    static /* synthetic */ String b(MyTopicFragment myTopicFragment) {
-        return myTopicFragment.j;
-    }
-
-    static /* synthetic */ View c(MyTopicFragment myTopicFragment) {
-        return myTopicFragment.f;
-    }
-
-    static /* synthetic */ LabelPtrListView d(MyTopicFragment myTopicFragment) {
-        return myTopicFragment.c;
-    }
-
-    static /* synthetic */ BaseAsyncTask<String, Void, Topic> e(MyTopicFragment myTopicFragment) {
-        return myTopicFragment.a;
-    }
-
-    static /* synthetic */ BaseAsyncTask<String, Void, Topic> f(MyTopicFragment myTopicFragment) {
-        return myTopicFragment.b;
-    }
-
-    static /* synthetic */ View i(MyTopicFragment myTopicFragment) {
-        return myTopicFragment.e;
-    }
-
-    static /* synthetic */ PullToRefreshBase.OnLastItemVisibleListener j(MyTopicFragment myTopicFragment) {
-        return myTopicFragment.k;
-    }
-
-    static /* synthetic */ BaseDownloadAdapter<TopicPost> k(MyTopicFragment myTopicFragment) {
-        return myTopicFragment.h;
     }
 
     @Override
@@ -155,24 +114,23 @@ public class MyTopicFragment extends Fragment {
         this.c.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener<ListView>() {
             @Override
             public void onRefresh(PullToRefreshBase<ListView> refreshView) {
-                MyTopicFragment.a(MyTopicFragment.this).setVisibility(View.GONE);
+                MyTopicFragment.this.g.setVisibility(View.GONE);
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        if (MyTopicFragment.b(MyTopicFragment.this) == null) {
-                            MyTopicFragment.c(MyTopicFragment.this).setVisibility(View.GONE);
-                            MyTopicFragment.a(MyTopicFragment.this).setVisibility(View.VISIBLE);
-                            MyTopicFragment.a(MyTopicFragment.this).setText("请登录后查看");
-                            MyTopicFragment.d(MyTopicFragment.this).onRefreshComplete();
+                        if (MyTopicFragment.this.j == null) {
+                            MyTopicFragment.this.f.setVisibility(View.GONE);
+                            MyTopicFragment.this.g.setVisibility(View.VISIBLE);
+                            MyTopicFragment.this.g.setText("请登录后查看");
+                            MyTopicFragment.this.c.onRefreshComplete();
                             return;
                         }
-                        if (MyTopicFragment.e(MyTopicFragment.this) != null && MyTopicFragment.e(MyTopicFragment.this).getStatus() != AsyncTask.Status.FINISHED && !MyTopicFragment.e(MyTopicFragment.this).isCancelled()) {
-                            MyTopicFragment.e(MyTopicFragment.this).cancel(true);
+                        if (MyTopicFragment.this.a != null && MyTopicFragment.this.a.getStatus() != AsyncTask.Status.FINISHED && !MyTopicFragment.this.a.isCancelled()) {
+                            MyTopicFragment.this.a.cancel(true);
                         }
                         MyTopicFragment.this.a = getGClass();
-                        BaseAsyncTask<String, Void, Topic> g = MyTopicFragment.f(MyTopicFragment.this);
-                        String[] arrstring = new String[]{MyTopicFragment.b(MyTopicFragment.this)};
-                        g.b(arrstring);
+                        BaseAsyncTask<String, Void, Topic> g = MyTopicFragment.this.b;
+                        g.b(MyTopicFragment.this.j);
                     }
 
                 }, 1000);
@@ -251,10 +209,10 @@ public class MyTopicFragment extends Fragment {
             @Override
             protected void onPostExecute(Topic topic) {
                 super.onPostExecute(topic);
-                MyTopicFragment.a(MyTopicFragment.this).setVisibility(View.GONE);
-                MyTopicFragment.c(MyTopicFragment.this).setVisibility(View.GONE);
-                MyTopicFragment.i(MyTopicFragment.this).setVisibility(View.GONE);
-                MyTopicFragment.d(MyTopicFragment.this).onRefreshComplete();
+                MyTopicFragment.this.g.setVisibility(View.GONE);
+                MyTopicFragment.this.f.setVisibility(View.GONE);
+                MyTopicFragment.this.e.setVisibility(View.GONE);
+                MyTopicFragment.this.c.onRefreshComplete();
                 if (topic != null && topic.getPosts() != null) {
                     MyTopicFragment.this.i.clear();
                     TopicPost[] arrtopicPost = topic.getPosts();
@@ -265,19 +223,19 @@ public class MyTopicFragment extends Fragment {
                             MyTopicFragment.this.i.add(topicPost);
                         }
                         if (n < 10) {
-                            MyTopicFragment.d(MyTopicFragment.this).setOnLastItemVisibleListener(null);
+                            MyTopicFragment.this.c.setOnLastItemVisibleListener(null);
                         } else {
-                            MyTopicFragment.d(MyTopicFragment.this).setOnLastItemVisibleListener(MyTopicFragment.j(MyTopicFragment.this));
+                            MyTopicFragment.this.c.setOnLastItemVisibleListener(MyTopicFragment.this.k);
                         }
                     } else {
-                        MyTopicFragment.a(MyTopicFragment.this).setVisibility(View.VISIBLE);
-                        MyTopicFragment.a(MyTopicFragment.this).setText("你还没有发布哦，快去发布一个吧");
+                        MyTopicFragment.this.g.setVisibility(View.VISIBLE);
+                        MyTopicFragment.this.g.setText("你还没有发布哦，快去发布一个吧");
                     }
-                    MyTopicFragment.k(MyTopicFragment.this).a(MyTopicFragment.this.i);
-                    MyTopicFragment.a(MyTopicFragment.this, MyTopicFragment.this.i.size());
-                    return;
+                    MyTopicFragment.this.h.a(MyTopicFragment.this.i);
+                    MyTopicFragment.this.c.setCountText("共发布了%d条话题", MyTopicFragment.this.i.size());
+                 } else {
+                    ToastUtil.showShortToast(MyTopicFragment.this.getActivity(), "加载失败，请检查网络或者稍后再试");
                 }
-                ToastUtil.showShortToast(MyTopicFragment.this.getActivity(), "加载失败，请检查网络或者稍后再试");
             }
         };
     }

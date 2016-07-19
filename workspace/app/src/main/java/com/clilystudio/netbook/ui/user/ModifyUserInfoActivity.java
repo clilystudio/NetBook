@@ -27,10 +27,10 @@ import com.clilystudio.netbook.model.Root;
 import com.clilystudio.netbook.model.User;
 import com.clilystudio.netbook.model.UserInfo;
 import com.clilystudio.netbook.ui.BaseActivity;
-import com.clilystudio.netbook.widget.CircularSmartImageView;
 import com.clilystudio.netbook.ui.CropPhotoActivity;
 import com.clilystudio.netbook.util.CommonUtil;
 import com.clilystudio.netbook.util.ToastUtil;
+import com.clilystudio.netbook.widget.CircularSmartImageView;
 
 import java.io.File;
 import java.util.Calendar;
@@ -51,23 +51,11 @@ public class ModifyUserInfoActivity extends BaseActivity implements View.OnClick
     private boolean c = true;
     private boolean e = false;
 
-    static /* synthetic */ long a(ModifyUserInfoActivity modifyUserInfoActivity, long l) {
-        modifyUserInfoActivity.b = l;
-        return l;
-    }
-
     public static Intent a(Context context, long l) {
         return new IntentBuilder().put(context, ModifyUserInfoActivity.class).putSerializable("nickname_updated_time", l).build();
     }
 
-    static /* synthetic */ User a(ModifyUserInfoActivity modifyUserInfoActivity) {
-        return modifyUserInfoActivity.a;
-    }
-
-    /*
-     * Enabled aggressive block sorting
-     */
-    static /* synthetic */ void a(final ModifyUserInfoActivity modifyUserInfoActivity, final boolean bl) {
+    static void a(final ModifyUserInfoActivity modifyUserInfoActivity, final boolean bl) {
         if (modifyUserInfoActivity.a.getGender().equals("male") == bl) {
             ToastUtil.showShortToast(modifyUserInfoActivity, "没有修改");
             return;
@@ -101,13 +89,13 @@ public class ModifyUserInfoActivity extends BaseActivity implements View.OnClick
                                 return;
                             }
                             UserInfo userInfo = (UserInfo) MyApplication.getInstance().loadObject("savedObject_userinfo");
-                            String string = ModifyUserInfoActivity.a(modifyUserInfoActivity).getGender().equals("male") ? "female" : "male";
+                            String string = modifyUserInfoActivity.a.getGender().equals("male") ? "female" : "male";
                             userInfo.setGender(string);
                             MyApplication.getInstance().saveObject(userInfo, "savedObject_userinfo");
                             Account account = CommonUtil.checkLogin(modifyUserInfoActivity);
                             if (account != null) {
-                                ModifyUserInfoActivity.a(modifyUserInfoActivity).setGender(string);
-                                account.setUser(ModifyUserInfoActivity.a(modifyUserInfoActivity));
+                                modifyUserInfoActivity.a.setGender(string);
+                                account.setUser(modifyUserInfoActivity.a);
                                 MyApplication.getInstance().saveAccoutInfo(account);
                             }
                             TextView textView = modifyUserInfoActivity.mGenderView;
@@ -126,19 +114,6 @@ public class ModifyUserInfoActivity extends BaseActivity implements View.OnClick
         }).setNegativeButton("取消", null).show();
     }
 
-    static /* synthetic */ boolean b(ModifyUserInfoActivity modifyUserInfoActivity, boolean bl) {
-        modifyUserInfoActivity.c = bl;
-        return bl;
-    }
-
-    static /* synthetic */ boolean c(ModifyUserInfoActivity modifyUserInfoActivity, boolean bl) {
-        modifyUserInfoActivity.e = bl;
-        return bl;
-    }
-
-    /*
-     * Enabled aggressive block sorting
-     */
     @Override
     protected void onActivityResult(int n, int n2, Intent intent) {
         if (n == 9162 && n2 == -1) {
@@ -358,12 +333,12 @@ public class ModifyUserInfoActivity extends BaseActivity implements View.OnClick
                         MyApplication.getInstance().saveObject(userInfo, "savedObject_userinfo");
                         Date date = userInfo.getNicknameUpdated();
                         if (date == null) {
-                            ModifyUserInfoActivity.a(ModifyUserInfoActivity.this, -2);
+                            ModifyUserInfoActivity.this.b = -2;
                         } else {
-                            ModifyUserInfoActivity.a(ModifyUserInfoActivity.this, date.getTime());
+                            ModifyUserInfoActivity.this.b = date.getTime();
                         }
-                        ModifyUserInfoActivity.b(ModifyUserInfoActivity.this, true);
-                        ModifyUserInfoActivity.c(ModifyUserInfoActivity.this, userInfo.isGenderChanged());
+                        ModifyUserInfoActivity.this.c = true;
+                        ModifyUserInfoActivity.this.e = userInfo.isGenderChanged();
                     } else {
                         if (!"TOKEN_INVALID".equals(userInfo.getCode())) return;
                         {

@@ -17,10 +17,7 @@ public class CustomSearchActivity extends BaseActivity {
     private EditText a;
     private EditText b;
 
-    /*
-     * Enabled aggressive block sorting
-     */
-    static /* synthetic */ void a(final CustomSearchActivity customSearchActivity) {
+    static void a(final CustomSearchActivity customSearchActivity) {
         String string = customSearchActivity.a.getText().toString();
         String string2 = customSearchActivity.b.getText().toString();
         if (CommonUtil.isBlank(string)) {
@@ -53,7 +50,7 @@ public class CustomSearchActivity extends BaseActivity {
                         if ("EXISTS".equals(bookAdd.getCode())) {
                             ToastUtil.showShortToast(customSearchActivity, "该书已存在");
                         } else if ("NOTFOUND".equals(bookAdd.getCode())) {
-                            CustomSearchActivity.b(customSearchActivity);
+                            customSearchActivity.startActivity(AddBookFailedActivity.a(customSearchActivity, customSearchActivity.a.getText().toString()));
                         }
                     }
                 }
@@ -61,10 +58,6 @@ public class CustomSearchActivity extends BaseActivity {
             String[] arrobject = new String[]{customSearchActivity.a.getText().toString().trim(), customSearchActivity.b.getText().toString().trim(), string3};
             ba2.b(arrobject);
         }
-    }
-
-    static /* synthetic */ void b(CustomSearchActivity customSearchActivity) {
-        customSearchActivity.startActivity(AddBookFailedActivity.a(customSearchActivity, customSearchActivity.a.getText().toString()));
     }
 
     @Override

@@ -34,14 +34,7 @@ public final class BookShelfSyncManager {
         this.mToken = token;
     }
 
-    static /* synthetic */ RemoteBookShelf a(BookShelfSyncManager z, String string) {
-        return z.a(string);
-    }
-
-    /*
-     * Enabled aggressive block sorting
-     */
-    static /* synthetic */ void a(BookShelfSyncManager z, RemoteBookShelf remoteBookShelf) {
+    static void a(BookShelfSyncManager z, RemoteBookShelf remoteBookShelf) {
         List<BookSyncRecord> list;
         Account account;
         List<BookSyncRecord> list2;
@@ -139,10 +132,6 @@ public final class BookShelfSyncManager {
         return true;
     }
 
-    static /* synthetic */ Activity b(BookShelfSyncManager z) {
-        return z.b;
-    }
-
     private static void b() {
         List<BookReadRecord> list = BookReadRecord.getAllNoFeed();
         String[] arrstring = new String[list.size()];
@@ -217,7 +206,7 @@ public final class BookShelfSyncManager {
                             @Override
                             protected RemoteBookShelf doInBackground(String... params) {
                                 mIsLoading = true;
-                                return BookShelfSyncManager.a(BookShelfSyncManager.this, params[0]);
+                                return BookShelfSyncManager.this.a(params[0]);
                             }
 
                             @Override
@@ -239,25 +228,25 @@ public final class BookShelfSyncManager {
 
             @Override
             public RemoteBookShelf a(String... var1) {
-                RemoteBookShelf remoteBookShelf = BookShelfSyncManager.a(BookShelfSyncManager.this, var1[0]);
+                RemoteBookShelf remoteBookShelf = BookShelfSyncManager.this.a(var1[0]);
                 if (remoteBookShelf != null) {
                     if (remoteBookShelf.isNeedSync()) {
                         if (remoteBookShelf.isOk()) {
                             BookShelfSyncManager.a(BookShelfSyncManager.this, remoteBookShelf);
-                            ToastUtil.showShortToast(BookShelfSyncManager.b(BookShelfSyncManager.this), "同步完成");
+                            ToastUtil.showShortToast(BookShelfSyncManager.this.b, "同步完成");
                             return remoteBookShelf;
                         }
                         if ("TOKEN_INVALID".equals(remoteBookShelf.getCode())) {
-                            ToastUtil.showToast(BookShelfSyncManager.b(BookShelfSyncManager.this), R.string.sync_token_failed);
+                            ToastUtil.showToast(BookShelfSyncManager.this.b, R.string.sync_token_failed);
                             return remoteBookShelf;
                         }
-                        ToastUtil.showShortToast(BookShelfSyncManager.b(BookShelfSyncManager.this), "同步失败，请重试");
+                        ToastUtil.showShortToast(BookShelfSyncManager.this.b, "同步失败，请重试");
                         return remoteBookShelf;
                     }
-                    ToastUtil.showShortToast(BookShelfSyncManager.b(BookShelfSyncManager.this), "同步完成");
+                    ToastUtil.showShortToast(BookShelfSyncManager.this.b, "同步完成");
                     return remoteBookShelf;
                 }
-                ToastUtil.showShortToast(BookShelfSyncManager.b(BookShelfSyncManager.this), "同步失败，请检查网络或稍后再试");
+                ToastUtil.showShortToast(BookShelfSyncManager.this.b, "同步失败，请检查网络或稍后再试");
                 return remoteBookShelf;
             }
 

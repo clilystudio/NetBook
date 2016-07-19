@@ -94,11 +94,11 @@ public abstract class AbsUGCListFragment extends Fragment implements AdapterView
                                     AbsUGCListFragment.this.a.setOnLastItemVisibleListener(null);
                                     return;
                                 }
-                                AbsUGCListFragment.this.a.setOnLastItemVisibleListener(AbsUGCListFragment.a(AbsUGCListFragment.this));
+                                AbsUGCListFragment.this.a.setOnLastItemVisibleListener(AbsUGCListFragment.this.m);
                                 ToastUtil.showShortToast(AbsUGCListFragment.this.getActivity(), "加载失败，上拉可重新加载");
                                 return;
                             }
-                            AbsUGCListFragment.this.a.setOnLastItemVisibleListener(AbsUGCListFragment.a(AbsUGCListFragment.this));
+                            AbsUGCListFragment.this.a.setOnLastItemVisibleListener(AbsUGCListFragment.this.m);
                             ToastUtil.showShortToast(AbsUGCListFragment.this.getActivity(), "加载失败，请检查网络或稍后再试");
                         }
                     };
@@ -108,11 +108,7 @@ public abstract class AbsUGCListFragment extends Fragment implements AdapterView
         };
     }
 
-    static /* synthetic */ PullToRefreshBase.OnLastItemVisibleListener a(AbsUGCListFragment absUGCListFragment) {
-        return absUGCListFragment.m;
-    }
-
-    static /* synthetic */ void a(AbsUGCListFragment absUGCListFragment, int n) {
+    static void a(AbsUGCListFragment absUGCListFragment, int n) {
         TextView textView = absUGCListFragment.k;
         String string = absUGCListFragment.l;
         Object[] arrobject = new Object[]{n};
@@ -143,7 +139,7 @@ public abstract class AbsUGCListFragment extends Fragment implements AdapterView
                 AbsUGCListFragment.this.d.setVisibility(View.GONE);
                 AbsUGCListFragment.this.e.setVisibility(View.GONE);
                 AbsUGCListFragment.this.a.onRefreshComplete();
-                AbsUGCListFragment.this.a.setOnLastItemVisibleListener(AbsUGCListFragment.a(AbsUGCListFragment.this));
+                AbsUGCListFragment.this.a.setOnLastItemVisibleListener(AbsUGCListFragment.this.m);
                 if (uGCBookListRoot != null) {
                     if (uGCBookListRoot.isOk()) {
                         AbsUGCListFragment.this.i.clear();
@@ -230,7 +226,7 @@ public abstract class AbsUGCListFragment extends Fragment implements AdapterView
                                 AbsUGCListFragment.this.d.setVisibility(View.GONE);
                                 AbsUGCListFragment.this.e.setVisibility(View.GONE);
                                 AbsUGCListFragment.this.a.onRefreshComplete();
-                                AbsUGCListFragment.this.a.setOnLastItemVisibleListener(AbsUGCListFragment.a(AbsUGCListFragment.this));
+                                AbsUGCListFragment.this.a.setOnLastItemVisibleListener(AbsUGCListFragment.this.m);
                                 if (uGCBookListRoot != null) {
                                     if (uGCBookListRoot.isOk()) {
                                         AbsUGCListFragment.this.i.clear();

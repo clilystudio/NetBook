@@ -1,14 +1,14 @@
 package com.clilystudio.netbook.reader;
 
 import android.content.Context;
-
-import com.clilystudio.netbook.R;
-import com.clilystudio.netbook.util.CommonUtil;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import com.clilystudio.netbook.R;
+import com.clilystudio.netbook.util.CommonUtil;
 
 public class ReaderActionBar extends RelativeLayout {
     private View a;
@@ -32,16 +32,6 @@ public class ReaderActionBar extends RelativeLayout {
 
     public ReaderActionBar(Context context, AttributeSet attributeSet, int n) {
         super(context, attributeSet, n);
-    }
-
-    static /* synthetic */ ReaderStyle a(ReaderActionBar readerActionBar) {
-        return readerActionBar.c;
-    }
-
-    static /* synthetic */ void a(ReaderActionBar readerActionBar, int n) {
-        if (readerActionBar.b != null) {
-            readerActionBar.b.a(n);
-        }
     }
 
     public final void a() {
@@ -93,7 +83,7 @@ public class ReaderActionBar extends RelativeLayout {
     }
 
     public final void f(boolean bl) {
-         this.i.setVisibility(bl ? VISIBLE : INVISIBLE);
+        this.i.setVisibility(bl ? VISIBLE : INVISIBLE);
     }
 
     public final void g(boolean bl) {
@@ -108,9 +98,11 @@ public class ReaderActionBar extends RelativeLayout {
         layoutParams.setMargins(0, CommonUtil.getStatusBarHeight(this.getContext()), 0, 0);
         this.setLayoutParams(layoutParams);
         View.OnClickListener ah2 = new View.OnClickListener() {
-           @Override
+            @Override
             public void onClick(View v) {
-               ReaderActionBar.a(ReaderActionBar.this, v.getId());
+                if (ReaderActionBar.this.b != null) {
+                    ReaderActionBar.this.b.a(v.getId());
+                }
             }
         };
         this.f = (TextView) this.findViewById(R.id.reader_oper_top_title);
@@ -133,7 +125,7 @@ public class ReaderActionBar extends RelativeLayout {
         this.findViewById(R.id.read_opt_night).setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                ReaderActionBar.a(ReaderActionBar.this).a();
+                ReaderActionBar.this.c.a();
                 ReaderActionBar.this.a();
             }
         });

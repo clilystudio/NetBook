@@ -34,54 +34,6 @@ public class SettingsActivity extends BaseActivity implements View.OnClickListen
         view.setContentDescription("已关闭");
     }
 
-    static /* synthetic */ void a(final SettingsActivity settingsActivity) {
-        BaseDialog.Builder h2 = new BaseDialog.Builder(settingsActivity);
-        h2.setTitle(R.string.user_logout_dialog);
-        h2.setMessage(R.string.user_logout_dialog_tips);
-        h2.setNegativeButton(R.string.cancel, null);
-        h2.setPositiveButton(R.string.user_logout, new DialogInterface.OnClickListener() {
-
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                SettingsActivity.c(settingsActivity);
-            }
-        });
-        h2.create().show();
-    }
-
-    static /* synthetic */ void a(SettingsActivity settingsActivity, int n, String string) {
-        if (settingsActivity.a != n) {
-            settingsActivity.a = n;
-            CommonUtil.putIntPref(settingsActivity, "key_shelf_sort", settingsActivity.a);
-            ((TextView) settingsActivity.findViewById(R.id.settings_shelf_sort_value)).setText(string);
-            BusProvider.getInstance().post(new BookReadEvent());
-        }
-    }
-
-    static /* synthetic */ void a(SettingsActivity settingsActivity, boolean bl) {
-        if (bl) {
-            MiPushClient.registerPush(settingsActivity.getApplicationContext(), "2882303761517133731", "5941713373731");
-        } else {
-            MiPushClient.unregisterPush(settingsActivity.getApplicationContext());
-        }
-    }
-
-    static /* synthetic */ void c(SettingsActivity settingsActivity) {
-        ToastUtil.showShortToast(settingsActivity, "已登出");
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                ApiServiceProvider.getApiService().P(CommonUtil.getAccount().getToken());
-            }
-        }).start();
-        MyApplication.getInstance().removeProperties("account.token", "user.id", "user.name", "user.avatar", "user.lv", "user.gender");
-        CommonUtil.putStringPref(settingsActivity, "pref_new_unimp_notif_time", "0");
-        CommonUtil.putStringPref(settingsActivity, "pref_new_imp_notif_time", "0");
-        CommonUtil.putIntPref(settingsActivity, "remove_ad_duration", 0);
-        settingsActivity.finish();
-        BusProvider.getInstance().post(new LogoutEvent());
-    }
-
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
@@ -99,7 +51,12 @@ public class SettingsActivity extends BaseActivity implements View.OnClickListen
                         @Override
                         public void onClick(View v) {
                             alertDialog.dismiss();
-                            SettingsActivity.a(SettingsActivity.this, finalI, SettingsActivity.this.getResources().getString(arrn2[finalI]));
+                            if (SettingsActivity.this.a != finalI) {
+                                SettingsActivity.this.a = finalI;
+                                CommonUtil.putIntPref(SettingsActivity.this, "key_shelf_sort", SettingsActivity.this.a);
+                                ((TextView) SettingsActivity.this.findViewById(R.id.settings_shelf_sort_value)).setText( SettingsActivity.this.getResources().getString(arrn2[finalI]));
+                                BusProvider.getInstance().post(new BookReadEvent());
+                            }
                         }
                     });
                 }
@@ -122,7 +79,30 @@ public class SettingsActivity extends BaseActivity implements View.OnClickListen
             this.a(R.string.settings, "退出登录", new BaseCallBack() {
                 @Override
                 public void a() {
-                    SettingsActivity.a(SettingsActivity.this);
+                    BaseDialog.Builder h2 = new BaseDialog.Builder(SettingsActivity.this);
+                    h2.setTitle(R.string.user_logout_dialog);
+                    h2.setMessage(R.string.user_logout_dialog_tips);
+                    h2.setNegativeButton(R.string.cancel, null);
+                    h2.setPositiveButton(R.string.user_logout, new DialogInterface.OnClickListener() {
+
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            ToastUtil.showShortToast(SettingsActivity.this, "已登出");
+                            new Thread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    ApiServiceProvider.getApiService().P(CommonUtil.getAccount().getToken());
+                                }
+                            }).start();
+                            MyApplication.getInstance().removeProperties("account.token", "user.id", "user.name", "user.avatar", "user.lv", "user.gender");
+                            CommonUtil.putStringPref(SettingsActivity.this, "pref_new_unimp_notif_time", "0");
+                            CommonUtil.putStringPref(SettingsActivity.this, "pref_new_imp_notif_time", "0");
+                            CommonUtil.putIntPref(SettingsActivity.this, "remove_ad_duration", 0);
+                            SettingsActivity.this.finish();
+                            BusProvider.getInstance().post(new LogoutEvent());
+                        }
+                    });
+                    h2.create().show();
                 }
             });
         } else {
@@ -146,7 +126,11 @@ public class SettingsActivity extends BaseActivity implements View.OnClickListen
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 CommonUtil.putBoolPref(SettingsActivity.this, "update_notice_key", isChecked);
-                SettingsActivity.a(SettingsActivity.this, isChecked);
+                if (isChecked) {
+                    MiPushClient.registerPush(SettingsActivity.this.getApplicationContext(), "2882303761517133731", "5941713373731");
+                } else {
+                    MiPushClient.unregisterPush(SettingsActivity.this.getApplicationContext());
+                }
                 SettingsActivity.a(switchCompat, isChecked);
             }
         });

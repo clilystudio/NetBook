@@ -24,7 +24,7 @@ public class CircularSmartImageView extends CornerImageView {
     }
 
     @Override
-    protected final /* synthetic */ BitmapDisplayer a() {
+    protected final BitmapDisplayer a() {
         return new BitmapDisplayer() {
             @Override
             public void display(Bitmap bitmap, ImageAware imageAware, LoadedFrom loadedFrom) {

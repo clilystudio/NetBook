@@ -20,28 +20,15 @@ public class SearchEditText extends EditText {
         this.a();
     }
 
-    static /* synthetic */ boolean a(SearchEditText searchEditText) {
-        return searchEditText.a;
-    }
-
-    static /* synthetic */ boolean a(SearchEditText searchEditText, boolean bl) {
-        searchEditText.a = bl;
-        return bl;
-    }
-
-    static /* synthetic */ OnUserInputListener b(SearchEditText searchEditText) {
-        return searchEditText.b;
-    }
-
     private void a() {
         this.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                if (SearchEditText.a(SearchEditText.this)) {
-                    SearchEditText.a(SearchEditText.this, false);
+                if (SearchEditText.this.a) {
+                    SearchEditText.this.a = false;
                 } else {
-                    if (SearchEditText.b(SearchEditText.this) != null) {
-                        SearchEditText.b(SearchEditText.this).a();
+                    if (SearchEditText.this.b != null) {
+                        SearchEditText.this.b.a();
                     }
                 }
             }

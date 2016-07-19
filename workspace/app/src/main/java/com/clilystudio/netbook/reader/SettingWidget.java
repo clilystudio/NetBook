@@ -39,50 +39,21 @@ public class SettingWidget extends LinearLayout {
         super(context, attributeSet, n);
     }
 
-    static /* synthetic */ void a(SettingWidget settingWidget) {
-        settingWidget.b();
-    }
-
-    static /* synthetic */ ReaderStyle b(SettingWidget settingWidget) {
-        return settingWidget.a;
-    }
-
-    static /* synthetic */ CheckBox c(SettingWidget settingWidget) {
-        return settingWidget.e;
-    }
-
-    static /* synthetic */ ImageView d(SettingWidget settingWidget) {
-        return settingWidget.f;
-    }
-
-    static /* synthetic */ ImageView e(SettingWidget settingWidget) {
-        return settingWidget.g;
-    }
-
-    static /* synthetic */ ImageView f(SettingWidget settingWidget) {
-        return settingWidget.h;
-    }
-
-    static /* synthetic */ ReaderActionBar g(SettingWidget settingWidget) {
-        return settingWidget.b;
-    }
-
     private void b() {
         switch (this.a.c()) {
-            default: {
-                this.d.setEnabled(true);
-                this.c.setEnabled(true);
-                return;
-            }
-            case 0: {
+            case 0:
                 this.d.setEnabled(false);
                 this.c.setEnabled(true);
-                return;
-            }
+                break;
             case 5:
+                this.d.setEnabled(true);
+                this.c.setEnabled(false);
+                break;
+            default:
+                this.d.setEnabled(true);
+                this.c.setEnabled(true);
+                break;
         }
-        this.d.setEnabled(true);
-        this.c.setEnabled(false);
     }
 
     public final void a() {
@@ -135,7 +106,7 @@ public class SettingWidget extends LinearLayout {
         bZ2.a(new ReaderStyle.cc() {
             @Override
             public void a() {
-                SettingWidget.a(SettingWidget.this);
+                SettingWidget.this.b();
             }
         });
         this.c = this.findViewById(R.id.btn_increase);
@@ -143,15 +114,15 @@ public class SettingWidget extends LinearLayout {
         this.c.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                SettingWidget.b(SettingWidget.this).d();
-                SettingWidget.a(SettingWidget.this);
+                SettingWidget.this.a.d();
+                SettingWidget.this.b();
             }
         });
         this.d.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                SettingWidget.b(SettingWidget.this).e();
-                SettingWidget.a(SettingWidget.this);
+                SettingWidget.this.a.e();
+                SettingWidget.this.b();
             }
         });
         this.b();
@@ -166,14 +137,14 @@ public class SettingWidget extends LinearLayout {
                     if (progress < 15) {
                         progress = 15;
                     }
-                    SettingWidget.b(SettingWidget.this).b(progress);
+                    SettingWidget.this.a.b(progress);
                 }
             }
 
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {
-                SettingWidget.c(SettingWidget.this).setChecked(false);
-          }
+                SettingWidget.this.e.setChecked(false);
+            }
 
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
@@ -183,7 +154,7 @@ public class SettingWidget extends LinearLayout {
         this.e.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                SettingWidget.b(SettingWidget.this).b(isChecked);
+                SettingWidget.this.a.b(isChecked);
             }
         });
         this.f = (ImageView) this.findViewById(R.id.reader_set_bg_1);
@@ -200,31 +171,31 @@ public class SettingWidget extends LinearLayout {
         this.f.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                SettingWidget.d(SettingWidget.this).setSelected(true);
-                SettingWidget.e(SettingWidget.this).setSelected(false);
-                SettingWidget.f(SettingWidget.this).setSelected(false);
-                SettingWidget.b(SettingWidget.this).a(1);
-                SettingWidget.g(SettingWidget.this).a();
+                SettingWidget.this.f.setSelected(true);
+                SettingWidget.this.g.setSelected(false);
+                SettingWidget.this.h.setSelected(false);
+                SettingWidget.this.a.a(1);
+                SettingWidget.this.b.a();
             }
         });
         this.g.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                SettingWidget.d(SettingWidget.this).setSelected(false);
-                SettingWidget.e(SettingWidget.this).setSelected(true);
-                SettingWidget.f(SettingWidget.this).setSelected(false);
-                SettingWidget.b(SettingWidget.this).a(2);
-                SettingWidget.g(SettingWidget.this).a();
+                SettingWidget.this.f.setSelected(false);
+                SettingWidget.this.g.setSelected(true);
+                SettingWidget.this.h.setSelected(false);
+                SettingWidget.this.a.a(2);
+                SettingWidget.this.b.a();
             }
         });
         this.h.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                SettingWidget.d(SettingWidget.this).setSelected(false);
-                SettingWidget.e(SettingWidget.this).setSelected(false);
-                SettingWidget.f(SettingWidget.this).setSelected(true);
-                SettingWidget.b(SettingWidget.this).a(3);
-                SettingWidget.g(SettingWidget.this).a();
+                SettingWidget.this.f.setSelected(false);
+                SettingWidget.this.g.setSelected(false);
+                SettingWidget.this.h.setSelected(true);
+                SettingWidget.this.a.a(3);
+                SettingWidget.this.b.a();
             }
         });
     }

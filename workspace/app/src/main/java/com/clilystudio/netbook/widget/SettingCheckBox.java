@@ -21,10 +21,6 @@ public class SettingCheckBox extends SwitchCompat {
         typedArray.recycle();
     }
 
-    static /* synthetic */ String a(SettingCheckBox settingCheckBox) {
-        return settingCheckBox.a;
-    }
-
     @Override
     protected void onFinishInflate() {
         super.onFinishInflate();
@@ -32,7 +28,7 @@ public class SettingCheckBox extends SwitchCompat {
         this.setOnCheckedChangeListener(new OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                CommonUtil.putBoolPref(getContext(), SettingCheckBox.a(SettingCheckBox.this), isChecked);
+                CommonUtil.putBoolPref(getContext(), SettingCheckBox.this.a, isChecked);
                 if (isChecked) {
                     buttonView.setContentDescription("已开启");
                 } else {

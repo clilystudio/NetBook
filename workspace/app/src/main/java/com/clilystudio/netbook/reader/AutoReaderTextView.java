@@ -37,9 +37,9 @@ public class AutoReaderTextView extends JustifyTextView {
 
             @Override
             public void onAnimationEnd(Animation animation) {
-                if (AutoReaderTextView.d(AutoReaderTextView.this) != null && AutoReaderTextView.this.getMeasuredHeight() <= 5) {
+                if (AutoReaderTextView.this.i != null && AutoReaderTextView.this.getMeasuredHeight() <= 5) {
                     AutoReaderTextView.this.k = true;
-                    AutoReaderTextView.d(AutoReaderTextView.this).d();
+                    AutoReaderTextView.this.i.d();
                 }
            }
 
@@ -51,30 +51,14 @@ public class AutoReaderTextView extends JustifyTextView {
         this.d = context;
     }
 
-    static /* synthetic */ boolean a(AutoReaderTextView autoReaderTextView) {
-        return autoReaderTextView.k;
-    }
-
-    static /* synthetic */ RelativeLayout.LayoutParams b(AutoReaderTextView autoReaderTextView) {
-        return autoReaderTextView.j;
-    }
-
-    static /* synthetic */ int c(AutoReaderTextView autoReaderTextView) {
-        return autoReaderTextView.g;
-    }
-
-    static /* synthetic */ d_interface d(AutoReaderTextView autoReaderTextView) {
-        return autoReaderTextView.i;
-    }
-
     private Animation h() {
         Animation b2 = new Animation(){
 
             @Override
             protected void applyTransformation(float interpolatedTime, Transformation t) {
-                if (!AutoReaderTextView.a(AutoReaderTextView.this)) {
-                    AutoReaderTextView.b(AutoReaderTextView.this).height = AutoReaderTextView.c(AutoReaderTextView.this) - (int) (f * (float) AutoReaderTextView.c(AutoReaderTextView.this));
-                    AutoReaderTextView.this.setLayoutParams(AutoReaderTextView.b(AutoReaderTextView.this));
+                if (!AutoReaderTextView.this.k) {
+                    AutoReaderTextView.this.j.height = AutoReaderTextView.this.g - (int) (f * (float) AutoReaderTextView.this.g);
+                    AutoReaderTextView.this.setLayoutParams(AutoReaderTextView.this.j);
                 }
             }
         };

@@ -17,11 +17,11 @@ import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.a_pack.BaseAsyncTask;
 import com.clilystudio.netbook.adapter.NotificationAdapter;
 import com.clilystudio.netbook.api.ApiServiceProvider;
-import com.clilystudio.netbook.util.CommonUtil;
 import com.clilystudio.netbook.model.Account;
 import com.clilystudio.netbook.model.NotificationItem;
 import com.clilystudio.netbook.model.NotificationRoot;
 import com.clilystudio.netbook.ui.user.AuthLoginActivity;
+import com.clilystudio.netbook.util.CommonUtil;
 import com.clilystudio.netbook.util.ToastUtil;
 import com.clilystudio.netbook.viewbinder.notification.NotifBinderFactory;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
@@ -62,8 +62,8 @@ public abstract class NotifFragment extends Fragment {
                         protected NotificationRoot doInBackground(String... params) {
                             if (!this.isCancelled()) {
                                 String string = "";
-                                if (NotifFragment.k(NotifFragment.this) != null && NotifFragment.k(NotifFragment.this).size() > 0) {
-                                    string = ((NotificationItem) NotifFragment.k(NotifFragment.this).get(-1 + NotifFragment.k(NotifFragment.this).size())).getCreated();
+                                if (NotifFragment.this.k != null && NotifFragment.this.k.size() > 0) {
+                                    string = ((NotificationItem) NotifFragment.this.k.get(-1 + NotifFragment.this.k.size())).getCreated();
                                 }
                                 ApiServiceProvider.getInstance();
                                 if (NotifFragment.this.a() == NotifFragment.Type.IMPORTANT) {
@@ -78,30 +78,30 @@ public abstract class NotifFragment extends Fragment {
                         protected void onPostExecute(NotificationRoot notificationRoot) {
                             super.onPostExecute(notificationRoot);
                             if (NotifFragment.this.getActivity() == null) return;
-                            NotifFragment.b(NotifFragment.this).setVisibility(View.GONE);
-                            NotifFragment.a(NotifFragment.this).setVisibility(View.GONE);
-                            NotifFragment.h(NotifFragment.this).setVisibility(View.GONE);
-                            NotifFragment.i(NotifFragment.this).setVisibility(View.GONE);
-                            NotifFragment.d(NotifFragment.this).onRefreshComplete();
+                            NotifFragment.this.i.setVisibility(View.GONE);
+                            NotifFragment.this.h.setVisibility(View.GONE);
+                            NotifFragment.this.g.setVisibility(View.GONE);
+                            NotifFragment.this.f.setVisibility(View.GONE);
+                            NotifFragment.this.d.onRefreshComplete();
                             if (this.isCancelled()) return;
                             if (notificationRoot != null && notificationRoot.isOk()) {
                                 int n = notificationRoot.getNotifications().length;
                                 List<NotificationItem> list = Arrays.asList(notificationRoot.getNotifications());
-                                NotifFragment.a(NotifFragment.this, NotifFragment.l(NotifFragment.this) + list.size());
+                                NotifFragment.this.l += list.size();
                                 NotifFragment.this.k.addAll(list);
-                                NotifFragment.f(NotifFragment.this).a(NotifFragment.this.k);
+                                NotifFragment.this.j.a(NotifFragment.this.k);
                                 if (n > 0) {
                                     if (n >= 100) {
                                         if (n != 100) return;
-                                        NotifFragment.d(NotifFragment.this).setOnLastItemVisibleListener(NotifFragment.j(NotifFragment.this));
+                                        NotifFragment.this.d.setOnLastItemVisibleListener(NotifFragment.this.n);
                                         return;
                                     }
-                                } else if (NotifFragment.l(NotifFragment.this) == 0) {
-                                    NotifFragment.a(NotifFragment.this).setVisibility(View.VISIBLE);
-                                    NotifFragment.a(NotifFragment.this).setText("你还没有消息");
-                                    NotifFragment.b(NotifFragment.this).setVisibility(View.GONE);
+                                } else if (NotifFragment.this.l == 0) {
+                                    NotifFragment.this.h.setVisibility(View.VISIBLE);
+                                    NotifFragment.this.h.setText("你还没有消息");
+                                    NotifFragment.this.i.setVisibility(View.GONE);
                                 }
-                                NotifFragment.d(NotifFragment.this).setOnLastItemVisibleListener(null);
+                                NotifFragment.this.d.setOnLastItemVisibleListener(null);
                                 return;
                             }
                             if (notificationRoot != null && "TOKEN_INVALID".equals(notificationRoot.getCode())) {
@@ -109,80 +109,14 @@ public abstract class NotifFragment extends Fragment {
                                 ToastUtil.showToast(NotifFragment.this.getActivity(), R.string.tweet_token_invalid);
                                 return;
                             }
-                            NotifFragment.d(NotifFragment.this).setOnLastItemVisibleListener(NotifFragment.j(NotifFragment.this));
-                            NotifFragment.m(NotifFragment.this);
+                            NotifFragment.this.d.setOnLastItemVisibleListener(NotifFragment.this.n);
+                            NotifFragment.this.i.setVisibility(View.VISIBLE);
                         }
                     };
                     NotifFragment.this.b.b(NotifFragment.this.m.getToken());
                 }
             }
         };
-    }
-
-    static /* synthetic */ int a(NotifFragment notifFragment, int n) {
-        notifFragment.l = n;
-        return n;
-    }
-
-    static /* synthetic */ TextView a(NotifFragment notifFragment) {
-        return notifFragment.h;
-    }
-
-    static /* synthetic */ BaseAsyncTask<String, Void, NotificationRoot> a(NotifFragment notifFragment, BaseAsyncTask<String, Void, NotificationRoot> bw2) {
-        notifFragment.b = bw2;
-        return bw2;
-    }
-
-    static /* synthetic */ void a(NotifFragment notifFragment, boolean bl) {
-        notifFragment.a(bl);
-    }
-
-    static /* synthetic */ View b(NotifFragment notifFragment) {
-        return notifFragment.i;
-    }
-
-    static /* synthetic */ Account c(NotifFragment notifFragment) {
-        return notifFragment.m;
-    }
-
-    static /* synthetic */ PullToRefreshListView d(NotifFragment notifFragment) {
-        return notifFragment.d;
-    }
-
-    static /* synthetic */ ListView e(NotifFragment notifFragment) {
-        return notifFragment.e;
-    }
-
-    static /* synthetic */ NotificationAdapter f(NotifFragment notifFragment) {
-        return notifFragment.j;
-    }
-
-    static /* synthetic */ View h(NotifFragment notifFragment) {
-        return notifFragment.g;
-    }
-
-    static /* synthetic */ View i(NotifFragment notifFragment) {
-        return notifFragment.f;
-    }
-
-    static /* synthetic */ PullToRefreshBase.OnLastItemVisibleListener j(NotifFragment notifFragment) {
-        return notifFragment.n;
-    }
-
-    static /* synthetic */ List k(NotifFragment notifFragment) {
-        return notifFragment.k;
-    }
-
-    static /* synthetic */ int l(NotifFragment notifFragment) {
-        return notifFragment.l;
-    }
-
-    static /* synthetic */ void m(NotifFragment notifFragment) {
-        notifFragment.i.setVisibility(View.VISIBLE);
-    }
-
-    static /* synthetic */ BaseAsyncTask<String, Void, NotificationRoot> n(NotifFragment notifFragment) {
-        return notifFragment.b;
     }
 
     private void a(boolean bl) {
@@ -208,7 +142,7 @@ public abstract class NotifFragment extends Fragment {
     protected abstract NotificationAdapter b();
 
     protected final void c() {
-        this.c = new BaseAsyncTask<String, Void, NotificationRoot>(){
+        this.c = new BaseAsyncTask<String, Void, NotificationRoot>() {
 
             @Override
             protected NotificationRoot doInBackground(String... params) {
@@ -223,26 +157,26 @@ public abstract class NotifFragment extends Fragment {
             protected void onPostExecute(NotificationRoot notificationRoot) {
                 super.onPostExecute(notificationRoot);
                 if (NotifFragment.this.getActivity() == null) return;
-                NotifFragment.a(NotifFragment.this).setVisibility(View.GONE);
-                NotifFragment.h(NotifFragment.this).setVisibility(View.GONE);
-                NotifFragment.i(NotifFragment.this).setVisibility(View.GONE);
-                NotifFragment.b(NotifFragment.this).setVisibility(View.GONE);
-                NotifFragment.d(NotifFragment.this).onRefreshComplete();
-                NotifFragment.d(NotifFragment.this).setOnLastItemVisibleListener(NotifFragment.j(NotifFragment.this));
+                NotifFragment.this.h.setVisibility(View.GONE);
+                NotifFragment.this.g.setVisibility(View.GONE);
+                NotifFragment.this.f.setVisibility(View.GONE);
+                NotifFragment.this.i.setVisibility(View.GONE);
+                NotifFragment.this.d.onRefreshComplete();
+                NotifFragment.this.d.setOnLastItemVisibleListener(NotifFragment.this.n);
                 if (notificationRoot != null && notificationRoot.isOk()) {
-                    NotifFragment.a(NotifFragment.this, 0);
-                    NotifFragment.k(NotifFragment.this).clear();
+                    NotifFragment.this.l = 0;
+                    NotifFragment.this.k.clear();
                     int n = notificationRoot.getNotifications().length;
                     List<NotificationItem> list = Arrays.asList(notificationRoot.getNotifications());
-                    NotifFragment.a(NotifFragment.this, NotifFragment.l(NotifFragment.this) + list.size());
+                    NotifFragment.this.l += list.size();
                     NotifFragment.this.k.addAll(list);
-                    NotifFragment.f(NotifFragment.this).a(NotifFragment.this.k);
+                    NotifFragment.this.j.a(NotifFragment.this.k);
                     if (n >= 100) return;
-                    NotifFragment.d(NotifFragment.this).setOnLastItemVisibleListener(null);
+                    NotifFragment.this.d.setOnLastItemVisibleListener(null);
                     if (n != 0) return;
-                    NotifFragment.a(NotifFragment.this).setVisibility(View.VISIBLE);
-                    NotifFragment.a(NotifFragment.this).setText("没有消息");
-                    NotifFragment.b(NotifFragment.this).setVisibility(View.GONE);
+                    NotifFragment.this.h.setVisibility(View.VISIBLE);
+                    NotifFragment.this.h.setText("没有消息");
+                    NotifFragment.this.i.setVisibility(View.GONE);
                     return;
                 }
                 if (notificationRoot != null && "TOKEN_INVALID".equals(notificationRoot.getCode())) {
@@ -250,7 +184,7 @@ public abstract class NotifFragment extends Fragment {
                     ToastUtil.showToast(NotifFragment.this.getActivity(), R.string.tweet_token_invalid);
                     return;
                 }
-                NotifFragment.m(NotifFragment.this);
+                NotifFragment.this.i.setVisibility(View.VISIBLE);
             }
         };
         this.c.b(this.m.getToken());
@@ -260,7 +194,7 @@ public abstract class NotifFragment extends Fragment {
     public void onActivityCreated(Bundle bundle) {
         super.onActivityCreated(bundle);
         this.m = CommonUtil.getAccount();
-        this.f = LayoutInflater.from(this.getActivity()).inflate(R.layout.loading_item, (ViewGroup)getActivity().getWindow().getDecorView(), false);
+        this.f = LayoutInflater.from(this.getActivity()).inflate(R.layout.loading_item, (ViewGroup) getActivity().getWindow().getDecorView(), false);
         this.e = this.d.getRefreshableView();
         if (Build.VERSION.SDK_INT >= 19) {
             this.e.setFooterDividersEnabled(false);
@@ -288,7 +222,7 @@ public abstract class NotifFragment extends Fragment {
         this.e.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                if (position < NotifFragment.e(NotifFragment.this).getHeaderViewsCount()) {
+                if (position < NotifFragment.this.e.getHeaderViewsCount()) {
                     return;
                 }
                 int n2 = position - NotifFragment.this.e.getHeaderViewsCount();

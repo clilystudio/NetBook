@@ -39,28 +39,15 @@ public class UGCMainActivity extends BaseTabActivity implements ViewPager.OnPage
         TabHost.TabContentFactory {
     private List<UGCMainListFragment> b = new ArrayList<>();
     private ViewPager c;
-    private aj e;
+    private UgcMainAdapter e;
     private PopupWindow f;
     private PopupWindow g;
     private PopupWindow h;
     private String i;
     private RecyclerView j;
-    private ak k;
+    private ViewHolder k;
 
-    static /* synthetic */ ak a(UGCMainActivity uGCMainActivity, ak ak2) {
-        uGCMainActivity.k = ak2;
-        return ak2;
-    }
-
-    static /* synthetic */ void a(UGCMainActivity uGCMainActivity) {
-        if (uGCMainActivity.h != null && !uGCMainActivity.h.isShowing()) {
-            TextView textView = (TextView) uGCMainActivity.getActionBar().getCustomView().findViewById(R.id.actionbar_custom_right_text);
-            uGCMainActivity.h.showAsDropDown(textView);
-        }
-        uGCMainActivity.e("\u6536\u8d77");
-    }
-
-    static /* synthetic */ void a(UGCMainActivity uGCMainActivity, String string) {
+    static void a(UGCMainActivity uGCMainActivity, String string) {
         if (!uGCMainActivity.i.equals(string)) {
             uGCMainActivity.i = string;
             uGCMainActivity.d(string);
@@ -69,51 +56,6 @@ public class UGCMainActivity extends BaseTabActivity implements ViewPager.OnPage
             uGCMainActivity.b.get(uGCMainActivity.c.getCurrentItem()).a(uGCMainActivity.i);
         }
         uGCMainActivity.h();
-    }
-
-    static /* synthetic */ void b(UGCMainActivity uGCMainActivity) {
-        if (uGCMainActivity.g != null && !uGCMainActivity.g.isShowing()) {
-            if (uGCMainActivity.f == null || !uGCMainActivity.f.isShowing()) {
-                uGCMainActivity.f = new PopupWindow(uGCMainActivity.getLayoutInflater().inflate(R.layout.home_menu_bg_popup, (ViewGroup)uGCMainActivity.getWindow().getDecorView(), false), -1, CommonUtil.getWindowHeight(uGCMainActivity));
-                uGCMainActivity.f.setAnimationStyle(R.style.home_menu_bg_anim);
-                uGCMainActivity.f.showAtLocation(uGCMainActivity.getActionBar().getCustomView(), 0, 0, 0);
-            }
-            View view = uGCMainActivity.getActionBar().getCustomView().findViewById(R.id.actionbar_custom_right_icon);
-            uGCMainActivity.g.setAnimationStyle(R.style.home_menu_anim);
-            uGCMainActivity.g.showAsDropDown(view);
-        }
-    }
-
-    static /* synthetic */ RecyclerView c(UGCMainActivity uGCMainActivity) {
-        return uGCMainActivity.j;
-    }
-
-    static /* synthetic */ ak d(UGCMainActivity uGCMainActivity) {
-        return uGCMainActivity.k;
-    }
-
-    static /* synthetic */ List e(UGCMainActivity uGCMainActivity) {
-        return uGCMainActivity.b;
-    }
-
-    static /* synthetic */ ViewPager f(UGCMainActivity uGCMainActivity) {
-        return uGCMainActivity.c;
-    }
-
-    static /* synthetic */ void g(UGCMainActivity uGCMainActivity) {
-        uGCMainActivity.g();
-    }
-
-    static /* synthetic */ void h(UGCMainActivity uGCMainActivity) {
-        uGCMainActivity.f();
-    }
-
-    static /* synthetic */ void i(UGCMainActivity uGCMainActivity) {
-        uGCMainActivity.h();
-    }
-
-    static /* synthetic */ String j(UGCMainActivity uGCMainActivity) {
-        return uGCMainActivity.i;
     }
 
     private PopupWindow a(PopupWindow popupWindow, View view) {
@@ -128,10 +70,11 @@ public class UGCMainActivity extends BaseTabActivity implements ViewPager.OnPage
                 @Override
                 public boolean onKey(View v, int keyCode, KeyEvent event) {
                     if (event.getAction() == 0 && keyCode == KeyEvent.KEYCODE_MENU && event.getRepeatCount() == 0) {
-                        UGCMainActivity.h(UGCMainActivity.this);
+                        UGCMainActivity.this.f();
                         return true;
+                    } else {
+                        return false;
                     }
-                    return false;
                 }
             });
         }
@@ -186,12 +129,12 @@ public class UGCMainActivity extends BaseTabActivity implements ViewPager.OnPage
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
         this.setContentView(R.layout.activity_ugc_main_tabhost);
-        View view = this.getLayoutInflater().inflate(R.layout.ugc_popupwindow_layout, (ViewGroup)getWindow().getDecorView(), false);
+        View view = this.getLayoutInflater().inflate(R.layout.ugc_popupwindow_layout, (ViewGroup) getWindow().getDecorView(), false);
         this.g = this.a(this.g, view);
         this.g.setOnDismissListener(new PopupWindow.OnDismissListener() {
             @Override
             public void onDismiss() {
-                UGCMainActivity.g(UGCMainActivity.this);
+                UGCMainActivity.this.g();
             }
         });
         view.findViewById(R.id.create_ugc).setOnClickListener(new View.OnClickListener() {
@@ -200,7 +143,7 @@ public class UGCMainActivity extends BaseTabActivity implements ViewPager.OnPage
                 if (CommonUtil.checkLogin(UGCMainActivity.this) != null) {
                     Intent intent = new Intent(UGCMainActivity.this, UGCGuideAddCollectionActivity.class);
                     UGCMainActivity.this.startActivity(intent);
-                    UGCMainActivity.h(UGCMainActivity.this);
+                    UGCMainActivity.this.f();
                 }
             }
         });
@@ -210,28 +153,28 @@ public class UGCMainActivity extends BaseTabActivity implements ViewPager.OnPage
                 if (CommonUtil.checkLogin(UGCMainActivity.this) != null) {
                     Intent intent = new Intent(UGCMainActivity.this, UserUGCActivity.class);
                     UGCMainActivity.this.startActivity(intent);
-                    UGCMainActivity.h(UGCMainActivity.this);
+                    UGCMainActivity.this.f();
                 }
             }
         });
         view.findViewById(R.id.back_view).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                UGCMainActivity.h(UGCMainActivity.this);
+                UGCMainActivity.this.f();
             }
         });
-        View view2 = LayoutInflater.from(this).inflate(R.layout.ugc_filter_popupwindow, (ViewGroup)getWindow().getDecorView(), false);
+        View view2 = LayoutInflater.from(this).inflate(R.layout.ugc_filter_popupwindow, (ViewGroup) getWindow().getDecorView(), false);
         this.h = this.a(this.h, view2);
         view2.findViewById(R.id.back_view).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                UGCMainActivity.i(UGCMainActivity.this);
+                UGCMainActivity.this.h();
             }
         });
         this.i = this.getString(R.string.ugc_all);
         this.j = (RecyclerView) view2.findViewById(R.id.ugc_filter_list);
         this.j.setLayoutManager(new D(this));
-        this.k = new ak(this, this, new UgcFilterRoot.FilterGroup[0]);
+        this.k = new ViewHolder(this, new UgcFilterRoot.FilterGroup[0]);
         this.j.setAdapter(this.k);
         this.h.setOnDismissListener(new PopupWindow.OnDismissListener() {
             @Override
@@ -242,17 +185,30 @@ public class UGCMainActivity extends BaseTabActivity implements ViewPager.OnPage
         this.a(R.string.ugc_list, "筛选", R.drawable.ic_action_overflow, new ActionBarClickListener() {
             @Override
             public void onTextClick() {
-                UGCMainActivity.a(UGCMainActivity.this);
+                if (UGCMainActivity.this.h != null && !UGCMainActivity.this.h.isShowing()) {
+                    TextView textView = (TextView) UGCMainActivity.this.getActionBar().getCustomView().findViewById(R.id.actionbar_custom_right_text);
+                    UGCMainActivity.this.h.showAsDropDown(textView);
+                }
+                UGCMainActivity.this.e("收起");
             }
 
             @Override
             public void onIconClick() {
-                UGCMainActivity.b(UGCMainActivity.this);
+                if (UGCMainActivity.this.g != null && !UGCMainActivity.this.g.isShowing()) {
+                    if (UGCMainActivity.this.f == null || !UGCMainActivity.this.f.isShowing()) {
+                        UGCMainActivity.this.f = new PopupWindow(UGCMainActivity.this.getLayoutInflater().inflate(R.layout.home_menu_bg_popup, (ViewGroup) UGCMainActivity.this.getWindow().getDecorView(), false), -1, CommonUtil.getWindowHeight(UGCMainActivity.this));
+                        UGCMainActivity.this.f.setAnimationStyle(R.style.home_menu_bg_anim);
+                        UGCMainActivity.this.f.showAtLocation(UGCMainActivity.this.getActionBar().getCustomView(), 0, 0, 0);
+                    }
+                    View view = UGCMainActivity.this.getActionBar().getCustomView().findViewById(R.id.actionbar_custom_right_icon);
+                    UGCMainActivity.this.g.setAnimationStyle(R.style.home_menu_anim);
+                    UGCMainActivity.this.g.showAsDropDown(view);
+                }
             }
         });
         this.a = (TabHost) this.findViewById(R.id.host);
         this.c = (ViewPager) this.findViewById(R.id.pager);
-        this.e = new aj(this, this.getSupportFragmentManager());
+        this.e = new UgcMainAdapter(this.getSupportFragmentManager());
         this.c.setOffscreenPageLimit(3);
         this.c.setAdapter(this.e);
         this.c.setOnPageChangeListener(this);
@@ -267,7 +223,7 @@ public class UGCMainActivity extends BaseTabActivity implements ViewPager.OnPage
         for (int k = 0; k < n; ++k) {
             TabHost.TabSpec tabSpec = this.a.newTabSpec("tab" + k);
             tabSpec.setContent(this);
-            View view3 = layoutInflater.inflate(R.layout.home_tabhost_item, (ViewGroup)getWindow().getDecorView(), false);
+            View view3 = layoutInflater.inflate(R.layout.home_tabhost_item, (ViewGroup) getWindow().getDecorView(), false);
             ((TextView) view3.findViewById(R.id.text)).setText(this.e.getPageTitle(k));
             tabSpec.setIndicator(view3);
             this.a.addTab(tabSpec);
@@ -283,9 +239,9 @@ public class UGCMainActivity extends BaseTabActivity implements ViewPager.OnPage
             protected void onPostExecute(UgcFilterRoot ugcFilterRoot) {
                 super.onPostExecute(ugcFilterRoot);
                 if (ugcFilterRoot != null && ugcFilterRoot.isOk() && ugcFilterRoot.getData() != null) {
-                    UGCMainActivity.a(UGCMainActivity.this, new ak(UGCMainActivity.this, UGCMainActivity.this, ugcFilterRoot.getData()));
+                    UGCMainActivity.this.k = new ViewHolder(UGCMainActivity.this, ugcFilterRoot.getData());
                     UGCMainActivity.this.j.setLayoutManager(new D(UGCMainActivity.this));
-                    UGCMainActivity.this.j.setAdapter(UGCMainActivity.d(UGCMainActivity.this));
+                    UGCMainActivity.this.j.setAdapter(UGCMainActivity.this.k);
                 }
             }
         }.b();
@@ -323,22 +279,19 @@ public class UGCMainActivity extends BaseTabActivity implements ViewPager.OnPage
         }
     }
 
-    final class aj extends BasePagerAdapter {
-        private String[] a;
-        private /* synthetic */ UGCMainActivity b;
+    final class UgcMainAdapter extends BasePagerAdapter {
+        private String[] a = new String[]{"ugcTag0", "ugcTag1", "ugcTag2"};
 
-        public aj(UGCMainActivity uGCMainActivity, FragmentManager fragmentManager) {
+        public UgcMainAdapter(FragmentManager fragmentManager) {
             super(fragmentManager);
-            this.b = uGCMainActivity;
-            this.a = new String[]{"ugcTag0", "ugcTag1", "ugcTag2"};
-            uGCMainActivity.b.add(0, uGCMainActivity.a(this.a[0], "collectorCount", "last-seven-days"));
-            uGCMainActivity.b.add(1, uGCMainActivity.a(this.a[1], "created", "all"));
-            uGCMainActivity.b.add(2, uGCMainActivity.a(this.a[2], "collectorCount", "all"));
+            UGCMainActivity.this.b.add(0, UGCMainActivity.this.a(this.a[0], "collectorCount", "last-seven-days"));
+            UGCMainActivity.this.b.add(1, UGCMainActivity.this.a(this.a[1], "created", "all"));
+            UGCMainActivity.this.b.add(2, UGCMainActivity.this.a(this.a[2], "collectorCount", "all"));
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
             for (int i = 0; i < 3; ++i) {
-                Fragment fragment = (Fragment) UGCMainActivity.e(uGCMainActivity).get(i);
+                Fragment fragment = UGCMainActivity.this.b.get(i);
                 if (fragment.isAdded()) continue;
-                fragmentTransaction.add(UGCMainActivity.f(uGCMainActivity).getId(), fragment, this.a[i]);
+                fragmentTransaction.add(UGCMainActivity.this.c.getId(), fragment, this.a[i]);
             }
             if (!fragmentTransaction.isEmpty()) {
                 fragmentTransaction.commit();
@@ -348,7 +301,7 @@ public class UGCMainActivity extends BaseTabActivity implements ViewPager.OnPage
 
         @Override
         public final Fragment getFragment(int position) {
-            return (Fragment) UGCMainActivity.e(this.b).get(position);
+            return UGCMainActivity.this.b.get(position);
         }
 
         @Override
@@ -363,19 +316,16 @@ public class UGCMainActivity extends BaseTabActivity implements ViewPager.OnPage
 
         @Override
         public final CharSequence getPageTitle(int n) {
-            return this.b.getResources().getStringArray(R.array.ucg_book_tabs)[n];
+            return UGCMainActivity.this.getResources().getStringArray(R.array.ucg_book_tabs)[n];
         }
     }
 
-    final class ak extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
-        final /* synthetic */ UGCMainActivity c;
-        boolean a;
+    final class ViewHolder extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+        boolean a = false;
         LayoutInflater b;
         private UgcFilterRoot.FilterGroup[] d;
 
-        public ak(UGCMainActivity uGCMainActivity, Context context, UgcFilterRoot.FilterGroup[] arrfilterGroup) {
-            this.c = uGCMainActivity;
-            this.a = false;
+        public ViewHolder(Context context, UgcFilterRoot.FilterGroup[] arrfilterGroup) {
             this.b = LayoutInflater.from(context);
             this.d = arrfilterGroup;
         }
@@ -397,14 +347,14 @@ public class UGCMainActivity extends BaseTabActivity implements ViewPager.OnPage
             if (position == 0 && this.a) {
                 String string;
                 an an2 = (an) holder;
-                an2.j = string = this.c.getString(R.string.ugc_all);
-                if (UGCMainActivity.j(ak.this.c).equals(string)) {
-                    an2.i.setTextColor(CommonUtil.getAttrColor(ak.this.c, R.attr.backgroundNormal));
-                    an2.i.setBackgroundResource(CommonUtil.getAttrResource(ak.this.c, R.attr.redRoundBg));
+                an2.j = string = UGCMainActivity.this.getString(R.string.ugc_all);
+                if (UGCMainActivity.this.i.equals(string)) {
+                    an2.i.setTextColor(CommonUtil.getAttrColor(UGCMainActivity.this, R.attr.backgroundNormal));
+                    an2.i.setBackgroundResource(CommonUtil.getAttrResource(UGCMainActivity.this, R.attr.redRoundBg));
                     return;
                 }
-                an2.i.setTextColor(CommonUtil.getAttrColor(ak.this.c, android.R.attr.textColorSecondary));
-                an2.i.setBackgroundResource(CommonUtil.getAttrResource(ak.this.c, R.attr.backgroundSelector));
+                an2.i.setTextColor(CommonUtil.getAttrColor(UGCMainActivity.this, android.R.attr.textColorSecondary));
+                an2.i.setBackgroundResource(CommonUtil.getAttrResource(UGCMainActivity.this, R.attr.backgroundSelector));
                 return;
             }
             final al al2 = (al) holder;
@@ -418,19 +368,19 @@ public class UGCMainActivity extends BaseTabActivity implements ViewPager.OnPage
             al2.j.removeAllViews();
             int n4 = 0;
             while (n4 < n3) {
-                ViewGroup viewGroup = (ViewGroup) ak.this.b.inflate(R.layout.ugc_group_row, al2.j, false);
+                ViewGroup viewGroup = (ViewGroup) ViewHolder.this.b.inflate(R.layout.ugc_group_row, al2.j, false);
                 for (int i = 0; i < Math.min(4, arrstring.length - (n4 << 2)); ++i) {
                     UgcFilterTextView ugcFilterTextView = (UgcFilterTextView) viewGroup.getChildAt(i);
                     final String string = arrstring[i + (n4 << 2)];
                     ugcFilterTextView.setVisibility(View.VISIBLE);
                     ugcFilterTextView.setText(string);
-                    ugcFilterTextView.setSelected(UGCMainActivity.j(ak.this.c).equals(ugcFilterTextView.a()));
+                    ugcFilterTextView.setSelected(UGCMainActivity.this.i.equals(ugcFilterTextView.a()));
                     ugcFilterTextView.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            ak.this.a = true;
-                            UGCMainActivity.a(ak.this.c, string);
-                            ak.this.notifyItemChanged(0);
+                            ViewHolder.this.a = true;
+                            UGCMainActivity.a(UGCMainActivity.this, string);
+                            ViewHolder.this.notifyItemChanged(0);
                         }
                     });
                 }
@@ -487,9 +437,9 @@ public class UGCMainActivity extends BaseTabActivity implements ViewPager.OnPage
                         if (an.this.j == null) {
                             return;
                         }
-                        ak.this.a = false;
-                        UGCMainActivity.a(ak.this.c, an.this.j);
-                        ak.this.notifyItemChanged(0);
+                        ViewHolder.this.a = false;
+                        UGCMainActivity.a(UGCMainActivity.this, an.this.j);
+                        ViewHolder.this.notifyItemChanged(0);
                     }
                 });
             }
@@ -517,7 +467,7 @@ public class UGCMainActivity extends BaseTabActivity implements ViewPager.OnPage
                 int[] arrayOfInt = this.d;
                 View localView = recycler.getViewForPosition(0);
                 if (localView != null) {
-                    RecyclerView.LayoutParams localap = (RecyclerView.LayoutParams)localView.getLayoutParams();
+                    RecyclerView.LayoutParams localap = (RecyclerView.LayoutParams) localView.getLayoutParams();
                     localView.measure(ViewGroup.getChildMeasureSpec(i3, this.getPaddingLeft() + this.getPaddingRight(), localap.width), ViewGroup.getChildMeasureSpec(i4, getPaddingTop() + getPaddingBottom(), localap.height));
                     arrayOfInt[0] = (localView.getMeasuredWidth() + localap.leftMargin + localap.rightMargin);
                     arrayOfInt[1] = (localView.getMeasuredHeight() + localap.bottomMargin + localap.topMargin);

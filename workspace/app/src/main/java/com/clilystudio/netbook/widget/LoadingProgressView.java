@@ -21,9 +21,9 @@ public class LoadingProgressView extends ProgressView {
         this.d = new com.clilystudio.netbook.widget.comca.w.D() {
             @Override
             public void a(w paramw) {
-                if (!LoadingProgressView.a(LoadingProgressView.this)) {
-                    LoadingProgressView.a(LoadingProgressView.this, (Float) paramw.f());
-                    LoadingProgressView.this.setProgress(LoadingProgressView.b(LoadingProgressView.this));
+                if (!LoadingProgressView.this.a) {
+                    LoadingProgressView.this.b = (Float) paramw.f();
+                    LoadingProgressView.this.setProgress(LoadingProgressView.this.b);
                 }
             }
         };
@@ -34,19 +34,6 @@ public class LoadingProgressView extends ProgressView {
                 setProgress(f);
             }
         };
-    }
-
-    static /* synthetic */ float a(LoadingProgressView loadingProgressView, float f) {
-        loadingProgressView.b = f;
-        return f;
-    }
-
-    static /* synthetic */ boolean a(LoadingProgressView loadingProgressView) {
-        return loadingProgressView.a;
-    }
-
-    static /* synthetic */ float b(LoadingProgressView loadingProgressView) {
-        return loadingProgressView.b;
     }
 
     public final void a() {

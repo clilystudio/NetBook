@@ -14,8 +14,8 @@ import android.widget.TabHost;
 import android.widget.TabWidget;
 import android.widget.TextView;
 
-import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.IntentBuilder;
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.ui.home.BasePagerAdapter;
 
 import java.util.ArrayList;
@@ -33,7 +33,7 @@ public class BookRankMainActivity extends BaseTabActivity implements ViewPager.O
         return new IntentBuilder().put(context, BookRankMainActivity.class).put("book_list_ids", arrstring).put("book_list_title", string).put("rank_gender", string2).build();
     }
 
-    static /* synthetic */ BookRankListFragment a(BookRankMainActivity bookRankMainActivity, String string, String string2, String string3) {
+    static BookRankListFragment a(BookRankMainActivity bookRankMainActivity, String string, String string2, String string3) {
         BookRankListFragment bookRankListFragment = (BookRankListFragment) bookRankMainActivity.getSupportFragmentManager().findFragmentByTag(string2);
         if (bookRankListFragment == null) {
             bookRankListFragment = BookRankListFragment.a(string, string3);
@@ -43,27 +43,13 @@ public class BookRankMainActivity extends BaseTabActivity implements ViewPager.O
 
     private static String a(int n) {
         switch (n) {
-            default: {
-                return "\u603b\u699c";
-            }
-            case 0: {
-                return "\u5468\u699c";
-            }
+            case 0:
+                return "周榜";
             case 1:
+                return "月榜";
+            default:
+                return "总榜";
         }
-        return "\u6708\u699c";
-    }
-
-    static /* synthetic */ String[] a(BookRankMainActivity bookRankMainActivity) {
-        return bookRankMainActivity.f;
-    }
-
-    static /* synthetic */ List b(BookRankMainActivity bookRankMainActivity) {
-        return bookRankMainActivity.b;
-    }
-
-    static /* synthetic */ ViewPager c(BookRankMainActivity bookRankMainActivity) {
-        return bookRankMainActivity.c;
     }
 
     @Override
@@ -95,7 +81,7 @@ public class BookRankMainActivity extends BaseTabActivity implements ViewPager.O
         for (int i = 0; i < 3; ++i) {
             TabHost.TabSpec tabSpec = this.a.newTabSpec("tab" + i);
             tabSpec.setContent(this);
-            View view = layoutInflater.inflate(R.layout.home_tabhost_item, (ViewGroup)getWindow().getDecorView(), false);
+            View view = layoutInflater.inflate(R.layout.home_tabhost_item, (ViewGroup) getWindow().getDecorView(), false);
             ((TextView) view.findViewById(R.id.text)).setText(BookRankMainActivity.a(i));
             tabSpec.setIndicator(view);
             this.a.addTab(tabSpec);
@@ -139,13 +125,13 @@ public class BookRankMainActivity extends BaseTabActivity implements ViewPager.O
             super(fragmentManager);
             this.a = new String[]{"weekly", "monthly", "all"};
             for (int i = 0; i < 3; ++i) {
-                BookRankMainActivity.this.b.add(i, BookRankMainActivity.a(BookRankMainActivity.this, BookRankMainActivity.a(BookRankMainActivity.this)[i], this.a[i], this.a[i]));
+                BookRankMainActivity.this.b.add(i, BookRankMainActivity.a(BookRankMainActivity.this, BookRankMainActivity.this.f[i], this.a[i], this.a[i]));
             }
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
             for (int j = 0; j < 3; ++j) {
-                Fragment fragment = (Fragment) BookRankMainActivity.b(BookRankMainActivity.this).get(j);
+                Fragment fragment = BookRankMainActivity.this.b.get(j);
                 if (fragment.isAdded()) continue;
-                fragmentTransaction.add(BookRankMainActivity.c(BookRankMainActivity.this).getId(), fragment, this.a[j]);
+                fragmentTransaction.add(BookRankMainActivity.this.c.getId(), fragment, this.a[j]);
             }
             if (!fragmentTransaction.isEmpty()) {
                 fragmentTransaction.commit();
@@ -155,7 +141,7 @@ public class BookRankMainActivity extends BaseTabActivity implements ViewPager.O
 
         @Override
         public final Fragment getFragment(int position) {
-            return (Fragment) BookRankMainActivity.b(BookRankMainActivity.this).get(position);
+            return BookRankMainActivity.this.b.get(position);
         }
 
         @Override

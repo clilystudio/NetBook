@@ -28,14 +28,6 @@ public abstract class SimpleTabActivity extends BaseTabActivity implements ViewP
     private ch f;
     private List<Fragment> g = new ArrayList<>();
 
-    static /* synthetic */ List a(SimpleTabActivity simpleTabActivity) {
-        return simpleTabActivity.g;
-    }
-
-    static /* synthetic */ ViewPager b(SimpleTabActivity simpleTabActivity) {
-        return simpleTabActivity.e;
-    }
-
     public final void a(int n) {
         if (n < 0 || n >= this.b) {
             n = 0;
@@ -153,9 +145,9 @@ public abstract class SimpleTabActivity extends BaseTabActivity implements ViewP
             }
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
             while (n < SimpleTabActivity.this.b) {
-                Fragment fragment = (Fragment) SimpleTabActivity.a(SimpleTabActivity.this).get(n);
+                Fragment fragment = SimpleTabActivity.this.g.get(n);
                 if (!fragment.isAdded()) {
-                    fragmentTransaction.add(SimpleTabActivity.b(SimpleTabActivity.this).getId(), fragment, SimpleTabActivity.this.c[n]);
+                    fragmentTransaction.add(SimpleTabActivity.this.e.getId(), fragment, SimpleTabActivity.this.c[n]);
                 }
                 ++n;
             }
@@ -167,7 +159,7 @@ public abstract class SimpleTabActivity extends BaseTabActivity implements ViewP
 
         @Override
         public final Fragment getFragment(int position) {
-            return (Fragment) SimpleTabActivity.a(SimpleTabActivity.this).get(position);
+            return SimpleTabActivity.this.g.get(position);
         }
 
         @Override

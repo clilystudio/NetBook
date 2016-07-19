@@ -33,18 +33,6 @@ public class CropView extends PhotoView {
         this.b();
     }
 
-    static /* synthetic */ float a(CropView cropView) {
-        return cropView.c;
-    }
-
-    static /* synthetic */ float b(CropView cropView) {
-        return cropView.b;
-    }
-
-    static /* synthetic */ PhotoViewAttacher c(CropView cropView) {
-        return cropView.a;
-    }
-
     private void b() {
         this.b = this.getResources().getDimension(R.dimen.crop_size);
         this.a = new PhotoViewAttacher(this);
@@ -118,16 +106,16 @@ public class CropView extends PhotoView {
             @Override
             public boolean onPreDraw() {
                 float f2 = CropView.this.getWidth();
-                float f3 = f2 / CropView.a(CropView.this);
+                float f3 = f2 / CropView.this.c;
                 if (f3 >= (float) CropView.this.getHeight()) {
                     f2 *= (float) CropView.this.getHeight() / f3;
                     f3 = CropView.this.getHeight();
                 }
                 float f4 = Math.min(f2, f3);
-                float f5 = CropView.b(CropView.this) / f4;
-                CropView.c(CropView.this).setScale(f5);
+                float f5 = CropView.this.b / f4;
+                CropView.this.a.setScale(f5);
                 CropView.this.getViewTreeObserver().removeOnPreDrawListener(this);
-                CropView.c(CropView.this).setScale(f5, false);
+                CropView.this.a.setScale(f5, false);
                 return true;
             }
         });

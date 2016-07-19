@@ -24,15 +24,16 @@ import android.widget.TextView;
 
 import com.clilystudio.netbook.CachePathConst;
 import com.clilystudio.netbook.R;
-import com.clilystudio.netbook.a_pack.BaseLoadingTask;
 import com.clilystudio.netbook.a_pack.BaseAsyncTask;
+import com.clilystudio.netbook.a_pack.BaseLoadingTask;
 import com.clilystudio.netbook.adapter.HomeShelfAdapter;
-import com.clilystudio.netbook.db.BookSyncRecord;
 import com.clilystudio.netbook.api.ApiServiceProvider;
 import com.clilystudio.netbook.db.BookFile;
 import com.clilystudio.netbook.db.BookReadRecord;
+import com.clilystudio.netbook.db.BookSyncRecord;
 import com.clilystudio.netbook.event.BookAddedEvent;
 import com.clilystudio.netbook.event.BookReadEvent;
+import com.clilystudio.netbook.event.BookRemovedEvent;
 import com.clilystudio.netbook.event.BookShelfRefreshEvent;
 import com.clilystudio.netbook.event.BusProvider;
 import com.clilystudio.netbook.event.DownloadProgressEvent;
@@ -41,7 +42,6 @@ import com.clilystudio.netbook.event.FeedRemovedEvent;
 import com.clilystudio.netbook.event.FeedSettingChangedEvent;
 import com.clilystudio.netbook.event.GenderIntroEvent;
 import com.clilystudio.netbook.event.ShelfUpdatedEvent;
-import com.clilystudio.netbook.event.BookRemovedEvent;
 import com.clilystudio.netbook.model.BookFeed;
 import com.clilystudio.netbook.model.BookGenderRecommend;
 import com.clilystudio.netbook.model.BookShelf;
@@ -57,10 +57,10 @@ import com.clilystudio.netbook.ui.BookInfoActivity;
 import com.clilystudio.netbook.ui.feed.FeedIntroActivity;
 import com.clilystudio.netbook.ui.feed.FeedListActivity;
 import com.clilystudio.netbook.util.BookSourceManager;
+import com.clilystudio.netbook.util.CommonUtil;
 import com.clilystudio.netbook.util.FeedIntroDialog;
 import com.clilystudio.netbook.util.GenderIntroDialog;
 import com.clilystudio.netbook.util.InsideLinkIntent;
-import com.clilystudio.netbook.util.CommonUtil;
 import com.clilystudio.netbook.util.ToastUtil;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
@@ -101,10 +101,10 @@ public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollL
         this.C = new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                BookShelf bookShelf = HomeShelfFragment.a(HomeShelfFragment.this, position);
+                BookShelf bookShelf = (BookShelf) HomeShelfFragment.this.e.getAdapter().getItem(position);
                 if (bookShelf == null) return;
-                if (HomeShelfFragment.a(HomeShelfFragment.this).a()) {
-                    HomeShelfFragment.a(HomeShelfFragment.this).a(position - HomeShelfFragment.j(HomeShelfFragment.this).getHeaderViewsCount());
+                if (HomeShelfFragment.this.j.a()) {
+                    HomeShelfFragment.this.j.a(position - HomeShelfFragment.this.e.getHeaderViewsCount());
                     return;
                 }
                 switch (bookShelf.getType()) {
@@ -114,7 +114,7 @@ public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollL
                         if (bookReadRecord.isUnread()) {
                             bookReadRecord.setUnread(false);
                             bookReadRecord.save();
-                            HomeShelfFragment.a(HomeShelfFragment.this).notifyDataSetChanged();
+                            HomeShelfFragment.this.j.notifyDataSetChanged();
                         }
                         break;
                     case 2:
@@ -131,7 +131,7 @@ public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollL
                         }
                         break;
                     case 3:
-                        Intent intent = CommonUtil.getBoolPref(HomeShelfFragment.this.getActivity(), "feed_intro",true) ? new Intent(HomeShelfFragment.this.getActivity(), FeedIntroActivity.class) : new Intent(HomeShelfFragment.this.getActivity(), FeedListActivity.class);
+                        Intent intent = CommonUtil.getBoolPref(HomeShelfFragment.this.getActivity(), "feed_intro", true) ? new Intent(HomeShelfFragment.this.getActivity(), FeedIntroActivity.class) : new Intent(HomeShelfFragment.this.getActivity(), FeedListActivity.class);
                         HomeShelfFragment.this.startActivity(intent);
                         break;
                 }
@@ -141,7 +141,7 @@ public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollL
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
                 CharSequence[] arrcharSequence;
-                BookShelf bookShelf = HomeShelfFragment.a(HomeShelfFragment.this, position);
+                BookShelf bookShelf = (BookShelf) HomeShelfFragment.this.e.getAdapter().getItem(position);
                 if (bookShelf == null) {
                     return true;
                 }
@@ -164,7 +164,7 @@ public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollL
         };
     }
 
-    static /* synthetic */ long a(BookShelf bookShelf, int n2) {
+    static long a(BookShelf bookShelf, int n2) {
         if (bookShelf.getType() == 3) {
             return bookShelf.getBookFeed().getLastActionTime();
         }
@@ -174,34 +174,7 @@ public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollL
         return bookShelf.getLastRead();
     }
 
-    static /* synthetic */ HomeShelfAdapter a(HomeShelfFragment homeShelfFragment) {
-        return homeShelfFragment.j;
-    }
-
-    static /* synthetic */ BookShelf a(HomeShelfFragment homeShelfFragment, int n2) {
-        return (BookShelf) homeShelfFragment.e.getAdapter().getItem(n2);
-    }
-
-    static /* synthetic */ ShelfMsg a(HomeShelfFragment homeShelfFragment, ShelfMsg shelfMsg) {
-        homeShelfFragment.i = shelfMsg;
-        return shelfMsg;
-    }
-
-    static /* synthetic */ void a(HomeShelfFragment homeShelfFragment, BookReadRecord bookReadRecord) {
-        if (bookReadRecord != null) {
-            homeShelfFragment.startActivity(BookInfoActivity.a(homeShelfFragment.getActivity(), bookReadRecord.getBookId()));
-        }
-    }
-
-    static /* synthetic */ void a(HomeShelfFragment homeShelfFragment, BookShelf bookShelf) {
-        homeShelfFragment.a(bookShelf, true);
-    }
-
-    static /* synthetic */ void a(HomeShelfFragment homeShelfFragment, BookShelf bookShelf, boolean bl) {
-        homeShelfFragment.a(bookShelf, bl);
-    }
-
-    static /* synthetic */ void a(final HomeShelfFragment homeShelfFragment, final List<BookShelf> list) {
+    static void a(final HomeShelfFragment homeShelfFragment, final List<BookShelf> list) {
         View view = homeShelfFragment.getActivity().getLayoutInflater().inflate(R.layout.remove_shelf_confirm, (ViewGroup) homeShelfFragment.getActivity().getWindow().getDecorView(), false);
         final CheckBox checkBox = (CheckBox) view.findViewById(R.id.remove_shelf_cache);
         new BaseDialog.Builder(homeShelfFragment.getActivity()).setView(view).setPositiveButton("确定", new DialogInterface.OnClickListener() {
@@ -214,7 +187,7 @@ public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollL
         }).setNegativeButton("取消", null).create().show();
     }
 
-    static /* synthetic */ void a(HomeShelfFragment homeShelfFragment, List<BookUpdate> bookUpdates, List<BookReadRecord> bookReadRecords) {
+    static void a(HomeShelfFragment homeShelfFragment, List<BookUpdate> bookUpdates, List<BookReadRecord> bookReadRecords) {
         boolean hasUpdate = false;
         boolean hasFeedChange = false;
         int feedChapterCount = CommonUtil.getIntPref(homeShelfFragment.getActivity(), "feed_chapter_count", 50);
@@ -255,7 +228,7 @@ public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollL
         }
     }
 
-    static /* synthetic */ void a(HomeShelfFragment homeShelfFragment, List<BookShelf> list, boolean bl) {
+    static void a(HomeShelfFragment homeShelfFragment, List<BookShelf> list, boolean bl) {
         for (BookShelf bookShelf : list) {
             if (bookShelf.getBookRecord() != null) {
                 BookReadRecord bookReadRecord = bookShelf.getBookRecord();
@@ -274,7 +247,7 @@ public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollL
         BusProvider.getInstance().post(new BookShelfRefreshEvent());
     }
 
-    static /* synthetic */ void a(final HomeShelfFragment homeShelfFragment, CharSequence[] arrcharSequence, final BookShelf bookShelf) {
+    static void a(final HomeShelfFragment homeShelfFragment, CharSequence[] arrcharSequence, final BookShelf bookShelf) {
         if (arrcharSequence == null || bookShelf == null) {
             return;
         }
@@ -287,7 +260,7 @@ public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollL
                 switch (bookShelf.getType()) {
                     case 1: {
                         if (which == 0) {
-                            HomeShelfFragment.a(homeShelfFragment, bookShelf);
+                            homeShelfFragment.a(bookShelf, true);
                         }
                         return;
                     }
@@ -297,7 +270,10 @@ public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollL
                             return;
                         }
                         if (which == 1) {
-                            HomeShelfFragment.a(homeShelfFragment, bookShelf.getBookRecord());
+                            BookReadRecord bookRecord = bookShelf.getBookRecord();
+                            if (bookRecord != null) {
+                                homeShelfFragment.startActivity(BookInfoActivity.a(homeShelfFragment.getActivity(), bookRecord.getBookId()));
+                            }
                             return;
                         }
                         if (which == 2) {
@@ -305,7 +281,7 @@ public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollL
                             return;
                         }
                         if (which == 3) {
-                            HomeShelfFragment.c(homeShelfFragment, bookShelf.getBookRecord());
+                            new BookDownloadManager(homeShelfFragment.getActivity()).startDownload(bookShelf.getBookRecord());
                             return;
                         }
                         if (which == 4) {
@@ -407,11 +383,7 @@ public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollL
         return new HomeShelfFragment();
     }
 
-    static /* synthetic */ void b(HomeShelfFragment homeShelfFragment, int n2) {
-        homeShelfFragment.b(n2);
-    }
-
-    static /* synthetic */ void b(HomeShelfFragment homeShelfFragment, BookReadRecord bookReadRecord) {
+    static void b(HomeShelfFragment homeShelfFragment, BookReadRecord bookReadRecord) {
         if (bookReadRecord != null) {
             long l2 = System.currentTimeMillis();
             CommonUtil.putLongPref(homeShelfFragment.getActivity(), "FeedUpdateTime", l2);
@@ -436,7 +408,7 @@ public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollL
         }
     }
 
-    static /* synthetic */ void b(HomeShelfFragment homeShelfFragment, BookShelf bookShelf) {
+    static void b(HomeShelfFragment homeShelfFragment, BookShelf bookShelf) {
         boolean bl = true;
         if (bookShelf.getTxt() != null) {
             BookFile bookFile = bookShelf.getTxt();
@@ -456,7 +428,7 @@ public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollL
         homeShelfFragment.k();
     }
 
-    static /* synthetic */ void b(final HomeShelfFragment homeShelfFragment, final ShelfMsg shelfMsg) {
+    static void b(final HomeShelfFragment homeShelfFragment, final ShelfMsg shelfMsg) {
         List list = homeShelfFragment.j.f();
         if (list == null || list.isEmpty()) {
             return;
@@ -498,11 +470,7 @@ public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollL
         return InsideLinkFactory.create(matcher.group(1), matcher.group(2), matcher.group(3));
     }
 
-    static /* synthetic */ void c(HomeShelfFragment homeShelfFragment, BookReadRecord bookReadRecord) {
-        new BookDownloadManager(homeShelfFragment.getActivity()).startDownload(bookReadRecord);
-    }
-
-    static /* synthetic */ void c(final HomeShelfFragment homeShelfFragment, final BookShelf bookShelf) {
+    static void c(final HomeShelfFragment homeShelfFragment, final BookShelf bookShelf) {
         View view = homeShelfFragment.getActivity().getLayoutInflater().inflate(R.layout.remove_shelf_confirm, (ViewGroup) homeShelfFragment.getActivity().getWindow().getDecorView(), false);
         final CheckBox checkBox = (CheckBox) view.findViewById(R.id.remove_shelf_cache);
         int n2 = bookShelf.getType();
@@ -511,12 +479,12 @@ public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollL
 
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                HomeShelfFragment.a(homeShelfFragment, bookShelf, checkBox.isChecked());
+                homeShelfFragment.a(bookShelf, checkBox.isChecked());
             }
         }).setNegativeButton("取消", null).create().show();
     }
 
-    static /* synthetic */ void f(final HomeShelfFragment homeShelfFragment) {
+    static void f(final HomeShelfFragment homeShelfFragment) {
         if (!homeShelfFragment.b) {
             homeShelfFragment.k();
         }
@@ -538,43 +506,19 @@ public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollL
             protected void onPostExecute(List<BookUpdate> bookUpdates) {
                 super.onPostExecute(bookUpdates);
                 if (homeShelfFragment.getActivity() != null) {
-                    HomeShelfFragment.g(homeShelfFragment);
+                    if (homeShelfFragment.d != null) {
+                        homeShelfFragment.d.onRefreshComplete();
+                    }
                     if (bookUpdates != null && !bookUpdates.isEmpty()) {
                         HomeShelfFragment.a(homeShelfFragment, bookUpdates, this.a);
                     } else {
-                        if (HomeShelfFragment.i(homeShelfFragment) == 0) {
+                        if (homeShelfFragment.v == 0) {
                             ToastUtil.showToast(homeShelfFragment.getActivity(), R.string.network_failed);
                         }
                     }
                 }
             }
         }.b();
-    }
-
-    static /* synthetic */ void g(HomeShelfFragment homeShelfFragment) {
-        if (homeShelfFragment.d != null) {
-            homeShelfFragment.d.onRefreshComplete();
-        }
-    }
-
-    static /* synthetic */ int i(HomeShelfFragment homeShelfFragment) {
-        return homeShelfFragment.v;
-    }
-
-    static /* synthetic */ ListView j(HomeShelfFragment homeShelfFragment) {
-        return homeShelfFragment.e;
-    }
-
-    static /* synthetic */ void l(HomeShelfFragment homeShelfFragment) {
-        homeShelfFragment.k();
-    }
-
-    static /* synthetic */ View m(HomeShelfFragment homeShelfFragment) {
-        return homeShelfFragment.g;
-    }
-
-    static /* synthetic */ ShelfMsg n(HomeShelfFragment homeShelfFragment) {
-        return homeShelfFragment.i;
     }
 
     private void a(final BookFile bookFile) {
@@ -617,7 +561,7 @@ public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollL
         CommonUtil.unsubscribeBook(bookId);
         CommonUtil.syncBookShelf(bookId, BookSyncRecord.BookModifyType.SHELF_REMOVE);
         BusProvider.getInstance().post(new BookShelfRefreshEvent());
-     }
+    }
 
     private void a(List<BookShelf> bookShelfs, List<BookReadRecord> bookReadRecords) {
         BookFeed bookFeed = new BookFeed();
@@ -697,12 +641,12 @@ public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollL
                         super.onPostExecute(shelfMsgRoot);
                         if (HomeShelfFragment.this.getActivity() == null) return;
                         if (shelfMsgRoot == null || !shelfMsgRoot.ok || shelfMsgRoot.message == null) {
-                            HomeShelfFragment.j(HomeShelfFragment.this).removeHeaderView(HomeShelfFragment.m(HomeShelfFragment.this));
-                            HomeShelfFragment.a(HomeShelfFragment.this).notifyDataSetChanged();
+                            HomeShelfFragment.this.e.removeHeaderView(HomeShelfFragment.this.g);
+                            HomeShelfFragment.this.j.notifyDataSetChanged();
                             return;
                         }
-                        HomeShelfFragment.a(HomeShelfFragment.this, shelfMsgRoot.message);
-                        HomeShelfFragment.b(HomeShelfFragment.this, HomeShelfFragment.n(HomeShelfFragment.this));
+                        HomeShelfFragment.this.i = shelfMsgRoot.message;
+                        HomeShelfFragment.b(HomeShelfFragment.this, HomeShelfFragment.this.i);
                     }
                 }.b();
                 return;
@@ -896,16 +840,16 @@ public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollL
         y.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (HomeShelfFragment.a(HomeShelfFragment.this) != null) {
-                    HomeShelfFragment.a(HomeShelfFragment.this).d();
+                if (HomeShelfFragment.this.j != null) {
+                    HomeShelfFragment.this.j.d();
                 }
             }
         });
         x.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (HomeShelfFragment.a(HomeShelfFragment.this) == null) return;
-                List<BookShelf> list = HomeShelfFragment.a(HomeShelfFragment.this).e();
+                if (HomeShelfFragment.this.j == null) return;
+                List<BookShelf> list = HomeShelfFragment.this.j.e();
                 if (list == null || list.size() == 0) {
                     ToastUtil.showToast(HomeShelfFragment.this.getActivity(), "你没有选择要删除的书哦");
                     return;
@@ -1005,10 +949,10 @@ public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollL
                 @Override
                 public void a(BookGenderRecommend bookGenderRecommend) {
                     if (bookGenderRecommend != null && bookGenderRecommend.isOk()) {
-                        HomeShelfFragment.l(HomeShelfFragment.this);
-                        return;
+                        HomeShelfFragment.this.k();
+                    } else {
+                        HomeShelfFragment.this.b(3);
                     }
-                    HomeShelfFragment.b(HomeShelfFragment.this, 3);
                 }
             };
             if (n2 == 1) {
@@ -1018,6 +962,7 @@ public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollL
             }
         }
     }
+
     public void onHideAdEvent() {
         this.k();
         if (this.g != null && this.i != null && this.i.postLink != null && (this.i.postLink.startsWith("link") || this.i.postLink.startsWith("game"))) {

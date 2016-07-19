@@ -203,7 +203,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
         };
     }
 
-    static /* synthetic */ void C(final ReaderActivity readerActivity) {
+    static void C(final ReaderActivity readerActivity) {
         if (readerActivity.mTocDisable || readerActivity.mModeDisable) {
             ToastUtil.showShortToast(readerActivity, "缓存不可用");
             return;
@@ -267,7 +267,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
         return new IntentBuilder().put(context, ReaderActivity.class).put("BOOK_ID", string).put("BOOK_TITLE", string2).put("TOC_ID", string3).put("SOURCE_HOST", (String) null).putSerializable("IS_SHOW_TOC", false).putSerializable("HAS_OTHER_SOURCES", bl2).build();
     }
 
-    static /* synthetic */ void a(final ReaderActivity readerActivity, View view) {
+    static void a(final ReaderActivity readerActivity, View view) {
         PopupMenu popupMenu = new PopupMenu(readerActivity, view, 53);
         popupMenu.getMenuInflater().inflate(R.menu.reader_more_menu, popupMenu.getMenu());
         popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
@@ -288,10 +288,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
         popupMenu.show();
     }
 
-    /*
-     * Enabled aggressive block sorting
-     */
-    static /* synthetic */ void a(final ReaderActivity readerActivity, final ReaderLineInfo n2) {
+    static void a(final ReaderActivity readerActivity, final ReaderLineInfo n2) {
         if (!n2.f()) {
             readerActivity.b[0].a(n2, true);
             readerActivity.mMainView.setCurrentItem(0, false);
@@ -355,7 +352,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
         readerActivity.a(n2);
     }
 
-    static /* synthetic */ void ad(ReaderActivity readerActivity) {
+    static void ad(ReaderActivity readerActivity) {
         readerActivity.mReader.a();
         CommonUtil.syncBookShelf(readerActivity.mBookId, BookSyncRecord.BookModifyType.SHELF_ADD);
         String string = readerActivity.getString(R.string.add_book_event);
@@ -363,14 +360,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
         ToastUtil.showShortToast(readerActivity, String.format(string, arrobject));
     }
 
-    static /* synthetic */ void ag(ReaderActivity readerActivity) {
-        CharSequence charSequence = readerActivity.r.b().getText();
-        if (charSequence != null) {
-            CommonUtil.viewChapterLink(readerActivity, charSequence.toString(), null);
-        }
-    }
-
-    static /* synthetic */ void b(ReaderActivity readerActivity, View view) {
+    static void b(ReaderActivity readerActivity, View view) {
         View view2 = readerActivity.getLayoutInflater().inflate(R.layout.reader_popupwindow_layout, (ViewGroup) readerActivity.getWindow().getDecorView(), false);
         view2.findViewById(R.id.menu_item_1).setOnClickListener(readerActivity);
         view2.findViewById(R.id.menu_item_2).setOnClickListener(readerActivity);
@@ -386,7 +376,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
         readerActivity.mPopWindow.showAtLocation(view, 0, arrn[0] - readerActivity.mPopWindow.getWidth() + view.getWidth(), CommonUtil.getActionBarHeight(readerActivity) + CommonUtil.getStatusBarHeight(readerActivity));
     }
 
-    static /* synthetic */ void u(ReaderActivity readerActivity) {
+    static void u(ReaderActivity readerActivity) {
         if (readerActivity.mReaderStyle.h == R.drawable.reader_background_brown_big_img) {
             readerActivity.mReaderBodyTV.setBackgroundResource(R.drawable.reader_background_brown_auto_img);
         } else {
@@ -1460,7 +1450,10 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 dialog.dismiss();
-                                ReaderActivity.ag(ReaderActivity.this);
+                                CharSequence charSequence = ReaderActivity.this.r.b().getText();
+                                if (charSequence != null) {
+                                    CommonUtil.viewChapterLink(ReaderActivity.this, charSequence.toString(), null);
+                                }
                             }
                         }).setNegativeButton(R.string.cancel, null).show();
                         break;

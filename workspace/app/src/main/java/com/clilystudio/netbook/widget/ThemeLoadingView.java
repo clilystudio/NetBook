@@ -17,17 +17,12 @@ public class ThemeLoadingView extends FrameLayout {
         super(context, attributeSet);
     }
 
-    static /* synthetic */ boolean a(ThemeLoadingView themeLoadingView, boolean bl) {
-        themeLoadingView.d = bl;
-        return bl;
-    }
-
     private void c() {
         if (this.c == ThemeLoadingView.Mode.LIGHT) {
             this.setBackgroundResource(R.drawable.bg_theme_loading_light);
-            return;
+        } else {
+            this.setBackgroundResource(R.drawable.bg_theme_loading_dark);
         }
-        this.setBackgroundResource(R.drawable.bg_theme_loading_dark);
     }
 
     private LoadingProgressView d() {
