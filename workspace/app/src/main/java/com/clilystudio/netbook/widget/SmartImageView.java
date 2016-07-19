@@ -27,7 +27,7 @@ public class SmartImageView extends MaskAbleImageView {
     }
 
     public void setApiImageUrl(String string, int n) {
-        this.setImageUrl(ApiService.a + string, n);
+        this.setImageUrl(ApiService.mStaticsUrl + string, n);
     }
 
     public void setImageUrl(String string) {

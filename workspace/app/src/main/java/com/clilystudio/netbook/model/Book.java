@@ -28,7 +28,7 @@ public class Book {
     }
 
     public String getCover() {
-        return ApiService.a + this.cover;
+        return ApiService.mStaticsUrl + this.cover;
     }
 
     public void setCover(String string) {

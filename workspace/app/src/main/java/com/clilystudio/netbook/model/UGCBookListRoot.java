@@ -76,7 +76,7 @@ public class UGCBookListRoot {
         }
 
         public String getFullCover() {
-            return ApiService.a + this.cover + "-covers";
+            return ApiService.mStaticsUrl + this.cover + "-covers";
         }
 
         public String getTitle() {

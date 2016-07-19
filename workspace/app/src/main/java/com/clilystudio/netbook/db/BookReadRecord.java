@@ -365,7 +365,7 @@ public class BookReadRecord extends Model {
     }
 
     public String getFullCover() {
-        return ApiService.a + this.getCover() + "-covers";
+        return ApiService.mStaticsUrl + this.getCover() + "-covers";
     }
 
     public int getHave_cp() {

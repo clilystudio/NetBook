@@ -22,7 +22,7 @@ public class Author implements Serializable {
     }
 
     public String getFullAvatar() {
-        return ApiService.a + this.avatar;
+        return ApiService.mStaticsUrl + this.avatar;
     }
 
     public String getGender() {
@@ -50,7 +50,7 @@ public class Author implements Serializable {
     }
 
     public String getScaleAvatar() {
-        return ApiService.a + this.avatar + "-avatars";
+        return ApiService.mStaticsUrl + this.avatar + "-avatars";
     }
 
     public String getType() {

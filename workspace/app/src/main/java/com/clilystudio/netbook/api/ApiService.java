@@ -87,13 +87,13 @@ import java.util.Locale;
 
 public class ApiService {
     private static final String b = ApiService.class.getSimpleName();
-    private static String mApiUrl = "zhuishushenqi.com";
-    private static final String e = "http://api." + mApiUrl;
-    private static String f = e;
-    private static String g = "http://chapter." + mApiUrl;
-    private static String h = "http://chapter2." + mApiUrl;
-    public static String a = "http://statics." + mApiUrl;
-    private static final Gson l = new GsonBuilder().registerTypeAdapter(Date.class, new DateDeserializer()).create();
+    private static String mDomain = "zhuishushenqi.com";
+    private static final String mApiUrl = "http://api." + mDomain;
+    private static String f = mApiUrl;
+    private static String mChapterUrl = "http://chapter." + mDomain;
+    private static String mChapter2Url = "http://chapter2." + mDomain;
+    public static String mStaticsUrl = "http://statics." + mDomain;
+    private static final Gson mJsonParser = new GsonBuilder().registerTypeAdapter(Date.class, new DateDeserializer()).create();
 
     private final UserAgentManager c;
 
@@ -106,7 +106,7 @@ public class ApiService {
         V v = null;
         try {
             bufferedReader = httpRequest.bufferedReader();
-            v = l.fromJson(bufferedReader, class_);
+            v = mJsonParser.fromJson(bufferedReader, class_);
         } catch (HttpRequest.HttpRequestException | JsonIOException | JsonSyntaxException e1) {
             e1.printStackTrace();
         } finally {
@@ -122,11 +122,11 @@ public class ApiService {
     }
 
     public static void a(String apiUrl) {
-        if (!apiUrl.equals(mApiUrl)) {
-            mApiUrl = apiUrl;
-            f = "http://api." + mApiUrl;
-            g = "http://chapter." + mApiUrl;
-            a = "http://statics." + mApiUrl;
+        if (!apiUrl.equals(mDomain)) {
+            mDomain = apiUrl;
+            f = "http://api." + mDomain;
+            mChapterUrl = "http://chapter." + mDomain;
+            mStaticsUrl = "http://statics." + mDomain;
         }
     }
 
@@ -137,7 +137,7 @@ public class ApiService {
             JsonArray jsonArray = new JsonParser().parse(bufferedReader).getAsJsonArray();
             arrayList = new ArrayList<>();
             for (JsonElement jsonElement : jsonArray) {
-                arrayList.add(l.fromJson(jsonElement, class_));
+                arrayList.add(mJsonParser.fromJson(jsonElement, class_));
             }
         } catch (JsonParseException var5_7) {
             var5_7.printStackTrace();
@@ -160,11 +160,10 @@ public class ApiService {
 
     private HttpRequest a(HttpRequest httpRequest) {
         if (DnsManager.isUseDns()) {
-            httpRequest = DnsManager.a2(httpRequest);
+            httpRequest = DnsManager.setDnsIp(httpRequest);
         }
         try {
-            boolean bl = this.b(httpRequest).ok();
-            if (!bl) {
+            if (!this.b(httpRequest).ok()) {
                 Log.e("ApiService", "Unexpected response code: " + httpRequest.code());
             }
         } catch (HttpRequest.HttpRequestException var4_4) {
@@ -213,14 +212,14 @@ public class ApiService {
         return httpRequest;
     }
 
-    public final BookShelfSyncTime A(String string) {
-        String string2 = f + String.format(Locale.CHINA, "/user/bookshelf-updated?token=%s", string);
-        return ApiService.a(this.a(HttpRequest.get(string2)), BookShelfSyncTime.class);
+    public final BookShelfSyncTime getBookShelfSyncTime(String token) {
+        String url = f + String.format(Locale.CHINA, "/user/bookshelf-updated?token=%s", token);
+        return ApiService.a(this.a(HttpRequest.get(url)), BookShelfSyncTime.class);
     }
 
-    public final RemoteBookShelf B(String string) {
-        String string2 = f + String.format(Locale.CHINA, "/user/bookshelf?token=%s", string);
-        return ApiService.a(this.a(HttpRequest.get(string2)), RemoteBookShelf.class);
+    public final RemoteBookShelf getRemoteBookShelf(String token) {
+        String url = f + String.format(Locale.CHINA, "/user/bookshelf?token=%s", token);
+        return ApiService.a(this.a(HttpRequest.get(url)), RemoteBookShelf.class);
     }
 
     public final UGCBookDetailRoot C(String string, String string2) {
@@ -775,10 +774,10 @@ public class ApiService {
 
     public final ChapterRoot x(String string) {
         String string2 = String.format(Locale.CHINA, "/chapter/%s", CommonUtil.encodeUrl(string));
-        String string3 = h + string2;
+        String string3 = mChapter2Url + string2;
         HttpRequest httpRequest = HttpRequest.get(string3);
         if (DnsManager.isUseDns()) {
-            httpRequest = DnsManager.a2(httpRequest);
+            httpRequest = DnsManager.setDnsIp(httpRequest);
         }
         HttpRequest httpRequest2 = this.b(httpRequest);
         boolean bl = httpRequest2.ok();
@@ -806,10 +805,10 @@ public class ApiService {
 
     public final ChapterRoot y(String string) {
         String string2 = CommonUtil.encodeUrl(string);
-        String string3 = g + String.format(Locale.CHINA, "/chapter/%s", string2);
+        String string3 = mChapterUrl + String.format(Locale.CHINA, "/chapter/%s", string2);
         HttpRequest httpRequest = HttpRequest.get(string3);
         if (DnsManager.isUseDns()) {
-            httpRequest = DnsManager.a2(httpRequest);
+            httpRequest = DnsManager.setDnsIp(httpRequest);
         }
         HttpRequest httpRequest2 = this.b(httpRequest);
         boolean bl = httpRequest2.ok();

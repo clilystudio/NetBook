@@ -163,7 +163,7 @@ public final class BookShelfSyncManager {
     private RemoteBookShelf a(String string) {
         BookShelfSyncTime bookShelfSyncTime;
         try {
-            bookShelfSyncTime = ApiServiceProvider.getApiService().A(string);
+            bookShelfSyncTime = ApiServiceProvider.getApiService().getBookShelfSyncTime(string);
         } catch (Exception var2_6) {
             var2_6.printStackTrace();
             return null;
@@ -180,7 +180,7 @@ public final class BookShelfSyncManager {
             return remoteBookShelf2;
         }
         try {
-            remoteBookShelf = ApiServiceProvider.getApiService().B(string);
+            remoteBookShelf = ApiServiceProvider.getApiService().getRemoteBookShelf(string);
         } catch (Exception var8_9) {
             var8_9.printStackTrace();
             return null;

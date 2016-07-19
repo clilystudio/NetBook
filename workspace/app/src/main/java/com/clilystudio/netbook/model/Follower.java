@@ -67,7 +67,7 @@ public class Follower implements Parcelable {
     }
 
     public String getFullAvatar() {
-        return ApiService.a + this.getAvatar();
+        return ApiService.mStaticsUrl + this.getAvatar();
     }
 
     public String getNickname() {

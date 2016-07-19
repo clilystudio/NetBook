@@ -56,11 +56,11 @@ public class BookSummary implements Serializable {
     }
 
     public String getFullCover() {
-        return ApiService.a + this.cover + "-covers";
+        return ApiService.mStaticsUrl + this.cover + "-covers";
     }
 
     public String getFullCoverLarge() {
-        return ApiService.a + this.cover + "-coverl";
+        return ApiService.mStaticsUrl + this.cover + "-coverl";
     }
 
     public String getId() {

@@ -19,7 +19,7 @@ public class BookRankSummary {
     }
 
     public String getFullCover() {
-        return ApiService.a + this.cover;
+        return ApiService.mStaticsUrl + this.cover;
     }
 
     public String[] getIds() {

@@ -14,7 +14,7 @@ public final class DnsManager {
     private static boolean mUseDns;
     private static DnsCacheManager b = DnsCacheManager.getInstance();
 
-    public static HttpRequest a2(HttpRequest httpRequest) {
+    public static HttpRequest setDnsIp(HttpRequest httpRequest) {
         String string2;
         String string3;
         URL uRL = httpRequest.getConnection().getURL();

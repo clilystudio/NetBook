@@ -34,7 +34,7 @@ public class User implements Serializable {
     }
 
     public String getFullAvatar() {
-        return ApiService.a + this.avatar;
+        return ApiService.mStaticsUrl + this.avatar;
     }
 
     public String getGender() {

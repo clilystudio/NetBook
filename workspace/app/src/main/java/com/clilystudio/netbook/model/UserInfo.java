@@ -113,9 +113,9 @@ public class UserInfo implements Serializable {
 
     public String getScaleAvatar(int n) {
         if (n == 2) {
-            return ApiService.a + this.avatar + "-avatarl";
+            return ApiService.mStaticsUrl + this.avatar + "-avatarl";
         }
-        return ApiService.a + this.avatar + "-avatars";
+        return ApiService.mStaticsUrl + this.avatar + "-avatars";
     }
 
     public ThisWeekTasks getThis_week_tasks() {
