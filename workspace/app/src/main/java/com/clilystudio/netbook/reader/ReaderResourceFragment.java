@@ -55,11 +55,7 @@ public class ReaderResourceFragment extends Fragment {
         return readerResourceFragment;
     }
 
-    static /* synthetic */ String a(ReaderResourceFragment readerResourceFragment) {
-        return readerResourceFragment.a;
-    }
-
-    static /* synthetic */ void a(ReaderResourceFragment readerResourceFragment, int n) {
+    static void a(ReaderResourceFragment readerResourceFragment, int n) {
         switch (n) {
             default: {
                 return;
@@ -93,27 +89,11 @@ public class ReaderResourceFragment extends Fragment {
         readerResourceFragment.j.setVisibility(View.GONE);
     }
 
-    static /* synthetic */ void a(ReaderResourceFragment readerResourceFragment, String string) {
-        readerResourceFragment.startActivity(ReaderActivity.a(readerResourceFragment.getActivity(), readerResourceFragment.a, readerResourceFragment.b, string, (String)null, false));
-    }
-
-    static /* synthetic */ void a(ReaderResourceFragment readerResourceFragment, List list) {
+    static void a(ReaderResourceFragment readerResourceFragment, List list) {
         TextView textView = readerResourceFragment.k;
         Resources resources = readerResourceFragment.getResources();
         Object[] arrobject = new Object[]{list.size()};
         textView.setText(resources.getString(R.string.source_list_title, arrobject));
-    }
-
-    static /* synthetic */ ListView b(ReaderResourceFragment readerResourceFragment) {
-        return readerResourceFragment.c;
-    }
-
-    static /* synthetic */ BaseDownloadAdapter<TocSummary> c(ReaderResourceFragment readerResourceFragment) {
-        return readerResourceFragment.l;
-    }
-
-    static /* synthetic */ String d(ReaderResourceFragment readerResourceFragment) {
-        return readerResourceFragment.b;
     }
 
     @Override
@@ -129,7 +109,7 @@ public class ReaderResourceFragment extends Fragment {
         this.h.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = LocalChapterListActivity.a(ReaderResourceFragment.this.getActivity(), ReaderResourceFragment.a(ReaderResourceFragment.this), ReaderResourceFragment.d(ReaderResourceFragment.this));
+                Intent intent = LocalChapterListActivity.a(ReaderResourceFragment.this.getActivity(), ReaderResourceFragment.this.a, ReaderResourceFragment.this.b);
                 ReaderResourceFragment.this.startActivity(intent);
             }
         });
@@ -167,10 +147,10 @@ public class ReaderResourceFragment extends Fragment {
         this.c.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                int n3 = position - ReaderResourceFragment.b(ReaderResourceFragment.this).getHeaderViewsCount();
+                int n3 = position - ReaderResourceFragment.this.c.getHeaderViewsCount();
                 if (n3 >= 0) {
-                    TocSummary tocSummary = ReaderResourceFragment.c(ReaderResourceFragment.this).getItem(n3);
-                    Intent intent = ReaderActivity.a(getActivity(), ReaderResourceFragment.a(ReaderResourceFragment.this), ReaderResourceFragment.d(ReaderResourceFragment.this), tocSummary.get_id(),  (String)null, true);
+                    TocSummary tocSummary = ReaderResourceFragment.this.l.getItem(n3);
+                    Intent intent = ReaderActivity.a(getActivity(), ReaderResourceFragment.this.a, ReaderResourceFragment.this.b, tocSummary.get_id(),  (String)null, true);
                     startActivity(intent);
                     index = n3;
                 }
@@ -192,7 +172,7 @@ public class ReaderResourceFragment extends Fragment {
                     if (!tocSummaries.isEmpty()) {
                         ReaderResourceFragment.a(ReaderResourceFragment.this, 1);
                         ReaderResourceFragment.a(ReaderResourceFragment.this, tocSummaries);
-                        ReaderResourceFragment.c(ReaderResourceFragment.this).a(tocSummaries);
+                        ReaderResourceFragment.this.l.a(tocSummaries);
                     } else {
                         ReaderResourceFragment.a(ReaderResourceFragment.this, 3);
                     }
@@ -224,7 +204,7 @@ public class ReaderResourceFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 ReaderResourceFragment.a(ReaderResourceFragment.this, 0);
-                BaseAsyncTask<String, Void, List<TocSummary>> bY2 = new BaseAsyncTask<String, Void, List<TocSummary>>() {
+                new BaseAsyncTask<String, Void, List<TocSummary>>() {
 
                     @Override
                     protected List<TocSummary> doInBackground(String... params) {
@@ -240,7 +220,7 @@ public class ReaderResourceFragment extends Fragment {
                             if (!tocSummaries.isEmpty()) {
                                 ReaderResourceFragment.a(ReaderResourceFragment.this, 1);
                                 ReaderResourceFragment.a(ReaderResourceFragment.this, tocSummaries);
-                                ReaderResourceFragment.c(ReaderResourceFragment.this).a(tocSummaries);
+                                ReaderResourceFragment.this.l.a(tocSummaries);
                             } else {
                                 ReaderResourceFragment.a(ReaderResourceFragment.this, 3);
                             }
@@ -248,9 +228,7 @@ public class ReaderResourceFragment extends Fragment {
                             ReaderResourceFragment.a(ReaderResourceFragment.this, 2);
                         }
                     }
-                };
-                String[] arrstring = new String[]{ReaderResourceFragment.a(ReaderResourceFragment.this)};
-                bY2.b(arrstring);
+                }.b(ReaderResourceFragment.this.a);
             }
         });
         return view;
@@ -283,7 +261,7 @@ public class ReaderResourceFragment extends Fragment {
                     this.g.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            ReaderResourceFragment.a(ReaderResourceFragment.this, string);
+                            startActivity(ReaderActivity.a(getActivity(), ReaderResourceFragment.this.a, ReaderResourceFragment.this.b, string, (String)null, false));
                         }
                     });
                 } else {

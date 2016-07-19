@@ -16,6 +16,8 @@ import com.clilystudio.netbook.model.RecommendUgcRoot;
 import com.clilystudio.netbook.ui.ugcbook.UGCDetailActivity;
 import com.clilystudio.netbook.widget.CoverView;
 
+import java.util.Locale;
+
 public class RelateUgcFragment extends Fragment {
     LinearLayout mRelateUgcRoot;
     LinearLayout mUgcContainer;
@@ -38,53 +40,47 @@ public class RelateUgcFragment extends Fragment {
         super.onViewCreated(view, bundle);
         this.mUgcContainer = (LinearLayout) this.getView().findViewById(R.id.ugcs);
         this.mRelateUgcRoot = (LinearLayout) this.getView().findViewById(R.id.relate_ugc_root);
-        GetUgcsTask relateUgcFragment$GetUgcsTask = new GetUgcsTask(this);
+        GetUgcsTask relateUgcFragment$GetUgcsTask = new GetUgcsTask();
         String[] arrstring = new String[]{this.getArguments().getString("book_id")};
         relateUgcFragment$GetUgcsTask.b(arrstring);
     }
-    public final class GetUgcsTask extends BaseAsyncTask<String, Void, RecommendUgcRoot> {
-        final /* synthetic */ RelateUgcFragment a;
-        private String b;
 
-        public GetUgcsTask(RelateUgcFragment relateUgcFragment) {
-            this.a = relateUgcFragment;
-            this.b = "\u5171%1$d\u672c\u4e66  |  %2$d\u4eba\u6536\u85cf";
-        }
+    public final class GetUgcsTask extends BaseAsyncTask<String, Void, RecommendUgcRoot> {
+        private String b = "共%1$d本书  |  %2$d人收藏";
 
         @Override
-        protected final /* synthetic */ RecommendUgcRoot doInBackground(String[] arrstring) {
+        protected final RecommendUgcRoot doInBackground(String[] arrstring) {
             ApiServiceProvider.getInstance();
             return ApiServiceProvider.getApiService().i(arrstring[0], 3);
         }
 
         @Override
-        protected final /* synthetic */ void onPostExecute(RecommendUgcRoot recommendUgcRoot) {
+        protected final void onPostExecute(RecommendUgcRoot recommendUgcRoot) {
             super.onPostExecute(recommendUgcRoot);
-            if (this.a.getActivity() != null && recommendUgcRoot != null && recommendUgcRoot.getBooklists() != null && recommendUgcRoot.getBooklists().length > 0) {
-                this.a.mRelateUgcRoot.setVisibility(View.VISIBLE);
+            if (getActivity() != null && recommendUgcRoot != null && recommendUgcRoot.getBooklists() != null && recommendUgcRoot.getBooklists().length > 0) {
+                mRelateUgcRoot.setVisibility(View.VISIBLE);
                 for (final RecommendUgcRoot.RecommendUGC recommendUGC : recommendUgcRoot.getBooklists()) {
-                    View view = this.a.getLayoutInflater(null).inflate(R.layout.list_item_ugc_book, this.a.mUgcContainer, false);
+                    View view = getLayoutInflater(null).inflate(R.layout.list_item_ugc_book, mUgcContainer, false);
                     GetUgcsTask.ViewHolder viewHolder = new GetUgcsTask.ViewHolder(view);
                     viewHolder.mCover.setImageUrl(recommendUGC.getFullCover(), R.drawable.cover_default);
                     viewHolder.mTitle.setText(recommendUGC.getTitle());
                     TextView textView = viewHolder.mCount;
-                    String string = this.b;
-                    Object[] arrobject = new Object[]{recommendUGC.getBookCount(), recommendUGC.getCollectorCount()};
-                    textView.setText(String.format(string, arrobject));
+                    textView.setText(String.format(Locale.CHINA, "共%1$d本书  |  %2$d人收藏", recommendUGC.getBookCount(), recommendUGC.getCollectorCount()));
                     viewHolder.mAuthor.setText(recommendUGC.getAuthor());
                     viewHolder.mDesc.setText(recommendUGC.getDesc());
                     viewHolder.mContainer.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            Intent intent = new Intent(GetUgcsTask.this.a.getActivity(), UGCDetailActivity.class);
+                            Intent intent = new Intent(getActivity(), UGCDetailActivity.class);
                             intent.putExtra("book_id", recommendUGC.getId());
-                            GetUgcsTask.this.a.startActivity(intent);
+                            startActivity(intent);
                         }
                     });
-                    this.a.mUgcContainer.addView(view);
+                    mUgcContainer.addView(view);
                 }
             }
         }
+
         public class ViewHolder {
             TextView mAuthor;
             View mContainer;
@@ -96,7 +92,7 @@ public class RelateUgcFragment extends Fragment {
 
             ViewHolder(View view) {
                 this.mCover = (CoverView) view.findViewById(R.id.cover);
-                this.mTitle = (TextView)view. findViewById(R.id.title);
+                this.mTitle = (TextView) view.findViewById(R.id.title);
                 this.mCount = (TextView) view.findViewById(R.id.message_count);
                 this.mAuthor = (TextView) view.findViewById(R.id.author);
                 this.mDesc = (TextView) view.findViewById(R.id.desc);

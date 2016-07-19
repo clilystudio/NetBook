@@ -77,49 +77,6 @@ public class BookTagListActivity extends BaseLoadingActivity {
         };
     }
 
-    public static Intent a(Context context, String string) {
-        return new IntentBuilder().put(context, BookTagListActivity.class).put("TAG_LIST_KEY", string).build();
-    }
-
-    static /* synthetic */ BaseAsyncTask<String, Void, List<BookSummary>> a(BookTagListActivity bookTagListActivity, BaseAsyncTask<String, Void, List<BookSummary>> aW2) {
-        bookTagListActivity.a = aW2;
-        return aW2;
-    }
-
-    static /* synthetic */ List a(BookTagListActivity bookTagListActivity) {
-        return bookTagListActivity.g;
-    }
-
-    static /* synthetic */ void a(BookTagListActivity bookTagListActivity, BookSummary bookSummary) {
-        if (bookSummary != null) {
-            bookTagListActivity.startActivity(BookInfoActivity.a(bookTagListActivity, bookSummary.getId()));
-        }
-    }
-
-    static /* synthetic */ String b(BookTagListActivity bookTagListActivity) {
-        return bookTagListActivity.c;
-    }
-
-    static /* synthetic */ View c(BookTagListActivity bookTagListActivity) {
-        return bookTagListActivity.f;
-    }
-
-    static /* synthetic */ BaseDownloadAdapter<BookSummary> d(BookTagListActivity bookTagListActivity) {
-        return bookTagListActivity.b;
-    }
-
-    static /* synthetic */ ScrollLoadListView e(BookTagListActivity bookTagListActivity) {
-        return bookTagListActivity.e;
-    }
-
-    static /* synthetic */ ScrollLoadListView.OnLastItemListener f(BookTagListActivity bookTagListActivity) {
-        return bookTagListActivity.h;
-    }
-
-    static /* synthetic */ BaseAsyncTask<String, Void, List<BookSummary>> g(BookTagListActivity bookTagListActivity) {
-        return bookTagListActivity.a;
-    }
-
     @Override
     protected final void b() {
         this.i();
@@ -174,7 +131,9 @@ public class BookTagListActivity extends BaseLoadingActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 if (position >= 0 && position < BookTagListActivity.this.g.size()) {
                     BookSummary bookSummary = BookTagListActivity.this.g.get(position);
-                    BookTagListActivity.a(BookTagListActivity.this, bookSummary);
+                    if (bookSummary != null) {
+                        startActivity(BookInfoActivity.a(BookTagListActivity.this, bookSummary.getId()));
+                    }
                 }
             }
         });

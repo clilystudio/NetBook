@@ -22,8 +22,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.clilystudio.netbook.CachePathConst;
-import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.IntentBuilder;
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.a_pack.BaseAsyncTask;
 import com.clilystudio.netbook.api.ApiServiceProvider;
 import com.clilystudio.netbook.model.AutoCompleteRoot;
@@ -76,25 +76,13 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
         return new IntentBuilder().put(context, SearchActivity.class).put("search_mode", n).build();
     }
 
-    static /* synthetic */ ListView a(SearchActivity searchActivity) {
-        return searchActivity.h;
-    }
-
-    static /* synthetic */ void a(SearchActivity searchActivity, int n) {
-        searchActivity.a(n);
-    }
-
-    static /* synthetic */ void a(SearchActivity searchActivity, String string) {
+    static void a(SearchActivity searchActivity, String string) {
         searchActivity.t.setVisibility(View.GONE);
         searchActivity.e.setTextByCode(string);
         searchActivity.a(true, false);
     }
 
-    /*
-     * Enabled aggressive block sorting
-     * Lifted jumps to return sites
-     */
-    static /* synthetic */ void a(SearchActivity searchActivity, boolean bl) {
+    static void a(SearchActivity searchActivity, boolean bl) {
         searchActivity.f.setEnabled(bl);
         searchActivity.g.setEnabled(bl);
         View view = searchActivity.g;
@@ -108,62 +96,6 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
             searchActivity.t.setVisibility(View.VISIBLE);
         }
         searchActivity.i.setVisibility(View.GONE);
-    }
-
-    static /* synthetic */  BaseDownloadAdapter<BookSummary> b(SearchActivity searchActivity) {
-        return searchActivity.l;
-    }
-
-    static /* synthetic */ String b(SearchActivity searchActivity, String string) {
-        searchActivity.o = string;
-        return string;
-    }
-
-    static /* synthetic */ void b(SearchActivity searchActivity, boolean bl) {
-        searchActivity.a(bl, false);
-    }
-
-    static /* synthetic */ void c(SearchActivity searchActivity) {
-        searchActivity.g();
-    }
-
-    static /* synthetic */ boolean c(SearchActivity searchActivity, String string) {
-        return !searchActivity.e.getText().toString().equals(string) && !string.equals(searchActivity.o);
-    }
-
-    static /* synthetic */ void d(SearchActivity searchActivity) {
-        searchActivity.x.clear();
-        searchActivity.w.notifyDataSetChanged();
-        CommonUtil.saveObject(searchActivity.x, CachePathConst.SearchHistory, "search_history.txt");
-        searchActivity.a(false);
-    }
-
-    static /* synthetic */ AutoFlowView e(SearchActivity searchActivity) {
-        return searchActivity.r;
-    }
-
-    static /* synthetic */ SearchEditText f(SearchActivity searchActivity) {
-        return searchActivity.e;
-    }
-
-    static /* synthetic */ RelativeLayout g(SearchActivity searchActivity) {
-        return searchActivity.q;
-    }
-
-    static /* synthetic */ TextView h(SearchActivity searchActivity) {
-        return searchActivity.s;
-    }
-
-    static /* synthetic */ int i(SearchActivity searchActivity) {
-        return searchActivity.c;
-    }
-
-    static /* synthetic */ ListView k(SearchActivity searchActivity) {
-        return searchActivity.i;
-    }
-
-    static /* synthetic */ List l(SearchActivity searchActivity) {
-        return searchActivity.x;
     }
 
     private void a(int n) {
@@ -226,7 +158,7 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
 
                 @Override
                 protected List<BookSummary> doInBackground(String... params) {
-                    if (SearchActivity.i(SearchActivity.this) == 1) {
+                    if (SearchActivity.this.c == 1) {
                         List<BookSummary> list = ApiServiceProvider.getApiService().n(params[0]);
                         SearchPromRoot searchPromRoot = ApiServiceProvider.getApiService().q(params[0]);
                         if (searchPromRoot == null) return list;
@@ -243,7 +175,7 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
                 protected void onPreExecute() {
                     super.onPreExecute();
                     if (bl2) {
-                        SearchActivity.b(SearchActivity.this, SearchActivity.f(SearchActivity.this).getText().toString());
+                        SearchActivity.this.o = SearchActivity.this.e.getText().toString();
                     }
                 }
 
@@ -252,25 +184,21 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
                     super.onPostExecute(bookSummaries);
                     SearchActivity.a(SearchActivity.this, true);
                     if (bookSummaries == null) {
-                        SearchActivity.a(SearchActivity.this, 2);
+                        SearchActivity.this.a(2);
                         ToastUtil.showToast(SearchActivity.this, R.string.search_failed);
                         return;
                     }
-                    SearchActivity.b(SearchActivity.this).a(bookSummaries);
+                    SearchActivity.this.l.a(bookSummaries);
                     new Handler().post(new Runnable() {
                         @Override
                         public void run() {
-                            if (SearchActivity.a(SearchActivity.this) != null) {
-                                SearchActivity.a(SearchActivity.this).setSelectionAfterHeaderView();
-                                SearchActivity.a(SearchActivity.this).setSelection(0);
+                            if (SearchActivity.this.h != null) {
+                                SearchActivity.this.h.setSelectionAfterHeaderView();
+                                SearchActivity.this.h.setSelection(0);
                             }
                         }
                     });
-                    if (bookSummaries.size() > 0) {
-                        SearchActivity.a(SearchActivity.this, 1);
-                    } else {
-                        SearchActivity.a(SearchActivity.this, 3);
-                    }
+                    SearchActivity.this.a(bookSummaries.size() > 0 ? 1 : 3);
                 }
             };
             bR2.b(this.b);
@@ -363,7 +291,7 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
         View view = layoutInflater.inflate(R.layout.ab_search, (ViewGroup) getWindow().getDecorView(), false);
         view.findViewById(R.id.back).setOnClickListener(this);
         this.setCustomActionBar(view);
-        final SearchPromptAdapter searchPromptAdapter = new SearchPromptAdapter(this);
+        final SearchPromptAdapter searchPromptAdapter = new SearchPromptAdapter();
         this.i = (ListView) this.findViewById(R.id.search_prompt_list);
         assert this.i != null;
         this.i.setAdapter(searchPromptAdapter);
@@ -472,7 +400,10 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
         this.u.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SearchActivity.d(SearchActivity.this);
+                SearchActivity.this.x.clear();
+                SearchActivity.this.w.notifyDataSetChanged();
+                CommonUtil.saveObject(SearchActivity.this.x, CachePathConst.SearchHistory, "search_history.txt");
+                SearchActivity.this.a(false);
             }
         });
         this.x = CommonUtil.loadObject(CachePathConst.SearchHistory, "search_history.txt");
@@ -482,7 +413,7 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
         if (this.x.size() == 0) {
             this.a(false);
         }
-        this.w = new SearchHistoryAdapter(this);
+        this.w = new SearchHistoryAdapter();
         ListView v = (ListView) this.findViewById(R.id.search_history_list);
         assert v != null;
         v.setAdapter(this.w);
@@ -510,7 +441,7 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
             this.s.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    SearchActivity.e(SearchActivity.this).a();
+                    SearchActivity.this.r.a();
                 }
             });
             return;
@@ -534,18 +465,18 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
                         arrayList.add(word);
                     }
                     CommonUtil.saveObject(arrayList, CachePathConst.SearchHistory, "search_hotword.txt");
-                    SearchActivity.g(SearchActivity.this).setVisibility(View.VISIBLE);
-                    SearchActivity.e(SearchActivity.this).setWords(hotKeywordResult.getHotWords());
-                    SearchActivity.e(SearchActivity.this).setOnItemClickListener(new AutoFlowView.OnItemClickListener() {
+                    SearchActivity.this.q.setVisibility(View.VISIBLE);
+                    SearchActivity.this.r.setWords(hotKeywordResult.getHotWords());
+                    SearchActivity.this.r.setOnItemClickListener(new AutoFlowView.OnItemClickListener() {
                         @Override
                         public void a(String var1) {
                             SearchActivity.a(SearchActivity.this, var1);
                         }
                     });
-                    SearchActivity.h(SearchActivity.this).setOnClickListener(new View.OnClickListener() {
+                    SearchActivity.this.s.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            SearchActivity.e(SearchActivity.this).a();
+                            SearchActivity.this.r.a();
                         }
                     });
                     return;
@@ -563,16 +494,9 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
         }
     }
 
-    public final class SearchPromptAdapter extends BaseAdapter implements AdapterView.OnItemClickListener,
-            Filterable {
-        final /* synthetic */ SearchActivity a;
-        private List<String> b;
+    public final class SearchPromptAdapter extends BaseAdapter implements AdapterView.OnItemClickListener, Filterable {
+        private List<String> b = new ArrayList<>();
         private Filter c;
-
-        public SearchPromptAdapter(SearchActivity searchActivity) {
-            this.a = searchActivity;
-            this.b = new ArrayList<>();
-        }
 
         @Override
         public final int getCount() {
@@ -586,7 +510,7 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
 
                     @Override
                     protected FilterResults performFiltering(CharSequence constraint) {
-                        String string = SearchActivity.f(SearchActivity.this).getText().toString();
+                        String string = SearchActivity.this.e.getText().toString();
                         ArrayList<String> arrayList = new ArrayList<>();
                         arrayList.add(string);
                         arrayList.add(constraint.toString());
@@ -612,7 +536,7 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
                             return;
                         }
                         String string = list.get(n - 2);
-                        if (n > 2 && !SearchActivity.c(SearchActivity.this, string)) {
+                        if (n > 2 && (SearchActivity.this.e.getText().toString().equals(string) || string.equals(SearchActivity.this.o))) {
                             list2 = list.subList(0, n - 2);
                         } else {
                             list2 = new ArrayList<>();
@@ -623,8 +547,7 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
                         } else {
                             SearchPromptAdapter.this.notifyDataSetChanged();
                         }
-                        ListView searchFixListView = SearchActivity.k(SearchActivity.this);
-                        searchFixListView.setVisibility(SearchPromptAdapter.this.b.isEmpty() ? View.GONE : View.VISIBLE);
+                        SearchActivity.this.i.setVisibility(SearchPromptAdapter.this.b.isEmpty() ? View.GONE : View.VISIBLE);
                     }
                 };
             }
@@ -646,7 +569,7 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
 
         @Override
         public final View getView(int n, View view, ViewGroup viewGroup) {
-            LayoutInflater layoutInflater = this.a.getLayoutInflater();
+            LayoutInflater layoutInflater = getLayoutInflater();
             View view2 = layoutInflater.inflate(R.layout.list_item_search_prompt, viewGroup, false);
             SearchPromptAdapter.ViewHolder viewHolder = new SearchPromptAdapter.ViewHolder(view2);
             if (n >= 0 && n < this.b.size()) {
@@ -657,11 +580,11 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
 
         @Override
         public final void onItemClick(AdapterView<?> adapterView, View view, int n, long l2) {
-            SearchActivity.k(this.a).setVisibility(View.GONE);
+            i.setVisibility(View.GONE);
             if (n >= 0 && n < this.b.size()) {
                 String string = this.b.get(n);
-                SearchActivity.f(this.a).setTextByCode(string);
-                SearchActivity.b(this.a, true);
+                e.setTextByCode(string);
+                a(true, false);
             }
         }
 
@@ -675,20 +598,15 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
     }
 
     public final class SearchHistoryAdapter extends BaseAdapter implements AdapterView.OnItemClickListener {
-        private /* synthetic */ SearchActivity a;
-
-        public SearchHistoryAdapter(SearchActivity searchActivity) {
-            this.a = searchActivity;
-        }
 
         @Override
         public final int getCount() {
-            return SearchActivity.l(this.a).size();
+            return x.size();
         }
 
         @Override
         public final Object getItem(int n) {
-            return SearchActivity.l(this.a).get(n);
+            return x.get(n);
         }
 
         @Override
@@ -698,18 +616,18 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
 
         @Override
         public final View getView(int n, View view, ViewGroup viewGroup) {
-            View view2 = this.a.getLayoutInflater().inflate(R.layout.list_item_search_history, viewGroup, false);
+            View view2 = getLayoutInflater().inflate(R.layout.list_item_search_history, viewGroup, false);
             ViewHolder viewHolder = new ViewHolder(view2);
-            if (n >= 0 && n < SearchActivity.l(this.a).size()) {
-                viewHolder.word.setText((CharSequence) SearchActivity.l(this.a).get(n));
+            if (n >= 0 && n < x.size()) {
+                viewHolder.word.setText(x.get(n));
             }
             return view2;
         }
 
         @Override
         public final void onItemClick(AdapterView<?> adapterView, View view, int n, long l2) {
-            if (n >= 0 && n < SearchActivity.l(this.a).size()) {
-                SearchActivity.a(this.a, (String) SearchActivity.l(this.a).get(n));
+            if (n >= 0 && n < x.size()) {
+                SearchActivity.a(SearchActivity.this, x.get(n));
             }
         }
 

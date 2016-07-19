@@ -19,8 +19,8 @@ import com.clilystudio.netbook.MyApplication;
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.a_pack.BaseLoadingTask;
 import com.clilystudio.netbook.api.ApiServiceProvider;
-import com.clilystudio.netbook.event.LoginEvent;
 import com.clilystudio.netbook.event.BusProvider;
+import com.clilystudio.netbook.event.LoginEvent;
 import com.clilystudio.netbook.model.Account;
 import com.clilystudio.netbook.ui.BaseActivity;
 import com.clilystudio.netbook.util.ToastUtil;
@@ -43,11 +43,11 @@ public class AuthLoginActivity extends BaseActivity implements Handler.Callback 
         return new IntentBuilder().put(context, AuthLoginActivity.class).build();
     }
 
-    static /* synthetic */ void a(AuthLoginActivity authLoginActivity) {
+    static void loginWeChat(AuthLoginActivity authLoginActivity) {
         // 微信登陆 wx29eb03c379f4bf24
     }
 
-    static /* synthetic */ void a(AuthLoginActivity authLoginActivity, View view) {
+    static void a(AuthLoginActivity authLoginActivity, View view) {
         if (authLoginActivity.c != null) {
             authLoginActivity.c.clearAnimation();
         }
@@ -58,7 +58,7 @@ public class AuthLoginActivity extends BaseActivity implements Handler.Callback 
         authLoginActivity.c = view;
     }
 
-    static /* synthetic */ void a(AuthLoginActivity authLoginActivity, String string) {
+    static void a(AuthLoginActivity authLoginActivity, String string) {
         authLoginActivity.findViewById(R.id.login_layout).setVisibility(View.INVISIBLE);
         final Handler handler = new Handler(authLoginActivity);
         Platform platform = ShareSDK.getPlatform(authLoginActivity, string);
@@ -92,11 +92,6 @@ public class AuthLoginActivity extends BaseActivity implements Handler.Callback 
             }
         });
         platform.authorize();
-    }
-
-    static /* synthetic */ String b(AuthLoginActivity authLoginActivity, String string) {
-        authLoginActivity.a = string;
-        return string;
     }
 
     private void a(View view) {
@@ -197,7 +192,7 @@ public class AuthLoginActivity extends BaseActivity implements Handler.Callback 
             public void onClick(View v) {
                 AuthLoginActivity.a(AuthLoginActivity.this, v);
                 AuthLoginActivity.a(AuthLoginActivity.this, SinaWeibo.NAME);
-                AuthLoginActivity.b(AuthLoginActivity.this, "SinaWeibo");
+                AuthLoginActivity.this.a = "SinaWeibo";
             }
         });
         this.a(this.findViewById(R.id.tv_qq));
@@ -206,7 +201,7 @@ public class AuthLoginActivity extends BaseActivity implements Handler.Callback 
             public void onClick(View v) {
                 AuthLoginActivity.a(AuthLoginActivity.this, v);
                 AuthLoginActivity.a(AuthLoginActivity.this, QZone.NAME);
-                AuthLoginActivity.b(AuthLoginActivity.this, "QQ");
+                AuthLoginActivity.this.a = "QQ";
             }
         });
         this.a(this.findViewById(R.id.tv_weixin));
@@ -214,7 +209,7 @@ public class AuthLoginActivity extends BaseActivity implements Handler.Callback 
             @Override
             public void onClick(View v) {
                 AuthLoginActivity.a(AuthLoginActivity.this, v);
-                AuthLoginActivity.a(AuthLoginActivity.this);
+                AuthLoginActivity.loginWeChat(AuthLoginActivity.this);
             }
         });
         BusProvider.getInstance().register(this);

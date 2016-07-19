@@ -7,25 +7,25 @@ import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.clilystudio.netbook.IntentBuilder;
 import com.clilystudio.netbook.MyApplication;
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.a_pack.BaseAsyncTask;
-import com.clilystudio.netbook.IntentBuilder;
 import com.clilystudio.netbook.api.ApiServiceProvider;
 import com.clilystudio.netbook.event.AccountUpdatedEvent;
-import com.clilystudio.netbook.event.UserInfoChangedEvent;
 import com.clilystudio.netbook.event.BusProvider;
 import com.clilystudio.netbook.event.LogoutEvent;
+import com.clilystudio.netbook.event.UserInfoChangedEvent;
 import com.clilystudio.netbook.model.Account;
 import com.clilystudio.netbook.model.User;
 import com.clilystudio.netbook.model.UserInfo;
 import com.clilystudio.netbook.ui.BaseActivity;
-import com.clilystudio.netbook.widget.CircularSmartImageView;
-import com.clilystudio.netbook.ui.SettingsActivity;
 import com.clilystudio.netbook.ui.BaseCallBack;
+import com.clilystudio.netbook.ui.SettingsActivity;
 import com.clilystudio.netbook.util.CommonUtil;
 import com.clilystudio.netbook.util.ToastUtil;
 import com.clilystudio.netbook.util.UserNotificationManager;
+import com.clilystudio.netbook.widget.CircularSmartImageView;
 import com.squareup.otto.Subscribe;
 
 import java.util.Date;
@@ -46,28 +46,7 @@ public class UserInfoActivity extends BaseActivity {
         return new IntentBuilder().put(context, UserInfoActivity.class).put("account_token", string).build();
     }
 
-    static /* synthetic */ Date a(UserInfoActivity userInfoActivity, Date date) {
-        userInfoActivity.e = date;
-        return date;
-    }
-
-    static /* synthetic */ void a(UserInfoActivity userInfoActivity) {
-        if (userInfoActivity.e == null) {
-            userInfoActivity.e = new Date(0);
-        }
-        userInfoActivity.startActivity(ModifyUserInfoActivity.a(userInfoActivity, userInfoActivity.e.getTime()));
-    }
-
-    static /* synthetic */ void a(UserInfoActivity userInfoActivity, int n) {
-        if (n > 0) {
-            userInfoActivity.mMessageCount.setVisibility(View.VISIBLE);
-            userInfoActivity.mMessageCount.setText(String.valueOf(n));
-            return;
-        }
-        userInfoActivity.mMessageCount.setVisibility(View.INVISIBLE);
-    }
-
-    static /* synthetic */ void a(UserInfoActivity userInfoActivity, UserInfo userInfo) {
+    static void a(UserInfoActivity userInfoActivity, UserInfo userInfo) {
         int n = userInfo.getLv();
         int n2 = userInfo.getExp();
         int n3 = CommonUtil.getLevelExp(n);
@@ -79,23 +58,6 @@ public class UserInfoActivity extends BaseActivity {
         String text1 = "经验：" + n2 + "/" + n3;
         userInfoActivity.mExp.setText(text1);
         userInfoActivity.mExpProgress.setProgress(n2 * 100 / n3);
-    }
-
-    static /* synthetic */ void b(UserInfo userInfo) {
-        Account account = CommonUtil.getAccount();
-        if (account != null) {
-            User user = account.getUser();
-            user.setNickname(userInfo.getNickname());
-            user.setAvatar(userInfo.getAvatar());
-            user.setLv(userInfo.getLv());
-            MyApplication.getInstance().saveAccoutInfo(account);
-            BusProvider.getInstance().post(new AccountUpdatedEvent());
-        }
-    }
-
-    static /* synthetic */ void c(UserInfoActivity userInfoActivity) {
-        userInfoActivity.a.setVisibility(View.GONE);
-        userInfoActivity.b.setVisibility(View.VISIBLE);
     }
 
     private void b() {
@@ -110,14 +72,29 @@ public class UserInfoActivity extends BaseActivity {
                 @Override
                 protected void onPostExecute(UserInfo userInfo) {
                     super.onPostExecute(userInfo);
-                    UserInfoActivity.c(UserInfoActivity.this);
+                    UserInfoActivity.this.a.setVisibility(View.GONE);
+                    UserInfoActivity.this.b.setVisibility(View.VISIBLE);
                     if (userInfo != null) {
                         if (userInfo.isOk()) {
                             UserInfoActivity.a(UserInfoActivity.this, userInfo);
                             MyApplication.getInstance().saveObject(userInfo, "savedObject_userinfo");
-                            UserInfoActivity.a(UserInfoActivity.this, userInfo.getNicknameUpdated());
-                            UserInfoActivity.a(UserInfoActivity.this, UserNotificationManager.getInstance(UserInfoActivity.this).getImportant());
-                            UserInfoActivity.b(userInfo);
+                            UserInfoActivity.this.e = userInfo.getNicknameUpdated();
+                            int important = UserNotificationManager.getInstance(UserInfoActivity.this).getImportant();
+                            if (important > 0) {
+                                mMessageCount.setVisibility(View.VISIBLE);
+                                mMessageCount.setText(String.valueOf(important));
+                            } else {
+                                mMessageCount.setVisibility(View.INVISIBLE);
+                            }
+                            Account account = CommonUtil.getAccount();
+                            if (account != null) {
+                                User user = account.getUser();
+                                user.setNickname(userInfo.getNickname());
+                                user.setAvatar(userInfo.getAvatar());
+                                user.setLv(userInfo.getLv());
+                                MyApplication.getInstance().saveAccoutInfo(account);
+                                BusProvider.getInstance().post(new AccountUpdatedEvent());
+                            }
                         } else {
                             if ("TOKEN_INVALID".equals(userInfo.getCode())) {
                                 ToastUtil.showShortToast(UserInfoActivity.this, "帐号无效或过期，请退出登录后重试");
@@ -152,7 +129,10 @@ public class UserInfoActivity extends BaseActivity {
         this.a(R.string.user_info, "编辑资料", new BaseCallBack() {
             @Override
             public void a() {
-                UserInfoActivity.a(UserInfoActivity.this);
+                if (UserInfoActivity.this.e == null) {
+                    UserInfoActivity.this.e = new Date(0);
+                }
+                startActivity(ModifyUserInfoActivity.a(UserInfoActivity.this, UserInfoActivity.this.e.getTime()));
             }
         });
         this.c = this.getIntent().getStringExtra("account_token");

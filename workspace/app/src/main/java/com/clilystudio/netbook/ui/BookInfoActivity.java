@@ -26,12 +26,13 @@ import com.clilystudio.netbook.event.BookAddedEvent;
 import com.clilystudio.netbook.event.BookRemovedEvent;
 import com.clilystudio.netbook.event.BusProvider;
 import com.clilystudio.netbook.event.DownloadStatusEvent;
+import com.clilystudio.netbook.model.BookInfo;
 import com.clilystudio.netbook.reader.dl.BookDownloadManager;
 import com.clilystudio.netbook.ui.user.AuthLoginActivity;
 import com.clilystudio.netbook.util.BookInfoUtil;
 import com.clilystudio.netbook.util.BookSourceManager;
-import com.clilystudio.netbook.util.DateTimeUtil;
 import com.clilystudio.netbook.util.CommonUtil;
+import com.clilystudio.netbook.util.DateTimeUtil;
 import com.clilystudio.netbook.util.ToastUtil;
 import com.clilystudio.netbook.widget.CoverView;
 import com.clilystudio.netbook.widget.TagsLayout;
@@ -40,7 +41,6 @@ import com.squareup.otto.Subscribe;
 import uk.me.lewisdeane.ldialogs.BaseDialog;
 
 public class BookInfoActivity extends BaseActivity implements View.OnClickListener {
-    private static final String a = BookInfoActivity.class.getSimpleName();
     private View b;
     private View c;
     private View e;
@@ -49,8 +49,7 @@ public class BookInfoActivity extends BaseActivity implements View.OnClickListen
     private String mBookId;
     private boolean i;
     private boolean j;
-    private com.clilystudio.netbook.model.BookInfo k;
-    private int l = 0;
+    private BookInfo k;
     private Handler m;
 
     public BookInfoActivity() {
@@ -72,12 +71,7 @@ public class BookInfoActivity extends BaseActivity implements View.OnClickListen
         return new IntentBuilder().put(context, BookInfoActivity.class).put("book_id", string).put("open_type", n).build();
     }
 
-    static /* synthetic */ com.clilystudio.netbook.model.BookInfo a(BookInfoActivity bookInfoActivity, com.clilystudio.netbook.model.BookInfo bookInfo) {
-        bookInfoActivity.k = bookInfo;
-        return bookInfo;
-    }
-
-    static /* synthetic */ void a(BookInfoActivity bookInfoActivity) {
+    static void a(BookInfoActivity bookInfoActivity) {
         if (bookInfoActivity.k != null) {
             SourceRecord sourceRecord;
             BookInfoUtil.bookId = bookInfoActivity.mBookId;
@@ -99,67 +93,7 @@ public class BookInfoActivity extends BaseActivity implements View.OnClickListen
         }
     }
 
-    static /* synthetic */ void a(BookInfoActivity bookInfoActivity, int n2) {
-        // share book
-    }
-
-    static /* synthetic */ void a(BookInfoActivity bookInfoActivity, String string) {
-        bookInfoActivity.startActivity(BookTagListActivity.a(bookInfoActivity, string));
-    }
-
-    static /* synthetic */ boolean a(BookInfoActivity bookInfoActivity, boolean bl) {
-        bookInfoActivity.i = true;
-        return true;
-    }
-
-    static /* synthetic */ String b() {
-        return a;
-    }
-
-    static /* synthetic */ void b(BookInfoActivity bookInfoActivity) {
-        bookInfoActivity.g();
-    }
-
-    static /* synthetic */ void b(BookInfoActivity bookInfoActivity, int n2) {
-        bookInfoActivity.e(n2);
-    }
-
-    static /* synthetic */ boolean b(BookInfoActivity bookInfoActivity, boolean bl) {
-        bookInfoActivity.j = bl;
-        return bl;
-    }
-
-    static /* synthetic */ void c(BookInfoActivity bookInfoActivity, boolean bl) {
-        if (bl) {
-            CommonUtil.putBoolPref(bookInfoActivity, "add_update_notify_login", false);
-        }
-    }
-
-    static /* synthetic */ boolean c(BookInfoActivity bookInfoActivity) {
-        return bookInfoActivity.j;
-    }
-
-    static /* synthetic */ void d(BookInfoActivity bookInfoActivity) {
-        FragmentTransaction fragmentTransaction = bookInfoActivity.getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.content_frame_relate, RelateBooksFragment.a(bookInfoActivity.mBookId));
-        fragmentTransaction.replace(R.id.content_frame_ugc, RelateUgcFragment.a(bookInfoActivity.mBookId));
-        try {
-            fragmentTransaction.commitAllowingStateLoss();
-            return;
-        } catch (IllegalStateException var5_2) {
-            var5_2.printStackTrace();
-            return;
-        }
-    }
-
-    static /* synthetic */ void e(BookInfoActivity bookInfoActivity) {
-        bookInfoActivity.k();
-    }
-
-    /*
-     * Enabled aggressive block sorting
-     */
-    static /* synthetic */ void f(final BookInfoActivity bookInfoActivity) {
+    static void f(final BookInfoActivity bookInfoActivity) {
         bookInfoActivity.getActionBar().setTitle(bookInfoActivity.k.getTitle());
         ((CoverView) bookInfoActivity.findViewById(R.id.book_detail_info_cover)).setImageUrl(bookInfoActivity.k.getFullCoverLarge(), R.drawable.cover_default);
         ((TextView) bookInfoActivity.findViewById(R.id.book_detail_info_title)).setText(bookInfoActivity.k.getTitle());
@@ -302,7 +236,6 @@ public class BookInfoActivity extends BaseActivity implements View.OnClickListen
         LayoutInflater layoutInflater = LayoutInflater.from(this);
         View view = this.findViewById(R.id.book_info_tags_root);
         view.setVisibility(View.VISIBLE);
-        int n2 = arrstring.length;
         int n3 = CommonUtil.getDipSize(this, 16.0f);
         TagsLayout tagsLayout = (TagsLayout) view.findViewById(R.id.tags_layout);
         for (String anArrstring : arrstring) {
@@ -313,7 +246,7 @@ public class BookInfoActivity extends BaseActivity implements View.OnClickListen
             textView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    BookInfoActivity.a(BookInfoActivity.this, string);
+                    startActivity(new IntentBuilder().put(BookInfoActivity.this, BookTagListActivity.class).put("TAG_LIST_KEY", string).build());
                 }
             });
             tagsLayout.addView(textView, new ViewGroup.LayoutParams(n3, n3));
@@ -392,14 +325,18 @@ public class BookInfoActivity extends BaseActivity implements View.OnClickListen
 
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        BookInfoActivity.c(BookInfoActivity.this, checkBox.isChecked());
+                        if (checkBox.isChecked()) {
+                            CommonUtil.putBoolPref(BookInfoActivity.this, "add_update_notify_login", false);
+                        }
                         BookInfoActivity.this.startActivity(AuthLoginActivity.a(BookInfoActivity.this));
                     }
                 }).setNegativeButton("不想同步", new DialogInterface.OnClickListener() {
 
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        BookInfoActivity.c(BookInfoActivity.this, checkBox.isChecked());
+                        if (checkBox.isChecked()) {
+                            CommonUtil.putBoolPref(BookInfoActivity.this, "add_update_notify_login", false);
+                        }
                     }
                 }).create().show();
             }
@@ -410,26 +347,29 @@ public class BookInfoActivity extends BaseActivity implements View.OnClickListen
 
     private void j() {
         this.e(0);
-        BaseAsyncTask<String, Void, com.clilystudio.netbook.model.BookInfo> aI2 = new BaseAsyncTask<String, Void, com.clilystudio.netbook.model.BookInfo>() {
+        BaseAsyncTask<String, Void, BookInfo> aI2 = new BaseAsyncTask<String, Void, BookInfo>() {
 
             @Override
-            protected com.clilystudio.netbook.model.BookInfo doInBackground(String... params) {
+            protected BookInfo doInBackground(String... params) {
                 return ApiServiceProvider.getApiService().r(params[0]);
             }
 
             @Override
-            protected void onPostExecute(com.clilystudio.netbook.model.BookInfo bookInfo) {
+            protected void onPostExecute(BookInfo bookInfo) {
                 super.onPostExecute(bookInfo);
                 if (isFinishing()) return;
                 if (bookInfo != null) {
-                    BookInfoActivity.b(BookInfoActivity.this, 1);
-                    BookInfoActivity.a(BookInfoActivity.this, bookInfo);
-                    BookInfoActivity.d(BookInfoActivity.this);
-                    BookInfoActivity.e(BookInfoActivity.this);
+                    BookInfoActivity.this.e(1);
+                    BookInfoActivity.this.k = bookInfo;
+                    FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+                    fragmentTransaction.replace(R.id.content_frame_relate, RelateBooksFragment.a(mBookId));
+                    fragmentTransaction.replace(R.id.content_frame_ugc, RelateUgcFragment.a(mBookId));
+                    fragmentTransaction.commitAllowingStateLoss();
+                    BookInfoActivity.this.k();
                     BookInfoActivity.f(BookInfoActivity.this);
-                    return;
+                } else {
+                    BookInfoActivity.this.e(2);
                 }
-                BookInfoActivity.b(BookInfoActivity.this, 2);
             }
         };
         aI2.b(this.mBookId);
@@ -545,7 +485,6 @@ public class BookInfoActivity extends BaseActivity implements View.OnClickListen
         this.i = BookReadRecord.getOnShelf(this.mBookId) != null;
         BusProvider.getInstance().register(this);
         this.j();
-        this.l = this.getIntent().getIntExtra("open_type", 0);
     }
 
     @Override

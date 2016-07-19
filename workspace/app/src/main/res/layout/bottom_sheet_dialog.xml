@@ -7,7 +7,7 @@
               android:paddingBottom="8.0dip">
 
     <View
-        android:id="@id/bottom_sheet_divider"
+        android:id="@+id/bottom_sheet_divider"
         android:layout_width="fill_parent"
         android:layout_height="1.0dip"
         android:layout_marginBottom="8.0dip"
@@ -28,7 +28,7 @@
         android:paddingRight="24.0dip"/>
 
     <FrameLayout
-        android:id="@id/bottom_sheet_customview"
+        android:id="@+id/bottom_sheet_customview"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:fadingEdge="none"

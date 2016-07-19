@@ -58,7 +58,7 @@ public class ReaderMenuFragment extends Fragment {
         };
     }
 
-    static /* synthetic */ void a(ReaderMenuFragment readerMenuFragment, Activity activity, TocSummary tocSummary) {
+    static void a(ReaderMenuFragment readerMenuFragment, Activity activity, TocSummary tocSummary) {
         activity.finish();
         MyApplication.getInstance().setBookId(readerMenuFragment.mBookId);
         CommonUtil.setReadMode(readerMenuFragment.mBookId, 10);
@@ -66,10 +66,7 @@ public class ReaderMenuFragment extends Fragment {
         readerMenuFragment.startActivity(ReaderActivity.a(readerMenuFragment.getActivity(), readerMenuFragment.mBookId, readerMenuFragment.f, tocSummary.get_id(), (String)null, true));
     }
 
-    /*
-     * Enabled aggressive block sorting
-     */
-    static /* synthetic */ void a(final ReaderMenuFragment readerMenuFragment, List list) {
+    static void a(final ReaderMenuFragment readerMenuFragment, List list) {
         if (readerMenuFragment.getView() != null) {
             ViewGroup viewGroup = (ViewGroup) readerMenuFragment.getView().findViewById(R.id.toc_container);
             int n2 = list.size();
@@ -114,25 +111,6 @@ public class ReaderMenuFragment extends Fragment {
         }
     }
 
-    static /* synthetic */ String f(ReaderMenuFragment readerMenuFragment) {
-        return readerMenuFragment.mBookId;
-    }
-
-    static /* synthetic */ String g(ReaderMenuFragment readerMenuFragment) {
-        return readerMenuFragment.f;
-    }
-
-    static /* synthetic */ void h(ReaderMenuFragment readerMenuFragment) {
-        ReaderActivity readerActivity = (ReaderActivity) readerMenuFragment.getActivity();
-        if (readerActivity != null) {
-            readerActivity.a(0);
-        }
-    }
-
-    static /* synthetic */ LoadingContainer k(ReaderMenuFragment readerMenuFragment) {
-        return readerMenuFragment.g;
-    }
-
     @Override
     public void onActivityCreated(Bundle bundle) {
         super.onActivityCreated(bundle);
@@ -153,7 +131,7 @@ public class ReaderMenuFragment extends Fragment {
             @Override
             protected void onPreExecute() {
                 super.onPreExecute();
-                ReaderMenuFragment.k(ReaderMenuFragment.this).c();
+                ReaderMenuFragment.this.g.c();
             }
 
             @Override
@@ -161,10 +139,10 @@ public class ReaderMenuFragment extends Fragment {
                 super.onPostExecute(tocSummaries);
                 if (getActivity() == null) return;
                 if (tocSummaries != null) {
-                    ReaderMenuFragment.k(ReaderMenuFragment.this).a();
+                    ReaderMenuFragment.this.g.a();
                     ReaderMenuFragment.a(ReaderMenuFragment.this, tocSummaries);
                 } else {
-                    ReaderMenuFragment.k(ReaderMenuFragment.this).b();
+                    ReaderMenuFragment.this.g.b();
                 }
             }
         };

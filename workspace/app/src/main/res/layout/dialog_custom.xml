@@ -52,7 +52,7 @@
             android:visibility="gone"/>
 
         <View
-            android:id="@id/button_separate"
+            android:id="@+id/button_separate"
             android:layout_width="1.0px"
             android:layout_height="16.0dip"
             android:layout_gravity="center"

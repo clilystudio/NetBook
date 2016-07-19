@@ -26,15 +26,6 @@ public class ReaderWebActionBar extends RelativeLayout {
         super(context, attributeSet, n);
     }
 
-    static /* synthetic */ void a(ReaderWebActionBar readerWebActionBar, int n) {
-        if (readerWebActionBar.a != null) {
-            readerWebActionBar.a.a(n);
-        }
-    }
-
-    /*
-     * Enabled aggressive block sorting
-     */
     private void b(boolean bl) {
         View view = this.findViewById(R.id.reader_ab_chapter_url_view);
          view.setVisibility(bl ? VISIBLE : GONE);
@@ -56,7 +47,9 @@ public class ReaderWebActionBar extends RelativeLayout {
         View.OnClickListener cA2 = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ReaderWebActionBar.a(ReaderWebActionBar.this, v.getId());
+                if (ReaderWebActionBar.this.a != null) {
+                    ReaderWebActionBar.this.a.a(v.getId());
+                }
             }
         };
         c.setOnClickListener(cA2);

@@ -1499,7 +1499,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
         this.s.a(new SettingWidget.db() {
             @Override
             public void a() {
-                startActivityForResult(ReaderOptionActivity.a(ReaderActivity.this), 0);
+                startActivityForResult(new IntentBuilder().put(ReaderActivity.this, ReaderOptionActivity.class).build(), 0);
             }
         });
         this.s.a(new SettingWidget.dc() {

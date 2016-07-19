@@ -16,7 +16,7 @@ import java.io.IOException;
 public class CropPhotoActivity extends BaseActivity {
     private CropView a;
 
-    static /* synthetic */ void a(CropPhotoActivity cropPhotoActivity) {
+    static void a(CropPhotoActivity cropPhotoActivity) {
         Bitmap bitmap = cropPhotoActivity.a.a();
         Bitmap bitmap2 = bitmap.getHeight() > 200 || bitmap.getWidth() > 200 ? Bitmap.createScaledBitmap(bitmap, 200, 200, false) : bitmap;
         File file = new File(((Uri) cropPhotoActivity.getIntent().getParcelableExtra("output")).getPath());
