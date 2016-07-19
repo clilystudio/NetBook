@@ -27,10 +27,6 @@ public final class BookRankAdapter extends BaseBookAdapter<BookRankSummary> {
         this.a = layoutInflater;
     }
 
-    static /* synthetic */ boolean a(BookRankAdapter bookRankAdapter, int n) {
-        return bookRankAdapter.b(n);
-    }
-
     private BookRankSummary a(int n) {
         if (this.b(n) && n - 1 < this.b.size()) {
             return this.b.get(n - 1);
@@ -46,9 +42,6 @@ public final class BookRankAdapter extends BaseBookAdapter<BookRankSummary> {
         return n < this.f;
     }
 
-    /*
-     * Enabled aggressive block sorting
-     */
     public final void a(BookRankRoot bookRankRoot) {
         int n = 1;
         int n2 = bookRankRoot.getMale().size() > 0 ? n : 0;
@@ -82,7 +75,7 @@ public final class BookRankAdapter extends BaseBookAdapter<BookRankSummary> {
     }
 
     @Override
-    public final /* synthetic */ BookRankSummary getItem(int n) {
+    public final BookRankSummary getItem(int n) {
         return this.a(n);
     }
 
@@ -132,7 +125,7 @@ public final class BookRankAdapter extends BaseBookAdapter<BookRankSummary> {
                     localView.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            BusProvider.getInstance().post(new BookRankClickEvent(localBookRankSummary, BookRankAdapter.a(BookRankAdapter.this, paramInt)));
+                            BusProvider.getInstance().post(new BookRankClickEvent(localBookRankSummary, BookRankAdapter.this.b(paramInt)));
                         }
                     });
                     break;

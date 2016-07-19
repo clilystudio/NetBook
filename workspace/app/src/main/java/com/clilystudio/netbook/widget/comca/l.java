@@ -25,7 +25,7 @@ final class l extends r {
     }
 
     @Override
-    public final /* synthetic */ r a() {
+    public final r a() {
         return this.b();
     }
 
@@ -106,7 +106,7 @@ final class l extends r {
     }
 
     @Override
-    public final /* synthetic */ Object clone() {
+    public final Object clone() {
         return this.b();
     }
 }

@@ -25,26 +25,10 @@ public class ReaderResActivity extends ReaderModeActivity {
     private View e;
     private int f;
 
-    static /* synthetic */ int a(ReaderResActivity readerResActivity) {
-        return readerResActivity.f;
-    }
-
-    static /* synthetic */ int a(ReaderResActivity readerResActivity, int n) {
-        readerResActivity.f = n;
-        return n;
-    }
-
     public static Intent a(Context context, String string, String string2, int n) {
         return new IntentBuilder().put(context, ReaderResActivity.class).put("BOOK_ID", string).put("BOOK_TITLE", string2).put("BOOK_MODE", n).build();
     }
 
-    static /* synthetic */ View b(ReaderResActivity readerResActivity) {
-        return readerResActivity.e;
-    }
-
-    /*
-     * Enabled aggressive block sorting
-     */
     @Override
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
@@ -96,11 +80,11 @@ public class ReaderResActivity extends ReaderModeActivity {
             protected void onPostExecute(TopicCount topicCount) {
                 super.onPostExecute(topicCount);
                 if (topicCount != null && topicCount.isOk()) {
-                    ReaderResActivity.a(ReaderResActivity.this, topicCount.getCount());
-                    if (Math.max(0, ReaderResActivity.a(ReaderResActivity.this) - BookTopicEnterRecord.get(ReaderResActivity.this.b).getVisitCount()) == 0) {
-                        ReaderResActivity.b(ReaderResActivity.this).setVisibility(View.INVISIBLE);
+                    ReaderResActivity.this.f = topicCount.getCount();
+                    if (Math.max(0, ReaderResActivity.this.f - BookTopicEnterRecord.get(ReaderResActivity.this.b).getVisitCount()) == 0) {
+                        ReaderResActivity.this.e.setVisibility(View.INVISIBLE);
                     } else {
-                        ReaderResActivity.b(ReaderResActivity.this).setVisibility(View.VISIBLE);
+                        ReaderResActivity.this.e.setVisibility(View.VISIBLE);
                     }
                 }
             }

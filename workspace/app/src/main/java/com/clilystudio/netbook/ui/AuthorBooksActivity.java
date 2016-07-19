@@ -31,14 +31,6 @@ public class AuthorBooksActivity extends BaseLoadingActivity {
         return new IntentBuilder().put(context, AuthorBooksActivity.class).put("keyword", string).build();
     }
 
-    static /* synthetic */ ListView a(AuthorBooksActivity authorBooksActivity) {
-        return authorBooksActivity.a;
-    }
-
-    static /* synthetic */ BaseDownloadAdapter<BookSummary> b(AuthorBooksActivity authorBooksActivity) {
-        return authorBooksActivity.b;
-    }
-
     @Override
     protected final void b() {
         this.i();
@@ -64,7 +56,7 @@ public class AuthorBooksActivity extends BaseLoadingActivity {
                 } else {
                     AuthorBooksActivity.this.g();
                 }
-                AuthorBooksActivity.b(AuthorBooksActivity.this).a(bookSummaries);
+                AuthorBooksActivity.this.b.a(bookSummaries);
             }
         }.b(this.c);
     }

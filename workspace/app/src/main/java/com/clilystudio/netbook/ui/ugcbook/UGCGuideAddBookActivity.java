@@ -52,16 +52,7 @@ public class UGCGuideAddBookActivity extends BaseActivity implements View.OnClic
     private String m;
     private boolean n;
 
-    static /* synthetic */ SearchEditText a(UGCGuideAddBookActivity uGCGuideAddBookActivity) {
-        return uGCGuideAddBookActivity.c;
-    }
-
-    static /* synthetic */ String a(UGCGuideAddBookActivity uGCGuideAddBookActivity, String string) {
-        uGCGuideAddBookActivity.m = string;
-        return string;
-    }
-
-    static /* synthetic */ void a(UGCGuideAddBookActivity uGCGuideAddBookActivity, int n) {
+    static void a(UGCGuideAddBookActivity uGCGuideAddBookActivity, int n) {
         if (n >= 0 && n < uGCGuideAddBookActivity.k.getCount()) {
             BookSummary bookSummary = uGCGuideAddBookActivity.k.getItem(n);
             MyApplication.getInstance().getUGCNewCollection().addBook(bookSummary);
@@ -69,81 +60,36 @@ public class UGCGuideAddBookActivity extends BaseActivity implements View.OnClic
         }
     }
 
-    static /* synthetic */ boolean a(UGCGuideAddBookActivity uGCGuideAddBookActivity, boolean bl) {
-        uGCGuideAddBookActivity.n = bl;
-        return bl;
-    }
-
-    static /* synthetic */ void b(UGCGuideAddBookActivity uGCGuideAddBookActivity, int n) {
-        uGCGuideAddBookActivity.a(n);
-    }
-
-    static /* synthetic */ void b(UGCGuideAddBookActivity uGCGuideAddBookActivity, boolean bl) {
-        uGCGuideAddBookActivity.a(bl);
-    }
-
-    static /* synthetic */ boolean b(UGCGuideAddBookActivity uGCGuideAddBookActivity, String string) {
-        return !uGCGuideAddBookActivity.c.getText().toString().equals(string) && !string.equals(uGCGuideAddBookActivity.m);
-    }
-
-    static /* synthetic */ BaseDownloadAdapter<BookSummary> c(UGCGuideAddBookActivity uGCGuideAddBookActivity) {
-        return uGCGuideAddBookActivity.k;
-    }
-
-    /*
-     * Enabled aggressive block sorting
-     */
-    static /* synthetic */ void c(UGCGuideAddBookActivity uGCGuideAddBookActivity, boolean bl) {
+    static void c(UGCGuideAddBookActivity uGCGuideAddBookActivity, boolean bl) {
         uGCGuideAddBookActivity.e.setEnabled(bl);
         uGCGuideAddBookActivity.f.setEnabled(bl);
         View view = uGCGuideAddBookActivity.f;
         view.setVisibility(bl && uGCGuideAddBookActivity.c.isFocused() ? View.VISIBLE : View.INVISIBLE);
     }
 
-    static /* synthetic */ ListView d(UGCGuideAddBookActivity uGCGuideAddBookActivity) {
-        return uGCGuideAddBookActivity.g;
-    }
-
-    static /* synthetic */ boolean e(UGCGuideAddBookActivity uGCGuideAddBookActivity) {
-        return uGCGuideAddBookActivity.n;
-    }
-
-    static /* synthetic */ ListView f(UGCGuideAddBookActivity uGCGuideAddBookActivity) {
-        return uGCGuideAddBookActivity.h;
-    }
-
-    static /* synthetic */ void g(UGCGuideAddBookActivity uGCGuideAddBookActivity) {
-        uGCGuideAddBookActivity.a(false);
-    }
-
     private void a(int n) {
         switch (n) {
-            default: {
-                return;
-            }
-            case 1: {
-                this.i.setVisibility(View.GONE);
-                this.j.setVisibility(View.GONE);
-                this.g.setVisibility(View.VISIBLE);
-                return;
-            }
-            case 0: {
+            case 0:
                 this.i.setVisibility(View.VISIBLE);
                 this.j.setVisibility(View.GONE);
                 this.g.setVisibility(View.GONE);
-                return;
-            }
-            case 3: {
+                break;
+            case 1:
+                this.i.setVisibility(View.GONE);
+                this.j.setVisibility(View.GONE);
+                this.g.setVisibility(View.VISIBLE);
+                break;
+            case 2:
+                this.i.setVisibility(View.GONE);
+                this.j.setVisibility(View.GONE);
+                this.g.setVisibility(View.GONE);
+                break;
+            case 3:
                 this.i.setVisibility(View.GONE);
                 this.j.setVisibility(View.VISIBLE);
                 this.g.setVisibility(View.GONE);
-                return;
-            }
-            case 2:
+                break;
         }
-        this.i.setVisibility(View.GONE);
-        this.j.setVisibility(View.GONE);
-        this.g.setVisibility(View.GONE);
     }
 
     private void a(boolean bl) {
@@ -168,7 +114,7 @@ public class UGCGuideAddBookActivity extends BaseActivity implements View.OnClic
                     @Override
                     protected void onPreExecute() {
                         super.onPreExecute();
-                        UGCGuideAddBookActivity.a(UGCGuideAddBookActivity.this, UGCGuideAddBookActivity.a(UGCGuideAddBookActivity.this).getText().toString());
+                        UGCGuideAddBookActivity.this.m = UGCGuideAddBookActivity.this.c.getText().toString();
                     }
 
                     @Override
@@ -176,23 +122,23 @@ public class UGCGuideAddBookActivity extends BaseActivity implements View.OnClic
                         super.onPostExecute(bookSummaries);
                         UGCGuideAddBookActivity.c(UGCGuideAddBookActivity.this, true);
                         if (bookSummaries != null) {
-                            UGCGuideAddBookActivity.c(UGCGuideAddBookActivity.this).a(bookSummaries);
+                            UGCGuideAddBookActivity.this.k.a(bookSummaries);
                             new Handler().post(new Runnable() {
                                 @Override
                                 public void run() {
-                                    if (UGCGuideAddBookActivity.d(UGCGuideAddBookActivity.this) != null) {
-                                        UGCGuideAddBookActivity.d(UGCGuideAddBookActivity.this).setSelection(0);
+                                    if (UGCGuideAddBookActivity.this.g != null) {
+                                        UGCGuideAddBookActivity.this.g.setSelection(0);
                                     }
                                 }
                             });
                             if (bookSummaries.size() > 0) {
-                                UGCGuideAddBookActivity.b(UGCGuideAddBookActivity.this, 1);
+                                UGCGuideAddBookActivity.this.a(1);
                                 return;
                             }
-                            UGCGuideAddBookActivity.b(UGCGuideAddBookActivity.this, 3);
+                            UGCGuideAddBookActivity.this.a(3);
                             return;
                         }
-                        UGCGuideAddBookActivity.b(UGCGuideAddBookActivity.this, 2);
+                        UGCGuideAddBookActivity.this.a(2);
                         ToastUtil.showToast(UGCGuideAddBookActivity.this, R.string.search_failed);
                     }
                 };
@@ -222,23 +168,23 @@ public class UGCGuideAddBookActivity extends BaseActivity implements View.OnClic
                     super.onPostExecute(bookSummaries);
                     UGCGuideAddBookActivity.c(UGCGuideAddBookActivity.this, true);
                     if (bookSummaries != null) {
-                        UGCGuideAddBookActivity.c(UGCGuideAddBookActivity.this).a(bookSummaries);
+                        UGCGuideAddBookActivity.this.k.a(bookSummaries);
                         new Handler().post(new Runnable() {
                             @Override
                             public void run() {
-                                if (UGCGuideAddBookActivity.d(UGCGuideAddBookActivity.this) != null) {
-                                    UGCGuideAddBookActivity.d(UGCGuideAddBookActivity.this).setSelection(0);
+                                if (UGCGuideAddBookActivity.this.g != null) {
+                                    UGCGuideAddBookActivity.this.g.setSelection(0);
                                 }
                             }
                         });
                         if (bookSummaries.size() > 0) {
-                            UGCGuideAddBookActivity.b(UGCGuideAddBookActivity.this, 1);
+                            UGCGuideAddBookActivity.this.a(1);
                             return;
                         }
-                        UGCGuideAddBookActivity.b(UGCGuideAddBookActivity.this, 3);
+                        UGCGuideAddBookActivity.this.a(3);
                         return;
                     }
-                    UGCGuideAddBookActivity.b(UGCGuideAddBookActivity.this, 2);
+                    UGCGuideAddBookActivity.this.a(2);
                     ToastUtil.showToast(UGCGuideAddBookActivity.this, R.string.search_failed);
                 }
             };
@@ -306,12 +252,12 @@ public class UGCGuideAddBookActivity extends BaseActivity implements View.OnClic
         super.onCreate(bundle);
         this.setContentView(R.layout.activity_search);
         LayoutInflater layoutInflater = LayoutInflater.from(this);
-        View view = layoutInflater.inflate(R.layout.ab_search, (ViewGroup)getWindow().getDecorView(), false);
+        View view = layoutInflater.inflate(R.layout.ab_search, (ViewGroup) getWindow().getDecorView(), false);
         view.findViewById(R.id.back).setOnClickListener(this);
         this.setCustomActionBar(view);
         this.findViewById(R.id.select_word_layout).setVisibility(View.GONE);
         this.n = true;
-        final SearchPromptAdapter searchPromptAdapter = new SearchPromptAdapter(this);
+        final SearchPromptAdapter searchPromptAdapter = new SearchPromptAdapter();
         this.h = (ListView) this.findViewById(R.id.search_prompt_list);
         this.h.setAdapter(searchPromptAdapter);
         this.h.setOnItemClickListener(searchPromptAdapter);
@@ -319,7 +265,7 @@ public class UGCGuideAddBookActivity extends BaseActivity implements View.OnClic
         this.c.setOnUserInputListener(new SearchEditText.OnUserInputListener() {
             @Override
             public void a() {
-                UGCGuideAddBookActivity.a(UGCGuideAddBookActivity.this, true);
+                UGCGuideAddBookActivity.this.n = true;
                 String string = String.valueOf(Calendar.getInstance().getTimeInMillis());
                 searchPromptAdapter.getFilter().filter(string);
             }
@@ -349,7 +295,7 @@ public class UGCGuideAddBookActivity extends BaseActivity implements View.OnClic
                 coverView.setImageUrl(bookSummary.getFullCover(), R.drawable.cover_default);
                 this.setText(1, bookSummary.getTitle());
                 Object[] arrobject = new Object[]{bookSummary.getLatelyFollower(), Float.valueOf(bookSummary.getRetentionRatio()), bookSummary.getAuthor()};
-                this.setText(2, String.format(Locale.CHINA,"%d人在追  |  %.1f%%读者留存  |  %s著", arrobject));
+                this.setText(2, String.format(Locale.CHINA, "%d人在追  |  %.1f%%读者留存  |  %s著", arrobject));
                 this.setVisibility(3, TextUtils.isEmpty(bookSummary.getPromLink()));
                 if (bookSummary.isSelected()) {
                     this.setVisibility(4, true);
@@ -389,7 +335,7 @@ public class UGCGuideAddBookActivity extends BaseActivity implements View.OnClic
         this.c.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                UGCGuideAddBookActivity.b(UGCGuideAddBookActivity.this, true);
+                UGCGuideAddBookActivity.this.a(true);
                 return true;
             }
         });
@@ -401,7 +347,7 @@ public class UGCGuideAddBookActivity extends BaseActivity implements View.OnClic
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                UGCGuideAddBookActivity.a(UGCGuideAddBookActivity.this, null);
+                UGCGuideAddBookActivity.this.m = null;
             }
 
             @Override
@@ -413,7 +359,7 @@ public class UGCGuideAddBookActivity extends BaseActivity implements View.OnClic
         this.c.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
-                boolean bl2 = !CommonUtil.isBlank(UGCGuideAddBookActivity.a(UGCGuideAddBookActivity.this).getText().toString());
+                boolean bl2 = !CommonUtil.isBlank(UGCGuideAddBookActivity.this.c.getText().toString());
                 UGCGuideAddBookActivity.c(UGCGuideAddBookActivity.this, bl2);
             }
         });
@@ -428,16 +374,9 @@ public class UGCGuideAddBookActivity extends BaseActivity implements View.OnClic
         }
     }
 
-    public final class SearchPromptAdapter extends BaseAdapter implements AdapterView.OnItemClickListener,
-            Filterable {
-        final /* synthetic */ UGCGuideAddBookActivity a;
-        private List<String> b;
+    public final class SearchPromptAdapter extends BaseAdapter implements AdapterView.OnItemClickListener, Filterable {
+        private List<String> b = new ArrayList<>();
         private Filter c;
-
-        public SearchPromptAdapter(UGCGuideAddBookActivity uGCGuideAddBookActivity) {
-            this.a = uGCGuideAddBookActivity;
-            this.b = new ArrayList<>();
-        }
 
         @Override
         public final int getCount() {
@@ -476,18 +415,17 @@ public class UGCGuideAddBookActivity extends BaseActivity implements View.OnClic
                             return;
                         }
                         String string = list.get(n - 2);
-                        if (n > 2 && !UGCGuideAddBookActivity.b(SearchPromptAdapter.this.a, string)) {
+                        if (n > 2 && (UGCGuideAddBookActivity.this.c.getText().toString().equals(string) || string.equals(UGCGuideAddBookActivity.this.m))) {
                             SearchPromptAdapter.this.b = list.subList(0, n - 2);
                         } else {
                             SearchPromptAdapter.this.b = new ArrayList<>();
                         }
-                         if (SearchPromptAdapter.this.b.isEmpty()) {
+                        if (SearchPromptAdapter.this.b.isEmpty()) {
                             SearchPromptAdapter.this.notifyDataSetInvalidated();
                         } else {
                             SearchPromptAdapter.this.notifyDataSetChanged();
                         }
-                        ListView searchFixListView = UGCGuideAddBookActivity.f(SearchPromptAdapter.this.a);
-                        searchFixListView.setVisibility(SearchPromptAdapter.this.b.isEmpty() || !UGCGuideAddBookActivity.e(SearchPromptAdapter.this.a) ? View.GONE : View.VISIBLE);
+                        UGCGuideAddBookActivity.this.h.setVisibility(SearchPromptAdapter.this.b.isEmpty() || !UGCGuideAddBookActivity.this.n ? View.GONE : View.VISIBLE);
                     }
                 };
             }
@@ -509,7 +447,7 @@ public class UGCGuideAddBookActivity extends BaseActivity implements View.OnClic
 
         @Override
         public final View getView(int n, View view, ViewGroup viewGroup) {
-            View view2 = this.a.getLayoutInflater().inflate(R.layout.list_item_search_prompt, viewGroup, false);
+            View view2 = UGCGuideAddBookActivity.this.getLayoutInflater().inflate(R.layout.list_item_search_prompt, viewGroup, false);
             ViewHolder viewHolder = new ViewHolder(view2);
             if (n >= 0 && n < this.b.size()) {
                 viewHolder.label.setText(this.b.get(n));
@@ -519,12 +457,12 @@ public class UGCGuideAddBookActivity extends BaseActivity implements View.OnClic
 
         @Override
         public final void onItemClick(AdapterView<?> adapterView, View view, int n, long l2) {
-            UGCGuideAddBookActivity.f(this.a).setVisibility(View.GONE);
+            UGCGuideAddBookActivity.this.h.setVisibility(View.GONE);
             if (n >= 0 && n < this.b.size()) {
                 String string = this.b.get(n);
-                UGCGuideAddBookActivity.a(this.a).setTextByCode(string);
-                UGCGuideAddBookActivity.g(this.a);
-                UGCGuideAddBookActivity.a(this.a, false);
+                UGCGuideAddBookActivity.this.c.setTextByCode(string);
+                UGCGuideAddBookActivity.this.a(false);
+                UGCGuideAddBookActivity.this.n = false;
             }
         }
 

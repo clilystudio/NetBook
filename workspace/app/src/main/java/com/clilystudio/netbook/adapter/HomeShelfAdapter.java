@@ -50,25 +50,6 @@ public class HomeShelfAdapter extends BaseBookAdapter<BookShelf> {
         this.e = new ArrayList<>();
     }
 
-    static /* synthetic */ void a(HomeShelfAdapter homeShelfAdapter, int n) {
-        homeShelfAdapter.b(n);
-    }
-
-    static /* synthetic */ boolean a(HomeShelfAdapter homeShelfAdapter) {
-        return homeShelfAdapter.g;
-    }
-
-    static /* synthetic */ boolean[] b(HomeShelfAdapter homeShelfAdapter) {
-        return homeShelfAdapter.f;
-    }
-
-//    static /* synthetic */ Context c(HomeShelfAdapter homeShelfAdapter) {
-//        return homeShelfAdapter.b;
-//    }
-
-    /*
-     * Enabled aggressive block sorting
-     */
     private void a(final int n, CheckBox checkBox) {
         if (this.d) {
             checkBox.setVisibility(View.VISIBLE);
@@ -87,11 +68,11 @@ public class HomeShelfAdapter extends BaseBookAdapter<BookShelf> {
         checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (HomeShelfAdapter.a(HomeShelfAdapter.this)) {
+                if (HomeShelfAdapter.this.g) {
                     return;
                 }
-                HomeShelfAdapter.b(HomeShelfAdapter.this)[n] = isChecked;
-                HomeShelfAdapter.a(HomeShelfAdapter.this, n);
+                HomeShelfAdapter.this.f[n] = isChecked;
+                HomeShelfAdapter.this.b(n);
             }
         });
     }

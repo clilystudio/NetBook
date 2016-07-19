@@ -45,16 +45,11 @@ public class ReaderWebActivity extends BaseReadActivity {
     private ReaderWebActionBar g;
     private int h;
 
-    static /* synthetic */ int a(ReaderWebActivity readerWebActivity, int n) {
-        readerWebActivity.h = n;
-        return n;
-    }
-
     public static Intent a(Context context, String string, String string2, String string3, String string4, int n) {
         return new IntentBuilder().put(context, ReaderWebActivity.class).put("BOOK_ID", string).put("BOOK_TITLE", string2).put("TOC_ID", string3).put("SOURCE_ID", string4).put("BOOK_MODE", n).build();
     }
 
-    static /* synthetic */ SgTocChapter a(SgTocChapter[] arrsgTocChapter, String string) {
+    static SgTocChapter a(SgTocChapter[] arrsgTocChapter, String string) {
         for (SgTocChapter sgTocChapter : arrsgTocChapter) {
             if (!string.equals(sgTocChapter.getCmd())) continue;
             return sgTocChapter;
@@ -62,11 +57,7 @@ public class ReaderWebActivity extends BaseReadActivity {
         return null;
     }
 
-    static /* synthetic */ ReaderWebActionBar a(ReaderWebActivity readerWebActivity) {
-        return readerWebActivity.g;
-    }
-
-    static /* synthetic */ void a(ReaderWebActivity readerWebActivity, int n, String string) {
+    static void a(ReaderWebActivity readerWebActivity, int n, String string) {
         FragmentTransaction fragmentTransaction = readerWebActivity.getSupportFragmentManager().beginTransaction();
         String string2 = readerWebActivity.e;
         ReaderWebPageFragment readerWebPageFragment = (ReaderWebPageFragment) readerWebActivity.getSupportFragmentManager().findFragmentByTag(ReaderWebPageFragment.class.getName());
@@ -81,7 +72,7 @@ public class ReaderWebActivity extends BaseReadActivity {
         }
     }
 
-    static /* synthetic */ void a(ReaderWebActivity readerWebActivity, String string, String string2, String string3, String string4) {
+    static void a(ReaderWebActivity readerWebActivity, String string, String string2, String string3, String string4) {
         FragmentTransaction fragmentTransaction = readerWebActivity.getSupportFragmentManager().beginTransaction();
         String string5 = readerWebActivity.e;
         ReaderWebPageFragment readerWebPageFragment = (ReaderWebPageFragment) readerWebActivity.getSupportFragmentManager().findFragmentByTag(ReaderWebPageFragment.class.getName());
@@ -96,7 +87,7 @@ public class ReaderWebActivity extends BaseReadActivity {
         }
     }
 
-    static /* synthetic */ void b(ReaderWebActivity readerWebActivity) {
+    static void b(ReaderWebActivity readerWebActivity) {
         CommonUtil.putBoolPref(readerWebActivity, readerWebActivity.f, true);
         CommonUtil.putBoolPref(readerWebActivity, readerWebActivity.f + "source_web_alert", false);
         if (SourceRecord.get(readerWebActivity.c, readerWebActivity.f) == null) {
@@ -111,7 +102,7 @@ public class ReaderWebActivity extends BaseReadActivity {
         readerWebActivity.finish();
     }
 
-    static /* synthetic */ void c(final ReaderWebActivity readerWebActivity) {
+    static void c(final ReaderWebActivity readerWebActivity) {
         final AlertDialog alertDialog = new AlertDialog.Builder(readerWebActivity).create();
         View view = LayoutInflater.from(readerWebActivity).inflate(R.layout.dialog_reader_web_opt2, (ViewGroup) readerWebActivity.getWindow().getDecorView(), false);
         Button button = (Button) view.findViewById(R.id.reader_web_opt2_btn1);
@@ -132,14 +123,6 @@ public class ReaderWebActivity extends BaseReadActivity {
         alertDialog.setCancelable(false);
         alertDialog.setView(view);
         alertDialog.show();
-    }
-
-    static /* synthetic */ int d(ReaderWebActivity readerWebActivity) {
-        return readerWebActivity.h;
-    }
-
-    static /* synthetic */ String e(ReaderWebActivity readerWebActivity) {
-        return readerWebActivity.c;
     }
 
     private void a(int n) {
@@ -301,7 +284,7 @@ public class ReaderWebActivity extends BaseReadActivity {
                 break;
             }
         }
-        if (CommonUtil.getBoolPref(this, this.f + "source_web_alert",true)) {
+        if (CommonUtil.getBoolPref(this, this.f + "source_web_alert", true)) {
             String var10_7 = this.getString(R.string.reader_web_opt_msg);
             final View var11_8 = LayoutInflater.from(this).inflate(R.layout.dialog_reader_web_opt, (ViewGroup) getWindow().getDecorView(), false);
             DialogInterface.OnClickListener var12_9 = new DialogInterface.OnClickListener() {
@@ -331,13 +314,9 @@ public class ReaderWebActivity extends BaseReadActivity {
             protected void onPostExecute(TopicCount topicCount) {
                 super.onPostExecute(topicCount);
                 if (topicCount != null && topicCount.isOk()) {
-                    ReaderWebActivity.a(ReaderWebActivity.this, topicCount.getCount());
-                    int n2 = ReaderWebActivity.d(ReaderWebActivity.this) - BookTopicEnterRecord.get(ReaderWebActivity.e(ReaderWebActivity.this)).getVisitCount();
-                    if (n2 <= 0) {
-                        ReaderWebActivity.a(ReaderWebActivity.this).a(false);
-                        return;
-                    }
-                    ReaderWebActivity.a(ReaderWebActivity.this).a(true);
+                    ReaderWebActivity.this.h = topicCount.getCount();
+                    int n2 = ReaderWebActivity.this.h - BookTopicEnterRecord.get(ReaderWebActivity.this.c).getVisitCount();
+                    ReaderWebActivity.this.g.a(n2 > 0);
                 }
             }
         };

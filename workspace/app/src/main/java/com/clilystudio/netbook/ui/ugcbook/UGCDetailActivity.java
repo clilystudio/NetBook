@@ -61,33 +61,15 @@ public class UGCDetailActivity extends BaseActivity implements View.OnClickListe
         this.t = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                UGCDetailActivity.d(UGCDetailActivity.this).setMaxLines(Integer.MAX_VALUE);
-                UGCDetailActivity.d(UGCDetailActivity.this).setEllipsize(null);
-                UGCDetailActivity.e(UGCDetailActivity.this).setVisibility(View.GONE);
-                UGCDetailActivity.d(UGCDetailActivity.this).setClickable(false);
+                UGCDetailActivity.this.e.setMaxLines(Integer.MAX_VALUE);
+                UGCDetailActivity.this.e.setEllipsize(null);
+                UGCDetailActivity.this.i.setVisibility(View.GONE);
+                UGCDetailActivity.this.e.setClickable(false);
             }
         };
     }
 
-    static /* synthetic */ Author a(UGCDetailActivity uGCDetailActivity, Author author) {
-        uGCDetailActivity.s = author;
-        return author;
-    }
-
-    static /* synthetic */ UGCBookDetail a(UGCDetailActivity uGCDetailActivity, UGCBookDetail uGCBookDetail) {
-        uGCDetailActivity.r = uGCBookDetail;
-        return uGCBookDetail;
-    }
-
-    static /* synthetic */ void a(UGCDetailActivity uGCDetailActivity, int n) {
-        uGCDetailActivity.e(n);
-    }
-
-    static /* synthetic */ boolean a(UGCDetailActivity uGCDetailActivity) {
-        return uGCDetailActivity.p;
-    }
-
-    static /* synthetic */ void b(UGCDetailActivity uGCDetailActivity) {
+    static void b(UGCDetailActivity uGCDetailActivity) {
         if (uGCDetailActivity.r != null) {
             MyApplication myApplication = MyApplication.getInstance();
             UGCBookDetail uGCBookDetail = uGCDetailActivity.r;
@@ -121,11 +103,7 @@ public class UGCDetailActivity extends BaseActivity implements View.OnClickListe
         ToastUtil.showToast(uGCDetailActivity, "书单信息未加载，请检查网络或稍后再试");
     }
 
-    static /* synthetic */ void b(UGCDetailActivity uGCDetailActivity, UGCBookDetail uGCBookDetail) {
-        uGCDetailActivity.a(uGCBookDetail);
-    }
-
-    static /* synthetic */ void c(final UGCDetailActivity uGCDetailActivity) {
+    static void c(final UGCDetailActivity uGCDetailActivity) {
         Account account = CommonUtil.checkLogin(uGCDetailActivity);
         if (account != null) {
             BaseAsyncTask<String, Void, ResultStatus> q2 = new BaseAsyncTask<String, Void, ResultStatus>() {
@@ -149,33 +127,6 @@ public class UGCDetailActivity extends BaseActivity implements View.OnClickListe
         }
     }
 
-    static /* synthetic */ TextView d(UGCDetailActivity uGCDetailActivity) {
-        return uGCDetailActivity.e;
-    }
-
-    static /* synthetic */ ImageButton e(UGCDetailActivity uGCDetailActivity) {
-        return uGCDetailActivity.i;
-    }
-
-    static /* synthetic */ ListView g(UGCDetailActivity uGCDetailActivity) {
-        return uGCDetailActivity.j;
-    }
-
-    static /* synthetic */ BaseDownloadAdapter<UGCBookDetail.UGCBookContainer> h(UGCDetailActivity uGCDetailActivity) {
-        return uGCDetailActivity.k;
-    }
-
-    static /* synthetic */ boolean k(UGCDetailActivity uGCDetailActivity) {
-        return uGCDetailActivity.q;
-    }
-
-    static /* synthetic */ View.OnClickListener l(UGCDetailActivity uGCDetailActivity) {
-        return uGCDetailActivity.t;
-    }
-
-    /*
-     * Enabled aggressive block sorting
-     */
     private void a(UGCBookDetail uGCBookDetail) {
         this.e(1);
         Author author = uGCBookDetail.getAuthor();
@@ -191,11 +142,11 @@ public class UGCDetailActivity extends BaseActivity implements View.OnClickListe
         this.e.post(new Runnable() {
             @Override
             public void run() {
-                if (UGCDetailActivity.d(UGCDetailActivity.this).getLineCount() > 5) {
-                    UGCDetailActivity.e(UGCDetailActivity.this).setVisibility(View.VISIBLE);
-                    UGCDetailActivity.d(UGCDetailActivity.this).setEllipsize(TextUtils.TruncateAt.END);
-                    UGCDetailActivity.d(UGCDetailActivity.this).setClickable(true);
-                    UGCDetailActivity.d(UGCDetailActivity.this).setOnClickListener(UGCDetailActivity.l(UGCDetailActivity.this));
+                if (UGCDetailActivity.this.e.getLineCount() > 5) {
+                    UGCDetailActivity.this.i.setVisibility(View.VISIBLE);
+                    UGCDetailActivity.this.e.setEllipsize(TextUtils.TruncateAt.END);
+                    UGCDetailActivity.this.e.setClickable(true);
+                    UGCDetailActivity.this.e.setOnClickListener(UGCDetailActivity.this.t);
                 }
             }
         });
@@ -209,7 +160,7 @@ public class UGCDetailActivity extends BaseActivity implements View.OnClickListe
 
             @Override
             protected UGCBookDetailRoot doInBackground(String... params) {
-                if (!UGCDetailActivity.k(UGCDetailActivity.this)) return ApiServiceProvider.getApiService().U(params[0]);
+                if (!UGCDetailActivity.this.q) return ApiServiceProvider.getApiService().U(params[0]);
                 Account account = CommonUtil.checkLogin(UGCDetailActivity.this);
                 if (account == null) return null;
                 return ApiServiceProvider.getApiService().C(account.getToken(), params[0]);
@@ -220,12 +171,12 @@ public class UGCDetailActivity extends BaseActivity implements View.OnClickListe
                 super.onPostExecute(uGCBookDetailRoot);
                 if (uGCBookDetailRoot != null && uGCBookDetailRoot.isOk() && uGCBookDetailRoot.getBookList() != null) {
                     UGCBookDetail uGCBookDetail = uGCBookDetailRoot.getBookList();
-                    UGCDetailActivity.a(UGCDetailActivity.this, uGCBookDetail);
-                    UGCDetailActivity.a(UGCDetailActivity.this, uGCBookDetail.getAuthor());
-                    UGCDetailActivity.b(UGCDetailActivity.this, uGCBookDetail);
-                    return;
+                    UGCDetailActivity.this.r = uGCBookDetail;
+                    UGCDetailActivity.this.s = uGCBookDetail.getAuthor();
+                    UGCDetailActivity.this.a(uGCBookDetail);
+                } else {
+                    UGCDetailActivity.this.e(2);
                 }
-                UGCDetailActivity.a(UGCDetailActivity.this, 2);
             }
         };
         r2.b(this.o);
@@ -282,15 +233,15 @@ public class UGCDetailActivity extends BaseActivity implements View.OnClickListe
         }
         this.p = this.getIntent().getBooleanExtra("my_list", false);
         this.q = this.getIntent().getBooleanExtra("is_draft", false);
-        String string = this.p ? "\u7f16\u8f91" : "\u6536\u85cf";
+        String string = this.p ? "编辑" : "收藏";
         this.a("书单详情", string, new BaseCallBack() {
             @Override
             public void a() {
-                if (UGCDetailActivity.a(UGCDetailActivity.this)) {
+                if (UGCDetailActivity.this.p) {
                     UGCDetailActivity.b(UGCDetailActivity.this);
-                    return;
+                } else {
+                    UGCDetailActivity.c(UGCDetailActivity.this);
                 }
-                UGCDetailActivity.c(UGCDetailActivity.this);
             }
         });
         this.j = (ListView) this.findViewById(R.id.list);
@@ -359,8 +310,8 @@ public class UGCDetailActivity extends BaseActivity implements View.OnClickListe
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 UGCBookDetail.UGCBookContainer uGCBookDetail$UGCBookContainer;
-                int n2 = position - UGCDetailActivity.g(UGCDetailActivity.this).getHeaderViewsCount();
-                if (n2 >= 0 && n2 < UGCDetailActivity.h(UGCDetailActivity.this).getCount() && (uGCBookDetail$UGCBookContainer = UGCDetailActivity.h(UGCDetailActivity.this).getItem(n2)) != null && uGCBookDetail$UGCBookContainer.getBook() != null) {
+                int n2 = position - UGCDetailActivity.this.j.getHeaderViewsCount();
+                if (n2 >= 0 && n2 < UGCDetailActivity.this.k.getCount() && (uGCBookDetail$UGCBookContainer = UGCDetailActivity.this.k.getItem(n2)) != null && uGCBookDetail$UGCBookContainer.getBook() != null) {
                     Intent intent = new Intent(UGCDetailActivity.this, BookInfoActivity.class);
                     intent.putExtra("book_id", uGCBookDetail$UGCBookContainer.getBook().get_id());
                     UGCDetailActivity.this.startActivity(intent);

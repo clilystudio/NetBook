@@ -24,12 +24,12 @@ final class p extends o {
     }
 
     @Override
-    public final /* synthetic */ o c() {
+    public final o c() {
         return this.d();
     }
 
     @Override
-    public final /* synthetic */ Object clone() {
+    public final Object clone() {
         return this.d();
     }
 }

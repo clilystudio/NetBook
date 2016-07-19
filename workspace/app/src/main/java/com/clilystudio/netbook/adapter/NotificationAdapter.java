@@ -126,13 +126,10 @@ public abstract class NotificationAdapter extends BaseBookAdapter<NotificationIt
     }
 
     @Override
-    public /* synthetic */ NotificationItem getItem(int n) {
+    public NotificationItem getItem(int n) {
         return this.a(n);
     }
 
-    /*
-     * Enabled aggressive block sorting
-     */
     @Override
     public int getItemViewType(int n) {
         int n2 = this.i.length;
