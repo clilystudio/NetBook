@@ -38,7 +38,7 @@ public class AutoReaderTextView extends JustifyTextView {
             @Override
             public void onAnimationEnd(Animation animation) {
                 if (AutoReaderTextView.d(AutoReaderTextView.this) != null && AutoReaderTextView.this.getMeasuredHeight() <= 5) {
-                    AutoReaderTextView.a(AutoReaderTextView.this, true);
+                    AutoReaderTextView.this.k = true;
                     AutoReaderTextView.d(AutoReaderTextView.this).d();
                 }
            }
@@ -53,11 +53,6 @@ public class AutoReaderTextView extends JustifyTextView {
 
     static /* synthetic */ boolean a(AutoReaderTextView autoReaderTextView) {
         return autoReaderTextView.k;
-    }
-
-    static /* synthetic */ boolean a(AutoReaderTextView autoReaderTextView, boolean bl) {
-        autoReaderTextView.k = bl;
-        return bl;
     }
 
     static /* synthetic */ RelativeLayout.LayoutParams b(AutoReaderTextView autoReaderTextView) {

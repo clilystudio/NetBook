@@ -183,7 +183,7 @@ public class CommonUtil {
         user.setAvatar(myApplication.getProperty("user.avatar"));
         user.setLv(CommonUtil.parseInt(myApplication.getProperty("user.lv")));
         user.setGender(myApplication.getProperty("user.gender"));
-        account.setOk(true);
+        account.setOk();
         account.setToken(token);
         account.setUser(user);
         return account;

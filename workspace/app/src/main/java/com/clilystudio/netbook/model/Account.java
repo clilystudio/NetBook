@@ -37,7 +37,7 @@ public class Account implements Serializable {
         return this.ok;
     }
 
-    public void setOk(boolean bl) {
-        this.ok = bl;
+    public void setOk() {
+        this.ok = true;
     }
 }

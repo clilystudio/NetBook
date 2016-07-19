@@ -50,14 +50,7 @@ public class Author implements Serializable {
     }
 
     public String getScaleAvatar() {
-        return this.getScaleAvatar(1);
-    }
-
-    public String getScaleAvatar(int n) {
-        if (n == 1) {
-            return ApiService.a + this.avatar + "-avatars";
-        }
-        return ApiService.a + this.avatar + "-avatarl";
+        return ApiService.a + this.avatar + "-avatars";
     }
 
     public String getType() {
