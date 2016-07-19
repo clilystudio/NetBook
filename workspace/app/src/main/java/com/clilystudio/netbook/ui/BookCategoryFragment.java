@@ -47,16 +47,12 @@ public class BookCategoryFragment extends Fragment {
             @Override
             public void onLastItemVisible() {
                 if (BookCategoryFragment.this.h == null || BookCategoryFragment.this.h.getStatus() == AsyncTask.Status.FINISHED) {
-                    BookCategoryFragment.f(BookCategoryFragment.this).setVisibility(View.VISIBLE);
+                    BookCategoryFragment.this.c.setVisibility(View.VISIBLE);
                     BookCategoryFragment.this.h = getaqclass(true);
                     BookCategoryFragment.this.h.b();
                 }
             }
         };
-    }
-
-    static /* synthetic */ ListView a(BookCategoryFragment bookCategoryFragment) {
-        return bookCategoryFragment.b;
     }
 
     public static BookCategoryFragment a(String string) {
@@ -65,40 +61,6 @@ public class BookCategoryFragment extends Fragment {
         bundle.putString("bookcategory_type", string);
         bookCategoryFragment.setArguments(bundle);
         return bookCategoryFragment;
-    }
-
-    static /* synthetic */ void a(BookCategoryFragment bookCategoryFragment, CategoryBook categoryBook) {
-        if (categoryBook != null) {
-            bookCategoryFragment.startActivity(BookInfoActivity.a(bookCategoryFragment.getActivity(), categoryBook.getId()));
-        }
-    }
-
-    static /* synthetic */ List b(BookCategoryFragment bookCategoryFragment) {
-        return bookCategoryFragment.i;
-    }
-
-    static /* synthetic */ TextView c(BookCategoryFragment bookCategoryFragment) {
-        return bookCategoryFragment.f;
-    }
-
-    static /* synthetic */ View e(BookCategoryFragment bookCategoryFragment) {
-        return bookCategoryFragment.e;
-    }
-
-    static /* synthetic */ View f(BookCategoryFragment bookCategoryFragment) {
-        return bookCategoryFragment.c;
-    }
-
-    static /* synthetic */ PullToRefreshListView g(BookCategoryFragment bookCategoryFragment) {
-        return bookCategoryFragment.a;
-    }
-
-    static /* synthetic */ BaseDownloadAdapter<CategoryBook> h(BookCategoryFragment bookCategoryFragment) {
-        return bookCategoryFragment.d;
-    }
-
-    static /* synthetic */ PullToRefreshBase.OnLastItemVisibleListener i(BookCategoryFragment bookCategoryFragment) {
-        return bookCategoryFragment.j;
     }
 
     public final void a() {
@@ -124,7 +86,7 @@ public class BookCategoryFragment extends Fragment {
                 String string3 = ((BookCategoryListActivity) BookCategoryFragment.this.getActivity()).g();
                 String string4 = ((BookCategoryListActivity) BookCategoryFragment.this.getActivity()).b();
                 ApiServiceProvider.getInstance();
-                int n = isContinus ? BookCategoryFragment.b(BookCategoryFragment.this).size() : 0;
+                int n = isContinus ? BookCategoryFragment.this.i.size() : 0;
                 BookListRoot bookListRoot = ApiServiceProvider.getApiService().a(string4, string, string2, string3, n, 50);
                 if (bookListRoot == null) return null;
                 if (bookListRoot.getBooks() == null) return null;
@@ -166,7 +128,9 @@ public class BookCategoryFragment extends Fragment {
                 int n2 = position - BookCategoryFragment.this.b.getHeaderViewsCount();
                 if (n2 >= 0 && n2 < BookCategoryFragment.this.i.size()) {
                     CategoryBook categoryBook = BookCategoryFragment.this.i.get(n2);
-                    BookCategoryFragment.a(BookCategoryFragment.this, categoryBook);
+                    if (categoryBook != null) {
+                        startActivity(BookInfoActivity.a(getActivity(), categoryBook.getId()));
+                    }
                 }
             }
         });

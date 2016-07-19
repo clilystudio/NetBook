@@ -32,11 +32,7 @@ public class UGCGuideAddCollectionActivity extends BaseActivity {
     private Author e;
     private boolean f;
 
-    /*
-     * Enabled force condition propagation
-     * Lifted jumps to return sites
-     */
-    static /* synthetic */ void a(UGCGuideAddCollectionActivity uGCGuideAddCollectionActivity) {
+    static void a(UGCGuideAddCollectionActivity uGCGuideAddCollectionActivity) {
         Account account = CommonUtil.checkLogin(uGCGuideAddCollectionActivity);
         if (account == null) return;
         if (account.getUser() != null && account.getUser().getLv() < 2) {
@@ -61,18 +57,6 @@ public class UGCGuideAddCollectionActivity extends BaseActivity {
         intent.putExtra("is_draft", uGCGuideAddCollectionActivity.f);
         intent.putExtra("my_author", uGCGuideAddCollectionActivity.e);
         uGCGuideAddCollectionActivity.startActivity(intent);
-    }
-
-    static /* synthetic */ TextView c(UGCGuideAddCollectionActivity uGCGuideAddCollectionActivity) {
-        return uGCGuideAddCollectionActivity.a;
-    }
-
-    static /* synthetic */ TextView d(UGCGuideAddCollectionActivity uGCGuideAddCollectionActivity) {
-        return uGCGuideAddCollectionActivity.b;
-    }
-
-    static /* synthetic */ String e(UGCGuideAddCollectionActivity uGCGuideAddCollectionActivity) {
-        return uGCGuideAddCollectionActivity.c;
     }
 
     @Override
@@ -114,8 +98,8 @@ public class UGCGuideAddCollectionActivity extends BaseActivity {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     UGCNewCollection uGCNewCollection = MyApplication.getInstance().getUGCNewCollection();
-                    uGCNewCollection.setTitle(UGCGuideAddCollectionActivity.c(UGCGuideAddCollectionActivity.this).getText().toString());
-                    uGCNewCollection.setDesc(UGCGuideAddCollectionActivity.d(UGCGuideAddCollectionActivity.this).getText().toString());
+                    uGCNewCollection.setTitle(UGCGuideAddCollectionActivity.this.a.getText().toString());
+                    uGCNewCollection.setDesc(UGCGuideAddCollectionActivity.this.b.getText().toString());
 
                     new BaseLoadingTask<Void, ResultStatus>(UGCGuideAddCollectionActivity.this, "正在保存到草稿箱...") {
 

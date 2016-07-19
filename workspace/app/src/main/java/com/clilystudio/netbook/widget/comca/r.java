@@ -76,7 +76,7 @@ class r {
         return this.f.a();
     }
 
-    public /* synthetic */ Object clone() {
+    public Object clone() {
         return this.a();
     }
 

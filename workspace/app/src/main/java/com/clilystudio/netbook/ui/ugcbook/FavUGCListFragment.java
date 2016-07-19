@@ -24,10 +24,6 @@ public class FavUGCListFragment extends AbsUGCListFragment implements AdapterVie
     private BaseDownloadAdapter l;
     private PullToRefreshListView m;
 
-    static /* synthetic */ PullToRefreshListView a(FavUGCListFragment favUGCListFragment) {
-        return favUGCListFragment.m;
-    }
-
     @Override
     protected final UGCBookListRoot a(Account account, int n) {
         ApiServiceProvider.getInstance();
@@ -66,7 +62,7 @@ public class FavUGCListFragment extends AbsUGCListFragment implements AdapterVie
             public void onClick(DialogInterface dialog, int which) {
                 Account account = CommonUtil.checkLogin(FavUGCListFragment.this.getActivity());
                 if (account != null) {
-                    FavUGCListFragment.a(FavUGCListFragment.this).setRefreshing();
+                    FavUGCListFragment.this.m.setRefreshing();
                     BaseAsyncTask<String, Void, ResultStatus> h2 = new BaseAsyncTask<String, Void, ResultStatus>() {
 
                         @Override

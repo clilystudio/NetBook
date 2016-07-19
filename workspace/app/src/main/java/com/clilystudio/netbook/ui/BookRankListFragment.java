@@ -40,18 +40,6 @@ public class BookRankListFragment extends Fragment {
         return bookRankListFragment;
     }
 
-    static /* synthetic */ void a(BookRankListFragment bookRankListFragment) {
-        bookRankListFragment.a();
-    }
-
-    static /* synthetic */ View b(BookRankListFragment bookRankListFragment) {
-        return bookRankListFragment.b;
-    }
-
-    static /* synthetic */ List c(BookRankListFragment bookRankListFragment) {
-        return bookRankListFragment.f;
-    }
-
     private void a() {
         BaseAsyncTask<String, Void, BookRankDetailRoot> g = new BaseAsyncTask<String, Void, BookRankDetailRoot>() {
 
@@ -64,11 +52,11 @@ public class BookRankListFragment extends Fragment {
             @Override
             protected void onPostExecute(BookRankDetailRoot bookRankDetailRoot) {
                 super.onPostExecute(bookRankDetailRoot);
-                BookRankListFragment.b(BookRankListFragment.this).setVisibility(View.GONE);
+                BookRankListFragment.this.b.setVisibility(View.GONE);
                 if (bookRankDetailRoot != null && bookRankDetailRoot.getRanking() != null) {
                     BookRankListFragment.this.b(1);
                     BookRankListFragment.this.f.addAll(Arrays.asList(bookRankDetailRoot.getRanking().getBooks()));
-                    BookRankListFragment.this.a.a(BookRankListFragment.c(BookRankListFragment.this));
+                    BookRankListFragment.this.a.a(BookRankListFragment.this.f);
                     return;
                 }
                 BookRankListFragment.this.b(2);
@@ -135,7 +123,7 @@ public class BookRankListFragment extends Fragment {
         this.d.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                BookRankListFragment.a(BookRankListFragment.this);
+                BookRankListFragment.this.a();
             }
         });
         this.a = new BaseDownloadAdapter<BookRankDetail>(this.getActivity().getLayoutInflater(), R.layout.list_item_ori_book){

@@ -18,9 +18,9 @@ import android.view.animation.AccelerateInterpolator;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.ImageView;
 
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.widget.comca.a;
 import com.clilystudio.netbook.widget.comca.b;
-import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.widget.comca.w;
 
 public class CoverLoadingLayer extends ImageView {
@@ -60,7 +60,7 @@ public class CoverLoadingLayer extends ImageView {
         this.w = new com.clilystudio.netbook.widget.comca.w.D() {
             @Override
             public void a(w paramw) {
-                CoverLoadingLayer.b(CoverLoadingLayer.this, CoverLoadingLayer.d(CoverLoadingLayer.this) * (Float) paramw.f());
+                CoverLoadingLayer.this.d = CoverLoadingLayer.this.e * (Float) paramw.f();
                 CoverLoadingLayer.this.invalidate();
             }
         };
@@ -85,26 +85,26 @@ public class CoverLoadingLayer extends ImageView {
 
             }
         };
-        this.y = new com.clilystudio.netbook.widget.comca.w.D(){
+        this.y = new com.clilystudio.netbook.widget.comca.w.D() {
             @Override
             public void a(com.clilystudio.netbook.widget.comca.w paramw) {
-                CoverLoadingLayer.a(CoverLoadingLayer.this, (Integer) paramw.f());
+                CoverLoadingLayer.this.g = (int) paramw.f();
                 CoverLoadingLayer.this.invalidate();
             }
         };
-        this.z = new com.clilystudio.netbook.widget.comca.w.D(){
+        this.z = new com.clilystudio.netbook.widget.comca.w.D() {
             @Override
             public void a(com.clilystudio.netbook.widget.comca.w paramw) {
                 float f = (Float) paramw.f();
-                CoverLoadingLayer.b(CoverLoadingLayer.this, f * CoverLoadingLayer.d(CoverLoadingLayer.this));
+                CoverLoadingLayer.this.d = f * CoverLoadingLayer.this.e;
                 CoverLoadingLayer.this.invalidate();
             }
         };
         this.A = new b() {
             @Override
             public void a(a parama) {
-                CoverLoadingLayer.a(CoverLoadingLayer.this, CoverLoadingLayer.Status.PROGRESS);
-           }
+                CoverLoadingLayer.this.r = CoverLoadingLayer.Status.PROGRESS;
+            }
 
             @Override
             public void b(a parama) {
@@ -124,51 +124,8 @@ public class CoverLoadingLayer extends ImageView {
         this.a(context, attributeSet);
     }
 
-    static /* synthetic */ float a(CoverLoadingLayer coverLoadingLayer, float f) {
-        coverLoadingLayer.b = f;
-        return f;
-    }
-
     private static int a(float f) {
         return (int) (360.0f * (f / 100.0f) - 90.0f);
-    }
-
-    static /* synthetic */ int a(CoverLoadingLayer coverLoadingLayer, int n) {
-        coverLoadingLayer.g = n;
-        return n;
-    }
-
-    static /* synthetic */ com.clilystudio.netbook.widget.comca.w a(CoverLoadingLayer coverLoadingLayer, com.clilystudio.netbook.widget.comca.w w2) {
-        coverLoadingLayer.s = w2;
-        return w2;
-    }
-
-    static /* synthetic */ CoverLoadingLayer.Status a(CoverLoadingLayer coverLoadingLayer, CoverLoadingLayer.Status status) {
-        coverLoadingLayer.r = status;
-        return status;
-    }
-
-    static /* synthetic */ void a(CoverLoadingLayer coverLoadingLayer) {
-        if (coverLoadingLayer.p != coverLoadingLayer.o && coverLoadingLayer.p > coverLoadingLayer.o) {
-            coverLoadingLayer.setProgress(coverLoadingLayer.p);
-        }
-    }
-
-    static /* synthetic */ float b(CoverLoadingLayer coverLoadingLayer, float f) {
-        coverLoadingLayer.d = f;
-        return f;
-    }
-
-    static /* synthetic */ com.clilystudio.netbook.widget.comca.w b(CoverLoadingLayer coverLoadingLayer) {
-        return coverLoadingLayer.h();
-    }
-
-    static /* synthetic */ com.clilystudio.netbook.widget.comca.w c(CoverLoadingLayer coverLoadingLayer) {
-        return coverLoadingLayer.s;
-    }
-
-    static /* synthetic */ float d(CoverLoadingLayer coverLoadingLayer) {
-        return coverLoadingLayer.e;
     }
 
     private void a(Context context, AttributeSet attributeSet) {
@@ -234,7 +191,7 @@ public class CoverLoadingLayer extends ImageView {
 
             @Override
             public void b(a parama) {
-                CoverLoadingLayer.a(CoverLoadingLayer.this, CoverLoadingLayer.Status.NONE);
+                CoverLoadingLayer.this.r = CoverLoadingLayer.Status.NONE;
             }
 
             @Override
@@ -477,7 +434,7 @@ public class CoverLoadingLayer extends ImageView {
             if (this.a(n)) return;
             {
                 this.o = n;
-                this.g = CoverLoadingLayer.a((float)this.o);
+                this.g = CoverLoadingLayer.a((float) this.o);
                 this.r = CoverLoadingLayer.Status.PROGRESS;
                 this.invalidate();
                 if (!this.a()) return;
@@ -495,8 +452,8 @@ public class CoverLoadingLayer extends ImageView {
         }
         this.d = 0.0f;
         int[] arrn = new int[2];
-        arrn[0] = CoverLoadingLayer.a((float)n3);
-        arrn[n2] = CoverLoadingLayer.a((float)n);
+        arrn[0] = CoverLoadingLayer.a((float) n3);
+        arrn[n2] = CoverLoadingLayer.a((float) n);
         com.clilystudio.netbook.widget.comca.w w2 = com.clilystudio.netbook.widget.comca.w.a(arrn);
         w2.a(300);
         w2.a(this.y);
@@ -508,10 +465,12 @@ public class CoverLoadingLayer extends ImageView {
 
             @Override
             public void b(a parama) {
-                CoverLoadingLayer.a(CoverLoadingLayer.this);
+                if (CoverLoadingLayer.this.p != CoverLoadingLayer.this.o && CoverLoadingLayer.this.p > CoverLoadingLayer.this.o) {
+                    CoverLoadingLayer.this.setProgress(CoverLoadingLayer.this.p);
+                }
                 if (CoverLoadingLayer.this.a()) {
-                    CoverLoadingLayer.a(CoverLoadingLayer.this, CoverLoadingLayer.b(CoverLoadingLayer.this));
-                    CoverLoadingLayer.c(CoverLoadingLayer.this).a();
+                    CoverLoadingLayer.this.s = CoverLoadingLayer.this.h();
+                    CoverLoadingLayer.this.s.a();
                 }
             }
 
@@ -535,8 +494,9 @@ public class CoverLoadingLayer extends ImageView {
         if (this.j()) return;
         this.m.a();
     }
+
     enum Status {
-        NONE,PREPARE,PROGRESS,PAUSE,PENDING,DOWNLOADED
+        NONE, PREPARE, PROGRESS, PAUSE, PENDING, DOWNLOADED
     }
 
     public interface y {
