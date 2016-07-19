@@ -27,19 +27,7 @@ public class BookCategoryActivity extends BaseActivity {
         return new IntentBuilder().put(context, BookCategoryActivity.class).build();
     }
 
-    static /* synthetic */ void a(BookCategoryActivity bookCategoryActivity) {
-        bookCategoryActivity.b();
-    }
-
-    static /* synthetic */ void a(BookCategoryActivity bookCategoryActivity, int n) {
-        bookCategoryActivity.a(n);
-    }
-
-    static /* synthetic */ void a(CategoryLevelRoot categoryLevelRoot) {
-        CommonUtil.saveObject(categoryLevelRoot, CachePathConst.CategoryLevel, "category_level.txt");
-    }
-
-    static /* synthetic */ void a(BookCategoryActivity bookCategoryActivity, CategoryRoot categoryRoot) {
+    static void a(BookCategoryActivity bookCategoryActivity, CategoryRoot categoryRoot) {
         CategoryRoot.Category[] arrcategoryRoot$Category = categoryRoot.getMale();
         CategoryRoot.Category[] arrcategoryRoot$Category2 = categoryRoot.getFemale();
         if (arrcategoryRoot$Category == null || arrcategoryRoot$Category2 == null) {
@@ -75,9 +63,6 @@ public class BookCategoryActivity extends BaseActivity {
         this.b.setVisibility(View.VISIBLE);
     }
 
-    /*
-     * Enabled aggressive block sorting
-     */
     private void a(int n, int n2, CategoryRoot.Category[] arrcategoryRoot$Category, final boolean bl) {
         int n3 = 0;
         TableRow tableRow = null;
@@ -153,12 +138,11 @@ public class BookCategoryActivity extends BaseActivity {
             protected void onPostExecute(CategoryRoot categoryRoot) {
                 super.onPostExecute(categoryRoot);
                 if (categoryRoot != null && categoryRoot.isOk()) {
-                    BookCategoryActivity.a(BookCategoryActivity.this, 1);
+                    BookCategoryActivity.this.a(1);
                     BookCategoryActivity.a(BookCategoryActivity.this, categoryRoot);
-                    return;
+                } else {
+                    BookCategoryActivity.this.a(2);
                 }
-                BookCategoryActivity.a(BookCategoryActivity.this, 2);
-
             }
         }.b();
         new BaseAsyncTask<String, Void, CategoryLevelRoot>() {
@@ -172,7 +156,7 @@ public class BookCategoryActivity extends BaseActivity {
             protected void onPostExecute(CategoryLevelRoot categoryLevelRoot) {
                 super.onPostExecute(categoryLevelRoot);
                 if (categoryLevelRoot != null && categoryLevelRoot.isOk()) {
-                    BookCategoryActivity.a(categoryLevelRoot);
+                    CommonUtil.saveObject(categoryLevelRoot, CachePathConst.CategoryLevel, "category_level.txt");
                 }
             }
         }.b();
@@ -189,7 +173,7 @@ public class BookCategoryActivity extends BaseActivity {
         this.b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                BookCategoryActivity.a(BookCategoryActivity.this);
+                BookCategoryActivity.this.b();
             }
         });
         this.b();

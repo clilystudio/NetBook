@@ -25,7 +25,7 @@ public class FeedAddActivity extends BaseActivity {
     private ListView b;
     private ArrayList<BookReadRecord> c = new ArrayList<>();
 
-    static /* synthetic */ void a(FeedAddActivity feedAddActivity) {
+    static void a(FeedAddActivity feedAddActivity) {
         if (feedAddActivity.c.isEmpty()) {
             ToastUtil.showShortToast(feedAddActivity, "你还没有选择移入的书籍");
             return;
@@ -39,14 +39,6 @@ public class FeedAddActivity extends BaseActivity {
         Intent intent = new Intent(feedAddActivity, FeedListActivity.class);
         intent.addFlags(335544320);
         feedAddActivity.startActivity(intent);
-    }
-
-    static /* synthetic */ BaseDownloadAdapter<BookReadRecord> b(FeedAddActivity feedAddActivity) {
-        return feedAddActivity.a;
-    }
-
-    static /* synthetic */ ArrayList c(FeedAddActivity feedAddActivity) {
-        return feedAddActivity.c;
     }
 
     @Override
@@ -63,13 +55,13 @@ public class FeedAddActivity extends BaseActivity {
         this.b.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                BookReadRecord bookReadRecord = FeedAddActivity.b(FeedAddActivity.this).getItem(position);
-                if (FeedAddActivity.c(FeedAddActivity.this).contains(bookReadRecord)) {
-                    FeedAddActivity.c(FeedAddActivity.this).remove(bookReadRecord);
+                BookReadRecord bookReadRecord = FeedAddActivity.this.a.getItem(position);
+                if (FeedAddActivity.this.c.contains(bookReadRecord)) {
+                    FeedAddActivity.this.c.remove(bookReadRecord);
                 } else {
                     FeedAddActivity.this.c.add(bookReadRecord);
                 }
-                FeedAddActivity.b(FeedAddActivity.this).notifyDataSetChanged();
+                FeedAddActivity.this.a.notifyDataSetChanged();
             }
         });
     }
@@ -86,10 +78,10 @@ public class FeedAddActivity extends BaseActivity {
                 this.setText(1, bookReadRecord.getTitle());
                 CheckBox checkBox = this.getTagView(2);
                 checkBox.setChecked(false);
-                BookReadRecord bookReadRecord2 = FeedAddActivity.b(FeedAddActivity.this).getItem(var1);
+                BookReadRecord bookReadRecord2 = FeedAddActivity.this.a.getItem(var1);
                 int n2 = 0;
-                while (n2 < FeedAddActivity.c(FeedAddActivity.this).size()) {
-                    if (FeedAddActivity.c(FeedAddActivity.this).contains(bookReadRecord2)) {
+                while (n2 < FeedAddActivity.this.c.size()) {
+                    if (FeedAddActivity.this.c.contains(bookReadRecord2)) {
                         checkBox.setChecked(true);
                     } else {
                         checkBox.setChecked(false);

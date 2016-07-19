@@ -26,8 +26,8 @@ import com.clilystudio.netbook.model.ResultStatus;
 import com.clilystudio.netbook.model.Topic;
 import com.clilystudio.netbook.model.TopicPost;
 import com.clilystudio.netbook.util.BaseDownloadAdapter;
-import com.clilystudio.netbook.util.DateTimeUtil;
 import com.clilystudio.netbook.util.CommonUtil;
+import com.clilystudio.netbook.util.DateTimeUtil;
 import com.clilystudio.netbook.util.ToastUtil;
 import com.clilystudio.netbook.widget.CoverView;
 import com.clilystudio.netbook.widget.LabelPtrListView;
@@ -52,7 +52,7 @@ public class MyFavTopicFragment extends Fragment {
     private PullToRefreshBase.OnLastItemVisibleListener l;
 
     public MyFavTopicFragment() {
-        this.l = new PullToRefreshBase.OnLastItemVisibleListener(){
+        this.l = new PullToRefreshBase.OnLastItemVisibleListener() {
 
             @Override
             public void onLastItemVisible() {
@@ -61,12 +61,12 @@ public class MyFavTopicFragment extends Fragment {
                     if (MyFavTopicFragment.this.b != null && MyFavTopicFragment.this.b.getStatus() != AsyncTask.Status.FINISHED && !MyFavTopicFragment.this.b.isCancelled()) {
                         MyFavTopicFragment.this.b.cancel(true);
                     }
-                    MyFavTopicFragment.this.a = new BaseAsyncTask<String, Void, Topic>(){
+                    MyFavTopicFragment.this.a = new BaseAsyncTask<String, Void, Topic>() {
 
                         @Override
                         protected Topic doInBackground(String... params) {
                             ApiServiceProvider.getInstance();
-                            return ApiServiceProvider.getApiService().d(params[0], MyFavTopicFragment.k(MyFavTopicFragment.this));
+                            return ApiServiceProvider.getApiService().d(params[0], MyFavTopicFragment.this.j);
                         }
 
                         @Override
@@ -82,17 +82,17 @@ public class MyFavTopicFragment extends Fragment {
                                     TopicPost[] arrtopicPost = topic.getPosts();
                                     int n = arrtopicPost.length;
                                     List<TopicPost> list = Arrays.asList(arrtopicPost);
-                                    MyFavTopicFragment.a(MyFavTopicFragment.this, MyFavTopicFragment.k(MyFavTopicFragment.this) + list.size());
+                                    MyFavTopicFragment.this.j = MyFavTopicFragment.this.j + list.size();
                                     MyFavTopicFragment.this.i.addAll(list);
                                     MyFavTopicFragment.this.h.a(MyFavTopicFragment.this.i);
-                                    MyFavTopicFragment.b(MyFavTopicFragment.this, n);
+                                    MyFavTopicFragment.this.c.setCountText("共收藏了%d条话题", n);
                                     if (n > 0) {
                                         if (n >= 10) {
                                             if (n != 10) return;
                                             MyFavTopicFragment.this.c.setOnLastItemVisibleListener(MyFavTopicFragment.this.l);
                                             return;
                                         }
-                                    } else if (MyFavTopicFragment.k(MyFavTopicFragment.this) == 0) {
+                                    } else if (MyFavTopicFragment.this.j == 0) {
                                         MyFavTopicFragment.this.g.setVisibility(View.VISIBLE);
                                         MyFavTopicFragment.this.g.setText("你还没有收藏哦");
                                     }
@@ -107,28 +107,10 @@ public class MyFavTopicFragment extends Fragment {
                             ToastUtil.showShortToast(MyFavTopicFragment.this.getActivity(), "加载失败，请检查网络或稍后再试");
                         }
                     };
-                    String[] arrstring = new String[]{MyFavTopicFragment.b(MyFavTopicFragment.this)};
-                    MyFavTopicFragment.this.a.b(arrstring);
+                    MyFavTopicFragment.this.a.b(MyFavTopicFragment.this.k);
                 }
             }
         };
-    }
-
-    static /* synthetic */ int a(MyFavTopicFragment myFavTopicFragment, int n) {
-        myFavTopicFragment.j = n;
-        return n;
-    }
-
-    static /* synthetic */ String b(MyFavTopicFragment myFavTopicFragment) {
-        return myFavTopicFragment.k;
-    }
-
-    static /* synthetic */ void b(MyFavTopicFragment myFavTopicFragment, int n) {
-        myFavTopicFragment.c.setCountText("\u5171\u6536\u85cf\u4e86%d\u6761\u8bdd\u9898", n);
-    }
-
-    static /* synthetic */ int k(MyFavTopicFragment myFavTopicFragment) {
-        return myFavTopicFragment.j;
     }
 
     @Override
@@ -137,7 +119,7 @@ public class MyFavTopicFragment extends Fragment {
             AdapterView.AdapterContextMenuInfo adapterContextMenuInfo = (AdapterView.AdapterContextMenuInfo) menuItem.getMenuInfo();
             if (menuItem.getItemId() == 0) {
                 TopicPost topicPost = (TopicPost) this.d.getAdapter().getItem(adapterContextMenuInfo.position);
-                BaseLoadingTask<String, ResultStatus> y2 = new BaseLoadingTask<String, ResultStatus>((Activity) this.getActivity(), R.string.loading){
+                BaseLoadingTask<String, ResultStatus> y2 = new BaseLoadingTask<String, ResultStatus>((Activity) this.getActivity(), R.string.loading) {
 
                     @Override
                     public ResultStatus a(String... var1) {
@@ -159,7 +141,7 @@ public class MyFavTopicFragment extends Fragment {
                         ToastUtil.showShortToast(this.b(), "删除失败，请检查网络或稍后再试");
                     }
                 };
-                 y2.b(this.k, topicPost.get_id());
+                y2.b(this.k, topicPost.get_id());
             }
         }
         return super.onContextItemSelected(menuItem);
@@ -186,7 +168,7 @@ public class MyFavTopicFragment extends Fragment {
         this.g = (TextView) view.findViewById(R.id.empty_text);
         this.c = (LabelPtrListView) view.findViewById(R.id.ptr_list);
         this.c.setMode(PullToRefreshBase.Mode.PULL_FROM_START);
-        this.e = LayoutInflater.from(this.getActivity()).inflate(R.layout.loading_item, (ViewGroup)getActivity().getWindow().getDecorView(), false);
+        this.e = LayoutInflater.from(this.getActivity()).inflate(R.layout.loading_item, (ViewGroup) getActivity().getWindow().getDecorView(), false);
         this.d = this.c.getRefreshableView();
         if (Build.VERSION.SDK_INT >= 19) {
             this.d.setFooterDividersEnabled(false);
@@ -201,7 +183,7 @@ public class MyFavTopicFragment extends Fragment {
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        if (MyFavTopicFragment.b(MyFavTopicFragment.this) == null) {
+                        if (MyFavTopicFragment.this.k == null) {
                             MyFavTopicFragment.this.f.setVisibility(View.GONE);
                             MyFavTopicFragment.this.g.setVisibility(View.VISIBLE);
                             MyFavTopicFragment.this.g.setText("请登录后查看");
@@ -212,7 +194,7 @@ public class MyFavTopicFragment extends Fragment {
                             MyFavTopicFragment.this.b.cancel(true);
                         }
                         MyFavTopicFragment.this.b = getAClass();
-                        String[] arrstring = new String[]{MyFavTopicFragment.b(MyFavTopicFragment.this)};
+                        String[] arrstring = new String[]{MyFavTopicFragment.this.k};
                         MyFavTopicFragment.this.b.b(arrstring);
                     }
                 }, 1000);
@@ -280,7 +262,7 @@ public class MyFavTopicFragment extends Fragment {
 
     @NonNull
     private BaseAsyncTask<String, Void, Topic> getAClass() {
-        return new BaseAsyncTask<String, Void, Topic>(){
+        return new BaseAsyncTask<String, Void, Topic>() {
 
             @Override
             protected Topic doInBackground(String... params) {
@@ -298,15 +280,15 @@ public class MyFavTopicFragment extends Fragment {
                 MyFavTopicFragment.this.c.setOnLastItemVisibleListener(MyFavTopicFragment.this.l);
                 if (topic != null) {
                     if (topic.isOk()) {
-                        MyFavTopicFragment.a(MyFavTopicFragment.this, 0);
+                        MyFavTopicFragment.this.j = 0;
                         MyFavTopicFragment.this.i.clear();
                         TopicPost[] arrtopicPost = topic.getPosts();
                         int n = arrtopicPost.length;
                         List<TopicPost> list = Arrays.asList(arrtopicPost);
-                        MyFavTopicFragment.a(MyFavTopicFragment.this, MyFavTopicFragment.k(MyFavTopicFragment.this) + list.size());
+                        MyFavTopicFragment.this.j = MyFavTopicFragment.this.j + list.size();
                         MyFavTopicFragment.this.i.addAll(list);
                         MyFavTopicFragment.this.h.a(MyFavTopicFragment.this.i);
-                        MyFavTopicFragment.b(MyFavTopicFragment.this, n);
+                        MyFavTopicFragment.this.c.setCountText("共收藏了%d条话题", n);
                         if (n < 10) {
                             MyFavTopicFragment.this.c.setOnLastItemVisibleListener(null);
                             if (n == 0) {

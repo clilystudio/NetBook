@@ -54,7 +54,7 @@ public class UGCGuideEditBooksActivity extends BaseActivity implements View.OnCl
     private Author g;
     private boolean h;
 
-    static /* synthetic */ void a(final UGCGuideEditBooksActivity uGCGuideEditBooksActivity, int n) {
+    static void a(final UGCGuideEditBooksActivity uGCGuideEditBooksActivity, int n) {
         String string;
         Editable editable;
         List<BookSummary> list = MyApplication.getInstance().getUGCNewCollection().getBooks();
@@ -94,7 +94,7 @@ public class UGCGuideEditBooksActivity extends BaseActivity implements View.OnCl
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 bookSummary.setAppendComment(editText.getText().toString());
-                UGCGuideEditBooksActivity.c(uGCGuideEditBooksActivity);
+                uGCGuideEditBooksActivity.b();
             }
         }).setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
             @Override
@@ -110,7 +110,7 @@ public class UGCGuideEditBooksActivity extends BaseActivity implements View.OnCl
         }, 200);
     }
 
-    static /* synthetic */ void b(final UGCGuideEditBooksActivity uGCGuideEditBooksActivity, int n) {
+    static void b(final UGCGuideEditBooksActivity uGCGuideEditBooksActivity, int n) {
         final List<BookSummary> list = MyApplication.getInstance().getUGCNewCollection().getBooks();
         if (list == null || list.size() == 0) {
             return;
@@ -122,34 +122,18 @@ public class UGCGuideEditBooksActivity extends BaseActivity implements View.OnCl
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 list.remove(bookSummary);
-                UGCGuideEditBooksActivity.c(uGCGuideEditBooksActivity);
+                uGCGuideEditBooksActivity.b();
             }
         }).
                 setNegativeButton(R.string.cancel, null).create().show();
     }
 
-    static /* synthetic */ boolean b(UGCGuideEditBooksActivity uGCGuideEditBooksActivity) {
+    static boolean b(UGCGuideEditBooksActivity uGCGuideEditBooksActivity) {
         if (uGCGuideEditBooksActivity.e.getCount() < 8) {
              ToastUtil.showShortToast(uGCGuideEditBooksActivity, String.format(Locale.CHINA,"太少啦，单个书单至少需要%d本小说哦", 8));
             return false;
         }
         return true;
-    }
-
-    static /* synthetic */ void c(UGCGuideEditBooksActivity uGCGuideEditBooksActivity) {
-        uGCGuideEditBooksActivity.b();
-    }
-
-    static /* synthetic */ boolean d(UGCGuideEditBooksActivity uGCGuideEditBooksActivity) {
-        return uGCGuideEditBooksActivity.h;
-    }
-
-    static /* synthetic */ String f(UGCGuideEditBooksActivity uGCGuideEditBooksActivity) {
-        return uGCGuideEditBooksActivity.f;
-    }
-
-    static /* synthetic */ Author j(UGCGuideEditBooksActivity uGCGuideEditBooksActivity) {
-        return uGCGuideEditBooksActivity.g;
     }
 
     private void b() {
@@ -179,8 +163,7 @@ public class UGCGuideEditBooksActivity extends BaseActivity implements View.OnCl
                         uGCNewCollection.addBook(bookSummary);
                         bookSummary.setSelected(true);
                     }
-                    UGCGuideEditBooksActivity.c(UGCGuideEditBooksActivity.this);
-                    return;
+                    UGCGuideEditBooksActivity.this.b();
                 }
                 ToastUtil.showShortToast(UGCGuideEditBooksActivity.this, "添加书籍失败，请检查网络或重试");
             }
@@ -378,7 +361,7 @@ public class UGCGuideEditBooksActivity extends BaseActivity implements View.OnCl
                 public ResultStatus a(Void... var1) {
                     Account account = CommonUtil.checkLogin(UGCGuideEditBooksActivity.this);
                     if (account == null) return null;
-                    if (UGCGuideEditBooksActivity.d(UGCGuideEditBooksActivity.this)) {
+                    if (UGCGuideEditBooksActivity.this.h) {
                         return ApiServiceProvider.getApiService().c(MyApplication.getInstance().getUGCNewCollection(), account.getToken(), UGCGuideEditBooksActivity.this.f);
                     }
                     if (UGCGuideEditBooksActivity.this.f == null)
@@ -395,7 +378,7 @@ public class UGCGuideEditBooksActivity extends BaseActivity implements View.OnCl
                         ToastUtil.showShortToast(UGCGuideEditBooksActivity.this, "发布失败");
                         return;
                     }
-                    if (UGCGuideEditBooksActivity.d(UGCGuideEditBooksActivity.this)) {
+                    if (UGCGuideEditBooksActivity.this.h) {
                         ToastUtil.showShortToast(UGCGuideEditBooksActivity.this, "发布成功");
                         intent = new Intent(UGCGuideEditBooksActivity.this, UserUGCActivity.class);
                         intent.setFlags(67108864);
@@ -406,7 +389,7 @@ public class UGCGuideEditBooksActivity extends BaseActivity implements View.OnCl
                         intent2.putExtra("book_id", UGCGuideEditBooksActivity.this.f);
                         intent2.putExtra("my_list", true);
                         intent2.putExtra("modify_update", uGCNewCollection);
-                        intent2.putExtra("my_author", UGCGuideEditBooksActivity.j(UGCGuideEditBooksActivity.this));
+                        intent2.putExtra("my_author", UGCGuideEditBooksActivity.this.g);
                         intent2.setFlags(67108864);
                         BusProvider.getInstance().post(new UpdateUgcListEvent(UGCGuideEditBooksActivity.this.f, uGCNewCollection.getTitle(), uGCNewCollection.getDesc(), uGCNewCollection.getBooks().size(), uGCNewCollection.getBooks().get(0).getCover()));
                         intent = intent2;

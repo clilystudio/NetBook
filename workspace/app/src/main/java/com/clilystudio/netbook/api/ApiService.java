@@ -842,7 +842,7 @@ public class ApiService {
 
     static final class DateDeserializer implements JsonDeserializer<Date> {
         @Override
-        public final /* synthetic */ Date deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext jsonDeserializationContext) {
+        public final Date deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext jsonDeserializationContext) {
             String string = jsonElement.getAsString().replace("Z", "+0000");
             return new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ", Locale.CHINA).parse(string, new ParsePosition(0));
         }

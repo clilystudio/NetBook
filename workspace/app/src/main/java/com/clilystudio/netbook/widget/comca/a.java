@@ -34,16 +34,12 @@ public abstract class a implements Cloneable {
     public void c() {
     }
 
-    public /* synthetic */ Object clone() {
+    public Object clone() {
         return this.e();
     }
 
     public abstract boolean d();
 
-    /*
-     * Enabled force condition propagation
-     * Lifted jumps to return sites
-     */
     public a e() {
         ArrayList<b> arrayList;
         a a2;

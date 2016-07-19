@@ -52,11 +52,11 @@ public class ReadModeItem extends FrameLayout {
             @Override
             public void onClick(View v) {
                 if (n4 != n3) {
-                    MyApplication.getInstance().setBookId(ReadModeItem.a(ReadModeItem.this));
-                    CommonUtil.setReadMode(ReadModeItem.a(ReadModeItem.this), n3);
+                    MyApplication.getInstance().setBookId(ReadModeItem.this.b);
+                    CommonUtil.setReadMode(ReadModeItem.this.b, n3);
                     ReadModeItem.a(ReadModeItem.this, n3);
                 }
-                ReadModeItem.b(ReadModeItem.this).finish();
+                ReadModeItem.this.a.finish();
             }
         });
     }
@@ -65,15 +65,11 @@ public class ReadModeItem extends FrameLayout {
         super(context, attributeSet);
     }
 
-    static /* synthetic */ String a(ReadModeItem readModeItem) {
-        return readModeItem.b;
-    }
-
     private static void a() {
         BusProvider.getInstance().post(new ModeChangedEvent(1));
     }
 
-    static /* synthetic */ void a(ReadModeItem readModeItem, int n2) {
+    static void a(ReadModeItem readModeItem, int n2) {
         switch (n2) {
             default: {
                 ReadModeItem.a();
@@ -91,9 +87,5 @@ public class ReadModeItem extends FrameLayout {
         Intent intent = ReaderResActivity.a(readModeItem.a, readModeItem.b, readModeItem.c, n2);
         readModeItem.a.startActivity(intent);
         readModeItem.a.finish();
-    }
-
-    static /* synthetic */ Activity b(ReadModeItem readModeItem) {
-        return readModeItem.a;
     }
 }

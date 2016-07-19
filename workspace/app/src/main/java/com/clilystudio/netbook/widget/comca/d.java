@@ -16,24 +16,24 @@ public final class d extends a {
     private long j = 0;
     private w k = null;
 
-    static /* synthetic */ ArrayList a(d d2) {
+    static ArrayList a(d d2) {
         return d2.c;
     }
 
-    static /* synthetic */ boolean a(d d2, boolean bl) {
+    static boolean a(d d2, boolean bl) {
         d2.i = false;
         return false;
     }
 
-    static /* synthetic */ HashMap b(d d2) {
+    static HashMap b(d d2) {
         return d2.d;
     }
 
-    static /* synthetic */ ArrayList c(d d2) {
+    static ArrayList c(d d2) {
         return d2.f;
     }
 
-    static /* synthetic */ ArrayList d(d d2) {
+    static ArrayList d(d d2) {
         return d2.e;
     }
 
@@ -288,7 +288,7 @@ public final class d extends a {
     }
 
     @Override
-    public final /* synthetic */ Object clone() {
+    public final Object clone() {
         return this.f();
     }
 
@@ -302,7 +302,121 @@ public final class d extends a {
     }
 
     @Override
-    public final /* synthetic */ a e() {
+    public final a e() {
         return this.f();
+    }
+
+    final class e implements b {
+        private boolean a;
+        private ArrayList b;
+        private d c;
+
+        e(d d2, ArrayList arrayList) {
+            this.c = d2;
+            this.b = arrayList;
+            this.a = false;
+        }
+
+        @Override
+        public void a(a var1) {
+
+        }
+
+        public final void b(a a2) {
+            if (!this.a) {
+                int n = this.b.size();
+                for (int i = 0; i < n; ++i) {
+                    j j2 = (j) this.b.get(i);
+                    j2.a.a();
+                    com.clilystudio.netbook.widget.comca.d.a(this.c).add(j2.a);
+                }
+            }
+        }
+
+        public final void c(a a2) {
+            this.a = true;
+        }
+
+        @Override
+        public void d(a var1) {
+
+        }
+    }
+    final class f implements b {
+        private d a;
+        private d b;
+
+        f(d d2, d d3) {
+            this.b = d2;
+            this.a = d3;
+        }
+
+        public final void a(a a2) {
+        }
+
+        /*
+         * Enabled aggressive block sorting
+         */
+        public final void b(a a2) {
+            a2.b(this);
+            com.clilystudio.netbook.widget.comca.d.a(this.b).remove(a2);
+            ((j) com.clilystudio.netbook.widget.comca.d.b(this.a).get(a2)).f = true;
+            if (!this.b.b) {
+                ArrayList arrayList = com.clilystudio.netbook.widget.comca.d.c(this.a);
+                int n = arrayList.size();
+                for (int i = 0; i < n; ++i) {
+                    if (((j) arrayList.get(i)).f) continue;
+                    return;
+                }
+                boolean bl = true;
+                if (bl) {
+                    if (this.b.a != null) {
+                        ArrayList arrayList2 = (ArrayList) this.b.a.clone();
+                        int n2 = arrayList2.size();
+                        for (int k = 0; k < n2; ++k) {
+                            ((b) arrayList2.get(k)).b(this.a);
+                        }
+                    }
+                    com.clilystudio.netbook.widget.comca.d.a(this.a, false);
+                }
+            }
+        }
+
+        public final void c(a a2) {
+            if (!this.b.b && com.clilystudio.netbook.widget.comca.d.a(this.b).size() == 0 && this.b.a != null) {
+                int n = this.b.a.size();
+                for (int i = 0; i < n; ++i) {
+                    this.b.a.get(i).c(this.a);
+                }
+            }
+        }
+
+        public final void d(a a2) {
+        }
+    }
+    public class g {
+        private j a;
+        private d b;
+
+        g(d d2, a a2) {
+            this.b = d2;
+            this.a = (j) com.clilystudio.netbook.widget.comca.d.b(d2).get(a2);
+            if (this.a == null) {
+                this.a = new j(a2);
+                com.clilystudio.netbook.widget.comca.d.b(d2).put(a2, this.a);
+                com.clilystudio.netbook.widget.comca.d.d(d2).add(this.a);
+            }
+        }
+
+        public final g a(a a2) {
+            j j2 = (j) com.clilystudio.netbook.widget.comca.d.b(this.b).get(a2);
+            if (j2 == null) {
+                j2 = new j(a2);
+                com.clilystudio.netbook.widget.comca.d.b(this.b).put(a2, j2);
+                com.clilystudio.netbook.widget.comca.d.d(this.b).add(j2);
+            }
+            j2.a(new h(this.a, 1));
+            return this;
+        }
     }
 }

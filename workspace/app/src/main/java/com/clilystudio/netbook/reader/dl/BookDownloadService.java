@@ -60,65 +60,7 @@ public class BookDownloadService extends Service {
         BusProvider.getInstance().post(new DownloadProgressEvent());
     }
 
-    static /* synthetic */ void a(BookDownloadService bookDownloadService, int n) {
-        bookDownloadService.a(n);
-    }
-
-    static /* synthetic */ void a(BookDownloadService bookDownloadService, BookReadRecord bookReadRecord) {
-        bookDownloadService.a(bookReadRecord);
-    }
-
-    static /* synthetic */ boolean a(BookDownloadService bookDownloadService) {
-        return bookDownloadService.o;
-    }
-
-    static /* synthetic */ boolean a(BookDownloadService bookDownloadService, boolean bl) {
-        bookDownloadService.j = bl;
-        return bl;
-    }
-
-    static /* synthetic */ ChapterLink[] a(BookDownloadService bookDownloadService, ChapterLink[] arrchapterLink) {
-        bookDownloadService.g = arrchapterLink;
-        return arrchapterLink;
-    }
-
-    static /* synthetic */ int b(BookDownloadService bookDownloadService, int n) {
-        bookDownloadService.n = n;
-        return n;
-    }
-
-    static /* synthetic */ Intent b(BookDownloadService bookDownloadService) {
-        return bookDownloadService.i;
-    }
-
-    static /* synthetic */ boolean b(BookDownloadService bookDownloadService, boolean bl) {
-        bookDownloadService.o = bl;
-        return bl;
-    }
-
-    static /* synthetic */ int c(BookDownloadService bookDownloadService, int n) {
-        bookDownloadService.l = n;
-        return n;
-    }
-
-    static /* synthetic */ void c(BookDownloadService bookDownloadService) {
-        bookDownloadService.h();
-    }
-
-    static /* synthetic */ int e(BookDownloadService bookDownloadService, int n) {
-        bookDownloadService.e = n;
-        return n;
-    }
-
-    static /* synthetic */ void e(BookDownloadService bookDownloadService) {
-        bookDownloadService.c();
-    }
-
-    static /* synthetic */ ReaderTocManager f(BookDownloadService bookDownloadService) {
-        return bookDownloadService.k;
-    }
-
-    static /* synthetic */ void f(BookDownloadService bookDownloadService, int n) {
+    static void f(BookDownloadService bookDownloadService, int n) {
         BookDlRecord bookDlRecord = BookDlRecord.get(bookDownloadService.mBookId);
         if (bookDlRecord != null) {
             bookDlRecord.setTotal(n);
@@ -126,32 +68,14 @@ public class BookDownloadService extends Service {
         }
     }
 
-    static /* synthetic */ int g(BookDownloadService bookDownloadService) {
-        return bookDownloadService.f;
-    }
-
-    static /* synthetic */ int h(BookDownloadService bookDownloadService) {
-        return bookDownloadService.e;
-    }
-
-    static /* synthetic */ int i(BookDownloadService bookDownloadService) {
-        int n = bookDownloadService.f;
-        bookDownloadService.f = n + 1;
-        return n;
-    }
-
-    static /* synthetic */ int j(BookDownloadService bookDownloadService) {
-        return bookDownloadService.n;
-    }
-
-    static /* synthetic */ void k(BookDownloadService bookDownloadService) {
+    static void k(BookDownloadService bookDownloadService) {
         bookDownloadService.i.putExtra("SerDlStopFlag", -2);
         bookDownloadService.h();
         bookDownloadService.a(3);
         bookDownloadService.o = true;
     }
 
-    static /* synthetic */ void l(BookDownloadService bookDownloadService) {
+    static void l(BookDownloadService bookDownloadService) {
         BookReadRecord bookReadRecord;
         if (bookDownloadService.mBookId != null && !bookDownloadService.mBookId.equals(bookDownloadService.m) && (bookReadRecord = BookReadRecord.get(bookDownloadService.mBookId)) != null) {
             String string = CommonUtil.getSourceName(bookReadRecord.getReadMode());
@@ -162,30 +86,6 @@ public class BookDownloadService extends Service {
             }
             bookDownloadService.m = bookDownloadService.mBookId;
         }
-    }
-
-    static /* synthetic */ String m(BookDownloadService bookDownloadService) {
-        return bookDownloadService.mTocId;
-    }
-
-    static /* synthetic */ int n(BookDownloadService bookDownloadService) {
-        return bookDownloadService.l;
-    }
-
-    static /* synthetic */ void o(BookDownloadService bookDownloadService) {
-        bookDownloadService.g();
-    }
-
-    static /* synthetic */ ChapterLink[] p(BookDownloadService bookDownloadService) {
-        return bookDownloadService.g;
-    }
-
-    static /* synthetic */ void q(BookDownloadService bookDownloadService) {
-        bookDownloadService.b();
-    }
-
-    static /* synthetic */ void r(BookDownloadService bookDownloadService) {
-        bookDownloadService.d();
     }
 
     private void a() {
@@ -248,7 +148,7 @@ public class BookDownloadService extends Service {
         new BaseAsyncTask<Void, Void, Toc>() {
             @Override
             protected Toc doInBackground(Void... params) {
-                return BookDownloadService.f(BookDownloadService.this).a();
+                return BookDownloadService.this.k.a();
             }
 
             @Override
@@ -256,14 +156,14 @@ public class BookDownloadService extends Service {
                 super.onPostExecute(toc);
                 if (toc != null && toc.getChapters() != null) {
                     CommonUtil.saveToc(BookDownloadService.this.mBookId, toc.get_id(), toc);
-                    BookDownloadService.a(BookDownloadService.this, toc.getChapters());
-                    BookDownloadService.e(BookDownloadService.this, BookDownloadService.p(BookDownloadService.this).length);
-                    BookDownloadService.f(BookDownloadService.this, BookDownloadService.h(BookDownloadService.this));
-                    BookDownloadService.q(BookDownloadService.this);
+                    BookDownloadService.this.g = toc.getChapters();
+                    BookDownloadService.this.e = BookDownloadService.this.g.length;
+                    BookDownloadService.f(BookDownloadService.this, BookDownloadService.this.e);
+                    BookDownloadService.this.b();
                     return;
                 }
                 ToastUtil.showToast(BookDownloadService.this.getApplicationContext(), "获取目录失败，暂时无法缓存");
-                BookDownloadService.r(BookDownloadService.this);
+                BookDownloadService.this.d();
             }
         }.b();
     }
@@ -290,10 +190,10 @@ public class BookDownloadService extends Service {
                 if (bookReadRecord != null) {
                     bookReadRecord.setReadMode(5);
                     bookReadRecord.save();
-                    BookDownloadService.a(BookDownloadService.this, bookReadRecord);
-                    return;
+                    BookDownloadService.this.a(bookReadRecord);
+                } else {
+                    BookDownloadService.this.g();
                 }
-                BookDownloadService.o(BookDownloadService.this);
             }
         }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, this.mBookId);
     }
@@ -354,10 +254,10 @@ public class BookDownloadService extends Service {
             new BaseAsyncTask<Void, Void, ChapterRoot>() {
                 @Override
                 protected ChapterRoot doInBackground(Void... params) {
-                    ChapterRoot chapterRoot = BookDownloadService.f(BookDownloadService.this).a(finalChapterLink, finalN);
+                    ChapterRoot chapterRoot = BookDownloadService.this.k.a(finalChapterLink, finalN);
                     BookDlRecord bookDlRecord = BookDlRecord.get(BookDownloadService.this.mBookId);
                     if (bookDlRecord != null) {
-                        bookDlRecord.setProgress(BookDownloadService.g(BookDownloadService.this));
+                        bookDlRecord.setProgress(BookDownloadService.this.f);
                         bookDlRecord.save();
                     }
                     return chapterRoot;
@@ -367,44 +267,44 @@ public class BookDownloadService extends Service {
                 protected void onPostExecute(ChapterRoot chapterRoot) {
                     Chapter chapter;
                     super.onPostExecute(chapterRoot);
-                    BookDownloadService.b(BookDownloadService.this).putExtra("SerDlCurrentCount", BookDownloadService.g(BookDownloadService.this));
-                    BookDownloadService.b(BookDownloadService.this).putExtra("SerDlChapterCount", BookDownloadService.h(BookDownloadService.this));
-                    BookDownloadService.b(BookDownloadService.this).putExtra("bookId", BookDownloadService.this.mBookId);
-                    BookDownloadService.i(BookDownloadService.this);
+                    BookDownloadService.this.i.putExtra("SerDlCurrentCount", BookDownloadService.this.f);
+                    BookDownloadService.this.i.putExtra("SerDlChapterCount", BookDownloadService.this.e);
+                    BookDownloadService.this.i.putExtra("bookId", BookDownloadService.this.mBookId);
+                    BookDownloadService.this.f++;
                     int n2 = CommonUtil.getNetType(BookDownloadService.this);
-                    if (BookDownloadService.j(BookDownloadService.this) == 1 && n2 > 1) {
+                    if (BookDownloadService.this.n == 1 && n2 > 1) {
                         BookDownloadService.k(BookDownloadService.this);
                         ToastUtil.showToast(BookDownloadService.this.getApplicationContext(), "流量下自动暂停缓存，连接 Wi-Fi 继续或手动开始缓存");
                     } else if (CommonUtil.isConnectedOrConnecting(BookDownloadService.this)) {
-                        BookDownloadService.e(BookDownloadService.this);
-                        BookDownloadService.b(BookDownloadService.this, false);
+                        BookDownloadService.this.c();
+                        BookDownloadService.this.o = false;
                     } else {
                         BookDownloadService.k(BookDownloadService.this);
                         ToastUtil.showToast(BookDownloadService.this.getApplicationContext(), "缓存暂停，连接网络后继续下载");
                     }
-                    BookDownloadService.b(BookDownloadService.this, n2);
+                    BookDownloadService.this.n = n2;
                     if (chapterRoot != null && chapterRoot.getChapter() != null && (chapter = chapterRoot.getChapter()).getBody() != null) {
                         String string = chapter.getLink();
-                        BookDownloadService.b(BookDownloadService.this).putExtra("SerDlLink", string);
+                        BookDownloadService.this.i.putExtra("SerDlLink", string);
                         BookDownloadService.l(BookDownloadService.this);
-                        if (BookDownloadService.m(BookDownloadService.this) == null) {
+                        if (BookDownloadService.this.mTocId == null) {
                             BookDownloadService.this.mTocId = BookInfoUtil.tocId;
                         }
-                        CommonUtil.saveChapter(BookDownloadService.this.mBookId, BookDownloadService.m(BookDownloadService.this), CommonUtil.encodeUrl(string), chapter);
+                        CommonUtil.saveChapter(BookDownloadService.this.mBookId, BookDownloadService.this.mTocId, CommonUtil.encodeUrl(string), chapter);
                     }
-                    BookDownloadService.c(BookDownloadService.this);
-                    if (BookDownloadService.n(BookDownloadService.this) == 0 || BookDownloadService.g(BookDownloadService.this) == BookDownloadService.h(BookDownloadService.this)) {
+                    BookDownloadService.this.h();
+                    if (BookDownloadService.this.l == 0 || BookDownloadService.this.f == BookDownloadService.this.e) {
                         BusProvider.getInstance().post(new DownloadProgressEvent());
-                        BookDownloadService.c(BookDownloadService.this, BookDownloadService.g(BookDownloadService.this));
+                        BookDownloadService.this.l = BookDownloadService.this.f;
                     } else {
                         int nx = 1;
-                        if (BookDownloadService.h(BookDownloadService.this) > 20) {
-                            nx = BookDownloadService.h(BookDownloadService.this) / 20;
+                        if (BookDownloadService.this.e > 20) {
+                            nx = BookDownloadService.this.e / 20;
                         }
-                        if (BookDownloadService.g(BookDownloadService.this) - BookDownloadService.n(BookDownloadService.this) < nx) return;
+                        if (BookDownloadService.this.f - BookDownloadService.this.l < nx) return;
                         {
                             BusProvider.getInstance().post(new DownloadProgressEvent());
-                            BookDownloadService.c(BookDownloadService.this, BookDownloadService.g(BookDownloadService.this));
+                            BookDownloadService.this.l = BookDownloadService.this.f;
                         }
                     }
                 }
@@ -464,7 +364,7 @@ public class BookDownloadService extends Service {
         intentFilter.addAction("android.net.wifi.PICK_WIFI_NETWORK");
         intentFilter.addAction("android.net.conn.CONNECTIVITY_CHANGE");
         intentFilter.setPriority(1000);
-        this.registerReceiver(new BookDownloadService.MyNetworkMonitor(this), intentFilter);
+        this.registerReceiver(new BookDownloadService.MyNetworkMonitor(), intentFilter);
         this.a();
     }
 
@@ -497,27 +397,21 @@ public class BookDownloadService extends Service {
         intentFilter.addAction("android.net.wifi.PICK_WIFI_NETWORK");
         intentFilter.addAction("android.net.conn.CONNECTIVITY_CHANGE");
         intentFilter.setPriority(1000);
-        this.registerReceiver(new BookDownloadService.MyNetworkMonitor(this), intentFilter);
+        this.registerReceiver(new BookDownloadService.MyNetworkMonitor(), intentFilter);
         return super.onStartCommand(intent, n, n2);
     }
 
     public class MyNetworkMonitor extends BroadcastReceiver {
-        private /* synthetic */ BookDownloadService a;
-
-        public MyNetworkMonitor(BookDownloadService bookDownloadService) {
-            this.a = bookDownloadService;
-        }
-
         @Override
         public void onReceive(Context context, Intent intent) {
-            if (BookDownloadService.a(this.a) && CommonUtil.getNetType(this.a) == 1) {
-                BookDownloadService.b(this.a).putExtra("SerDlStopFlag", 0);
-                BookDownloadService.c(this.a);
-                BookDownloadService.a(this.a, false);
-                BookDownloadService.a(this.a, 2);
-                BusProvider.getInstance().post(new DownloadStatusEvent(this.a.mBookId, 2));
-                BookDownloadService.e(this.a);
-                BookDownloadService.b(this.a, false);
+            if (BookDownloadService.this.o && CommonUtil.getNetType(BookDownloadService.this) == 1) {
+                BookDownloadService.this.i.putExtra("SerDlStopFlag", 0);
+                BookDownloadService.this.h();
+                BookDownloadService.this.j = false;
+                BookDownloadService.this.a(2);
+                BusProvider.getInstance().post(new DownloadStatusEvent(mBookId, 2));
+                BookDownloadService.this.c();
+                BookDownloadService.this.o = false;
             }
         }
     }

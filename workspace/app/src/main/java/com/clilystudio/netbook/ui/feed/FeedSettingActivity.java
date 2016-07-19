@@ -19,11 +19,7 @@ public class FeedSettingActivity extends BaseActivity {
     private TextView a;
     private int b;
 
-    static /* synthetic */ int a(FeedSettingActivity feedSettingActivity) {
-        return feedSettingActivity.b;
-    }
-
-    static /* synthetic */ void a(final FeedSettingActivity feedSettingActivity, int n) {
+    static void a(final FeedSettingActivity feedSettingActivity, int n) {
         final int n2 = CommonUtil.getFeedIndex(n);
         int[] arrn = new int[]{R.id.feed_chapter_10, R.id.feed_chapter_20, R.id.feed_chapter_50, R.id.feed_chapter_100, R.id.feed_chapter_200};
         View view = feedSettingActivity.getLayoutInflater().inflate(R.layout.feed_chapter_count_dialog, (ViewGroup)feedSettingActivity.getWindow().getDecorView(), false);
@@ -46,7 +42,7 @@ public class FeedSettingActivity extends BaseActivity {
         alertDialog.show();
     }
 
-    static /* synthetic */ void b(FeedSettingActivity feedSettingActivity, int n) {
+    static void b(FeedSettingActivity feedSettingActivity, int n) {
         feedSettingActivity.b = CommonUtil.getFeedCount(n);
         TextView textView = feedSettingActivity.a;
         String string = feedSettingActivity.getString(R.string.book_feed_setting_limit);
@@ -56,9 +52,6 @@ public class FeedSettingActivity extends BaseActivity {
         BusProvider.getInstance().post(new FeedSettingChangedEvent());
     }
 
-    /*
-     * Enabled aggressive block sorting
-     */
     @Override
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
@@ -73,7 +66,7 @@ public class FeedSettingActivity extends BaseActivity {
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FeedSettingActivity.a(FeedSettingActivity.this, FeedSettingActivity.a(FeedSettingActivity.this));
+                FeedSettingActivity.a(FeedSettingActivity.this, FeedSettingActivity.this.b);
             }
         });
     }

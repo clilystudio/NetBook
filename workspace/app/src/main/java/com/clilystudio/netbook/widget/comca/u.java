@@ -16,7 +16,7 @@ final class u extends s {
     }
 
     @Override
-    public final /* synthetic */ s a() {
+    public final s a() {
         return this.d();
     }
 
@@ -37,7 +37,7 @@ final class u extends s {
     }
 
     @Override
-    public final /* synthetic */ Object clone() {
+    public final Object clone() {
         return this.d();
     }
 }

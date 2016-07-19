@@ -51,7 +51,7 @@ public class UGCMainListFragment extends Fragment implements AdapterView.OnItemC
             @Override
             public void onLastItemVisible() {
                 if (UGCMainListFragment.this.g == null || UGCMainListFragment.this.g.getStatus() == AsyncTask.Status.FINISHED) {
-                    UGCMainListFragment.d(UGCMainListFragment.this).setVisibility(View.VISIBLE);
+                    UGCMainListFragment.this.c.setVisibility(View.VISIBLE);
                     if (UGCMainListFragment.this.h != null && UGCMainListFragment.this.h.getStatus() != AsyncTask.Status.FINISHED && !UGCMainListFragment.this.h.isCancelled()) {
                         UGCMainListFragment.this.h.cancel(true);
                     }
@@ -61,7 +61,7 @@ public class UGCMainListFragment extends Fragment implements AdapterView.OnItemC
                         protected UGCBookListRoot doInBackground(String... params) {
                             if (!this.isCancelled()) {
                                 ApiServiceProvider.getInstance();
-                                return ApiServiceProvider.getApiService().a(UGCMainListFragment.this.getArguments().getString("duration"), UGCMainListFragment.this.getArguments().getString("sort"), UGCMainListFragment.h(UGCMainListFragment.this).getCount(), 20, UGCMainListFragment.this.b());
+                                return ApiServiceProvider.getApiService().a(UGCMainListFragment.this.getArguments().getString("duration"), UGCMainListFragment.this.getArguments().getString("sort"), UGCMainListFragment.this.d.getCount(), 20, UGCMainListFragment.this.b());
                             }
                             return null;
                         }
@@ -69,10 +69,10 @@ public class UGCMainListFragment extends Fragment implements AdapterView.OnItemC
                         @Override
                         protected void onPostExecute(UGCBookListRoot uGCBookListRoot) {
                             super.onPostExecute(uGCBookListRoot);
-                            UGCMainListFragment.a(UGCMainListFragment.this).setVisibility(View.GONE);
-                            UGCMainListFragment.c(UGCMainListFragment.this).setVisibility(View.GONE);
-                            UGCMainListFragment.d(UGCMainListFragment.this).setVisibility(View.GONE);
-                            UGCMainListFragment.e(UGCMainListFragment.this).onRefreshComplete();
+                            UGCMainListFragment.this.f.setVisibility(View.GONE);
+                            UGCMainListFragment.this.e.setVisibility(View.GONE);
+                            UGCMainListFragment.this.c.setVisibility(View.GONE);
+                            UGCMainListFragment.this.a.onRefreshComplete();
                             if (this.isCancelled()) return;
                             if (uGCBookListRoot != null) {
                                 if (uGCBookListRoot.isOk()) {
@@ -80,25 +80,25 @@ public class UGCMainListFragment extends Fragment implements AdapterView.OnItemC
                                     int n = bookLists.length;
                                     List<UGCBookListRoot.UGCBook> list = Arrays.asList(bookLists);
                                     UGCMainListFragment.this.i.addAll(list);
-                                    UGCMainListFragment.h(UGCMainListFragment.this).a(UGCMainListFragment.g(UGCMainListFragment.this));
+                                    UGCMainListFragment.this.d.a(UGCMainListFragment.this.i);
                                     if (n > 0) {
                                         if (n >= 20) {
                                             if (n != 20) return;
-                                            UGCMainListFragment.e(UGCMainListFragment.this).setOnLastItemVisibleListener(UGCMainListFragment.this.k);
+                                            UGCMainListFragment.this.a.setOnLastItemVisibleListener(UGCMainListFragment.this.k);
                                             return;
                                         }
-                                    } else if (UGCMainListFragment.h(UGCMainListFragment.this).getCount() == 0) {
-                                        UGCMainListFragment.a(UGCMainListFragment.this).setVisibility(View.VISIBLE);
-                                        UGCMainListFragment.a(UGCMainListFragment.this).setText("这里还没有帖子，去发布一个吧");
+                                    } else if (UGCMainListFragment.this.d.getCount() == 0) {
+                                        UGCMainListFragment.this.f.setVisibility(View.VISIBLE);
+                                        UGCMainListFragment.this.f.setText("这里还没有帖子，去发布一个吧");
                                     }
-                                    UGCMainListFragment.e(UGCMainListFragment.this).setOnLastItemVisibleListener(null);
+                                    UGCMainListFragment.this.a.setOnLastItemVisibleListener(null);
                                     return;
                                 }
-                                UGCMainListFragment.e(UGCMainListFragment.this).setOnLastItemVisibleListener(UGCMainListFragment.this.k);
+                                UGCMainListFragment.this.a.setOnLastItemVisibleListener(UGCMainListFragment.this.k);
                                 ToastUtil.showShortToast(UGCMainListFragment.this.getActivity(), "加载失败，上拉可重新加载");
                                 return;
                             }
-                            UGCMainListFragment.e(UGCMainListFragment.this).setOnLastItemVisibleListener(UGCMainListFragment.this.k);
+                            UGCMainListFragment.this.a.setOnLastItemVisibleListener(UGCMainListFragment.this.k);
                             ToastUtil.showShortToast(UGCMainListFragment.this.getActivity(), "加载失败，请检查网络或稍后再试");
                         }
                     };
@@ -108,10 +108,6 @@ public class UGCMainListFragment extends Fragment implements AdapterView.OnItemC
         };
     }
 
-    static /* synthetic */ TextView a(UGCMainListFragment uGCMainListFragment) {
-        return uGCMainListFragment.f;
-    }
-
     public static UGCMainListFragment a(String string, String string2) {
         UGCMainListFragment uGCMainListFragment = new UGCMainListFragment();
         Bundle bundle = new Bundle();
@@ -119,26 +115,6 @@ public class UGCMainListFragment extends Fragment implements AdapterView.OnItemC
         bundle.putString("duration", string2);
         uGCMainListFragment.setArguments(bundle);
         return uGCMainListFragment;
-    }
-
-    static /* synthetic */ View c(UGCMainListFragment uGCMainListFragment) {
-        return uGCMainListFragment.e;
-    }
-
-    static /* synthetic */ View d(UGCMainListFragment uGCMainListFragment) {
-        return uGCMainListFragment.c;
-    }
-
-    static /* synthetic */ PullToRefreshListView e(UGCMainListFragment uGCMainListFragment) {
-        return uGCMainListFragment.a;
-    }
-
-    static /* synthetic */ List g(UGCMainListFragment uGCMainListFragment) {
-        return uGCMainListFragment.i;
-    }
-
-    static /* synthetic */ BaseDownloadAdapter<UGCBookListRoot.UGCBook> h(UGCMainListFragment uGCMainListFragment) {
-        return uGCMainListFragment.d;
     }
 
     public final void a() {
@@ -162,24 +138,24 @@ public class UGCMainListFragment extends Fragment implements AdapterView.OnItemC
             @Override
             protected void onPostExecute(UGCBookListRoot uGCBookListRoot) {
                 super.onPostExecute(uGCBookListRoot);
-                UGCMainListFragment.a(UGCMainListFragment.this).setVisibility(View.GONE);
-                UGCMainListFragment.c(UGCMainListFragment.this).setVisibility(View.GONE);
-                UGCMainListFragment.d(UGCMainListFragment.this).setVisibility(View.GONE);
-                UGCMainListFragment.e(UGCMainListFragment.this).onRefreshComplete();
-                UGCMainListFragment.e(UGCMainListFragment.this).setOnLastItemVisibleListener(UGCMainListFragment.this.k);
+                UGCMainListFragment.this.f.setVisibility(View.GONE);
+                UGCMainListFragment.this.e.setVisibility(View.GONE);
+                UGCMainListFragment.this.c.setVisibility(View.GONE);
+                UGCMainListFragment.this.a.onRefreshComplete();
+                UGCMainListFragment.this.a.setOnLastItemVisibleListener(UGCMainListFragment.this.k);
                 if (uGCBookListRoot != null) {
                     if (uGCBookListRoot.isOk()) {
-                        UGCMainListFragment.g(UGCMainListFragment.this).clear();
+                        UGCMainListFragment.this.i.clear();
                         UGCBookListRoot.UGCBook[] arruGCBookListRoot$UGCBook = uGCBookListRoot.getBookLists();
                         int n = arruGCBookListRoot$UGCBook.length;
                         List<UGCBookListRoot.UGCBook> list = Arrays.asList(arruGCBookListRoot$UGCBook);
                         UGCMainListFragment.this.i.addAll(list);
-                        UGCMainListFragment.h(UGCMainListFragment.this).a(UGCMainListFragment.g(UGCMainListFragment.this));
+                        UGCMainListFragment.this.d.a(UGCMainListFragment.this.i);
                         if (n < 20) {
-                            UGCMainListFragment.e(UGCMainListFragment.this).setOnLastItemVisibleListener(null);
+                            UGCMainListFragment.this.a.setOnLastItemVisibleListener(null);
                             if (n == 0) {
-                                UGCMainListFragment.a(UGCMainListFragment.this).setVisibility(View.VISIBLE);
-                                UGCMainListFragment.a(UGCMainListFragment.this).setText("这里还没有书单，去发布一个吧");
+                                UGCMainListFragment.this.f.setVisibility(View.VISIBLE);
+                                UGCMainListFragment.this.f.setText("这里还没有书单，去发布一个吧");
                             }
                         }
                         return;
@@ -234,7 +210,7 @@ public class UGCMainListFragment extends Fragment implements AdapterView.OnItemC
         this.a.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener<ListView>() {
             @Override
             public void onRefresh(PullToRefreshBase<ListView> refreshView) {
-                UGCMainListFragment.a(UGCMainListFragment.this).setVisibility(View.GONE);
+                UGCMainListFragment.this.f.setVisibility(View.GONE);
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
@@ -252,24 +228,24 @@ public class UGCMainListFragment extends Fragment implements AdapterView.OnItemC
                             @Override
                             protected void onPostExecute(UGCBookListRoot uGCBookListRoot) {
                                 super.onPostExecute(uGCBookListRoot);
-                                UGCMainListFragment.a(UGCMainListFragment.this).setVisibility(View.GONE);
-                                UGCMainListFragment.c(UGCMainListFragment.this).setVisibility(View.GONE);
-                                UGCMainListFragment.d(UGCMainListFragment.this).setVisibility(View.GONE);
-                                UGCMainListFragment.e(UGCMainListFragment.this).onRefreshComplete();
-                                UGCMainListFragment.e(UGCMainListFragment.this).setOnLastItemVisibleListener(UGCMainListFragment.this.k);
+                                UGCMainListFragment.this.f.setVisibility(View.GONE);
+                                UGCMainListFragment.this.e.setVisibility(View.GONE);
+                                UGCMainListFragment.this.c.setVisibility(View.GONE);
+                                UGCMainListFragment.this.a.onRefreshComplete();
+                                UGCMainListFragment.this.a.setOnLastItemVisibleListener(UGCMainListFragment.this.k);
                                 if (uGCBookListRoot != null) {
                                     if (uGCBookListRoot.isOk()) {
-                                        UGCMainListFragment.g(UGCMainListFragment.this).clear();
+                                        UGCMainListFragment.this.i.clear();
                                         UGCBookListRoot.UGCBook[] arruGCBookListRoot$UGCBook = uGCBookListRoot.getBookLists();
                                         int n = arruGCBookListRoot$UGCBook.length;
                                         List<UGCBookListRoot.UGCBook> list = Arrays.asList(arruGCBookListRoot$UGCBook);
                                         UGCMainListFragment.this.i.addAll(list);
-                                        UGCMainListFragment.h(UGCMainListFragment.this).a(UGCMainListFragment.g(UGCMainListFragment.this));
+                                        UGCMainListFragment.this.d.a(UGCMainListFragment.this.i);
                                         if (n < 20) {
-                                            UGCMainListFragment.e(UGCMainListFragment.this).setOnLastItemVisibleListener(null);
+                                            UGCMainListFragment.this.a.setOnLastItemVisibleListener(null);
                                             if (n == 0) {
-                                                UGCMainListFragment.a(UGCMainListFragment.this).setVisibility(View.VISIBLE);
-                                                UGCMainListFragment.a(UGCMainListFragment.this).setText("这里还没有书单，去发布一个吧");
+                                                UGCMainListFragment.this.f.setVisibility(View.VISIBLE);
+                                                UGCMainListFragment.this.f.setText("这里还没有书单，去发布一个吧");
                                             }
                                         }
                                         return;

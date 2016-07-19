@@ -23,10 +23,6 @@ public class UserTaskActivity extends BaseActivity {
     TextView mExpVote;
     View mVoteView;
 
-    static /* synthetic */ void a(UserTaskActivity userTaskActivity, boolean bl) {
-        userTaskActivity.a(bl);
-    }
-
     private void a(boolean bl) {
         if (bl) {
             this.mExpVote.setTextColor(this.getResources().getColor(R.color.primary_green));
@@ -48,7 +44,7 @@ public class UserTaskActivity extends BaseActivity {
                 protected void onPostExecute(ResultStatus resultStatus) {
                     super.onPostExecute(resultStatus);
                     if (resultStatus != null && !resultStatus.isOk()) {
-                        UserTaskActivity.a(UserTaskActivity.this, true);
+                        UserTaskActivity.this.a(true);
                         ToastUtil.showShortToast(UserTaskActivity.this, "你已经完成这个任务");
                     }
                 }

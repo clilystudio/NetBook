@@ -38,7 +38,7 @@ public final class BookSourceManager {
         BusProvider.getInstance().register(this);
     }
 
-    static /* synthetic */ void a(BookSourceManager m2, List list) {
+    static void a(BookSourceManager m2, List list) {
         TocSummary tocSummary;
         Iterator iterator = list.iterator();
         do {
@@ -60,7 +60,7 @@ public final class BookSourceManager {
         }
     }
 
-    static /* synthetic */ void b(BookSourceManager m2, List<TocSummary> list) {
+    static void b(BookSourceManager m2, List<TocSummary> list) {
         for (TocSummary tocSummary : list) {
             if (!"zhuishuvip".equals(tocSummary.getSource())) continue;
             MyApplication.getInstance().setReadMode(9);

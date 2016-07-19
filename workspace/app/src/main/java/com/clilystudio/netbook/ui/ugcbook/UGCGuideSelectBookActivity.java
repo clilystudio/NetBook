@@ -27,11 +27,11 @@ import java.util.List;
 
 public class UGCGuideSelectBookActivity extends BaseActivity {
     private Button f;
-    private X g;
+    private UgcShelfAdapter g;
     private List<BookReadRecord> i;
     private boolean[] j;
 
-    static /* synthetic */ void a(UGCGuideSelectBookActivity uGCGuideSelectBookActivity, int n) {
+    static void a(UGCGuideSelectBookActivity uGCGuideSelectBookActivity, int n) {
         if (uGCGuideSelectBookActivity.j[n]) {
             BookReadRecord item = uGCGuideSelectBookActivity.g.getItem(n);
             if (!uGCGuideSelectBookActivity.i.contains(item)) {
@@ -63,22 +63,6 @@ public class UGCGuideSelectBookActivity extends BaseActivity {
         uGCGuideSelectBookActivity.f.setText("选好了");
     }
 
-    static /* synthetic */ boolean[] a(UGCGuideSelectBookActivity uGCGuideSelectBookActivity, boolean[] arrbl) {
-        uGCGuideSelectBookActivity.j = arrbl;
-        return arrbl;
-    }
-
-    static /* synthetic */ List b(UGCGuideSelectBookActivity uGCGuideSelectBookActivity) {
-        return uGCGuideSelectBookActivity.i;
-    }
-
-    static /* synthetic */ boolean[] c(UGCGuideSelectBookActivity uGCGuideSelectBookActivity) {
-        return uGCGuideSelectBookActivity.j;
-    }
-
-    /*
-     * Enabled aggressive block sorting
-     */
     public final void a(int n) {
         boolean[] arrbl = this.j;
         boolean bl = !this.j[n];
@@ -90,7 +74,7 @@ public class UGCGuideSelectBookActivity extends BaseActivity {
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
         this.setContentView(R.layout.activity_ugc_shelf);
-        this.b("\u4e66\u67b6\u6dfb\u52a0");
+        this.b("书架添加");
         List<BookReadRecord> h = BookReadRecord.getAllNotDeleted();
         ListView a = (ListView) this.findViewById(R.id.ugc_add_shelf_list);
         Button e = (Button) this.findViewById(R.id.select_cancel);
@@ -120,7 +104,7 @@ public class UGCGuideSelectBookActivity extends BaseActivity {
             }
         }
         LayoutInflater layoutInflater = LayoutInflater.from(this);
-        this.g = new X(this, layoutInflater, h);
+        this.g = new UgcShelfAdapter(layoutInflater, h);
         a.setAdapter(this.g);
         a.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -158,15 +142,12 @@ public class UGCGuideSelectBookActivity extends BaseActivity {
         });
     }
 
-    public final class X extends BaseAdapter {
-        final /* synthetic */ UGCGuideSelectBookActivity a;
+    public final class UgcShelfAdapter extends BaseAdapter {
         private LayoutInflater b;
         private List<BookReadRecord> c;
-        private boolean d;
+        private boolean d = false;
 
-        public X(UGCGuideSelectBookActivity uGCGuideSelectBookActivity, LayoutInflater layoutInflater, List<BookReadRecord> list) {
-            this.a = uGCGuideSelectBookActivity;
-            this.d = false;
+        public UgcShelfAdapter(LayoutInflater layoutInflater, List<BookReadRecord> list) {
             this.b = layoutInflater;
             this.c = list;
         }
@@ -191,46 +172,46 @@ public class UGCGuideSelectBookActivity extends BaseActivity {
          */
         @Override
         public final View getView(final int position, View view, ViewGroup viewGroup) {
-            Z z;
+            ViewHolder viewHolder;
             if (view == null) {
-                z = new Z();
+                viewHolder = new ViewHolder();
                 view = this.b.inflate(R.layout.list_item_ugc_shelf, (ViewGroup) getWindow().getDecorView(), false);
-                z.a = (TextView) view.findViewById(R.id.title);
-                z.b = (TextView) view.findViewById(R.id.desc);
-                z.c = (CoverView) view.findViewById(R.id.cover);
-                z.d = (CheckBox) view.findViewById(R.id.checked);
-                view.setTag(z);
+                viewHolder.a = (TextView) view.findViewById(R.id.title);
+                viewHolder.b = (TextView) view.findViewById(R.id.desc);
+                viewHolder.c = (CoverView) view.findViewById(R.id.cover);
+                viewHolder.d = (CheckBox) view.findViewById(R.id.checked);
+                view.setTag(viewHolder);
             } else {
-                z = (Z) view.getTag();
+                viewHolder = (ViewHolder) view.getTag();
             }
             BookReadRecord bookReadRecord = this.c.get(position);
-            z.a.setText(bookReadRecord.getTitle());
-            z.c.setImageUrl(bookReadRecord.getFullCover(), R.drawable.cover_default);
-            z.b.setText(bookReadRecord.buildDesc());
-            CheckBox checkBox = z.d;
+            viewHolder.a.setText(bookReadRecord.getTitle());
+            viewHolder.c.setImageUrl(bookReadRecord.getFullCover(), R.drawable.cover_default);
+            viewHolder.b.setText(bookReadRecord.buildDesc());
+            CheckBox checkBox = viewHolder.d;
             this.d = true;
-            if (UGCGuideSelectBookActivity.c(this.a).length <= position) {
+            if (UGCGuideSelectBookActivity.this.j.length <= position) {
                 boolean[] arrbl = new boolean[position + 1];
-                System.arraycopy(UGCGuideSelectBookActivity.c(this.a), 0, arrbl, 0, UGCGuideSelectBookActivity.c(this.a).length);
-                UGCGuideSelectBookActivity.a(this.a, arrbl);
+                System.arraycopy(UGCGuideSelectBookActivity.this.j, 0, arrbl, 0, UGCGuideSelectBookActivity.this.j.length);
+                UGCGuideSelectBookActivity.this.j =  arrbl;
             }
-            checkBox.setChecked(UGCGuideSelectBookActivity.c(this.a)[position]);
-            UGCGuideSelectBookActivity.a(this.a, position);
+            checkBox.setChecked(UGCGuideSelectBookActivity.this.j[position]);
+            UGCGuideSelectBookActivity.a(UGCGuideSelectBookActivity.this, position);
             this.d = false;
             checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                 @Override
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                    if (X.this.d) {
+                    if (UgcShelfAdapter.this.d) {
                         return;
                     }
-                    UGCGuideSelectBookActivity.c(X.this.a)[position] = isChecked;
-                    UGCGuideSelectBookActivity.a(X.this.a, position);
+                    UGCGuideSelectBookActivity.this.j[position] = isChecked;
+                    UGCGuideSelectBookActivity.a(UGCGuideSelectBookActivity.this, position);
                 }
             });
             return view;
         }
 
-        public final class Z {
+        public final class ViewHolder {
             TextView a;
             TextView b;
             CoverView c;

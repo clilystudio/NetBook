@@ -22,8 +22,8 @@ import android.widget.TabWidget;
 import android.widget.TextView;
 
 import com.clilystudio.netbook.CachePathConst;
-import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.IntentBuilder;
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.model.CategoryLevelRoot;
 import com.clilystudio.netbook.ui.home.BasePagerAdapter;
 import com.clilystudio.netbook.util.CommonUtil;
@@ -38,7 +38,7 @@ public class BookCategoryListActivity extends BaseTabActivity implements ViewPag
     private String c;
     private String e;
     private PopupWindow f;
-    private aw g;
+    private BookCategoryAdapter g;
     private boolean h;
     private String[] i;
     private List<BookCategoryFragment> j = new ArrayList<>();
@@ -49,7 +49,7 @@ public class BookCategoryListActivity extends BaseTabActivity implements ViewPag
         return new IntentBuilder().put(context, BookCategoryListActivity.class).putSerializable("CATEGORY_GENDER", bl).put("CATEGORY_KEY", string).build();
     }
 
-    static /* synthetic */ void a(BookCategoryListActivity bookCategoryListActivity) {
+    static void a(BookCategoryListActivity bookCategoryListActivity) {
         if (bookCategoryListActivity.f != null && bookCategoryListActivity.f.isShowing()) {
             bookCategoryListActivity.i();
             return;
@@ -65,10 +65,7 @@ public class BookCategoryListActivity extends BaseTabActivity implements ViewPag
         bookCategoryListActivity.e("收起");
     }
 
-    /*
-     * Enabled aggressive block sorting
-     */
-    static /* synthetic */ void a(BookCategoryListActivity bookCategoryListActivity, String string) {
+    static void a(BookCategoryListActivity bookCategoryListActivity, String string) {
         if (!bookCategoryListActivity.e.equals(string)) {
             bookCategoryListActivity.e = string;
             bookCategoryListActivity.d(string);
@@ -79,39 +76,12 @@ public class BookCategoryListActivity extends BaseTabActivity implements ViewPag
         bookCategoryListActivity.i();
     }
 
-    static /* synthetic */ List b(BookCategoryListActivity bookCategoryListActivity) {
-        return bookCategoryListActivity.j;
-    }
-
-    static /* synthetic */ ViewPager c(BookCategoryListActivity bookCategoryListActivity) {
-        return bookCategoryListActivity.k;
-    }
-
-    static /* synthetic */ String[] d(BookCategoryListActivity bookCategoryListActivity) {
-        return bookCategoryListActivity.i;
-    }
-
-    static /* synthetic */ void e(BookCategoryListActivity bookCategoryListActivity) {
-        bookCategoryListActivity.i();
-    }
-
-    static /* synthetic */ String f(BookCategoryListActivity bookCategoryListActivity) {
-        return bookCategoryListActivity.e;
-    }
-
-    /*
-     * Enabled aggressive block sorting
-     */
     private String[] a(CategoryLevelRoot categoryLevelRoot) {
-        CategoryLevelRoot.CategoryLevel[] arrcategoryLevelRoot$CategoryLevel = this.b ? categoryLevelRoot.getMale() : categoryLevelRoot.getFemale();
-        int n = arrcategoryLevelRoot$CategoryLevel.length;
-        int n2 = 0;
-        while (n2 < n) {
-            CategoryLevelRoot.CategoryLevel categoryLevelRoot$CategoryLevel = arrcategoryLevelRoot$CategoryLevel[n2];
-            if (categoryLevelRoot$CategoryLevel.getMajor().equals(this.c)) {
-                return categoryLevelRoot$CategoryLevel.getMins();
+        CategoryLevelRoot.CategoryLevel[] categoryLevels = this.b ? categoryLevelRoot.getMale() : categoryLevelRoot.getFemale();
+        for (CategoryLevelRoot.CategoryLevel categoryLevel : categoryLevels) {
+            if (categoryLevel.getMajor().equals(this.c)) {
+                return categoryLevel.getMins();
             }
-            ++n2;
         }
         return new String[0];
     }
@@ -137,7 +107,7 @@ public class BookCategoryListActivity extends BaseTabActivity implements ViewPag
         if (this.f != null && this.f.isShowing()) {
             this.f.dismiss();
         }
-        this.e("\u7b5b\u9009");
+        this.e("筛选");
     }
 
     public final BookCategoryFragment a(String string) {
@@ -208,11 +178,11 @@ public class BookCategoryListActivity extends BaseTabActivity implements ViewPag
         view.findViewById(R.id.back_view).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                BookCategoryListActivity.e(BookCategoryListActivity.this);
+                BookCategoryListActivity.this.i();
             }
         });
         ListView listView = (ListView) view.findViewById(R.id.min_category_list);
-        this.g = new aw(this, this, arrstring3);
+        this.g = new BookCategoryAdapter(this, arrstring3);
         listView.setAdapter(this.g);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -324,13 +294,11 @@ public class BookCategoryListActivity extends BaseTabActivity implements ViewPag
         }
     }
 
-    public final class aw extends BaseAdapter {
+    public final class BookCategoryAdapter extends BaseAdapter {
         private LayoutInflater a;
         private String[] b;
-        private /* synthetic */ BookCategoryListActivity c;
 
-        public aw(BookCategoryListActivity bookCategoryListActivity, Context context, String[] arrstring) {
-            this.c = bookCategoryListActivity;
+        public BookCategoryAdapter(Context context, String[] arrstring) {
             this.a = LayoutInflater.from(context);
             this.b = arrstring;
         }
@@ -359,7 +327,7 @@ public class BookCategoryListActivity extends BaseTabActivity implements ViewPag
             View view2;
             if (view == null) {
                 ax ax3 = new ax();
-                view2 = n == 0 ? this.a.inflate(R.layout.category_major_list_item, (ViewGroup)getWindow().getDecorView(), false) : this.a.inflate(R.layout.category_level_list_item, (ViewGroup)getWindow().getDecorView(), false);
+                view2 = n == 0 ? this.a.inflate(R.layout.category_major_list_item, (ViewGroup) getWindow().getDecorView(), false) : this.a.inflate(R.layout.category_level_list_item, (ViewGroup) getWindow().getDecorView(), false);
                 ax3.a = (TextView) view2.findViewById(R.id.category_name);
                 ax3.b = (ImageView) view2.findViewById(R.id.category_selected);
                 view2.setTag(ax3);
@@ -369,12 +337,12 @@ public class BookCategoryListActivity extends BaseTabActivity implements ViewPag
                 view2 = view;
             }
             ax2.a.setText(this.b[n]);
-            if (BookCategoryListActivity.f(this.c).equals(this.b[n])) {
-                ax2.a.setTextColor(this.c.getResources().getColor(R.color.primary_red));
+            if (BookCategoryListActivity.this.e.equals(this.b[n])) {
+                ax2.a.setTextColor(BookCategoryListActivity.this.getResources().getColor(R.color.primary_red));
                 ax2.b.setVisibility(View.VISIBLE);
                 return view2;
             }
-            ax2.a.setTextColor(CommonUtil.getAttrColor(this.c, android.R.attr.textColor));
+            ax2.a.setTextColor(CommonUtil.getAttrColor(BookCategoryListActivity.this, android.R.attr.textColor));
             ax2.b.setVisibility(View.GONE);
             return view2;
         }

@@ -2,7 +2,6 @@ package com.clilystudio.netbook.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.View;
 import android.widget.ListView;
 
@@ -22,43 +21,22 @@ public class BookRankListActivity extends BaseActivity {
     private View b;
     private BookRankAdapter c;
     private ListView e;
-    private Handler f;
-
-    static /* synthetic */ void a(BookRankListActivity bookRankListActivity) {
-        bookRankListActivity.b();
-    }
-
-    static /* synthetic */ void a(BookRankListActivity bookRankListActivity, int n) {
-        bookRankListActivity.a(n);
-    }
-
-    static /* synthetic */ ListView b(BookRankListActivity bookRankListActivity) {
-        return bookRankListActivity.e;
-    }
-
-    static /* synthetic */ BookRankAdapter c(BookRankListActivity bookRankListActivity) {
-        return bookRankListActivity.c;
-    }
 
     private void a(int n) {
         switch (n) {
-            default: {
-                return;
-            }
-            case 1: {
-                this.a.setVisibility(View.GONE);
-                this.b.setVisibility(View.GONE);
-                return;
-            }
-            case 0: {
+            case 0:
                 this.a.setVisibility(View.VISIBLE);
                 this.b.setVisibility(View.GONE);
-                return;
-            }
+                break;
+            case 1:
+                this.a.setVisibility(View.GONE);
+                this.b.setVisibility(View.GONE);
+                break;
             case 2:
+                this.a.setVisibility(View.GONE);
+                this.b.setVisibility(View.VISIBLE);
+                break;
         }
-        this.a.setVisibility(View.GONE);
-        this.b.setVisibility(View.VISIBLE);
     }
 
     private void b() {
@@ -74,12 +52,12 @@ public class BookRankListActivity extends BaseActivity {
             protected void onPostExecute(BookRankRoot bookRankRoot) {
                 super.onPostExecute(bookRankRoot);
                 if (bookRankRoot != null && bookRankRoot.isOk()) {
-                    BookRankListActivity.a(BookRankListActivity.this, 1);
-                    BookRankListActivity.c(BookRankListActivity.this).a(bookRankRoot);
-                    return;
+                    BookRankListActivity.this.a(1);
+                    BookRankListActivity.this.c.a(bookRankRoot);
+                } else {
+                    BookRankListActivity.this.a(2);
+                    ToastUtil.showToast(BookRankListActivity.this, R.string.load_failed_tips);
                 }
-                BookRankListActivity.a(BookRankListActivity.this, 2);
-                ToastUtil.showToast(BookRankListActivity.this, R.string.load_failed_tips);
             }
         }.b();
     }
@@ -96,14 +74,13 @@ public class BookRankListActivity extends BaseActivity {
         super.onCreate(bundle);
         this.setContentView(R.layout.activity_book_rank_list);
         this.b(R.string.rank_list);
-        this.f = new Handler();
         this.e = (ListView) this.findViewById(R.id.common_list_content);
         this.a = this.findViewById(R.id.common_list_pb);
         this.b = this.findViewById(R.id.common_list_error);
         this.b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                BookRankListActivity.a(BookRankListActivity.this);
+                BookRankListActivity.this.b();
             }
         });
         this.c = new BookRankAdapter(this.getLayoutInflater());

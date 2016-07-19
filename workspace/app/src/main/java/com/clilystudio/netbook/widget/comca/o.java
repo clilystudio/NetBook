@@ -26,7 +26,7 @@ public abstract class o implements Cloneable {
 
     public abstract o c();
 
-    public /* synthetic */ Object clone() {
+    public Object clone() {
         return this.c();
     }
 }

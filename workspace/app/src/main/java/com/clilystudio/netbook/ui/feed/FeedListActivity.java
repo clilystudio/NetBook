@@ -31,10 +31,6 @@ public class FeedListActivity extends BaseActivity {
     private BaseDownloadAdapter<BookReadRecord> a;
     private int b;
 
-    static /* synthetic */ int a(FeedListActivity feedListActivity) {
-        return feedListActivity.b;
-    }
-
     private void a(int n) {
         final int n2 = CommonUtil.getFeedIndex(n);
         int[] arrn = new int[]{R.id.feed_chapter_10, R.id.feed_chapter_20, R.id.feed_chapter_50, R.id.feed_chapter_100, R.id.feed_chapter_200};
@@ -99,8 +95,8 @@ public class FeedListActivity extends BaseActivity {
                 final TextView textView = this.getTagView(3);
                 if (bookReadRecord.isFeeding()) {
                     textView.setEnabled(true);
-                    textView.setText("\u79fb\u56de");
-                    if (n3 >= FeedListActivity.a(FeedListActivity.this)) {
+                    textView.setText("移回");
+                    if (n3 >= FeedListActivity.this.b) {
                         textView.setBackgroundResource(R.drawable.feed_list_remove_red);
                         textView.setTextColor(FeedListActivity.this.getResources().getColor(android.R.color.white));
                     } else {

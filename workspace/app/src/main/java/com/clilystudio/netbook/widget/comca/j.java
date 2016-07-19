@@ -40,7 +40,7 @@ final class j implements Cloneable {
         j2.e.add(this);
     }
 
-    public final /* synthetic */ Object clone() {
+    public final Object clone() {
         return this.a();
     }
 }
