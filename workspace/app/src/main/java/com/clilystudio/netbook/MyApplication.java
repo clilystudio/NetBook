@@ -206,7 +206,7 @@ public class MyApplication extends Application {
         mApp = this;
         ActiveAndroid.initialize(this);
         DnsManager.setUseDns(true);
-        ApiService.a(DEFUALT_API_URL);
+        ApiService.setDomain(DEFUALT_API_URL);
         new Thread() {
             @Override
             public void run() {
