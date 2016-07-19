@@ -164,27 +164,15 @@ public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollL
         };
     }
 
-    static long a(BookShelf bookShelf, int n2) {
+    static long getLastAccessTime(BookShelf bookShelf, int n2) {
         if (bookShelf.getType() == 3) {
             return bookShelf.getBookFeed().getLastActionTime();
         }
         if (n2 == 0) {
             return bookShelf.getLastUpdate();
+        } else {
+            return bookShelf.getLastRead();
         }
-        return bookShelf.getLastRead();
-    }
-
-    static void a(final HomeShelfFragment homeShelfFragment, final List<BookShelf> list) {
-        View view = homeShelfFragment.getActivity().getLayoutInflater().inflate(R.layout.remove_shelf_confirm, (ViewGroup) homeShelfFragment.getActivity().getWindow().getDecorView(), false);
-        final CheckBox checkBox = (CheckBox) view.findViewById(R.id.remove_shelf_cache);
-        new BaseDialog.Builder(homeShelfFragment.getActivity()).setView(view).setPositiveButton("确定", new DialogInterface.OnClickListener() {
-
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                HomeShelfFragment.a(homeShelfFragment, list, checkBox.isChecked());
-                homeShelfFragment.e();
-            }
-        }).setNegativeButton("取消", null).create().show();
     }
 
     static void a(HomeShelfFragment homeShelfFragment, List<BookUpdate> bookUpdates, List<BookReadRecord> bookReadRecords) {
@@ -725,10 +713,10 @@ public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollL
                 if (rhs.isTop()) {
                     if (!lhs.isTop()) return 1;
                 }
-                if (HomeShelfFragment.a(lhs, v7) == HomeShelfFragment.a(rhs, v7)) {
+                if (HomeShelfFragment.getLastAccessTime(lhs, v7) == HomeShelfFragment.getLastAccessTime(rhs, v7)) {
                     return 0;
                 }
-                if (HomeShelfFragment.a(lhs, v7) > HomeShelfFragment.a(rhs, v7)) return -1;
+                if (HomeShelfFragment.getLastAccessTime(lhs, v7) > HomeShelfFragment.getLastAccessTime(rhs, v7)) return -1;
                 return 1;
             }
         });
@@ -844,12 +832,21 @@ public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollL
             @Override
             public void onClick(View v) {
                 if (HomeShelfFragment.this.j == null) return;
-                List<BookShelf> list = HomeShelfFragment.this.j.e();
+                final List<BookShelf> list = HomeShelfFragment.this.j.e();
                 if (list == null || list.size() == 0) {
                     ToastUtil.showToast(HomeShelfFragment.this.getActivity(), "你没有选择要删除的书哦");
                     return;
                 }
-                HomeShelfFragment.a(HomeShelfFragment.this, list);
+                View view = HomeShelfFragment.this.getActivity().getLayoutInflater().inflate(R.layout.remove_shelf_confirm, (ViewGroup) HomeShelfFragment.this.getActivity().getWindow().getDecorView(), false);
+                final CheckBox checkBox = (CheckBox) view.findViewById(R.id.remove_shelf_cache);
+                new BaseDialog.Builder(HomeShelfFragment.this.getActivity()).setView(view).setPositiveButton("确定", new DialogInterface.OnClickListener() {
+
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        HomeShelfFragment.a(HomeShelfFragment.this, list, checkBox.isChecked());
+                        HomeShelfFragment.this.e();
+                    }
+                }).setNegativeButton("取消", null).create().show();
             }
         });
         this.d.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener<ListView>() {
