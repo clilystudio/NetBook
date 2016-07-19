@@ -54,9 +54,6 @@ public abstract class SimpleTabActivity extends BaseTabActivity implements ViewP
         return fragment;
     }
 
-    protected void f() {
-    }
-
     public final boolean g() {
         return "tab0".equals(this.a.getCurrentTabTag());
     }
@@ -97,7 +94,6 @@ public abstract class SimpleTabActivity extends BaseTabActivity implements ViewP
             this.a.addTab(tabSpec);
             ++n;
         }
-        this.f();
         if (bundle != null) {
             tabWidgetV2.setIndex(bundle.getInt("extra_index"));
         }

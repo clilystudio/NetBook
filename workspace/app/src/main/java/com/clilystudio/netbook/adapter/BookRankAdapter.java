@@ -17,9 +17,7 @@ import java.util.List;
 public final class BookRankAdapter extends BaseBookAdapter<BookRankSummary> {
     private LayoutInflater a;
     private List<BookRankSummary> b;
-    private List<BookRankSummary> c;
     private List<BookRankSummary> d;
-    private List<BookRankSummary> e;
     private int f;
     private int g;
 
@@ -46,20 +44,20 @@ public final class BookRankAdapter extends BaseBookAdapter<BookRankSummary> {
         int n = 1;
         int n2 = bookRankRoot.getMale().size() > 0 ? n : 0;
         this.b = bookRankRoot.getMainMaleList();
-        this.c = bookRankRoot.getSubMaleList();
+        List<BookRankSummary> c = bookRankRoot.getSubMaleList();
         if (n2 != 0) {
             int n3 = 1 + this.b.size();
-            int n4 = this.c.size() > 0 ? n : 0;
+            int n4 = c.size() > 0 ? n : 0;
             this.f = n4 + n3;
         } else {
             this.f = 0;
         }
         int n5 = bookRankRoot.getFemale().size() > 0 ? n : 0;
         this.d = bookRankRoot.getMainFemaleList();
-        this.e = bookRankRoot.getSubFemaleList();
+        List<BookRankSummary> e = bookRankRoot.getSubFemaleList();
         if (n5 != 0) {
             int n6 = 1 + this.d.size();
-            if (this.e.size() <= 0) {
+            if (e.size() <= 0) {
                 n = 0;
             }
             this.g = n6 + n;

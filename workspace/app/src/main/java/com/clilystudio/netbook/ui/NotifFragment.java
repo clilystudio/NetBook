@@ -63,7 +63,7 @@ public abstract class NotifFragment extends Fragment {
                             if (!this.isCancelled()) {
                                 String string = "";
                                 if (NotifFragment.this.k != null && NotifFragment.this.k.size() > 0) {
-                                    string = ((NotificationItem) NotifFragment.this.k.get(-1 + NotifFragment.this.k.size())).getCreated();
+                                    string = NotifFragment.this.k.get(NotifFragment.this.k.size() - 1).getCreated();
                                 }
                                 ApiServiceProvider.getInstance();
                                 if (NotifFragment.this.a() == NotifFragment.Type.IMPORTANT) {

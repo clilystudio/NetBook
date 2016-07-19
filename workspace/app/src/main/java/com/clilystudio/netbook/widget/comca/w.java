@@ -56,7 +56,6 @@ public final class w extends a {
     private boolean q = false;
     private boolean r = false;
     private boolean s = false;
-    private long t = 300;
     private long u = 0;
     private int w = 0;
     private int x = 1;
@@ -162,7 +161,6 @@ public final class w extends a {
     private void a(float f) {
         float f2;
         this.m = f2 = this.y.getInterpolation(f);
-        int n = this.A.length;
         for (com.clilystudio.netbook.widget.comca.s aA : this.A) {
             aA.a(f2);
         }
@@ -197,7 +195,6 @@ public final class w extends a {
 
     private void n() {
         if (!this.s) {
-            int n = this.A.length;
             for (com.clilystudio.netbook.widget.comca.s aA : this.A) {
                 aA.b();
             }
@@ -269,7 +266,6 @@ public final class w extends a {
         if (l < 0) {
             throw new IllegalArgumentException("Animators cannot have negative duration: " + l);
         }
-        this.t = l;
         return this;
     }
 

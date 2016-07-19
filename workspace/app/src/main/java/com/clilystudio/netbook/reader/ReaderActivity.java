@@ -77,7 +77,7 @@ import java.util.regex.Pattern;
 import uk.me.lewisdeane.ldialogs.BaseDialog;
 
 public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickListener,
-        AutoReaderSetWidget.a,
+        AutoReaderSetWidget.OptionClickListener,
         AutoReaderTextView.d_interface {
     private int mDownloadStopFlag;
     private View mDownloadProgressView;
@@ -96,7 +96,6 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
     private ThemeLoadingView mLoadingView;
     private int mTocCount;
     private int mNeedDownloadCount;
-    private ReaderMenuFragment mReaderMenuFragment = null;
     private PopupWindow mPopWindow;
     private AutoReaderTextView mReaderBodyTV;
     private View mShadowView;
@@ -1324,8 +1323,8 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
         }
         loadChapterList();
         FragmentTransaction fragmentTransaction = this.getSupportFragmentManager().beginTransaction();
-        this.mReaderMenuFragment = getReaderMenuFragment(this.mBookId, this.mBookTitle);
-        fragmentTransaction.replace(R.id.menu_frame, this.mReaderMenuFragment);
+        ReaderMenuFragment mReaderMenuFragment = getReaderMenuFragment(this.mBookId, this.mBookTitle);
+        fragmentTransaction.replace(R.id.menu_frame, mReaderMenuFragment);
         fragmentTransaction.commitAllowingStateLoss();
         SlidingMenu slidingMenu = this.getSlidingMenu();
         slidingMenu.setMode(SlidingMenu.RIGHT);
@@ -1871,8 +1870,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
             }
             matcher.appendTail(stringBuffer);
             String string4 = this.c(stringBuffer.toString()).replaceAll("[\\(|\u3010|\\[]((?![\u4e0a\u4e2d\u4e0b1-9])[^\\(|\u3010|\\[]+?)[\\)|\u3011|\\]]$", "");
-            string4.trim();
-            return string4;
+            return string4.trim();
         }
 
         private String c(String string) {

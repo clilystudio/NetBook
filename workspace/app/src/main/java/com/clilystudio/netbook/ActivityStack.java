@@ -6,16 +6,8 @@ import java.util.Stack;
 
 public final class ActivityStack {
     private static Stack<Activity> mStack;
-    private static ActivityStack mInstance;
 
     private ActivityStack() {
-    }
-
-    public static ActivityStack getInstance() {
-        if (mInstance == null) {
-            mInstance = new ActivityStack();
-        }
-        return mInstance;
     }
 
     public static void add(Activity activity) {

@@ -201,14 +201,6 @@ public final class ReaderPageManager {
         return false;
     }
 
-    /*
-     * Enabled aggressive block sorting
-     * Lifted jumps to return sites
-     */
-    private void r() {
-        // 免除广告
-    }
-
     private void t() {
         this.mErrorTextTV.setOnClickListener(new View.OnClickListener() {
             @Override

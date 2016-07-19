@@ -109,10 +109,6 @@ public class JustifyTextView extends TextView {
         }
     }
 
-    protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
-        super.onLayout(changed, left, top, right, bottom);
-    }
-
     public void setHighLight(int start, int end) {
         this.mHighLightStart = start;
         this.mHighLightEnd = end;

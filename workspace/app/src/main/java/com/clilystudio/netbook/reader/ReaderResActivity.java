@@ -66,7 +66,6 @@ public class ReaderResActivity extends ReaderModeActivity {
             var4_6 = this.a(this.c);
         }
         fragmentTransaction.replace(R.id.content_frame, var4_6).commit();
-        ActivityStack.getInstance();
         ActivityStack.add(this);
         BaseAsyncTask<String, Void, TopicCount> bT2 = new BaseAsyncTask<String, Void, TopicCount>(){
 

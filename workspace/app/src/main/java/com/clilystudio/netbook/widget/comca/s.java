@@ -1,19 +1,10 @@
 package com.clilystudio.netbook.widget.comca;
 
-import java.util.HashMap;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 public class s implements Cloneable {
     private static final v e = new m();
     private static final v f = new k();
-
-    static {
-        Class[] arrclass = new Class[]{Float.TYPE, Float.class, Double.TYPE, Integer.TYPE, Double.class, Integer.class};
-        Class[] arrclass2 = new Class[]{Integer.TYPE, Integer.class, Float.TYPE, Double.TYPE, Float.class, Double.class};
-        Class[] arrclass3 = new Class[]{Double.TYPE, Double.class, Float.TYPE, Integer.TYPE, Float.class, Integer.class};
-        new HashMap();
-        new HashMap();
-    }
 
     String a;
     r b = null;

@@ -9,9 +9,8 @@ import java.util.List;
 
 public class TxtFileObject {
     public static boolean add(BookFile bookFile) {
-        Object[] arrobject;
         From from = new Select().from(BookFile.class);
-        if (!from.where("name = ?", arrobject = new Object[]{bookFile.getName()}).execute().isEmpty()) {
+        if (!from.where("name = ?", bookFile.getName()).execute().isEmpty()) {
             return false;
         }
         bookFile.save();

@@ -20,7 +20,6 @@ public class BookRankListActivity extends BaseActivity {
     private View a;
     private View b;
     private BookRankAdapter c;
-    private ListView e;
 
     private void a(int n) {
         switch (n) {
@@ -74,7 +73,7 @@ public class BookRankListActivity extends BaseActivity {
         super.onCreate(bundle);
         this.setContentView(R.layout.activity_book_rank_list);
         this.b(R.string.rank_list);
-        this.e = (ListView) this.findViewById(R.id.common_list_content);
+        ListView e = (ListView) this.findViewById(R.id.common_list_content);
         this.a = this.findViewById(R.id.common_list_pb);
         this.b = this.findViewById(R.id.common_list_error);
         this.b.setOnClickListener(new View.OnClickListener() {
@@ -84,7 +83,7 @@ public class BookRankListActivity extends BaseActivity {
             }
         });
         this.c = new BookRankAdapter(this.getLayoutInflater());
-        this.e.setAdapter(this.c);
+        e.setAdapter(this.c);
         this.b();
     }
 

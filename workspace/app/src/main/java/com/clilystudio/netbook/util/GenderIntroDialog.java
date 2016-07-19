@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.DialogFragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +14,7 @@ import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.event.*;
 
 public class GenderIntroDialog extends DialogFragment {
+    @NonNull
     @Override
     public Dialog onCreateDialog(Bundle bundle) {
         View view = ((LayoutInflater) this.getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.dialog_gender_intro, (ViewGroup)getActivity().getWindow().getDecorView(),false);

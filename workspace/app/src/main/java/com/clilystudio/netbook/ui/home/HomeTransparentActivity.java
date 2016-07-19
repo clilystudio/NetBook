@@ -20,11 +20,6 @@ public class HomeTransparentActivity extends Activity {
     }
 
     @Override
-    protected void onDestroy() {
-        super.onDestroy();
-    }
-
-    @Override
     protected void onResume() {
         super.onResume();
         new Handler().postDelayed(new Runnable() {

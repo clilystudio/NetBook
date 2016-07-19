@@ -1,5 +1,7 @@
 package com.clilystudio.netbook.model;
 
+import android.support.annotation.NonNull;
+
 import java.util.Calendar;
 
 public class ReaderChapterIdentifier implements Comparable<ReaderChapterIdentifier> {
@@ -14,7 +16,7 @@ public class ReaderChapterIdentifier implements Comparable<ReaderChapterIdentifi
     }
 
     @Override
-    public int compareTo(ReaderChapterIdentifier readerChapterIdentifier) {
+    public int compareTo(@NonNull ReaderChapterIdentifier readerChapterIdentifier) {
         if (readerChapterIdentifier == null) {
             return 1;
         }

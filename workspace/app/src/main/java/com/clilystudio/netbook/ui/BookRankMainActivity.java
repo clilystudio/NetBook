@@ -104,10 +104,6 @@ public class BookRankMainActivity extends BaseTabActivity implements ViewPager.O
         tabWidget.setDescendantFocusability(ViewGroup.FOCUS_BLOCK_DESCENDANTS);
         this.a.setCurrentTab(n);
         tabWidget.setDescendantFocusability(n2);
-        Intent intent = this.getIntent();
-        String string = intent.getStringExtra("book_list_title");
-        String string2 = string + BookRankMainActivity.a(n);
-        String string3 = intent.getStringExtra("rank_gender");
     }
 
     @Override

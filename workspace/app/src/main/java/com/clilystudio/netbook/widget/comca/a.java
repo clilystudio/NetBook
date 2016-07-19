@@ -10,7 +10,7 @@ public abstract class a implements Cloneable {
 
     public final void a(b b2) {
         if (this.a == null) {
-            this.a = new ArrayList();
+            this.a = new ArrayList<>();
         }
         this.a.add(b2);
     }

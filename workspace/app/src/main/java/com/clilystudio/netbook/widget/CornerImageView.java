@@ -54,11 +54,6 @@ public class CornerImageView extends SmartImageView {
         this.setImageBitmap(CommonUtil.getCircleBitmap(BitmapFactory.decodeFile(uri.getPath())));
     }
 
-    @Override
-    public void setImageUrl(String string, int n) {
-        super.setImageUrl(string, n);
-    }
-
     public final class c extends Drawable {
         private float a;
         private int b;

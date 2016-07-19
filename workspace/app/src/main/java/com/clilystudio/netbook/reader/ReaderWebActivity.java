@@ -285,7 +285,6 @@ public class ReaderWebActivity extends BaseReadActivity {
             }
         }
         if (CommonUtil.getBoolPref(this, this.f + "source_web_alert", true)) {
-            String var10_7 = this.getString(R.string.reader_web_opt_msg);
             final View var11_8 = LayoutInflater.from(this).inflate(R.layout.dialog_reader_web_opt, (ViewGroup) getWindow().getDecorView(), false);
             DialogInterface.OnClickListener var12_9 = new DialogInterface.OnClickListener() {
 

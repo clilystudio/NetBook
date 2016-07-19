@@ -383,7 +383,6 @@ public class CoverLoadingLayer extends ImageView {
             return true;
         }
         boolean bl = false;
-        boolean bl2 = false;
         if (bl) return true;
         if (this.r == CoverLoadingLayer.Status.PROGRESS) {
             this.b();

@@ -784,11 +784,6 @@ public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollL
         this.j.c();
     }
 
-    @Override
-    public void onActivityCreated(Bundle bundle) {
-        super.onActivityCreated(bundle);
-    }
-
     @Subscribe
     public void onBookAdded(BookAddedEvent c2) {
         if (c2.isLocal()) {

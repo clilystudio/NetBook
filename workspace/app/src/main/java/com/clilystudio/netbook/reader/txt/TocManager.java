@@ -182,15 +182,10 @@ public final class TocManager {
                 }
                 file.delete();
                 return null;
-            } catch (IOException var3_4) {
+            } catch (IOException | ClassNotFoundException var3_4) {
                 var3_4.printStackTrace();
-                return null;
-            } catch (ClassNotFoundException var2_5) {
-                var2_5.printStackTrace();
-                return null;
             }
-        } else {
-            return null;
         }
+        return null;
     }
 }

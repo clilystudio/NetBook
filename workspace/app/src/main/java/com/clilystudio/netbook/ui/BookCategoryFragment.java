@@ -30,30 +30,13 @@ import java.util.Arrays;
 import java.util.List;
 
 public class BookCategoryFragment extends Fragment {
-    private PullToRefreshListView a;
     private ListView b;
-    private View c;
     private BaseDownloadAdapter<CategoryBook> d;
     private View e;
     private TextView f;
     private String g;
     private BaseAsyncTask<String, Void, List<CategoryBook>> h;
     private List<CategoryBook> i = new ArrayList<>();
-    private PullToRefreshBase.OnLastItemVisibleListener j;
-
-    public BookCategoryFragment() {
-        this.j = new PullToRefreshBase.OnLastItemVisibleListener() {
-
-            @Override
-            public void onLastItemVisible() {
-                if (BookCategoryFragment.this.h == null || BookCategoryFragment.this.h.getStatus() == AsyncTask.Status.FINISHED) {
-                    BookCategoryFragment.this.c.setVisibility(View.VISIBLE);
-                    BookCategoryFragment.this.h = getaqclass(true);
-                    BookCategoryFragment.this.h.b();
-                }
-            }
-        };
-    }
 
     public static BookCategoryFragment a(String string) {
         BookCategoryFragment bookCategoryFragment = new BookCategoryFragment();
@@ -110,18 +93,18 @@ public class BookCategoryFragment extends Fragment {
         super.onCreateView(layoutInflater, viewGroup, bundle);
         View view = layoutInflater.inflate(R.layout.fragment_book_category, viewGroup, false);
         this.g = ((BookCategoryListActivity) this.getActivity()).g();
-        this.a = (PullToRefreshListView) view.findViewById(R.id.ptr_list);
-        this.b = this.a.getRefreshableView();
+        PullToRefreshListView a = (PullToRefreshListView) view.findViewById(R.id.ptr_list);
+        this.b = a.getRefreshableView();
         CommonUtil.addHeaderView(this.getActivity(), this.b);
         this.e = view.findViewById(R.id.pb_loading);
         this.f = (TextView) view.findViewById(R.id.empty_text);
         final LayoutInflater layoutInflater2 = LayoutInflater.from(this.getActivity());
-        this.c = layoutInflater2.inflate(R.layout.loading_item, (ViewGroup)getActivity().getWindow().getDecorView(), false);
+        View c = layoutInflater2.inflate(R.layout.loading_item, (ViewGroup) getActivity().getWindow().getDecorView(), false);
         if (Build.VERSION.SDK_INT >= 19) {
             this.b.setFooterDividersEnabled(false);
         }
-        this.b.addFooterView(this.c);
-        this.c.setVisibility(View.GONE);
+        this.b.addFooterView(c);
+        c.setVisibility(View.GONE);
         this.b.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -134,7 +117,7 @@ public class BookCategoryFragment extends Fragment {
                 }
             }
         });
-        this.a.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener<ListView>() {
+        a.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener<ListView>() {
             @Override
             public void onRefresh(PullToRefreshBase<ListView> refreshView) {
                 BookCategoryFragment.this.f.setVisibility(View.GONE);

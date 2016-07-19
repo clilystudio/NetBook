@@ -15,9 +15,8 @@ import com.clilystudio.netbook.util.CommonUtil;
 public class AutoReaderSetWidget extends LinearLayout implements View.OnClickListener {
     private Context a;
     private int b = 5;
-    private int c;
     private TextView d;
-    private a h;
+    private OptionClickListener h;
 
     public AutoReaderSetWidget(Context context, AttributeSet attributeSet) {
         super(context, attributeSet);
@@ -32,7 +31,6 @@ public class AutoReaderSetWidget extends LinearLayout implements View.OnClickLis
     }
 
     public final void a() {
-        this.c = this.b;
         this.setVisibility(View.VISIBLE);
     }
 
@@ -72,12 +70,7 @@ public class AutoReaderSetWidget extends LinearLayout implements View.OnClickLis
         }
     }
 
-    @Override
-    public boolean onTouchEvent(MotionEvent motionEvent) {
-        return super.onTouchEvent(motionEvent);
-    }
-
-    public void setOptionClickListener(a a2) {
+    public void setOptionClickListener(OptionClickListener a2) {
         this.h = a2;
         this.b = CommonUtil.getIntPref(this.a, "auto_reader_speed", 5);
         this.d = (TextView) this.findViewById(R.id.txt_auto_turn_speed);
@@ -91,7 +84,7 @@ public class AutoReaderSetWidget extends LinearLayout implements View.OnClickLis
     }
 
 
-    public interface a {
+    public interface OptionClickListener {
         void a();
 
         void b();
