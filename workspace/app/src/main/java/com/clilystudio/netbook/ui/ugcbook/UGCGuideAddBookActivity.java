@@ -103,8 +103,8 @@ public class UGCGuideAddBookActivity extends BaseActivity implements View.OnClic
 
                     @Override
                     protected List<BookSummary> doInBackground(String... params) {
-                        List<BookSummary> list = ApiServiceProvider.getApiService().n(params[0]);
-                        SearchPromRoot searchPromRoot = ApiServiceProvider.getApiService().q(params[0]);
+                        List<BookSummary> list = ApiServiceProvider.getApiService().searchBooks(params[0], false);
+                        SearchPromRoot searchPromRoot = ApiServiceProvider.getApiService().getSearchPromRoot(params[0]);
                         if (searchPromRoot != null && searchPromRoot.getProm() != null) {
                             list.add(0, searchPromRoot.getProm());
                         }
@@ -149,8 +149,8 @@ public class UGCGuideAddBookActivity extends BaseActivity implements View.OnClic
 
                 @Override
                 protected List<BookSummary> doInBackground(String... params) {
-                    List<BookSummary> list = ApiServiceProvider.getApiService().n(params[0]);
-                    SearchPromRoot searchPromRoot = ApiServiceProvider.getApiService().q(params[0]);
+                    List<BookSummary> list = ApiServiceProvider.getApiService().searchBooks(params[0], false);
+                    SearchPromRoot searchPromRoot = ApiServiceProvider.getApiService().getSearchPromRoot(params[0]);
                     if (searchPromRoot != null && searchPromRoot.getProm() != null) {
                         list.add(0, searchPromRoot.getProm());
                     }

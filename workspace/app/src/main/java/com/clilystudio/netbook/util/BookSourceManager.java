@@ -130,7 +130,7 @@ public final class BookSourceManager {
             @Override
             public TocSourceRoot a(String... var1) {
                 ApiServiceProvider.getInstance();
-                return ApiServiceProvider.getApiService().g(var1[0]);
+                return ApiServiceProvider.getApiService().getTocSourceRoot(var1[0]);
             }
 
             @Override

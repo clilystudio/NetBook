@@ -232,7 +232,7 @@ public class UGCMainActivity extends BaseTabActivity implements ViewPager.OnPage
 
             @Override
             protected UgcFilterRoot doInBackground(Void... params) {
-                return ApiServiceProvider.getApiService().o();
+                return ApiServiceProvider.getApiService().getUgcFilterRoot();
             }
 
             @Override

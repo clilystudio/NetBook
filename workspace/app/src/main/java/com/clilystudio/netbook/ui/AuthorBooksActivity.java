@@ -38,7 +38,7 @@ public class AuthorBooksActivity extends BaseLoadingActivity {
 
             @Override
             protected List<BookSummary> doInBackground(String... params) {
-                SearchResultRoot searchResultRoot = ApiServiceProvider.getApiService().o(params[0]);
+                SearchResultRoot searchResultRoot = ApiServiceProvider.getApiService().getSearchResultRoot(params[0]);
                 if (searchResultRoot == null) return null;
                 return searchResultRoot.getBooks();
             }

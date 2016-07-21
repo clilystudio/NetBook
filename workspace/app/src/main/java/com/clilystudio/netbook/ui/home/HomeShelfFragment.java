@@ -616,27 +616,6 @@ public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollL
                     this.d.setRefreshing();
                 }
                 this.b = false;
-                new BaseAsyncTask<Void, Void, ShelfMsgRoot>() {
-
-                    @Override
-                    protected ShelfMsgRoot doInBackground(Void... params) {
-                        ApiServiceProvider.getInstance();
-                        return ApiServiceProvider.getApiService().l();
-                    }
-
-                    @Override
-                    protected void onPostExecute(ShelfMsgRoot shelfMsgRoot) {
-                        super.onPostExecute(shelfMsgRoot);
-                        if (HomeShelfFragment.this.getActivity() == null) return;
-                        if (shelfMsgRoot == null || !shelfMsgRoot.ok || shelfMsgRoot.message == null) {
-                            HomeShelfFragment.this.e.removeHeaderView(HomeShelfFragment.this.g);
-                            HomeShelfFragment.this.j.notifyDataSetChanged();
-                            return;
-                        }
-                        HomeShelfFragment.this.i = shelfMsgRoot.message;
-                        HomeShelfFragment.b(HomeShelfFragment.this, HomeShelfFragment.this.i);
-                    }
-                }.b();
                 return;
             }
             if (CommonUtil.isFirstLaunch(this.getActivity())) {

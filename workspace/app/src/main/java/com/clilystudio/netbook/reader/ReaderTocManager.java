@@ -142,7 +142,7 @@ public final class ReaderTocManager {
     }
 
     private ChapterRoot b(String string, String string2) {
-        return ApiServiceProvider.getApiService().p(string, string2);
+        return ApiServiceProvider.getApiService().getSGChapterRoot(string, string2);
     }
 
     /*
@@ -385,7 +385,7 @@ public final class ReaderTocManager {
                 break;
             }
             case 7: {
-                chapterRoot = this.b(chapterLink.getLink(), this.mSougoMd);
+                chapterRoot = ApiServiceProvider.getApiService().getSGChapterRoot(chapterLink.getLink(), this.mSougoMd);
                 break;
             }
             case 8: {

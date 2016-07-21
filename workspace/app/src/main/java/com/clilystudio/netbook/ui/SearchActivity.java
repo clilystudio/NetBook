@@ -30,7 +30,6 @@ import com.clilystudio.netbook.model.AutoCompleteRoot;
 import com.clilystudio.netbook.model.BookSummary;
 import com.clilystudio.netbook.model.HotKeywordResult;
 import com.clilystudio.netbook.model.SearchPromRoot;
-import com.clilystudio.netbook.model.SearchResultRoot;
 import com.clilystudio.netbook.util.BaseDownloadAdapter;
 import com.clilystudio.netbook.util.CommonUtil;
 import com.clilystudio.netbook.util.ToastUtil;
@@ -154,21 +153,20 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
         this.g();
         if (CommonUtil.isConnectedOrConnecting(this)) {
             this.a(0);
-            final BaseAsyncTask<String, Void, List<BookSummary>> bR2 = new BaseAsyncTask<String, Void, List<BookSummary>>() {
+            new BaseAsyncTask<String, Void, List<BookSummary>>() {
 
                 @Override
                 protected List<BookSummary> doInBackground(String... params) {
                     if (SearchActivity.this.c == 1) {
-                        List<BookSummary> list = ApiServiceProvider.getApiService().n(params[0]);
-                        SearchPromRoot searchPromRoot = ApiServiceProvider.getApiService().q(params[0]);
+                        List<BookSummary> list = ApiServiceProvider.getApiService().searchBooks(params[0], false);
+                        SearchPromRoot searchPromRoot = ApiServiceProvider.getApiService().getSearchPromRoot(params[0]);
                         if (searchPromRoot == null) return list;
                         if (searchPromRoot.getProm() == null) return list;
                         list.add(0, searchPromRoot.getProm());
                         return list;
+                    } else {
+                        return ApiServiceProvider.getApiService().searchBooks(params[0], true);
                     }
-                    SearchResultRoot searchResultRoot = ApiServiceProvider.getApiService().p(params[0]);
-                    if (searchResultRoot == null) return null;
-                    return searchResultRoot.getBooks();
                 }
 
                 @Override
@@ -200,8 +198,7 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
                     });
                     SearchActivity.this.a(bookSummaries.size() > 0 ? 1 : 3);
                 }
-            };
-            bR2.b(this.b);
+            }.b(this.b);
         } else {
             ToastUtil.showToast(this, R.string.network_unconnected);
         }

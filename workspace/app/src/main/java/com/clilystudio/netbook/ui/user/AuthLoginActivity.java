@@ -120,12 +120,12 @@ public class AuthLoginActivity extends BaseActivity implements Handler.Callback 
                 String string = platform.getDb().getUserId();
                 String string2 = platform.getDb().getToken();
                 if (string != null && string2 != null) {
-                    BaseLoadingTask<String, Account> f2 = new BaseLoadingTask<String, Account>((Activity) this, R.string.login_loading) {
+                    new BaseLoadingTask<String, Account>((Activity) this, R.string.login_loading) {
 
                         @Override
                         public Account a(String... var1) {
                             ApiServiceProvider.getInstance();
-                            return ApiServiceProvider.getApiService().g(var1[0], var1[1], var1[2]);
+                            return ApiServiceProvider.getApiService().login(var1[0], var1[1], var1[2]);
                         }
 
                         @Override
@@ -133,7 +133,7 @@ public class AuthLoginActivity extends BaseActivity implements Handler.Callback 
                             if (account != null && account.getUser() != null && account.getToken() != null) {
                                 if (account.isOk()) {
                                     ApiServiceProvider.getInstance();
-                                    ApiServiceProvider.getApiService().h(account.getUser().getId());
+                                    ApiServiceProvider.getApiService().doFollowing(account.getUser().getId());
                                     MyApplication.getInstance().saveAccoutInfo(account);
                                     LoginEvent t2 = new LoginEvent(account);
                                     t2.setSource((AuthLoginActivity.Source) AuthLoginActivity.this.getIntent().getSerializableExtra("KEY_SOURCE"));
@@ -154,9 +154,7 @@ public class AuthLoginActivity extends BaseActivity implements Handler.Callback 
                             }
                             AuthLoginActivity.this.finish();
                         }
-                    };
-                    String[] arrstring = new String[]{this.a, string, string2};
-                    f2.b(arrstring);
+                    }.b(this.a, string, string2);
                     return false;
                 }
                 Toast.makeText(this, "授权异常，请重新授权", Toast.LENGTH_SHORT).show();

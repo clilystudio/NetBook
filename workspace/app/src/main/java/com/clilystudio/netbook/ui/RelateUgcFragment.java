@@ -40,9 +40,7 @@ public class RelateUgcFragment extends Fragment {
         super.onViewCreated(view, bundle);
         this.mUgcContainer = (LinearLayout) this.getView().findViewById(R.id.ugcs);
         this.mRelateUgcRoot = (LinearLayout) this.getView().findViewById(R.id.relate_ugc_root);
-        GetUgcsTask relateUgcFragment$GetUgcsTask = new GetUgcsTask();
-        String[] arrstring = new String[]{this.getArguments().getString("book_id")};
-        relateUgcFragment$GetUgcsTask.b(arrstring);
+        new GetUgcsTask().b(this.getArguments().getString("book_id"));
     }
 
     public final class GetUgcsTask extends BaseAsyncTask<String, Void, RecommendUgcRoot> {
@@ -51,7 +49,7 @@ public class RelateUgcFragment extends Fragment {
         @Override
         protected final RecommendUgcRoot doInBackground(String[] arrstring) {
             ApiServiceProvider.getInstance();
-            return ApiServiceProvider.getApiService().i(arrstring[0], 3);
+            return ApiServiceProvider.getApiService().getRecommendUgcRoot(arrstring[0], 3);
         }
 
         @Override

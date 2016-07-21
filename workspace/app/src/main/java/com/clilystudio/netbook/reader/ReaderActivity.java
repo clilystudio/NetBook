@@ -1559,7 +1559,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
         } else {
             this.s();
         }
-        BaseAsyncTask<String, Void, TopicCount> bq2 = new BaseAsyncTask<String, Void, TopicCount>() {
+        new BaseAsyncTask<String, Void, TopicCount>() {
 
             @Override
             protected TopicCount doInBackground(String... params) {
@@ -1580,14 +1580,13 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
                     }
                 }
             }
-        };
-        bq2.b(this.mBookId);
+        }.b(this.mBookId);
         if (CommonUtil.getAccount() != null) {
             new BaseAsyncTask<Void, Void, ChapterKeysRoot>() {
                 @Override
                 protected ChapterKeysRoot doInBackground(Void... params) {
                     ApiServiceProvider.getInstance();
-                    return ApiServiceProvider.getApiService().g(CommonUtil.getAccount().getToken(), ReaderActivity.this.mBookId);
+                    return ApiServiceProvider.getApiService().getChapterKeysRoot(CommonUtil.getAccount().getToken(), ReaderActivity.this.mBookId);
                 }
 
                 @Override

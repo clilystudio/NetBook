@@ -364,7 +364,7 @@ public final class ReaderPageManager {
                     if (ReaderPageManager.this.mActivity instanceof ReaderActivity) {
                         arg = ((ReaderActivity) ReaderPageManager.this.mActivity).l();
                         ApiServiceProvider.getInstance();
-                        return ApiServiceProvider.getApiService().g(CommonUtil.getAccount().getToken(), arg);
+                        return ApiServiceProvider.getApiService().getChapterKeysRoot(CommonUtil.getAccount().getToken(), arg);
                     }
                     return null;
                 }

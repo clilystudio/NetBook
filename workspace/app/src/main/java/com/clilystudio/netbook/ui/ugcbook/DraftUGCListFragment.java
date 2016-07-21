@@ -20,7 +20,7 @@ public class DraftUGCListFragment extends AbsUGCListFragment {
     @Override
     protected final UGCBookListRoot a(Account account, int n) {
         ApiServiceProvider.getInstance();
-        return ApiServiceProvider.getApiService().h(account.getToken(), n);
+        return ApiServiceProvider.getApiService().getDraftUGCBookListRoot(account.getToken(), n);
     }
 
     @Override

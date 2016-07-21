@@ -173,7 +173,7 @@ public class BookDownloadService extends Service {
             @Override
             protected TocSourceRoot doInBackground(String... params) {
                 ApiServiceProvider.getInstance();
-                return ApiServiceProvider.getApiService().g(params[0]);
+                return ApiServiceProvider.getApiService().getTocSourceRoot(params[0]);
             }
 
             @Override

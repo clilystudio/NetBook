@@ -38,7 +38,6 @@ import com.clilystudio.netbook.model.ResultStatus;
 import com.clilystudio.netbook.model.Root;
 import com.clilystudio.netbook.model.SearchPromRoot;
 import com.clilystudio.netbook.model.SearchResultRoot;
-import com.clilystudio.netbook.model.ShelfMsgRoot;
 import com.clilystudio.netbook.model.SyncUploadResult;
 import com.clilystudio.netbook.model.Toc;
 import com.clilystudio.netbook.model.TocSourceRoot;
@@ -587,106 +586,96 @@ public class ApiService {
         return ApiService.getResponse(this.setRequest(HttpRequest.get(url)), UGCBookListRoot.class);
     }
 
-    public final Account g(String string, String string2, String string3) {
-        String string4 = mApiBaseUrl + "/user/login";
-        HashMap<String, String> hashMap = new HashMap<>();
-        hashMap.put("platform_code", string);
-        hashMap.put("platform_uid", string2);
-        hashMap.put("platform_token", string3);
-        HttpRequest httpRequest = this.setHeader(HttpRequest.post(string4));
-        httpRequest.form(hashMap);
+    public final Account login(String code, String userId, String token) {
+        String url = mApiBaseUrl + "/user/login";
+        HashMap<String, String> values = new HashMap<>();
+        values.put("platform_code", code);
+        values.put("platform_uid", userId);
+        values.put("platform_token", token);
+        HttpRequest httpRequest = this.setHeader(HttpRequest.post(url));
+        httpRequest.form(values);
         return ApiService.getResponse(httpRequest, Account.class);
     }
 
-    public final ChapterKeysRoot g(String string, String string2) {
-        String string3 = mApiBaseUrl + String.format(Locale.CHINA, "/purchase/book/%s/chapters/bought?token=%s", string2, string);
-        return ApiService.getResponse(this.setRequest(HttpRequest.get(string3)), ChapterKeysRoot.class);
+    public final ChapterKeysRoot getChapterKeysRoot(String token, String bookId) {
+        String url = mApiBaseUrl + String.format(Locale.CHINA, "/purchase/book/%s/chapters/bought?token=%s", bookId, token);
+        return ApiService.getResponse(this.setRequest(HttpRequest.get(url)), ChapterKeysRoot.class);
     }
 
-    public final TocSourceRoot g(String string) {
-        String string2 = mApiBaseUrl + String.format(Locale.CHINA, "/aggregation-source/by-book?book=%s&v=5", string);
-        return ApiService.getResponse(this.setRequest(HttpRequest.get(string2)), TocSourceRoot.class);
+    public final TocSourceRoot getTocSourceRoot(String bookId) {
+        String url = mApiBaseUrl + String.format(Locale.CHINA, "/aggregation-source/by-book?book=%s&v=5", bookId);
+        return ApiService.getResponse(this.setRequest(HttpRequest.get(url)), TocSourceRoot.class);
     }
 
-    public final UGCBookListRoot g(String string, int n) {
-        String string2 = mApiBaseUrl + String.format(Locale.CHINA, "/user/posted-book-list?token=%s&start=%d", string, n);
-        return ApiService.getResponse(this.setRequest(HttpRequest.get(string2)), UGCBookListRoot.class);
+    public final UGCBookListRoot getPostedUGCBookListRoot(String token, int start) {
+        String url = mApiBaseUrl + String.format(Locale.CHINA, "/user/posted-book-list?token=%s&start=%d", token, start);
+        return ApiService.getResponse(this.setRequest(HttpRequest.get(url)), UGCBookListRoot.class);
     }
 
-    public final FollowingsResult h(String string) {
-        String string2 = mApiBaseUrl + String.format(Locale.CHINA, "/user/followings/%s", string);
-        return ApiService.getResponse(this.setRequest(HttpRequest.get(string2)), FollowingsResult.class);
+    public final FollowingsResult doFollowing(String userId) {
+        String url = mApiBaseUrl + String.format(Locale.CHINA, "/user/followings/%s", userId);
+        return ApiService.getResponse(this.setRequest(HttpRequest.get(url)), FollowingsResult.class);
     }
 
-    public final UGCBookListRoot h(String string, int n) {
-        String string2 = mApiBaseUrl + String.format(Locale.CHINA, "/user/draft-book-list?token=%s&start=%d", string, n);
-        return ApiService.getResponse(this.setRequest(HttpRequest.get(string2)), UGCBookListRoot.class);
+    public final UGCBookListRoot getDraftUGCBookListRoot(String token, int start) {
+        String url = mApiBaseUrl + String.format(Locale.CHINA, "/user/draft-book-list?token=%s&start=%d", token, start);
+        return ApiService.getResponse(this.setRequest(HttpRequest.get(url)), UGCBookListRoot.class);
     }
 
-    public final RecommendUgcRoot i(String string, int n) {
-        String string2 = mApiBaseUrl + String.format(Locale.CHINA, "/book-list/%s/recommend?limit=%s", string, n);
-        return ApiService.getResponse(this.setRequest(HttpRequest.get(string2)), RecommendUgcRoot.class);
+    public final RecommendUgcRoot getRecommendUgcRoot(String bookId, int limit) {
+        String url = mApiBaseUrl + String.format(Locale.CHINA, "/book-list/%s/recommend?limit=%d", bookId, limit);
+        return ApiService.getResponse(this.setRequest(HttpRequest.get(url)), RecommendUgcRoot.class);
     }
 
-    public final ShelfMsgRoot l() {
-        String string = mApiBaseUrl + "/notification/shelfMessage?platform=android";
-        return ApiService.getResponse(this.setRequest(HttpRequest.get(string)), ShelfMsgRoot.class);
+    public final SearchResultRoot getSearchResultRoot(String author) {
+        String url = mApiBaseUrl + "/book/accurate-search?author=" + CommonUtil.encodeUrl(author);
+        return ApiService.getResponse(this.setRequest(HttpRequest.get(url)), SearchResultRoot.class);
     }
 
-    public final List<BookSummary> n(String string) {
-        ArrayList<BookSummary> arrayList = new ArrayList<>();
-        String string2 = CommonUtil.encodeUrl(string);
-        String string3 = mApiBaseUrl + String.format(Locale.CHINA, "/book/fuzzy-search?query=%s", string2);
-        SearchResultRoot searchResultRoot = ApiService.getResponse(this.setRequest(HttpRequest.get(string3)), SearchResultRoot.class);
-        if (searchResultRoot == null) return arrayList;
-        return searchResultRoot.getBooks();
+    public final UgcFilterRoot getUgcFilterRoot() {
+        String url = mApiBaseUrl + "/book-list/tagType";
+        return ApiService.getResponse(this.setRequest(HttpRequest.get(url)), UgcFilterRoot.class);
     }
 
-    public final SearchResultRoot o(String string) {
-        String string2 = CommonUtil.encodeUrl(string);
-        String string3 = mApiBaseUrl + "/book/accurate-search?author=" + string2;
-        return ApiService.getResponse(this.setRequest(HttpRequest.get(string3)), SearchResultRoot.class);
-    }
-
-    public final UgcFilterRoot o() {
-        String string = mApiBaseUrl + "/book-list/tagType";
-        return ApiService.getResponse(this.setRequest(HttpRequest.get(string)), UgcFilterRoot.class);
-    }
-
-    public final ChapterRoot p(String string, String string2) {
-        String string3 = String.format(Locale.CHINA, "http://novel.mse.sogou.com/http_interface/getContData.php?md=%s&url=%s", string2, CommonUtil.encodeUrl(string));
-        HttpRequest httpRequest = this.setUserAgent(HttpRequest.get(string3), 7);
-        boolean bl = httpRequest.ok();
-        int n = httpRequest.code();
-        if (!bl && n >= 500) {
+    public final ChapterRoot getSGChapterRoot(String link, String sougoMd) {
+        String url = String.format(Locale.CHINA, "http://novel.mse.sogou.com/http_interface/getContData.php?md=%s&url=%s", sougoMd, CommonUtil.encodeUrl(link));
+        HttpRequest httpRequest = this.setUserAgent(HttpRequest.get(url), 7);
+        if (!httpRequest.ok() && httpRequest.code() >= 500) {
             return ApiService.getDefaultChapterRoot();
         }
         SgChapterRoot sgChapterRoot = ApiService.getResponse(httpRequest, SgChapterRoot.class);
         if (sgChapterRoot == null || sgChapterRoot.getContent() == null || sgChapterRoot.getContent().length <= 0) return null;
-        {
-            ChapterRoot chapterRoot = new ChapterRoot();
-            String string4 = CommonUtil.getBody(sgChapterRoot.getContent()[0].getBlock());
-            Chapter chapter = new Chapter();
-            chapter.setLink(string);
-            if (string4 != null && string4.contains("</")) {
-                string4 = Html.fromHtml(string4.replace("\n", "<br>")).toString();
-            }
-            chapter.setBody(string4);
-            chapterRoot.setChapter(chapter);
-            return chapterRoot;
+        ChapterRoot chapterRoot = new ChapterRoot();
+        String body = CommonUtil.getBody(sgChapterRoot.getContent()[0].getBlock());
+        Chapter chapter = new Chapter();
+        chapter.setLink(link);
+        if (body != null && body.contains("</")) {
+            body = Html.fromHtml(body.replace("\n", "<br>")).toString();
         }
+        chapter.setBody(body);
+        chapterRoot.setChapter(chapter);
+        return chapterRoot;
     }
 
-    public final SearchResultRoot p(String string) {
-        String string2 = CommonUtil.encodeUrl(string);
-        String string3 = mApiBaseUrl + String.format(Locale.CHINA, "/book/fuzzy-search?query=%s", string2) + "&onlyTitle=true";
-        return ApiService.getResponse(this.setRequest(HttpRequest.get(string3)), SearchResultRoot.class);
+    public final List<BookSummary> searchBooks(String keyword, boolean onlyTitle) {
+        String url = mApiBaseUrl + String.format(Locale.CHINA, "/book/fuzzy-search?query=%s", CommonUtil.encodeUrl(keyword));
+        if (onlyTitle) {
+            url = url + "&onlyTitle=true";
+        }
+        SearchResultRoot searchResultRoot = ApiService.getResponse(this.setRequest(HttpRequest.get(url)), SearchResultRoot.class);
+        if (searchResultRoot == null) {
+            if (onlyTitle) {
+                return null;
+            } else {
+                return new ArrayList<>();
+            }
+        }
+        return searchResultRoot.getBooks();
     }
 
-    public final SearchPromRoot q(String string) {
-        String string2 = CommonUtil.encodeUrl(string);
-        String string3 = mApiBaseUrl + String.format(Locale.CHINA, "/book/search/%s/chinese-all-promo", string2);
-        return ApiService.getResponse(this.setRequest(HttpRequest.get(string3)), SearchPromRoot.class);
+    public final SearchPromRoot getSearchPromRoot(String keyword) {
+        String url = mApiBaseUrl + String.format(Locale.CHINA, "/book/search/%s/chinese-all-promo", CommonUtil.encodeUrl(keyword));
+        return ApiService.getResponse(this.setRequest(HttpRequest.get(url)), SearchPromRoot.class);
     }
 
     public final BookInfo r(String string) {
