@@ -546,45 +546,45 @@ public class ApiService {
         return ApiService.getListResponse(this.setRequest(HttpRequest.get(url)), TocSummary.class);
     }
 
-    public final CategoryRoot e() {
-        String string = mApiBaseUrl + "/cats/lv2/statistics";
-        return ApiService.getResponse(this.setRequest(HttpRequest.get(string)), CategoryRoot.class);
+    public final CategoryRoot getCategoryRoot() {
+        String url = mApiBaseUrl + "/cats/lv2/statistics";
+        return ApiService.getResponse(this.setRequest(HttpRequest.get(url)), CategoryRoot.class);
     }
 
-    public final Toc e(String string) {
-        String string2 = mApiBaseUrl + String.format(Locale.CHINA, "/toc/%s?view=chapters", string);
-        return ApiService.getResponse(this.setRequest(HttpRequest.get(string2)), Toc.class);
+    public final Toc getToc(String tocId) {
+        String url = mApiBaseUrl + String.format(Locale.CHINA, "/toc/%s?view=chapters", tocId);
+        return ApiService.getResponse(this.setRequest(HttpRequest.get(url)), Toc.class);
     }
 
-    public final Topic e(String string, int n) {
-        String string2 = mApiBaseUrl + String.format(Locale.CHINA, "/user/posted?token=%s&start=%s", string, n);
-        return ApiService.getResponse(this.setRequest(HttpRequest.get(string2)), Topic.class);
+    public final Topic getMyTopic(String token, int start) {
+        String url = mApiBaseUrl + String.format(Locale.CHINA, "/user/posted?token=%s&start=%s", token, start);
+        return ApiService.getResponse(this.setRequest(HttpRequest.get(url)), Topic.class);
     }
 
-    public final BookAdd f(String string, String string2, String string3) {
-        String string4 = mApiBaseUrl + "/book/add";
-        HashMap<String, String> hashMap = new HashMap<>();
-        hashMap.put("title", string);
-        hashMap.put("author", string2);
-        hashMap.put("device", string3);
-        HttpRequest httpRequest = this.setHeader(HttpRequest.post(string4));
-        httpRequest.form(hashMap);
+    public final BookAdd addShelfBook(String title, String author, String device) {
+        String url = mApiBaseUrl + "/book/add";
+        HashMap<String, String> values = new HashMap<>();
+        values.put("title", title);
+        values.put("author", author);
+        values.put("device", device);
+        HttpRequest httpRequest = this.setHeader(HttpRequest.post(url));
+        httpRequest.form(values);
         return ApiService.getResponse(httpRequest, BookAdd.class);
     }
 
-    public final CategoryLevelRoot f() {
-        String string = mApiBaseUrl + "/cats/lv2";
-        return ApiService.getResponse(this.setRequest(HttpRequest.get(string)), CategoryLevelRoot.class);
+    public final CategoryLevelRoot getCategoryLevelRoot() {
+        String url = mApiBaseUrl + "/cats/lv2";
+        return ApiService.getResponse(this.setRequest(HttpRequest.get(url)), CategoryLevelRoot.class);
     }
 
-    public final MixTocRoot f(String string) {
-        String string2 = mApiBaseUrl + String.format(Locale.CHINA, "/mix-toc/%s", string);
-        return ApiService.getResponse(this.setRequest(HttpRequest.get(string2)), MixTocRoot.class);
+    public final MixTocRoot getMixTocRoot(String bookId) {
+        String url = mApiBaseUrl + String.format(Locale.CHINA, "/mix-toc/%s", bookId);
+        return ApiService.getResponse(this.setRequest(HttpRequest.get(url)), MixTocRoot.class);
     }
 
-    public final UGCBookListRoot f(String string, int n) {
-        String string2 = mApiBaseUrl + String.format(Locale.CHINA, "/user/collected-book-list?token=%s&start=%d", string, n);
-        return ApiService.getResponse(this.setRequest(HttpRequest.get(string2)), UGCBookListRoot.class);
+    public final UGCBookListRoot getUGCBookListRoot(String token, int start) {
+        String url = mApiBaseUrl + String.format(Locale.CHINA, "/user/collected-book-list?token=%s&start=%d", token, start);
+        return ApiService.getResponse(this.setRequest(HttpRequest.get(url)), UGCBookListRoot.class);
     }
 
     public final Account g(String string, String string2, String string3) {

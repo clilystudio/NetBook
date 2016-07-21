@@ -31,11 +31,11 @@ public class CustomSearchActivity extends BaseActivity {
         boolean bl = true;
         if (bl) {
             String string3 = Build.BRAND + " " + Build.MODEL;
-            BaseLoadingTask<String, BookAdd> ba2 = new BaseLoadingTask<String, BookAdd>((Activity) customSearchActivity, R.string.book_add_loading) {
+            new BaseLoadingTask<String, BookAdd>((Activity) customSearchActivity, R.string.book_add_loading) {
 
                 @Override
                 public BookAdd a(String... var1) {
-                    return ApiServiceProvider.getApiService().f(var1[0], var1[1], var1[2]);
+                    return ApiServiceProvider.getApiService().addShelfBook(var1[0], var1[1], var1[2]);
                 }
 
                 @Override
@@ -54,9 +54,7 @@ public class CustomSearchActivity extends BaseActivity {
                         }
                     }
                 }
-            };
-            String[] arrobject = new String[]{customSearchActivity.a.getText().toString().trim(), customSearchActivity.b.getText().toString().trim(), string3};
-            ba2.b(arrobject);
+            }.b(customSearchActivity.a.getText().toString().trim(), customSearchActivity.b.getText().toString().trim(), string3);
         }
     }
 

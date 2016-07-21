@@ -57,7 +57,7 @@ public class MyTopicFragment extends Fragment {
                         @Override
                         protected Topic doInBackground(String... params) {
                             ApiServiceProvider.getInstance();
-                            return ApiServiceProvider.getApiService().e(params[0], MyTopicFragment.this.i.size());
+                            return ApiServiceProvider.getApiService().getMyTopic(params[0], MyTopicFragment.this.i.size());
                         }
 
                         @Override
@@ -203,7 +203,7 @@ public class MyTopicFragment extends Fragment {
             @Override
             protected Topic doInBackground(String... params) {
                 ApiServiceProvider.getInstance();
-                return ApiServiceProvider.getApiService().e(params[0], 0);
+                return ApiServiceProvider.getApiService().getMyTopic(params[0], 0);
             }
 
             @Override

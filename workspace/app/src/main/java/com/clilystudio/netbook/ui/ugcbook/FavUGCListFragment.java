@@ -27,7 +27,7 @@ public class FavUGCListFragment extends AbsUGCListFragment implements AdapterVie
     @Override
     protected final UGCBookListRoot a(Account account, int n) {
         ApiServiceProvider.getInstance();
-        return ApiServiceProvider.getApiService().f(account.getToken(), n);
+        return ApiServiceProvider.getApiService().getUGCBookListRoot(account.getToken(), n);
     }
 
     @Override

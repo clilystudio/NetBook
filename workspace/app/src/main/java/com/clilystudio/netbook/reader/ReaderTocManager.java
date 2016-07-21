@@ -151,7 +151,7 @@ public final class ReaderTocManager {
      */
     private Toc b() {
         try {
-            MixTocRoot mixTocRoot2 = ApiServiceProvider.getApiService().f(this.mBookId);
+            MixTocRoot mixTocRoot2 = ApiServiceProvider.getApiService().getMixTocRoot(this.mBookId);
             Toc toc = null;
             if (mixTocRoot2 == null) return toc;
             Toc toc2 = mixTocRoot2.getMixToc();
@@ -180,7 +180,7 @@ public final class ReaderTocManager {
 
     private Toc c() {
         try {
-            return ApiServiceProvider.getApiService().e(this.mTocId);
+            return ApiServiceProvider.getApiService().getToc(this.mTocId);
         } catch (Exception var1_2) {
             var1_2.printStackTrace();
             return null;

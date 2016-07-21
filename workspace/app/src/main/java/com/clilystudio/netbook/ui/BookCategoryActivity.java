@@ -131,7 +131,7 @@ public class BookCategoryActivity extends BaseActivity {
 
             @Override
             protected CategoryRoot doInBackground(String... params) {
-                return ApiServiceProvider.getApiService().e();
+                return ApiServiceProvider.getApiService().getCategoryRoot();
             }
 
             @Override
@@ -149,7 +149,7 @@ public class BookCategoryActivity extends BaseActivity {
 
             @Override
             protected CategoryLevelRoot doInBackground(String... params) {
-                return ApiServiceProvider.getApiService().f();
+                return ApiServiceProvider.getApiService().getCategoryLevelRoot();
             }
 
             @Override
