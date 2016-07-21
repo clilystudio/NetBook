@@ -17,7 +17,7 @@ public final class RelateBookManager {
             @Override
             protected RelateBookRoot doInBackground(String... params) {
                 ApiServiceProvider.getInstance();
-                return ApiServiceProvider.getApiService().X(params[0]);
+                return ApiServiceProvider.getApiService().getRelateBookRoot(params[0]);
             }
 
             @Override

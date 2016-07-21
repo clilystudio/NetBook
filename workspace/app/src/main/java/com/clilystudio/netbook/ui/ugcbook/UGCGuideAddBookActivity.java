@@ -396,7 +396,7 @@ public class UGCGuideAddBookActivity extends BaseActivity implements View.OnClic
                         arrayList.add(constraint.toString());
                         if (!TextUtils.isEmpty(string)) {
                             ApiServiceProvider.getInstance();
-                            AutoCompleteRoot autoCompleteRoot = ApiServiceProvider.getApiService().N(string);
+                            AutoCompleteRoot autoCompleteRoot = ApiServiceProvider.getApiService().getAutoCompleteRoot(string);
                             if (autoCompleteRoot != null && autoCompleteRoot.getKeywords() != null) {
                                 arrayList.addAll(0, autoCompleteRoot.getKeywords());
                             }

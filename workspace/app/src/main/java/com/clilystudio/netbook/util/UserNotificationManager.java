@@ -47,7 +47,7 @@ public class UserNotificationManager {
                 @Override
                 protected NotifCountRoot doInBackground(String... params) {
                     ApiServiceProvider.getInstance();
-                    return ApiServiceProvider.getApiService().G(params[0]);
+                    return ApiServiceProvider.getApiService().getNotifCountRoot(params[0]);
                 }
 
                 @Override
@@ -79,7 +79,7 @@ public class UserNotificationManager {
                 @Override
                 protected Root doInBackground(String... params) {
                     ApiServiceProvider.getInstance();
-                    return ApiServiceProvider.getApiService().L(params[0]);
+                    return ApiServiceProvider.getApiService().doReadImportant(params[0]);
                 }
 
                 @Override
@@ -103,7 +103,7 @@ public class UserNotificationManager {
                 @Override
                 protected Root doInBackground(String... params) {
                     ApiServiceProvider.getInstance();
-                    return ApiServiceProvider.getApiService().M(params[0]);
+                    return ApiServiceProvider.getApiService().doReadUnimportant(params[0]);
                 }
 
                 @Override

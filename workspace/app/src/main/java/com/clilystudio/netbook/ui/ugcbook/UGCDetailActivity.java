@@ -50,7 +50,7 @@ public class UGCDetailActivity extends BaseActivity implements View.OnClickListe
     private BaseDownloadAdapter<UGCBookDetail.UGCBookContainer> k;
     private View l;
     private View m;
-    private String o;
+    private String mBookId;
     private boolean p;
     private boolean q;
     private UGCBookDetail r;
@@ -92,7 +92,7 @@ public class UGCDetailActivity extends BaseActivity implements View.OnClickListe
             uGCNewCollection.setBooks(arrayList);
             myApplication.mUGCNewCollection = uGCNewCollection;
             Intent intent = new Intent(uGCDetailActivity, UGCGuideAddCollectionActivity.class);
-            intent.putExtra("ugc_id", uGCDetailActivity.o);
+            intent.putExtra("ugc_id", uGCDetailActivity.mBookId);
             intent.putExtra("is_draft", uGCDetailActivity.q);
             if (uGCDetailActivity.s != null) {
                 intent.putExtra("my_author", uGCDetailActivity.s);
@@ -106,11 +106,11 @@ public class UGCDetailActivity extends BaseActivity implements View.OnClickListe
     static void c(final UGCDetailActivity uGCDetailActivity) {
         Account account = CommonUtil.checkLogin(uGCDetailActivity);
         if (account != null) {
-            BaseAsyncTask<String, Void, ResultStatus> q2 = new BaseAsyncTask<String, Void, ResultStatus>() {
+            new BaseAsyncTask<String, Void, ResultStatus>() {
 
                 @Override
                 protected ResultStatus doInBackground(String... params) {
-                    return ApiServiceProvider.getApiService().D(params[0], params[1]);
+                    return ApiServiceProvider.getApiService().addCollectedBookList(params[0], params[1]);
                 }
 
                 @Override
@@ -122,8 +122,7 @@ public class UGCDetailActivity extends BaseActivity implements View.OnClickListe
                     }
                     ToastUtil.showShortToast(uGCDetailActivity, "收藏失败，请检查网络或稍后再试");
                 }
-            };
-            q2.b(account.getToken(), uGCDetailActivity.o);
+            }.b(account.getToken(), uGCDetailActivity.mBookId);
         }
     }
 
@@ -160,10 +159,10 @@ public class UGCDetailActivity extends BaseActivity implements View.OnClickListe
 
             @Override
             protected UGCBookDetailRoot doInBackground(String... params) {
-                if (!UGCDetailActivity.this.q) return ApiServiceProvider.getApiService().U(params[0]);
+                if (!UGCDetailActivity.this.q) return ApiServiceProvider.getApiService().getUGCBookDetailRoot(params[0]);
                 Account account = CommonUtil.checkLogin(UGCDetailActivity.this);
                 if (account == null) return null;
-                return ApiServiceProvider.getApiService().C(account.getToken(), params[0]);
+                return ApiServiceProvider.getApiService().getUGCBookDetailRoot(account.getToken(), params[0]);
             }
 
             @Override
@@ -179,7 +178,7 @@ public class UGCDetailActivity extends BaseActivity implements View.OnClickListe
                 }
             }
         };
-        r2.b(this.o);
+        r2.b(this.mBookId);
     }
 
     private void e(int n) {
@@ -227,9 +226,9 @@ public class UGCDetailActivity extends BaseActivity implements View.OnClickListe
         BusProvider.getInstance().register(this);
         if (this.getIntent().getData() != null) {
             List<String> list = this.getIntent().getData().getPathSegments();
-            this.o = list.get(-1 + list.size());
+            this.mBookId = list.get(-1 + list.size());
         } else {
-            this.o = this.getIntent().getStringExtra("book_id");
+            this.mBookId = this.getIntent().getStringExtra("book_id");
         }
         this.p = this.getIntent().getBooleanExtra("my_list", false);
         this.q = this.getIntent().getBooleanExtra("is_draft", false);

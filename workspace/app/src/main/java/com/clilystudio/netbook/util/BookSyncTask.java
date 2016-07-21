@@ -36,13 +36,13 @@ public final class BookSyncTask extends BaseAsyncTask<Void, Void, SyncUploadResu
     @Override
     protected final SyncUploadResult doInBackground(Void[] var1_1) {
         if (this.mBookModifyType == BookSyncRecord.BookModifyType.SHELF_ADD) {
-            return this.mApiService.G(this.mToken, concatBookIds());
+            return this.mApiService.syncShelfAdd(this.mToken, concatBookIds());
         } else if (this.mBookModifyType == BookSyncRecord.BookModifyType.SHELF_REMOVE) {
-            return this.mApiService.I(this.mToken, concatBookIds());
+            return this.mApiService.syncShelfRemove(this.mToken, concatBookIds());
         } else if (this.mBookModifyType == BookSyncRecord.BookModifyType.FEED_ADD) {
-            return this.mApiService.H(this.mToken, concatBookIds());
+            return this.mApiService.syncShelfFeedAdd(this.mToken, concatBookIds());
         } else if (this.mBookModifyType == BookSyncRecord.BookModifyType.FEED_REMOVE) {
-            return this.mApiService.J(this.mToken, concatBookIds());
+            return this.mApiService.syncShelfFeedRemove(this.mToken, concatBookIds());
         } else {
             return  null;
         }

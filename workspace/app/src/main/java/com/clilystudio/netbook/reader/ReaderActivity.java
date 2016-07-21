@@ -1564,7 +1564,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
             @Override
             protected TopicCount doInBackground(String... params) {
                 ApiServiceProvider.getInstance();
-                return ApiServiceProvider.getApiService().I(params[0]);
+                return ApiServiceProvider.getApiService().getTopicCount(params[0]);
             }
 
             @Override

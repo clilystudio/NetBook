@@ -318,7 +318,7 @@ public class ModifyUserInfoActivity extends BaseActivity implements View.OnClick
 
                 @Override
                 protected UserInfo doInBackground(String... params) {
-                    return ApiServiceProvider.getApiService().K(params[0]);
+                    return ApiServiceProvider.getApiService().getUserInfo(params[0]);
                 }
 
                 @Override

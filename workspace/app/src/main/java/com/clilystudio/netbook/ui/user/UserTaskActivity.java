@@ -37,7 +37,7 @@ public class UserTaskActivity extends BaseActivity {
 
                 @Override
                 protected ResultStatus doInBackground(String... params) {
-                    return ApiServiceProvider.getApiService().W(CommonUtil.getAccount().getToken());
+                    return ApiServiceProvider.getApiService().addExpWeek(CommonUtil.getAccount().getToken());
                 }
 
                 @Override

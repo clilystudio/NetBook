@@ -68,7 +68,7 @@ public class FavUGCListFragment extends AbsUGCListFragment implements AdapterVie
                         @Override
                         protected ResultStatus doInBackground(String... params) {
                             ApiServiceProvider.getInstance();
-                            return ApiServiceProvider.getApiService().E(params[0], params[1]);
+                            return ApiServiceProvider.getApiService().removeCollectedBookList(params[0], params[1]);
                         }
 
                         @Override
