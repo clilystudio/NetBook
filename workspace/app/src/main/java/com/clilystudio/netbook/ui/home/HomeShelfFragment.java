@@ -49,7 +49,6 @@ import com.clilystudio.netbook.model.BookUpdate;
 import com.clilystudio.netbook.model.InsideLink;
 import com.clilystudio.netbook.model.InsideLinkFactory;
 import com.clilystudio.netbook.model.ShelfMsg;
-import com.clilystudio.netbook.model.ShelfMsgRoot;
 import com.clilystudio.netbook.model.TxtFileObject;
 import com.clilystudio.netbook.reader.dl.BookDownloadManager;
 import com.clilystudio.netbook.reader.txt.TocManager;
@@ -79,7 +78,7 @@ import java.util.regex.Pattern;
 import uk.me.lewisdeane.ldialogs.BaseDialog;
 
 public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollListener {
-    private static final String a = HomeShelfFragment.class.getSimpleName();
+    private static final String TAG = HomeShelfFragment.class.getSimpleName();
     private boolean A = false;
     private long B = 0;
     private AdapterView.OnItemClickListener C;
@@ -91,7 +90,7 @@ public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollL
     private View g;
     private View h;
     private ShelfMsg i;
-    private HomeShelfAdapter j;
+    private HomeShelfAdapter mAdapter;
     private int k = 0;
     private int v = 0;
     private RelativeLayout w;
@@ -103,8 +102,8 @@ public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollL
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 BookShelf bookShelf = (BookShelf) HomeShelfFragment.this.e.getAdapter().getItem(position);
                 if (bookShelf == null) return;
-                if (HomeShelfFragment.this.j.a()) {
-                    HomeShelfFragment.this.j.a(position - HomeShelfFragment.this.e.getHeaderViewsCount());
+                if (HomeShelfFragment.this.mAdapter.a()) {
+                    HomeShelfFragment.this.mAdapter.a(position - HomeShelfFragment.this.e.getHeaderViewsCount());
                     return;
                 }
                 switch (bookShelf.getType()) {
@@ -114,7 +113,7 @@ public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollL
                         if (bookReadRecord.isUnread()) {
                             bookReadRecord.setUnread(false);
                             bookReadRecord.save();
-                            HomeShelfFragment.this.j.notifyDataSetChanged();
+                            HomeShelfFragment.this.mAdapter.notifyDataSetChanged();
                         }
                         break;
                     case 2:
@@ -210,7 +209,7 @@ public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollL
             if (hasFeedChange) {
                 homeShelfFragment.k();
             } else {
-                homeShelfFragment.j.notifyDataSetChanged();
+                homeShelfFragment.mAdapter.notifyDataSetChanged();
                 ToastUtil.showToast(homeShelfFragment.getActivity(), R.string.refurbish_no_change);
             }
         }
@@ -417,7 +416,7 @@ public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollL
     }
 
     static void b(final HomeShelfFragment homeShelfFragment, final ShelfMsg shelfMsg) {
-        List list = homeShelfFragment.j.f();
+        List list = homeShelfFragment.mAdapter.f();
         if (list == null || list.isEmpty()) {
             return;
         }
@@ -609,7 +608,7 @@ public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollL
         this.B = l2;
         list = this.j();
         if (list != null) {
-            this.j.a(list);
+            this.mAdapter.a(list);
             if (!list.isEmpty()) {
                 this.b(1);
                 if (this.b) {
@@ -724,7 +723,7 @@ public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollL
     }
 
     public final boolean c() {
-        return this.j.a();
+        return this.mAdapter.a();
     }
 
     public final void d() {
@@ -735,7 +734,7 @@ public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollL
         this.d.setMode(PullToRefreshBase.Mode.DISABLED);
         this.d.setPullToRefreshOverScrollEnabled(false);
         this.e.setOnItemLongClickListener(null);
-        this.j.b();
+        this.mAdapter.b();
     }
 
     public final void e() {
@@ -748,7 +747,7 @@ public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollL
         this.d.setMode(PullToRefreshBase.Mode.PULL_FROM_START);
         this.d.setPullToRefreshOverScrollEnabled(true);
         this.e.setOnItemLongClickListener(this.D);
-        this.j.c();
+        this.mAdapter.c();
     }
 
     @Subscribe
@@ -777,7 +776,7 @@ public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollL
 
     @Override
     public View onCreateView(LayoutInflater layoutInflater, ViewGroup viewGroup, Bundle bundle) {
-        Log.i(a, "HomeShelfFragment onCreateView");
+        Log.i(TAG, "HomeShelfFragment onCreateView");
         View c = layoutInflater.inflate(R.layout.fragment_home_shelf, viewGroup, false);
         this.d = (PullToRefreshListView) c.findViewById(R.id.home_shelf_ptr);
         this.e = this.d.getRefreshableView();
@@ -802,16 +801,16 @@ public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollL
         y.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (HomeShelfFragment.this.j != null) {
-                    HomeShelfFragment.this.j.d();
+                if (HomeShelfFragment.this.mAdapter != null) {
+                    HomeShelfFragment.this.mAdapter.d();
                 }
             }
         });
         x.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (HomeShelfFragment.this.j == null) return;
-                final List<BookShelf> list = HomeShelfFragment.this.j.e();
+                if (HomeShelfFragment.this.mAdapter == null) return;
+                final List<BookShelf> list = HomeShelfFragment.this.mAdapter.e();
                 if (list == null || list.size() == 0) {
                     ToastUtil.showToast(HomeShelfFragment.this.getActivity(), "你没有选择要删除的书哦");
                     return;
@@ -849,14 +848,14 @@ public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollL
         CommonUtil.addHeaderView(this.getActivity(), this.e);
         this.g = LayoutInflater.from(this.getActivity()).inflate(R.layout.bookshelf_header_msg, this.e, false);
         this.g.setVisibility(View.GONE);
-        this.j = new HomeShelfAdapter(this.getActivity());
-        this.e.setAdapter(this.j);
+        this.mAdapter = new HomeShelfAdapter(this.getActivity());
+        this.e.setAdapter(this.mAdapter);
         this.e.setOnItemClickListener(this.C);
         this.e.setOnItemLongClickListener(this.D);
-        this.j.a(x, y);
+        this.mAdapter.a(x, y);
         this.i();
         this.e.getHeight();
-        Log.i(a, "" + this.e.getHeight() + " ," + this.e.getMeasuredHeight());
+        Log.i(TAG, "" + this.e.getHeight() + " ," + this.e.getMeasuredHeight());
         return c;
     }
 
@@ -869,7 +868,7 @@ public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollL
     @Subscribe
     public void onDownloadProgress(DownloadProgressEvent i2) {
         if (this.k == 0) {
-            this.j.notifyDataSetChanged();
+            this.mAdapter.notifyDataSetChanged();
         }
     }
 
@@ -944,7 +943,7 @@ public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollL
     @Override
     public void onPause() {
         super.onPause();
-        if (this.j.a()) {
+        if (this.mAdapter.a()) {
             this.e();
         }
     }
@@ -988,7 +987,7 @@ public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollL
     public void setUserVisibleHint(boolean bl) {
         super.setUserVisibleHint(bl);
         if (!bl) {
-            if (this.j.a()) {
+            if (this.mAdapter.a()) {
                 this.e();
             }
         }
