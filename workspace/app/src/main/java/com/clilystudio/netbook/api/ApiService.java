@@ -678,40 +678,38 @@ public class ApiService {
         return ApiService.getResponse(this.setRequest(HttpRequest.get(url)), SearchPromRoot.class);
     }
 
-    public final BookInfo r(String string) {
-        String string2 = mApiBaseUrl + String.format(Locale.CHINA, "/book/%s", string);
-        return ApiService.getResponse(this.setRequest(HttpRequest.get(string2)), BookInfo.class);
+    public final BookInfo getBookInfo(String bookId) {
+        String url = mApiBaseUrl + String.format(Locale.CHINA, "/book/%s", bookId);
+        return ApiService.getResponse(this.setRequest(HttpRequest.get(url)), BookInfo.class);
     }
 
-    public final NotificationRoot r(String string, String string2) {
-        String string3 = CommonUtil.isBlank(string2) ? String.format(Locale.CHINA, "/user/notification/important?token=%s", string) : String.format(Locale.CHINA, "/user/notification/important?token=%s&startTime=%s", string, string2);
-        String string4 = mApiBaseUrl + string3;
-        return ApiService.getResponse(this.setRequest(HttpRequest.get(string4)), NotificationRoot.class);
+    public final NotificationRoot getImportNotify(String token, String startTime) {
+        String url = CommonUtil.isBlank(startTime) ? String.format(Locale.CHINA, "/user/notification/important?token=%s", token) : String.format(Locale.CHINA, "/user/notification/important?token=%s&startTime=%s", token, startTime);
+        return ApiService.getResponse(this.setRequest(HttpRequest.get(mApiBaseUrl + url)), NotificationRoot.class);
     }
 
-    public final NotificationRoot s(String string, String string2) {
-        String string3 = CommonUtil.isBlank(string2) ? String.format(Locale.CHINA, "/user/notification/unimportant?token=%s", string) : String.format(Locale.CHINA, "/user/notification/unimportant?token=%s&startTime=%s", string, string2);
-        String string4 = mApiBaseUrl + string3;
-        return ApiService.getResponse(this.setRequest(HttpRequest.get(string4)), NotificationRoot.class);
+    public final NotificationRoot getUnimportNotify(String token, String startTime) {
+        String url = CommonUtil.isBlank(startTime) ? String.format(Locale.CHINA, "/user/notification/unimportant?token=%s", token) : String.format(Locale.CHINA, "/user/notification/unimportant?token=%s&startTime=%s", token, startTime);
+        return ApiService.getResponse(this.setRequest(HttpRequest.get(mApiBaseUrl + url)), NotificationRoot.class);
     }
 
-    public final SgTocRoot s(String string) {
-        String string2 = String.format(Locale.CHINA, "http://novel.mse.sogou.com/http_interface/getDirData.php?md=%s", string);
-        return ApiService.getResponse(this.setRequestUserAgent(HttpRequest.get(string2), 7), SgTocRoot.class);
+    public final SgTocRoot getSgTocRoot(String sougouMd) {
+        String url = String.format(Locale.CHINA, "http://novel.mse.sogou.com/http_interface/getDirData.php?md=%s", sougouMd);
+        return ApiService.getResponse(this.setRequestUserAgent(HttpRequest.get(url), 7), SgTocRoot.class);
     }
 
-    public final LdTocRoot t(String sourceId) {
-        String string2 = String.format(Locale.CHINA, "http://m.leidian.com/ebook/detail/index.php?c=ebook&a=chapterlist&bid=%s&total=100000", sourceId);
-        return ApiService.getResponse(this.setRequestUserAgent(HttpRequest.get(string2), 8), LdTocRoot.class);
+    public final LdTocRoot getLdTocRoot(String sourceId) {
+        String url = String.format(Locale.CHINA, "http://m.leidian.com/ebook/detail/index.php?c=ebook&a=chapterlist&bid=%s&total=100000", sourceId);
+        return ApiService.getResponse(this.setRequestUserAgent(HttpRequest.get(url), 8), LdTocRoot.class);
     }
 
-    public final ChangeNickNameRoot u(String string, String string2) {
-        String string3 = mApiBaseUrl + "/user/change-nickname";
-        HashMap<String, String> hashMap = new HashMap<>();
-        hashMap.put("token", string);
-        hashMap.put("nickname", string2);
-        HttpRequest httpRequest = this.setHeader(HttpRequest.post(string3));
-        httpRequest.form(hashMap);
+    public final ChangeNickNameRoot changeNickName(String token, String nickname) {
+        String url = mApiBaseUrl + "/user/change-nickname";
+        HashMap<String, String> values = new HashMap<>();
+        values.put("token", token);
+        values.put("nickname", nickname);
+        HttpRequest httpRequest = this.setHeader(HttpRequest.post(url));
+        httpRequest.form(values);
         return ApiService.getResponse(httpRequest, ChangeNickNameRoot.class);
     }
 

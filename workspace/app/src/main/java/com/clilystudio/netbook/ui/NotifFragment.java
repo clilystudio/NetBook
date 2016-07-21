@@ -67,9 +67,9 @@ public abstract class NotifFragment extends Fragment {
                                 }
                                 ApiServiceProvider.getInstance();
                                 if (NotifFragment.this.a() == NotifFragment.Type.IMPORTANT) {
-                                    return ApiServiceProvider.getApiService().r(params[0], string);
+                                    return ApiServiceProvider.getApiService().getImportNotify(params[0], string);
                                 }
-                                return ApiServiceProvider.getApiService().s(params[0], string);
+                                return ApiServiceProvider.getApiService().getUnimportNotify(params[0], string);
                             }
                             return null;
                         }
@@ -148,9 +148,9 @@ public abstract class NotifFragment extends Fragment {
             protected NotificationRoot doInBackground(String... params) {
                 ApiServiceProvider.getInstance();
                 if (NotifFragment.this.a() == NotifFragment.Type.IMPORTANT) {
-                    return ApiServiceProvider.getApiService().r(params[0], "");
+                    return ApiServiceProvider.getApiService().getImportNotify(params[0], "");
                 }
-                return ApiServiceProvider.getApiService().s(params[0], "");
+                return ApiServiceProvider.getApiService().getUnimportNotify(params[0], "");
             }
 
             @Override

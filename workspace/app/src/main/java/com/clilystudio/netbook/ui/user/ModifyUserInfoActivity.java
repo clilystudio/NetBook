@@ -221,7 +221,7 @@ public class ModifyUserInfoActivity extends BaseActivity implements View.OnClick
                                     this.a = var1[0];
                                     Account account = CommonUtil.getAccount();
                                     if (account != null) {
-                                        return ApiServiceProvider.getApiService().u(account.getToken(), var1[0]);
+                                        return ApiServiceProvider.getApiService().changeNickName(account.getToken(), var1[0]);
                                     }
                                     return null;
                                 }

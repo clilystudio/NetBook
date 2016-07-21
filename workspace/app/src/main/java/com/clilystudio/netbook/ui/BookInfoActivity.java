@@ -351,7 +351,7 @@ public class BookInfoActivity extends BaseActivity implements View.OnClickListen
 
             @Override
             protected BookInfo doInBackground(String... params) {
-                return ApiServiceProvider.getApiService().r(params[0]);
+                return ApiServiceProvider.getApiService().getBookInfo(params[0]);
             }
 
             @Override

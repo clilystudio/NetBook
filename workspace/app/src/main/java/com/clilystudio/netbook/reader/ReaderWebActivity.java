@@ -217,7 +217,7 @@ public class ReaderWebActivity extends BaseReadActivity {
 
                         @Override
                         public SgTocRoot a(String... var1) {
-                            return ApiServiceProvider.getApiService().s(var1[0]);
+                            return ApiServiceProvider.getApiService().getSgTocRoot(var1[0]);
                         }
 
                         @Override

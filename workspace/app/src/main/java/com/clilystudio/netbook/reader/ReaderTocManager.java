@@ -228,7 +228,7 @@ public final class ReaderTocManager {
         SgTocChapter[] arrsgTocChapter;
         Toc toc;
         try {
-            SgTocRoot sgTocRoot2 = ApiServiceProvider.getApiService().s(this.mSourceId);
+            SgTocRoot sgTocRoot2 = ApiServiceProvider.getApiService().getSgTocRoot(this.mSourceId);
             toc = null;
             if (sgTocRoot2 == null) return toc;
             SgTocChapter[] arrsgTocChapter2 = sgTocRoot2.getChapter();
@@ -282,7 +282,7 @@ public final class ReaderTocManager {
         block6:
         {
             try {
-                ldTocRoot = ApiServiceProvider.getApiService().t(this.mSourceId);
+                ldTocRoot = ApiServiceProvider.getApiService().getLdTocRoot(this.mSourceId);
                 if (ldTocRoot != null && ldTocRoot.getResult() != null) break block6;
                 return null;
             } catch (Exception var1_3) {
