@@ -61,7 +61,7 @@ public class UGCMainListFragment extends Fragment implements AdapterView.OnItemC
                         protected UGCBookListRoot doInBackground(String... params) {
                             if (!this.isCancelled()) {
                                 ApiServiceProvider.getInstance();
-                                return ApiServiceProvider.getApiService().a(UGCMainListFragment.this.getArguments().getString("duration"), UGCMainListFragment.this.getArguments().getString("sort"), UGCMainListFragment.this.d.getCount(), 20, UGCMainListFragment.this.b());
+                                return ApiServiceProvider.getApiService().getUGCBookListRoot(UGCMainListFragment.this.getArguments().getString("duration"), UGCMainListFragment.this.getArguments().getString("sort"), UGCMainListFragment.this.d.getCount(), 20, UGCMainListFragment.this.b());
                             }
                             return null;
                         }
@@ -132,7 +132,7 @@ public class UGCMainListFragment extends Fragment implements AdapterView.OnItemC
             @Override
             protected UGCBookListRoot doInBackground(String... params) {
                 ApiServiceProvider.getInstance();
-                return ApiServiceProvider.getApiService().a(UGCMainListFragment.this.getArguments().getString("duration"), UGCMainListFragment.this.getArguments().getString("sort"), 0, 20, UGCMainListFragment.this.b());
+                return ApiServiceProvider.getApiService().getUGCBookListRoot(UGCMainListFragment.this.getArguments().getString("duration"), UGCMainListFragment.this.getArguments().getString("sort"), 0, 20, UGCMainListFragment.this.b());
             }
 
             @Override
@@ -222,7 +222,7 @@ public class UGCMainListFragment extends Fragment implements AdapterView.OnItemC
                             @Override
                             protected UGCBookListRoot doInBackground(String... params) {
                                 ApiServiceProvider.getInstance();
-                                return ApiServiceProvider.getApiService().a(UGCMainListFragment.this.getArguments().getString("duration"), UGCMainListFragment.this.getArguments().getString("sort"), 0, 20, UGCMainListFragment.this.b());
+                                return ApiServiceProvider.getApiService().getUGCBookListRoot(UGCMainListFragment.this.getArguments().getString("duration"), UGCMainListFragment.this.getArguments().getString("sort"), 0, 20, UGCMainListFragment.this.b());
                             }
 
                             @Override

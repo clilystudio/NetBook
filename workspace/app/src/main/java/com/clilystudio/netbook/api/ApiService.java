@@ -334,17 +334,15 @@ public class ApiService {
         return ApiService.getResponse(this.setRequest(HttpRequest.get(url)), RelateBookRoot.class);
     }
 
-    public final BookListRoot a(String string, String string2, String string3, String string4, int n, int n2) {
-        String string5 = mApiBaseUrl + String.format(Locale.CHINA, "/book/by-categories?gender=%s&type=%s&major=%s&minor=%s&start=%d&limit=%d", string, string2, CommonUtil.encodeUrl(string3), CommonUtil.encodeUrl(string4), n, n2);
-        return ApiService.getResponse(this.setRequest(HttpRequest.get(string5)), BookListRoot.class);
+    public final BookListRoot getBookListRoot(String gender, String type, String major, String minor, int start, int limit) {
+        String url = mApiBaseUrl + String.format(Locale.CHINA, "/book/by-categories?gender=%s&type=%s&major=%s&minor=%s&start=%d&limit=%d", gender, type, CommonUtil.encodeUrl(major), CommonUtil.encodeUrl(minor), start, limit);
+        return ApiService.getResponse(this.setRequest(HttpRequest.get(url)), BookListRoot.class);
     }
 
-    public final ChapterRoot a(String string, String string2, int sort, String chapterName, String chapterLink) {
-        String string6 = String.format(Locale.CHINA, "http://api.easou.com/api/bookapp/chapter.m?gid=%s&nid=%s&sort=%d&chapter_name=%s&cid=eef_", string, string2, sort, CommonUtil.encodeUrl(chapterName));
-        HttpRequest httpRequest = this.setUserAgent(HttpRequest.get(string6), 3);
-        boolean bl = httpRequest.ok();
-        int n2 = httpRequest.code();
-        if (!bl && n2 >= 500) {
+    public final ChapterRoot getChapterRoot(String gId, String nId, int sort, String chapterName, String chapterLink) {
+        String url = String.format(Locale.CHINA, "http://api.easou.com/api/bookapp/chapter.m?gid=%s&nid=%s&sort=%d&chapter_name=%s&cid=eef_", gId, nId, sort, CommonUtil.encodeUrl(chapterName));
+        HttpRequest httpRequest = this.setUserAgent(HttpRequest.get(url), 3);
+        if (!httpRequest.ok() && httpRequest.code() >= 500) {
             return ApiService.getDefaultChapterRoot();
         }
         EsChapterRoot esChapterRoot = ApiService.getResponse(httpRequest, EsChapterRoot.class);
@@ -362,86 +360,85 @@ public class ApiService {
         return ApiService.getDefaultChapterRoot();
     }
 
-    public final ResultStatus a(UGCNewCollection var1_1, String var2_2) {
-        String var3_3 = ApiService.mApiBaseUrl + "/book-list";
-        HttpRequest var5_4 = this.setHeader(HttpRequest.post(var3_3));
-        HashMap<String, String> var6_5 = new HashMap<>();
-        var6_5.put("token", var2_2);
-        var6_5.put("title", var1_1.getTitle());
-        var6_5.put("desc", var1_1.getDesc());
-        var5_4.form(var6_5);
-        for (BookSummary var13_7 : var1_1.getBooks()) {
-            var5_4.form("books[]", var13_7.getId());
-            var5_4.form("comments[]", var13_7.getAppendComment());
+    public final ResultStatus publishUcgCollection(UGCNewCollection collection, String token) {
+        String url = ApiService.mApiBaseUrl + "/book-list";
+        HttpRequest httpRequest = this.setHeader(HttpRequest.post(url));
+        HashMap<String, String> values = new HashMap<>();
+        values.put("token", token);
+        values.put("title", collection.getTitle());
+        values.put("desc", collection.getDesc());
+        httpRequest.form(values);
+        for (BookSummary bookSummary : collection.getBooks()) {
+            httpRequest.form("books[]", bookSummary.getId());
+            httpRequest.form("comments[]", bookSummary.getAppendComment());
         }
-        return ApiService.getResponse(var5_4, ResultStatus.class);
+        return ApiService.getResponse(httpRequest, ResultStatus.class);
     }
 
-    public final ResultStatus a(UGCNewCollection var1_1, String var2_2, String var3_3) {
-        String var4_4 = ApiService.mApiBaseUrl + String.format(Locale.CHINA, "/book-list/%s", var3_3);
-        HttpRequest var6_5 = this.setHeader(HttpRequest.post(var4_4));
-        HashMap<String, String> var7_6 = new HashMap<>();
-        var7_6.put("token", var2_2);
-        var7_6.put("title", var1_1.getTitle());
-        var7_6.put("desc", var1_1.getDesc());
-        var6_5.form(var7_6);
-        for (BookSummary var14_8 : var1_1.getBooks()) {
-            var6_5.form("books[]", var14_8.getId());
-            var6_5.form("comments[]", var14_8.getAppendComment());
+    public final ResultStatus modifyUcgCollection(UGCNewCollection collection, String token, String bookId) {
+        String url = ApiService.mApiBaseUrl + String.format(Locale.CHINA, "/book-list/%s", bookId);
+        HttpRequest httpRequest = this.setHeader(HttpRequest.post(url));
+        HashMap<String, String> values = new HashMap<>();
+        values.put("token", token);
+        values.put("title", collection.getTitle());
+        values.put("desc", collection.getDesc());
+        httpRequest.form(values);
+        for (BookSummary bookSummary : collection.getBooks()) {
+            httpRequest.form("books[]", bookSummary.getId());
+            httpRequest.form("comments[]", bookSummary.getAppendComment());
         }
-        return ApiService.getResponse(var6_5, ResultStatus.class);
+        return ApiService.getResponse(httpRequest, ResultStatus.class);
     }
 
-    public final Root a(String string, Uri uri) {
-        String string2 = mApiBaseUrl + "/user/change-avatar";
-        HttpRequest httpRequest = this.setHeader(HttpRequest.post(string2));
-        httpRequest.part("token", null, null, string).part("avatar", uri.getPath(), "image/jpeg", new File(uri.getPath())).ok();
+    public final Root changeAvatar(String token, Uri uri) {
+        String url = mApiBaseUrl + "/user/change-avatar";
+        HttpRequest httpRequest = this.setHeader(HttpRequest.post(url));
+        httpRequest.part("token", null, null, token).part("avatar", uri.getPath(), "image/jpeg", new File(uri.getPath())).ok();
         return ApiService.getResponse(httpRequest, Root.class);
     }
 
-    public final UGCBookListRoot a(String string, String string2, int n, int n2, String string3) {
+    public final UGCBookListRoot getUGCBookListRoot(String string, String string2, int n, int n2, String string3) {
         String string4 = mApiBaseUrl + String.format(Locale.CHINA, "/book-list?duration=%s&sort=%s&start=%d&limit=%d&tag=%s", string, string2, n, n2, string3);
         return ApiService.getResponse(this.setRequest(HttpRequest.get(string4)), UGCBookListRoot.class);
     }
 
-    public final SsTocRoot a(int n, int n2, String string) {
-        String string2 = String.format(Locale.CHINA, "http://bookshelf.html5.qq.com/ajax?start=%d&serialnum=%d&sort=asc&resourceid=%s&m=list_charpter&count=200", n, n2, string);
-        return ApiService.getResponse(this.setRequestUserAgent(HttpRequest.get(string2), 6), SsTocRoot.class);
+    public final SsTocRoot getSsTocRoot(int start, int serial, String sourceId) {
+        String url = String.format(Locale.CHINA, "http://bookshelf.html5.qq.com/ajax?start=%d&serialnum=%d&sort=asc&resourceid=%s&m=list_charpter&count=200", start, serial, sourceId);
+        return ApiService.getResponse(this.setRequestUserAgent(HttpRequest.get(url), 6), SsTocRoot.class);
     }
 
-    public final List<BookUpdate> a(List<String> list) {
-        if (list.isEmpty()) {
+    public final List<BookUpdate> getBookUpdateList(List<String> bookIds) {
+        if (bookIds.isEmpty()) {
             return Collections.emptyList();
         }
-        String string = TextUtils.join(",", list.toArray());
-        String string2 = mApiBaseUrl + String.format(Locale.CHINA, "/book?view=updated&id=%s", string);
-        return ApiService.getListResponse(this.setRequest(HttpRequest.get(string2)), BookUpdate.class);
+        String url = mApiBaseUrl + String.format(Locale.CHINA, "/book?view=updated&id=%s", TextUtils.join(",", bookIds.toArray()));
+        return ApiService.getListResponse(this.setRequest(HttpRequest.get(url)), BookUpdate.class);
     }
 
-    public final List<BookSummary> a(String[] arrstring) {
+    public final List<BookSummary> getBookSummaryList(String[] bookIds) {
         ArrayList<BookSummary> arrayList = new ArrayList<>();
         StringBuilder stringBuffer = new StringBuilder("?");
-        for (int j = 0; j < arrstring.length; ++j) {
-            if (j == 0) {
-                stringBuffer.append("ids=").append(arrstring[j]);
-                continue;
+        for (int i = 0; i < bookIds.length; ++i) {
+            if (i == 0) {
+                stringBuffer.append("ids=").append(bookIds[i]);
+            } else {
+                stringBuffer.append("&ids=").append(bookIds[i]);
             }
-            stringBuffer.append("&ids=").append(arrstring[j]);
         }
-        String string = mApiBaseUrl + "/books/by-ids" + stringBuffer;
-        SearchResultRoot searchResultRoot = ApiService.getResponse(this.setRequest(HttpRequest.get(string)), SearchResultRoot.class);
+        String url = mApiBaseUrl + "/books/by-ids" + stringBuffer;
+        SearchResultRoot searchResultRoot = ApiService.getResponse(this.setRequest(HttpRequest.get(url)), SearchResultRoot.class);
         if (searchResultRoot == null) return arrayList;
         return searchResultRoot.getBooks();
     }
 
-    public final ChineseAllPromRoot aa(String string) {
-        String string2 = mApiBaseUrl + String.format(Locale.CHINA, "/book/%s/chinese-all-promo", string);
-        return ApiService.getResponse(this.setRequest(HttpRequest.get(string2)), ChineseAllPromRoot.class);
+    public final ChineseAllPromRoot getChineseAllPromRoot(String string) {
+        String url = mApiBaseUrl + String.format(Locale.CHINA, "/book/%s/chinese-all-promo", string);
+        return ApiService.getResponse(this.setRequest(HttpRequest.get(url)), ChineseAllPromRoot.class);
     }
 
-    public final BookGenderRecommend ac(String string) {
-        String string2 = mApiBaseUrl + String.format(Locale.CHINA, "/book/recommend?gender=%s", string);
-        return ApiService.getResponse(this.setRequest(HttpRequest.get(string2)), BookGenderRecommend.class);
+    public final BookGenderRecommend getBookGenderRecommend(String string) {
+        String url = mApiBaseUrl + String.format(Locale.CHINA, "/book/recommend?gender=%s", string);
+        return ApiService.getResponse(this.setRequest(HttpRequest.get(url)), BookGenderRecommend.class);
     }
 
     public final HotKeywordResult b() {

@@ -132,7 +132,7 @@ public class ModifyUserInfoActivity extends BaseActivity implements View.OnClick
 
                         @Override
                         public Root a(String... var1) {
-                            return ApiServiceProvider.getApiService().a(CommonUtil.checkLogin(ModifyUserInfoActivity.this).getToken(), output);
+                            return ApiServiceProvider.getApiService().changeAvatar(CommonUtil.checkLogin(ModifyUserInfoActivity.this).getToken(), output);
 
                         }
 

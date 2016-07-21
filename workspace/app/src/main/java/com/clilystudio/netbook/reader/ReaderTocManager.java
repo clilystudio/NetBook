@@ -67,7 +67,7 @@ public final class ReaderTocManager {
         String[] arrstring = CommonUtil.splitSourceId(this.mSourceId);
         if (arrstring == null) return null;
         try {
-            return ApiServiceProvider.getApiService().a(arrstring[0], arrstring[1], sort, chapterName, chapterLink);
+            return ApiServiceProvider.getApiService().getChapterRoot(arrstring[0], arrstring[1], sort, chapterName, chapterLink);
         } catch (Exception var4_6) {
             var4_6.printStackTrace();
         }
@@ -95,7 +95,7 @@ public final class ReaderTocManager {
                 @Override
                 public void run() {
                     SsTocRow[] arrssTocRow;
-                    SsTocRoot ssTocRoot = ApiServiceProvider.getApiService().a(finalJ, n, ReaderTocManager.this.mSourceId);
+                    SsTocRoot ssTocRoot = ApiServiceProvider.getApiService().getSsTocRoot(finalJ, n, ReaderTocManager.this.mSourceId);
                     if (ssTocRoot == null || ssTocRoot.getRows() == null) return;
                     arrssTocRow = ssTocRoot.getRows();
                     ChapterLink[] arrchapterLink = new ChapterLink[arrssTocRow.length];

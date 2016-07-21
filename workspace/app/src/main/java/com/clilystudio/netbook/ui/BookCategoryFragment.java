@@ -60,17 +60,17 @@ public class BookCategoryFragment extends Fragment {
 
             @Override
             protected List<CategoryBook> doInBackground(String... params) {
-                String string = BookCategoryFragment.this.getArguments().getString("bookcategory_type");
+                String type = BookCategoryFragment.this.getArguments().getString("bookcategory_type");
                 if (BookCategoryFragment.this.getActivity() == null) return null;
                 if (BookCategoryFragment.this.getActivity().isFinishing()) {
                     return null;
                 }
-                String string2 = ((BookCategoryListActivity) BookCategoryFragment.this.getActivity()).f();
-                String string3 = ((BookCategoryListActivity) BookCategoryFragment.this.getActivity()).g();
-                String string4 = ((BookCategoryListActivity) BookCategoryFragment.this.getActivity()).b();
+                String major = ((BookCategoryListActivity) BookCategoryFragment.this.getActivity()).f();
+                String minor = ((BookCategoryListActivity) BookCategoryFragment.this.getActivity()).g();
+                String gender = ((BookCategoryListActivity) BookCategoryFragment.this.getActivity()).b();
                 ApiServiceProvider.getInstance();
-                int n = isContinus ? BookCategoryFragment.this.i.size() : 0;
-                BookListRoot bookListRoot = ApiServiceProvider.getApiService().a(string4, string, string2, string3, n, 50);
+                int start = isContinus ? BookCategoryFragment.this.i.size() : 0;
+                BookListRoot bookListRoot = ApiServiceProvider.getApiService().getBookListRoot(gender, type, major, minor, start, 50);
                 if (bookListRoot == null) return null;
                 if (bookListRoot.getBooks() == null) return null;
                 return Arrays.asList(bookListRoot.getBooks());

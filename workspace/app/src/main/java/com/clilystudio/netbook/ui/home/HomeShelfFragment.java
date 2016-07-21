@@ -487,7 +487,7 @@ public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollL
                     arrayList.add(anA.getBookId());
                 }
                 ApiServiceProvider.getInstance();
-                return ApiServiceProvider.getApiService().a(arrayList);
+                return ApiServiceProvider.getApiService().getBookUpdateList(arrayList);
             }
 
             @Override
@@ -925,7 +925,7 @@ public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollL
                     int n;
                     BookGenderRecommend bookGenderRecommend;
                     int n2 = 0;
-                    bookGenderRecommend = ApiServiceProvider.getApiService().ac(var1[0]);
+                    bookGenderRecommend = ApiServiceProvider.getApiService().getBookGenderRecommend(var1[0]);
                     if (!bookGenderRecommend.isOk()) return bookGenderRecommend;
                     BookGenderRecommend.RecommendBook[] recommendBooks = bookGenderRecommend.getBooks();
                     n = recommendBooks.length;

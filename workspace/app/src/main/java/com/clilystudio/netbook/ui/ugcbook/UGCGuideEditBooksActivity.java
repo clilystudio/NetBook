@@ -152,7 +152,7 @@ public class UGCGuideEditBooksActivity extends BaseActivity implements View.OnCl
 
             @Override
             public List<BookSummary> a(String[]... var1) {
-                return ApiServiceProvider.getApiService().a(var1[0]);
+                return ApiServiceProvider.getApiService().getBookSummaryList(var1[0]);
             }
 
             @Override
@@ -365,10 +365,10 @@ public class UGCGuideEditBooksActivity extends BaseActivity implements View.OnCl
                         return ApiServiceProvider.getApiService().c(MyApplication.getInstance().getUGCNewCollection(), account.getToken(), UGCGuideEditBooksActivity.this.f);
                     }
                     if (UGCGuideEditBooksActivity.this.f == null)
-                        return ApiServiceProvider.getApiService().a(MyApplication.getInstance().getUGCNewCollection(), account.getToken());
+                        return ApiServiceProvider.getApiService().publishUcgCollection(MyApplication.getInstance().getUGCNewCollection(), account.getToken());
                     if (UGCGuideEditBooksActivity.this.f.equals(""))
-                        return ApiServiceProvider.getApiService().a(MyApplication.getInstance().getUGCNewCollection(), account.getToken());
-                    return ApiServiceProvider.getApiService().a(MyApplication.getInstance().getUGCNewCollection(), account.getToken(), UGCGuideEditBooksActivity.this.f);
+                        return ApiServiceProvider.getApiService().publishUcgCollection(MyApplication.getInstance().getUGCNewCollection(), account.getToken());
+                    return ApiServiceProvider.getApiService().modifyUcgCollection(MyApplication.getInstance().getUGCNewCollection(), account.getToken(), UGCGuideEditBooksActivity.this.f);
                 }
 
                 @Override
