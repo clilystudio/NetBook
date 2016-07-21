@@ -10,11 +10,11 @@ public class BookRankDetailActivity extends BookListActivity {
     @Override
     protected final void b() {
         this.e(0);
-        BaseAsyncTask<String, Void, BookRankDetailRoot> aL2 = new BaseAsyncTask<String, Void, BookRankDetailRoot>() {
+        new BaseAsyncTask<String, Void, BookRankDetailRoot>() {
 
             @Override
             protected BookRankDetailRoot doInBackground(String... params) {
-                return ApiServiceProvider.getApiService().z(params[0]);
+                return ApiServiceProvider.getApiService().getBookRankDetailRoot(params[0]);
             }
 
             @Override
@@ -28,8 +28,6 @@ public class BookRankDetailActivity extends BookListActivity {
                 BookRankDetailActivity.this.e(2);
                 ToastUtil.showToast(BookRankDetailActivity.this, R.string.load_failed_tips);
             }
-        };
-        String[] arrstring = new String[]{this.getIntent().getStringExtra("book_list_id")};
-        aL2.b(arrstring);
+        }.b(this.getIntent().getStringExtra("book_list_id"));
     }
 }

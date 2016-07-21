@@ -76,7 +76,7 @@ public class ModifyUserInfoActivity extends BaseActivity implements View.OnClick
                     public ChangeGenderRoot a(String... var1) {
                         Account account = CommonUtil.getAccount();
                         if (account != null) {
-                            return ApiServiceProvider.getApiService().v(account.getToken(), var1[0]);
+                            return ApiServiceProvider.getApiService().changeGender(account.getToken(), var1[0]);
                         }
                         return null;
                     }

@@ -713,54 +713,50 @@ public class ApiService {
         return ApiService.getResponse(httpRequest, ChangeNickNameRoot.class);
     }
 
-    public final String u(String string) {
-        String string2 = String.format(Locale.CHINA, "http://m.leidian.com/index.php?c=ebook&a=chapterData&bid=%s&idx=0", string);
-        return this.setRequestUserAgent(HttpRequest.get(string2), 8).body();
+    public final String getLdChapterData(String bookId) {
+        String url = String.format(Locale.CHINA, "http://m.leidian.com/index.php?c=ebook&a=chapterData&bid=%s&idx=0", bookId);
+        return this.setRequestUserAgent(HttpRequest.get(url), 8).body();
     }
 
-    public final ChangeGenderRoot v(String string, String string2) {
-        String string3 = mApiBaseUrl + "/user/change-gender";
-        HashMap<String, String> hashMap = new HashMap<>();
-        hashMap.put("token", string);
-        hashMap.put("gender", string2);
-        HttpRequest httpRequest = this.setHeader(HttpRequest.post(string3));
-        httpRequest.form(hashMap);
+    public final ChangeGenderRoot changeGender(String token, String gender) {
+        String url = mApiBaseUrl + "/user/change-gender";
+        HashMap<String, String> values = new HashMap<>();
+        values.put("token", token);
+        values.put("gender", gender);
+        HttpRequest httpRequest = this.setHeader(HttpRequest.post(url));
+        httpRequest.form(values);
         return ApiService.getResponse(httpRequest, ChangeGenderRoot.class);
     }
 
-    public final EsTocRoot v(String string) {
-        String[] arrstring = CommonUtil.splitSourceId(string);
-        if (arrstring == null) {
+    public final EsTocRoot getEsTocRoot(String sourceId) {
+        String[] ids = CommonUtil.splitSourceId(sourceId);
+        if (ids == null) {
             return null;
         }
-        String string2 = String.format(Locale.CHINA, "http://api.easou.com/api/bookapp/chapter_list.m?gid=%s&nid=%s&size=100000&cid=eef_", arrstring[0], arrstring[1]);
-        return ApiService.getResponse(this.setRequestUserAgent(HttpRequest.get(string2), 3), EsTocRoot.class);
+        String url = String.format(Locale.CHINA, "http://api.easou.com/api/bookapp/chapter_list.m?gid=%s&nid=%s&size=100000&cid=eef_", ids[0], ids[1]);
+        return ApiService.getResponse(this.setRequestUserAgent(HttpRequest.get(url), 3), EsTocRoot.class);
     }
 
-    public final int w(String string) {
-        String string2 = String.format(Locale.CHINA, "http://bookshelf.html5.qq.com/ajax?m=show_bookcatalog&resourceid=%s", string);
-        return SsChapterJson.getTocCount(this.setRequestUserAgent(HttpRequest.get(string2), 6).body());
+    public final int getQQTocCount(String sourceId) {
+        String url = String.format(Locale.CHINA, "http://bookshelf.html5.qq.com/ajax?m=show_bookcatalog&resourceid=%s", sourceId);
+        return SsChapterJson.getTocCount(this.setRequestUserAgent(HttpRequest.get(url), 6).body());
     }
 
-    public final ChapterRoot x(String string) {
-        String string2 = String.format(Locale.CHINA, "/chapter/%s", CommonUtil.encodeUrl(string));
-        String string3 = mChapter2Url + string2;
-        HttpRequest httpRequest = HttpRequest.get(string3);
+    public final ChapterRoot getChapter2Root(String link) {
+        String url = mChapter2Url + String.format(Locale.CHINA, "/chapter/%s", CommonUtil.encodeUrl(link));
+        HttpRequest httpRequest = HttpRequest.get(url);
         if (DnsManager.isUseDns()) {
             httpRequest = DnsManager.setDnsIp(httpRequest);
         }
         HttpRequest httpRequest2 = this.setHeader(httpRequest);
-        boolean bl = httpRequest2.ok();
-        int n = httpRequest2.code();
-        if (!bl && n >= 500) {
+        if (!httpRequest2.ok() && httpRequest2.code() >= 500) {
             return ApiService.getDefaultChapterRoot();
         }
         ChapterRoot chapterRoot = ApiService.getResponse(httpRequest2, ChapterRoot.class);
-        if (chapterRoot == null || chapterRoot.getChapter() == null) return chapterRoot;
-        {
-            chapterRoot.getChapter().setLink(string);
-            return chapterRoot;
+        if (chapterRoot != null && chapterRoot.getChapter() != null) {
+            chapterRoot.getChapter().setLink(link);
         }
+        return chapterRoot;
     }
 
     public final ResultStatus addUserExp(String token, String type) {
@@ -773,39 +769,35 @@ public class ApiService {
         return ApiService.getResponse(httpRequest, ResultStatus.class);
     }
 
-    public final ChapterRoot y(String string) {
-        String string2 = CommonUtil.encodeUrl(string);
-        String string3 = mChapterUrl + String.format(Locale.CHINA, "/chapter/%s", string2);
-        HttpRequest httpRequest = HttpRequest.get(string3);
+    public final ChapterRoot getChapterRoot(String link) {
+        String url = mChapterUrl + String.format(Locale.CHINA, "/chapter/%s", CommonUtil.encodeUrl(link));
+        HttpRequest httpRequest = HttpRequest.get(url);
         if (DnsManager.isUseDns()) {
             httpRequest = DnsManager.setDnsIp(httpRequest);
         }
         HttpRequest httpRequest2 = this.setHeader(httpRequest);
-        boolean bl = httpRequest2.ok();
-        int n = httpRequest2.code();
-        if (!bl && n >= 500) {
+        if (!httpRequest2.ok() && httpRequest2.code() >= 500) {
             return ApiService.getDefaultChapterRoot();
         }
         ChapterRoot chapterRoot = ApiService.getResponse(httpRequest2, ChapterRoot.class);
-        if (chapterRoot == null || chapterRoot.getChapter() == null) return chapterRoot;
-        {
-            chapterRoot.getChapter().setLink(string);
-            return chapterRoot;
+        if (chapterRoot != null && chapterRoot.getChapter() != null) {
+            chapterRoot.getChapter().setLink(link);
         }
+        return chapterRoot;
     }
 
-    public final BookRankDetailRoot z(String string) {
-        String string2 = mApiBaseUrl + String.format(Locale.CHINA, "/ranking/%s", string);
-        return ApiService.getResponse(this.setRequest(HttpRequest.get(string2)), BookRankDetailRoot.class);
+    public final BookRankDetailRoot getBookRankDetailRoot(String bookListId) {
+        String url = mApiBaseUrl + String.format(Locale.CHINA, "/ranking/%s", bookListId);
+        return ApiService.getResponse(this.setRequest(HttpRequest.get(url)), BookRankDetailRoot.class);
     }
 
-    public final ResultStatus z(String string, String string2) {
-        String string3 = mApiBaseUrl + "/user/collected-post/remove";
-        HashMap<String, String> hashMap = new HashMap<>();
-        hashMap.put("token", string);
-        hashMap.put("post", string2);
-        HttpRequest httpRequest = this.setHeader(HttpRequest.post(string3));
-        httpRequest.form(hashMap);
+    public final ResultStatus removeFavTopic(String token, String post) {
+        String url = mApiBaseUrl + "/user/collected-post/remove";
+        HashMap<String, String> values = new HashMap<>();
+        values.put("token", token);
+        values.put("post", post);
+        HttpRequest httpRequest = this.setHeader(HttpRequest.post(url));
+        httpRequest.form(values);
         return ApiService.getResponse(httpRequest, ResultStatus.class);
     }
 

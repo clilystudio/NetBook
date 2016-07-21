@@ -260,7 +260,7 @@ public class ReaderWebActivity extends BaseReadActivity {
 
                     @Override
                     public EsTocRoot a(String... var1) {
-                        return ApiServiceProvider.getApiService().v(var1[0]);
+                        return ApiServiceProvider.getApiService().getEsTocRoot(var1[0]);
                     }
 
                     @Override

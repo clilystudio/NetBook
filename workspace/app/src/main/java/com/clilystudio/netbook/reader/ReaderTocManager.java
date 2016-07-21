@@ -165,13 +165,13 @@ public final class ReaderTocManager {
         }
     }
 
-    private ChapterRoot c(String string) {
+    private ChapterRoot c(String link) {
         try {
             ApiService apiService = ApiServiceProvider.getApiService();
             if (CommonUtil.isForceEncryptChapter()) {
-                return apiService.x(string);
+                return apiService.getChapter2Root(link);
             }
-            return apiService.y(string);
+            return apiService.getChapterRoot(link);
         } catch (Exception var2_4) {
             var2_4.printStackTrace();
             return null;
@@ -197,7 +197,7 @@ public final class ReaderTocManager {
         List<ChapterLink> list;
         int n2;
         try {
-            n2 = ApiServiceProvider.getApiService().w(this.mSourceId);
+            n2 = ApiServiceProvider.getApiService().getQQTocCount(this.mSourceId);
             if (n2 == 0) {
                 return null;
             }
@@ -291,7 +291,7 @@ public final class ReaderTocManager {
             }
         }
         try {
-            String string2 = ApiServiceProvider.getApiService().u(this.mSourceId);
+            String string2 = ApiServiceProvider.getApiService().getLdChapterData(this.mSourceId);
             Matcher matcher = Pattern.compile("tk:'([0-9a-f]+)'").matcher(string2);
             if (!matcher.find()) return null;
             string = matcher.group(1);
@@ -323,7 +323,7 @@ public final class ReaderTocManager {
         Toc toc;
         EsTocItem[] arresTocItem;
         try {
-            EsTocRoot esTocRoot2 = ApiServiceProvider.getApiService().v(this.mSourceId);
+            EsTocRoot esTocRoot2 = ApiServiceProvider.getApiService().getEsTocRoot(this.mSourceId);
             toc = null;
             if (esTocRoot2 == null) return toc;
             EsTocItem[] arresTocItem2 = esTocRoot2.getItems();

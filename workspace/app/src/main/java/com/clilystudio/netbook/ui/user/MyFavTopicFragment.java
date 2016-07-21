@@ -119,12 +119,12 @@ public class MyFavTopicFragment extends Fragment {
             AdapterView.AdapterContextMenuInfo adapterContextMenuInfo = (AdapterView.AdapterContextMenuInfo) menuItem.getMenuInfo();
             if (menuItem.getItemId() == 0) {
                 TopicPost topicPost = (TopicPost) this.d.getAdapter().getItem(adapterContextMenuInfo.position);
-                BaseLoadingTask<String, ResultStatus> y2 = new BaseLoadingTask<String, ResultStatus>((Activity) this.getActivity(), R.string.loading) {
+                new BaseLoadingTask<String, ResultStatus>((Activity) this.getActivity(), R.string.loading) {
 
                     @Override
                     public ResultStatus a(String... var1) {
                         ApiServiceProvider.getInstance();
-                        return ApiServiceProvider.getApiService().z(var1[0], var1[1]);
+                        return ApiServiceProvider.getApiService().removeFavTopic(var1[0], var1[1]);
                     }
 
                     @Override
@@ -140,8 +140,7 @@ public class MyFavTopicFragment extends Fragment {
                         }
                         ToastUtil.showShortToast(this.b(), "删除失败，请检查网络或稍后再试");
                     }
-                };
-                y2.b(this.k, topicPost.get_id());
+                }.b(this.k, topicPost.get_id());
             }
         }
         return super.onContextItemSelected(menuItem);
@@ -155,7 +154,7 @@ public class MyFavTopicFragment extends Fragment {
         if (contextMenuInfo instanceof AdapterView.AdapterContextMenuInfo) {
             AdapterView.AdapterContextMenuInfo adapterContextMenuInfo = (AdapterView.AdapterContextMenuInfo) contextMenuInfo;
             TopicPost topicPost = (TopicPost) this.d.getAdapter().getItem(adapterContextMenuInfo.position);
-            String string = topicPost != null ? topicPost.getTitle() : "\u63d0\u793a";
+            String string = topicPost != null ? topicPost.getTitle() : "提示";
             contextMenu.setHeaderTitle(string);
             contextMenu.add(0, 0, 0, R.string.delete);
         }

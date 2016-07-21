@@ -46,7 +46,7 @@ public class BookRankListFragment extends Fragment {
             @Override
             protected BookRankDetailRoot doInBackground(String... params) {
                 ApiServiceProvider.getInstance();
-                return ApiServiceProvider.getApiService().z(BookRankListFragment.this.getArguments().getString("book_list_id"));
+                return ApiServiceProvider.getApiService().getBookRankDetailRoot(BookRankListFragment.this.getArguments().getString("book_list_id"));
             }
 
             @Override
