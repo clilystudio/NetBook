@@ -223,10 +223,10 @@ public class UGCGuideEditBooksActivity extends BaseActivity implements View.OnCl
                             Account account = CommonUtil.checkLogin(UGCGuideEditBooksActivity.this);
                             if (account == null) return null;
                             if (UGCGuideEditBooksActivity.this.f == null)
-                                return ApiServiceProvider.getApiService().b(MyApplication.getInstance().getUGCNewCollection(), account.getToken());
+                                return ApiServiceProvider.getApiService().createUgcCollectionDraft(MyApplication.getInstance().getUGCNewCollection(), account.getToken());
                             if (UGCGuideEditBooksActivity.this.f.equals(""))
-                                return ApiServiceProvider.getApiService().b(MyApplication.getInstance().getUGCNewCollection(), account.getToken());
-                            return ApiServiceProvider.getApiService().b(MyApplication.getInstance().getUGCNewCollection(), account.getToken(), UGCGuideEditBooksActivity.this.f);
+                                return ApiServiceProvider.getApiService().createUgcCollectionDraft(MyApplication.getInstance().getUGCNewCollection(), account.getToken());
+                            return ApiServiceProvider.getApiService().modifyUgcCollectionDraft(MyApplication.getInstance().getUGCNewCollection(), account.getToken(), UGCGuideEditBooksActivity.this.f);
                         }
 
                         @Override

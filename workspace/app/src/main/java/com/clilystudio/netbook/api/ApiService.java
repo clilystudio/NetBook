@@ -441,49 +441,49 @@ public class ApiService {
         return ApiService.getResponse(this.setRequest(HttpRequest.get(url)), BookGenderRecommend.class);
     }
 
-    public final HotKeywordResult b() {
-        String string = mApiBaseUrl + "/book/hot-word";
-        return ApiService.getResponse(this.setRequest(HttpRequest.get(string)), HotKeywordResult.class);
+    public final HotKeywordResult getHotKeyword() {
+        String url = mApiBaseUrl + "/book/hot-word";
+        return ApiService.getResponse(this.setRequest(HttpRequest.get(url)), HotKeywordResult.class);
     }
 
-    public final ResultStatus b(UGCNewCollection var1_1, String var2_2) {
-        String var3_3 = ApiService.mApiBaseUrl + "/book-list/draft";
-        HttpRequest var5_4 = this.setHeader(HttpRequest.post(var3_3));
-        HashMap<String, String> var6_5 = new HashMap<>();
-        var6_5.put("token", var2_2);
-        var6_5.put("title", var1_1.getTitle());
-        var6_5.put("desc", var1_1.getDesc());
-        var5_4.form(var6_5);
-        for (BookSummary var13_7 : var1_1.getBooks()) {
-            var5_4.form("books[]", var13_7.getId());
-            var5_4.form("comments[]", var13_7.getAppendComment());
+    public final ResultStatus createUgcCollectionDraft(UGCNewCollection collection, String token) {
+        String url = ApiService.mApiBaseUrl + "/book-list/draft";
+        HttpRequest httpRequest = this.setHeader(HttpRequest.post(url));
+        HashMap<String, String> values = new HashMap<>();
+        values.put("token", token);
+        values.put("title", collection.getTitle());
+        values.put("desc", collection.getDesc());
+        httpRequest.form(values);
+        for (BookSummary bookSummary : collection.getBooks()) {
+            httpRequest.form("books[]", bookSummary.getId());
+            httpRequest.form("comments[]", bookSummary.getAppendComment());
         }
-        return ApiService.getResponse(var5_4, ResultStatus.class);
+        return ApiService.getResponse(httpRequest, ResultStatus.class);
     }
 
-    public final ResultStatus b(UGCNewCollection var1_1, String var2_2, String var3_3) {
-        String var4_4 = ApiService.mApiBaseUrl + String.format(Locale.CHINA, "/book-list/%s/draft", var3_3);
-        HttpRequest var6_5 = this.setHeader(HttpRequest.post(var4_4));
-        HashMap<String, String> var7_6 = new HashMap<>();
-        var7_6.put("token", var2_2);
-        var7_6.put("title", var1_1.getTitle());
-        var7_6.put("desc", var1_1.getDesc());
-        var6_5.form(var7_6);
-        for (BookSummary var14_8 : var1_1.getBooks()) {
-            var6_5.form("books[]", var14_8.getId());
-            var6_5.form("comments[]", var14_8.getAppendComment());
+    public final ResultStatus modifyUgcCollectionDraft(UGCNewCollection collection, String token, String bookId) {
+        String url = ApiService.mApiBaseUrl + String.format(Locale.CHINA, "/book-list/%s/draft", bookId);
+        HttpRequest httpRequest = this.setHeader(HttpRequest.post(url));
+        HashMap<String, String> values = new HashMap<>();
+        values.put("token", token);
+        values.put("title", collection.getTitle());
+        values.put("desc", collection.getDesc());
+        httpRequest.form(values);
+        for (BookSummary bookSummary : collection.getBooks()) {
+            httpRequest.form("books[]", bookSummary.getId());
+            httpRequest.form("comments[]", bookSummary.getAppendComment());
         }
-        return ApiService.getResponse(var6_5, ResultStatus.class);
+        return ApiService.getResponse(httpRequest, ResultStatus.class);
     }
 
-    public final String b(String string, int n) {
-        String string2 = String.format(Locale.CHINA, "http://bookshelf.html5.qq.com/ajax?m=show_bookdetail&resourceid=%s&serialid=%d", string, n);
-        return SsChapterJson.getChapterUrl(this.setRequestUserAgent(HttpRequest.get(string2), 6).body());
+    public final String getSsChapterUrl(String sourceId, int serial) {
+        String url = String.format(Locale.CHINA, "http://bookshelf.html5.qq.com/ajax?m=show_bookdetail&resourceid=%s&serialid=%d", sourceId, serial);
+        return SsChapterJson.getChapterUrl(this.setRequestUserAgent(HttpRequest.get(url), 6).body());
     }
 
-    public final BookTagRoot c(String string, int n, int n2) {
-        String string2 = mApiBaseUrl + String.format(Locale.CHINA, "/book/by-tags?tags=%s&start=%d&limit=%d", CommonUtil.encodeUrl(string), n, n2);
-        return ApiService.getResponse(this.setRequest(HttpRequest.get(string2)), BookTagRoot.class);
+    public final BookTagRoot getBookTagRoot(String tag, int start, int limit) {
+        String url = mApiBaseUrl + String.format(Locale.CHINA, "/book/by-tags?tags=%s&start=%d&limit=%d", CommonUtil.encodeUrl(tag), start, limit);
+        return ApiService.getResponse(this.setRequest(HttpRequest.get(url)), BookTagRoot.class);
     }
 
     public final ChapterRoot c(String string, int n) {

@@ -41,7 +41,7 @@ public class BookTagListActivity extends BaseLoadingActivity {
 
                         @Override
                         protected List<BookSummary> doInBackground(String... params) {
-                            BookTagRoot bookTagRoot = ApiServiceProvider.getApiService().c(BookTagListActivity.this.c, BookTagListActivity.this.g.size(), 50);
+                            BookTagRoot bookTagRoot = ApiServiceProvider.getApiService().getBookTagRoot(BookTagListActivity.this.c, BookTagListActivity.this.g.size(), 50);
                             if (bookTagRoot == null) return null;
                             if (bookTagRoot.getBooks() == null) return null;
                             return Arrays.asList(bookTagRoot.getBooks());
@@ -80,7 +80,7 @@ public class BookTagListActivity extends BaseLoadingActivity {
         new BaseAsyncTask<String, Void, List<BookSummary>>() {
             @Override
             protected List<BookSummary> doInBackground(String... params) {
-                BookTagRoot bookTagRoot = ApiServiceProvider.getApiService().c(BookTagListActivity.this.c, 0, 50);
+                BookTagRoot bookTagRoot = ApiServiceProvider.getApiService().getBookTagRoot(BookTagListActivity.this.c, 0, 50);
                 if (bookTagRoot == null) return null;
                 if (bookTagRoot.getBooks() == null) return null;
                 return Arrays.asList(bookTagRoot.getBooks());

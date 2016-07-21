@@ -40,7 +40,7 @@ public class ReaderWebActivity extends BaseReadActivity {
     private int mBookMode;
     private String c;
     private String d;
-    private String e;
+    private String mSourceId;
     private String f;
     private ReaderWebActionBar g;
     private int h;
@@ -59,7 +59,7 @@ public class ReaderWebActivity extends BaseReadActivity {
 
     static void a(ReaderWebActivity readerWebActivity, int n, String string) {
         FragmentTransaction fragmentTransaction = readerWebActivity.getSupportFragmentManager().beginTransaction();
-        String string2 = readerWebActivity.e;
+        String string2 = readerWebActivity.mSourceId;
         ReaderWebPageFragment readerWebPageFragment = (ReaderWebPageFragment) readerWebActivity.getSupportFragmentManager().findFragmentByTag(ReaderWebPageFragment.class.getName());
         if (readerWebPageFragment == null) {
             readerWebPageFragment = ReaderWebPageFragment.a(readerWebActivity.mBookMode, string2, n, string);
@@ -74,7 +74,7 @@ public class ReaderWebActivity extends BaseReadActivity {
 
     static void a(ReaderWebActivity readerWebActivity, String string, String string2, String string3, String string4) {
         FragmentTransaction fragmentTransaction = readerWebActivity.getSupportFragmentManager().beginTransaction();
-        String string5 = readerWebActivity.e;
+        String string5 = readerWebActivity.mSourceId;
         ReaderWebPageFragment readerWebPageFragment = (ReaderWebPageFragment) readerWebActivity.getSupportFragmentManager().findFragmentByTag(ReaderWebPageFragment.class.getName());
         if (readerWebPageFragment == null) {
             readerWebPageFragment = ReaderWebPageFragment.a(readerWebActivity.mBookMode, string, string5, string2, string3, string4);
@@ -97,7 +97,7 @@ public class ReaderWebActivity extends BaseReadActivity {
         boolean bl = readerWebActivity.getIntent().getBooleanExtra("SELECT_LAST", false);
         Intent intent = ReaderActivity.a(readerWebActivity, readerWebActivity.c, readerWebActivity.d, string, readerWebActivity.f, true);
         intent.putExtra("SELECT_LAST", bl);
-        intent.putExtra("SOURCE_ID", readerWebActivity.e);
+        intent.putExtra("SOURCE_ID", readerWebActivity.mSourceId);
         readerWebActivity.startActivity(intent);
         readerWebActivity.finish();
     }
@@ -127,7 +127,7 @@ public class ReaderWebActivity extends BaseReadActivity {
 
     private void a(int n) {
         FragmentTransaction fragmentTransaction = this.getSupportFragmentManager().beginTransaction();
-        String string = this.e;
+        String string = this.mSourceId;
         ReaderWebPageFragment readerWebPageFragment = (ReaderWebPageFragment) this.getSupportFragmentManager().findFragmentByTag(ReaderWebPageFragment.class.getName());
         if (readerWebPageFragment == null) {
             readerWebPageFragment = ReaderWebPageFragment.a(this.mBookMode, string, n);
@@ -152,7 +152,7 @@ public class ReaderWebActivity extends BaseReadActivity {
         BusProvider.getInstance().register(this);
         this.c = this.getIntent().getStringExtra("BOOK_ID");
         this.d = this.getIntent().getStringExtra("BOOK_TITLE");
-        this.e = this.getIntent().getStringExtra("SOURCE_ID");
+        this.mSourceId = this.getIntent().getStringExtra("SOURCE_ID");
         this.mBookMode = var1_1 != null ? var1_1.getInt("savedCurrentMode", 5) : this.getIntent().getIntExtra("BOOK_MODE", 5);
         this.f = CommonUtil.getSourceName(this.mBookMode);
         this.g = (ReaderWebActionBar) this.findViewById(R.id.reader_web_action_bar);
@@ -186,16 +186,16 @@ public class ReaderWebActivity extends BaseReadActivity {
                 FragmentTransaction var27_4 = this.getSupportFragmentManager().beginTransaction();
                 ReaderWebPageFragment var29_6 = (ReaderWebPageFragment) this.getSupportFragmentManager().findFragmentByTag(ReaderWebPageFragment.class.getName());
                 if (var29_6 == null) {
-                    var29_6 = ReaderWebPageFragment.a(this.mBookMode, this.e);
+                    var29_6 = ReaderWebPageFragment.a(this.mBookMode, this.mSourceId);
                 }
                 var27_4.replace(R.id.content_frame, var29_6).commit();
                 break;
             }
             case 6: {
-                BaseLoadingTask<String, String> var24_12 = new BaseLoadingTask<String, String>(this, R.string.loading) {
+                new BaseLoadingTask<String, String>(this, R.string.loading) {
                     @Override
                     public String a(String... var1) {
-                        return ApiServiceProvider.getApiService().b(var1[0], var3_3[0] + 1);
+                        return ApiServiceProvider.getApiService().getSsChapterUrl(var1[0], var3_3[0] + 1);
                     }
 
                     @Override
@@ -206,9 +206,7 @@ public class ReaderWebActivity extends BaseReadActivity {
                             ReaderWebActivity.a(ReaderWebActivity.this, var3_3[0] + 1, var1);
                         }
                     }
-                };
-                String[] var25_13 = new String[]{this.e};
-                var24_12.b(var25_13);
+                }.b(this.mSourceId);
                 break;
             }
             case 7: {
@@ -249,7 +247,7 @@ public class ReaderWebActivity extends BaseReadActivity {
                             ToastUtil.showShortToast(ReaderWebActivity.this, "载入失败");
                         }
                     };
-                    String[] var22_18 = new String[]{this.e};
+                    String[] var22_18 = new String[]{this.mSourceId};
                     var21_17.b(var22_18);
                 }
             }
@@ -279,7 +277,7 @@ public class ReaderWebActivity extends BaseReadActivity {
                         ToastUtil.showShortToast(ReaderWebActivity.this, "载入失败");
                     }
                 };
-                String[] var5_20 = new String[]{this.e};
+                String[] var5_20 = new String[]{this.mSourceId};
                 var4_19.b(var5_20);
                 break;
             }

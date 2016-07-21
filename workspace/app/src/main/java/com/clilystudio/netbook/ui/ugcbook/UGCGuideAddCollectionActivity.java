@@ -108,10 +108,10 @@ public class UGCGuideAddCollectionActivity extends BaseActivity {
                             Account account = CommonUtil.checkLogin(UGCGuideAddCollectionActivity.this);
                             if (account == null) return null;
                             if (UGCGuideAddCollectionActivity.this.c == null)
-                                return ApiServiceProvider.getApiService().b(MyApplication.getInstance().getUGCNewCollection(), account.getToken());
+                                return ApiServiceProvider.getApiService().createUgcCollectionDraft(MyApplication.getInstance().getUGCNewCollection(), account.getToken());
                             if (UGCGuideAddCollectionActivity.this.c.equals(""))
-                                return ApiServiceProvider.getApiService().b(MyApplication.getInstance().getUGCNewCollection(), account.getToken());
-                            return ApiServiceProvider.getApiService().b(MyApplication.getInstance().getUGCNewCollection(), account.getToken(), UGCGuideAddCollectionActivity.this.c);
+                                return ApiServiceProvider.getApiService().createUgcCollectionDraft(MyApplication.getInstance().getUGCNewCollection(), account.getToken());
+                            return ApiServiceProvider.getApiService().modifyUgcCollectionDraft(MyApplication.getInstance().getUGCNewCollection(), account.getToken(), UGCGuideAddCollectionActivity.this.c);
                         }
 
                         @Override

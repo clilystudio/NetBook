@@ -451,7 +451,7 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
 
             @Override
             protected HotKeywordResult doInBackground(String... params) {
-                return this.c().b();
+                return this.c().getHotKeyword();
             }
 
             @Override
