@@ -66,7 +66,7 @@ public class MyFavTopicFragment extends Fragment {
                         @Override
                         protected Topic doInBackground(String... params) {
                             ApiServiceProvider.getInstance();
-                            return ApiServiceProvider.getApiService().d(params[0], MyFavTopicFragment.this.j);
+                            return ApiServiceProvider.getApiService().getTopic(params[0], MyFavTopicFragment.this.j);
                         }
 
                         @Override
@@ -267,7 +267,7 @@ public class MyFavTopicFragment extends Fragment {
             @Override
             protected Topic doInBackground(String... params) {
                 ApiServiceProvider.getInstance();
-                return ApiServiceProvider.getApiService().d(params[0], 0);
+                return ApiServiceProvider.getApiService().getTopic(params[0], 0);
             }
 
             @Override

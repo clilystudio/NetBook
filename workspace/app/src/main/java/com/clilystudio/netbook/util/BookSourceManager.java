@@ -166,7 +166,7 @@ public final class BookSourceManager {
             @Override
             public List<TocSummary> a(String... var1) {
                 ApiServiceProvider.getInstance();
-                return ApiServiceProvider.getApiService().d(var1[0]);
+                return ApiServiceProvider.getApiService().getTocSummaryList(var1[0]);
             }
 
             @Override

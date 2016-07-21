@@ -52,7 +52,7 @@ public final class ReaderTocManager {
 
     private ChapterRoot a(int index, String leidianTK) {
         try {
-            return ApiServiceProvider.getApiService().c(this.mSourceId, index, leidianTK);
+            return ApiServiceProvider.getApiService().getLDChapterRoot(this.mSourceId, index, leidianTK);
         } catch (Exception var3_4) {
             var3_4.printStackTrace();
             return null;
@@ -138,7 +138,7 @@ public final class ReaderTocManager {
     }
 
     private ChapterRoot b(int n) {
-        return ApiServiceProvider.getApiService().c(this.mSourceId, n);
+        return ApiServiceProvider.getApiService().getQQChapterRoot(this.mSourceId, n);
     }
 
     private ChapterRoot b(String string, String string2) {

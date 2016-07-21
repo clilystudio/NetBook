@@ -75,7 +75,7 @@ public class ReaderMixActivity extends BaseLoadingActivity {
             protected Object[] doInBackground(String... params) {
                 ApiServiceProvider.getInstance();
                 ApiService apiService = ApiServiceProvider.getApiService();
-                return new Object[]{apiService.d(params[0]), apiService.getChineseAllPromRoot(params[0])};
+                return new Object[]{apiService.getTocSummaryList(params[0]), apiService.getChineseAllPromRoot(params[0])};
             }
 
             @Override

@@ -161,7 +161,7 @@ public class ReaderResourceFragment extends Fragment {
             @Override
             protected List<TocSummary> doInBackground(String... params) {
                 ApiServiceProvider.getInstance();
-                return ApiServiceProvider.getApiService().d(params[0]);
+                return ApiServiceProvider.getApiService().getTocSummaryList(params[0]);
             }
 
             @Override
@@ -209,7 +209,7 @@ public class ReaderResourceFragment extends Fragment {
                     @Override
                     protected List<TocSummary> doInBackground(String... params) {
                         ApiServiceProvider.getInstance();
-                        return ApiServiceProvider.getApiService().d(params[0]);
+                        return ApiServiceProvider.getApiService().getTocSummaryList(params[0]);
                     }
 
                     @Override

@@ -44,7 +44,7 @@ public class BookRankListActivity extends BaseActivity {
 
             @Override
             protected BookRankRoot doInBackground(Void... params) {
-                return ApiServiceProvider.getApiService().d();
+                return ApiServiceProvider.getApiService().getBookRank();
             }
 
             @Override

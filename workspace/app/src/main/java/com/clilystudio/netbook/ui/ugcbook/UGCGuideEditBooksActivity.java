@@ -50,9 +50,9 @@ public class UGCGuideEditBooksActivity extends BaseActivity implements View.OnCl
     Map<String, String> a = new HashMap<>();
     private View c;
     private BaseDownloadAdapter<BookSummary> e;
-    private String f;
+    private String mUgcId;
     private Author g;
-    private boolean h;
+    private boolean mIsDraft;
 
     static void a(final UGCGuideEditBooksActivity uGCGuideEditBooksActivity, int n) {
         String string;
@@ -205,11 +205,11 @@ public class UGCGuideEditBooksActivity extends BaseActivity implements View.OnCl
             string = "default_desc";
             string2 = "default_name";
         }
-        this.f = bundle2.getString("ugc_id");
+        this.mUgcId = bundle2.getString("ugc_id");
         this.g = (Author) bundle2.getSerializable("my_author");
-        this.h = this.getIntent().getBooleanExtra("is_draft", false);
+        this.mIsDraft = this.getIntent().getBooleanExtra("is_draft", false);
         ShareSDK.initSDK(this);
-        if (this.h || this.f == null || this.f.equals("")) {
+        if (this.mIsDraft || this.mUgcId == null || this.mUgcId.equals("")) {
             this.a("编辑书单", R.string.save, R.string.publish, new ActionBarClickListener() {
                 @Override
                 public void onTextClick() {
@@ -222,11 +222,11 @@ public class UGCGuideEditBooksActivity extends BaseActivity implements View.OnCl
                         public ResultStatus a(Void... var1) {
                             Account account = CommonUtil.checkLogin(UGCGuideEditBooksActivity.this);
                             if (account == null) return null;
-                            if (UGCGuideEditBooksActivity.this.f == null)
+                            if (UGCGuideEditBooksActivity.this.mUgcId == null)
                                 return ApiServiceProvider.getApiService().createUgcCollectionDraft(MyApplication.getInstance().getUGCNewCollection(), account.getToken());
-                            if (UGCGuideEditBooksActivity.this.f.equals(""))
+                            if (UGCGuideEditBooksActivity.this.mUgcId.equals(""))
                                 return ApiServiceProvider.getApiService().createUgcCollectionDraft(MyApplication.getInstance().getUGCNewCollection(), account.getToken());
-                            return ApiServiceProvider.getApiService().modifyUgcCollectionDraft(MyApplication.getInstance().getUGCNewCollection(), account.getToken(), UGCGuideEditBooksActivity.this.f);
+                            return ApiServiceProvider.getApiService().modifyUgcCollectionDraft(MyApplication.getInstance().getUGCNewCollection(), account.getToken(), UGCGuideEditBooksActivity.this.mUgcId);
                         }
 
                         @Override
@@ -238,7 +238,7 @@ public class UGCGuideEditBooksActivity extends BaseActivity implements View.OnCl
                             ToastUtil.showShortToast(UGCGuideEditBooksActivity.this, "已保存到草稿箱");
                             UGCNewCollection uGCNewCollection = MyApplication.getInstance().getUGCNewCollection();
                             BusProvider.getInstance().post(new UgcDraftEvent());
-                            BusProvider.getInstance().post(new UpdateUgcListEvent(UGCGuideEditBooksActivity.this.f, uGCNewCollection.getTitle(), uGCNewCollection.getDesc(), uGCNewCollection.getBooks().size(), uGCNewCollection.getBooks().get(0).getCover()));
+                            BusProvider.getInstance().post(new UpdateUgcListEvent(UGCGuideEditBooksActivity.this.mUgcId, uGCNewCollection.getTitle(), uGCNewCollection.getDesc(), uGCNewCollection.getBooks().size(), uGCNewCollection.getBooks().get(0).getCover()));
                             UGCGuideEditBooksActivity.this.finish();
                         }
                     }.b();
@@ -361,14 +361,14 @@ public class UGCGuideEditBooksActivity extends BaseActivity implements View.OnCl
                 public ResultStatus a(Void... var1) {
                     Account account = CommonUtil.checkLogin(UGCGuideEditBooksActivity.this);
                     if (account == null) return null;
-                    if (UGCGuideEditBooksActivity.this.h) {
-                        return ApiServiceProvider.getApiService().c(MyApplication.getInstance().getUGCNewCollection(), account.getToken(), UGCGuideEditBooksActivity.this.f);
+                    if (UGCGuideEditBooksActivity.this.mIsDraft) {
+                        return ApiServiceProvider.getApiService().publishUcgCollection(MyApplication.getInstance().getUGCNewCollection(), account.getToken(), UGCGuideEditBooksActivity.this.mUgcId);
                     }
-                    if (UGCGuideEditBooksActivity.this.f == null)
+                    if (UGCGuideEditBooksActivity.this.mUgcId == null)
                         return ApiServiceProvider.getApiService().publishUcgCollection(MyApplication.getInstance().getUGCNewCollection(), account.getToken());
-                    if (UGCGuideEditBooksActivity.this.f.equals(""))
+                    if (UGCGuideEditBooksActivity.this.mUgcId.equals(""))
                         return ApiServiceProvider.getApiService().publishUcgCollection(MyApplication.getInstance().getUGCNewCollection(), account.getToken());
-                    return ApiServiceProvider.getApiService().modifyUcgCollection(MyApplication.getInstance().getUGCNewCollection(), account.getToken(), UGCGuideEditBooksActivity.this.f);
+                    return ApiServiceProvider.getApiService().modifyUcgCollection(MyApplication.getInstance().getUGCNewCollection(), account.getToken(), UGCGuideEditBooksActivity.this.mUgcId);
                 }
 
                 @Override
@@ -378,20 +378,20 @@ public class UGCGuideEditBooksActivity extends BaseActivity implements View.OnCl
                         ToastUtil.showShortToast(UGCGuideEditBooksActivity.this, "发布失败");
                         return;
                     }
-                    if (UGCGuideEditBooksActivity.this.h) {
+                    if (UGCGuideEditBooksActivity.this.mIsDraft) {
                         ToastUtil.showShortToast(UGCGuideEditBooksActivity.this, "发布成功");
                         intent = new Intent(UGCGuideEditBooksActivity.this, UserUGCActivity.class);
                         intent.setFlags(67108864);
-                    } else if (UGCGuideEditBooksActivity.this.f != null && !UGCGuideEditBooksActivity.this.f.equals("")) {
+                    } else if (UGCGuideEditBooksActivity.this.mUgcId != null && !UGCGuideEditBooksActivity.this.mUgcId.equals("")) {
                         ToastUtil.showShortToast(UGCGuideEditBooksActivity.this, "修改成功");
                         UGCNewCollection uGCNewCollection = MyApplication.getInstance().getUGCNewCollection();
                         Intent intent2 = new Intent(this.b(), UGCDetailActivity.class);
-                        intent2.putExtra("book_id", UGCGuideEditBooksActivity.this.f);
+                        intent2.putExtra("book_id", UGCGuideEditBooksActivity.this.mUgcId);
                         intent2.putExtra("my_list", true);
                         intent2.putExtra("modify_update", uGCNewCollection);
                         intent2.putExtra("my_author", UGCGuideEditBooksActivity.this.g);
                         intent2.setFlags(67108864);
-                        BusProvider.getInstance().post(new UpdateUgcListEvent(UGCGuideEditBooksActivity.this.f, uGCNewCollection.getTitle(), uGCNewCollection.getDesc(), uGCNewCollection.getBooks().size(), uGCNewCollection.getBooks().get(0).getCover()));
+                        BusProvider.getInstance().post(new UpdateUgcListEvent(UGCGuideEditBooksActivity.this.mUgcId, uGCNewCollection.getTitle(), uGCNewCollection.getDesc(), uGCNewCollection.getBooks().size(), uGCNewCollection.getBooks().get(0).getCover()));
                         intent = intent2;
                     } else {
                         ToastUtil.showShortToast(UGCGuideEditBooksActivity.this, "发布成功");
