@@ -112,7 +112,7 @@ public class BookCategoryFragment extends Fragment {
                 if (n2 >= 0 && n2 < BookCategoryFragment.this.i.size()) {
                     CategoryBook categoryBook = BookCategoryFragment.this.i.get(n2);
                     if (categoryBook != null) {
-                        startActivity(BookInfoActivity.a(getActivity(), categoryBook.getId()));
+                        startActivity(BookInfoActivity.getIntent(getActivity(), categoryBook.getId()));
                     }
                 }
             }

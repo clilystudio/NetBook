@@ -277,7 +277,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
                         readerActivity.O();
                         break;
                     case R.id.menu_item_2:
-                        Intent var2_2 = BookInfoActivity.a(readerActivity, readerActivity.mBookId);
+                        Intent var2_2 = BookInfoActivity.getIntent(readerActivity, readerActivity.mBookId);
                         readerActivity.startActivity(var2_2);
                         break;
                 }
@@ -1266,7 +1266,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
                 this.O();
                 break;
             case R.id.menu_item_2:
-                this.startActivity(BookInfoActivity.a(this, this.mBookId));
+                this.startActivity(BookInfoActivity.getIntent(this, this.mBookId));
                 break;
         }
     }

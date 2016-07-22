@@ -342,7 +342,7 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
                 BookSummary bookSummary;
                 int n2 = position - SearchActivity.this.h.getHeaderViewsCount();
                 if (n2 < 0 || n2 >= SearchActivity.this.l.getCount() || (bookSummary = SearchActivity.this.l.getItem(n2)) == null) return;
-                SearchActivity.this.startActivity(BookInfoActivity.a(SearchActivity.this, bookSummary.getId()));
+                SearchActivity.this.startActivity(BookInfoActivity.getIntent(SearchActivity.this, bookSummary.getId()));
             }
         });
         if (bundle != null) {

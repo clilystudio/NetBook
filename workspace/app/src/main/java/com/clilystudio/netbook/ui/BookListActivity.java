@@ -27,7 +27,7 @@ public abstract class BookListActivity extends BaseActivity {
 
     protected void a(int n) {
         if (n >= 0 && n < this.a.getCount()) {
-            this.startActivity(BookInfoActivity.a(this, this.a.getItem(n).get_id()));
+            this.startActivity(BookInfoActivity.getIntent(this, this.a.getItem(n).get_id()));
         }
     }
 

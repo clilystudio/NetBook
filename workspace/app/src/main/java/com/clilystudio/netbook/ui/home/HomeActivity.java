@@ -131,7 +131,7 @@ public class HomeActivity extends BaseActivity implements ViewPager.OnPageChange
         HomeShelfFragment homeShelfFragment = (HomeShelfFragment) this.getSupportFragmentManager().findFragmentByTag(tag);
         if (homeShelfFragment == null) {
             Log.i(TAG, "getHomeShelfFragment ");
-            homeShelfFragment = HomeShelfFragment.b();
+            homeShelfFragment = new HomeShelfFragment();
         }
         return homeShelfFragment;
     }

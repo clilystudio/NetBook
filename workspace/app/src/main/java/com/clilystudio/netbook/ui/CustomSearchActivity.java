@@ -44,7 +44,7 @@ public class CustomSearchActivity extends BaseActivity {
                         ToastUtil.showShortToast(customSearchActivity, "搜索失败，请检查网络或稍后再试");
                     } else if (bookAdd.isOk()) {
                         String string = bookAdd.getBook();
-                        Intent intent = BookInfoActivity.a(customSearchActivity, string);
+                        Intent intent = BookInfoActivity.getIntent(customSearchActivity, string);
                         customSearchActivity.startActivity(intent);
                     } else {
                         if ("EXISTS".equals(bookAdd.getCode())) {

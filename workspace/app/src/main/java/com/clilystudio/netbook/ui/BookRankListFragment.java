@@ -69,7 +69,7 @@ public class BookRankListFragment extends Fragment {
     protected final void a(int n) {
         if (n >= 0 && n < this.a.getCount()) {
             BookRankDetail bookRankDetail = this.a.getItem(n);
-            this.startActivity(BookInfoActivity.a(this.getActivity(), bookRankDetail.get_id()));
+            this.startActivity(BookInfoActivity.getIntent(this.getActivity(), bookRankDetail.get_id()));
         }
     }
 

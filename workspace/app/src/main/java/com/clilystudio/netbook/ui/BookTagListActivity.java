@@ -129,7 +129,7 @@ public class BookTagListActivity extends BaseLoadingActivity {
                 if (position >= 0 && position < BookTagListActivity.this.g.size()) {
                     BookSummary bookSummary = BookTagListActivity.this.g.get(position);
                     if (bookSummary != null) {
-                        startActivity(BookInfoActivity.a(BookTagListActivity.this, bookSummary.getId()));
+                        startActivity(BookInfoActivity.getIntent(BookTagListActivity.this, bookSummary.getId()));
                     }
                 }
             }

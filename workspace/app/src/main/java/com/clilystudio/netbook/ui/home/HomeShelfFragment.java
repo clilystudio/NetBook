@@ -20,7 +20,6 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
 
 import com.clilystudio.netbook.CachePathConst;
 import com.clilystudio.netbook.R;
@@ -46,12 +45,8 @@ import com.clilystudio.netbook.model.BookFeed;
 import com.clilystudio.netbook.model.BookGenderRecommend;
 import com.clilystudio.netbook.model.BookShelf;
 import com.clilystudio.netbook.model.BookUpdate;
-import com.clilystudio.netbook.model.InsideLink;
-import com.clilystudio.netbook.model.InsideLinkFactory;
-import com.clilystudio.netbook.model.ShelfMsg;
 import com.clilystudio.netbook.model.TxtFileObject;
 import com.clilystudio.netbook.reader.dl.BookDownloadManager;
-import com.clilystudio.netbook.reader.txt.TocManager;
 import com.clilystudio.netbook.ui.BookInfoActivity;
 import com.clilystudio.netbook.ui.feed.FeedIntroActivity;
 import com.clilystudio.netbook.ui.feed.FeedListActivity;
@@ -59,7 +54,6 @@ import com.clilystudio.netbook.util.BookSourceManager;
 import com.clilystudio.netbook.util.CommonUtil;
 import com.clilystudio.netbook.util.FeedIntroDialog;
 import com.clilystudio.netbook.util.GenderIntroDialog;
-import com.clilystudio.netbook.util.InsideLinkIntent;
 import com.clilystudio.netbook.util.ToastUtil;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
@@ -72,8 +66,6 @@ import java.util.Comparator;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import uk.me.lewisdeane.ldialogs.BaseDialog;
 
@@ -81,90 +73,68 @@ public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollL
     private static final String TAG = HomeShelfFragment.class.getSimpleName();
     private boolean A = false;
     private long B = 0;
-    private AdapterView.OnItemClickListener C;
-    private AdapterView.OnItemLongClickListener D;
+    private AdapterView.OnItemLongClickListener mOnItemLongClickListener = new AdapterView.OnItemLongClickListener() {
+        @Override
+        public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+            final BookShelf bookShelf = (BookShelf) mListView.getAdapter().getItem(position);
+            if (bookShelf == null) {
+                return true;
+            }
+            CharSequence[] items;
+            final int type = bookShelf.getType();
+            if (type == BookShelf.SHELF_BOOK) {
+                items = bookShelf.isTop() ? new String[]{"取消置顶", "书籍详情", "移入养肥区", "缓存全本", "删除", "批量管理"} : new String[]{"置顶", "书籍详情", "移入养肥区", "缓存全本", "删除", "批量管理"};
+            } else {
+                return true;
+            }
+            BaseDialog.Builder builder = new BaseDialog.Builder(getActivity());
+            builder.setTitle(bookShelf.getTitle());
+            builder.setSingleChoiceItems(items, 0, new DialogInterface.OnClickListener() {
+
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    switch (which) {
+                        case 0:
+                            setBookShelfTop(bookShelf);
+                            break;
+                        case 1:
+                            BookReadRecord bookRecord = bookShelf.getBookRecord();
+                            if (bookRecord != null) {
+                                startActivity(BookInfoActivity.getIntent(getActivity(), bookRecord.getBookId()));
+                            }
+                            break;
+                        case 2:
+                            moveBookShelfToFeed(bookShelf.getBookRecord());
+                            break;
+                        case 3:
+                            new BookDownloadManager(getActivity()).startDownload(bookShelf.getBookRecord());
+                            break;
+                        case 4:
+                            removeBookShelf(bookShelf);
+                            break;
+                        case 5:
+                            HomeShelfFragment.this.d();
+                            break;
+                    }
+                }
+            }).show();
+            return true;
+        }
+    };
     private boolean b = true;
     private PullToRefreshListView d;
-    private ListView e;
+    private ListView mListView;
     private View f;
     private View g;
     private View h;
-    private ShelfMsg i;
     private HomeShelfAdapter mAdapter;
     private int k = 0;
     private int v = 0;
     private RelativeLayout w;
     private boolean z = false;
 
-    public HomeShelfFragment() {
-        this.C = new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                BookShelf bookShelf = (BookShelf) HomeShelfFragment.this.e.getAdapter().getItem(position);
-                if (bookShelf == null) return;
-                if (HomeShelfFragment.this.mAdapter.a()) {
-                    HomeShelfFragment.this.mAdapter.a(position - HomeShelfFragment.this.e.getHeaderViewsCount());
-                    return;
-                }
-                switch (bookShelf.getType()) {
-                    case 0:
-                        BookReadRecord bookReadRecord = bookShelf.getBookRecord();
-                        new BookSourceManager(HomeShelfFragment.this.getActivity()).a(bookReadRecord);
-                        if (bookReadRecord.isUnread()) {
-                            bookReadRecord.setUnread(false);
-                            bookReadRecord.save();
-                            HomeShelfFragment.this.mAdapter.notifyDataSetChanged();
-                        }
-                        break;
-                    case 2:
-                        BookFile bookFile = bookShelf.getTxt();
-                        if (new File(bookFile.getFilePath()).exists()) {
-                            String string = bookFile.getPathAndName();
-                            Intent intent = new Intent("com.clilystudio.netbook.ACTION_READ_TXT");
-                            intent.putExtra("file_name", string);
-                            HomeShelfFragment.this.startActivity(intent);
-                        } else {
-                            ToastUtil.showShortToast(HomeShelfFragment.this.getActivity(), "书籍不存在");
-                            TxtFileObject.delete(bookFile);
-                            BusProvider.getInstance().post(new ShelfUpdatedEvent());
-                        }
-                        break;
-                    case 3:
-                        Intent intent = CommonUtil.getBoolPref(HomeShelfFragment.this.getActivity(), "feed_intro", true) ? new Intent(HomeShelfFragment.this.getActivity(), FeedIntroActivity.class) : new Intent(HomeShelfFragment.this.getActivity(), FeedListActivity.class);
-                        HomeShelfFragment.this.startActivity(intent);
-                        break;
-                }
-            }
-        };
-        this.D = new AdapterView.OnItemLongClickListener() {
-            @Override
-            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                CharSequence[] arrcharSequence;
-                BookShelf bookShelf = (BookShelf) HomeShelfFragment.this.e.getAdapter().getItem(position);
-                if (bookShelf == null) {
-                    return true;
-                }
-                int n3 = bookShelf.getType();
-                if (n3 == 1) {
-                    arrcharSequence = new String[]{"删除", "去广告"};
-                } else if (n3 == 0) {
-                    arrcharSequence = bookShelf.isTop() ? new String[]{"取消置顶", "书籍详情", "移入养肥区", "缓存全本", "删除", "批量管理"} : new String[]{"置顶", "书籍详情", "移入养肥区", "缓存全本", "删除", "批量管理"};
-                } else if (n3 == 2) {
-                    arrcharSequence = bookShelf.isTop() ? new String[]{"取消置顶", "删除", "批量管理"} : new String[]{"置顶", "删除", "批量管理"};
-                } else {
-                    arrcharSequence = null;
-                    if (n3 == 4) {
-                        arrcharSequence = bookShelf.isTop() ? new String[]{"取消置顶", "书籍详情", "删除", "批量管理"} : new String[]{"置顶", "书籍详情", "删除", "批量管理"};
-                    }
-                }
-                HomeShelfFragment.a(HomeShelfFragment.this, arrcharSequence, bookShelf);
-                return true;
-            }
-        };
-    }
-
     static long getLastAccessTime(BookShelf bookShelf, int n2) {
-        if (bookShelf.getType() == 3) {
+        if (bookShelf.getType() == BookShelf.SHELF_FEED) {
             return bookShelf.getBookFeed().getLastActionTime();
         }
         if (n2 == 0) {
@@ -203,11 +173,11 @@ public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollL
             }
         }
         if (hasUpdate) {
-            homeShelfFragment.k();
+            homeShelfFragment.refreshBookShelf();
             ToastUtil.showToast(homeShelfFragment.getActivity(), R.string.refurbish_changed);
         } else {
             if (hasFeedChange) {
-                homeShelfFragment.k();
+                homeShelfFragment.refreshBookShelf();
             } else {
                 homeShelfFragment.mAdapter.notifyDataSetChanged();
                 ToastUtil.showToast(homeShelfFragment.getActivity(), R.string.refurbish_no_change);
@@ -223,91 +193,13 @@ public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollL
                 BookReadRecord.delete(bookReadRecord);
                 CommonUtil.unsubscribeBook(string);
                 if (bl) {
-                    homeShelfFragment.b(string);
+                    homeShelfFragment.clearBookCache(string);
                 }
                 CommonUtil.syncBookShelf(bookShelf.getBookRecord().getBookId(), BookSyncRecord.BookModifyType.SHELF_REMOVE);
-            } else if (bookShelf.getTxt() != null) {
-                homeShelfFragment.a(bookShelf.getTxt());
             }
         }
-        homeShelfFragment.k();
+        homeShelfFragment.refreshBookShelf();
         BusProvider.getInstance().post(new BookShelfRefreshEvent());
-    }
-
-    static void a(final HomeShelfFragment homeShelfFragment, CharSequence[] arrcharSequence, final BookShelf bookShelf) {
-        if (arrcharSequence == null || bookShelf == null) {
-            return;
-        }
-        BaseDialog.Builder h2 = new BaseDialog.Builder(homeShelfFragment.getActivity());
-        h2.setTitle(bookShelf.getTitle());
-        h2.setSingleChoiceItems(arrcharSequence, 0, new DialogInterface.OnClickListener() {
-
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                switch (bookShelf.getType()) {
-                    case 1: {
-                        if (which == 0) {
-                            homeShelfFragment.a(bookShelf, true);
-                        }
-                        return;
-                    }
-                    case 0: {
-                        if (which == 0) {
-                            HomeShelfFragment.b(homeShelfFragment, bookShelf);
-                            return;
-                        }
-                        if (which == 1) {
-                            BookReadRecord bookRecord = bookShelf.getBookRecord();
-                            if (bookRecord != null) {
-                                homeShelfFragment.startActivity(BookInfoActivity.a(homeShelfFragment.getActivity(), bookRecord.getBookId()));
-                            }
-                            return;
-                        }
-                        if (which == 2) {
-                            HomeShelfFragment.b(homeShelfFragment, bookShelf.getBookRecord());
-                            return;
-                        }
-                        if (which == 3) {
-                            new BookDownloadManager(homeShelfFragment.getActivity()).startDownload(bookShelf.getBookRecord());
-                            return;
-                        }
-                        if (which == 4) {
-                            HomeShelfFragment.c(homeShelfFragment, bookShelf);
-                            return;
-                        }
-                        if (which != 5) return;
-                        {
-                            homeShelfFragment.d();
-                            return;
-                        }
-                    }
-                    case 2: {
-                        if (which == 0) {
-                            HomeShelfFragment.b(homeShelfFragment, bookShelf);
-                            return;
-                        }
-                        if (which == 1) {
-                            HomeShelfFragment.c(homeShelfFragment, bookShelf);
-                            return;
-                        }
-                        if (which != 2) return;
-                        {
-                            homeShelfFragment.d();
-                            return;
-                        }
-                    }
-                    case 4:
-                        if (which == 0) {
-                            HomeShelfFragment.b(homeShelfFragment, bookShelf);
-                        } else if (which == 2) {
-                            HomeShelfFragment.c(homeShelfFragment, bookShelf);
-                        } else if (which == 3) {
-                            homeShelfFragment.d();
-                        }
-                        break;
-                }
-            }
-        }).show();
     }
 
     private static int b(List<BookShelf> list) {
@@ -366,21 +258,17 @@ public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollL
         } while (true);
     }
 
-    public static HomeShelfFragment b() {
-        return new HomeShelfFragment();
-    }
-
-    static void b(HomeShelfFragment homeShelfFragment, BookReadRecord bookReadRecord) {
+    private void moveBookShelfToFeed(BookReadRecord bookReadRecord) {
         if (bookReadRecord != null) {
             long l2 = System.currentTimeMillis();
-            CommonUtil.putLongPref(homeShelfFragment.getActivity(), "FeedUpdateTime", l2);
+            CommonUtil.putLongPref(getActivity(), "FeedUpdateTime", l2);
             bookReadRecord.setFeeding(true);
             bookReadRecord.setChapterCountAtFeed(bookReadRecord.getChapterCount());
             bookReadRecord.setLastActionTime(new Date().getTime());
             bookReadRecord.save();
-            homeShelfFragment.a(bookReadRecord);
-            if (CommonUtil.getBoolPref(homeShelfFragment.getActivity(), "feed_intro_dialog", true)) {
-                FragmentActivity fragmentActivity = homeShelfFragment.getActivity();
+            addFeedBook(bookReadRecord);
+            if (CommonUtil.getBoolPref(getActivity(), "feed_intro_dialog", true)) {
+                FragmentActivity fragmentActivity = getActivity();
                 if (fragmentActivity != null) {
                     FragmentManager fragmentManager = fragmentActivity.getSupportFragmentManager();
                     FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
@@ -390,90 +278,44 @@ public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollL
                     }
                     new FeedIntroDialog().show(fragmentTransaction, "dialog_feed_intro");
                 }
-                CommonUtil.putBoolPref(homeShelfFragment.getActivity(), "feed_intro_dialog", false);
+                CommonUtil.putBoolPref(getActivity(), "feed_intro_dialog", false);
             }
         }
     }
 
-    static void b(HomeShelfFragment homeShelfFragment, BookShelf bookShelf) {
-        boolean bl = true;
-        if (bookShelf.getTxt() != null) {
-            BookFile bookFile = bookShelf.getTxt();
-            if (bookFile.isTop()) {
-                bl = false;
-            }
-            bookFile.setTop(bl);
-            bookFile.save();
-        } else if (bookShelf.getBookRecord() != null) {
-            BookReadRecord bookReadRecord = bookShelf.getBookRecord();
-            if (bookReadRecord.isTop()) {
-                bl = false;
-            }
-            bookReadRecord.setTop(bl);
+    void setBookShelfTop(BookShelf bookShelf) {
+        BookReadRecord bookReadRecord = bookShelf.getBookRecord();
+        if (bookReadRecord != null) {
+            bookReadRecord.setTop(!bookReadRecord.isTop());
             bookReadRecord.save();
         }
-        homeShelfFragment.k();
+        refreshBookShelf();
     }
 
-    static void b(final HomeShelfFragment homeShelfFragment, final ShelfMsg shelfMsg) {
-        List list = homeShelfFragment.mAdapter.f();
-        if (list == null || list.isEmpty()) {
-            return;
-        }
-        if (shelfMsg != null && shelfMsg.postLink != null && (shelfMsg.postLink.startsWith("link") || shelfMsg.postLink.startsWith("game"))) {
-            homeShelfFragment.e.removeHeaderView(homeShelfFragment.g);
-            return;
-        }
-        homeShelfFragment.e.removeHeaderView(homeShelfFragment.g);
-        homeShelfFragment.e.addHeaderView(homeShelfFragment.g);
-        homeShelfFragment.g.setVisibility(View.VISIBLE);
-        TextView textView = (TextView) homeShelfFragment.g.findViewById(R.id.title);
-        assert shelfMsg != null;
-        final InsideLink insideLink = getInsideLink(shelfMsg.postLink);
-        textView.setText(insideLink.getLabel());
-        if (shelfMsg.highlight) {
-            textView.setTextColor(homeShelfFragment.getActivity().getResources().getColor(R.color.shelf_msg_highlight));
-        } else {
-            textView.setTextColor(homeShelfFragment.getActivity().getResources().getColor(R.color.shelf_msg_normal));
-        }
-        textView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (!shelfMsg.login || CommonUtil.checkLogin(homeShelfFragment.getActivity()) != null) {
-                    homeShelfFragment.startActivity(new InsideLinkIntent(homeShelfFragment.getActivity(), insideLink));
-                }
-            }
-        });
-    }
-
-    private static InsideLink getInsideLink(String string) {
-        if (string == null || string.length() < 4) {
-            throw new IllegalArgumentException(string + " must have length above 4");
-        }
-        Matcher matcher = Pattern.compile("^\\[\\[(.+?):(.+?) (.+)\\]\\]$").matcher(string);
-        if (!matcher.find()) {
-            throw new IllegalArgumentException(string + " is in wrong format");
-        }
-        return InsideLinkFactory.create(matcher.group(1), matcher.group(2), matcher.group(3));
-    }
-
-    static void c(final HomeShelfFragment homeShelfFragment, final BookShelf bookShelf) {
-        View view = homeShelfFragment.getActivity().getLayoutInflater().inflate(R.layout.remove_shelf_confirm, (ViewGroup) homeShelfFragment.getActivity().getWindow().getDecorView(), false);
+    private void removeBookShelf(final BookShelf bookShelf) {
+        View view = getActivity().getLayoutInflater().inflate(R.layout.remove_shelf_confirm, (ViewGroup) getActivity().getWindow().getDecorView(), false);
         final CheckBox checkBox = (CheckBox) view.findViewById(R.id.remove_shelf_cache);
-        int n2 = bookShelf.getType();
-        checkBox.setVisibility(n2 == 0 ? View.VISIBLE : View.GONE);
-        new BaseDialog.Builder(homeShelfFragment.getActivity()).setView(view).setPositiveButton("确定", new DialogInterface.OnClickListener() {
+        checkBox.setVisibility(View.VISIBLE);
+        new BaseDialog.Builder(getActivity()).setView(view).setPositiveButton("确定", new DialogInterface.OnClickListener() {
 
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                homeShelfFragment.a(bookShelf, checkBox.isChecked());
+                if (bookShelf.getBookRecord() != null) {
+                    BookReadRecord bookReadRecord = bookShelf.getBookRecord();
+                    String bookId = bookReadRecord.getBookId();
+                    BookReadRecord.delete(bookReadRecord);
+                    removeBook(bookId);
+                    if (checkBox.isChecked()) {
+                        clearBookCache(bookId);
+                    }
+                }
             }
         }).setNegativeButton("取消", null).create().show();
     }
 
     static void f(final HomeShelfFragment homeShelfFragment) {
         if (!homeShelfFragment.b) {
-            homeShelfFragment.k();
+            homeShelfFragment.refreshBookShelf();
         }
         new BaseAsyncTask<Void, Void, List<BookUpdate>>() {
             private List<BookReadRecord> a;
@@ -508,43 +350,15 @@ public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollL
         }.b();
     }
 
-    private void a(final BookFile bookFile) {
-        TxtFileObject.delete(bookFile);
-        this.k();
-        new Thread() {
-            @Override
-            public void run() {
-                String string = TocManager.getFileName(bookFile.getFilePath());
-                CommonUtil.deleteFile(CachePathConst.TextToc + string);
-            }
-        }.start();
-    }
-
-    private void a(BookReadRecord bookReadRecord) {
+    private void addFeedBook(BookReadRecord bookReadRecord) {
         CommonUtil.unsubscribeBook(bookReadRecord.getBookId());
         BookReadRecord.addAccountInfo(bookReadRecord);
-        this.k();
+        this.refreshBookShelf();
         CommonUtil.syncBookShelf(bookReadRecord.getBookId(), BookSyncRecord.BookModifyType.FEED_ADD);
     }
 
-    private void a(BookShelf bookShelf, boolean bl) {
-        if (bookShelf.getBookRecord() != null) {
-            BookReadRecord bookReadRecord = bookShelf.getBookRecord();
-            String string = bookReadRecord.getBookId();
-            BookReadRecord.delete(bookReadRecord);
-            this.a(string);
-            if (bl) {
-                this.b(string);
-            }
-        } else {
-            if (bookShelf.getTxt() != null) {
-                this.a(bookShelf.getTxt());
-            }
-        }
-    }
-
-    private void a(String bookId) {
-        this.k();
+    private void removeBook(String bookId) {
+        refreshBookShelf();
         CommonUtil.unsubscribeBook(bookId);
         CommonUtil.syncBookShelf(bookId, BookSyncRecord.BookModifyType.SHELF_REMOVE);
         BusProvider.getInstance().post(new BookShelfRefreshEvent());
@@ -579,16 +393,16 @@ public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollL
             }
             case 1: {
                 this.f.setVisibility(View.GONE);
-                this.e.setVisibility(View.VISIBLE);
+                this.mListView.setVisibility(View.VISIBLE);
                 return;
             }
             case 3:
         }
         this.f.setVisibility(View.VISIBLE);
-        this.e.setVisibility(View.GONE);
+        this.mListView.setVisibility(View.GONE);
     }
 
-    private void b(final String string) {
+    private void clearBookCache(final String string) {
         new Thread() {
 
             @Override
@@ -596,38 +410,6 @@ public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollL
                 CommonUtil.deleteDir(CachePathConst.Chapter + File.separator + string);
             }
         }.start();
-    }
-
-    private void i() {
-        List<BookShelf> list;
-        long l2 = new Date().getTime();
-        if (l2 - this.B < 500) {
-            this.B = l2;
-            return;
-        }
-        this.B = l2;
-        list = this.j();
-        if (list != null) {
-            this.mAdapter.a(list);
-            if (!list.isEmpty()) {
-                this.b(1);
-                if (this.b) {
-                    this.d.setRefreshing();
-                }
-                this.b = false;
-                return;
-            }
-            if (CommonUtil.isFirstLaunch(this.getActivity())) {
-                if (!CommonUtil.isLogined() && !this.A) {
-                    showGenderIntroDialog(this.getActivity());
-                    return;
-                }
-                this.z = true;
-            }
-            this.b(3);
-            return;
-        }
-        ToastUtil.showShortToast(this.getActivity(), "载入书架失败，请重试");
     }
 
     public static void showGenderIntroDialog(FragmentActivity fragmentActivity) {
@@ -716,9 +498,37 @@ public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollL
         return v6;
     }
 
-    private void k() {
+    private void refreshBookShelf() {
         if (this.getActivity() != null) {
-            this.i();
+            List<BookShelf> list;
+            long l2 = new Date().getTime();
+            if (l2 - this.B < 500) {
+                this.B = l2;
+                return;
+            }
+            this.B = l2;
+            list = this.j();
+            if (list != null) {
+                this.mAdapter.a(list);
+                if (!list.isEmpty()) {
+                    this.b(1);
+                    if (this.b) {
+                        this.d.setRefreshing();
+                    }
+                    this.b = false;
+                    return;
+                }
+                if (CommonUtil.isFirstLaunch(this.getActivity())) {
+                    if (!CommonUtil.isLogined() && !this.A) {
+                        showGenderIntroDialog(this.getActivity());
+                        return;
+                    }
+                    this.z = true;
+                }
+                this.b(3);
+                return;
+            }
+            ToastUtil.showShortToast(this.getActivity(), "载入书架失败，请重试");
         }
     }
 
@@ -727,45 +537,41 @@ public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollL
     }
 
     public final void d() {
-        this.e.removeHeaderView(this.g);
+        this.mListView.removeHeaderView(this.g);
         this.w.setVisibility(View.VISIBLE);
-        this.e.removeFooterView(this.h);
-        this.e.addFooterView(this.h);
+        this.mListView.removeFooterView(this.h);
+        this.mListView.addFooterView(this.h);
         this.d.setMode(PullToRefreshBase.Mode.DISABLED);
         this.d.setPullToRefreshOverScrollEnabled(false);
-        this.e.setOnItemLongClickListener(null);
+        this.mListView.setOnItemLongClickListener(null);
         this.mAdapter.b();
     }
 
     public final void e() {
-        if (this.g != null && this.i != null && this.i.postLink != null && (!this.i.postLink.startsWith("link") || this.i.postLink.startsWith("game"))) {
-            this.e.removeHeaderView(this.g);
-            this.e.addHeaderView(this.g);
-        }
         this.w.setVisibility(View.GONE);
-        this.e.removeFooterView(this.h);
+        this.mListView.removeFooterView(this.h);
         this.d.setMode(PullToRefreshBase.Mode.PULL_FROM_START);
         this.d.setPullToRefreshOverScrollEnabled(true);
-        this.e.setOnItemLongClickListener(this.D);
+        this.mListView.setOnItemLongClickListener(this.mOnItemLongClickListener);
         this.mAdapter.c();
     }
 
     @Subscribe
     public void onBookAdded(BookAddedEvent c2) {
         if (c2.isLocal()) {
-            this.k();
+            this.refreshBookShelf();
         }
         CommonUtil.subscribeBook(c2.getBookId());
     }
 
     @Subscribe
     public void onBookRead(BookReadEvent g2) {
-        this.k();
+        this.refreshBookShelf();
     }
 
     @Subscribe
     public void onBookRemoved(BookRemovedEvent h2) {
-        this.a(h2.getBookId());
+        this.removeBook(h2.getBookId());
     }
 
     @Override
@@ -779,10 +585,10 @@ public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollL
         Log.i(TAG, "HomeShelfFragment onCreateView");
         View c = layoutInflater.inflate(R.layout.fragment_home_shelf, viewGroup, false);
         this.d = (PullToRefreshListView) c.findViewById(R.id.home_shelf_ptr);
-        this.e = this.d.getRefreshableView();
+        this.mListView = this.d.getRefreshableView();
         this.d.setOnScrollListener(this);
         this.f = c.findViewById(R.id.home_shelf_empty);
-        this.h = LayoutInflater.from(this.getActivity()).inflate(R.layout.layout_shelf_footer, this.e, false);
+        this.h = LayoutInflater.from(this.getActivity()).inflate(R.layout.layout_shelf_footer, this.mListView, false);
         c.findViewById(R.id.add_new_book).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -841,21 +647,59 @@ public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollL
             }
         });
         if (Build.VERSION.SDK_INT >= 19) {
-            this.e.setFooterDividersEnabled(false);
+            this.mListView.setFooterDividersEnabled(false);
         }
         View view = LayoutInflater.from(this.getActivity()).inflate(R.layout.ptr_list_footer_empty_view, (ViewGroup) getActivity().getWindow().getDecorView(), false);
-        this.e.addFooterView(view);
-        CommonUtil.addHeaderView(this.getActivity(), this.e);
-        this.g = LayoutInflater.from(this.getActivity()).inflate(R.layout.bookshelf_header_msg, this.e, false);
+        this.mListView.addFooterView(view);
+        CommonUtil.addHeaderView(this.getActivity(), this.mListView);
+        this.g = LayoutInflater.from(this.getActivity()).inflate(R.layout.bookshelf_header_msg, this.mListView, false);
         this.g.setVisibility(View.GONE);
         this.mAdapter = new HomeShelfAdapter(this.getActivity());
-        this.e.setAdapter(this.mAdapter);
-        this.e.setOnItemClickListener(this.C);
-        this.e.setOnItemLongClickListener(this.D);
+        this.mListView.setAdapter(this.mAdapter);
+        this.mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                BookShelf bookShelf = (BookShelf) HomeShelfFragment.this.mListView.getAdapter().getItem(position);
+                if (bookShelf == null) return;
+                if (HomeShelfFragment.this.mAdapter.a()) {
+                    HomeShelfFragment.this.mAdapter.a(position - HomeShelfFragment.this.mListView.getHeaderViewsCount());
+                    return;
+                }
+                switch (bookShelf.getType()) {
+                    case 0:
+                        BookReadRecord bookReadRecord = bookShelf.getBookRecord();
+                        new BookSourceManager(HomeShelfFragment.this.getActivity()).a(bookReadRecord);
+                        if (bookReadRecord.isUnread()) {
+                            bookReadRecord.setUnread(false);
+                            bookReadRecord.save();
+                            HomeShelfFragment.this.mAdapter.notifyDataSetChanged();
+                        }
+                        break;
+                    case 2:
+                        BookFile bookFile = bookShelf.getTxt();
+                        if (new File(bookFile.getFilePath()).exists()) {
+                            String string = bookFile.getPathAndName();
+                            Intent intent = new Intent("com.clilystudio.netbook.ACTION_READ_TXT");
+                            intent.putExtra("file_name", string);
+                            HomeShelfFragment.this.startActivity(intent);
+                        } else {
+                            ToastUtil.showShortToast(HomeShelfFragment.this.getActivity(), "书籍不存在");
+                            TxtFileObject.delete(bookFile);
+                            BusProvider.getInstance().post(new ShelfUpdatedEvent());
+                        }
+                        break;
+                    case 3:
+                        Intent intent = CommonUtil.getBoolPref(HomeShelfFragment.this.getActivity(), "feed_intro", true) ? new Intent(HomeShelfFragment.this.getActivity(), FeedIntroActivity.class) : new Intent(HomeShelfFragment.this.getActivity(), FeedListActivity.class);
+                        HomeShelfFragment.this.startActivity(intent);
+                        break;
+                }
+            }
+        });
+        this.mListView.setOnItemLongClickListener(this.mOnItemLongClickListener);
         this.mAdapter.a(x, y);
-        this.i();
-        this.e.getHeight();
-        Log.i(TAG, "" + this.e.getHeight() + " ," + this.e.getMeasuredHeight());
+        this.refreshBookShelf();
+        this.mListView.getHeight();
+        Log.i(TAG, "" + this.mListView.getHeight() + " ," + this.mListView.getMeasuredHeight());
         return c;
     }
 
@@ -874,12 +718,12 @@ public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollL
 
     @Subscribe
     public void onFeedAdded(FeedAddedEvent l2) {
-        this.a(l2.getBookReadRecord());
+        this.addFeedBook(l2.getBookReadRecord());
     }
 
     @Subscribe
     public void onFeedRemoved(FeedRemovedEvent n2) {
-        this.k();
+        this.refreshBookShelf();
         CommonUtil.subscribeBook(n2.getBookId());
         CommonUtil.syncBookShelf(n2.getBookId(), BookSyncRecord.BookModifyType.FEED_REMOVE);
     }
@@ -919,7 +763,7 @@ public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollL
                 @Override
                 public void a(BookGenderRecommend bookGenderRecommend) {
                     if (bookGenderRecommend != null && bookGenderRecommend.isOk()) {
-                        HomeShelfFragment.this.k();
+                        HomeShelfFragment.this.refreshBookShelf();
                     } else {
                         HomeShelfFragment.this.b(3);
                     }
@@ -930,13 +774,6 @@ public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollL
             } else if (n2 == 2) {
                 bookGenderRecommendc.b("female");
             }
-        }
-    }
-
-    public void onHideAdEvent() {
-        this.k();
-        if (this.g != null && this.i != null && this.i.postLink != null && (this.i.postLink.startsWith("link") || this.i.postLink.startsWith("game"))) {
-            this.e.removeHeaderView(this.g);
         }
     }
 
@@ -977,7 +814,7 @@ public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollL
             }
             return;
         }
-        this.k();
+        this.refreshBookShelf();
     }
 
     /*

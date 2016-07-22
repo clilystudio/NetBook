@@ -92,7 +92,7 @@ public class AuthorBooksActivity extends BaseLoadingActivity {
                 BookSummary bookSummary;
                 int n2 = position - AuthorBooksActivity.this.a.getHeaderViewsCount();
                 if (n2 >= 0 && n2 < AuthorBooksActivity.this.b.getCount() && (bookSummary = AuthorBooksActivity.this.b.getItem(n2)) != null) {
-                    AuthorBooksActivity.this.startActivity(BookInfoActivity.a(AuthorBooksActivity.this, bookSummary.getId()));
+                    AuthorBooksActivity.this.startActivity(BookInfoActivity.getIntent(AuthorBooksActivity.this, bookSummary.getId()));
                 }
             }
         });

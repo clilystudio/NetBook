@@ -63,7 +63,7 @@ public class BookInfoActivity extends BaseActivity implements View.OnClickListen
         };
     }
 
-    public static Intent a(Context context, String string) {
+    public static Intent getIntent(Context context, String string) {
         return new IntentBuilder().put(context, BookInfoActivity.class).put("book_id", string).put("open_type", 0).build();
     }
 
