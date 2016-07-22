@@ -29,7 +29,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class HomeShelfAdapter extends BaseBookAdapter<BookShelf> {
-    public static boolean a;
 
     static {
         HomeShelfAdapter.class.getSimpleName();
@@ -38,8 +37,8 @@ public class HomeShelfAdapter extends BaseBookAdapter<BookShelf> {
     private Context b;
     private LayoutInflater c;
     private boolean d = false;
-    private List<BookShelf> e;
-    private boolean[] f;
+    private List<BookShelf> mSelectedBooks;
+    private boolean[] mIsSelected;
     private boolean g = false;
     private Button h;
     private Button i;
@@ -47,7 +46,7 @@ public class HomeShelfAdapter extends BaseBookAdapter<BookShelf> {
     public HomeShelfAdapter(Activity activity) {
         this.b = activity;
         this.c = LayoutInflater.from(this.b);
-        this.e = new ArrayList<>();
+        this.mSelectedBooks = new ArrayList<>();
     }
 
     private void a(final int n, CheckBox checkBox) {
@@ -57,12 +56,12 @@ public class HomeShelfAdapter extends BaseBookAdapter<BookShelf> {
             checkBox.setVisibility(View.GONE);
         }
         this.g = true;
-        if (this.f.length <= n) {
+        if (this.mIsSelected.length <= n) {
             boolean[] arrbl = new boolean[n + 1];
-            System.arraycopy(this.f, 0, arrbl, 0, this.f.length);
-            this.f = arrbl;
+            System.arraycopy(this.mIsSelected, 0, arrbl, 0, this.mIsSelected.length);
+            this.mIsSelected = arrbl;
         }
-        checkBox.setChecked(this.f[n]);
+        checkBox.setChecked(this.mIsSelected[n]);
         this.b(n);
         this.g = false;
         checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -71,7 +70,7 @@ public class HomeShelfAdapter extends BaseBookAdapter<BookShelf> {
                 if (HomeShelfAdapter.this.g) {
                     return;
                 }
-                HomeShelfAdapter.this.f[n] = isChecked;
+                HomeShelfAdapter.this.mIsSelected[n] = isChecked;
                 HomeShelfAdapter.this.b(n);
             }
         });
@@ -81,20 +80,20 @@ public class HomeShelfAdapter extends BaseBookAdapter<BookShelf> {
      * Enabled aggressive block sorting
      */
     private void b(int n) {
-        if (this.f[n]) {
-            if (!this.e.contains(this.getItem(n))) {
-                this.e.add(this.getItem(n));
+        if (this.mIsSelected[n]) {
+            if (!this.mSelectedBooks.contains(this.getItem(n))) {
+                this.mSelectedBooks.add(this.getItem(n));
             }
         } else {
-            this.e.remove(this.getItem(n));
+            this.mSelectedBooks.remove(this.getItem(n));
         }
-        if (this.e.size() > 0) {
-            String text = "删除(" + this.e.size() + ")";
+        if (this.mSelectedBooks.size() > 0) {
+            String text = "删除(" + this.mSelectedBooks.size() + ")";
             this.h.setText(text);
         } else {
             this.h.setText("删除");
         }
-        if (this.e.size() == this.g()) {
+        if (this.mSelectedBooks.size() == this.g()) {
             this.i.setText("取消全选");
             return;
         }
@@ -103,7 +102,7 @@ public class HomeShelfAdapter extends BaseBookAdapter<BookShelf> {
 
     private int g() {
         int n = 0;
-        for (int i = 0; i < this.f.length; ++i) {
+        for (int i = 0; i < this.mIsSelected.length; ++i) {
             int n2 = this.getItemViewType(i);
             if (n2 != 0 && n2 != 2 && n2 != 4) continue;
             ++n;
@@ -115,8 +114,8 @@ public class HomeShelfAdapter extends BaseBookAdapter<BookShelf> {
      * Enabled aggressive block sorting
      */
     public final void a(int n) {
-        boolean[] arrbl = this.f;
-        boolean bl = !this.f[n];
+        boolean[] arrbl = this.mIsSelected;
+        boolean bl = !this.mIsSelected[n];
         arrbl[n] = bl;
         this.notifyDataSetChanged();
     }
@@ -129,7 +128,7 @@ public class HomeShelfAdapter extends BaseBookAdapter<BookShelf> {
     @Override
     public final void a(List<BookShelf> list) {
         super.a(list);
-        this.f = new boolean[list.size()];
+        this.mIsSelected = new boolean[list.size()];
     }
 
     public final boolean a() {
@@ -143,42 +142,38 @@ public class HomeShelfAdapter extends BaseBookAdapter<BookShelf> {
 
     public final void c() {
         this.d = false;
-        for (int i = 0; i < this.f.length; ++i) {
-            this.f[i] = false;
+        for (int i = 0; i < this.mIsSelected.length; ++i) {
+            this.mIsSelected[i] = false;
         }
-        this.e.clear();
+        this.mSelectedBooks.clear();
         this.notifyDataSetChanged();
     }
 
-    public final void d() {
-        boolean[] arrbl = this.f;
-        for (boolean anArrbl : arrbl) {
-            if (anArrbl) continue;
-            int n2 = 0;
-            do {
-                int n3 = this.f.length;
-                if (n2 >= n3) break;
-                this.f[n2] = true;
-                ++n2;
-            } while (true);
-            for (int j = 0; j < this.f.length; ++j) {
-                BookShelf bookShelf = this.getItem(j);
-                int n4 = bookShelf.getType();
-                if (n4 != 0 && n4 != 2 && n4 != 4 || this.e.contains(bookShelf)) continue;
-                this.e.add(bookShelf);
+    public final void selectAll() {
+        for (boolean isSelected : this.mIsSelected) {
+            if (!isSelected) {
+                for (int n2 = 0; n2 < this.mIsSelected.length; n2++) {
+                    this.mIsSelected[n2] = true;
+                }
+                for (int j = 0; j < this.mIsSelected.length; ++j) {
+                    BookShelf bookShelf = getItem(j);
+                    if (!this.mSelectedBooks.contains(bookShelf)) {
+                        this.mSelectedBooks.add(bookShelf);
+                    }
+                }
+                this.notifyDataSetChanged();
+                return;
             }
-            this.notifyDataSetChanged();
-            return;
         }
-        for (int j = 0; j < this.f.length; ++j) {
-            this.f[j] = false;
+        for (int j = 0; j < this.mIsSelected.length; ++j) {
+            this.mIsSelected[j] = false;
         }
-        this.e.clear();
+        this.mSelectedBooks.clear();
         this.notifyDataSetChanged();
     }
 
-    public final List<BookShelf> e() {
-        return this.e;
+    public final List<BookShelf> getSelectedBooks() {
+        return mSelectedBooks;
     }
 
     @Override
@@ -291,8 +286,8 @@ public class HomeShelfAdapter extends BaseBookAdapter<BookShelf> {
 
                     @Override
                     public void b() {
-                       new BookDownloadManager((Activity)HomeShelfAdapter.this.b).startDownload(var24_14, 0, 0);
-                   }
+                        new BookDownloadManager((Activity) HomeShelfAdapter.this.b).startDownload(var24_14, 0, 0);
+                    }
 
                     @Override
                     public void c() {
@@ -328,7 +323,7 @@ public class HomeShelfAdapter extends BaseBookAdapter<BookShelf> {
                 var11_25.flag.setType(0);
                 return var2_2;
             }
-         }
+        }
         return var2_2;
     }
 

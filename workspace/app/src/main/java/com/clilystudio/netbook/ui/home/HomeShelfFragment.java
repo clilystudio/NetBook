@@ -11,7 +11,6 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
@@ -72,7 +71,7 @@ import uk.me.lewisdeane.ldialogs.BaseDialog;
 public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollListener {
     private static final String TAG = HomeShelfFragment.class.getSimpleName();
     private boolean A = false;
-    private long B = 0;
+    private long mRefreshTime = 0;
     private AdapterView.OnItemLongClickListener mOnItemLongClickListener = new AdapterView.OnItemLongClickListener() {
         @Override
         public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
@@ -113,7 +112,13 @@ public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollL
                             removeBookShelf(bookShelf);
                             break;
                         case 5:
-                            HomeShelfFragment.this.d();
+                            mBottomBar.setVisibility(View.VISIBLE);
+                            mListView.removeFooterView(mFooterView);
+                            mListView.addFooterView(mFooterView);
+                            mBookShelfListView.setMode(PullToRefreshBase.Mode.DISABLED);
+                            mBookShelfListView.setPullToRefreshOverScrollEnabled(false);
+                            mListView.setOnItemLongClickListener(null);
+                            mAdapter.b();
                             break;
                     }
                 }
@@ -121,16 +126,15 @@ public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollL
             return true;
         }
     };
-    private boolean b = true;
-    private PullToRefreshListView d;
+    private boolean mIsLoading = true;
+    private PullToRefreshListView mBookShelfListView;
     private ListView mListView;
-    private View f;
-    private View g;
-    private View h;
+    private View mEmptyView;
+    private View mFooterView;
     private HomeShelfAdapter mAdapter;
     private int k = 0;
     private int v = 0;
-    private RelativeLayout w;
+    private RelativeLayout mBottomBar;
     private boolean z = false;
 
     static long getLastAccessTime(BookShelf bookShelf, int n2) {
@@ -173,11 +177,11 @@ public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollL
             }
         }
         if (hasUpdate) {
-            homeShelfFragment.refreshBookShelf();
+            homeShelfFragment.reloadBookShelf();
             ToastUtil.showToast(homeShelfFragment.getActivity(), R.string.refurbish_changed);
         } else {
             if (hasFeedChange) {
-                homeShelfFragment.refreshBookShelf();
+                homeShelfFragment.reloadBookShelf();
             } else {
                 homeShelfFragment.mAdapter.notifyDataSetChanged();
                 ToastUtil.showToast(homeShelfFragment.getActivity(), R.string.refurbish_no_change);
@@ -185,20 +189,20 @@ public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollL
         }
     }
 
-    static void a(HomeShelfFragment homeShelfFragment, List<BookShelf> list, boolean bl) {
+    private void batchRemoveBookShelf(List<BookShelf> list, boolean isClearCache) {
         for (BookShelf bookShelf : list) {
             if (bookShelf.getBookRecord() != null) {
                 BookReadRecord bookReadRecord = bookShelf.getBookRecord();
-                String string = bookReadRecord.getBookId();
+                String bookId = bookReadRecord.getBookId();
                 BookReadRecord.delete(bookReadRecord);
-                CommonUtil.unsubscribeBook(string);
-                if (bl) {
-                    homeShelfFragment.clearBookCache(string);
+                CommonUtil.unsubscribeBook(bookId);
+                if (isClearCache) {
+                    clearBookCache(bookId);
                 }
                 CommonUtil.syncBookShelf(bookShelf.getBookRecord().getBookId(), BookSyncRecord.BookModifyType.SHELF_REMOVE);
             }
         }
-        homeShelfFragment.refreshBookShelf();
+        reloadBookShelf();
         BusProvider.getInstance().post(new BookShelfRefreshEvent());
     }
 
@@ -289,7 +293,7 @@ public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollL
             bookReadRecord.setTop(!bookReadRecord.isTop());
             bookReadRecord.save();
         }
-        refreshBookShelf();
+        reloadBookShelf();
     }
 
     private void removeBookShelf(final BookShelf bookShelf) {
@@ -313,36 +317,35 @@ public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollL
         }).setNegativeButton("取消", null).create().show();
     }
 
-    static void f(final HomeShelfFragment homeShelfFragment) {
-        if (!homeShelfFragment.b) {
-            homeShelfFragment.refreshBookShelf();
+    void refreshBookShelf(final HomeShelfFragment homeShelfFragment) {
+        if (!mIsLoading) {
+            reloadBookShelf();
         }
         new BaseAsyncTask<Void, Void, List<BookUpdate>>() {
-            private List<BookReadRecord> a;
-
+            List<BookReadRecord> bookReadRecordList;
             @Override
             protected List<BookUpdate> doInBackground(Void... params) {
-                this.a = BookReadRecord.getAll();
-                ArrayList<String> arrayList = new ArrayList<>();
-                for (BookReadRecord anA : this.a) {
-                    arrayList.add(anA.getBookId());
+                bookReadRecordList = BookReadRecord.getAll();
+                ArrayList<String> bookIds = new ArrayList<>();
+                for (BookReadRecord bookReadRecord : bookReadRecordList) {
+                    bookIds.add(bookReadRecord.getBookId());
                 }
                 ApiServiceProvider.getInstance();
-                return ApiServiceProvider.getApiService().getBookUpdateList(arrayList);
+                return ApiServiceProvider.getApiService().getBookUpdateList(bookIds);
             }
 
             @Override
             protected void onPostExecute(List<BookUpdate> bookUpdates) {
                 super.onPostExecute(bookUpdates);
-                if (homeShelfFragment.getActivity() != null) {
-                    if (homeShelfFragment.d != null) {
-                        homeShelfFragment.d.onRefreshComplete();
+                if (getActivity() != null) {
+                    if (mBookShelfListView != null) {
+                        mBookShelfListView.onRefreshComplete();
                     }
                     if (bookUpdates != null && !bookUpdates.isEmpty()) {
-                        HomeShelfFragment.a(homeShelfFragment, bookUpdates, this.a);
+                        HomeShelfFragment.a(homeShelfFragment, bookUpdates, bookReadRecordList);
                     } else {
-                        if (homeShelfFragment.v == 0) {
-                            ToastUtil.showToast(homeShelfFragment.getActivity(), R.string.network_failed);
+                        if (v == 0) {
+                            ToastUtil.showToast(getActivity(), R.string.network_failed);
                         }
                     }
                 }
@@ -353,12 +356,12 @@ public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollL
     private void addFeedBook(BookReadRecord bookReadRecord) {
         CommonUtil.unsubscribeBook(bookReadRecord.getBookId());
         BookReadRecord.addAccountInfo(bookReadRecord);
-        this.refreshBookShelf();
+        this.reloadBookShelf();
         CommonUtil.syncBookShelf(bookReadRecord.getBookId(), BookSyncRecord.BookModifyType.FEED_ADD);
     }
 
     private void removeBook(String bookId) {
-        refreshBookShelf();
+        reloadBookShelf();
         CommonUtil.unsubscribeBook(bookId);
         CommonUtil.syncBookShelf(bookId, BookSyncRecord.BookModifyType.SHELF_REMOVE);
         BusProvider.getInstance().post(new BookShelfRefreshEvent());
@@ -392,13 +395,13 @@ public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollL
                 return;
             }
             case 1: {
-                this.f.setVisibility(View.GONE);
+                this.mEmptyView.setVisibility(View.GONE);
                 this.mListView.setVisibility(View.VISIBLE);
                 return;
             }
             case 3:
         }
-        this.f.setVisibility(View.VISIBLE);
+        this.mEmptyView.setVisibility(View.VISIBLE);
         this.mListView.setVisibility(View.GONE);
     }
 
@@ -498,24 +501,24 @@ public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollL
         return v6;
     }
 
-    private void refreshBookShelf() {
+    private void reloadBookShelf() {
         if (this.getActivity() != null) {
             List<BookShelf> list;
             long l2 = new Date().getTime();
-            if (l2 - this.B < 500) {
-                this.B = l2;
+            if (l2 - this.mRefreshTime < 500) {
+                this.mRefreshTime = l2;
                 return;
             }
-            this.B = l2;
+            this.mRefreshTime = l2;
             list = this.j();
             if (list != null) {
                 this.mAdapter.a(list);
                 if (!list.isEmpty()) {
                     this.b(1);
-                    if (this.b) {
-                        this.d.setRefreshing();
+                    if (this.mIsLoading) {
+                        this.mBookShelfListView.setRefreshing();
                     }
-                    this.b = false;
+                    this.mIsLoading = false;
                     return;
                 }
                 if (CommonUtil.isFirstLaunch(this.getActivity())) {
@@ -536,37 +539,26 @@ public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollL
         return this.mAdapter.a();
     }
 
-    public final void d() {
-        this.mListView.removeHeaderView(this.g);
-        this.w.setVisibility(View.VISIBLE);
-        this.mListView.removeFooterView(this.h);
-        this.mListView.addFooterView(this.h);
-        this.d.setMode(PullToRefreshBase.Mode.DISABLED);
-        this.d.setPullToRefreshOverScrollEnabled(false);
-        this.mListView.setOnItemLongClickListener(null);
-        this.mAdapter.b();
-    }
-
-    public final void e() {
-        this.w.setVisibility(View.GONE);
-        this.mListView.removeFooterView(this.h);
-        this.d.setMode(PullToRefreshBase.Mode.PULL_FROM_START);
-        this.d.setPullToRefreshOverScrollEnabled(true);
-        this.mListView.setOnItemLongClickListener(this.mOnItemLongClickListener);
-        this.mAdapter.c();
+    public final void resetView() {
+        mBottomBar.setVisibility(View.GONE);
+        mListView.removeFooterView(mFooterView);
+        mBookShelfListView.setMode(PullToRefreshBase.Mode.PULL_FROM_START);
+        mBookShelfListView.setPullToRefreshOverScrollEnabled(true);
+        mListView.setOnItemLongClickListener(mOnItemLongClickListener);
+        mAdapter.c();
     }
 
     @Subscribe
     public void onBookAdded(BookAddedEvent c2) {
         if (c2.isLocal()) {
-            this.refreshBookShelf();
+            this.reloadBookShelf();
         }
         CommonUtil.subscribeBook(c2.getBookId());
     }
 
     @Subscribe
     public void onBookRead(BookReadEvent g2) {
-        this.refreshBookShelf();
+        this.reloadBookShelf();
     }
 
     @Subscribe
@@ -583,65 +575,59 @@ public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollL
     @Override
     public View onCreateView(LayoutInflater layoutInflater, ViewGroup viewGroup, Bundle bundle) {
         Log.i(TAG, "HomeShelfFragment onCreateView");
-        View c = layoutInflater.inflate(R.layout.fragment_home_shelf, viewGroup, false);
-        this.d = (PullToRefreshListView) c.findViewById(R.id.home_shelf_ptr);
-        this.mListView = this.d.getRefreshableView();
-        this.d.setOnScrollListener(this);
-        this.f = c.findViewById(R.id.home_shelf_empty);
-        this.h = LayoutInflater.from(this.getActivity()).inflate(R.layout.layout_shelf_footer, this.mListView, false);
-        c.findViewById(R.id.add_new_book).setOnClickListener(new View.OnClickListener() {
+        View contentView = layoutInflater.inflate(R.layout.fragment_home_shelf, viewGroup, false);
+        mBookShelfListView = (PullToRefreshListView) contentView.findViewById(R.id.home_shelf_ptr);
+        mListView = mBookShelfListView.getRefreshableView();
+        mBookShelfListView.setOnScrollListener(this);
+        mEmptyView = contentView.findViewById(R.id.home_shelf_empty);
+        mFooterView = LayoutInflater.from(getActivity()).inflate(R.layout.layout_shelf_footer, mListView, false);
+        contentView.findViewById(R.id.add_new_book).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((HomeActivity) HomeShelfFragment.this.getActivity()).gotoHomeFind();
+                ((HomeActivity) getActivity()).gotoHomeFind();
             }
         });
-        this.w = (RelativeLayout) c.findViewById(R.id.delete_shelf_bar);
-        this.w.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                return true;
-            }
-        });
-        Button x = (Button) this.w.findViewById(R.id.delete);
-        Button y = (Button) this.w.findViewById(R.id.select_all);
-        y.setOnClickListener(new View.OnClickListener() {
+        mBottomBar = (RelativeLayout) contentView.findViewById(R.id.delete_shelf_bar);
+        Button selectAllButton = (Button) mBottomBar.findViewById(R.id.select_all);
+        selectAllButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (HomeShelfFragment.this.mAdapter != null) {
-                    HomeShelfFragment.this.mAdapter.d();
+                if (mAdapter != null) {
+                    mAdapter.selectAll();
                 }
             }
         });
-        x.setOnClickListener(new View.OnClickListener() {
+        Button deleteButton = (Button) mBottomBar.findViewById(R.id.delete);
+        deleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (HomeShelfFragment.this.mAdapter == null) return;
-                final List<BookShelf> list = HomeShelfFragment.this.mAdapter.e();
-                if (list == null || list.size() == 0) {
-                    ToastUtil.showToast(HomeShelfFragment.this.getActivity(), "你没有选择要删除的书哦");
-                    return;
-                }
-                View view = HomeShelfFragment.this.getActivity().getLayoutInflater().inflate(R.layout.remove_shelf_confirm, (ViewGroup) HomeShelfFragment.this.getActivity().getWindow().getDecorView(), false);
-                final CheckBox checkBox = (CheckBox) view.findViewById(R.id.remove_shelf_cache);
-                new BaseDialog.Builder(HomeShelfFragment.this.getActivity()).setView(view).setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                if (mAdapter != null) {
+                    final List<BookShelf> selectedBooks = HomeShelfFragment.this.mAdapter.getSelectedBooks();
+                    if (selectedBooks == null || selectedBooks.size() == 0) {
+                        ToastUtil.showToast(HomeShelfFragment.this.getActivity(), "你没有选择要删除的书哦");
+                    } else {
+                        View view = getActivity().getLayoutInflater().inflate(R.layout.remove_shelf_confirm, (ViewGroup) getActivity().getWindow().getDecorView(), false);
+                        final CheckBox checkBox = (CheckBox) view.findViewById(R.id.remove_shelf_cache);
+                        new BaseDialog.Builder(getActivity()).setView(view).setPositiveButton("确定", new DialogInterface.OnClickListener() {
 
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        HomeShelfFragment.a(HomeShelfFragment.this, list, checkBox.isChecked());
-                        HomeShelfFragment.this.e();
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                batchRemoveBookShelf(selectedBooks, checkBox.isChecked());
+                                resetView();
+                            }
+                        }).setNegativeButton("取消", null).create().show();
                     }
-                }).setNegativeButton("取消", null).create().show();
+                }
             }
         });
-        this.d.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener<ListView>() {
+        mBookShelfListView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener<ListView>() {
             @Override
             public void onRefresh(PullToRefreshBase<ListView> refreshView) {
                 BusProvider.getInstance().post(new BookShelfRefreshEvent());
-                HomeShelfAdapter.a = true;
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        HomeShelfFragment.f(HomeShelfFragment.this);
+                        refreshBookShelf(HomeShelfFragment.this);
                     }
                 }, 1000);
             }
@@ -652,8 +638,6 @@ public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollL
         View view = LayoutInflater.from(this.getActivity()).inflate(R.layout.ptr_list_footer_empty_view, (ViewGroup) getActivity().getWindow().getDecorView(), false);
         this.mListView.addFooterView(view);
         CommonUtil.addHeaderView(this.getActivity(), this.mListView);
-        this.g = LayoutInflater.from(this.getActivity()).inflate(R.layout.bookshelf_header_msg, this.mListView, false);
-        this.g.setVisibility(View.GONE);
         this.mAdapter = new HomeShelfAdapter(this.getActivity());
         this.mListView.setAdapter(this.mAdapter);
         this.mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -696,11 +680,11 @@ public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollL
             }
         });
         this.mListView.setOnItemLongClickListener(this.mOnItemLongClickListener);
-        this.mAdapter.a(x, y);
-        this.refreshBookShelf();
+        this.mAdapter.a(deleteButton, selectAllButton);
+        this.reloadBookShelf();
         this.mListView.getHeight();
         Log.i(TAG, "" + this.mListView.getHeight() + " ," + this.mListView.getMeasuredHeight());
-        return c;
+        return contentView;
     }
 
     @Override
@@ -723,14 +707,14 @@ public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollL
 
     @Subscribe
     public void onFeedRemoved(FeedRemovedEvent n2) {
-        this.refreshBookShelf();
+        this.reloadBookShelf();
         CommonUtil.subscribeBook(n2.getBookId());
         CommonUtil.syncBookShelf(n2.getBookId(), BookSyncRecord.BookModifyType.FEED_REMOVE);
     }
 
     @Subscribe
     public void onFeedSettingChanged(FeedSettingChangedEvent m2) {
-        this.d.setRefreshing();
+        this.mBookShelfListView.setRefreshing();
     }
 
     @Subscribe
@@ -763,7 +747,7 @@ public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollL
                 @Override
                 public void a(BookGenderRecommend bookGenderRecommend) {
                     if (bookGenderRecommend != null && bookGenderRecommend.isOk()) {
-                        HomeShelfFragment.this.refreshBookShelf();
+                        HomeShelfFragment.this.reloadBookShelf();
                     } else {
                         HomeShelfFragment.this.b(3);
                     }
@@ -781,7 +765,7 @@ public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollL
     public void onPause() {
         super.onPause();
         if (this.mAdapter.a()) {
-            this.e();
+            this.resetView();
         }
     }
 
@@ -814,7 +798,7 @@ public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollL
             }
             return;
         }
-        this.refreshBookShelf();
+        this.reloadBookShelf();
     }
 
     /*
@@ -825,7 +809,7 @@ public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollL
         super.setUserVisibleHint(bl);
         if (!bl) {
             if (this.mAdapter.a()) {
-                this.e();
+                this.resetView();
             }
         }
     }
