@@ -13,7 +13,6 @@ import com.clilystudio.netbook.event.BookAddedEvent;
 import com.clilystudio.netbook.event.BookRemovedEvent;
 import com.clilystudio.netbook.event.BusProvider;
 import com.clilystudio.netbook.model.Account;
-import com.clilystudio.netbook.model.BookGenderRecommend;
 import com.clilystudio.netbook.model.BookInfo;
 import com.clilystudio.netbook.model.RemoteBookShelf;
 import com.clilystudio.netbook.util.DateTimeUtil;
@@ -86,12 +85,6 @@ public class BookReadRecord extends Model {
         bookReadRecord.save();
     }
 
-    public static void create(BookGenderRecommend.RecommendBook recommendBook) {
-        BookReadRecord bookReadRecord = BookReadRecord.createBookRecord(recommendBook);
-        BookReadRecord.addAccountInfo(bookReadRecord);
-        bookReadRecord.save();
-    }
-
     public static void create(BookInfo bookInfo) {
         BookReadRecord.trulyDelete(bookInfo.getId());
         BookReadRecord bookReadRecord = BookReadRecord.createBookRecord(bookInfo);
@@ -128,19 +121,6 @@ public class BookReadRecord extends Model {
         BookReadRecord bookReadRecord = BookReadRecord.createBookRecord(book);
         BookReadRecord.addAccountInfo(bookReadRecord);
         bookReadRecord.save();
-    }
-
-    private static BookReadRecord createBookRecord(BookGenderRecommend.RecommendBook recommendBook) {
-        BookReadRecord bookReadRecord = new BookReadRecord();
-        bookReadRecord.book_id = recommendBook.get_id();
-        bookReadRecord.setTitle(recommendBook.getTitle());
-        bookReadRecord.setCover(recommendBook.getCover());
-        bookReadRecord.last_chapter = recommendBook.getLastChapter();
-        bookReadRecord.setUpdated(recommendBook.getUpdated());
-        bookReadRecord.setChapterCount(recommendBook.getChaptersCount());
-        bookReadRecord.setAuthor(recommendBook.getAuthor());
-        bookReadRecord.setRecommended(true);
-        return bookReadRecord;
     }
 
     private static BookReadRecord createBookRecord(BookInfo bookInfo) {

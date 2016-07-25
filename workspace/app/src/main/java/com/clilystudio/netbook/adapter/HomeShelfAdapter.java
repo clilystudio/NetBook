@@ -36,7 +36,7 @@ public class HomeShelfAdapter extends BaseBookAdapter<BookShelf> {
 
     private Context b;
     private LayoutInflater c;
-    private boolean d = false;
+    private boolean mIsEditing = false;
     private List<BookShelf> mSelectedBooks;
     private boolean[] mIsSelected;
     private boolean g = false;
@@ -50,7 +50,7 @@ public class HomeShelfAdapter extends BaseBookAdapter<BookShelf> {
     }
 
     private void a(final int n, CheckBox checkBox) {
-        if (this.d) {
+        if (this.mIsEditing) {
             checkBox.setVisibility(View.VISIBLE);
         } else {
             checkBox.setVisibility(View.GONE);
@@ -131,17 +131,17 @@ public class HomeShelfAdapter extends BaseBookAdapter<BookShelf> {
         this.mIsSelected = new boolean[list.size()];
     }
 
-    public final boolean a() {
-        return this.d;
+    public final boolean isEditing() {
+        return this.mIsEditing;
     }
 
-    public final void b() {
-        this.d = true;
+    public final void setBatchEdit() {
+        this.mIsEditing = true;
         this.notifyDataSetChanged();
     }
 
     public final void c() {
-        this.d = false;
+        this.mIsEditing = false;
         for (int i = 0; i < this.mIsSelected.length; ++i) {
             this.mIsSelected[i] = false;
         }
@@ -206,7 +206,7 @@ public class HomeShelfAdapter extends BaseBookAdapter<BookShelf> {
                     break;
             }
         } else {
-            if (this.d) {
+            if (this.mIsEditing) {
                 if (var5_5 == 1 || var5_5 == 3) {
                     var2_2 = this.c.inflate(R.layout.list_item_shelf_empty, var3_3, false);
                 }
@@ -230,7 +230,7 @@ public class HomeShelfAdapter extends BaseBookAdapter<BookShelf> {
                 var19_6.cover.setImageUrl(var20_7.getFullCover(), R.drawable.cover_default);
                 var19_6.title.setText(var20_7.getTitle());
                 var19_6.desc.setText(var20_7.buildDesc());
-                if (var20_7.isUnread() && !this.d) {
+                if (var20_7.isUnread() && !this.mIsEditing) {
                     var19_6.flag.setType(3);
                 } else {
                     var19_6.flag.setType(0);
@@ -312,7 +312,7 @@ public class HomeShelfAdapter extends BaseBookAdapter<BookShelf> {
                 return var2_2;
             }
             case 3: {
-                if (this.d) return var2_2;
+                if (this.mIsEditing) return var2_2;
                 FeedHolder var11_25 = new FeedHolder(var2_2);
                 BookFeed var12_26 = var4_4.getBookFeed();
                 var11_25.title.setText(var12_26.getTitle());

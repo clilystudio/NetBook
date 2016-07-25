@@ -23,10 +23,8 @@ import android.widget.RelativeLayout;
 import com.clilystudio.netbook.CachePathConst;
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.a_pack.BaseAsyncTask;
-import com.clilystudio.netbook.a_pack.BaseLoadingTask;
 import com.clilystudio.netbook.adapter.HomeShelfAdapter;
 import com.clilystudio.netbook.api.ApiServiceProvider;
-import com.clilystudio.netbook.db.BookFile;
 import com.clilystudio.netbook.db.BookReadRecord;
 import com.clilystudio.netbook.db.BookSyncRecord;
 import com.clilystudio.netbook.event.BookAddedEvent;
@@ -38,13 +36,10 @@ import com.clilystudio.netbook.event.DownloadProgressEvent;
 import com.clilystudio.netbook.event.FeedAddedEvent;
 import com.clilystudio.netbook.event.FeedRemovedEvent;
 import com.clilystudio.netbook.event.FeedSettingChangedEvent;
-import com.clilystudio.netbook.event.GenderIntroEvent;
 import com.clilystudio.netbook.event.ShelfUpdatedEvent;
 import com.clilystudio.netbook.model.BookFeed;
-import com.clilystudio.netbook.model.BookGenderRecommend;
 import com.clilystudio.netbook.model.BookShelf;
 import com.clilystudio.netbook.model.BookUpdate;
-import com.clilystudio.netbook.model.TxtFileObject;
 import com.clilystudio.netbook.reader.dl.BookDownloadManager;
 import com.clilystudio.netbook.ui.BookInfoActivity;
 import com.clilystudio.netbook.ui.feed.FeedIntroActivity;
@@ -52,7 +47,6 @@ import com.clilystudio.netbook.ui.feed.FeedListActivity;
 import com.clilystudio.netbook.util.BookSourceManager;
 import com.clilystudio.netbook.util.CommonUtil;
 import com.clilystudio.netbook.util.FeedIntroDialog;
-import com.clilystudio.netbook.util.GenderIntroDialog;
 import com.clilystudio.netbook.util.ToastUtil;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
@@ -70,8 +64,15 @@ import uk.me.lewisdeane.ldialogs.BaseDialog;
 
 public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollListener {
     private static final String TAG = HomeShelfFragment.class.getSimpleName();
-    private boolean A = false;
     private long mRefreshTime = 0;
+    private int mScrollState = 0;
+    private boolean mIsLoading = true;
+    private PullToRefreshListView mBookShelfListView;
+    private ListView mListView;
+    private View mEmptyView;
+    private View mFooterView;
+    private HomeShelfAdapter mAdapter;
+    private RelativeLayout mBottomBar;
     private AdapterView.OnItemLongClickListener mOnItemLongClickListener = new AdapterView.OnItemLongClickListener() {
         @Override
         public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
@@ -118,7 +119,7 @@ public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollL
                             mBookShelfListView.setMode(PullToRefreshBase.Mode.DISABLED);
                             mBookShelfListView.setPullToRefreshOverScrollEnabled(false);
                             mListView.setOnItemLongClickListener(null);
-                            mAdapter.b();
+                            mAdapter.setBatchEdit();
                             break;
                     }
                 }
@@ -126,32 +127,22 @@ public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollL
             return true;
         }
     };
-    private boolean mIsLoading = true;
-    private PullToRefreshListView mBookShelfListView;
-    private ListView mListView;
-    private View mEmptyView;
-    private View mFooterView;
-    private HomeShelfAdapter mAdapter;
-    private int k = 0;
-    private int v = 0;
-    private RelativeLayout mBottomBar;
-    private boolean z = false;
 
-    static long getLastAccessTime(BookShelf bookShelf, int n2) {
+    static long getLastAccessTime(BookShelf bookShelf, int shelfSort) {
         if (bookShelf.getType() == BookShelf.SHELF_FEED) {
             return bookShelf.getBookFeed().getLastActionTime();
         }
-        if (n2 == 0) {
+        if (shelfSort == 0) {
             return bookShelf.getLastUpdate();
         } else {
             return bookShelf.getLastRead();
         }
     }
 
-    static void a(HomeShelfFragment homeShelfFragment, List<BookUpdate> bookUpdates, List<BookReadRecord> bookReadRecords) {
+    private void updateBookShelf(List<BookUpdate> bookUpdates, List<BookReadRecord> bookReadRecords) {
         boolean hasUpdate = false;
         boolean hasFeedChange = false;
-        int feedChapterCount = CommonUtil.getIntPref(homeShelfFragment.getActivity(), "feed_chapter_count", 50);
+        int feedChapterCount = CommonUtil.getIntPref(getActivity(), "feed_chapter_count", 50);
         int minSize = Math.min(bookReadRecords.size(), bookUpdates.size());
         for (int i = 0; i < minSize; i++) {
             BookReadRecord bookReadRecord = bookReadRecords.get(i);
@@ -177,14 +168,14 @@ public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollL
             }
         }
         if (hasUpdate) {
-            homeShelfFragment.reloadBookShelf();
-            ToastUtil.showToast(homeShelfFragment.getActivity(), R.string.refurbish_changed);
+            reloadBookShelf();
+            ToastUtil.showToast(getActivity(), R.string.refurbish_changed);
         } else {
             if (hasFeedChange) {
-                homeShelfFragment.reloadBookShelf();
+                reloadBookShelf();
             } else {
-                homeShelfFragment.mAdapter.notifyDataSetChanged();
-                ToastUtil.showToast(homeShelfFragment.getActivity(), R.string.refurbish_no_change);
+                mAdapter.notifyDataSetChanged();
+                ToastUtil.showToast(getActivity(), R.string.refurbish_no_change);
             }
         }
     }
@@ -204,62 +195,6 @@ public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollL
         }
         reloadBookShelf();
         BusProvider.getInstance().post(new BookShelfRefreshEvent());
-    }
-
-    private static int b(List<BookShelf> list) {
-        int n2 = 0;
-        List<BookFile> list2 = TxtFileObject.getTxtFiles();
-        if (list2 == null) return 0;
-        if (list2.isEmpty()) {
-            return 0;
-        }
-        ArrayList<BookShelf> arrayList = new ArrayList<>();
-        ArrayList<BookShelf> arrayList2 = new ArrayList<>();
-        for (BookFile bookFile : list2) {
-            BookShelf bookShelf = new BookShelf();
-            bookShelf.setTxt(bookFile);
-            if (bookFile.isTop()) {
-                arrayList2.add(bookShelf);
-                continue;
-            }
-            arrayList.add(bookShelf);
-        }
-        Iterator iterator = arrayList.iterator();
-        do {
-            boolean bl;
-            BookShelf bookShelf;
-            block9:
-            {
-                Date date;
-                if (iterator.hasNext()) {
-                    bookShelf = (BookShelf) iterator.next();
-                    date = bookShelf.getTxt().getUpdated();
-                    if (date == null) {
-                        list.add(bookShelf);
-                        continue;
-                    }
-                } else {
-                    for (BookShelf bookShelf2 : list) {
-                        if (bookShelf2.getType() != 0) continue;
-                        if (!bookShelf2.isTop()) break;
-                        ++n2;
-                    }
-                    list.addAll(n2, arrayList2);
-                    return list.size();
-                }
-                for (int j = 0; j < list.size(); ++j) {
-                    BookShelf bookShelf3 = list.get(j);
-                    BookReadRecord bookReadRecord = bookShelf3.getBookRecord();
-                    if (bookReadRecord == null || bookReadRecord.isTop() || bookShelf3.getType() != 0 && bookShelf3.getType() != 2 || date.getTime() <= bookReadRecord.getUpdated().getTime()) continue;
-                    list.add(j, bookShelf);
-                    bl = true;
-                    break block9;
-                }
-                bl = false;
-            }
-            if (bl) continue;
-            list.add(bookShelf);
-        } while (true);
     }
 
     private void moveBookShelfToFeed(BookReadRecord bookReadRecord) {
@@ -317,12 +252,13 @@ public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollL
         }).setNegativeButton("取消", null).create().show();
     }
 
-    void refreshBookShelf(final HomeShelfFragment homeShelfFragment) {
+    private void refreshBookShelf() {
         if (!mIsLoading) {
             reloadBookShelf();
         }
         new BaseAsyncTask<Void, Void, List<BookUpdate>>() {
             List<BookReadRecord> bookReadRecordList;
+
             @Override
             protected List<BookUpdate> doInBackground(Void... params) {
                 bookReadRecordList = BookReadRecord.getAll();
@@ -342,11 +278,9 @@ public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollL
                         mBookShelfListView.onRefreshComplete();
                     }
                     if (bookUpdates != null && !bookUpdates.isEmpty()) {
-                        HomeShelfFragment.a(homeShelfFragment, bookUpdates, bookReadRecordList);
+                        updateBookShelf(bookUpdates, bookReadRecordList);
                     } else {
-                        if (v == 0) {
-                            ToastUtil.showToast(getActivity(), R.string.network_failed);
-                        }
+                        ToastUtil.showToast(getActivity(), R.string.network_failed);
                     }
                 }
             }
@@ -356,7 +290,7 @@ public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollL
     private void addFeedBook(BookReadRecord bookReadRecord) {
         CommonUtil.unsubscribeBook(bookReadRecord.getBookId());
         BookReadRecord.addAccountInfo(bookReadRecord);
-        this.reloadBookShelf();
+        reloadBookShelf();
         CommonUtil.syncBookShelf(bookReadRecord.getBookId(), BookSyncRecord.BookModifyType.FEED_ADD);
     }
 
@@ -367,106 +301,73 @@ public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollL
         BusProvider.getInstance().post(new BookShelfRefreshEvent());
     }
 
-    private void a(List<BookShelf> bookShelfs, List<BookReadRecord> bookReadRecords) {
+    private void addFeedingItem(List<BookShelf> bookShelfs, List<BookReadRecord> allFedding) {
         BookFeed bookFeed = new BookFeed();
-        List<BookReadRecord> v5 = BookReadRecord.getAllFeedFat();
-        Iterator<BookReadRecord> v6 = bookReadRecords.iterator();
-        long v2 = 0;
-        while (v6.hasNext()) {
-            BookReadRecord v0 = v6.next();
-            v2 = Math.max(v2, v0.lastActionTime);
+        List<BookReadRecord> allFeedFat = BookReadRecord.getAllFeedFat();
+        Iterator<BookReadRecord> iterator = allFedding.iterator();
+        long lastActionTime = 0;
+        while (iterator.hasNext()) {
+            BookReadRecord readRecord = iterator.next();
+            lastActionTime = Math.max(lastActionTime, readRecord.lastActionTime);
         }
-        if (v5.isEmpty()) {
+        if (allFeedFat.isEmpty()) {
             bookFeed.setFat(false);
-            bookFeed.setTitle(String.format(this.getString(R.string.shelf_feed_title), bookReadRecords.size()));
+            bookFeed.setTitle(String.format(getString(R.string.shelf_feed_title), allFedding.size()));
         } else {
             bookFeed.setFat(true);
-            bookFeed.setTitle(String.format(this.getString(R.string.shelf_feed_fat_title), v5.get(0).getTitle()));
+            bookFeed.setTitle(String.format(getString(R.string.shelf_feed_fat_title), allFeedFat.get(0).getTitle()));
         }
-        BookShelf v0 = new BookShelf();
-        v0.setBookFeed(bookFeed);
-        bookFeed.setLastActionTime(v2);
-        bookShelfs.add(v0);
+        BookShelf bookShelf = new BookShelf();
+        bookShelf.setBookFeed(bookFeed);
+        bookFeed.setLastActionTime(lastActionTime);
+        bookShelfs.add(bookShelf);
     }
 
-    private void b(int n2) {
-        switch (n2) {
-            default: {
-                return;
-            }
-            case 1: {
-                this.mEmptyView.setVisibility(View.GONE);
-                this.mListView.setVisibility(View.VISIBLE);
-                return;
-            }
-            case 3:
-        }
-        this.mEmptyView.setVisibility(View.VISIBLE);
-        this.mListView.setVisibility(View.GONE);
-    }
-
-    private void clearBookCache(final String string) {
+    private void clearBookCache(final String bookId) {
         new Thread() {
-
             @Override
             public void run() {
-                CommonUtil.deleteDir(CachePathConst.Chapter + File.separator + string);
+                CommonUtil.deleteDir(CachePathConst.Chapter + File.separator + bookId);
             }
         }.start();
     }
 
-    public static void showGenderIntroDialog(FragmentActivity fragmentActivity) {
-        if (fragmentActivity == null) {
-            return;
-        }
-        FragmentManager fragmentManager = fragmentActivity.getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        Fragment fragment = fragmentManager.findFragmentByTag("dialog_gender_intro");
-        if (fragment != null) {
-            fragmentTransaction.remove(fragment);
-        }
-        GenderIntroDialog genderIntroDialog = new GenderIntroDialog();
-        genderIntroDialog.setCancelable(false);
-        genderIntroDialog.show(fragmentTransaction, "dialog_gender_intro");
-    }
-
-    private List<BookShelf> j() {
-        List<BookShelf> v6 = new ArrayList<>();
-        final int v7 = CommonUtil.getIntPref(getActivity(), "key_shelf_sort", 1);
-        List<BookReadRecord> v1;
-        if (v7 != 0) {
-            v1 = BookReadRecord.getAllWithTopNoFeedByRead();
+    private List<BookShelf> sortBookShelfList() {
+        List<BookShelf> bookShelfs = new ArrayList<>();
+        final int shelfSort = CommonUtil.getIntPref(getActivity(), "key_shelf_sort", 1);
+        List<BookReadRecord> bookReadRecords;
+        if (shelfSort != 0) {
+            bookReadRecords = BookReadRecord.getAllWithTopNoFeedByRead();
         } else {
-            v1 = BookReadRecord.getAllWithTopNoFeed();
+            bookReadRecords = BookReadRecord.getAllWithTopNoFeed();
         }
-        List<BookReadRecord> v8 = BookReadRecord.getAllFeeding();
-        long v2 = 0x0;
-        if (!v8.isEmpty()) {
-            v2 = CommonUtil.getLongPref(getActivity(), "FeedUpdateTime", System.currentTimeMillis());
+        List<BookReadRecord> allFeeding = BookReadRecord.getAllFeeding();
+        long feedUpdateTime = 0;
+        if (!allFeeding.isEmpty()) {
+            feedUpdateTime = CommonUtil.getLongPref(getActivity(), "FeedUpdateTime", System.currentTimeMillis());
         }
-        Iterator<BookReadRecord> v9 = v1.iterator();
-        int v4 = 0;
-        while (v9.hasNext()) {
-            BookReadRecord v0 = v9.next();
-            if (v4 == 0 && !v8.isEmpty() && v2 > v0.getUpdated().getTime()) {
-                this.a(v6, v8);
-                v4 = 0x1;
+        Iterator<BookReadRecord> iterator = bookReadRecords.iterator();
+        boolean hasFeedUpdate = false;
+        while (iterator.hasNext()) {
+            BookReadRecord readRecord = iterator.next();
+            if (!hasFeedUpdate && !allFeeding.isEmpty() && feedUpdateTime > readRecord.getUpdated().getTime()) {
+                addFeedingItem(bookShelfs, allFeeding);
+                hasFeedUpdate = true;
             }
-            BookShelf v10 = new BookShelf();
-            v10.setBookRecord(v0);
-            if (v0.readTime != null) {
-                v10.setLastRead(v0.readTime.getTime());
+            BookShelf bookShelf = new BookShelf();
+            bookShelf.setBookRecord(readRecord);
+            if (readRecord.readTime != null) {
+                bookShelf.setLastRead(readRecord.readTime.getTime());
             }
-            if (v0.getUpdated() != null) {
-                v10.setLastUpdate(v0.getUpdated().getTime());
+            if (readRecord.getUpdated() != null) {
+                bookShelf.setLastUpdate(readRecord.getUpdated().getTime());
             }
-            v6.add(v10);
+            bookShelfs.add(bookShelf);
         }
-        this.v = HomeShelfFragment.b(v6);
-        if (v4 == 0 && !v8.isEmpty()) {
-            this.a(v6, v8);
+        if (!hasFeedUpdate && !allFeeding.isEmpty()) {
+            addFeedingItem(bookShelfs, allFeeding);
         }
-        Collections.sort(v6, new Comparator<BookShelf>() {
+        Collections.sort(bookShelfs, new Comparator<BookShelf>() {
 
             @Override
             public int compare(BookShelf lhs, BookShelf rhs) {
@@ -476,67 +377,58 @@ public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollL
                 if (rhs.isTop()) {
                     if (!lhs.isTop()) return 1;
                 }
-                if (HomeShelfFragment.getLastAccessTime(lhs, v7) == HomeShelfFragment.getLastAccessTime(rhs, v7)) {
+                if (HomeShelfFragment.getLastAccessTime(lhs, shelfSort) == HomeShelfFragment.getLastAccessTime(rhs, shelfSort)) {
                     return 0;
                 }
-                if (HomeShelfFragment.getLastAccessTime(lhs, v7) > HomeShelfFragment.getLastAccessTime(rhs, v7)) return -1;
+                if (HomeShelfFragment.getLastAccessTime(lhs, shelfSort) > HomeShelfFragment.getLastAccessTime(rhs, shelfSort)) return -1;
                 return 1;
             }
         });
-//        :goto_5
         if (CommonUtil.getIntPref(getActivity(), "unsync_bookrecord_first", 0) != 0) {
-            return v6;
+            return bookShelfs;
         }
-        String[] v3 = new String[v1.size()];
-        for (int v21 = 0; v21 < v1.size(); v21++) {
-            v3[v21] = v1.get(v21).getBookId();
+        String[] bookIds = new String[bookReadRecords.size()];
+        for (int i = 0; i < bookReadRecords.size(); i++) {
+            bookIds[i] = bookReadRecords.get(i).getBookId();
         }
-        CommonUtil.syncBookShelf(v3, BookSyncRecord.BookModifyType.SHELF_ADD);
-        String[] v22 = new String[v8.size()];
-        for (int v11 = 0; v11 < v8.size(); v11++) {
-            v22[v11] = v8.get(v11).getBookId();
+        CommonUtil.syncBookShelf(bookIds, BookSyncRecord.BookModifyType.SHELF_ADD);
+        String[] feedBookIds = new String[allFeeding.size()];
+        for (int i = 0; i < allFeeding.size(); i++) {
+            feedBookIds[i] = allFeeding.get(i).getBookId();
         }
-        CommonUtil.syncBookShelf(v22, BookSyncRecord.BookModifyType.FEED_ADD);
+        CommonUtil.syncBookShelf(feedBookIds, BookSyncRecord.BookModifyType.FEED_ADD);
         CommonUtil.putIntPref(getActivity(), "unsync_bookrecord_first", 1);
-        return v6;
+        return bookShelfs;
     }
 
     private void reloadBookShelf() {
-        if (this.getActivity() != null) {
-            List<BookShelf> list;
-            long l2 = new Date().getTime();
-            if (l2 - this.mRefreshTime < 500) {
-                this.mRefreshTime = l2;
-                return;
-            }
-            this.mRefreshTime = l2;
-            list = this.j();
-            if (list != null) {
-                this.mAdapter.a(list);
-                if (!list.isEmpty()) {
-                    this.b(1);
-                    if (this.mIsLoading) {
-                        this.mBookShelfListView.setRefreshing();
+        if (getActivity() != null) {
+            long time = new Date().getTime();
+            if (time - mRefreshTime > 500) {
+                mRefreshTime = time;
+                List<BookShelf> list = sortBookShelfList();
+                if (list != null) {
+                    mAdapter.a(list);
+                    if (!list.isEmpty()) {
+                        mEmptyView.setVisibility(View.GONE);
+                        mListView.setVisibility(View.VISIBLE);
+                        if (mIsLoading) {
+                            mBookShelfListView.setRefreshing();
+                        }
+                        mIsLoading = false;
+                    } else {
+                        mEmptyView.setVisibility(View.VISIBLE);
+                        mListView.setVisibility(View.GONE);
                     }
-                    this.mIsLoading = false;
-                    return;
+                } else {
+                    ToastUtil.showShortToast(getActivity(), "载入书架失败，请重试");
                 }
-                if (CommonUtil.isFirstLaunch(this.getActivity())) {
-                    if (!CommonUtil.isLogined() && !this.A) {
-                        showGenderIntroDialog(this.getActivity());
-                        return;
-                    }
-                    this.z = true;
-                }
-                this.b(3);
-                return;
             }
-            ToastUtil.showShortToast(this.getActivity(), "载入书架失败，请重试");
         }
     }
 
-    public final boolean c() {
-        return this.mAdapter.a();
+    public final boolean isEditing() {
+        return mAdapter.isEditing();
     }
 
     public final void resetView() {
@@ -549,21 +441,21 @@ public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollL
     }
 
     @Subscribe
-    public void onBookAdded(BookAddedEvent c2) {
-        if (c2.isLocal()) {
-            this.reloadBookShelf();
+    public void onBookAdded(BookAddedEvent bookAddedEvent) {
+        if (bookAddedEvent.isLocal()) {
+            reloadBookShelf();
         }
-        CommonUtil.subscribeBook(c2.getBookId());
+        CommonUtil.subscribeBook(bookAddedEvent.getBookId());
     }
 
     @Subscribe
-    public void onBookRead(BookReadEvent g2) {
-        this.reloadBookShelf();
+    public void onBookRead(BookReadEvent bookReadEvent) {
+        reloadBookShelf();
     }
 
     @Subscribe
-    public void onBookRemoved(BookRemovedEvent h2) {
-        this.removeBook(h2.getBookId());
+    public void onBookRemoved(BookRemovedEvent bookRemovedEvent) {
+        removeBook(bookRemovedEvent.getBookId());
     }
 
     @Override
@@ -602,9 +494,9 @@ public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollL
             @Override
             public void onClick(View v) {
                 if (mAdapter != null) {
-                    final List<BookShelf> selectedBooks = HomeShelfFragment.this.mAdapter.getSelectedBooks();
+                    final List<BookShelf> selectedBooks = mAdapter.getSelectedBooks();
                     if (selectedBooks == null || selectedBooks.size() == 0) {
-                        ToastUtil.showToast(HomeShelfFragment.this.getActivity(), "你没有选择要删除的书哦");
+                        ToastUtil.showToast(getActivity(), "你没有选择要删除的书哦");
                     } else {
                         View view = getActivity().getLayoutInflater().inflate(R.layout.remove_shelf_confirm, (ViewGroup) getActivity().getWindow().getDecorView(), false);
                         final CheckBox checkBox = (CheckBox) view.findViewById(R.id.remove_shelf_cache);
@@ -627,7 +519,7 @@ public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollL
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        refreshBookShelf(HomeShelfFragment.this);
+                        refreshBookShelf();
                     }
                 }, 1000);
             }
@@ -643,47 +535,34 @@ public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollL
         this.mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                BookShelf bookShelf = (BookShelf) HomeShelfFragment.this.mListView.getAdapter().getItem(position);
+                BookShelf bookShelf = (BookShelf) mListView.getAdapter().getItem(position);
                 if (bookShelf == null) return;
-                if (HomeShelfFragment.this.mAdapter.a()) {
-                    HomeShelfFragment.this.mAdapter.a(position - HomeShelfFragment.this.mListView.getHeaderViewsCount());
+                if (mAdapter.isEditing()) {
+                    mAdapter.a(position - mListView.getHeaderViewsCount());
                     return;
                 }
                 switch (bookShelf.getType()) {
                     case 0:
                         BookReadRecord bookReadRecord = bookShelf.getBookRecord();
-                        new BookSourceManager(HomeShelfFragment.this.getActivity()).a(bookReadRecord);
+                        new BookSourceManager(getActivity()).a(bookReadRecord);
                         if (bookReadRecord.isUnread()) {
                             bookReadRecord.setUnread(false);
                             bookReadRecord.save();
-                            HomeShelfFragment.this.mAdapter.notifyDataSetChanged();
-                        }
-                        break;
-                    case 2:
-                        BookFile bookFile = bookShelf.getTxt();
-                        if (new File(bookFile.getFilePath()).exists()) {
-                            String string = bookFile.getPathAndName();
-                            Intent intent = new Intent("com.clilystudio.netbook.ACTION_READ_TXT");
-                            intent.putExtra("file_name", string);
-                            HomeShelfFragment.this.startActivity(intent);
-                        } else {
-                            ToastUtil.showShortToast(HomeShelfFragment.this.getActivity(), "书籍不存在");
-                            TxtFileObject.delete(bookFile);
-                            BusProvider.getInstance().post(new ShelfUpdatedEvent());
+                            mAdapter.notifyDataSetChanged();
                         }
                         break;
                     case 3:
-                        Intent intent = CommonUtil.getBoolPref(HomeShelfFragment.this.getActivity(), "feed_intro", true) ? new Intent(HomeShelfFragment.this.getActivity(), FeedIntroActivity.class) : new Intent(HomeShelfFragment.this.getActivity(), FeedListActivity.class);
-                        HomeShelfFragment.this.startActivity(intent);
+                        Intent intent = CommonUtil.getBoolPref(getActivity(), "feed_intro", true) ? new Intent(getActivity(), FeedIntroActivity.class) : new Intent(getActivity(), FeedListActivity.class);
+                        startActivity(intent);
                         break;
                 }
             }
         });
-        this.mListView.setOnItemLongClickListener(this.mOnItemLongClickListener);
-        this.mAdapter.a(deleteButton, selectAllButton);
-        this.reloadBookShelf();
-        this.mListView.getHeight();
-        Log.i(TAG, "" + this.mListView.getHeight() + " ," + this.mListView.getMeasuredHeight());
+        mListView.setOnItemLongClickListener(mOnItemLongClickListener);
+        mAdapter.a(deleteButton, selectAllButton);
+        reloadBookShelf();
+        mListView.getHeight();
+        Log.i(TAG, "" + mListView.getHeight() + " ," + mListView.getMeasuredHeight());
         return contentView;
     }
 
@@ -694,122 +573,59 @@ public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollL
     }
 
     @Subscribe
-    public void onDownloadProgress(DownloadProgressEvent i2) {
-        if (this.k == 0) {
-            this.mAdapter.notifyDataSetChanged();
+    public void onDownloadProgress(DownloadProgressEvent downloadProgressEvent) {
+        if (mScrollState == 0) {
+            mAdapter.notifyDataSetChanged();
         }
     }
 
     @Subscribe
-    public void onFeedAdded(FeedAddedEvent l2) {
-        this.addFeedBook(l2.getBookReadRecord());
+    public void onFeedAdded(FeedAddedEvent feedAddedEvent) {
+        addFeedBook(feedAddedEvent.getBookReadRecord());
     }
 
     @Subscribe
-    public void onFeedRemoved(FeedRemovedEvent n2) {
-        this.reloadBookShelf();
-        CommonUtil.subscribeBook(n2.getBookId());
-        CommonUtil.syncBookShelf(n2.getBookId(), BookSyncRecord.BookModifyType.FEED_REMOVE);
+    public void onFeedRemoved(FeedRemovedEvent feedRemovedEvent) {
+        reloadBookShelf();
+        CommonUtil.subscribeBook(feedRemovedEvent.getBookId());
+        CommonUtil.syncBookShelf(feedRemovedEvent.getBookId(), BookSyncRecord.BookModifyType.FEED_REMOVE);
     }
 
     @Subscribe
-    public void onFeedSettingChanged(FeedSettingChangedEvent m2) {
-        this.mBookShelfListView.setRefreshing();
-    }
-
-    @Subscribe
-    public void onGenderIntroEvent(GenderIntroEvent r2) {
-        int n2 = r2.getGender();
-        System.out.println("type : " + n2);
-        if (n2 == 0) {
-            this.b(3);
-        } else {
-            BaseLoadingTask<String, BookGenderRecommend> bookGenderRecommendc = new BaseLoadingTask<String, BookGenderRecommend>(this.getActivity(), getString(R.string.recommend_loading)) {
-
-                @Override
-                public BookGenderRecommend a(String... var1) {
-                    int n;
-                    BookGenderRecommend bookGenderRecommend;
-                    int n2 = 0;
-                    bookGenderRecommend = ApiServiceProvider.getApiService().getBookGenderRecommend(var1[0]);
-                    if (!bookGenderRecommend.isOk()) return bookGenderRecommend;
-                    BookGenderRecommend.RecommendBook[] recommendBooks = bookGenderRecommend.getBooks();
-                    n = recommendBooks.length;
-                    while (n2 < n) {
-                        BookGenderRecommend.RecommendBook recommendBook = recommendBooks[n2];
-                        BookReadRecord.create(recommendBook);
-                        CommonUtil.syncBookShelf(recommendBook.get_id(), BookSyncRecord.BookModifyType.SHELF_ADD);
-                        ++n2;
-                    }
-                    return bookGenderRecommend;
-                }
-
-                @Override
-                public void a(BookGenderRecommend bookGenderRecommend) {
-                    if (bookGenderRecommend != null && bookGenderRecommend.isOk()) {
-                        HomeShelfFragment.this.reloadBookShelf();
-                    } else {
-                        HomeShelfFragment.this.b(3);
-                    }
-                }
-            };
-            if (n2 == 1) {
-                bookGenderRecommendc.b("male");
-            } else if (n2 == 2) {
-                bookGenderRecommendc.b("female");
-            }
-        }
+    public void onFeedSettingChanged(FeedSettingChangedEvent feedSettingChangedEvent) {
+        mBookShelfListView.setRefreshing();
     }
 
     @Override
     public void onPause() {
         super.onPause();
-        if (this.mAdapter.a()) {
-            this.resetView();
+        if (mAdapter.isEditing()) {
+            resetView();
         }
     }
 
     @Override
-    public void onResume() {
-        super.onResume();
-        this.A = false;
+    public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
     }
 
     @Override
-    public void onSaveInstanceState(Bundle bundle) {
-        super.onSaveInstanceState(bundle);
-        this.A = true;
-    }
-
-    @Override
-    public void onScroll(AbsListView absListView, int n2, int n3, int n4) {
-    }
-
-    @Override
-    public void onScrollStateChanged(AbsListView absListView, int n2) {
-        this.k = n2;
+    public void onScrollStateChanged(AbsListView absListView, int scrollState) {
+        mScrollState = scrollState;
     }
 
     @Subscribe
-    public void onShelfUpdated(ShelfUpdatedEvent a2) {
-        if (a2.getBookCounts() == 0 && this.z && CommonUtil.isFirstLaunch(this.getActivity())) {
-            if (!this.A) {
-                showGenderIntroDialog(this.getActivity());
-            }
-            return;
+    public void onShelfUpdated(ShelfUpdatedEvent shelfUpdatedEvent) {
+        if (shelfUpdatedEvent.getBookCounts() > 0 && !CommonUtil.isFirstLaunch(getActivity())) {
+            reloadBookShelf();
         }
-        this.reloadBookShelf();
     }
 
-    /*
-     * Enabled aggressive block sorting
-     */
     @Override
-    public void setUserVisibleHint(boolean bl) {
-        super.setUserVisibleHint(bl);
-        if (!bl) {
-            if (this.mAdapter.a()) {
-                this.resetView();
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        if (!isVisibleToUser) {
+            if (mAdapter.isEditing()) {
+                resetView();
             }
         }
     }

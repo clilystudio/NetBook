@@ -9,7 +9,6 @@ import com.clilystudio.netbook.MyApplication;
 import com.clilystudio.netbook.model.Account;
 import com.clilystudio.netbook.model.AutoCompleteRoot;
 import com.clilystudio.netbook.model.BookAdd;
-import com.clilystudio.netbook.model.BookGenderRecommend;
 import com.clilystudio.netbook.model.BookInfo;
 import com.clilystudio.netbook.model.BookListRoot;
 import com.clilystudio.netbook.model.BookRankDetailRoot;
@@ -433,11 +432,6 @@ public class ApiService {
     public final ChineseAllPromRoot getChineseAllPromRoot(String string) {
         String url = mApiBaseUrl + String.format(Locale.CHINA, "/book/%s/chinese-all-promo", string);
         return ApiService.getResponse(this.setRequest(HttpRequest.get(url)), ChineseAllPromRoot.class);
-    }
-
-    public final BookGenderRecommend getBookGenderRecommend(String string) {
-        String url = mApiBaseUrl + String.format(Locale.CHINA, "/book/recommend?gender=%s", string);
-        return ApiService.getResponse(this.setRequest(HttpRequest.get(url)), BookGenderRecommend.class);
     }
 
     public final HotKeywordResult getHotKeyword() {

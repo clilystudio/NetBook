@@ -168,7 +168,7 @@ public class HomeActivity extends BaseActivity implements ViewPager.OnPageChange
 
     @Override
     public void onBackPressed() {
-        if (this.mFragmentList != null && this.mFragmentList.size() > 0 && this.mFragmentList.get(0) instanceof HomeShelfFragment && ((HomeShelfFragment) this.mFragmentList.get(0)).c()) {
+        if (this.mFragmentList != null && this.mFragmentList.size() > 0 && this.mFragmentList.get(0) instanceof HomeShelfFragment && ((HomeShelfFragment) this.mFragmentList.get(0)).isEditing()) {
             ((HomeShelfFragment) this.mFragmentList.get(0)).resetView();
             return;
         }
