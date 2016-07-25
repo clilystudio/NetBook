@@ -47,8 +47,8 @@ import com.clilystudio.netbook.model.ChapterRoot;
 import com.clilystudio.netbook.model.Toc;
 import com.clilystudio.netbook.model.TocSource;
 import com.clilystudio.netbook.model.User;
-import com.clilystudio.netbook.push.BookSubRecord;
-import com.clilystudio.netbook.push.BookUnSubRecord;
+import com.clilystudio.netbook.db.BookSubRecord;
+import com.clilystudio.netbook.db.BookUnSubRecord;
 import com.xiaomi.mipush.sdk.MiPushClient;
 
 import org.mozilla.universalchardet.UniversalDetector;

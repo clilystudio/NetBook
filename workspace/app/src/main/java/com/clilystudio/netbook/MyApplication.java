@@ -205,6 +205,7 @@ public class MyApplication extends Application {
     public void onCreate() {
         super.onCreate();
         mApp = this;
+        ActiveAndroid.setLoggingEnabled(true);
         ActiveAndroid.initialize(this);
         DnsManager.setUseDns(true);
         ApiService.setDomain(DEFUALT_API_URL);

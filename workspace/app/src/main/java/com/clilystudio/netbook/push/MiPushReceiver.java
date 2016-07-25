@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.text.TextUtils;
 
+import com.clilystudio.netbook.db.BookSubRecord;
+import com.clilystudio.netbook.db.BookUnSubRecord;
 import com.clilystudio.netbook.model.InsideLink;
 import com.clilystudio.netbook.model.InsideLinkFactory;
 import com.clilystudio.netbook.util.InsideLinkIntent;

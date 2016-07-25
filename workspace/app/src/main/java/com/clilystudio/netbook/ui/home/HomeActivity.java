@@ -1,6 +1,5 @@
 package com.clilystudio.netbook.ui.home;
 
-import android.app.ActionBar;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -27,18 +26,15 @@ import com.clilystudio.netbook.api.DnsManager;
 import com.clilystudio.netbook.db.BookReadRecord;
 import com.clilystudio.netbook.event.AccountUpdatedEvent;
 import com.clilystudio.netbook.event.BusProvider;
-import com.clilystudio.netbook.event.NotifEvent;
 import com.clilystudio.netbook.model.Account;
 import com.clilystudio.netbook.model.User;
-import com.clilystudio.netbook.push.BookSubRecord;
-import com.clilystudio.netbook.push.BookUnSubRecord;
+import com.clilystudio.netbook.db.BookSubRecord;
+import com.clilystudio.netbook.db.BookUnSubRecord;
 import com.clilystudio.netbook.ui.BaseActivity;
 import com.clilystudio.netbook.ui.SearchActivity;
 import com.clilystudio.netbook.ui.SettingsActivity;
 import com.clilystudio.netbook.widget.SmartImageView;
-import com.clilystudio.netbook.util.BookShelfSyncManager;
 import com.clilystudio.netbook.util.CommonUtil;
-import com.clilystudio.netbook.util.UserNotificationManager;
 import com.clilystudio.netbook.widget.TabWidgetV2;
 import com.squareup.otto.Subscribe;
 import com.umeng.onlineconfig.OnlineConfigAgent;
@@ -215,18 +211,18 @@ public class HomeActivity extends BaseActivity implements ViewPager.OnPageChange
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
         setContentView(R.layout.activity_home_tabhost);
-        ActionBar a2 = this.getActionBar();
-        a2.setDisplayUseLogoEnabled(false);
-        a2.setDisplayShowHomeEnabled(false);
-        a2.setCustomView(R.layout.home_ab_custom_view);
-        a2.setDisplayShowCustomEnabled(true);
-        this.q = (ImageView) a2.getCustomView().findViewById(R.id.home_action_menu_more);
-        ImageView imageView = (ImageView) a2.getCustomView().findViewById(R.id.home_action_menu_search);
-        this.q.setOnClickListener(this);
-        imageView.setOnClickListener(this);
+//        ActionBar a2 = this.getActionBar();
+//        a2.setDisplayUseLogoEnabled(false);
+//        a2.setDisplayShowHomeEnabled(false);
+//        a2.setCustomView(R.layout.home_ab_custom_view);
+//        a2.setDisplayShowCustomEnabled(true);
+//        this.q = (ImageView) a2.getCustomView().findViewById(R.id.home_action_menu_more);
+//        ImageView imageView = (ImageView) a2.getCustomView().findViewById(R.id.home_action_menu_search);
+//        this.q.setOnClickListener(this);
+//        imageView.setOnClickListener(this);
         BusProvider.getInstance().register(this);
         this.mTabHost = (TabHost) this.findViewById(R.id.host);
-        TabWidgetV2 tabWidgetV2 = (TabWidgetV2) this.findViewById(android.R.id.content);
+        TabWidgetV2 tabWidgetV2 = (TabWidgetV2) this.findViewById(android.R.id.tabs);
         this.mViewPager = (ViewPager) this.findViewById(R.id.pager);
         this.mAdapter = new HomeAdapter(this.getSupportFragmentManager());
         this.mViewPager.setOffscreenPageLimit(3);
@@ -304,15 +300,12 @@ public class HomeActivity extends BaseActivity implements ViewPager.OnPageChange
                 }
             }.start();
         }
-        if (bundle != null) {
-            tabWidgetV2.setIndex(bundle.getInt("extra_index"));
-        }
+//        if (bundle != null) {
+//            tabWidgetV2.setIndex(bundle.getInt("extra_index"));
+//        }
         this.findViewById(R.id.home_action_menu_more).setOnClickListener(this);
         this.findViewById(R.id.home_action_menu_search).setOnClickListener(this);
         Account account = CommonUtil.getAccount();
-        if (account != null) {
-            new BookShelfSyncManager(this, account.getToken()).a(true);
-        }
     }
 
     @Override
@@ -331,33 +324,6 @@ public class HomeActivity extends BaseActivity implements ViewPager.OnPageChange
             return true;
         }
         return super.onKeyDown(n2, keyEvent);
-    }
-
-    @Subscribe
-    public void onNotifEvent(NotifEvent w2) {
-        int n2 = UserNotificationManager.getInstance(this).getNotificationCount();
-        View view = this.mHomeMenu.findViewById(R.id.msg_dot);
-        TextView textView = (TextView) this.mHomeMenu.findViewById(R.id.msg_count);
-        if (n2 > 0) {
-            textView.setVisibility(View.VISIBLE);
-            view.setVisibility(View.GONE);
-            textView.setText(String.valueOf(n2));
-            if (this.q != null) {
-                this.q.setImageResource(R.drawable.ic_action_home_overflow_dot);
-            }
-        } else if (n2 == -1) {
-            textView.setVisibility(View.GONE);
-            view.setVisibility(View.VISIBLE);
-            if (this.q != null) {
-                this.q.setImageResource(R.drawable.ic_action_home_overflow_dot);
-            }
-        } else {
-            textView.setVisibility(View.GONE);
-            view.setVisibility(View.GONE);
-            if (this.q != null) {
-                this.q.setImageResource(R.drawable.ic_action_overflow);
-            }
-        }
     }
 
     @Override

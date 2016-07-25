@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.ui.BookCategoryActivity;
 import com.clilystudio.netbook.ui.BookRankListActivity;
+import com.clilystudio.netbook.ui.SearchActivity;
 import com.clilystudio.netbook.ui.ugcbook.UGCMainActivity;
 import com.clilystudio.netbook.widget.HomeFindItem;
 
@@ -30,6 +31,7 @@ public class HomeFindFragment extends Fragment {
         container.addView(new HomeFindItem(activity, getString(R.string.rank_list), R.drawable.home_find_rank, new Intent(activity, BookRankListActivity.class)));
         container.addView(new HomeFindItem(activity, getString(R.string.ugc_list), R.drawable.home_find_topic, new Intent(activity, UGCMainActivity.class)));
         container.addView(new HomeFindItem(activity, getString(R.string.category), R.drawable.home_find_category, BookCategoryActivity.a(activity)));
+        container.addView(new HomeFindItem(activity, getString(R.string.accessible_search), R.drawable.ic_action_search, SearchActivity.a(activity)));
         return view;
     }
 }

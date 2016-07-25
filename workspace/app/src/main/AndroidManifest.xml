@@ -239,25 +239,27 @@
             android:value="netbook.db"/>
         <meta-data
             android:name="AA_DB_VERSION"
-            android:value="1"/>
+            android:value="6"/>
+        <meta-data
+            android:name="AA_MODELS"
+            android:value="com.clilystudio.netbook.db.BookDlRecord,
+             com.clilystudio.netbook.db.BookFile,
+             com.clilystudio.netbook.db.BookReadRecord,
+             com.clilystudio.netbook.db.BookSubRecord,
+             com.clilystudio.netbook.db.BookSyncRecord,
+             com.clilystudio.netbook.db.BookTopicEnterRecord,
+             com.clilystudio.netbook.db.BookUnSubRecord,
+             com.clilystudio.netbook.db.DnsCacheRecord,
+             com.clilystudio.netbook.db.MixTocRecord,
+             com.clilystudio.netbook.db.SourceRecord,
+             com.clilystudio.netbook.db.SourceWebReadRecord,
+             com.clilystudio.netbook.db.TocReadRecord" />
         <meta-data
             android:name="UMENG_APPKEY"
             android:value="51307770527015737900000a"/>
         <meta-data
             android:name="UMENG_CHANNEL"
             android:value="Official"/>
-        <meta-data
-            android:name="BFD_APPKEY"
-            android:value="1413697c84ff002bcdddee9ede58c971"/>
-        <meta-data
-            android:name="BFD_CHANNEL"
-            android:value="Official"/>
-        <meta-data
-            android:name="BaiduMobAd_APP_ID"
-            android:value="ef9b8e0f"/>
-        <meta-data
-            android:name="COMMIT_ID"
-            android:value="6767950c8d1bd4b2cac3b1dc9cd8df577d0959fb"/>
         <meta-data
             android:name="app_key"
             android:value="1465c430f5e85b6b39aba101e4b9984b"/>
