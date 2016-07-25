@@ -16,7 +16,7 @@ import android.widget.TextView;
 
 import com.clilystudio.netbook.IntentBuilder;
 import com.clilystudio.netbook.R;
-import com.clilystudio.netbook.ui.home.BasePagerAdapter;
+import com.clilystudio.netbook.adapter.BasePagerAdapter;
 
 import java.util.ArrayList;
 import java.util.List;

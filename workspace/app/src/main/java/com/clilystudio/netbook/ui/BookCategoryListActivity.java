@@ -25,7 +25,7 @@ import com.clilystudio.netbook.CachePathConst;
 import com.clilystudio.netbook.IntentBuilder;
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.model.CategoryLevelRoot;
-import com.clilystudio.netbook.ui.home.BasePagerAdapter;
+import com.clilystudio.netbook.adapter.BasePagerAdapter;
 import com.clilystudio.netbook.util.CommonUtil;
 
 import java.util.ArrayList;

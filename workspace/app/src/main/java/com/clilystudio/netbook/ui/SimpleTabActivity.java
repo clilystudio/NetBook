@@ -13,7 +13,7 @@ import android.widget.TabWidget;
 import android.widget.TextView;
 
 import com.clilystudio.netbook.R;
-import com.clilystudio.netbook.ui.home.BasePagerAdapter;
+import com.clilystudio.netbook.adapter.BasePagerAdapter;
 import com.clilystudio.netbook.widget.TabWidgetV2;
 
 import java.util.ArrayList;

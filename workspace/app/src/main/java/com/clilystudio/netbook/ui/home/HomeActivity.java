@@ -21,6 +21,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.clilystudio.netbook.R;
+import com.clilystudio.netbook.adapter.BasePagerAdapter;
 import com.clilystudio.netbook.api.ApiServiceProvider;
 import com.clilystudio.netbook.api.DnsManager;
 import com.clilystudio.netbook.db.AccountInfo;

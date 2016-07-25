@@ -26,7 +26,7 @@ import com.clilystudio.netbook.api.ApiServiceProvider;
 import com.clilystudio.netbook.model.UgcFilterRoot;
 import com.clilystudio.netbook.ui.ActionBarClickListener;
 import com.clilystudio.netbook.ui.BaseTabActivity;
-import com.clilystudio.netbook.ui.home.BasePagerAdapter;
+import com.clilystudio.netbook.adapter.BasePagerAdapter;
 import com.clilystudio.netbook.ui.user.UserUGCActivity;
 import com.clilystudio.netbook.util.CommonUtil;
 import com.clilystudio.netbook.widget.UgcFilterTextView;

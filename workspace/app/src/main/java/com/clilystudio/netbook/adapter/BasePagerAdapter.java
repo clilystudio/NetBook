@@ -1,4 +1,4 @@
-package com.clilystudio.netbook.ui.home;
+package com.clilystudio.netbook.adapter;
 
 import android.os.Parcelable;
 import android.support.v4.app.Fragment;
