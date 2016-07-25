@@ -405,10 +405,10 @@ public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollL
             long time = new Date().getTime();
             if (time - mRefreshTime > 500) {
                 mRefreshTime = time;
-                List<BookShelf> list = sortBookShelfList();
-                if (list != null) {
-                    mAdapter.a(list);
-                    if (!list.isEmpty()) {
+                List<BookShelf> bookShelfs = sortBookShelfList();
+                if (bookShelfs != null) {
+                    mAdapter.setDatas(bookShelfs);
+                    if (!bookShelfs.isEmpty()) {
                         mEmptyView.setVisibility(View.GONE);
                         mListView.setVisibility(View.VISIBLE);
                         if (mIsLoading) {
@@ -436,7 +436,7 @@ public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollL
         mBookShelfListView.setMode(PullToRefreshBase.Mode.PULL_FROM_START);
         mBookShelfListView.setPullToRefreshOverScrollEnabled(true);
         mListView.setOnItemLongClickListener(mOnItemLongClickListener);
-        mAdapter.c();
+        mAdapter.resetAll();
     }
 
     @Subscribe
@@ -537,7 +537,7 @@ public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollL
                 BookShelf bookShelf = (BookShelf) mListView.getAdapter().getItem(position);
                 if (bookShelf == null) return;
                 if (mAdapter.isEditing()) {
-                    mAdapter.a(position - mListView.getHeaderViewsCount());
+                    mAdapter.toggleSelected(position - mListView.getHeaderViewsCount());
                     return;
                 }
                 switch (bookShelf.getType()) {
@@ -558,7 +558,7 @@ public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollL
             }
         });
         mListView.setOnItemLongClickListener(mOnItemLongClickListener);
-        mAdapter.a(deleteButton, selectAllButton);
+        mAdapter.setButtons(deleteButton, selectAllButton);
         reloadBookShelf();
         mListView.getHeight();
         Log.i(TAG, "" + mListView.getHeight() + " ," + mListView.getMeasuredHeight());

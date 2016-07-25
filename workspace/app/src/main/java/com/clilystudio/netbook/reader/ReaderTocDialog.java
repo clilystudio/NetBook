@@ -172,7 +172,7 @@ public class ReaderTocDialog extends DialogFragment implements AdapterView.OnIte
                 arrobject[n2] = object;
             }
         }
-        cf2.a(arrobject);
+        cf2.addDatas(arrobject);
     }
 
     @Override

@@ -73,8 +73,8 @@ public final class BookRankAdapter extends BaseBookAdapter<BookRankSummary> {
     }
 
     @Override
-    public final BookRankSummary getItem(int n) {
-        return this.a(n);
+    public final BookRankSummary getItem(int position) {
+        return this.a(position);
     }
 
     /*

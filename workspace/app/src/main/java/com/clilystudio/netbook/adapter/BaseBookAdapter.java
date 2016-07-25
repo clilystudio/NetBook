@@ -7,39 +7,39 @@ import java.util.Collections;
 import java.util.List;
 
 public abstract class BaseBookAdapter<T> extends BaseAdapter {
-    private List<T> a = new ArrayList<>();
+    private List<T> mDatas = new ArrayList<>();
 
-    public void a(List<T> list) {
-        if (list == null) {
+    public void setDatas(List<T> datas) {
+        if (datas == null) {
             return;
         }
-        this.a = list;
-        this.notifyDataSetChanged();
+        mDatas = datas;
+        notifyDataSetChanged();
     }
 
-    public void a(T[] arrT) {
-        if (arrT == null) {
+    public void addDatas(T[] datas) {
+        if (datas == null) {
             return;
         }
-        Collections.addAll(this.a, arrT);
-        this.notifyDataSetChanged();
+        Collections.addAll(mDatas, datas);
+        notifyDataSetChanged();
     }
 
-    public final List<T> f() {
-        return this.a;
+    public final List<T> getDatas() {
+        return mDatas;
     }
 
     @Override
     public int getCount() {
-        return this.a.size();
+        return mDatas.size();
     }
 
-    public T getItem(int n) {
-        return this.a.get(n);
+    public T getItem(int position) {
+        return mDatas.get(position);
     }
 
     @Override
-    public long getItemId(int n) {
-        return n;
+    public long getItemId(int position) {
+        return position;
     }
 }

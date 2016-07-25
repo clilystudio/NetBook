@@ -12,7 +12,6 @@ import android.widget.TextView;
 
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.db.BookDlRecord;
-import com.clilystudio.netbook.db.BookFile;
 import com.clilystudio.netbook.db.BookReadRecord;
 import com.clilystudio.netbook.event.BusProvider;
 import com.clilystudio.netbook.event.DownloadProgressEvent;
@@ -29,137 +28,107 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class HomeShelfAdapter extends BaseBookAdapter<BookShelf> {
-
-    private Context b;
-    private LayoutInflater c;
+    private Context mContext;
+    private LayoutInflater mLayoutInflater;
     private boolean mIsEditing = false;
     private List<BookShelf> mSelectedBooks;
     private boolean[] mIsSelected;
-    private boolean g = false;
-    private Button h;
-    private Button i;
+    private boolean isAdding = false;
+    private Button mDeleteButton;
+    private Button mSelectAllButton;
 
     public HomeShelfAdapter(Activity activity) {
-        this.b = activity;
-        this.c = LayoutInflater.from(this.b);
-        this.mSelectedBooks = new ArrayList<>();
+        mContext = activity;
+        mLayoutInflater = LayoutInflater.from(mContext);
+        mSelectedBooks = new ArrayList<>();
     }
 
-    private void a(final int n, CheckBox checkBox) {
-        if (this.mIsEditing) {
-            checkBox.setVisibility(View.VISIBLE);
-        } else {
-            checkBox.setVisibility(View.GONE);
-        }
-        this.g = true;
-        if (this.mIsSelected.length <= n) {
-            boolean[] arrbl = new boolean[n + 1];
-            System.arraycopy(this.mIsSelected, 0, arrbl, 0, this.mIsSelected.length);
-            this.mIsSelected = arrbl;
-        }
-        checkBox.setChecked(this.mIsSelected[n]);
-        this.b(n);
-        this.g = false;
-        checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (HomeShelfAdapter.this.g) {
-                    return;
-                }
-                HomeShelfAdapter.this.mIsSelected[n] = isChecked;
-                HomeShelfAdapter.this.b(n);
-            }
-        });
-    }
-
-    private void b(int n) {
-        if (this.mIsSelected[n]) {
-            if (!this.mSelectedBooks.contains(this.getItem(n))) {
-                this.mSelectedBooks.add(this.getItem(n));
+    private void changeSelected(int position) {
+        if (mIsSelected[position]) {
+            if (!mSelectedBooks.contains(getItem(position))) {
+                mSelectedBooks.add(getItem(position));
             }
         } else {
-            this.mSelectedBooks.remove(this.getItem(n));
+            mSelectedBooks.remove(getItem(position));
         }
-        if (this.mSelectedBooks.size() > 0) {
-            String text = "删除(" + this.mSelectedBooks.size() + ")";
-            this.h.setText(text);
+        if (mSelectedBooks.size() > 0) {
+            String text = "删除(" + mSelectedBooks.size() + ")";
+            mDeleteButton.setText(text);
         } else {
-            this.h.setText("删除");
+            mDeleteButton.setText("删除");
         }
-        if (this.mSelectedBooks.size() == this.g()) {
-            this.i.setText("取消全选");
-            return;
+        if (mSelectedBooks.size() == getSelectedBookCount()) {
+            mSelectAllButton.setText("取消全选");
+        } else {
+            mSelectAllButton.setText("全选");
         }
-        this.i.setText("全选");
     }
 
-    private int g() {
-        int n = 0;
-        for (int i = 0; i < this.mIsSelected.length; ++i) {
-            int n2 = this.getItemViewType(i);
-            if (n2 != 0 && n2 != 2 && n2 != 4) continue;
-            ++n;
+    private int getSelectedBookCount() {
+        int count = 0;
+        for (int i = 0; i < mIsSelected.length; ++i) {
+            if (getItemViewType(i) == 0) {
+                ++count;
+            }
         }
-        return n;
+        return count;
     }
 
-    public final void a(int n) {
-        boolean[] arrbl = this.mIsSelected;
-        boolean bl = !this.mIsSelected[n];
-        arrbl[n] = bl;
-        this.notifyDataSetChanged();
+    public final void toggleSelected(int position) {
+        mIsSelected[position] = !mIsSelected[position];
+        notifyDataSetChanged();
     }
 
-    public final void a(Button button, Button button2) {
-        this.h = button;
-        this.i = button2;
+    public final void setButtons(Button deleteButton, Button selectAllButton) {
+        mDeleteButton = deleteButton;
+        mSelectAllButton = selectAllButton;
     }
 
     @Override
-    public final void a(List<BookShelf> list) {
-        super.a(list);
-        this.mIsSelected = new boolean[list.size()];
+    public final void setDatas(List<BookShelf> datas) {
+        super.setDatas(datas);
+        mIsSelected = new boolean[datas.size()];
     }
 
     public final boolean isEditing() {
-        return this.mIsEditing;
+        return mIsEditing;
     }
 
     public final void setBatchEdit() {
-        this.mIsEditing = true;
-        this.notifyDataSetChanged();
+        mIsEditing = true;
+        notifyDataSetChanged();
     }
 
-    public final void c() {
-        this.mIsEditing = false;
-        for (int i = 0; i < this.mIsSelected.length; ++i) {
-            this.mIsSelected[i] = false;
+    public final void resetAll() {
+        mIsEditing = false;
+        for (int i = 0; i < mIsSelected.length; ++i) {
+            mIsSelected[i] = false;
         }
-        this.mSelectedBooks.clear();
-        this.notifyDataSetChanged();
+        mSelectedBooks.clear();
+        notifyDataSetChanged();
     }
 
     public final void selectAll() {
-        for (boolean isSelected : this.mIsSelected) {
+        for (boolean isSelected : mIsSelected) {
             if (!isSelected) {
-                for (int n2 = 0; n2 < this.mIsSelected.length; n2++) {
-                    this.mIsSelected[n2] = true;
+                for (int i = 0; i < mIsSelected.length; i++) {
+                    mIsSelected[i] = true;
                 }
-                for (int j = 0; j < this.mIsSelected.length; ++j) {
-                    BookShelf bookShelf = getItem(j);
-                    if (!this.mSelectedBooks.contains(bookShelf)) {
-                        this.mSelectedBooks.add(bookShelf);
+                for (int i = 0; i < mIsSelected.length; ++i) {
+                    BookShelf bookShelf = getItem(i);
+                    if (!mSelectedBooks.contains(bookShelf)) {
+                        mSelectedBooks.add(bookShelf);
                     }
                 }
-                this.notifyDataSetChanged();
+                notifyDataSetChanged();
                 return;
             }
         }
-        for (int j = 0; j < this.mIsSelected.length; ++j) {
-            this.mIsSelected[j] = false;
+        for (int j = 0; j < mIsSelected.length; ++j) {
+            mIsSelected[j] = false;
         }
-        this.mSelectedBooks.clear();
-        this.notifyDataSetChanged();
+        mSelectedBooks.clear();
+        notifyDataSetChanged();
     }
 
     public final List<BookShelf> getSelectedBooks() {
@@ -167,112 +136,133 @@ public class HomeShelfAdapter extends BaseBookAdapter<BookShelf> {
     }
 
     @Override
-    public int getItemViewType(int n) {
-        return this.getItem(n).getType();
+    public int getItemViewType(int position) {
+        return getItem(position).getType();
     }
 
     @Override
-    public View getView(int var1_1, View var2_2, ViewGroup var3_3) {
-        BookShelf var4_4 = this.getItem(var1_1);
-        int var5_5 = var4_4.getType();
-        if (var2_2 == null) {
-            switch (var5_5) {
-                case 0:
-                    var2_2 = this.c.inflate(R.layout.list_item_shelf_book, var3_3, false);
+    public View getView(final int position, View convertView, ViewGroup parent) {
+        BookShelf bookShelf = getItem(position);
+        int type = bookShelf.getType();
+        if (convertView == null) {
+            switch (type) {
+                case BookShelf.SHELF_BOOK:
+                    convertView = mLayoutInflater.inflate(R.layout.list_item_shelf_book, parent, false);
                     break;
-                case 3:
-                    var2_2 = this.c.inflate(R.layout.list_item_shelf_feed, var3_3, false);
+                case BookShelf.SHELF_FEED:
+                    convertView = mLayoutInflater.inflate(R.layout.list_item_shelf_feed, parent, false);
                     break;
                 default:
                     break;
             }
         } else {
-            if (this.mIsEditing) {
-                if (var5_5 == 1 || var5_5 == 3) {
-                    var2_2 = this.c.inflate(R.layout.list_item_shelf_empty, var3_3, false);
+            if (mIsEditing) {
+                if (type == BookShelf.SHELF_FEED) {
+                    convertView = mLayoutInflater.inflate(R.layout.list_item_shelf_empty, parent, false);
                 }
             } else {
-                switch (var5_5) {
-                    case 0:
-                        var2_2 = this.c.inflate(R.layout.list_item_shelf_book, var3_3, false);
+                switch (type) {
+                    case BookShelf.SHELF_BOOK:
+                        convertView = mLayoutInflater.inflate(R.layout.list_item_shelf_book, parent, false);
                         break;
-                    case 3:
-                        var2_2 = this.c.inflate(R.layout.list_item_shelf_feed, var3_3, false);
+                    case BookShelf.SHELF_FEED:
+                        convertView = mLayoutInflater.inflate(R.layout.list_item_shelf_feed, parent, false);
                         break;
                     default:
                         break;
                 }
             }
         }
-        switch (var5_5) {
-            case 0: {
-                BookHolder var19_6 = new BookHolder(var2_2);
-                BookReadRecord var20_7 = var4_4.getBookRecord();
-                var19_6.cover.setImageUrl(var20_7.getFullCover(), R.drawable.cover_default);
-                var19_6.title.setText(var20_7.getTitle());
-                var19_6.desc.setText(var20_7.buildDesc());
-                if (var20_7.isUnread() && !this.mIsEditing) {
-                    var19_6.flag.setType(3);
+        switch (type) {
+            case BookShelf.SHELF_BOOK:
+                BookViewHolder bookViewHolder = new BookViewHolder(convertView);
+                BookReadRecord bookRecord = bookShelf.getBookRecord();
+                bookViewHolder.cover.setImageUrl(bookRecord.getFullCover(), R.drawable.cover_default);
+                bookViewHolder.title.setText(bookRecord.getTitle());
+                bookViewHolder.desc.setText(bookRecord.buildDesc());
+                if (bookRecord.isUnread() && !mIsEditing) {
+                    bookViewHolder.flag.setType(3);
                 } else {
-                    var19_6.flag.setType(0);
+                    bookViewHolder.flag.setType(0);
                 }
-                this.a(var1_1, var19_6.check);
-                var19_6.top.setVisibility(var20_7.isTop() ? View.VISIBLE : View.GONE);
-                int var22_9 = var20_7.getReadMode();
-                boolean var23_10 = false;
-                if (var22_9 != -1) {
-                    String var29_11 = var20_7.getDownloadedSource();
-                    String var30_12 = CommonUtil.getSourceName(var22_9);
-                    var23_10 = false;
-                    if (var29_11 != null) {
-                        var23_10 = var29_11.contains(var30_12);
+                if (mIsEditing) {
+                    bookViewHolder.check.setVisibility(View.VISIBLE);
+                } else {
+                    bookViewHolder.check.setVisibility(View.GONE);
+                }
+                isAdding = true;
+                if (mIsSelected.length <= position) {
+                    boolean[] selected = new boolean[position + 1];
+                    System.arraycopy(mIsSelected, 0, selected, 0, mIsSelected.length);
+                    mIsSelected = selected;
+                }
+                bookViewHolder.check.setChecked(mIsSelected[position]);
+                changeSelected(position);
+                isAdding = false;
+                bookViewHolder.check.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                    @Override
+                    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                        if (!isAdding) {
+                            mIsSelected[position] = isChecked;
+                            changeSelected(position);
+                        }
+                    }
+                });
+                bookViewHolder.top.setVisibility(bookRecord.isTop() ? View.VISIBLE : View.GONE);
+                int readMode = bookRecord.getReadMode();
+                boolean isDownloading = false;
+                if (readMode != -1) {
+                    String downloadedSource = bookRecord.getDownloadedSource();
+                    String sourceName = CommonUtil.getSourceName(readMode);
+                     if (downloadedSource != null) {
+                        isDownloading = downloadedSource.contains(sourceName);
                     }
                 }
-                final String var24_14 = var20_7.getBookId();
-                if (!CommonUtil.isDownloading(var24_14)) {
-                    if (var23_10) {
-                        var19_6.coverLoadingLayer.f();
-                        return var2_2;
+                final String bookId = bookRecord.getBookId();
+                if (!CommonUtil.isDownloading(bookId)) {
+                    if (isDownloading) {
+                        bookViewHolder.coverLoadingLayer.f();
+                        return convertView;
                     }
-                    var19_6.coverLoadingLayer.c();
-                    return var2_2;
+                    bookViewHolder.coverLoadingLayer.c();
+                    return convertView;
                 }
-                BookDlRecord var25_15 = BookDlRecord.get(var24_14);
-                if (var25_15 == null) {
-                    var19_6.coverLoadingLayer.c();
-                    return var2_2;
+                BookDlRecord bookDlRecord = BookDlRecord.get(bookId);
+                if (bookDlRecord == null) {
+                    bookViewHolder.coverLoadingLayer.c();
+                    return convertView;
                 }
-                int var26_16 = var25_15.getProgress();
-                int var27_17 = var25_15.getTotal();
-                if (var27_17 > 0) {
-                    var26_16 = 5 + (int) (95.0f * (float) ((int) (100.0f * ((float) var26_16 / (float) var27_17))) / 100.0f);
+                int progress = bookDlRecord.getProgress();
+                int total = bookDlRecord.getTotal();
+                if (total > 0) {
+                    progress = 5 + (int) (95.0f * (float) ((int) (100.0f * ((float) progress / (float) total))) / 100.0f);
                 }
-                int var28_18 = var25_15.getStatus();
-                if (var28_18 == 2) {
-                    var19_6.coverLoadingLayer.setProgress(var26_16);
-                } else if (var28_18 == 3) {
-                    var19_6.coverLoadingLayer.b();
-                } else if (var28_18 == 1) {
-                    var19_6.coverLoadingLayer.d();
-                } else if (var28_18 == 5) {
-                    var19_6.coverLoadingLayer.e();
-                } else if (!var19_6.coverLoadingLayer.g()) {
-                    var19_6.coverLoadingLayer.c();
+                int status = bookDlRecord.getStatus();
+                if (status == 2) {
+                    bookViewHolder.coverLoadingLayer.setProgress(progress);
+                } else if (status == 3) {
+                    bookViewHolder.coverLoadingLayer.b();
+                } else if (status == 1) {
+                    bookViewHolder.coverLoadingLayer.d();
+                } else if (status == 5) {
+                    bookViewHolder.coverLoadingLayer.e();
+                } else if (!bookViewHolder.coverLoadingLayer.g()) {
+                    bookViewHolder.coverLoadingLayer.c();
                 }
-                var19_6.coverLoadingLayer.setCoverListener(new CoverLoadingLayer.y() {
+                bookViewHolder.coverLoadingLayer.setCoverListener(new CoverLoadingLayer.y() {
                     @Override
                     public void a() {
-                        BusProvider.getInstance().post(new DownloadStatusEvent(var24_14, 3));
+                        BusProvider.getInstance().post(new DownloadStatusEvent(bookId, 3));
                     }
 
                     @Override
                     public void b() {
-                        new BookDownloadManager((Activity) HomeShelfAdapter.this.b).startDownload(var24_14, 0, 0);
+                        new BookDownloadManager((Activity) mContext).startDownload(bookId, 0, 0);
                     }
 
                     @Override
                     public void c() {
-                        BookDlRecord bookDlRecord = BookDlRecord.get(var24_14);
+                        BookDlRecord bookDlRecord = BookDlRecord.get(bookId);
                         if (bookDlRecord != null) {
                             bookDlRecord.setStatus(3);
                             bookDlRecord.save();
@@ -280,22 +270,18 @@ public class HomeShelfAdapter extends BaseBookAdapter<BookShelf> {
                         }
                     }
                 });
-                return var2_2;
-            }
-            case 3: {
-                if (this.mIsEditing) return var2_2;
-                FeedHolder var11_25 = new FeedHolder(var2_2);
-                BookFeed var12_26 = var4_4.getBookFeed();
-                var11_25.title.setText(var12_26.getTitle());
-                if (var12_26.isFat()) {
-                    var11_25.flag.setType(4);
-                    return var2_2;
+            case BookShelf.SHELF_FEED:
+                if (mIsEditing) return convertView;
+                FeedViewHolder feedViewHolder = new FeedViewHolder(convertView);
+                BookFeed bookFeed = bookShelf.getBookFeed();
+                feedViewHolder.title.setText(bookFeed.getTitle());
+                if (bookFeed.isFat()) {
+                    feedViewHolder.flag.setType(4);
+                    return convertView;
                 }
-                var11_25.flag.setType(0);
-                return var2_2;
-            }
+                feedViewHolder.flag.setType(0);
         }
-        return var2_2;
+        return convertView;
     }
 
     @Override
@@ -303,17 +289,17 @@ public class HomeShelfAdapter extends BaseBookAdapter<BookShelf> {
         return 2;
     }
 
-    class FeedHolder {
+    class FeedViewHolder {
         BookShelfFlagView flag;
         TextView title;
 
-        FeedHolder(View view) {
-            this.title = (TextView) view.findViewById(R.id.desc);
-            this.flag = (BookShelfFlagView) view.findViewById(R.id.flag);
+        FeedViewHolder(View view) {
+            title = (TextView) view.findViewById(R.id.desc);
+            flag = (BookShelfFlagView) view.findViewById(R.id.flag);
         }
     }
 
-    class BookHolder {
+    class BookViewHolder {
         CheckBox check;
         CoverView cover;
         CoverLoadingLayer coverLoadingLayer;
@@ -322,14 +308,14 @@ public class HomeShelfAdapter extends BaseBookAdapter<BookShelf> {
         TextView title;
         View top;
 
-        BookHolder(View view) {
-            this.title = (TextView) view.findViewById(R.id.title);
-            this.desc = (TextView) view.findViewById(R.id.desc);
-            this.flag = (BookShelfFlagView) view.findViewById(R.id.flag);
-            this.top = view.findViewById(R.id.top);
-            this.cover = (CoverView) view.findViewById(R.id.cover);
-            this.coverLoadingLayer = (CoverLoadingLayer) view.findViewById(R.id.cover_loading);
-            this.check = (CheckBox) view.findViewById(R.id.checked);
+        BookViewHolder(View view) {
+            title = (TextView) view.findViewById(R.id.title);
+            desc = (TextView) view.findViewById(R.id.desc);
+            flag = (BookShelfFlagView) view.findViewById(R.id.flag);
+            top = view.findViewById(R.id.top);
+            cover = (CoverView) view.findViewById(R.id.cover);
+            coverLoadingLayer = (CoverLoadingLayer) view.findViewById(R.id.cover_loading);
+            check = (CheckBox) view.findViewById(R.id.checked);
         }
     }
 }

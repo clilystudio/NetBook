@@ -77,11 +77,11 @@ public abstract class NotificationAdapter extends BaseBookAdapter<NotificationIt
      * Enabled aggressive block sorting
      */
     @Override
-    public final void a(List<NotificationItem> list) {
+    public final void setDatas(List<NotificationItem> datas) {
         int n;
         this.d.clear();
         this.c.clear();
-        for (NotificationItem notificationItem : list) {
+        for (NotificationItem notificationItem : datas) {
             Date date = notificationItem.getServerDate();
             if (this.a < date.getTime()) {
                 this.c.add(notificationItem);
@@ -126,8 +126,8 @@ public abstract class NotificationAdapter extends BaseBookAdapter<NotificationIt
     }
 
     @Override
-    public NotificationItem getItem(int n) {
-        return this.a(n);
+    public NotificationItem getItem(int position) {
+        return this.a(position);
     }
 
     @Override

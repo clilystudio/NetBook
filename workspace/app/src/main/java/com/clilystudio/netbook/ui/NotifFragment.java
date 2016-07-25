@@ -89,7 +89,7 @@ public abstract class NotifFragment extends Fragment {
                                 List<NotificationItem> list = Arrays.asList(notificationRoot.getNotifications());
                                 NotifFragment.this.l += list.size();
                                 NotifFragment.this.k.addAll(list);
-                                NotifFragment.this.j.a(NotifFragment.this.k);
+                                NotifFragment.this.j.setDatas(NotifFragment.this.k);
                                 if (n > 0) {
                                     if (n >= 100) {
                                         if (n != 100) return;
@@ -130,7 +130,7 @@ public abstract class NotifFragment extends Fragment {
         this.i.setVisibility(View.GONE);
         if (bl && this.k != null && this.j != null) {
             this.k.clear();
-            this.j.a(this.k);
+            this.j.setDatas(this.k);
         }
     }
 
@@ -170,7 +170,7 @@ public abstract class NotifFragment extends Fragment {
                     List<NotificationItem> list = Arrays.asList(notificationRoot.getNotifications());
                     NotifFragment.this.l += list.size();
                     NotifFragment.this.k.addAll(list);
-                    NotifFragment.this.j.a(NotifFragment.this.k);
+                    NotifFragment.this.j.setDatas(NotifFragment.this.k);
                     if (n >= 100) return;
                     NotifFragment.this.d.setOnLastItemVisibleListener(null);
                     if (n != 0) return;
