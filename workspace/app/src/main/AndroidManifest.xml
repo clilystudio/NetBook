@@ -46,47 +46,8 @@
             android:launchMode="singleTask"
             android:screenOrientation="portrait"/>
         <activity
-            android:name="com.clilystudio.netbook.ui.user.AuthLoginActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/ActivityDialog"/>
-        <activity
-            android:name="com.clilystudio.netbook.ui.user.UserInfoActivity"
-            android:exported="true"
-            android:screenOrientation="portrait"/>
-        <activity
-            android:name="com.clilystudio.netbook.ui.user.UserTaskActivity"
-            android:exported="true"
-            android:screenOrientation="portrait"/>
-        <activity
-            android:name="com.clilystudio.netbook.ui.user.UserLevelActivity"
-            android:exported="true"
-            android:screenOrientation="portrait"/>
-        <activity
-            android:name="com.clilystudio.netbook.ui.user.MyMessageActivity"
-            android:exported="true"
-            android:screenOrientation="portrait"/>
-        <activity
-            android:name="com.clilystudio.netbook.ui.UnimportantNotificationActivity"
-            android:exported="true"
-            android:screenOrientation="portrait"/>
-        <activity
             android:name="com.clilystudio.netbook.ui.ugcbook.UGCMainActivity"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait"/>
-        <activity
-            android:name="com.clilystudio.netbook.ui.ugcbook.UGCGuideAddCollectionActivity"
-            android:screenOrientation="portrait"/>
-        <activity
-            android:name="com.clilystudio.netbook.ui.ugcbook.UGCGuideEditBooksActivity"
-            android:screenOrientation="portrait"/>
-        <activity
-            android:name="com.clilystudio.netbook.ui.ugcbook.MyUGCBookListActivity"
-            android:screenOrientation="portrait"/>
-        <activity
-            android:name="com.clilystudio.netbook.ui.ugcbook.UGCGuideAddBookActivity"
-            android:screenOrientation="portrait"/>
-        <activity
-            android:name="com.clilystudio.netbook.ui.ugcbook.UGCGuideSelectBookActivity"
             android:screenOrientation="portrait"/>
         <activity
             android:name="com.clilystudio.netbook.ui.ugcbook.UGCDetailActivity"
@@ -191,22 +152,6 @@
             android:name="com.clilystudio.netbook.ui.feed.FeedSettingActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name="com.clilystudio.netbook.ui.user.UserUGCActivity"
-            android:exported="true"
-            android:screenOrientation="portrait"/>
-        <activity
-            android:name="com.clilystudio.netbook.ui.user.UserTopicActivity"
-            android:exported="true"
-            android:screenOrientation="portrait"/>
-        <activity
-            android:name="com.clilystudio.netbook.ui.user.ModifyUserInfoActivity"
-            android:exported="true"
-            android:parentActivityName="com.clilystudio.netbook.ui.BaseActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.clilystudio.netbook.ui.BaseActivity"/>
-        </activity>
-        <activity
             android:name="com.clilystudio.netbook.ui.CropPhotoActivity"
             android:parentActivityName="com.clilystudio.netbook.ui.BaseActivity">
             <meta-data
@@ -229,10 +174,6 @@
         </activity>
         <activity
             android:name="com.clilystudio.netbook.ui.home.HomeTransparentActivity"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"/>
-        <activity
-            android:name="com.clilystudio.netbook.ui.IntroActivity"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen"/>
 

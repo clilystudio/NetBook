@@ -1,7 +1,6 @@
 package com.clilystudio.netbook.ui;
 
 import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.SwitchCompat;
@@ -11,14 +10,10 @@ import android.widget.CompoundButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
-import com.clilystudio.netbook.MyApplication;
 import com.clilystudio.netbook.R;
-import com.clilystudio.netbook.api.ApiServiceProvider;
 import com.clilystudio.netbook.event.BookReadEvent;
 import com.clilystudio.netbook.event.BusProvider;
-import com.clilystudio.netbook.event.LogoutEvent;
 import com.clilystudio.netbook.util.CommonUtil;
-import com.clilystudio.netbook.util.ToastUtil;
 import com.xiaomi.mipush.sdk.MiPushClient;
 
 import uk.me.lewisdeane.ldialogs.BaseDialog;
@@ -76,35 +71,6 @@ public class SettingsActivity extends BaseActivity implements View.OnClickListen
         super.onCreate(bundle);
         this.setContentView(R.layout.activity_setting);
         if (this.getIntent().getBooleanExtra("from_user_info", false)) {
-            this.a(R.string.settings, "退出登录", new BaseCallBack() {
-                @Override
-                public void a() {
-                    BaseDialog.Builder h2 = new BaseDialog.Builder(SettingsActivity.this);
-                    h2.setTitle(R.string.user_logout_dialog);
-                    h2.setMessage(R.string.user_logout_dialog_tips);
-                    h2.setNegativeButton(R.string.cancel, null);
-                    h2.setPositiveButton(R.string.user_logout, new DialogInterface.OnClickListener() {
-
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            ToastUtil.showShortToast(SettingsActivity.this, "已登出");
-                            new Thread(new Runnable() {
-                                @Override
-                                public void run() {
-                                    ApiServiceProvider.getApiService().logout(CommonUtil.getAccount().getToken());
-                                }
-                            }).start();
-                            MyApplication.getInstance().removeProperties("account.token", "user.id", "user.name", "user.avatar", "user.lv", "user.gender");
-                            CommonUtil.putStringPref(SettingsActivity.this, "pref_new_unimp_notif_time", "0");
-                            CommonUtil.putStringPref(SettingsActivity.this, "pref_new_imp_notif_time", "0");
-                            CommonUtil.putIntPref(SettingsActivity.this, "remove_ad_duration", 0);
-                            SettingsActivity.this.finish();
-                            BusProvider.getInstance().post(new LogoutEvent());
-                        }
-                    });
-                    h2.create().show();
-                }
-            });
         } else {
             this.b(R.string.settings);
         }

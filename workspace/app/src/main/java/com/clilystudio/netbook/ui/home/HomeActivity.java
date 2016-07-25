@@ -24,12 +24,9 @@ import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.adapter.BasePagerAdapter;
 import com.clilystudio.netbook.api.ApiServiceProvider;
 import com.clilystudio.netbook.api.DnsManager;
-import com.clilystudio.netbook.db.AccountInfo;
 import com.clilystudio.netbook.db.BookReadRecord;
 import com.clilystudio.netbook.event.AccountUpdatedEvent;
-import com.clilystudio.netbook.event.BookShelfRefreshEvent;
 import com.clilystudio.netbook.event.BusProvider;
-import com.clilystudio.netbook.event.LoginEvent;
 import com.clilystudio.netbook.event.NotifEvent;
 import com.clilystudio.netbook.model.Account;
 import com.clilystudio.netbook.model.User;
@@ -39,9 +36,6 @@ import com.clilystudio.netbook.ui.BaseActivity;
 import com.clilystudio.netbook.ui.SearchActivity;
 import com.clilystudio.netbook.ui.SettingsActivity;
 import com.clilystudio.netbook.widget.SmartImageView;
-import com.clilystudio.netbook.ui.user.AuthLoginActivity;
-import com.clilystudio.netbook.ui.user.MyMessageActivity;
-import com.clilystudio.netbook.ui.user.UserInfoActivity;
 import com.clilystudio.netbook.util.BookShelfSyncManager;
 import com.clilystudio.netbook.util.CommonUtil;
 import com.clilystudio.netbook.util.UserNotificationManager;
@@ -182,45 +176,10 @@ public class HomeActivity extends BaseActivity implements ViewPager.OnPageChange
         }
     }
 
-    @Subscribe
-    public void onBookShelfRefresh(BookShelfRefreshEvent bookShelfRefreshEvent) {
-        if (this.mAccount != null) {
-            UserNotificationManager.getInstance(this).getUserNotificationCount(mAccount);
-        }
-    }
-
     @Override
     public void onClick(View view) {
         this.dismissPopMenu();
         switch (view.getId()) {
-            case R.id.home_menu_user:
-                if (this.mAccount != null) {
-                    this.startActivity(UserInfoActivity.a(this, this.mAccount.getToken()));
-                } else {
-                    Intent intent = AuthLoginActivity.a(this);
-                    intent.putExtra("KEY_SOURCE", AuthLoginActivity.Source.HOME);
-                    this.startActivityForResult(intent, 100);
-                }
-                break;
-            case R.id.home_menu_msg:
-                if (this.mAccount != null) {
-                    CommonUtil.putLongPref(this, "key_enter_msg_time", System.currentTimeMillis());
-                    AccountInfo accountInfo = AccountInfo.getOrCreate(this.mAccount.getToken());
-                    accountInfo.setPrevUnimpNotif(UserNotificationManager.getInstance(this).getUnimportant());
-                    accountInfo.save();
-                    BusProvider.getInstance().post(new NotifEvent());
-                    this.startActivity(new Intent(this, MyMessageActivity.class));
-                } else {
-                    this.startActivityForResult(AuthLoginActivity.a(this), 100);
-                }
-                break;
-            case R.id.home_menu_sync:
-                if (this.mAccount != null) {
-                    new BookShelfSyncManager(this, this.mAccount.getToken()).a(false);
-                } else {
-                    this.startActivityForResult(AuthLoginActivity.a(this), 100);
-                }
-                break;
             case R.id.home_menu_theme:
                 Intent intent = new Intent(this, HomeTransparentActivity.class);
                 if (CommonUtil.getBoolPref(this, "customer_night_theme", false)) {
@@ -372,17 +331,6 @@ public class HomeActivity extends BaseActivity implements ViewPager.OnPageChange
             return true;
         }
         return super.onKeyDown(n2, keyEvent);
-    }
-
-    @Subscribe
-    public void onLoginEvent(LoginEvent t2) {
-        this.mAccount = t2.getAccount();
-        if (this.mAccount != null) {
-            this.setUserMenuItem();
-            boolean bl = t2.getSource() != AuthLoginActivity.Source.HOME;
-            new BookShelfSyncManager(this, this.mAccount.getToken()).a(bl);
-            UserNotificationManager.getInstance(this).getUserNotificationCount(mAccount);
-        }
     }
 
     @Subscribe

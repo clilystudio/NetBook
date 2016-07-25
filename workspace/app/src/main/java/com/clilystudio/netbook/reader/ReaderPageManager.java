@@ -6,22 +6,15 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.clilystudio.netbook.CachePathConst;
 import com.clilystudio.netbook.MyApplication;
 import com.clilystudio.netbook.R;
-import com.clilystudio.netbook.a_pack.BaseLoadingTask;
-import com.clilystudio.netbook.api.ApiServiceProvider;
 import com.clilystudio.netbook.event.BusProvider;
-import com.clilystudio.netbook.event.LoginEvent;
-import com.clilystudio.netbook.model.ChapterKeysRoot;
 import com.clilystudio.netbook.model.ChapterLink;
 import com.clilystudio.netbook.util.CommonUtil;
 import com.clilystudio.netbook.util.ToastUtil;
 import com.clilystudio.netbook.widget.JustifyTextView;
-import com.squareup.otto.Subscribe;
 
 import java.text.SimpleDateFormat;
-import java.util.HashMap;
 import java.util.Locale;
 
 public final class ReaderPageManager {
@@ -351,47 +344,6 @@ public final class ReaderPageManager {
 
     public final void k() {
         ((TextView) this.mReaderPageView.findViewById(R.id.tv_time)).setText(a.format(System.currentTimeMillis()));
-    }
-
-    @Subscribe
-    public final void onLoginEvent(LoginEvent t2) {
-        if (this.e && t2.getAccount() != null) {
-            new BaseLoadingTask<Void, ChapterKeysRoot>(this.mActivity, "正在获取资产信息...") {
-                String arg;
-
-                @Override
-                public ChapterKeysRoot a(Void... var1) {
-                    if (ReaderPageManager.this.mActivity instanceof ReaderActivity) {
-                        arg = ((ReaderActivity) ReaderPageManager.this.mActivity).l();
-                        ApiServiceProvider.getInstance();
-                        return ApiServiceProvider.getApiService().getChapterKeysRoot(CommonUtil.getAccount().getToken(), arg);
-                    }
-                    return null;
-                }
-
-                @Override
-                public void a(ChapterKeysRoot chapterKeysRoot) {
-                    if (chapterKeysRoot != null && chapterKeysRoot.isOk()) {
-                        HashMap<String, String> hashMap;
-                        if (chapterKeysRoot != null && chapterKeysRoot.isOk()) {
-                            hashMap = new HashMap<>((int) ((double) chapterKeysRoot.getKeyLength() / 0.7));
-                            for (ChapterKeysRoot.ChapterKey chapterKeysRoot$ChapterKey : chapterKeysRoot.getKeys()) {
-                                hashMap.put(chapterKeysRoot$ChapterKey.get_id(), chapterKeysRoot$ChapterKey.getKey());
-                            }
-                            CommonUtil.saveObject(hashMap, CachePathConst.ChapterKey, arg);
-                        } else {
-                            hashMap = CommonUtil.loadObject(CachePathConst.ChapterKey, arg);
-                            if (hashMap == null) {
-                                hashMap = new HashMap<>();
-                            }
-                        }
-                        MyApplication.getInstance().getReader().setChaptersKey(hashMap);
-                        return;
-                    }
-                    ToastUtil.showShortToast(ReaderPageManager.this.mActivity, "获取个人信息失败，请检查网路后重试");
-                }
-            }.b();
-        }
     }
 
     public interface OnSourceChangeListener {

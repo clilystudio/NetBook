@@ -27,7 +27,6 @@ import com.clilystudio.netbook.model.UgcFilterRoot;
 import com.clilystudio.netbook.ui.ActionBarClickListener;
 import com.clilystudio.netbook.ui.BaseTabActivity;
 import com.clilystudio.netbook.adapter.BasePagerAdapter;
-import com.clilystudio.netbook.ui.user.UserUGCActivity;
 import com.clilystudio.netbook.util.CommonUtil;
 import com.clilystudio.netbook.widget.UgcFilterTextView;
 
@@ -135,26 +134,6 @@ public class UGCMainActivity extends BaseTabActivity implements ViewPager.OnPage
             @Override
             public void onDismiss() {
                 UGCMainActivity.this.g();
-            }
-        });
-        view.findViewById(R.id.create_ugc).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (CommonUtil.checkLogin(UGCMainActivity.this) != null) {
-                    Intent intent = new Intent(UGCMainActivity.this, UGCGuideAddCollectionActivity.class);
-                    UGCMainActivity.this.startActivity(intent);
-                    UGCMainActivity.this.f();
-                }
-            }
-        });
-        view.findViewById(R.id.my_ugc).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (CommonUtil.checkLogin(UGCMainActivity.this) != null) {
-                    Intent intent = new Intent(UGCMainActivity.this, UserUGCActivity.class);
-                    UGCMainActivity.this.startActivity(intent);
-                    UGCMainActivity.this.f();
-                }
             }
         });
         view.findViewById(R.id.back_view).setOnClickListener(new View.OnClickListener() {

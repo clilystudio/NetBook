@@ -1,7 +1,6 @@
 package com.clilystudio.netbook.ui;
 
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -10,7 +9,6 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -28,7 +26,6 @@ import com.clilystudio.netbook.event.BusProvider;
 import com.clilystudio.netbook.event.DownloadStatusEvent;
 import com.clilystudio.netbook.model.BookInfo;
 import com.clilystudio.netbook.reader.dl.BookDownloadManager;
-import com.clilystudio.netbook.ui.user.AuthLoginActivity;
 import com.clilystudio.netbook.util.BookInfoUtil;
 import com.clilystudio.netbook.util.BookSourceManager;
 import com.clilystudio.netbook.util.CommonUtil;
@@ -37,8 +34,6 @@ import com.clilystudio.netbook.util.ToastUtil;
 import com.clilystudio.netbook.widget.CoverView;
 import com.clilystudio.netbook.widget.TagsLayout;
 import com.squareup.otto.Subscribe;
-
-import uk.me.lewisdeane.ldialogs.BaseDialog;
 
 public class BookInfoActivity extends BaseActivity implements View.OnClickListener {
     private View b;
@@ -315,31 +310,6 @@ public class BookInfoActivity extends BaseActivity implements View.OnClickListen
             String string3 = this.getString(R.string.add_book_event);
             Object[] arrobject = new Object[]{this.k.getTitle()};
             String string4 = String.format(string3, arrobject);
-            if (CommonUtil.getBoolPref(this, "add_update_notify_login", true) && !CommonUtil.isLogined()) {
-                View view = this.getLayoutInflater().inflate(R.layout.remove_shelf_confirm, (ViewGroup) getWindow().getDecorView(), false);
-                final CheckBox checkBox = (CheckBox) view.findViewById(R.id.remove_shelf_cache);
-                checkBox.setText(this.getString(R.string.add_update_not_notify));
-                checkBox.setChecked(false);
-                ((TextView) view.findViewById(R.id.remove_shelf_text)).setText(this.getString(R.string.add_update_notify));
-                new BaseDialog.Builder(this).setView(view).setPositiveButton("快速登录", new DialogInterface.OnClickListener() {
-
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        if (checkBox.isChecked()) {
-                            CommonUtil.putBoolPref(BookInfoActivity.this, "add_update_notify_login", false);
-                        }
-                        BookInfoActivity.this.startActivity(AuthLoginActivity.a(BookInfoActivity.this));
-                    }
-                }).setNegativeButton("不想同步", new DialogInterface.OnClickListener() {
-
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        if (checkBox.isChecked()) {
-                            CommonUtil.putBoolPref(BookInfoActivity.this, "add_update_notify_login", false);
-                        }
-                    }
-                }).create().show();
-            }
             string = string4;
         }
         ToastUtil.showShortToast(this, string);

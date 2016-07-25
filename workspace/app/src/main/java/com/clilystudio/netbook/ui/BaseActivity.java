@@ -17,9 +17,7 @@ import com.clilystudio.netbook.MyApplication;
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.api.ApiServiceProvider;
 import com.clilystudio.netbook.ui.home.HomeActivity;
-import com.clilystudio.netbook.ui.user.AuthLoginActivity;
 import com.clilystudio.netbook.util.CommonUtil;
-import com.clilystudio.netbook.util.ToastUtil;
 
 public class BaseActivity extends AppCompatActivity {
     protected ApiServiceProvider d = ApiServiceProvider.getInstance();

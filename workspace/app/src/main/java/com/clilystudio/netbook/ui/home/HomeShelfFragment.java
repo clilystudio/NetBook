@@ -30,7 +30,6 @@ import com.clilystudio.netbook.db.BookSyncRecord;
 import com.clilystudio.netbook.event.BookAddedEvent;
 import com.clilystudio.netbook.event.BookReadEvent;
 import com.clilystudio.netbook.event.BookRemovedEvent;
-import com.clilystudio.netbook.event.BookShelfRefreshEvent;
 import com.clilystudio.netbook.event.BusProvider;
 import com.clilystudio.netbook.event.DownloadProgressEvent;
 import com.clilystudio.netbook.event.FeedAddedEvent;
@@ -193,7 +192,6 @@ public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollL
             }
         }
         reloadBookShelf();
-        BusProvider.getInstance().post(new BookShelfRefreshEvent());
     }
 
     private void moveBookShelfToFeed(BookReadRecord bookReadRecord) {
@@ -297,7 +295,6 @@ public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollL
         reloadBookShelf();
         CommonUtil.unsubscribeBook(bookId);
         CommonUtil.syncBookShelf(bookId, BookSyncRecord.BookModifyType.SHELF_REMOVE);
-        BusProvider.getInstance().post(new BookShelfRefreshEvent());
     }
 
     private void addFeedingItem(List<BookShelf> bookShelfs, List<BookReadRecord> allFedding) {
@@ -514,7 +511,6 @@ public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollL
         mBookShelfListView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener<ListView>() {
             @Override
             public void onRefresh(PullToRefreshBase<ListView> refreshView) {
-                BusProvider.getInstance().post(new BookShelfRefreshEvent());
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {

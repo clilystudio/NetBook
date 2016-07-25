@@ -49,7 +49,6 @@ import com.clilystudio.netbook.model.TocSource;
 import com.clilystudio.netbook.model.User;
 import com.clilystudio.netbook.push.BookSubRecord;
 import com.clilystudio.netbook.push.BookUnSubRecord;
-import com.clilystudio.netbook.ui.user.AuthLoginActivity;
 import com.xiaomi.mipush.sdk.MiPushClient;
 
 import org.mozilla.universalchardet.UniversalDetector;
@@ -117,15 +116,6 @@ public class CommonUtil {
     }
 
     public static Account checkLogin(Activity activity) {
-        if (activity == null) {
-            return null;
-        }
-        Account account = CommonUtil.getAccount();
-        if (account != null) {
-            return account;
-        }
-        ToastUtil.showShortToast(activity, "请登录后再操作");
-        activity.startActivity(AuthLoginActivity.a(activity));
         return null;
     }
 

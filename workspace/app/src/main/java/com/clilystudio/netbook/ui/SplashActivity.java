@@ -7,7 +7,6 @@ import android.os.Handler;
 
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.ui.home.HomeActivity;
-import com.clilystudio.netbook.util.CommonUtil;
 
 public class SplashActivity extends Activity {
     private static final int DELAY_MILLIS = 1200;
@@ -21,12 +20,7 @@ public class SplashActivity extends Activity {
             @Override
             public void run() {
                 if (!mIsStop) {
-                    Intent intent;
-                    if (!CommonUtil.isLogined()) {
-                        intent = new Intent(SplashActivity.this, IntroActivity.class);
-                    } else {
-                        intent = new Intent(SplashActivity.this, HomeActivity.class);
-                    }
+                    Intent intent = new Intent(SplashActivity.this, HomeActivity.class);
                     startActivity(intent);
                     finish();
                 }
