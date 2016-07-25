@@ -9,12 +9,12 @@ import android.view.View;
 import android.view.ViewGroup;
 
 public abstract class BasePagerAdapter extends PagerAdapter {
-    private final FragmentManager a;
-    private FragmentTransaction b = null;
-    private Fragment c = null;
+    private final FragmentManager mFragmentManager;
+    private FragmentTransaction mTransaction = null;
+    private Fragment mFragment = null;
 
     public BasePagerAdapter(FragmentManager fragmentManager) {
-        this.a = fragmentManager;
+        mFragmentManager = fragmentManager;
     }
 
     public abstract Fragment getFragment(int position);
@@ -23,41 +23,38 @@ public abstract class BasePagerAdapter extends PagerAdapter {
 
     @Override
     public void destroyItem(ViewGroup viewGroup, int n, Object object) {
-        if (this.b == null) {
-            this.b = this.a.beginTransaction();
+        if (mTransaction == null) {
+            mTransaction = mFragmentManager.beginTransaction();
         }
-        this.b.detach((Fragment) object);
+        mTransaction.detach((Fragment) object);
     }
 
     @Override
     public void finishUpdate(ViewGroup viewGroup) {
-        if (this.b != null) {
-            this.b.commitAllowingStateLoss();
-            this.b = null;
-            this.a.executePendingTransactions();
+        if (mTransaction != null) {
+            mTransaction.commitAllowingStateLoss();
+            mTransaction = null;
+            mFragmentManager.executePendingTransactions();
         }
     }
 
-    /*
-     * Enabled aggressive block sorting
-     */
     @Override
-    public Object instantiateItem(ViewGroup viewGroup, int n) {
-        Fragment fragment;
-        if (this.b == null) {
-            this.b = this.a.beginTransaction();
+    public Object instantiateItem(ViewGroup viewGroup, int position) {
+        if (mTransaction == null) {
+            mTransaction = mFragmentManager.beginTransaction();
         }
-        if ((fragment = this.a.findFragmentByTag(this.getTag(n))) != null) {
-            this.b.attach(fragment);
+        Fragment fragment = mFragmentManager.findFragmentByTag(getTag(position));
+        if (fragment != null) {
+            mTransaction.attach(fragment);
         } else {
-            fragment = this.getFragment(n);
+            fragment = getFragment(position);
             if (!fragment.isAdded()) {
-                this.b.add(viewGroup.getId(), fragment, this.getTag(n));
+                mTransaction.add(viewGroup.getId(), fragment, getTag(position));
             } else {
-                this.b.show(fragment);
+                mTransaction.show(fragment);
             }
         }
-        if (fragment != this.c) {
+        if (fragment != mFragment) {
             fragment.setMenuVisibility(false);
             fragment.setUserVisibleHint(false);
         }
@@ -79,18 +76,18 @@ public abstract class BasePagerAdapter extends PagerAdapter {
     }
 
     @Override
-    public void setPrimaryItem(ViewGroup viewGroup, int n, Object object) {
+    public void setPrimaryItem(ViewGroup viewGroup, int position, Object object) {
         Fragment fragment = (Fragment) object;
-        if (fragment != this.c) {
-            if (this.c != null) {
-                this.c.setMenuVisibility(false);
-                this.c.setUserVisibleHint(false);
+        if (fragment != mFragment) {
+            if (mFragment != null) {
+                mFragment.setMenuVisibility(false);
+                mFragment.setUserVisibleHint(false);
             }
             if (fragment != null) {
                 fragment.setMenuVisibility(true);
                 fragment.setUserVisibleHint(true);
             }
-            this.c = fragment;
+            mFragment = fragment;
         }
     }
 

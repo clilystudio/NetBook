@@ -139,7 +139,7 @@ public class HomeActivity extends BaseActivity implements ViewPager.OnPageChange
     public final HomeFindFragment getHomeFindFragment(String tag) {
         HomeFindFragment homeFindFragment = (HomeFindFragment) this.getSupportFragmentManager().findFragmentByTag(tag);
         if (homeFindFragment == null) {
-            homeFindFragment = HomeFindFragment.a(new Bundle());
+            homeFindFragment = HomeFindFragment.getHomeFindFragment(new Bundle());
         }
         return homeFindFragment;
     }

@@ -5,18 +5,19 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 
+import com.clilystudio.netbook.MyApplication;
 import com.clilystudio.netbook.R;
 
 public class HomeTransparentActivity extends Activity {
     @Override
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        this.setContentView(R.layout.activity_home_transparent);
-        if (this.getIntent().getIntExtra("onThemeChange", 0) == 0) {
-            this.findViewById(R.id.bg_layout).setBackgroundResource(R.drawable.bg_day_theme);
-            return;
+        setContentView(R.layout.activity_home_transparent);
+        if (getIntent().getIntExtra("onThemeChange", 0) == 0) {
+            findViewById(R.id.bg_layout).setBackgroundResource(R.drawable.bg_day_theme);
+        } else {
+            findViewById(R.id.bg_layout).setBackgroundResource(R.drawable.bg_night_theme);
         }
-        this.findViewById(R.id.bg_layout).setBackgroundResource(R.drawable.bg_night_theme);
     }
 
     @Override
@@ -26,9 +27,9 @@ public class HomeTransparentActivity extends Activity {
             @Override
             public void run() {
                 Intent intent = new Intent();
-                intent.setAction("broadcastOnThemeChanged");
-                HomeTransparentActivity.this.sendBroadcast(intent);
-           }
+                intent.setAction(MyApplication.ACTION_THEME_CHANGED);
+                sendBroadcast(intent);
+            }
         }, 500);
         new Handler().postDelayed(new Runnable() {
             @Override

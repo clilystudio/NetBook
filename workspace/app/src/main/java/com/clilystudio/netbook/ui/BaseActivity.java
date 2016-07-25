@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.clilystudio.netbook.MyApplication;
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.api.ApiServiceProvider;
 import com.clilystudio.netbook.ui.home.HomeActivity;
@@ -292,7 +293,7 @@ public class BaseActivity extends AppCompatActivity {
             this.setTheme(R.style.BaseTheme);
         }
         IntentFilter intentFilter = new IntentFilter();
-        intentFilter.addAction("broadcastOnThemeChanged");
+        intentFilter.addAction(MyApplication.ACTION_THEME_CHANGED);
         this.registerReceiver(this.a, intentFilter);
     }
 

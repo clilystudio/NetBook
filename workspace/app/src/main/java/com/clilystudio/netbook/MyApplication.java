@@ -40,6 +40,7 @@ import java.util.Properties;
 
 public class MyApplication extends Application {
     public static final String TAG = "QuiteBook";
+    public static final String ACTION_THEME_CHANGED = "action_theme_changed";
     private static final String MIPUSH_APP_ID = "2882303761517133731";
     private static final String MIPUSH_APP_KEY = "5941713373731";
     private static final String DEFUALT_API_URL = "zhuishushenqi.com";

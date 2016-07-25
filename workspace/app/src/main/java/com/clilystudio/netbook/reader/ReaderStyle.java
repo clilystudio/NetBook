@@ -11,6 +11,7 @@ import android.preference.PreferenceManager;
 import android.view.Display;
 import android.view.WindowManager;
 
+import com.clilystudio.netbook.MyApplication;
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.util.CommonUtil;
 import com.clilystudio.netbook.event.BusProvider;
@@ -170,7 +171,7 @@ public final class ReaderStyle {
             CommonUtil.putIntPref(this.m, "start_night_theme", 0);
         }
         Intent intent = new Intent();
-        intent.setAction("broadcastOnThemeChanged");
+        intent.setAction(MyApplication.ACTION_THEME_CHANGED);
         this.m.sendBroadcast(intent);
     }
 

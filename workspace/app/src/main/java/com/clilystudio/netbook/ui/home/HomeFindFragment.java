@@ -16,7 +16,7 @@ import com.clilystudio.netbook.widget.HomeFindItem;
 
 public class HomeFindFragment extends Fragment {
 
-    public static HomeFindFragment a(Bundle bundle) {
+    public static HomeFindFragment getHomeFindFragment(Bundle bundle) {
         HomeFindFragment homeFindFragment = new HomeFindFragment();
         homeFindFragment.setArguments(bundle);
         return homeFindFragment;
@@ -25,11 +25,11 @@ public class HomeFindFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater layoutInflater, ViewGroup viewGroup, Bundle bundle) {
         View view = layoutInflater.inflate(R.layout.fragment_home_find, viewGroup, false);
-        FragmentActivity fragmentActivity = this.getActivity();
-        ViewGroup a = (ViewGroup) view.findViewById(R.id.home_find_container);
-        a.addView(new HomeFindItem(fragmentActivity, this.getString(R.string.rank_list), R.drawable.home_find_rank, new Intent(fragmentActivity, BookRankListActivity.class)));
-        a.addView(new HomeFindItem(fragmentActivity, this.getString(R.string.ugc_list), R.drawable.home_find_topic, new Intent(fragmentActivity, UGCMainActivity.class)));
-        a.addView(new HomeFindItem(fragmentActivity, this.getString(R.string.category), R.drawable.home_find_category, BookCategoryActivity.a(fragmentActivity)));
+        FragmentActivity activity = getActivity();
+        ViewGroup container = (ViewGroup) view.findViewById(R.id.home_find_container);
+        container.addView(new HomeFindItem(activity, getString(R.string.rank_list), R.drawable.home_find_rank, new Intent(activity, BookRankListActivity.class)));
+        container.addView(new HomeFindItem(activity, getString(R.string.ugc_list), R.drawable.home_find_topic, new Intent(activity, UGCMainActivity.class)));
+        container.addView(new HomeFindItem(activity, getString(R.string.category), R.drawable.home_find_category, BookCategoryActivity.a(activity)));
         return view;
     }
 }
