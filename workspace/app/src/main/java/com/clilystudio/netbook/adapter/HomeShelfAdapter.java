@@ -30,10 +30,6 @@ import java.util.List;
 
 public class HomeShelfAdapter extends BaseBookAdapter<BookShelf> {
 
-    static {
-        HomeShelfAdapter.class.getSimpleName();
-    }
-
     private Context b;
     private LayoutInflater c;
     private boolean mIsEditing = false;
@@ -76,9 +72,6 @@ public class HomeShelfAdapter extends BaseBookAdapter<BookShelf> {
         });
     }
 
-    /*
-     * Enabled aggressive block sorting
-     */
     private void b(int n) {
         if (this.mIsSelected[n]) {
             if (!this.mSelectedBooks.contains(this.getItem(n))) {
@@ -110,9 +103,6 @@ public class HomeShelfAdapter extends BaseBookAdapter<BookShelf> {
         return n;
     }
 
-    /*
-     * Enabled aggressive block sorting
-     */
     public final void a(int n) {
         boolean[] arrbl = this.mIsSelected;
         boolean bl = !this.mIsSelected[n];
@@ -187,20 +177,11 @@ public class HomeShelfAdapter extends BaseBookAdapter<BookShelf> {
         int var5_5 = var4_4.getType();
         if (var2_2 == null) {
             switch (var5_5) {
-                case 1:
-                    var2_2 = this.c.inflate(R.layout.list_item_shelf_advert, var3_3, false);
-                    break;
                 case 0:
                     var2_2 = this.c.inflate(R.layout.list_item_shelf_book, var3_3, false);
                     break;
-                case 2:
-                    var2_2 = this.c.inflate(R.layout.list_item_shelf_txt, var3_3, false);
-                    break;
                 case 3:
                     var2_2 = this.c.inflate(R.layout.list_item_shelf_feed, var3_3, false);
-                    break;
-                case 4:
-                    var2_2 = this.c.inflate(R.layout.list_item_shelf_audio, var3_3, false);
                     break;
                 default:
                     break;
@@ -212,8 +193,8 @@ public class HomeShelfAdapter extends BaseBookAdapter<BookShelf> {
                 }
             } else {
                 switch (var5_5) {
-                    case 1:
-                        var2_2 = this.c.inflate(R.layout.list_item_shelf_advert, var3_3, false);
+                    case 0:
+                        var2_2 = this.c.inflate(R.layout.list_item_shelf_book, var3_3, false);
                         break;
                     case 3:
                         var2_2 = this.c.inflate(R.layout.list_item_shelf_feed, var3_3, false);
@@ -301,16 +282,6 @@ public class HomeShelfAdapter extends BaseBookAdapter<BookShelf> {
                 });
                 return var2_2;
             }
-            case 2: {
-                TxtHolder var13_21 = new TxtHolder(var2_2);
-                BookFile var14_22 = var4_4.getTxt();
-                var13_21.title.setText(var14_22.getName());
-                String text = "阅读进度 : " + var14_22.getReadableProgress();
-                var13_21.desc.setText(text);
-                var13_21.top.setVisibility(var14_22.isTop() ? View.VISIBLE : View.GONE);
-                this.a(var1_1, var13_21.check);
-                return var2_2;
-            }
             case 3: {
                 if (this.mIsEditing) return var2_2;
                 FeedHolder var11_25 = new FeedHolder(var2_2);
@@ -329,21 +300,7 @@ public class HomeShelfAdapter extends BaseBookAdapter<BookShelf> {
 
     @Override
     public int getViewTypeCount() {
-        return 5;
-    }
-
-    class TxtHolder {
-        CheckBox check;
-        TextView desc;
-        TextView title;
-        View top;
-
-        TxtHolder(View view) {
-            this.title = (TextView) view.findViewById(R.id.title);
-            this.desc = (TextView) view.findViewById(R.id.desc);
-            this.top = view.findViewById(R.id.top);
-            this.check = (CheckBox) view.findViewById(R.id.checked);
-        }
+        return 2;
     }
 
     class FeedHolder {

@@ -191,9 +191,6 @@
             android:name="com.clilystudio.netbook.ui.feed.FeedSettingActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name="com.clilystudio.netbook.ui.feed.FeedIntroActivity"
-            android:screenOrientation="portrait"/>
-        <activity
             android:name="com.clilystudio.netbook.ui.user.UserUGCActivity"
             android:exported="true"
             android:screenOrientation="portrait"/>

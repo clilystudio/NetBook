@@ -42,7 +42,6 @@ import com.clilystudio.netbook.model.BookShelf;
 import com.clilystudio.netbook.model.BookUpdate;
 import com.clilystudio.netbook.reader.dl.BookDownloadManager;
 import com.clilystudio.netbook.ui.BookInfoActivity;
-import com.clilystudio.netbook.ui.feed.FeedIntroActivity;
 import com.clilystudio.netbook.ui.feed.FeedListActivity;
 import com.clilystudio.netbook.util.BookSourceManager;
 import com.clilystudio.netbook.util.CommonUtil;
@@ -525,14 +524,14 @@ public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollL
             }
         });
         if (Build.VERSION.SDK_INT >= 19) {
-            this.mListView.setFooterDividersEnabled(false);
+            mListView.setFooterDividersEnabled(false);
         }
-        View view = LayoutInflater.from(this.getActivity()).inflate(R.layout.ptr_list_footer_empty_view, (ViewGroup) getActivity().getWindow().getDecorView(), false);
-        this.mListView.addFooterView(view);
-        CommonUtil.addHeaderView(this.getActivity(), this.mListView);
-        this.mAdapter = new HomeShelfAdapter(this.getActivity());
-        this.mListView.setAdapter(this.mAdapter);
-        this.mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        View view = LayoutInflater.from(getActivity()).inflate(R.layout.ptr_list_footer_empty_view, (ViewGroup) getActivity().getWindow().getDecorView(), false);
+        mListView.addFooterView(view);
+        CommonUtil.addHeaderView(getActivity(), mListView);
+        mAdapter = new HomeShelfAdapter(getActivity());
+        mListView.setAdapter(mAdapter);
+        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 BookShelf bookShelf = (BookShelf) mListView.getAdapter().getItem(position);
@@ -552,7 +551,7 @@ public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollL
                         }
                         break;
                     case 3:
-                        Intent intent = CommonUtil.getBoolPref(getActivity(), "feed_intro", true) ? new Intent(getActivity(), FeedIntroActivity.class) : new Intent(getActivity(), FeedListActivity.class);
+                        Intent intent = new Intent(getActivity(), FeedListActivity.class);
                         startActivity(intent);
                         break;
                 }
