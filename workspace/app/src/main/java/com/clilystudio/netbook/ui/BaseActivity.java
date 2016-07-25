@@ -228,11 +228,6 @@ public class BaseActivity extends AppCompatActivity {
         this.a(string, R.layout.ab_title_dark);
     }
 
-    public final void d() {
-        ToastUtil.showToast(this, R.string.token_invalid);
-        this.startActivity(AuthLoginActivity.a(this));
-    }
-
     public final void d(int n) {
         ActionBar actionBar = getActionBar();
         if (actionBar != null) {

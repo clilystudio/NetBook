@@ -184,24 +184,6 @@ public class AuthLoginActivity extends BaseActivity implements Handler.Callback 
         layoutParams.dimAmount = 0.7f;
         window.setAttributes(layoutParams);
         this.b = AnimationUtils.loadAnimation(this, R.anim.login_scale);
-        this.a(this.findViewById(R.id.tv_sina));
-        this.findViewById(R.id.tv_sina).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                AuthLoginActivity.a(AuthLoginActivity.this, v);
-                AuthLoginActivity.a(AuthLoginActivity.this, SinaWeibo.NAME);
-                AuthLoginActivity.this.a = "SinaWeibo";
-            }
-        });
-        this.a(this.findViewById(R.id.tv_qq));
-        this.findViewById(R.id.tv_qq).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                AuthLoginActivity.a(AuthLoginActivity.this, v);
-                AuthLoginActivity.a(AuthLoginActivity.this, QZone.NAME);
-                AuthLoginActivity.this.a = "QQ";
-            }
-        });
         this.a(this.findViewById(R.id.tv_weixin));
         this.findViewById(R.id.tv_weixin).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -210,18 +192,11 @@ public class AuthLoginActivity extends BaseActivity implements Handler.Callback 
                 AuthLoginActivity.loginWeChat(AuthLoginActivity.this);
             }
         });
-        BusProvider.getInstance().register(this);
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        BusProvider.getInstance().unregister(this);
-    }
-
-    @Subscribe
-    public void onWeixinAuthEvent() {
-        this.finish();
     }
 
     public enum Source {
