@@ -526,8 +526,8 @@ public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollL
         mListView.addFooterView(view);
         CommonUtil.addHeaderView(getActivity(), mListView);
         mAdapter = new HomeShelfAdapter(getActivity());
-        mListView.setAdapter(mAdapter);
-        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        mBookShelfListView.setAdapter(mAdapter);
+        mBookShelfListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 BookShelf bookShelf = (BookShelf) mListView.getAdapter().getItem(position);

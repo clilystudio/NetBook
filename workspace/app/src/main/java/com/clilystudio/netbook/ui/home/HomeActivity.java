@@ -303,9 +303,9 @@ public class HomeActivity extends BaseActivity implements ViewPager.OnPageChange
 //        if (bundle != null) {
 //            tabWidgetV2.setIndex(bundle.getInt("extra_index"));
 //        }
-        this.findViewById(R.id.home_action_menu_more).setOnClickListener(this);
-        this.findViewById(R.id.home_action_menu_search).setOnClickListener(this);
-        Account account = CommonUtil.getAccount();
+//        this.findViewById(R.id.home_action_menu_more).setOnClickListener(this);
+//        this.findViewById(R.id.home_action_menu_search).setOnClickListener(this);
+//        Account account = CommonUtil.getAccount();
     }
 
     @Override
